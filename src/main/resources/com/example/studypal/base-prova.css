@@ -1,0 +1,43 @@
+.lw { font-size: 60px; }
+/* Definizione del colore di sfondo */
+body {
+    background-color: #c8c8c8; /* Colore grigio chiaro */
+}
+
+/* Definizione del font per tutto il testo */
+body {
+    font-family: Verdana, serif; /* Utilizza il font Arial o un font sans-serif di backup */
+}
+
+/* Stile per l'intestazione */
+h1 {
+    color: #294c29; /* Colore del testo nero */
+    font-size: 24px; /* Dimensione del font 24px */
+}
+
+/* Stile per i paragrafi */
+p {
+    color: #333333; /* Colore del testo grigio */
+    font-size: 10px; /* Dimensione del font 16px */
+    line-height: 1.5; /* Altezza della riga 1.5 volte la dimensione del font */
+}
+
+/* Stile per i pulsanti */
+button {
+    background-color: #dedfdd; /* Colore di sfondo bianchino */
+    border: 2px solid #627562;
+    color: #333334; /* Colore del testo blu */
+    /* border: none;  Nessun bordo */
+    padding: 10px 20px; /* Spazio intorno al testo */
+    font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif; /* Utilizza il font Arial o un font sans-serif di backup */
+
+    font-size: 18px; /* Dimensione del font 18px */
+    cursor: pointer; /* Cambia il cursore quando si passa sopra */
+    border-radius: 8px; /* Bordo arrotondato */
+}
+
+/* Stile per il passaggio del mouse sui pulsanti */
+button:hover {
+    background-color: #658863; /* Colore di sfondo più scuro */
+    color: #d9e7df; /* Colore del testo blu */
+}
