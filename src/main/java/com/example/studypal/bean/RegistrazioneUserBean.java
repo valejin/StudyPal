@@ -1,9 +1,12 @@
 package com.example.studypal.bean;
 
-public class UserBean {
+public class RegistrazioneUserBean {
+    //classe bean per i dati provenienti dalla registrazione
     private String nome;
     private String cognome;
     private String email;
+    private String password;
+    private String confermaPassworld;
 
     public String getNome() {
         return nome;
@@ -27,6 +30,22 @@ public class UserBean {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getConfermaPassword() {
+        return confermaPassworld;
+    }
+
+    public void setConfermaPassword(String confermaPassword) {
+        this.confermaPassworld = confermaPassword;
     }
 
 }

@@ -3,6 +3,7 @@ package com.example.studypal.DAO;
 
 import com.example.studypal.model.CredenzialiModel;
 import com.example.studypal.model.UserModel;
+import com.example.studypal.exceptions.LoginDBException;
 
 import java.sql.*;
 import java.util.logging.Logger;
@@ -13,7 +14,7 @@ public class UserDAO {
     private static final Logger logger = Logger.getLogger(UserDAO.class.getName());
 
 
-    public UserModel loginMethod(CredenzialiModel credenzialiModel) {
+    public UserModel loginMethod(CredenzialiModel credenzialiModel) throws LoginDBException{
         UserModel userModel = new UserModel();
 
         String path = "jdbc:mysql://localhost:3306/studypal";
@@ -30,12 +31,12 @@ public class UserDAO {
             statement = connection.prepareStatement(query);
             statement.setString(1, credenzialiModel.getEmail());
             statement.setString(2, credenzialiModel.getPassword());
-            System.out.println("Trovato risultato");
 
             try (ResultSet rs = statement.executeQuery()) {
 
                 if(!rs.next()) {
-                    System.out.println("Il ResultSet è vuoto.");
+                   System.out.println("Il ResultSet è vuoto.");
+                    throw new LoginDBException(0);
                 }
                 else {
                     userModel.setNome(rs.getString("nome"));

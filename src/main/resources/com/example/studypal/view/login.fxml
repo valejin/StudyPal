@@ -27,5 +27,6 @@
       </Text>
       <PasswordField fx:id="passwordField" layoutX="223.0" layoutY="202.0" promptText="Password" />
       <Label fx:id="credenzialiError" layoutX="256.0" layoutY="128.0" textFill="#cf0000" />
+      <Label fx:id="credenzialiSbagliate" layoutX="278.0" layoutY="128.0" />
    </children>
 </AnchorPane>
