@@ -70,12 +70,16 @@ public class LoginGuiController {
         }
         else {
             //cambio pagina
-            FXMLLoader loader = new FXMLLoader(LoginGuiController.class.getResource("registrazione.fxml"));
-            loader.setControllerFactory(c->new RegistrazioneGuiController());
-            Parent parent = loader.load();
-            Scene scene = new Scene(parent);
-            Stage stage = (Stage) credenzialiError.getScene().getWindow();
-            stage.setScene(scene);
+            try {
+                FXMLLoader loader = new FXMLLoader(LoginGuiController.class.getResource("registrazione.fxml"));
+                loader.setControllerFactory(c -> new RegistrazioneGuiController());
+                Parent parent = loader.load();
+                Scene scene = new Scene(parent);
+                Stage stage = (Stage) credenzialiError.getScene().getWindow();
+                stage.setScene(scene);
+            }catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
