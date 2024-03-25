@@ -71,7 +71,7 @@ public class LoginGuiController {
         else {
             //cambio pagina
             try {
-                FXMLLoader loader = new FXMLLoader(LoginGuiController.class.getResource("registrazione.fxml"));
+                FXMLLoader loader = new FXMLLoader(LoginGuiController.class.getResource("/com/example/studypal/view/registrazione.fxml"));
                 loader.setControllerFactory(c -> new RegistrazioneGuiController());
                 Parent parent = loader.load();
                 Scene scene = new Scene(parent);

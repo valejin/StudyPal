@@ -30,9 +30,9 @@ public class UserDAO {
             statement = connection.prepareStatement(query);
             statement.setString(1, credenzialiModel.getEmail());
             statement.setString(2, credenzialiModel.getPassword());
+            System.out.println("Trovato risultato");
 
             try (ResultSet rs = statement.executeQuery()) {
-
 
                 if(!rs.next()) {
                     System.out.println("Il ResultSet è vuoto.");
@@ -40,6 +40,7 @@ public class UserDAO {
                 else {
                     userModel.setNome(rs.getString("nome"));
                     userModel.setEmail(rs.getString("email"));
+                    System.out.println(userModel.getEmail());
                     userModel.setCognome(rs.getString("cognome"));
                     System.out.println(userModel.getNome());
                 }

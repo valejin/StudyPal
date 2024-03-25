@@ -26,21 +26,21 @@ p {
     line-height: 1.5; /* Altezza della riga 1.5 volte la dimensione del font */
 }
 /* Stile per i pulsanti */
-.button {
+Button {
     -fx-background-color: #dedfdd; /* Colore di sfondo bianchino */
 
-    -fx-color: #333334; /* Colore del testo blu */
-    /* border: none;  Nessun bordo */
+    -fx-color: #658863; /* Colore del testo blu */
+    /*-fx-border: none;*/
     -fx-padding: 10px 20px; /* Spazio intorno al testo */
-    -fx-font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif; /* Utilizza il font Arial o un font sans-serif di backup */
+    -fx-font-family: Verdana, sans-serif; /* Utilizza il font Arial o un font sans-serif di backup */
 
-    -fx-font-size: 18px; /* Dimensione del font 18px */
+    -fx-font-size: 14px; /* Dimensione del font 18px */
     -fx-cursor: pointer; /* Cambia il cursore quando si passa sopra */
     -fx-border-radius: 8px; /* Bordo arrotondato */
 }
 
 /* Stile per il passaggio del mouse sui pulsanti */
-.button:hover {
+Button:hover {
     -fx-background-color: #658863; /* Colore di sfondo più scuro */
     -fx-color: #d9e7df; /* Colore del testo blu */
 }
