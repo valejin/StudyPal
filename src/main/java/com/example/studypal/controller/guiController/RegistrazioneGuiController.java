@@ -3,8 +3,14 @@ package com.example.studypal.controller.guiController;
 import com.example.studypal.bean.RegistrazioneUserBean;
 import com.example.studypal.controller.applicationController.RegistrazioneController;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class RegistrazioneGuiController {
 
@@ -66,4 +72,16 @@ public class RegistrazioneGuiController {
 
     }
 
+    public void caricaLogin () {
+        try {
+            FXMLLoader loader = new FXMLLoader(RegistrazioneGuiController.class.getResource("/com/example/studypal/view/login.fxml"));
+            loader.setControllerFactory(c -> new LoginGuiController());
+            Parent parent = loader.load();
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) campiError.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

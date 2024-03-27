@@ -11,7 +11,7 @@
 <AnchorPane fx:id="myPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.LoginGuiController">
    <children>
       <Button fx:id="loginButton" layoutX="253.0" layoutY="245.0" mnemonicParsing="false" onAction="#loginMethod" text="Login" />
-      <Text layoutX="223.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="StudyPal" textAlignment="CENTER" wrappingWidth="149.60000000000014">
+      <Text layoutX="225.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="StudyPal" textAlignment="CENTER" wrappingWidth="149.60000000000014">
          <font>
             <Font name="Bodoni MT Italic" size="32.0" />
          </font>
@@ -20,13 +20,13 @@
       <Text layoutX="145.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email: " wrappingWidth="65.33673095703125" />
       <TextField fx:id="emailField" layoutX="223.0" layoutY="153.0" promptText="Email" />
       <Text layoutX="239.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="oppure " wrappingWidth="65.33673095703125" />
-      <Text fx:id="signUpButton" layoutX="286.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign up" underline="true">
+      <Text fx:id="signUpButton" layoutX="286.0" layoutY="313.0" onMouseClicked="#caricaRegistrazione" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign up" underline="true">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
       <PasswordField fx:id="passwordField" layoutX="223.0" layoutY="202.0" promptText="Password" />
       <Label fx:id="credenzialiError" layoutX="256.0" layoutY="128.0" textFill="#cf0000" />
-      <Label fx:id="credenzialiSbagliate" layoutX="278.0" layoutY="128.0" />
+      <Label fx:id="credenzialiSbagliate" layoutX="245.0" layoutY="127.0" prefHeight="18.0" prefWidth="110.0" textFill="#c10606" />
    </children>
 </AnchorPane>

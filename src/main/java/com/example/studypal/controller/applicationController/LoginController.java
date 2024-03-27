@@ -30,6 +30,7 @@ public class LoginController {
             return loginUserBean;
 
         } catch (LoginDBException e) {
+            System.out.println("controller applicativo credenziali sbagliate");
             throw new CredenzialiSbagliateException("Credenziali sbagliate,");
         }
    }

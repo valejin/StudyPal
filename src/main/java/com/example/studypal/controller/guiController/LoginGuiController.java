@@ -17,9 +17,6 @@ import java.io.IOException;
 
 public class LoginGuiController {
 
-    private String emailErrorMessage = "Il campo email non può essere vuoto.";
-
-    private String passwordErrorMessage = "Il campo password non può essere vuoto.";
 
     private String loginPage = "com/example/studypal/view/login.fxml";
 
@@ -50,11 +47,10 @@ public class LoginGuiController {
         String userPassword = null;
 
         //poi controlla isempty()
-        if(!this.emailField.getText().isEmpty() && !this.passwordField.getText().isEmpty()){
+        if (!this.emailField.getText().isEmpty() && !this.passwordField.getText().isEmpty()) {
             userEmail = this.emailField.getText();
             userPassword = this.passwordField.getText();
-        }
-        else{
+        } else {
             credenzialiError.setText("Campi obbligatori.");
             return;
         }
@@ -68,6 +64,7 @@ public class LoginGuiController {
             LoginController loginController = new LoginController();
             loginController.loginMethod(credenzialiBean);
         } catch (CredenzialiSbagliateException e) {
+            System.out.println("controller grafico cred sbagl");
             credenzialiSbagliate.setText("Credenziali sbagliate.");
 
         }
@@ -77,7 +74,10 @@ public class LoginGuiController {
             return;
         }*/
 
-        //cambio pagina
+    }
+
+    //cambio pagina
+    public void caricaRegistrazione () {
         try {
             FXMLLoader loader = new FXMLLoader(LoginGuiController.class.getResource("/com/example/studypal/view/registrazione.fxml"));
             loader.setControllerFactory(c -> new RegistrazioneGuiController());
@@ -85,10 +85,9 @@ public class LoginGuiController {
             Scene scene = new Scene(parent);
             Stage stage = (Stage) credenzialiError.getScene().getWindow();
             stage.setScene(scene);
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 
 }

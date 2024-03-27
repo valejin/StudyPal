@@ -43,7 +43,7 @@ public class UserDAO {
                     userModel.setEmail(rs.getString("email"));
                     System.out.println(userModel.getEmail());
                     userModel.setCognome(rs.getString("cognome"));
-                    System.out.println(userModel.getNome());
+                    System.out.println("Accesso effettuato per l'utente: " + userModel.getNome());
                 }
             }
 
