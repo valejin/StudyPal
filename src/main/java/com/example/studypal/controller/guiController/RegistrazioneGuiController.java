@@ -68,6 +68,7 @@ public class RegistrazioneGuiController {
         //istanzio un'istanza di controller applicativo
         RegistrazioneController registrazioneController = new RegistrazioneController();
 
+        //chiamare il registrazioneMethod
 
 
     }
