@@ -1,36 +1,19 @@
 package com.example.studypal.bean;
 
-public class RegistrazioneUserBean {
+public class RegistrazioneUserBean extends LoginUserBean{
     //classe bean per i dati provenienti dalla registrazione
-    private String nome;
-    private String cognome;
-    private String email;
+    //la registrazione estende login
+    //con i campi password e confermaPassword aggiuntivi
+
     private String password;
     private String confermaPassword;
 
-    public String getNome() {
-        return nome;
+    public RegistrazioneUserBean(String email, String nome, String cognome, String password, String confermaPassword){
+        super(email, nome, cognome);
+        this.password = password;
+        this.confermaPassword = confermaPassword;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCognome() {
-        return cognome;
-    }
-
-    public void setCognome(String cognome) {
-        this.cognome = cognome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public String getPassword() {
         return password;

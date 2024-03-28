@@ -5,6 +5,12 @@ public class LoginUserBean {
     private String cognome;
     private String email;
 
+    public LoginUserBean(String email, String nome, String cognome){
+        this.nome = nome;
+        this.cognome = cognome;
+        this.email = email;
+    }
+
     public String getNome() {
         return nome;
     }

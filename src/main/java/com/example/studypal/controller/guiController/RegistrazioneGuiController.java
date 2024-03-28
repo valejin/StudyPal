@@ -63,7 +63,8 @@ public class RegistrazioneGuiController {
 
 
         //inserisco gli input ottenuti in BEAN
-        RegistrazioneUserBean registrazioneUserBean = new RegistrazioneUserBean();
+        RegistrazioneUserBean registrazioneUserBean = new RegistrazioneUserBean(userEmail,userNome, userCognome, userPassword, confermaPassword);
+
         registrazioneUserBean.setNome(userNome);
         registrazioneUserBean.setCognome(userCognome);
         registrazioneUserBean.setEmail(userEmail);

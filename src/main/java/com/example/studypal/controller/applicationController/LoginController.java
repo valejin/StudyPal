@@ -9,9 +9,14 @@ import com.example.studypal.exceptions.CredenzialiSbagliateException;
 import com.example.studypal.exceptions.LoginDBException;
 
 public class LoginController {
+
+    String email;
+    String nome;
+    String cognome;
+
    public LoginUserBean loginMethod(CredenzialiBean credenzialiBean) throws CredenzialiSbagliateException {
         CredenzialiModel credenzialiModel = new CredenzialiModel();
-        LoginUserBean loginUserBean = new LoginUserBean();
+        LoginUserBean loginUserBean = new LoginUserBean(email, nome, cognome);
 
         try {
             credenzialiModel.setEmail(credenzialiBean.getEmail());
