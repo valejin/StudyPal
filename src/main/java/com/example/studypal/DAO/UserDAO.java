@@ -64,6 +64,7 @@ public class UserDAO {
         Connection connection;
         PreparedStatement statement = null;
         ResultSet rs = null;
+        System.out.println("preparato la statement");
 
         String query = "INSERT INTO utente (email, nome, cognome, password) VALUES (?, ?, ?, ?)";
 
@@ -73,12 +74,14 @@ public class UserDAO {
             statement = connection.prepareStatement(query);
 
             statement.setString(1, registrazioneModel.getEmail());
-            statement.setString(1, registrazioneModel.getNome());
-            statement.setString(1, registrazioneModel.getCognome());
-            statement.setString(1, registrazioneModel.getPassword());
+            statement.setString(2, registrazioneModel.getNome());
+            statement.setString(3, registrazioneModel.getCognome());
+            statement.setString(4, registrazioneModel.getPassword());
 
+            System.out.println("preso la query");
             //inseriamo effettivamente l'utente nel database
-            statement.executeUpdate(query);
+            statement.executeUpdate();
+            System.out.println("inserito la query");
 
         } catch (SQLException e) {
             logger.severe("errore in userDAO " + e.getMessage());
