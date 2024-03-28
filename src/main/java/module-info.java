@@ -11,4 +11,7 @@ module com.example.studypal {
     exports com.example.studypal.controller.guiController;
     opens com.example.studypal.controller.guiController to javafx.fxml;
     exports com.example.studypal.exceptions;
+
+    exports com.example.studypal.bean;
+    opens com.example.studypal.bean to javafx.fxml;
 }

@@ -47,7 +47,7 @@ public class Connect {
     private void getInfo() {
         try(FileInputStream fileInputStream = new FileInputStream(PATH)) {
 
-            // Load DB Connection info from Properties file
+            // carico dal file properties le informazioni necessarie alla connessione
             Properties prop = new Properties() ;
             prop.load(fileInputStream);
 

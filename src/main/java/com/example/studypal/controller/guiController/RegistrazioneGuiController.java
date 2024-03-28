@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 public class RegistrazioneGuiController {
 
@@ -27,16 +28,20 @@ public class RegistrazioneGuiController {
     @FXML
     private Label campiError;
 
+    private static final Logger logger = Logger.getLogger(RegistrazioneGuiController.class.getName());
+
 
     @FXML
     void registrazioneMethod() {
         //metodo attivato dal pulsante di conferma sulla schermata di registrazione
 
-        String userNome = null;
-        String userCognome = null;
-        String userEmail = null;
-        String userPassword = null;
-        String confermaPassword = null;
+
+        String userNome;
+        String userCognome;
+        String userEmail;
+        String userPassword;
+        String confermaPassword;
+
 
         if(!this.nomeField.getText().isEmpty() &&
                 !this.cognomeField.getText().isEmpty() &&
@@ -69,7 +74,9 @@ public class RegistrazioneGuiController {
         RegistrazioneController registrazioneController = new RegistrazioneController();
 
         //chiamare il registrazioneMethod
+        registrazioneController.registrazioneMethod(registrazioneUserBean);
 
+        System.out.println("L'utente è stato correttamente registrato.");
 
     }
 
@@ -82,7 +89,8 @@ public class RegistrazioneGuiController {
             Stage stage = (Stage) campiError.getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.severe("errore in RegistrazioneGuiController " + e.getMessage());
+
         }
     }
 }

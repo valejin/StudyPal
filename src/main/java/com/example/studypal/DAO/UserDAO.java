@@ -1,9 +1,13 @@
 package com.example.studypal.DAO;
 
 
+import com.example.studypal.exceptions.EmailAlreadyInUseException;
+import com.example.studypal.exceptions.RegistrazioneDBException;
 import com.example.studypal.model.CredenzialiModel;
+import com.example.studypal.model.RegistrazioneModel;
 import com.example.studypal.model.UserModel;
 import com.example.studypal.exceptions.LoginDBException;
+import com.example.studypal.other.Connect;
 
 import java.sql.*;
 import java.util.logging.Logger;
@@ -53,4 +57,69 @@ public class UserDAO {
 
         return userModel;
     }
+
+    //metodo per la registrazione
+    public void registrazioneMethod(UserModel registrazioneModel) {
+
+        Connection connection;
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+
+        String query = "INSERT INTO utente (email, nome, cognome, password) VALUES (?, ?, ?, ?)";
+
+        try {
+
+            connection = Connect.getInstance().getDBConnection();
+            statement = connection.prepareStatement(query);
+
+            statement.setString(1, registrazioneModel.getEmail());
+            statement.setString(1, registrazioneModel.getNome());
+            statement.setString(1, registrazioneModel.getCognome());
+            statement.setString(1, registrazioneModel.getPassword());
+
+            //inseriamo effettivamente l'utente nel database
+            statement.executeUpdate(query);
+
+        } catch (SQLException e) {
+            logger.severe("errore in userDAO " + e.getMessage());
+        }
+    }
+
+
+
+    //metodo per controllare se l'email fornita al momento della registrazione è già utilizzata
+    public void controllaEmailMethod(RegistrazioneModel registrazioneModel) throws EmailAlreadyInUseException, RegistrazioneDBException {
+
+        Connection connection;
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+
+
+        String query = "SELECT * FROM utente where email=?";
+
+        try{
+
+            //accediamo al db dall'unica istanza di connessione
+            connection = Connect.getInstance().getDBConnection();
+            statement = connection.prepareStatement(query);
+
+            statement.setString(1, registrazioneModel.getEmail());
+
+            //carico nella variabile rs il result set della query
+            rs = statement.executeQuery(query);
+
+            //se il result set non è vuoto, l'email è già in uso e lanciamo un'eccezione
+            if (rs.next()) {
+                throw new EmailAlreadyInUseException();
+            }
+
+        } catch (SQLException e) {
+            logger.severe("errore in userDAO " + e.getMessage());
+        }
+
+    }
+
+
 }
+
+

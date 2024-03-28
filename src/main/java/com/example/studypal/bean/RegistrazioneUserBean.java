@@ -6,7 +6,7 @@ public class RegistrazioneUserBean {
     private String cognome;
     private String email;
     private String password;
-    private String confermaPassworld;
+    private String confermaPassword;
 
     public String getNome() {
         return nome;
@@ -41,11 +41,11 @@ public class RegistrazioneUserBean {
     }
 
     public String getConfermaPassword() {
-        return confermaPassworld;
+        return confermaPassword;
     }
 
     public void setConfermaPassword(String confermaPassword) {
-        this.confermaPassworld = confermaPassword;
+        this.confermaPassword = confermaPassword;
     }
 
 }
