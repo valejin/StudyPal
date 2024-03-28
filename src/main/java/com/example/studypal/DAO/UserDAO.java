@@ -101,7 +101,7 @@ public class UserDAO {
 
         String query = "SELECT * FROM utente where email=?";
 
-        try{
+        try {
 
             //accediamo al db dall'unica istanza di connessione
             connection = Connect.getInstance().getDBConnection();
@@ -117,12 +117,12 @@ public class UserDAO {
                 throw new EmailAlreadyInUseException();
             }
 
+
         } catch (SQLException e) {
             logger.severe("errore in userDAO " + e.getMessage());
         }
 
     }
-
 
 }
 

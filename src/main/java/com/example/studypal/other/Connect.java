@@ -32,7 +32,6 @@ public class Connect {
     public synchronized Connection getDBConnection() {
         if (this.conn == null) {
             getInfo();
-            System.out.println("connesione creata 1");
 
             try{
                 this.conn = DriverManager.getConnection(jdbc, user, password);
@@ -41,7 +40,6 @@ public class Connect {
             }
 
         }
-        System.out.println("connesione creata 2");
         return this.conn;
     }
 

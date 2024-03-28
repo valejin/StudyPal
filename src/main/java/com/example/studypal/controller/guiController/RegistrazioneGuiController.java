@@ -2,6 +2,7 @@ package com.example.studypal.controller.guiController;
 
 import com.example.studypal.bean.RegistrazioneUserBean;
 import com.example.studypal.controller.applicationController.RegistrazioneController;
+import com.example.studypal.other.Printer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -88,7 +89,7 @@ public class RegistrazioneGuiController {
         RegistrazioneController registrazioneController = new RegistrazioneController();
         registrazioneController.registrazioneMethod(registrazioneUserBean);
 
-        System.out.println("L'utente è stato correttamente registrato.");
+        Printer.print("L'utente è stato correttamente registrato.");
 
         //this.caricaConferma();
 

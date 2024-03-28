@@ -7,6 +7,7 @@ import com.example.studypal.model.CredenzialiModel;
 import com.example.studypal.model.UserModel;
 import com.example.studypal.exceptions.CredenzialiSbagliateException;
 import com.example.studypal.exceptions.LoginDBException;
+import com.example.studypal.other.Printer;
 
 public class LoginController {
 
@@ -37,7 +38,7 @@ public class LoginController {
             return loggedInUserBean;
 
         } catch (LoginDBException e) {
-            System.out.println("controller applicativo credenziali sbagliate");
+            Printer.errorPrint("controller applicativo credenziali sbagliate");
             throw new CredenzialiSbagliateException("Credenziali sbagliate,");
         }
    }

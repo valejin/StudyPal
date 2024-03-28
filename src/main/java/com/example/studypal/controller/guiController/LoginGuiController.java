@@ -67,7 +67,6 @@ public class LoginGuiController {
             loginController.loginMethod(credenzialiBean);
 
         } catch (CredenzialiSbagliateException e) {
-            System.out.println("controller grafico cred sbagl");
             credenzialiSbagliate.setText("Credenziali sbagliate.");
 
         }
