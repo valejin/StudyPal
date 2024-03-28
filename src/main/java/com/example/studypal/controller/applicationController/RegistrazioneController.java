@@ -2,6 +2,8 @@ package com.example.studypal.controller.applicationController;
 
 import com.example.studypal.DAO.UserDAO;
 import com.example.studypal.bean.RegistrazioneUserBean;
+import com.example.studypal.controller.guiController.RegistrazioneGuiController;
+import com.example.studypal.exceptions.EmailAlreadyInUseException;
 import com.example.studypal.model.UserModel;
 
 import java.util.logging.Logger;
@@ -22,10 +24,19 @@ public class RegistrazioneController {
             userModel.setNome(registrazioneUserBean.getNome());
             userModel.setCognome(registrazioneUserBean.getCognome());
             userModel.setPassword(registrazioneUserBean.getPassword());
+            userModel.setRuolo(registrazioneUserBean.getRuolo());
 
             UserDAO registrazioneDao = new UserDAO();
 
-            registrazioneDao.registrazioneMethod(userModel);
+            /*controllo email
+            try{
+                registrazioneDao.controllaEmailMethod(userModel);
+
+            } catch (EmailAlreadyInUseException e) {
+                System.out.println("email già presente nel sistema");
+            }*/
+
+             registrazioneDao.registrazioneMethod(userModel);
 
         }
 

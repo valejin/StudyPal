@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -27,6 +28,8 @@ public class RegistrazioneGuiController {
     private TextField confermaPasswordField;
     @FXML
     private Label campiError;
+    @FXML
+    private CheckBox ruoloCheckBox;
 
     private static final Logger logger = Logger.getLogger(RegistrazioneGuiController.class.getName());
 
@@ -41,6 +44,7 @@ public class RegistrazioneGuiController {
         String userEmail;
         String userPassword;
         String confermaPassword;
+        boolean ruolo;
 
 
         if(!this.nomeField.getText().isEmpty() &&
@@ -55,6 +59,14 @@ public class RegistrazioneGuiController {
             userEmail = this.emailField.getText();
             userPassword = this.passwordField.getText();
             confermaPassword = this.confermaPasswordField.getText();
+
+            //gestisco il ruolo dell'utente
+            if (this.ruoloCheckBox.isSelected()) {
+                ruolo = true;
+               // System.out.println("l'utente è un tutor");
+            } else {
+                ruolo = false;
+            }
         }
         else{
             campiError.setText("Campi obbligatori.");
@@ -63,21 +75,22 @@ public class RegistrazioneGuiController {
 
 
         //inserisco gli input ottenuti in BEAN
-        RegistrazioneUserBean registrazioneUserBean = new RegistrazioneUserBean(userEmail,userNome, userCognome, userPassword, confermaPassword);
+        RegistrazioneUserBean registrazioneUserBean = new RegistrazioneUserBean(userEmail,userNome, userCognome, ruolo, userPassword, confermaPassword);
 
         registrazioneUserBean.setNome(userNome);
         registrazioneUserBean.setCognome(userCognome);
         registrazioneUserBean.setEmail(userEmail);
         registrazioneUserBean.setPassword(userPassword);
         registrazioneUserBean.setConfermaPassword(confermaPassword);
+        registrazioneUserBean.setRuolo(ruolo);
 
-        //istanzio un'istanza di controller applicativo
+        //istanzio un'istanza di controller applicativo e gli passo il bean contenente i dati per registrare l'utente
         RegistrazioneController registrazioneController = new RegistrazioneController();
-
-        //chiamare il registrazioneMethod
         registrazioneController.registrazioneMethod(registrazioneUserBean);
 
         System.out.println("L'utente è stato correttamente registrato.");
+
+        //this.caricaConferma();
 
     }
 
@@ -94,4 +107,20 @@ public class RegistrazioneGuiController {
 
         }
     }
+/*
+    public void caricaConferma () {
+        try {
+            FXMLLoader loader = new FXMLLoader(RegistrazioneGuiController.class.getResource("/com/example/studypal/view/confermaRegistrazione.fxml"));
+            loader.setControllerFactory(c -> new RegistrazioneGuiController());
+            Parent parent = loader.load();
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) campiError.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            logger.severe("errore in RegistrazioneGuiController " + e.getMessage());
+
+        }
+    }
+*/
+
 }

@@ -4,7 +4,6 @@ package com.example.studypal.DAO;
 import com.example.studypal.exceptions.EmailAlreadyInUseException;
 import com.example.studypal.exceptions.RegistrazioneDBException;
 import com.example.studypal.model.CredenzialiModel;
-import com.example.studypal.model.RegistrazioneModel;
 import com.example.studypal.model.UserModel;
 import com.example.studypal.exceptions.LoginDBException;
 import com.example.studypal.other.Connect;
@@ -48,6 +47,7 @@ public class UserDAO {
                     System.out.println(userModel.getEmail());
                     userModel.setCognome(rs.getString("cognome"));
                     System.out.println("Accesso effettuato per l'utente: " + userModel.getNome());
+                    System.out.println("L'utente è iscritto come: " + userModel.getRuolo());
                 }
             }
 
@@ -66,7 +66,7 @@ public class UserDAO {
         ResultSet rs = null;
         System.out.println("preparato la statement");
 
-        String query = "INSERT INTO utente (email, nome, cognome, password) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO utente (email, nome, cognome, password, isTutor) VALUES (?, ?, ?, ?, ?)";
 
         try {
 
@@ -77,6 +77,7 @@ public class UserDAO {
             statement.setString(2, registrazioneModel.getNome());
             statement.setString(3, registrazioneModel.getCognome());
             statement.setString(4, registrazioneModel.getPassword());
+            statement.setBoolean(5, registrazioneModel.getRuolo());
 
             System.out.println("preso la query");
             //inseriamo effettivamente l'utente nel database
@@ -91,7 +92,7 @@ public class UserDAO {
 
 
     //metodo per controllare se l'email fornita al momento della registrazione è già utilizzata
-    public void controllaEmailMethod(RegistrazioneModel registrazioneModel) throws EmailAlreadyInUseException, RegistrazioneDBException {
+    public void controllaEmailMethod(UserModel registrazioneModel) throws EmailAlreadyInUseException {
 
         Connection connection;
         PreparedStatement statement = null;

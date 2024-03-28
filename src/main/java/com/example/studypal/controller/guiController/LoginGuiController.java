@@ -57,12 +57,15 @@ public class LoginGuiController {
 
 
         try {
+
             CredenzialiBean credenzialiBean = new CredenzialiBean();
             credenzialiBean.setEmail(userEmail);
             credenzialiBean.setPassword(userPassword);
 
+            //istanziamo il controller applicativo che si deve occupare del login e gli passiamo il bean contenente le credenziali
             LoginController loginController = new LoginController();
             loginController.loginMethod(credenzialiBean);
+
         } catch (CredenzialiSbagliateException e) {
             System.out.println("controller grafico cred sbagl");
             credenzialiSbagliate.setText("Credenziali sbagliate.");
