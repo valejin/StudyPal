@@ -44,3 +44,15 @@ Button:hover {
     -fx-background-color: #658863; /* Colore di sfondo più scuro */
     -fx-color: #d9e7df; /* Colore del testo blu */
 }
+
+#titolo {
+    -fx-font-size: 40px; /* Imposta la dimensione del carattere a 40px */
+    -fx-font-weight: bold; /* Imposta il grassetto */
+    -fx-text-fill: #333333; /* Imposta il colore del testo */
+    /* Aggiungi altre proprietà CSS secondo le tue preferenze */
+}
+
+/*colore di sfondo*/
+.root {
+    -fx-background-color: rgba(143, 194, 140, 0.84);
+}

@@ -7,6 +7,7 @@ import com.example.studypal.model.CredenzialiModel;
 import com.example.studypal.model.UserModel;
 import com.example.studypal.exceptions.LoginDBException;
 import com.example.studypal.other.Connect;
+import com.example.studypal.other.Printer;
 
 import java.sql.*;
 import java.util.logging.Logger;
@@ -24,6 +25,7 @@ public class UserDAO {
         String username = "root";
         String password = "Valentina";
         PreparedStatement statement = null;
+        String ruolo;
 
         //query per verificare credenziali utente
         String query = "SELECT * FROM utente where email=? AND password=?";
@@ -38,16 +40,21 @@ public class UserDAO {
             try (ResultSet rs = statement.executeQuery()) {
 
                 if(!rs.next()) {
-                   System.out.println("Il ResultSet è vuoto.");
+                    Printer.println("Il ResultSet è vuoto.");
                     throw new LoginDBException(0);
                 }
                 else {
                     userModel.setNome(rs.getString("nome"));
                     userModel.setEmail(rs.getString("email"));
-                    System.out.println(userModel.getEmail());
+                    Printer.println("Email: " + userModel.getEmail());
                     userModel.setCognome(rs.getString("cognome"));
-                    System.out.println("Accesso effettuato per l'utente: " + userModel.getNome());
-                    System.out.println("L'utente è iscritto come: " + userModel.getRuolo());
+                    Printer.println("Accesso effettuato per l'utente: " + userModel.getNome());
+                    if(userModel.getRuolo()){
+                        Printer.println("L'utente è iscritto come: Studente");
+                    }else{
+                        Printer.println("L'utente è iscritto come: Tutor");
+                    }
+                    //Printer.println("L'utente è iscritto come: " + userModel.getRuolo());
                 }
             }
 

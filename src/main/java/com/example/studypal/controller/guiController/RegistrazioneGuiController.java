@@ -89,7 +89,7 @@ public class RegistrazioneGuiController {
         RegistrazioneController registrazioneController = new RegistrazioneController();
         registrazioneController.registrazioneMethod(registrazioneUserBean);
 
-        Printer.print("L'utente è stato correttamente registrato.");
+        Printer.println("L'utente è stato correttamente registrato.");
 
         //this.caricaConferma();
 
@@ -108,20 +108,61 @@ public class RegistrazioneGuiController {
 
         }
     }
-/*
+
+
+    //cambio pagina: quando effettuato correttamente la registrazione
     public void caricaConferma () {
         try {
+            System.out.println("sono qui 1");
             FXMLLoader loader = new FXMLLoader(RegistrazioneGuiController.class.getResource("/com/example/studypal/view/confermaRegistrazione.fxml"));
+            System.out.println("sono qui 2");
             loader.setControllerFactory(c -> new RegistrazioneGuiController());
+            System.out.println("sono qui 3");
             Parent parent = loader.load();
+            System.out.println("sono qui 4");
             Scene scene = new Scene(parent);
+            System.out.println("sono qui 5");
             Stage stage = (Stage) campiError.getScene().getWindow();
+            System.out.println("sono qui 6");
             stage.setScene(scene);
+            System.out.println("sono qui 7");
         } catch (IOException e) {
             logger.severe("errore in RegistrazioneGuiController " + e.getMessage());
 
         }
     }
-*/
+
+
+    //il bottone Login non funziona, perchè dice che il campo campiErr is null !!!
+    public void goToLogin () {
+        try {
+            System.out.println("sono qui 1");
+            FXMLLoader loader = new FXMLLoader(RegistrazioneGuiController.class.getResource("/com/example/studypal/view/login.fxml"));
+            System.out.println("sono qui 2");
+            //loader.setControllerFactory(c -> new RegistrazioneGuiController());
+            System.out.println("sono qui 3");
+            Parent parent = loader.load();
+            System.out.println("sono qui 4");
+            Scene scene = new Scene(parent);
+            System.out.println("sono qui 5");
+
+            Stage stage = (Stage) campiError.getScene().getWindow();
+            if (stage != null) {
+                stage.setScene(scene);
+                stage.show();
+            } else {
+                System.err.println("Impossibile ottenere la finestra di Login.");
+            }
+
+            System.out.println("sono qui 6");
+            stage.setScene(scene);
+            System.out.println("sono qui 7");
+        } catch (IOException e) {
+            logger.severe("errore in RegistrazioneGuiController " + e.getMessage());
+
+        }
+    }
+
+
 
 }
