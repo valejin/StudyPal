@@ -1,6 +1,7 @@
 package com.example.studypal.controller.guiController;
 
 import com.example.studypal.bean.CredenzialiBean;
+import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.controller.applicationController.LoginController;
 import com.example.studypal.exceptions.CredenzialiSbagliateException;
 import javafx.fxml.FXML;
@@ -46,6 +47,7 @@ public class LoginGuiController {
         String userEmail = null;
         String userPassword = null;
 
+
         //poi controlla isempty()
         if (!this.emailField.getText().isEmpty() && !this.passwordField.getText().isEmpty()) {
             userEmail = this.emailField.getText();
@@ -64,17 +66,14 @@ public class LoginGuiController {
 
             //istanziamo il controller applicativo che si deve occupare del login e gli passiamo il bean contenente le credenziali
             LoginController loginController = new LoginController();
-            loginController.loginMethod(credenzialiBean);
+
+            //prendiamo i dati dell'utente loggato (sessione)
+            LoggedInUserBean loggedInUserBean = loginController.loginMethod(credenzialiBean);
 
         } catch (CredenzialiSbagliateException e) {
             credenzialiSbagliate.setText("Credenziali sbagliate.");
 
         }
-       /* if(loginController.loginMethod(credenzialiBean) == null) {
-
-            credenzialiError.setText("Campi obbligatori.");
-            return;
-        }*/
 
     }
 
@@ -83,6 +82,36 @@ public class LoginGuiController {
         try {
             FXMLLoader loader = new FXMLLoader(LoginGuiController.class.getResource("/com/example/studypal/view/registrazione.fxml"));
             loader.setControllerFactory(c -> new RegistrazioneGuiController());
+            Parent parent = loader.load();
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) credenzialiError.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    //metodo che carica la home corretta in base al ruolo
+    public void caricaHome() {
+        //in base al ruolo dell'utente loggato carichiamo una specifica homepage
+
+        try {
+            FXMLLoader loader = new FXMLLoader(LoginGuiController.class.getResource("/com/example/studypal/view/homeTutor.fxml"));
+            loader.setControllerFactory(c -> new HomeTutorGuiController());
+            Parent parent = loader.load();
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) credenzialiError.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void caricaHomeStudente() {
+        try {
+            FXMLLoader loader = new FXMLLoader(LoginGuiController.class.getResource("/com/example/studypal/view/homeStudente.fxml"));
+            loader.setControllerFactory(c -> new HomeStudenteGuiController());
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) credenzialiError.getScene().getWindow();

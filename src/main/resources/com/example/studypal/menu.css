@@ -1,0 +1,58 @@
+#myPane{
+    /*-fx-background-color: #242222;*/
+}
+
+.lw { font-size: 60px; }
+/* Definizione del colore di sfondo */
+body {
+    background-color: #c8c8c8; /* Colore grigio chiaro */
+}
+
+/* Definizione del font per tutto il testo */
+body {
+    font-family: Verdana, serif; /* Utilizza il font Arial o un font sans-serif di backup */
+}
+
+/* Stile per l'intestazione */
+h1 {
+    color: #294c29; /* Colore del testo nero */
+    font-size: 24px; /* Dimensione del font 24px */
+}
+
+/* Stile per i paragrafi */
+p {
+    color: #333333; /* Colore del testo grigio */
+    font-size: 10px; /* Dimensione del font 16px */
+    line-height: 1.5; /* Altezza della riga 1.5 volte la dimensione del font */
+}
+/* Stile per i pulsanti */
+Button {
+    -fx-background-color: #658863; /* Colore di sfondo verdino */
+
+    -fx-color: #202320; /* Colore del testo nero */
+    /*-fx-border: none;*/
+    -fx-padding: 10px 20px; /* Spazio intorno al testo */
+    -fx-font-family: Verdana, sans-serif; /* Utilizza il font Arial o un font sans-serif di backup */
+
+    -fx-font-size: 14px; /* Dimensione del font 18px */
+    -fx-cursor: pointer; /* Cambia il cursore quando si passa sopra */
+    -fx-border-radius: 8px; /* Bordo arrotondato */
+}
+
+/* Stile per il passaggio del mouse sui pulsanti */
+Button:hover {
+    -fx-background-color: #425c40; /* Colore di sfondo più scuro */
+    -fx-color: #d9e7df; /* Colore del testo bianco */
+}
+
+#titolo {
+    -fx-font-size: 40px; /* Imposta la dimensione del carattere a 40px */
+    -fx-font-weight: bold; /* Imposta il grassetto */
+    -fx-text-fill: #333333; /* Imposta il colore del testo */
+    /* Aggiungi altre proprietà CSS secondo le tue preferenze */
+}
+
+/*colore di sfondo*/
+.root {
+    -fx-background-color: rgba(235, 246, 234, 0.84);
+}
