@@ -34,6 +34,6 @@
             <PasswordField fx:id="confermaPasswordField" layoutX="320.0" layoutY="117.0" />
          </children>
       </Pane>
-      <Button fx:id="indietroButton" layoutX="27.0" layoutY="48.0" mnemonicParsing="false" onAction="#caricaLogin" text="Indietro" />
+      <Button fx:id="indietroButton" layoutX="27.0" layoutY="48.0" mnemonicParsing="false" onAction="#goToLogin" text="Indietro" />
    </children>
 </AnchorPane>

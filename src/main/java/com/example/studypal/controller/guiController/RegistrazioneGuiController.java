@@ -94,21 +94,6 @@ public class RegistrazioneGuiController {
 
     }
 
-    public void caricaLogin () {
-        try {
-            FXMLLoader loader = new FXMLLoader(RegistrazioneGuiController.class.getResource("/com/example/studypal/view/login.fxml"));
-            loader.setControllerFactory(c -> new LoginGuiController());
-            Parent parent = loader.load();
-            Scene scene = new Scene(parent);
-            Stage stage = (Stage) campiError.getScene().getWindow();
-            stage.setScene(scene);
-        } catch (IOException e) {
-            logger.severe("errore in RegistrazioneGuiController " + e.getMessage());
-
-        }
-    }
-
-
     //cambio pagina: quando effettuato correttamente la registrazione
     public void caricaConferma () {
         try {
@@ -125,14 +110,12 @@ public class RegistrazioneGuiController {
     }
 
 
-    //il bottone Login non funziona, perchè dice che il campo campiErr is null !!!
     public void goToLogin () {
         try {
             FXMLLoader loader = new FXMLLoader(RegistrazioneGuiController.class.getResource("/com/example/studypal/view/login.fxml"));
-            //loader.setControllerFactory(c -> new RegistrazioneGuiController());
+         //   loader.setControllerFactory(c -> new LoginGuiController());
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
-
 
             Stage stage = (Stage) campiError.getScene().getWindow();
             if (stage != null) {
@@ -148,7 +131,4 @@ public class RegistrazioneGuiController {
 
         }
     }
-
-
-
 }
