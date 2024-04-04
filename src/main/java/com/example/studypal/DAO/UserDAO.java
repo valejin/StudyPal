@@ -2,7 +2,6 @@ package com.example.studypal.DAO;
 
 
 import com.example.studypal.exceptions.EmailAlreadyInUseException;
-import com.example.studypal.exceptions.RegistrazioneDBException;
 import com.example.studypal.model.CredenzialiModel;
 import com.example.studypal.model.UserModel;
 import com.example.studypal.exceptions.LoginDBException;
@@ -70,7 +69,6 @@ public class UserDAO {
 
         Connection connection;
         PreparedStatement statement = null;
-        ResultSet rs = null;
         System.out.println("preparato la statement");
 
         String query = "INSERT INTO utente (email, nome, cognome, password, isTutor) VALUES (?, ?, ?, ?, ?)";
