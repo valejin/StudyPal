@@ -77,8 +77,8 @@ public class RegistrazioneGuiController {
             }
         }
         else{
-            System.out.println("siamo qui 4");
             campiError.setText("Campi obbligatori.");
+            System.out.println("siamo qui 4");
             return;
         }
 
@@ -98,11 +98,11 @@ public class RegistrazioneGuiController {
             registrazioneController.registrazioneMethod(registrazioneUserBean);
 
             Printer.println("L'utente è stato correttamente registrato.");
+            caricaConferma();
 
         }catch(EmailAlreadyInUseException e){
             Printer.errorPrint("controller applicativo: l'email è già in uso");
             campiError.setText("Email già usato.");
-            return;
 
         }
 
