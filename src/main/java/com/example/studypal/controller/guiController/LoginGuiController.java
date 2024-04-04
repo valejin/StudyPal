@@ -70,6 +70,11 @@ public class LoginGuiController {
             //prendiamo i dati dell'utente loggato (sessione)
             LoggedInUserBean loggedInUserBean = loginController.loginMethod(credenzialiBean);
 
+            //in base al ruolo dell'utente loggato carichiamo la pagina corretta della home
+            System.out.println("siamo:" + loggedInUserBean.getRuolo());
+
+            caricaHome(loggedInUserBean.getRuolo());
+
         } catch (CredenzialiSbagliateException e) {
             credenzialiSbagliate.setText("Credenziali sbagliate.");
 
@@ -93,12 +98,21 @@ public class LoginGuiController {
 
 
     //metodo che carica la home corretta in base al ruolo
-    public void caricaHome() {
-        //in base al ruolo dell'utente loggato carichiamo una specifica homepage
+    public void caricaHome(boolean isTutor) {
 
         try {
-            FXMLLoader loader = new FXMLLoader(LoginGuiController.class.getResource("/com/example/studypal/view/homeTutor.fxml"));
-            loader.setControllerFactory(c -> new HomeTutorGuiController());
+            FXMLLoader loader;
+
+            if (isTutor) {
+                System.out.println("siamo:" + isTutor);
+                loader = new FXMLLoader(LoginGuiController.class.getResource("/com/example/studypal/view/tutor/homeTutor.fxml"));
+                loader.setControllerFactory(c -> new HomeTutorGuiController());
+            } else {
+                System.out.println("siamo:" + isTutor);
+
+                loader = new FXMLLoader(LoginGuiController.class.getResource("/com/example/studypal/view/studente/homeStudente.fxml"));
+                loader.setControllerFactory(c -> new HomeStudenteGuiController());
+            }
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) credenzialiError.getScene().getWindow();
@@ -108,17 +122,5 @@ public class LoginGuiController {
         }
     }
 
-    public void caricaHomeStudente() {
-        try {
-            FXMLLoader loader = new FXMLLoader(LoginGuiController.class.getResource("/com/example/studypal/view/homeStudente.fxml"));
-            loader.setControllerFactory(c -> new HomeStudenteGuiController());
-            Parent parent = loader.load();
-            Scene scene = new Scene(parent);
-            Stage stage = (Stage) credenzialiError.getScene().getWindow();
-            stage.setScene(scene);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
 }

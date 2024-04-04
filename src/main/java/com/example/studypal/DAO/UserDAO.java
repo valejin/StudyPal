@@ -48,7 +48,9 @@ public class UserDAO {
                     Printer.println("Email: " + userModel.getEmail());
                     userModel.setCognome(rs.getString("cognome"));
                     Printer.println("Accesso effettuato per l'utente: " + userModel.getNome());
-                    if(userModel.getRuolo()){
+                    userModel.setRuolo(rs.getBoolean("isTutor"));
+
+                    if(!userModel.getRuolo()){
                         Printer.println("L'utente è iscritto come: Studente");
                     }else{
                         Printer.println("L'utente è iscritto come: Tutor");

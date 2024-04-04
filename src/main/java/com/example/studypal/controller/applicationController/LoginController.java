@@ -33,6 +33,7 @@ public class LoginController {
             loggedInUserBean.setCognome(userModel.getCognome());
             loggedInUserBean.setEmail(userModel.getEmail());
             loggedInUserBean.setRuolo(userModel.getRuolo());
+            System.out.println("login method, siamo:" + userModel.getRuolo());
 
             //al momento non usiamo il valore di ritorno: restituisce il bean contenente le informazioni dell'utente che ha effettuato l'accesso
             return loggedInUserBean;
