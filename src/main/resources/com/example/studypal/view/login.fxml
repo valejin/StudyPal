@@ -8,25 +8,53 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="myPane" prefHeight="400.0" prefWidth="600.0" styleClass="sfondo" stylesheets="@../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.LoginGuiController">
+<AnchorPane fx:id="myPane" prefHeight="500.0" prefWidth="800.0" styleClass="sfondo" stylesheets="@../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.LoginGuiController">
    <children>
-      <Button fx:id="loginButton" layoutX="253.0" layoutY="245.0" mnemonicParsing="false" onAction="#loginMethod" text="Login" />
-      <Text fx:id="titolo" layoutX="210.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titolo" text="StudyPal" textAlignment="CENTER" wrappingWidth="187.19997558593764">
+      <Text fx:id="titolo" layoutX="291.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titolo" text="StudyPal" textAlignment="CENTER" wrappingWidth="217.60000000000014">
          <font>
-            <Font name="Bodoni MT Italic" size="32.0" />
+            <Font name="Bodoni MT Italic" size="66.0" />
          </font>
       </Text>
-      <Text layoutX="145.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password: " wrappingWidth="65.33673095703125" />
-      <Text layoutX="145.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email: " wrappingWidth="65.33673095703125" />
-      <TextField fx:id="emailField" layoutX="223.0" layoutY="153.0" prefHeight="26.0" prefWidth="168.0" promptText="Email" />
-      <Text layoutX="239.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="oppure " wrappingWidth="65.33673095703125" />
-      <Text fx:id="signUpButton" layoutX="286.0" layoutY="313.0" onMouseClicked="#caricaRegistrazione" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign up" underline="true">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Text>
-      <PasswordField fx:id="passwordField" layoutX="223.0" layoutY="202.0" prefHeight="26.0" prefWidth="168.0" promptText="Password" />
-      <Label fx:id="credenzialiError" layoutX="256.0" layoutY="128.0" prefHeight="18.0" prefWidth="118.0" textFill="#cf0000" />
-      <Label fx:id="credenzialiSbagliate" layoutX="237.0" layoutY="127.0" prefHeight="18.0" prefWidth="118.0" textFill="#c10606" />
+      <AnchorPane layoutX="122.0" layoutY="127.0" prefHeight="314.0" prefWidth="550.0" AnchorPane.leftAnchor="122.0" AnchorPane.rightAnchor="122.0" AnchorPane.topAnchor="127.0">
+         <children>
+            <Button fx:id="loginButton" layoutX="233.0" layoutY="199.0" mnemonicParsing="false" onAction="#loginMethod" prefHeight="39.0" prefWidth="89.0" text="Login">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Text layoutX="144.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password: " wrappingWidth="89.33673095703125">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+            <Text layoutX="144.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email: " wrappingWidth="65.33673095703125">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+            <TextField fx:id="emailField" layoutX="144.0" layoutY="59.0" prefHeight="39.0" prefWidth="266.0" promptText="Email">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Text layoutX="226.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="oppure " wrappingWidth="65.33673095703125">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="signUpButton" layoutX="277.0" layoutY="276.0" onMouseClicked="#caricaRegistrazione" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign up" underline="true">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+            <PasswordField fx:id="passwordField" layoutX="145.0" layoutY="139.0" prefHeight="39.0" prefWidth="266.0" promptText="Password">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </PasswordField>
+            <Label fx:id="credenzialiSbagliate" layoutX="258.0" layoutY="27.0" prefHeight="18.0" prefWidth="118.0" textFill="#c10606" />
+            <Label fx:id="credenzialiError" layoutX="239.0" layoutY="27.0" prefHeight="18.0" prefWidth="118.0" textFill="#cf0000" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

@@ -7,17 +7,20 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.RegistrazioneGuiController">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" stylesheets="@../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.RegistrazioneGuiController">
    <children>
-      <Pane layoutX="56.0" layoutY="61.0" prefHeight="278.0" prefWidth="486.0" stylesheets="@../base-prova.css">
+      <Pane layoutX="92.0" layoutY="68.0" prefHeight="378.0" prefWidth="602.0" stylesheets="@../base-prova.css">
          <children>
-            <Text fill="#404040" layoutX="108.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrazione avvenuta con successo!" textAlignment="CENTER" wrappingWidth="260.46124267578125">
+            <Text fill="#404040" layoutX="111.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrazione avvenuta con successo!" textAlignment="CENTER" wrappingWidth="380.46124267578125">
                <font>
-                  <Font name="Bodoni MT Bold Italic" size="24.0" />
+                  <Font name="Bodoni MT Bold Italic" size="35.0" />
                </font>
             </Text>
-            <Button fx:id="tornaLogin" layoutX="200.0" layoutY="181.0" mnemonicParsing="false" onAction="#goToLogin" stylesheets="@../base-prova.css" text="Login" />
-            <Text fx:id="indicazioni" layoutX="72.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tornate alla schermata del login per accedere alla piattaforma" wrappingWidth="332.57066345214844" />
+            <Button fx:id="tornaLogin" layoutX="262.0" layoutY="246.0" mnemonicParsing="false" onAction="#goToLogin" stylesheets="@../base-prova.css" text="Login" />
+            <Text fx:id="indicazioni" layoutX="107.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tornate alla schermata del login per accedere alla piattaforma" wrappingWidth="386.9707489013672">
+               <font>
+                  <Font size="14.0" />
+               </font></Text>
             <Label fx:id="campiError" layoutX="225.0" layoutY="237.0" />
          </children>
       </Pane>
