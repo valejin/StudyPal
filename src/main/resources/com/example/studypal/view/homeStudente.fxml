@@ -16,7 +16,7 @@
                   <Insets top="22.0" />
                </VBox.margin>
                <image>
-                  <Image url="@../immagini/icon_%20Student.jpeg" />
+                  <Image url="@../immagini/iconStudent.png" />
                </image>
                <effect>
                   <InnerShadow />
