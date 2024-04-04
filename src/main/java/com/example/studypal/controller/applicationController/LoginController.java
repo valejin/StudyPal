@@ -22,6 +22,7 @@ public class LoginController {
         LoggedInUserBean loggedInUserBean = new LoggedInUserBean(email, nome, cognome, ruolo);
 
         try {
+            //CtrGUI prende input da utente e metto nel model
             credenzialiModel.setEmail(credenzialiBean.getEmail());
             credenzialiModel.setPassword(credenzialiBean.getPassword());
 
@@ -29,6 +30,7 @@ public class LoginController {
 
             UserModel userModel = userDAO.loginMethod(credenzialiModel);
 
+            //memorizzo oggetti da DB in loggedInUserBean per la persistenza
             loggedInUserBean.setNome(userModel.getNome());
             loggedInUserBean.setCognome(userModel.getCognome());
             loggedInUserBean.setEmail(userModel.getEmail());
@@ -43,4 +45,9 @@ public class LoginController {
             throw new CredenzialiSbagliateException("Credenziali sbagliate,");
         }
    }
+
+
+
+
+
 }

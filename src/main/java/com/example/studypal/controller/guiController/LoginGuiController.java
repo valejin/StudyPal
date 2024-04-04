@@ -41,7 +41,7 @@ public class LoginGuiController {
 
 
     @FXML
-     void loginMethod() throws IOException {
+     void loginMethod() throws CredenzialiSbagliateException {
         //String userEmail = this.emailField.getText();
         //String userPassword = this.passwordField.getText();
         String userEmail = null;
@@ -76,6 +76,7 @@ public class LoginGuiController {
             caricaHome(loggedInUserBean.getRuolo());
 
         } catch (CredenzialiSbagliateException e) {
+            credenzialiError.setVisible(false);
             credenzialiSbagliate.setText("Credenziali sbagliate.");
 
         }

@@ -15,7 +15,7 @@ public class RegistrazioneController {
     prende il bean registrazioneUserBean e popola il model che poi viene mandato al dao
     */
 
-    public void registrazioneMethod(RegistrazioneUserBean registrazioneUserBean){
+    public void registrazioneMethod(RegistrazioneUserBean registrazioneUserBean) throws EmailAlreadyInUseException{
 
         UserModel userModel = new UserModel();
 
@@ -28,14 +28,17 @@ public class RegistrazioneController {
 
             UserDAO registrazioneDao = new UserDAO();
 
-            /*controllo email
+
             try{
                 registrazioneDao.controllaEmailMethod(userModel);
 
             } catch (EmailAlreadyInUseException e) {
                 System.out.println("email già presente nel sistema");
-            }*/
+                throw new EmailAlreadyInUseException();
+                //il controller applicativo si limita a propagarla al controller grafico
+            }
 
+             System.out.println("registro l'utente");
              registrazioneDao.registrazioneMethod(userModel);
 
 
@@ -48,7 +51,5 @@ public class RegistrazioneController {
         crea model, popola model, chiama il metodo di registrazione del RegistrazioneDao
         */
 
-
-        //ricorda di catchare l'eccezione email already in use
     }
 

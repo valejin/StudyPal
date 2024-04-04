@@ -2,6 +2,9 @@ package com.example.studypal.controller.guiController;
 
 import com.example.studypal.bean.RegistrazioneUserBean;
 import com.example.studypal.controller.applicationController.RegistrazioneController;
+import com.example.studypal.exceptions.CredenzialiSbagliateException;
+import com.example.studypal.exceptions.EmailAlreadyInUseException;
+import com.example.studypal.exceptions.RegistrazioneDBException;
 import com.example.studypal.other.Printer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -48,19 +51,23 @@ public class RegistrazioneGuiController {
         boolean ruolo;
 
 
-        if(!this.nomeField.getText().isEmpty() &&
-                !this.cognomeField.getText().isEmpty() &&
-                !this.emailField.getText().isEmpty() &&
-                !this.passwordField.getText().isEmpty() &&
-                !this.confermaPasswordField.getText().isEmpty()){
+        if(!this.nomeField.getText().isEmpty() && !this.cognomeField.getText().isEmpty() && !this.emailField.getText().isEmpty() && !this.passwordField.getText().isEmpty() && !this.confermaPasswordField.getText().isEmpty()){
             //se sono stati compilati tutti i campi
 
+            System.out.println("siamo qui 1");
             userNome = this.nomeField.getText();
             userCognome = this.cognomeField.getText();
             userEmail = this.emailField.getText();
             userPassword = this.passwordField.getText();
             confermaPassword = this.confermaPasswordField.getText();
 
+            System.out.println("siamo qui 2");
+            if (!confermaPassword.equals(userPassword)){
+                campiError.setText("Password non corrispondenti.");
+                return;
+            }
+
+            System.out.println("siamo qui 3");
             //gestisco il ruolo dell'utente
             if (this.ruoloCheckBox.isSelected()) {
                 ruolo = true;
@@ -70,27 +77,34 @@ public class RegistrazioneGuiController {
             }
         }
         else{
+            System.out.println("siamo qui 4");
             campiError.setText("Campi obbligatori.");
             return;
         }
 
+        try {
+            //inserisco gli input ottenuti in BEAN
+            RegistrazioneUserBean registrazioneUserBean = new RegistrazioneUserBean(userEmail, userNome, userCognome, ruolo, userPassword, confermaPassword);
 
-        //inserisco gli input ottenuti in BEAN
-        RegistrazioneUserBean registrazioneUserBean = new RegistrazioneUserBean(userEmail,userNome, userCognome, ruolo, userPassword, confermaPassword);
+            registrazioneUserBean.setNome(userNome);
+            registrazioneUserBean.setCognome(userCognome);
+            registrazioneUserBean.setEmail(userEmail);
+            registrazioneUserBean.setPassword(userPassword);
+            registrazioneUserBean.setConfermaPassword(confermaPassword);
+            registrazioneUserBean.setRuolo(ruolo);
 
-        registrazioneUserBean.setNome(userNome);
-        registrazioneUserBean.setCognome(userCognome);
-        registrazioneUserBean.setEmail(userEmail);
-        registrazioneUserBean.setPassword(userPassword);
-        registrazioneUserBean.setConfermaPassword(confermaPassword);
-        registrazioneUserBean.setRuolo(ruolo);
+            //istanzio un'istanza di controller applicativo e gli passo il bean contenente i dati per registrare l'utente
+            RegistrazioneController registrazioneController = new RegistrazioneController();
+            registrazioneController.registrazioneMethod(registrazioneUserBean);
 
-        //istanzio un'istanza di controller applicativo e gli passo il bean contenente i dati per registrare l'utente
-        RegistrazioneController registrazioneController = new RegistrazioneController();
-        registrazioneController.registrazioneMethod(registrazioneUserBean);
+            Printer.println("L'utente è stato correttamente registrato.");
 
-        Printer.println("L'utente è stato correttamente registrato.");
+        }catch(EmailAlreadyInUseException e){
+            Printer.errorPrint("controller applicativo: l'email è già in uso");
+            campiError.setText("Email già usato.");
+            return;
 
+        }
 
     }
 

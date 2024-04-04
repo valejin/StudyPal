@@ -55,7 +55,7 @@ public class UserDAO {
                     }else{
                         Printer.println("L'utente è iscritto come: Tutor");
                     }
-                    //Printer.println("L'utente è iscritto come: " + userModel.getRuolo());
+
                 }
             }
 
@@ -105,6 +105,7 @@ public class UserDAO {
         PreparedStatement statement = null;
         ResultSet rs = null;
 
+        System.out.println("controllo email");
 
         String query = "SELECT * FROM utente where email=?";
 
@@ -117,13 +118,13 @@ public class UserDAO {
             statement.setString(1, registrazioneModel.getEmail());
 
             //carico nella variabile rs il result set della query
-            rs = statement.executeQuery(query);
-
+            rs = statement.executeQuery();
+            System.out.println("query ok");
             //se il result set non è vuoto, l'email è già in uso e lanciamo un'eccezione
             if (rs.next()) {
+                System.out.println("email presente dao");
                 throw new EmailAlreadyInUseException();
             }
-
 
         } catch (SQLException e) {
             logger.severe("errore in userDAO " + e.getMessage());
