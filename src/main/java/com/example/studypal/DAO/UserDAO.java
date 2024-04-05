@@ -16,7 +16,7 @@ public class UserDAO {
 
     private static final Logger logger = Logger.getLogger(UserDAO.class.getName());
 
-
+//-----------------------------------------------------------------------------------------------
     public UserModel loginMethod(CredenzialiModel credenzialiModel) throws LoginDBException{
         UserModel userModel = new UserModel();
 
@@ -66,7 +66,8 @@ public class UserDAO {
         return userModel;
     }
 
-    //metodo per la registrazione
+
+    //metodo per la registrazione-----------------------------------------------------------------------------
     public void registrazioneMethod(UserModel registrazioneModel) {
 
         Connection connection;

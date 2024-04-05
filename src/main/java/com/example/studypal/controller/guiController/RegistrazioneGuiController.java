@@ -42,7 +42,6 @@ public class RegistrazioneGuiController {
     void registrazioneMethod() {
         //metodo attivato dal pulsante di conferma sulla schermata di registrazione
 
-
         String userNome;
         String userCognome;
         String userEmail;
@@ -104,11 +103,11 @@ public class RegistrazioneGuiController {
             Printer.errorPrint("controller applicativo: l'email è già in uso");
             campiError.setText("Email già usato.");
 
+            campiError.setText("Email già usata.");
         }
-
     }
 
-    //cambio pagina: quando effettuato correttamente la registrazione
+    //cambio pagina: quando effettuato correttamente la registrazione--------------------------------------------------------------
     public void caricaConferma () {
         try {
             FXMLLoader loader = new FXMLLoader(RegistrazioneGuiController.class.getResource("/com/example/studypal/view/confermaRegistrazione.fxml"));
@@ -119,7 +118,6 @@ public class RegistrazioneGuiController {
             stage.setScene(scene);
         } catch (IOException e) {
             logger.severe("errore in RegistrazioneGuiController " + e.getMessage());
-
         }
     }
 
@@ -142,7 +140,6 @@ public class RegistrazioneGuiController {
             stage.setScene(scene);
         } catch (IOException e) {
             logger.severe("errore in RegistrazioneGuiController " + e.getMessage());
-
         }
     }
 }

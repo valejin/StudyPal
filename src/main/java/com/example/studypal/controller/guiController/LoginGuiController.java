@@ -41,14 +41,14 @@ public class LoginGuiController {
 
 
     @FXML
-     void loginMethod() throws CredenzialiSbagliateException {
+     void loginMethod() {
         //String userEmail = this.emailField.getText();
         //String userPassword = this.passwordField.getText();
         String userEmail = null;
         String userPassword = null;
 
 
-        //poi controlla isempty()
+        //controlla isempty()
         if (!this.emailField.getText().isEmpty() && !this.passwordField.getText().isEmpty()) {
             userEmail = this.emailField.getText();
             userPassword = this.passwordField.getText();
