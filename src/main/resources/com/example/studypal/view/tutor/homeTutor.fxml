@@ -54,7 +54,7 @@
             </Button>
          </children>
       </VBox>
-      <Text fx:id="titolo" fill="#000000ac" layoutX="374.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Benvenuto  a  StudyPal" textAlignment="CENTER" wrappingWidth="257.51171875" AnchorPane.leftAnchor="374.0" AnchorPane.rightAnchor="168.48828125" AnchorPane.topAnchor="61.16796875">
+      <Text fx:id="titolo" fill="#000000ac" layoutX="374.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Benvenuto in StudyPal" textAlignment="CENTER" wrappingWidth="257.51171875" AnchorPane.leftAnchor="374.0" AnchorPane.rightAnchor="168.48828125" AnchorPane.topAnchor="61.16796875">
          <font>
             <Font size="40.0" />
          </font>
@@ -64,5 +64,10 @@
             <Image url="@../../immagini/iconaConversazione.png" />
          </image>
       </ImageView>
+      <Text fill="#000000ab" layoutX="491.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sono tutor" textAlignment="CENTER" wrappingWidth="50.24261474609375">
+         <font>
+            <Font name="Rockwell Italic" size="12.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
