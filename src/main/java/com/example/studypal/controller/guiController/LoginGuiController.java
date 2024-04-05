@@ -106,12 +106,12 @@ public class LoginGuiController {
             if (isTutor) {
                 System.out.println("siamo:" + isTutor);
                 loader = new FXMLLoader(LoginGuiController.class.getResource("/com/example/studypal/view/tutor/homeTutor.fxml"));
-                loader.setControllerFactory(c -> new HomeTutorGuiController());
+                loader.setControllerFactory(c -> new HomeTutorGui());
             } else {
                 System.out.println("siamo:" + isTutor);
 
                 loader = new FXMLLoader(LoginGuiController.class.getResource("/com/example/studypal/view/studente/homeStudente.fxml"));
-                loader.setControllerFactory(c -> new HomeStudenteGuiController());
+                loader.setControllerFactory(c -> new HomeStudenteGui());
             }
             Parent parent = loader.load();
             Scene scene = new Scene(parent);

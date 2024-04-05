@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-public class MenuBaseTutorGuiController {
+public class HomeTutorGui {
 
     /*
         controller che gestisce il menu di navigazione
@@ -27,7 +27,7 @@ public class MenuBaseTutorGuiController {
     public void goToGestisciProfilo(){
         //metodo che porta alla pagina di gestione del profilo
         try {
-            FXMLLoader loader = new FXMLLoader(MenuBaseTutorGuiController.class.getResource("/com/example/studypal/view/tutor/gestioneProfiloTutor.fxml"));
+            FXMLLoader loader = new FXMLLoader(HomeTutorGui.class.getResource("/com/example/studypal/view/tutor/gestioneProfiloTutor.fxml"));
             loader.setControllerFactory(c -> new GestioneProfiloTutorGuiController());
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
@@ -64,7 +64,7 @@ public class MenuBaseTutorGuiController {
              quindi di base il controller grafico deve al massimo portare ad una pagina di conferma del logout (qui non è fatto), poi semplicemente carica il login
              */
 
-            FXMLLoader loader = new FXMLLoader(MenuBaseTutorGuiController.class.getResource("/com/example/studypal/view/login.fxml"));
+            FXMLLoader loader = new FXMLLoader(HomeTutorGui.class.getResource("/com/example/studypal/view/login.fxml"));
             loader.setControllerFactory(c -> new LoginGuiController());
             Parent parent = loader.load();
             Scene scene = new Scene(parent);

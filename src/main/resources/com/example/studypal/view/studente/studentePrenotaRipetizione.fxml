@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.HomeStudenteGuiController">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.HomeStudenteGui">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0" styleClass="Button" stylesheets="@../../base-prova.css">
          <children>
