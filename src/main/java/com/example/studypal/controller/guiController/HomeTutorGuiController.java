@@ -1,4 +1,5 @@
 package com.example.studypal.controller.guiController;
 
-public class HomeTutorGuiController {
+public class HomeTutorGuiController extends MenuBaseTutorGuiController {
+
 }

@@ -42,7 +42,6 @@ public class RegistrazioneGuiController {
     void registrazioneMethod() {
         //metodo attivato dal pulsante di conferma sulla schermata di registrazione
 
-
         String userNome;
         String userCognome;
         String userEmail;
@@ -50,9 +49,8 @@ public class RegistrazioneGuiController {
         String confermaPassword;
         boolean ruolo;
 
-
+        //se sono stati compilati tutti i campi
         if(!this.nomeField.getText().isEmpty() && !this.cognomeField.getText().isEmpty() && !this.emailField.getText().isEmpty() && !this.passwordField.getText().isEmpty() && !this.confermaPasswordField.getText().isEmpty()){
-            //se sono stati compilati tutti i campi
 
             System.out.println("siamo qui 1");
             userNome = this.nomeField.getText();
@@ -78,12 +76,13 @@ public class RegistrazioneGuiController {
         }
         else{
             campiError.setText("Campi obbligatori.");
-            System.out.println("siamo qui 4");
+            System.out.println("siamo qui 4"); //arriviamo qui
             return;
         }
 
         try {
             //inserisco gli input ottenuti in BEAN
+            System.out.println("invio i dati al controller");
             RegistrazioneUserBean registrazioneUserBean = new RegistrazioneUserBean(userEmail, userNome, userCognome, ruolo, userPassword, confermaPassword);
 
             registrazioneUserBean.setNome(userNome);
@@ -93,7 +92,7 @@ public class RegistrazioneGuiController {
             registrazioneUserBean.setConfermaPassword(confermaPassword);
             registrazioneUserBean.setRuolo(ruolo);
 
-            //istanzio un'istanza di controller applicativo e gli passo il bean contenente i dati per registrare l'utente
+            //istanzio un controller applicativo e gli passo il bean contenente i dati per registrare l'utente
             RegistrazioneController registrazioneController = new RegistrazioneController();
             registrazioneController.registrazioneMethod(registrazioneUserBean);
 
@@ -105,10 +104,9 @@ public class RegistrazioneGuiController {
             campiError.setText("Email già usato.");
 
         }
-
     }
 
-    //cambio pagina: quando effettuato correttamente la registrazione
+    //cambio pagina: quando effettuato correttamente la registrazione--------------------------------------------------------------
     public void caricaConferma () {
         try {
             FXMLLoader loader = new FXMLLoader(RegistrazioneGuiController.class.getResource("/com/example/studypal/view/confermaRegistrazione.fxml"));
@@ -119,7 +117,6 @@ public class RegistrazioneGuiController {
             stage.setScene(scene);
         } catch (IOException e) {
             logger.severe("errore in RegistrazioneGuiController " + e.getMessage());
-
         }
     }
 
@@ -142,7 +139,6 @@ public class RegistrazioneGuiController {
             stage.setScene(scene);
         } catch (IOException e) {
             logger.severe("errore in RegistrazioneGuiController " + e.getMessage());
-
         }
     }
 }
