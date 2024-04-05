@@ -19,7 +19,6 @@ public class RegistrazioneController {
 
         UserModel userModel = new UserModel();
 
-
             userModel.setEmail(registrazioneUserBean.getEmail());
             userModel.setNome(registrazioneUserBean.getNome());
             userModel.setCognome(registrazioneUserBean.getCognome());
