@@ -19,7 +19,7 @@ public class MenuBaseTutorGuiController {
      */
 
     @FXML
-    private VBox menu;
+    private VBox barraMenu;
 
     private static final Logger logger = Logger.getLogger(RegistrazioneGuiController.class.getName());
 
@@ -31,7 +31,7 @@ public class MenuBaseTutorGuiController {
             loader.setControllerFactory(c -> new GestioneProfiloTutorGuiController());
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
-            Stage stage = (Stage) menu.getScene().getWindow();
+            Stage stage = (Stage) barraMenu.getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {
             logger.severe("errore in MenuBaseTutorGuiController " + e.getMessage());
@@ -68,7 +68,7 @@ public class MenuBaseTutorGuiController {
             loader.setControllerFactory(c -> new LoginGuiController());
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
-            Stage stage = (Stage) menu.getScene().getWindow();
+            Stage stage = (Stage) barraMenu.getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {
             logger.severe("errore in MenuBaseTutorGuiController " + e.getMessage());
