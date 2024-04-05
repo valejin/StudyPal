@@ -15,6 +15,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 public class LoginGuiController {
 
@@ -39,6 +40,7 @@ public class LoginGuiController {
     @FXML
     private Label credenzialiSbagliate;
 
+    private static final Logger logger = Logger.getLogger(LoginGuiController.class.getName());
 
     @FXML
      void loginMethod() {
@@ -92,7 +94,8 @@ public class LoginGuiController {
             Stage stage = (Stage) credenzialiError.getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.severe("errore in LoginGuiController " + e.getMessage());
+
         }
     }
 
@@ -118,7 +121,7 @@ public class LoginGuiController {
             Stage stage = (Stage) credenzialiError.getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.severe("errore in LoginGuiController " + e.getMessage());
         }
     }
 

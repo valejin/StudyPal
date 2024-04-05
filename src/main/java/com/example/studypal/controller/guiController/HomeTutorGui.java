@@ -21,7 +21,7 @@ public class HomeTutorGui {
     @FXML
     private VBox barraMenu;
 
-    private static final Logger logger = Logger.getLogger(RegistrazioneGuiController.class.getName());
+    private static final Logger logger = Logger.getLogger(HomeTutorGui.class.getName());
 
     @FXML
     public void goToGestisciProfilo(){
