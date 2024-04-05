@@ -67,7 +67,7 @@ public class UserDAO {
     }
 
 
-    //metodo per la registrazione-----------------------------------------------------------------------------
+    //metodo per la registrazione in DB-----------------------------------------------------------------------------
     public void registrazioneMethod(UserModel registrazioneModel) {
 
         Connection connection;

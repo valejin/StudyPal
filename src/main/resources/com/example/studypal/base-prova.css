@@ -49,10 +49,17 @@ Button:hover {
     -fx-font-size: 40px; /* Imposta la dimensione del carattere a 40px */
     -fx-font-weight: bold; /* Imposta il grassetto */
     -fx-text-fill: #333333; /* Imposta il colore del testo */
+    -fx-font-style: italic;
+    -fx-font-family: Rockwell;
     /* Aggiungi altre proprietà CSS secondo le tue preferenze */
 }
 
 /*colore di sfondo*/
 .root {
     -fx-background-color: rgba(143, 194, 140, 0.84);
+}
+
+/*colore menu*/
+#barraMenu {
+    -fx-background-color: #d9e7df;
 }

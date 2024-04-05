@@ -8,10 +8,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="500.0" prefWidth="800.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.HomeTutorGuiController">
    <children>
-      <VBox fx:id="menu" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0" stylesheets="@../../menu.css">
+      <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0" stylesheets="@../../menu.css">
          <children>
             <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -28,6 +29,9 @@
                <VBox.margin>
                   <Insets top="40.0" />
                </VBox.margin>
+               <effect>
+                  <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
+               </effect>
             </Button>
             <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="130.0" styleClass="custom-button" stylesheets="@../../button.css" text="Gestisci Prenotazioni" textAlignment="CENTER" wrapText="true">
                <VBox.margin>
@@ -36,13 +40,29 @@
                <font>
                   <Font size="10.0" />
                </font>
+               <effect>
+                  <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
+               </effect>
             </Button>
             <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="130.0" styleClass="custom-button" stylesheets="@../../button.css" text="Esci">
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin>
+               <effect>
+                  <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
+               </effect>
             </Button>
          </children>
       </VBox>
+      <Text fx:id="titolo" fill="#000000ac" layoutX="374.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Benvenuto  a  StudyPal" textAlignment="CENTER" wrappingWidth="257.51171875" AnchorPane.leftAnchor="374.0" AnchorPane.rightAnchor="168.48828125" AnchorPane.topAnchor="61.16796875">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="206.0" fitWidth="211.0" layoutX="400.0" layoutY="201.0" opacity="0.66" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../immagini/iconaConversazione.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

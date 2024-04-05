@@ -28,8 +28,8 @@
             <Text layoutX="46.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
             <Text layoutX="324.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
             <Text layoutX="324.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Conferma password" />
-            <Button fx:id="confermaButton" layoutX="213.0" layoutY="242.0" mnemonicParsing="false" onAction="#registrazioneMethod" onMouseClicked="#caricaConferma" text="Conferma" />
-            <Label fx:id="campiError" layoutX="219.0" layoutY="14.0" textFill="#b90303" />
+            <Button fx:id="confermaButton" layoutX="213.0" layoutY="242.0" mnemonicParsing="false" onAction="#registrazioneMethod" text="Conferma" />
+            <Label fx:id="campiError" layoutX="179.0" layoutY="14.0" prefHeight="17.0" prefWidth="96.0" textFill="#b90303" />
             <PasswordField fx:id="passwordField" layoutX="320.0" layoutY="56.0" />
             <PasswordField fx:id="confermaPasswordField" layoutX="320.0" layoutY="117.0" />
          </children>
