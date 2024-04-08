@@ -50,7 +50,7 @@
                   <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
                </effect>
             </Button>
-            <Button mnemonicParsing="false" onAction="#goToLogout" prefHeight="33.0" prefWidth="130.0" styleClass="custom-button" stylesheets="@../../button.css" text="Esci">
+            <Button mnemonicParsing="false" onMouseClicked="#goToLogout" prefHeight="33.0" prefWidth="130.0" styleClass="custom-button" stylesheets="@../../button.css" text="Esci">
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin>
@@ -70,45 +70,45 @@
             <VBox layoutX="51.0" layoutY="114.0" prefHeight="217.0" prefWidth="200.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Materia:" />
-                  <ComboBox prefHeight="26.0" prefWidth="207.0" />
+                  <ComboBox fx:id="materia" prefHeight="26.0" prefWidth="207.0" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modalità di lezione:">
                      <VBox.margin>
                         <Insets top="30.0" />
                      </VBox.margin>
                   </Text>
-                  <ComboBox prefHeight="26.0" prefWidth="207.0" />
+                  <ComboBox fx:id="modalitaLez" prefHeight="26.0" prefWidth="207.0" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Luogo:">
                      <VBox.margin>
                         <Insets top="30.0" />
                      </VBox.margin>
                   </Text>
-                  <ComboBox prefHeight="26.0" prefWidth="207.0" />
+                  <ComboBox fx:id="luogo" prefHeight="26.0" prefWidth="207.0" />
                </children>
             </VBox>
-            <TextField layoutX="122.0" layoutY="41.0" prefHeight="26.0" prefWidth="271.0" />
+            <TextField fx:id="cercaMateria" layoutX="122.0" layoutY="41.0" prefHeight="26.0" prefWidth="271.0" />
             <Text layoutX="122.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cerca Materia:" />
             <Text layoutX="252.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="oppure filtra" />
             <VBox layoutX="325.0" layoutY="114.0" prefHeight="217.0" prefWidth="200.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giorno:" />
-                  <ComboBox prefHeight="26.0" prefWidth="207.0" />
+                  <ComboBox fx:id="giorno" prefHeight="26.0" prefWidth="207.0" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fascia oraria:">
                      <VBox.margin>
                         <Insets top="30.0" />
                      </VBox.margin>
                   </Text>
-                  <ComboBox prefHeight="26.0" prefWidth="207.0" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tariffa:">
+                  <ComboBox fx:id="fasciaOraria" prefHeight="26.0" prefWidth="207.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tariffa (€/h):">
                      <VBox.margin>
                         <Insets top="30.0" />
                      </VBox.margin>
                   </Text>
-                  <Slider>
+                  <Slider fx:id="tariffaSlider" blockIncrement="5.0" max="50.0" min="5.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="5.0">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
                   </Slider>
-                  <Label text="valoreCosto" />
+                  <Label fx:id="tariffaValue" />
                </children>
             </VBox>
             <Button layoutX="408.0" layoutY="34.0" mnemonicParsing="false" prefHeight="1.0" prefWidth="90.0" text="Cerca" />
