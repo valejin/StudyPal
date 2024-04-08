@@ -1,5 +1,6 @@
 package com.example.studypal.controller.guiController;
 
+import com.example.studypal.controller.applicationController.PrenotaRipetizioneController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,22 +25,23 @@ public class HomeStudenteGui {
     private static final Logger logger = Logger.getLogger(HomeStudenteGui.class.getName());
 
     @FXML
-    public void goToGestisciProfilo(){
+    public void goToPrenotaRipetizione(){
         //metodo che porta alla pagina di gestione del profilo
         try {
-            FXMLLoader loader = new FXMLLoader(HomeTutorGui.class.getResource("/com/example/studypal/view/studente/prenotaRipetizioneStudente.fxml"));
-            loader.setControllerFactory(c -> new GestioneProfiloTutorGuiController());
+            FXMLLoader loader = new FXMLLoader(HomeStudenteGui.class.getResource("/com/example/studypal/view/studente/prenotaRipetizioneStudente.fxml"));
+            loader.setControllerFactory(c -> new PrenotaRipetizioneStudenteGui());
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) barraMenu.getScene().getWindow();
             stage.setScene(scene);
+
         } catch (IOException e) {
             logger.severe("errore in MenuBaseStudenteGuiController " + e.getMessage());
         }
     }
-
+/*
     public void goToGestisciPrenotazioni(){
-        /*
+
         //metodo che porta alla pagina di gestione delle prenotazioni
         try {
             FXMLLoader loader = new FXMLLoader(GestisciPrenotazioniTutorGuiController.class.getResource("/com/example/studypal/view/tutor/gestioneProfiloTutor.fxml"));
@@ -52,9 +54,9 @@ public class HomeStudenteGui {
             logger.severe("errore in MenuBaseTutorGuiController " + e.getMessage());
         }
 
-         */
-    }
 
+    }
+*/
     public void goToLogout(){
         try {
 

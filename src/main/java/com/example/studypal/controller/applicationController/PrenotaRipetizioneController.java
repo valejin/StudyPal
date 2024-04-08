@@ -1,4 +1,4 @@
 package com.example.studypal.controller.applicationController;
 
-public class PrenotaRipetizioneController {
+public class PrenotaRipetizioneController extends HomeStudenteController{
 }
