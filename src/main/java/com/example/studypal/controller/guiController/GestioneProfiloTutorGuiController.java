@@ -48,6 +48,7 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
         //combobox orari disponibil
         orarioBox.getItems().addAll("8:00-12:00", "12:00-17:00");
 
+        //finire di sistemare multiselect!!!!
 
         //tariffa slider----------------------------------------------------------------------
         tariffaSlider.setMin(0);
