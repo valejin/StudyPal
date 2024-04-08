@@ -57,17 +57,17 @@
                 </Button>
             </children>
         </VBox>
-        <Text fx:id="titolo" fill="#000000ac" layoutX="342.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestione Profilo" textAlignment="CENTER" wrappingWidth="323.9118037223816" AnchorPane.leftAnchor="342.0" AnchorPane.rightAnchor="142.0" AnchorPane.topAnchor="42.16796875">
+        <Text fx:id="titolo" fill="#000000ac" layoutX="363.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestione Profilo" textAlignment="CENTER" wrappingWidth="320.71179151535034" AnchorPane.leftAnchor="363.0" AnchorPane.rightAnchor="183.39999999999998" AnchorPane.topAnchor="43.16796875">
             <font>
                 <Font size="32.0" />
             </font>
         </Text>
-      <AnchorPane layoutX="254.0" layoutY="100.0" prefHeight="350.0" prefWidth="500.0" stylesheets="@../../button.css">
+      <AnchorPane fx:id="zonaInfo" layoutX="254.0" layoutY="100.0" prefHeight="350.0" prefWidth="539.0" stylesheets="@../../base-prova.css">
          <children>
-            <VBox layoutX="284.0" layoutY="32.0" prefHeight="250.0" prefWidth="175.0">
+            <VBox layoutX="317.0" layoutY="33.0" prefHeight="250.0" prefWidth="175.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Materie" />
-                  <ComboBox prefHeight="26.0" prefWidth="184.0">
+                  <ComboBox fx:id="materieBox" editable="true" prefHeight="26.0" prefWidth="184.0">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
@@ -77,7 +77,7 @@
                         <Insets top="40.0" />
                      </VBox.margin>
                   </Text>
-                  <ComboBox prefHeight="26.0" prefWidth="183.0">
+                  <ComboBox fx:id="giorniBox" prefHeight="26.0" prefWidth="183.0">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
@@ -87,13 +87,13 @@
                         <Insets top="40.0" />
                      </VBox.margin>
                   </Text>
-                  <ComboBox prefHeight="26.0" prefWidth="178.0" />
+                  <ComboBox fx:id="orarioBox" prefHeight="26.0" prefWidth="178.0" />
                </children>
             </VBox>
-            <VBox layoutX="41.0" layoutY="32.0" prefHeight="250.0" prefWidth="175.0">
+            <VBox layoutX="46.0" layoutY="33.0" prefHeight="250.0" prefWidth="175.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Luogo" />
-                  <ComboBox prefHeight="26.0" prefWidth="182.0">
+                  <ComboBox fx:id="luogoBox" editable="true" prefHeight="26.0" prefWidth="182.0">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
@@ -103,7 +103,7 @@
                         <Insets top="40.0" />
                      </VBox.margin>
                   </Text>
-                  <ComboBox prefHeight="26.0" prefWidth="181.0">
+                  <ComboBox fx:id="modBox" prefHeight="26.0" prefWidth="181.0">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
@@ -113,19 +113,19 @@
                         <Insets top="40.0" />
                      </VBox.margin>
                   </Text>
-                  <Slider max="200.0" min="5.0" prefHeight="14.0" prefWidth="185.0">
+                  <Slider fx:id="tariffaSlider" max="200.0" min="5.0" prefHeight="14.0" prefWidth="185.0">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Slider>
-                  <Label alignment="TOP_CENTER" contentDisplay="CENTER" text="tariffaValue" textAlignment="CENTER">
+                  <Label fx:id="tariffaValue" alignment="TOP_CENTER" contentDisplay="CENTER" textAlignment="CENTER">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
                   </Label>
                </children>
             </VBox>
-            <Button layoutX="195.0" layoutY="296.0" mnemonicParsing="false" text="Conferma" />
+            <Button fx:id="confermaModifica" layoutX="215.0" layoutY="296.0" mnemonicParsing="false" onAction="#confermaModificaMethod" text="Conferma" />
          </children>
       </AnchorPane>
     </children>

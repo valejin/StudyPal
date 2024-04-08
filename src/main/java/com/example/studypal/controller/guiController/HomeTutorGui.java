@@ -34,7 +34,7 @@ public class HomeTutorGui {
             Stage stage = (Stage) barraMenu.getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {
-            logger.severe("errore in MenuBaseTutorGuiController " + e.getMessage());
+            logger.severe("errore in HomeTutorGui " + e.getMessage());
         }
     }
 
