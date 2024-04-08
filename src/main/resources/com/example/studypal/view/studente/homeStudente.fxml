@@ -26,7 +26,7 @@
                   <InnerShadow />
                </effect>
             </ImageView>
-            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="130.0" styleClass="custom-button" text="Prenota ripetizione" textAlignment="CENTER" wrapText="true">
+            <Button mnemonicParsing="false" onMouseClicked="#goToGestisciProfilo" prefHeight="60.0" prefWidth="130.0" styleClass="custom-button" text="Prenota ripetizione" textAlignment="CENTER" wrapText="true">
                <VBox.margin>
                   <Insets top="40.0" />
                </VBox.margin>

@@ -27,14 +27,14 @@ public class HomeStudenteGui {
     public void goToGestisciProfilo(){
         //metodo che porta alla pagina di gestione del profilo
         try {
-            FXMLLoader loader = new FXMLLoader(HomeTutorGui.class.getResource("/com/example/studypal/view/tutor/gestioneProfiloTutor.fxml"));
+            FXMLLoader loader = new FXMLLoader(HomeTutorGui.class.getResource("/com/example/studypal/view/studente/prenotaRipetizioneStudente.fxml"));
             loader.setControllerFactory(c -> new GestioneProfiloTutorGuiController());
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) barraMenu.getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {
-            logger.severe("errore in MenuBaseTutorGuiController " + e.getMessage());
+            logger.severe("errore in MenuBaseStudenteGuiController " + e.getMessage());
         }
     }
 

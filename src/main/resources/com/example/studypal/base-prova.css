@@ -63,3 +63,7 @@ Button:hover {
 #barraMenu {
     -fx-background-color: #d9e7df;
 }
+
+#zonaInfo {
+    -fx-background-color: rgb(143, 194, 140);
+}
