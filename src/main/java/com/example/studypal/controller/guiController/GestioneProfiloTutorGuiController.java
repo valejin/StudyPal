@@ -2,10 +2,9 @@ package com.example.studypal.controller.guiController;
 
 import com.example.studypal.other.Printer;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 public class GestioneProfiloTutorGuiController extends HomeTutorGui {
 
@@ -18,7 +17,10 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
     private ComboBox luogoBox;
 
     @FXML
-    private ComboBox modBox;
+    private CheckBox inPresenzaBox;
+
+    @FXML
+    private CheckBox onlineBox;
 
     @FXML
     private Slider tariffaSlider;
@@ -26,8 +28,9 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
     @FXML
     private ComboBox materieBox;
 
+
     @FXML
-    private ComboBox giorniBox;
+    private MenuButton giorniMenu;
 
     @FXML
     private ComboBox orarioBox;
@@ -40,15 +43,23 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
 
 
         //combobox modalità di lezione-------------------------------------------------------
-        modBox.getItems().addAll("In presenza", "Online");
+
 
         //combobox giorni disponibili -------------------------------------------------------
-        giorniBox.getItems().addAll("Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato", "Domenica");
+
+        giorniMenu.setOnAction(event -> {
+            if (giorniMenu.isShowing()) {
+                giorniMenu.hide();
+            } else {
+                giorniMenu.show();
+            }
+        });
+
 
         //combobox orari disponibil
         orarioBox.getItems().addAll("8:00-12:00", "12:00-17:00");
 
-        //finire di sistemare multiselect!!!!
+        //
 
         //tariffa slider----------------------------------------------------------------------
         tariffaSlider.setMin(0);

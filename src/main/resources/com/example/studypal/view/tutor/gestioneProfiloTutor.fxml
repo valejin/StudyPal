@@ -2,8 +2,12 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
@@ -72,16 +76,23 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                   </ComboBox>
+                  <ChoiceBox prefHeight="26.0" prefWidth="183.0" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giorni Disponibili">
                      <VBox.margin>
                         <Insets top="40.0" />
                      </VBox.margin>
                   </Text>
-                  <ComboBox fx:id="giorniBox" prefHeight="26.0" prefWidth="183.0">
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </ComboBox>
+                  <MenuButton fx:id="giorniMenu" mnemonicParsing="false" prefHeight="26.0" prefWidth="185.0" text="giorni..." textFill="#9c9c9c">
+                    <items>
+                        <CheckMenuItem mnemonicParsing="false" text="Lunedì" />
+                        <CheckMenuItem mnemonicParsing="false" text="Martedì" />
+                        <CheckMenuItem mnemonicParsing="false" text="Mercoledì" />
+                        <CheckMenuItem mnemonicParsing="false" text="Giovedì" />
+                        <CheckMenuItem mnemonicParsing="false" text="Venerdì" />
+                        <CheckMenuItem mnemonicParsing="false" text="Sabato" />
+                        <CheckMenuItem mnemonicParsing="false" text="Domenica" />
+                    </items>
+                  </MenuButton>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fascia Oraria">
                      <VBox.margin>
                         <Insets top="40.0" />
@@ -103,11 +114,16 @@
                         <Insets top="40.0" />
                      </VBox.margin>
                   </Text>
-                  <ComboBox fx:id="modBox" prefHeight="26.0" prefWidth="181.0">
+                  <CheckBox fx:id="inPresenzaBox" mnemonicParsing="false" text="In presenza">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
-                  </ComboBox>
+                  </CheckBox>
+                  <CheckBox fx:id="onlineBox" mnemonicParsing="false" text="Online">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </CheckBox>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tariffa (€/h)">
                      <VBox.margin>
                         <Insets top="40.0" />
