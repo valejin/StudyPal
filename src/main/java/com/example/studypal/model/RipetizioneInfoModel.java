@@ -8,4 +8,15 @@ public class RipetizioneInfoModel {
     Le sue istanze vengono popolate dai controller applicativi e passate al ripetizioneDAO
     */
 
+    private String materia;
+
+    public String getMateria() {
+        return materia;
+    }
+
+    public void setMateria(String materia) {
+        this.materia = materia;
+    }
+
+
 }

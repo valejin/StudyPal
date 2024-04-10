@@ -6,11 +6,12 @@ public class Query {
 
 
     /*Queries Login*/
-    public static final String VERIFICA_USER ="SELECT * FROM utente where email=? AND password=?";
+    public static final String VERIFICA_USER ="SELECT * FROM utente where email='%s' AND password='%s' ";
 
     /*Queries Registrazione*/
 
     /*Queries Ricerca materia*/
+    public static final String RICERCA_MATERIA = "SELECT * FROM tutor where materia= '%s' ";
 
 
 }

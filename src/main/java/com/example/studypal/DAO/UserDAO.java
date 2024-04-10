@@ -20,9 +20,6 @@ public class UserDAO {
     public UserModel loginMethod(CredenzialiModel credenzialiModel) throws LoginDBException{
         UserModel userModel = new UserModel();
 
-        String path = "jdbc:mysql://localhost:3306/studypal";
-        String username = "root";
-        String password = "Valentina";
         PreparedStatement statement = null;
         String ruolo;
 
@@ -31,7 +28,7 @@ public class UserDAO {
 
         try{
 
-            Connection connection = DriverManager.getConnection(path, username, password);
+            Connection connection = Connect.getInstance().getDBConnection();
             statement = connection.prepareStatement(query);
             statement.setString(1, credenzialiModel.getEmail());
             statement.setString(2, credenzialiModel.getPassword());

@@ -1,5 +1,14 @@
 package com.example.studypal.DAO;
 
+import com.example.studypal.Query.Query;
+import com.example.studypal.model.RipetizioneInfoModel;
+import com.example.studypal.other.Connect;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Logger;
+
 public class RipetizioneInfoDAO {
 
     /*
@@ -11,13 +20,40 @@ public class RipetizioneInfoDAO {
 
      */
 
-    public void ricercaInfo() {
+
+    private static final Logger logger = Logger.getLogger(UserDAO.class.getName());
+
+    public RipetizioneInfoModel ricercaInfo() {
         /*
         metodo per la ricerca di ripetizioni, restituisce tutti i tutor e rispettive informazioni di ripetizioni disponibiili
         applica i parametri di ricerca ricevuti tramite istanza di RipetizioneInfoModel
 
         La query cerca nella tabella Tutor
          */
+
+
+        RipetizioneInfoModel ripetizioneInfoModel = new RipetizioneInfoModel();
+        PreparedStatement statement = null;
+
+        //devo prendere materia da model
+        //String materia = ripetizioneInfoModel.setMateria();
+
+        //query per la ricerca di Materia
+        //"SELECT * FROM tutor where materia=?"
+        String query = String.format(Query.RICERCA_MATERIA, materia);
+
+        try {
+
+            Connection connection = Connect.getInstance().getDBConnection();
+            statement.executeUpdate(query);
+
+
+        }catch(SQLException e) {
+            logger.severe("errore in userDAO " + e.getMessage());
+        }
+
+
+        return ripetizioneInfoModel;
     }
 
     public void prenotaRipetizione() {
