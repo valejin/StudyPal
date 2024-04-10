@@ -32,10 +32,11 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
 
         tariffaSlider.setMin(5);
         tariffaSlider.setMax(50);
-        tariffaSlider.setValue(5); // Imposta un valore predefinito
+        tariffaSlider.setValue(5); // Imposta un valore predefinito(minimo)
         tariffaSlider.setShowTickLabels(true);
         tariffaSlider.setShowTickMarks(true);
 
+        // Per visualizzare dinamicamente il valore di Slider
         tariffaSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             tariffaValue.setText(Integer.toString(newValue.intValue()) + "€");
 

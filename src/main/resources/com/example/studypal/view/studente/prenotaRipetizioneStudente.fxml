@@ -70,19 +70,19 @@
             <VBox layoutX="51.0" layoutY="114.0" prefHeight="217.0" prefWidth="200.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Materia:" />
-                  <ComboBox fx:id="materia" prefHeight="26.0" prefWidth="207.0" />
+                  <ComboBox fx:id="materia" editable="true" prefHeight="26.0" prefWidth="207.0" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modalità di lezione:">
                      <VBox.margin>
                         <Insets top="30.0" />
                      </VBox.margin>
                   </Text>
-                  <ComboBox fx:id="modalitaLez" prefHeight="26.0" prefWidth="207.0" />
+                  <ComboBox fx:id="modalitaLez" editable="true" prefHeight="26.0" prefWidth="207.0" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Luogo:">
                      <VBox.margin>
                         <Insets top="30.0" />
                      </VBox.margin>
                   </Text>
-                  <ComboBox fx:id="luogo" prefHeight="26.0" prefWidth="207.0" />
+                  <ComboBox fx:id="luogo" editable="true" prefHeight="26.0" prefWidth="207.0" />
                </children>
             </VBox>
             <TextField fx:id="cercaMateria" layoutX="122.0" layoutY="41.0" prefHeight="26.0" prefWidth="271.0" />
@@ -91,13 +91,13 @@
             <VBox layoutX="325.0" layoutY="114.0" prefHeight="217.0" prefWidth="200.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giorno:" />
-                  <ComboBox fx:id="giorno" prefHeight="26.0" prefWidth="207.0" />
+                  <ComboBox fx:id="giorno" editable="true" prefHeight="26.0" prefWidth="207.0" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fascia oraria:">
                      <VBox.margin>
                         <Insets top="30.0" />
                      </VBox.margin>
                   </Text>
-                  <ComboBox fx:id="fasciaOraria" prefHeight="26.0" prefWidth="207.0" />
+                  <ComboBox fx:id="fasciaOraria" editable="true" prefHeight="26.0" prefWidth="207.0" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tariffa (€/h):">
                      <VBox.margin>
                         <Insets top="30.0" />

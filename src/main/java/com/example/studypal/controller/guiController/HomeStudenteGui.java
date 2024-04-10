@@ -24,6 +24,7 @@ public class HomeStudenteGui {
 
     private static final Logger logger = Logger.getLogger(HomeStudenteGui.class.getName());
 
+    //funzione per il bottone Prenota Ripetizione
     @FXML
     public void goToPrenotaRipetizione(){
         //metodo che porta alla pagina di gestione del profilo
