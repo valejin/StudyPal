@@ -13,6 +13,8 @@ public class RipetizioneInfoModel extends BaseInfoModel {
 
     private Integer tariffa;
 
+    private String email;
+
     public Integer getTariffa() {
         return tariffa;
     }
@@ -52,4 +54,8 @@ public class RipetizioneInfoModel extends BaseInfoModel {
     public void setInPresenza(Boolean inPresenza) {
         this.inPresenza = inPresenza;
     }
+
+    public String getEmail() { return email; }
+
+    public void setEmail(String email) { this.email = email; }
 }

@@ -71,18 +71,19 @@ public class RipetizioneInfoDAO {
          */
 
         PreparedStatement statement = null;
-        String query = "UPDATE tutor SET materie=? AND luogo=? AND tariffa=? AND inPresenza=? AND online=? AND giorni=?";
+        String query = "UPDATE tutor SET tariffa=?, luogo=?, materie=?, inPresenza=?, online=?, giorni=? WHERE email=?";
 
         try{
             Connection connection = Connect.getInstance().getDBConnection();
             statement = connection.prepareStatement(query);
-            statement.setString(1, ripetizioneInfoModel.getMateria());
+
+            statement.setInt(1, ripetizioneInfoModel.getTariffa());
             statement.setString(2, ripetizioneInfoModel.getLuogo());
-            statement.setInt(3, ripetizioneInfoModel.getTariffa());
+            statement.setString(3, ripetizioneInfoModel.getMateria());
             statement.setBoolean(4, ripetizioneInfoModel.getInPresenza());
             statement.setBoolean(5, ripetizioneInfoModel.getOnline());
             statement.setString(6, ripetizioneInfoModel.getGiorni());
-
+           // statement.setString(7, ripetizioneInfoModel.getEmail());
             statement.executeUpdate();
             Printer.println("Profilo aggiornato con successo!");
 

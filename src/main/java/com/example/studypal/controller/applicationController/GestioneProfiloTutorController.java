@@ -22,15 +22,12 @@ public class GestioneProfiloTutorController {
         ripetizioneInfoModel.setInPresenza(ripetizioneInfoBean.getInPresenza());
         ripetizioneInfoModel.setOnline(ripetizioneInfoBean.getOnline());
         ripetizioneInfoModel.setTariffa(ripetizioneInfoBean.getTariffa());
+        ripetizioneInfoModel.setEmail(ripetizioneInfoBean.getEmail());
 
         //passiamo model a DAO
         RipetizioneInfoDAO ripetizioneInfoDAO = new RipetizioneInfoDAO();
 
         //mettere try catch e gestire eccezioni
         ripetizioneInfoDAO.modificaProfiloTutor(ripetizioneInfoModel);
-
-
     }
-
-
 }

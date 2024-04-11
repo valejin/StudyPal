@@ -60,9 +60,7 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
         tariffaSlider.setShowTickMarks(true);
 
         tariffaSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-
             tariffaValue.setText(Integer.toString(newValue.intValue()) + "€");
-
         });
 
     }
@@ -78,8 +76,10 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
         Boolean online = false;
         String luogo;
         Integer tariffa;
+        String email; //questa è l'email del tutor loggato
 
-        //da fare: controllo isempty
+
+        //TODO: controllo isempty
 
         materie = this.materieField.getText();
         luogo = (String) this.luogoBox.getValue(); //controllare se c'è un modo migliore rispetto al cast!!
