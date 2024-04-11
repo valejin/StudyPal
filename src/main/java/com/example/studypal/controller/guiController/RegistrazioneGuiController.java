@@ -52,31 +52,29 @@ public class RegistrazioneGuiController {
         //se sono stati compilati tutti i campi
         if(!this.nomeField.getText().isEmpty() && !this.cognomeField.getText().isEmpty() && !this.emailField.getText().isEmpty() && !this.passwordField.getText().isEmpty() && !this.confermaPasswordField.getText().isEmpty()){
 
-            System.out.println("siamo qui 1");
+            //prendo i dati inseriti dall'utente
             userNome = this.nomeField.getText();
             userCognome = this.cognomeField.getText();
             userEmail = this.emailField.getText();
             userPassword = this.passwordField.getText();
             confermaPassword = this.confermaPasswordField.getText();
 
-            System.out.println("siamo qui 2");
+            //controllo sulle password
             if (!confermaPassword.equals(userPassword)){
                 campiError.setText("Password non corrispondenti.");
                 return;
             }
 
-            System.out.println("siamo qui 3");
+
             //gestisco il ruolo dell'utente
             if (this.ruoloCheckBox.isSelected()) {
                 ruolo = true;
-               // System.out.println("l'utente è un tutor");
             } else {
                 ruolo = false;
             }
         }
         else{
             campiError.setText("Campi obbligatori.");
-            System.out.println("siamo qui 4"); //arriviamo qui
             return;
         }
 

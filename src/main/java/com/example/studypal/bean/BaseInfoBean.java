@@ -6,6 +6,7 @@ public class BaseInfoBean {
 
     protected String materia;
 
+
     public BaseInfoBean(String materia) {
         this.materia = materia;
     }

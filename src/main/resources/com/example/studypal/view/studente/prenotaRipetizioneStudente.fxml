@@ -83,12 +83,12 @@
                         <Insets top="30.0" />
                      </VBox.margin>
                   </Text>
-                  <CheckBox mnemonicParsing="false" text="In Presenza">
+                  <CheckBox fx:id="inPresenza" mnemonicParsing="false" text="In Presenza">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
                   </CheckBox>
-                  <CheckBox mnemonicParsing="false" text="Online">
+                  <CheckBox fx:id="online" mnemonicParsing="false" text="Online">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
@@ -104,7 +104,7 @@
                      <VBox.margin>
                         <Insets top="30.0" />
                      </VBox.margin></Text>
-                  <MenuButton fx:id="giorniMenu" mnemonicParsing="false" prefHeight="26.0" prefWidth="210.0" text="Seleziona uno o più giorni..." textFill="#9c9c9c">
+                  <MenuButton fx:id="giorno" mnemonicParsing="false" prefHeight="26.0" prefWidth="210.0" text="Seleziona uno o più giorni..." textFill="#9c9c9c">
                      <items>
                         <CheckMenuItem mnemonicParsing="false" text="Lunedì" />
                         <CheckMenuItem mnemonicParsing="false" text="Martedì" />
@@ -128,7 +128,7 @@
                   <Label fx:id="tariffaValue" />
                </children>
             </VBox>
-            <Button layoutX="408.0" layoutY="34.0" mnemonicParsing="false" prefHeight="1.0" prefWidth="90.0" text="Cerca" />
+            <Button layoutX="408.0" layoutY="34.0" mnemonicParsing="false" onMouseClicked="#ricercaMethod" prefHeight="1.0" prefWidth="90.0" text="Cerca" />
          </children>
       </AnchorPane>
       <Text layoutX="397.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cerca un tutor che soddisfi i tuoi desideri" />
