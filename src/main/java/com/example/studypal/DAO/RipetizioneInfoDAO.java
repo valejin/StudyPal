@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 public class RipetizioneInfoDAO {
 
     /*
-    DAO che gestisce le interazioni con il db relative alle informazioni di una ripetizione.
+    DAO che gestisce le interazioni con il db relative alle informazioni utili alle prenotazioni di ripetizioni.
     Contiene:
         - metodo che effettua la ricerca di una ripetizione (PrenotaRipetizione)
         - metodo che effettua l'aggiornamento delle informazioni di un profilo tutor (GestioneProfiloTutor)
@@ -97,17 +97,18 @@ public class RipetizioneInfoDAO {
 
     //--------------------------------------------------------------------------------------------------------------------------------------
     public void modificaProfiloTutor(RipetizioneInfoModel ripetizioneInfoModel){
+
         /*
         metodo chiamato dal controller applicativo GestioneProfiloTutorController
         modifica i dati di un utente tutor nella tabella tutor del database
          */
 
+        Connection connection;
         PreparedStatement statement = null;
-        String query = "UPDATE tutor SET tariffa=? , luogo=? , materie=? , inPresenza=? , online=? , giorni=?";
         String query = "UPDATE tutor SET tariffa=?, luogo=?, materie=?, inPresenza=?, webCam=?, giorni=? WHERE email=?";
 
         try{
-            Connection connection = Connect.getInstance().getDBConnection();
+            connection = Connect.getInstance().getDBConnection();
             statement = connection.prepareStatement(query);
 
             statement.setInt(1, ripetizioneInfoModel.getTariffa());
@@ -117,6 +118,7 @@ public class RipetizioneInfoDAO {
             statement.setBoolean(5, ripetizioneInfoModel.getOnline());
             statement.setString(6, ripetizioneInfoModel.getGiorni());
             statement.setString(7, ripetizioneInfoModel.getEmail());
+
             statement.executeUpdate();
 
             Printer.println("Profilo dell'utente " + ripetizioneInfoModel.getEmail() + " aggiornato con successo!");

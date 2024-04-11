@@ -69,7 +69,7 @@ public class UserDAO {
 
         Connection connection;
         PreparedStatement statement = null;
-        System.out.println("preparato la statement");
+        System.out.println("preparato lo statement");
 
         String query = "INSERT INTO utente (email, nome, cognome, password, isTutor) VALUES (?, ?, ?, ?, ?)";
 
@@ -115,9 +115,9 @@ public class UserDAO {
 
             statement.setString(1, registrazioneModel.getEmail());
 
-            //carico nella variabile rs il result set della query
             rs = statement.executeQuery();
             System.out.println("query ok");
+
             //se il result set non è vuoto, l'email è già in uso e lanciamo un'eccezione
             if (rs.next()) {
                 System.out.println("email presente dao");
@@ -138,7 +138,7 @@ public class UserDAO {
         PreparedStatement statement = null;
         ResultSet rs = null;
 
-        String query = "INSERT INTO tutor (email, tariffa, luogo, materie, inPresenza, online, giorni) VALUES (?, NULL, NULL, NULL, NULL, NULL, NULL)";
+        String query = "INSERT INTO tutor (email, tariffa, luogo, materie, inPresenza, webCam, giorni) VALUES (?, NULL, NULL, NULL, NULL, NULL, NULL)";
 
         try{
             connection = Connect.getInstance().getDBConnection();

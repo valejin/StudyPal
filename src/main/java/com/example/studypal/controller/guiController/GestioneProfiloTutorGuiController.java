@@ -35,13 +35,16 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
     @FXML
     private MenuButton giorniMenu;
 
+    @FXML
+    private Label successoModifiche;
+
 
     //eredita dal padre un attributo LoggedInUserBean
     public GestioneProfiloTutorGuiController(LoggedInUserBean user){ this.user = user;}
 
     public void initialize() {
 
-        //combobox luogo--------------------------------------------------------------------
+        //combobox luogo---------------------------------------------------------------------
         luogoBox.getItems().addAll("Roma", "Milano", "Palermo");
 
         //combobox giorni disponibili -------------------------------------------------------
@@ -53,16 +56,13 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
             }
         });
 
-        //tariffa slider----------------------------------------------------------------------
-
+        //tariffa slider--------------------------------------------------------------------
         tariffaSlider.setBlockIncrement(1);
-
         tariffaSlider.setMin(0);
         tariffaSlider.setMax(100);
-        tariffaSlider.setValue(50); // Imposta un valore predefinito
+        tariffaSlider.setValue(50); //valore di default
         tariffaSlider.setShowTickLabels(true);
         tariffaSlider.setShowTickMarks(true);
-
         tariffaSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             tariffaValue.setText(Integer.toString(newValue.intValue()) + "€");
         });
@@ -83,10 +83,10 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
         String email = this.user.getEmail(); //questa è l'email del tutor loggato
 
 
-        //TODO: controllo isempty
+        //TODO: controllo isempty... necessario davvero qui?
 
         materie = this.materieField.getText();
-        luogo = (String) this.luogoBox.getValue(); //controllare se c'è un modo migliore rispetto al cast!!
+        luogo = (String) this.luogoBox.getValue(); //TODO: controllare se c'è un modo migliore rispetto al cast!!
 
         //tariffa---------------------------------------------------------------------------------------
         tariffa = (int) Math.round(this.tariffaSlider.getValue());
@@ -104,7 +104,7 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
                 CheckMenuItem checkMenuItem = (CheckMenuItem) item;
                 if (checkMenuItem.isSelected()) {
                     if (selectedValues.length() > 0) {
-                        selectedValues.append(", "); // Aggiungi una virgola tra i valori
+                        selectedValues.append(", ");
                     }
                     selectedValues.append(checkMenuItem.getText());
                 }
@@ -113,21 +113,21 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
         String giorni = selectedValues.toString();
 
 
-        //stampo i valori a terminale------------------------------------------------------------------
-        System.out.println("Modifiche desiderate dall'utente " + email);
-        System.out.println("    Materie: " + materie);
-        System.out.println("    Modalità: " + inPresenza + " " + online);
-        System.out.println("    Luogo: " + luogo);
-        System.out.println("    Giorni: " + giorni );
-        System.out.println("    Tariffa: " + tariffa + "€/h");
+        //stampo i valori a terminale-----------------------------------------------------------------------------------
+        Printer.println("Modifiche desiderate dall'utente " + email);
+        Printer.println("    Materie: " + materie);
+        Printer.println("    Modalità: " + inPresenza + " " + online);
+        Printer.println("    Luogo: " + luogo);
+        Printer.println("    Giorni: " + giorni );
+        Printer.println("    Tariffa: " + tariffa + "€/h");
 
+
+        //creo il bean, istanzio il controller applicativo e chiamo il suo metodo---------------------------------------
         RipetizioneInfoBean ripetizioneInfoBean = new RipetizioneInfoBean(materie, inPresenza, online, luogo, giorni, tariffa, email);
-
-        System.out.println("MATERIA: " + ripetizioneInfoBean.getMateria());
-
-        //istanzio il mio controller applicativo e ne chiamo il metodo per la gestione profilo
         GestioneProfiloTutorController gestioneProfiloTutorController = new GestioneProfiloTutorController();
         gestioneProfiloTutorController.gestioneProfiloMethod(ripetizioneInfoBean);
 
+        //se sono arrivato qui è andato tutto a buon fine e posso comunicarlo all'utente
+        successoModifiche.setText("Modifiche avvenute con successo");
     }
 }
