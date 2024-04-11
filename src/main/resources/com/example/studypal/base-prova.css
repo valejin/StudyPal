@@ -10,7 +10,7 @@ body {
 
 /* Definizione del font per tutto il testo */
 body {
-    font-family: Verdana, serif; /* Utilizza il font Arial o un font sans-serif di backup */
+    font-family: Abel, Verdana, serif; /* Utilizza il font Arial o un font sans-serif di backup */
 }
 
 /* Stile per l'intestazione */
