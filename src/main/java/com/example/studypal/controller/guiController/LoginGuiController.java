@@ -40,12 +40,15 @@ public class LoginGuiController {
     @FXML
     private Label credenzialiSbagliate;
 
+    protected LoggedInUserBean loggedInUserBean;
+
     private static final Logger logger = Logger.getLogger(LoginGuiController.class.getName());
+
+
 
     @FXML
      void loginMethod() {
-        //String userEmail = this.emailField.getText();
-        //String userPassword = this.passwordField.getText();
+
         String userEmail = null;
         String userPassword = null;
 
@@ -59,7 +62,6 @@ public class LoginGuiController {
             return;
         }
 
-
         try {
 
             CredenzialiBean credenzialiBean = new CredenzialiBean();
@@ -70,7 +72,7 @@ public class LoginGuiController {
             LoginController loginController = new LoginController();
 
             //prendiamo i dati dell'utente loggato (sessione)
-            LoggedInUserBean loggedInUserBean = loginController.loginMethod(credenzialiBean);
+            this.loggedInUserBean = loginController.loginMethod(credenzialiBean);
 
             //in base al ruolo dell'utente loggato carichiamo la pagina corretta della home
             System.out.println("siamo:" + loggedInUserBean.getRuolo());
@@ -88,7 +90,7 @@ public class LoginGuiController {
     public void caricaRegistrazione () {
         try {
             FXMLLoader loader = new FXMLLoader(LoginGuiController.class.getResource("/com/example/studypal/view/registrazione.fxml"));
-            loader.setControllerFactory(c -> new RegistrazioneGuiController());
+            loader.setControllerFactory(c -> new RegistrazioneGuiController(this.loggedInUserBean));
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) credenzialiError.getScene().getWindow();
@@ -109,7 +111,7 @@ public class LoginGuiController {
             if (isTutor) {
                 System.out.println("siamo:" + isTutor);
                 loader = new FXMLLoader(LoginGuiController.class.getResource("/com/example/studypal/view/tutor/homeTutor.fxml"));
-                loader.setControllerFactory(c -> new HomeTutorGui());
+                loader.setControllerFactory(c -> new HomeTutorGui(loggedInUserBean));
             } else {
                 System.out.println("siamo:" + isTutor);
 

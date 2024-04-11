@@ -1,5 +1,6 @@
 package com.example.studypal.controller.guiController;
 
+import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.RegistrazioneUserBean;
 import com.example.studypal.controller.applicationController.RegistrazioneController;
 import com.example.studypal.exceptions.CredenzialiSbagliateException;
@@ -35,9 +36,11 @@ public class RegistrazioneGuiController {
     @FXML
     private CheckBox ruoloCheckBox;
 
+    protected LoggedInUserBean user;
+
     private static final Logger logger = Logger.getLogger(RegistrazioneGuiController.class.getName());
 
-
+    protected RegistrazioneGuiController(LoggedInUserBean user) { this.user = user;}
     @FXML
     void registrazioneMethod() {
         //metodo attivato dal pulsante di conferma sulla schermata di registrazione
@@ -108,7 +111,7 @@ public class RegistrazioneGuiController {
     public void caricaConferma () {
         try {
             FXMLLoader loader = new FXMLLoader(RegistrazioneGuiController.class.getResource("/com/example/studypal/view/confermaRegistrazione.fxml"));
-            loader.setControllerFactory(c -> new RegistrazioneGuiController());
+            loader.setControllerFactory(c -> new RegistrazioneGuiController(user));
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) campiError.getScene().getWindow();
