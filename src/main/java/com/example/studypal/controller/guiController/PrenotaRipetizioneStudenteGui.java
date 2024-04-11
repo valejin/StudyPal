@@ -1,10 +1,7 @@
 package com.example.studypal.controller.guiController;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import org.w3c.dom.ls.LSOutput;
 
 public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
@@ -18,9 +15,7 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
     @FXML
     private ComboBox luogo;
     @FXML
-    private ComboBox giorno;
-    @FXML
-    private ComboBox fasciaOraria;
+    private MenuButton giorniMenu;
     @FXML
     private Slider tariffaSlider;
     @FXML
@@ -28,6 +23,9 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
 
     @FXML
     public void initialize() {
+        //materia textfield ----------------------------------------------------------------------
+
+
         // Imposta il valore minimo e massimo del Slider
 
         tariffaSlider.setMin(5);
@@ -41,6 +39,10 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
             tariffaValue.setText(Integer.toString(newValue.intValue()) + "€");
 
         });
+
+        //luogo----------------------------------------------
+        luogo.getItems().addAll("Roma", "Milano", "Palermo");
+
     }
 
 

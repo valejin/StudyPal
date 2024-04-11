@@ -4,20 +4,21 @@ public class RipetizioneInfoBean extends BaseInfoBean{
 
     //questo bean estende BaseInfoBean che contiene il nome materia
 
-    private String modalitaLez;
+    private Boolean inPresenza;
+    private Boolean online;
     private String luogo;
-    private String giorno;
-    private String fasciaOraria;
-    private String tariffa;
+    private String giorni;
+
+    private Integer tariffa;
 
 
     //qui contiene tutte le informazioni per la ricerca con filtro, in caso di Prenota Ripetizione
-    public RipetizioneInfoBean(String materia, String modalitaLez, String luogo, String giorno, String fasciaOraria, String tariffa){
+    public RipetizioneInfoBean(String materia, Boolean inPresenza, Boolean online, String luogo, String giorni, Integer tariffa){
         super(materia);
-        this.modalitaLez = modalitaLez;
+        this.inPresenza = inPresenza;
+        this.online = online;
         this.luogo = luogo;
-        this.giorno = giorno;
-        this.fasciaOraria = fasciaOraria;
+        this.giorni = giorni;
         this.tariffa = tariffa;
 
     }

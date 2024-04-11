@@ -3,8 +3,11 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.CheckMenuItem?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.InnerShadow?>
@@ -60,7 +63,7 @@
             </Button>
          </children>
       </VBox>
-      <Text fx:id="titolo" fill="#000000ab" layoutX="284.0" layoutY="98.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="#titolo" text="Prenota Ripetizione" textAlignment="CENTER" wrappingWidth="451.2001373767853" AnchorPane.leftAnchor="284.0" AnchorPane.rightAnchor="78.39999999999998" AnchorPane.topAnchor="42.0">
+      <Text fx:id="titolo" fill="#000000ab" layoutX="281.0" layoutY="71.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="#titolo" text="Prenota Ripetizione" textAlignment="CENTER" wrappingWidth="451.2001373767853" AnchorPane.leftAnchor="281.0" AnchorPane.rightAnchor="81.39999999999998" AnchorPane.topAnchor="33.16796875">
          <font>
             <Font size="40.0" />
          </font>
@@ -69,35 +72,49 @@
          <children>
             <VBox layoutX="51.0" layoutY="114.0" prefHeight="217.0" prefWidth="200.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Materia:" />
-                  <ComboBox fx:id="materia" editable="true" prefHeight="26.0" prefWidth="207.0" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modalità di lezione:">
-                     <VBox.margin>
-                        <Insets top="30.0" />
-                     </VBox.margin>
-                  </Text>
-                  <ComboBox fx:id="modalitaLez" editable="true" prefHeight="26.0" prefWidth="207.0" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Luogo:">
                      <VBox.margin>
                         <Insets top="30.0" />
                      </VBox.margin>
                   </Text>
                   <ComboBox fx:id="luogo" editable="true" prefHeight="26.0" prefWidth="207.0" />
-               </children>
-            </VBox>
-            <TextField fx:id="cercaMateria" layoutX="122.0" layoutY="41.0" prefHeight="26.0" prefWidth="271.0" />
-            <Text layoutX="122.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cerca Materia:" />
-            <Text layoutX="252.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="oppure filtra" />
-            <VBox layoutX="325.0" layoutY="114.0" prefHeight="217.0" prefWidth="200.0">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giorno:" />
-                  <ComboBox fx:id="giorno" editable="true" prefHeight="26.0" prefWidth="207.0" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fascia oraria:">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modalità di lezione:">
                      <VBox.margin>
                         <Insets top="30.0" />
                      </VBox.margin>
                   </Text>
-                  <ComboBox fx:id="fasciaOraria" editable="true" prefHeight="26.0" prefWidth="207.0" />
+                  <CheckBox mnemonicParsing="false" text="In Presenza">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" text="Online">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </CheckBox>
+               </children>
+            </VBox>
+            <TextField fx:id="cercaMateria" layoutX="122.0" layoutY="41.0" prefHeight="26.0" prefWidth="271.0" />
+            <Text layoutX="122.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cerca Materia:" />
+            <Text layoutX="245.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filtri Aggiuntivi" />
+            <VBox layoutX="325.0" layoutY="114.0" prefHeight="217.0" prefWidth="200.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giorno:">
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin></Text>
+                  <MenuButton fx:id="giorniMenu" mnemonicParsing="false" prefHeight="26.0" prefWidth="210.0" text="Seleziona uno o più giorni..." textFill="#9c9c9c">
+                     <items>
+                        <CheckMenuItem mnemonicParsing="false" text="Lunedì" />
+                        <CheckMenuItem mnemonicParsing="false" text="Martedì" />
+                        <CheckMenuItem mnemonicParsing="false" text="Mercoledì" />
+                        <CheckMenuItem mnemonicParsing="false" text="Giovedì" />
+                        <CheckMenuItem mnemonicParsing="false" text="Venerdì" />
+                        <CheckMenuItem mnemonicParsing="false" text="Sabato" />
+                        <CheckMenuItem mnemonicParsing="false" text="Domenica" />
+                     </items>
+                  </MenuButton>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tariffa (€/h):">
                      <VBox.margin>
                         <Insets top="30.0" />
@@ -114,6 +131,7 @@
             <Button layoutX="408.0" layoutY="34.0" mnemonicParsing="false" prefHeight="1.0" prefWidth="90.0" text="Cerca" />
          </children>
       </AnchorPane>
+      <Text layoutX="397.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cerca un tutor che soddisfi i tuoi desideri" />
    </children>
    <stylesheets>
       <URL value="@../../button.css" />

@@ -1,22 +1,55 @@
 package com.example.studypal.model;
 
-public class RipetizioneInfoModel {
+public class RipetizioneInfoModel extends BaseInfoModel {
 
     /*
-    classe che contiene le informazioni relative ad una ripetizione: dati del tutor, giorno e ora etc
-    utilizzata nei casi d'uso di prenota ripetizione (studente) e gestisci profilo (tutor)
-    Le sue istanze vengono popolate dai controller applicativi e passate al ripetizioneDAO
-    */
+    model conterrà i dati relativi alla gestione profilo
+     */
 
-    private String materia;
+    private Boolean inPresenza;
+    private Boolean online;
+    private String luogo;
+    private String giorni;
 
-    public String getMateria() {
-        return materia;
+    private Integer tariffa;
+
+    public Integer getTariffa() {
+        return tariffa;
     }
 
-    public void setMateria(String materia) {
-        this.materia = materia;
+    public void setTariffa(Integer tariffa) {
+        this.tariffa = tariffa;
     }
 
+    public String getGiorni() {
+        return giorni;
+    }
 
+    public void setGiorni(String giorni) {
+        this.giorni = giorni;
+    }
+
+    public String getLuogo() {
+        return luogo;
+    }
+
+    public void setLuogo(String luogo) {
+        this.luogo = luogo;
+    }
+
+    public Boolean getOnline() {
+        return online;
+    }
+
+    public void setOnline(Boolean online) {
+        this.online = online;
+    }
+
+    public Boolean getInPresenza() {
+        return inPresenza;
+    }
+
+    public void setInPresenza(Boolean inPresenza) {
+        this.inPresenza = inPresenza;
+    }
 }

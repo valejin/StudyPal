@@ -1,7 +1,7 @@
 package com.example.studypal.DAO;
 
 import com.example.studypal.Query.Query;
-import com.example.studypal.model.RipetizioneInfoModel;
+import com.example.studypal.model.BaseInfoModel;
 import com.example.studypal.other.Connect;
 
 import java.sql.Connection;
@@ -23,7 +23,7 @@ public class RipetizioneInfoDAO {
 
     private static final Logger logger = Logger.getLogger(UserDAO.class.getName());
 
-    public RipetizioneInfoModel ricercaInfo() {
+    public BaseInfoModel ricercaInfo() {
         /*
         metodo per la ricerca di ripetizioni, restituisce tutti i tutor e rispettive informazioni di ripetizioni disponibiili
         applica i parametri di ricerca ricevuti tramite istanza di RipetizioneInfoModel
@@ -31,8 +31,8 @@ public class RipetizioneInfoDAO {
         La query cerca nella tabella Tutor
          */
 
-
-        RipetizioneInfoModel ripetizioneInfoModel = new RipetizioneInfoModel();
+        String materia = "boh";
+        BaseInfoModel baseInfoModel = new BaseInfoModel();
         PreparedStatement statement = null;
 
         //devo prendere materia da model
@@ -53,7 +53,7 @@ public class RipetizioneInfoDAO {
         }
 
 
-        return ripetizioneInfoModel;
+        return baseInfoModel;
     }
 
     public void prenotaRipetizione() {
