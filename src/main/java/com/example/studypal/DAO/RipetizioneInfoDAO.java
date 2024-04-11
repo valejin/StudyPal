@@ -2,7 +2,9 @@ package com.example.studypal.DAO;
 
 import com.example.studypal.Query.Query;
 import com.example.studypal.model.BaseInfoModel;
+import com.example.studypal.model.RipetizioneInfoModel;
 import com.example.studypal.other.Connect;
+import com.example.studypal.other.Printer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -62,12 +64,30 @@ public class RipetizioneInfoDAO {
          */
     }
 
-    public void modificaProfiloTutor(){
+    public void modificaProfiloTutor(RipetizioneInfoModel ripetizioneInfoModel){
         /*
         metodo chiamato dal controller applicativo GestioneProfiloTutorController per modificare i dati di un utente tutor nel database
-
         Modifica le tuple nella tabella Tutor
          */
 
+        PreparedStatement statement = null;
+        String query = "UPDATE tutor SET materie=? AND luogo=? AND tariffa=? AND inPresenza=? AND online=? AND giorni=?";
+
+        try{
+            Connection connection = Connect.getInstance().getDBConnection();
+            statement = connection.prepareStatement(query);
+            statement.setString(1, ripetizioneInfoModel.getMateria());
+            statement.setString(2, ripetizioneInfoModel.getLuogo());
+            statement.setInt(3, ripetizioneInfoModel.getTariffa());
+            statement.setBoolean(4, ripetizioneInfoModel.getInPresenza());
+            statement.setBoolean(5, ripetizioneInfoModel.getOnline());
+            statement.setString(6, ripetizioneInfoModel.getGiorni());
+
+            statement.executeUpdate();
+            Printer.println("Profilo aggiornato con successo!");
+
+        } catch (SQLException e) {
+            logger.severe("errore in RipetizioneInfoDAO " + e.getMessage());
+        }
     }
 }

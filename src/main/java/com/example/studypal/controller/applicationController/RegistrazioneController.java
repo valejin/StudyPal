@@ -40,14 +40,12 @@ public class RegistrazioneController {
              System.out.println("registro l'utente");
              registrazioneDao.registrazioneMethod(userModel);
 
-
+            registrazioneDao.registraTutorMethod(userModel.getEmail());
 
         }
 
         /*
-        gestisce la registrazione, riceve RegistrazioneUserBean
         controlla se password e confermaPassword sono uguali (se non lo sono lancia eccezione)
-        crea model, popola model, chiama il metodo di registrazione del RegistrazioneDao
         */
 
     }

@@ -130,6 +130,29 @@ public class UserDAO {
 
     }
 
+    public void registraTutorMethod(String email) {
+
+        //crea una tupla nella tabella tutor
+
+        Connection connection;
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+
+        String query = "INSERT INTO tutor (email, tariffa, luogo, materie, inPresenza, online, giorni) VALUES (?, NULL, NULL, NULL, NULL, NULL, NULL)";
+
+        try{
+            connection = Connect.getInstance().getDBConnection();
+            statement = connection.prepareStatement(query);
+            statement.setString(1, email);
+
+            statement.executeUpdate();
+            Printer.println("tutor registrato");
+        } catch (SQLException e) {
+            logger.severe("errore in UserDAO registrazioneTutor " + e.getMessage());
+
+        }
+    }
+
 }
 
 

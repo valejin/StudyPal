@@ -86,7 +86,6 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
 
         //tariffa---------------------------------------------------------------------------------------
         tariffa = (int) Math.round(this.tariffaSlider.getValue());
-       // tariffa = this.tariffaSlider.getValue();
 
         //gestione delle modalità di presenza-------------------------------------------------------------
         if (this.inPresenzaBox.isSelected()){ inPresenza = true;}
@@ -121,6 +120,8 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
 
         RipetizioneInfoBean ripetizioneInfoBean = new RipetizioneInfoBean(materie, inPresenza, online, luogo, giorni, tariffa);
 
+        System.out.println("MATERIA: " + ripetizioneInfoBean.getMateria());
+        //istanzio il mio controller applicativo e ne chiamo il metodo per la gestione profilo
         GestioneProfiloTutorController gestioneProfiloTutorController = new GestioneProfiloTutorController();
         gestioneProfiloTutorController.gestioneProfiloMethod(ripetizioneInfoBean);
 
