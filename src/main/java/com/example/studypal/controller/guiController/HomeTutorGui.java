@@ -1,5 +1,6 @@
 package com.example.studypal.controller.guiController;
 
+import com.example.studypal.bean.LoggedInUserBean;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,15 +21,21 @@ public class HomeTutorGui {
 
     @FXML
     private VBox barraMenu;
-
+    protected LoggedInUserBean user;
     private static final Logger logger = Logger.getLogger(HomeTutorGui.class.getName());
+
+    //costruttori-------------------------------------------------------------
+    protected HomeTutorGui() {}
+    protected HomeTutorGui(LoggedInUserBean user) { this.user = user;}
+
+
 
     @FXML
     public void goToGestisciProfilo(){
         //metodo che porta alla pagina di gestione del profilo
         try {
             FXMLLoader loader = new FXMLLoader(HomeTutorGui.class.getResource("/com/example/studypal/view/tutor/gestioneProfiloTutor.fxml"));
-            loader.setControllerFactory(c -> new GestioneProfiloTutorGuiController());
+            loader.setControllerFactory(c -> new GestioneProfiloTutorGuiController(user));
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) barraMenu.getScene().getWindow();

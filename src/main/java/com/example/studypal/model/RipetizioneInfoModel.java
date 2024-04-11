@@ -10,9 +10,7 @@ public class RipetizioneInfoModel extends BaseInfoModel {
     private Boolean online;
     private String luogo;
     private String giorni;
-
     private Integer tariffa;
-
     private String email;
 
     public Integer getTariffa() {

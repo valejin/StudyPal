@@ -13,13 +13,14 @@ public class RipetizioneInfoBean extends BaseInfoBean{
     private String email;
 
     //qui contiene tutte le informazioni per la ricerca con filtro, in caso di Prenota Ripetizione
-    public RipetizioneInfoBean(String materia, Boolean inPresenza, Boolean online, String luogo, String giorni, Integer tariffa){
+    public RipetizioneInfoBean(String materia, Boolean inPresenza, Boolean online, String luogo, String giorni, Integer tariffa, String email){
         super(materia);
         this.inPresenza = inPresenza;
         this.online = online;
         this.luogo = luogo;
         this.giorni = giorni;
         this.tariffa = tariffa;
+        this.email = email;
 
     }
 

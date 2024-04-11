@@ -58,20 +58,23 @@ public class RipetizioneInfoDAO {
         return baseInfoModel;
     }
 
+    //-----------------------------------------------------------------------------------------------------------------------
     public void prenotaRipetizione() {
         /*
         La query inserisce tuple nella tabella RipetizioniAttive quando viene effettuata una prenotazione di ripetizione
          */
     }
 
+
+    //--------------------------------------------------------------------------------------------------------------------------------------
     public void modificaProfiloTutor(RipetizioneInfoModel ripetizioneInfoModel){
         /*
-        metodo chiamato dal controller applicativo GestioneProfiloTutorController per modificare i dati di un utente tutor nel database
-        Modifica le tuple nella tabella Tutor
+        metodo chiamato dal controller applicativo GestioneProfiloTutorController
+        modifica i dati di un utente tutor nella tabella tutor del database
          */
 
         PreparedStatement statement = null;
-        String query = "UPDATE tutor SET tariffa=?, luogo=?, materie=?, inPresenza=?, online=?, giorni=? WHERE email=?";
+        String query = "UPDATE tutor SET tariffa=?, luogo=?, materie=?, inPresenza=?, webCam=?, giorni=? WHERE email=?";
 
         try{
             Connection connection = Connect.getInstance().getDBConnection();
@@ -83,9 +86,10 @@ public class RipetizioneInfoDAO {
             statement.setBoolean(4, ripetizioneInfoModel.getInPresenza());
             statement.setBoolean(5, ripetizioneInfoModel.getOnline());
             statement.setString(6, ripetizioneInfoModel.getGiorni());
-           // statement.setString(7, ripetizioneInfoModel.getEmail());
+            statement.setString(7, ripetizioneInfoModel.getEmail());
             statement.executeUpdate();
-            Printer.println("Profilo aggiornato con successo!");
+
+            Printer.println("Profilo dell'utente " + ripetizioneInfoModel.getEmail() + " aggiornato con successo!");
 
         } catch (SQLException e) {
             logger.severe("errore in RipetizioneInfoDAO " + e.getMessage());
