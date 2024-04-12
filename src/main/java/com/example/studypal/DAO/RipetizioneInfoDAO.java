@@ -87,6 +87,69 @@ public class RipetizioneInfoDAO {
         return userModel;
     }
 
+
+    public void ricercaFiltri(RipetizioneInfoModel ripetizioneInfoModel) throws MateriaNonTrovataException{
+
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+
+        UserModel userModel = new UserModel();
+
+        //query per la ricerca di Materia
+        String query = "SELECT * FROM tutor where tariffa <= ? AND luogo = ? AND LOWER(materie) LIKE ? AND inPresenza = ? AND webCam = ? AND giorni LIKE ?";
+
+        try {
+
+            Connection connection = Connect.getInstance().getDBConnection();
+            statement = connection.prepareStatement(query);
+
+            //devo prendere i filtri da model
+            statement.setInt(1, ripetizioneInfoModel.getTariffa());
+            statement.setString(2, ripetizioneInfoModel.getLuogo());
+            statement.setString(3, '%' + ripetizioneInfoModel.getMateria() + '%');
+            statement.setBoolean(4, ripetizioneInfoModel.getInPresenza());
+            statement.setBoolean(5, ripetizioneInfoModel.getOnline());
+            statement.setString(6, '%' + ripetizioneInfoModel.getGiorni() + '%');
+
+
+            rs = statement.executeQuery();
+            System.out.println("query preparato");
+
+            /*  usati per debug
+            System.out.println(ripetizioneInfoModel.getTariffa());
+            System.out.println(ripetizioneInfoModel.getLuogo());
+            System.out.println(ripetizioneInfoModel.getMateria());
+            System.out.println(ripetizioneInfoModel.getInPresenza());
+            System.out.println(ripetizioneInfoModel.getOnline());
+            System.out.println(ripetizioneInfoModel.getGiorni());
+            */
+
+
+            if (rs.next()) {
+
+                Printer.println("La materia che stai cercando è: " + ripetizioneInfoModel.getMateria());
+
+                //stampo email di Tutor che soddisfanno la query
+                Printer.println("Email tutor che soddisfa la ricerca: ");
+                do {
+                    userModel.setEmail(rs.getString("email"));
+                    Printer.println(userModel.getEmail());
+                } while (rs.next());
+
+            } else {
+                throw new MateriaNonTrovataException();
+            }
+
+        }catch(SQLException e) {
+            logger.severe("errore in userDAO " + e.getMessage());
+        }
+
+
+    }
+
+
+
+
     //-----------------------------------------------------------------------------------------------------------------------
     public void prenotaRipetizione() {
         /*
@@ -105,6 +168,7 @@ public class RipetizioneInfoDAO {
 
         Connection connection;
         PreparedStatement statement = null;
+        //String query = "UPDATE tutor SET tariffa=? , luogo=? , materie=? , inPresenza=? , online=? , giorni=?";
         String query = "UPDATE tutor SET tariffa=?, luogo=?, materie=?, inPresenza=?, webCam=?, giorni=? WHERE email=?";
 
         try{

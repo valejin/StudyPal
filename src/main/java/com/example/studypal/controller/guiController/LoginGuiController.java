@@ -116,7 +116,7 @@ public class LoginGuiController {
                 System.out.println("siamo:" + isTutor);
 
                 loader = new FXMLLoader(LoginGuiController.class.getResource("/com/example/studypal/view/studente/homeStudente.fxml"));
-                loader.setControllerFactory(c -> new HomeStudenteGui());
+                loader.setControllerFactory(c -> new HomeStudenteGui(loggedInUserBean));
             }
             Parent parent = loader.load();
             Scene scene = new Scene(parent);

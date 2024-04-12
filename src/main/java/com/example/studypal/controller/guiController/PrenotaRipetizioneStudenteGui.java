@@ -1,6 +1,8 @@
 package com.example.studypal.controller.guiController;
 
 import com.example.studypal.bean.BaseInfoBean;
+import com.example.studypal.bean.LoggedInUserBean;
+import com.example.studypal.bean.RipetizioneInfoBean;
 import com.example.studypal.controller.applicationController.PrenotaRipetizioneController;
 import com.example.studypal.other.Printer;
 import javafx.collections.ObservableList;
@@ -9,6 +11,7 @@ import javafx.scene.control.*;
 import org.w3c.dom.ls.LSOutput;
 
 public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
+
 
     @FXML
     private TextField cercaMateria;
@@ -27,6 +30,11 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
     private CheckBox online;
 
 
+    //eredita dal padre un attributo LoggedInUserBean
+    public PrenotaRipetizioneStudenteGui(LoggedInUserBean user) {this.user = user;}
+
+
+
     @FXML
     public void initialize() {
         //materia textfield ----------------------------------------------------------------------
@@ -35,7 +43,7 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
         // Imposta il valore minimo e massimo del Slider
 
         tariffaSlider.setMin(5);
-        tariffaSlider.setMax(50);
+        tariffaSlider.setMax(40);
         tariffaSlider.setValue(5); // Imposta un valore predefinito(minimo)
         tariffaSlider.setShowTickLabels(true);
         tariffaSlider.setShowTickMarks(true);
@@ -75,6 +83,7 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
         }else{
             //altrimenti la ricerca avviene anche con i filtri aggiunti
             Printer.println("fai ricerca con filtri");
+            ricercaConFiltri();
         }
 
     }
@@ -120,5 +129,81 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
     }
 
 
+
+    public void ricercaConFiltri(){
+
+        /*
+        prendo luogo, inPresenza, online, giorno, tariffa da BEAN
+        */
+        String materia;
+        String luogo;
+        boolean inPresenza = false;
+        boolean online = false;
+        String giorni;
+        Integer tariffa;
+        String email = this.user.getEmail();
+
+        //i campi sono già stati controllati se sono vuoti in ricercaMethod
+        //prendo i dati inseriti dall'utente
+
+        materia = this.cercaMateria.getText();
+        Printer.println("La materia inserita è: " + materia);
+
+
+        luogo = (String)this.luogo.getValue();
+        Printer.println("Luogo: " + luogo);
+
+        //checkBox: modalità di lezione ------------------------------------------------
+        Printer.println("Modalità di lezione: ");
+        if(this.inPresenza.isSelected()) {
+            inPresenza = true;
+            Printer.println("in presenza");
+        }
+
+        if(this.online.isSelected()) {
+            online = true;
+            Printer.println("online");
+        }
+
+        //menuButton di giono-------------------------------------------------------
+        ObservableList<MenuItem> items = giorno.getItems();
+        StringBuilder selectedValues = new StringBuilder();
+        for (MenuItem item : items) {
+            if (item instanceof CheckMenuItem) {
+                CheckMenuItem checkMenuItem = (CheckMenuItem) item;
+                if (checkMenuItem.isSelected()) {
+                    if (selectedValues.length() > 0) {
+                        selectedValues.append(", ");
+                    }
+                    selectedValues.append(checkMenuItem.getText());
+                }
+            }
+        }
+        giorni = selectedValues.toString();
+        Printer.println("Gioni selezionati: " + giorni);
+
+
+        //tariffaSlider---------------------------------------------------
+        tariffa = (int) Math.round(this.tariffaSlider.getValue());
+
+        //istanzio un RipetizioneInfoBean
+        RipetizioneInfoBean ripetizioneInfoBean = new RipetizioneInfoBean(materia, inPresenza, online, luogo, giorni, tariffa, email);
+
+        ripetizioneInfoBean.setEmail(email);
+        ripetizioneInfoBean.setMateria(materia);
+        ripetizioneInfoBean.setInPresenza(inPresenza);
+        ripetizioneInfoBean.setOnline(online);
+        ripetizioneInfoBean.setLuogo(luogo);
+        ripetizioneInfoBean.setGiorni(giorni);
+        ripetizioneInfoBean.setTariffa(tariffa);
+
+        //istanzio un controller applicativo e gli passo il Bean contenente i dati per la ricerca con filtri
+        PrenotaRipetizioneController prenotaRipetizioneController = new PrenotaRipetizioneController();
+        prenotaRipetizioneController.prenotaRipetizioneMethod(ripetizioneInfoBean);
+
+
+
+
+    }
 
 }

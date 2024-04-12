@@ -1,5 +1,6 @@
 package com.example.studypal.controller.guiController;
 
+import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.controller.applicationController.PrenotaRipetizioneController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,8 +22,14 @@ public class HomeStudenteGui {
 
     @FXML
     private VBox barraMenu;
+    protected LoggedInUserBean user;
 
     private static final Logger logger = Logger.getLogger(HomeStudenteGui.class.getName());
+
+
+    protected HomeStudenteGui() {}
+    protected HomeStudenteGui(LoggedInUserBean user) { this.user = user;}
+
 
     //funzione per il bottone Prenota Ripetizione
     @FXML
@@ -30,7 +37,7 @@ public class HomeStudenteGui {
         //metodo che porta alla pagina di gestione del profilo
         try {
             FXMLLoader loader = new FXMLLoader(HomeStudenteGui.class.getResource("/com/example/studypal/view/studente/prenotaRipetizioneStudente.fxml"));
-            loader.setControllerFactory(c -> new PrenotaRipetizioneStudenteGui());
+            loader.setControllerFactory(c -> new PrenotaRipetizioneStudenteGui(user));
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) barraMenu.getScene().getWindow();
