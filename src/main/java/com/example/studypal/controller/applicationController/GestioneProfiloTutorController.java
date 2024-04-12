@@ -4,6 +4,8 @@ import com.example.studypal.DAO.RipetizioneInfoDAO;
 import com.example.studypal.bean.RipetizioneInfoBean;
 import com.example.studypal.model.RipetizioneInfoModel;
 
+import java.sql.SQLException;
+
 public class GestioneProfiloTutorController {
 
     /*
@@ -29,5 +31,12 @@ public class GestioneProfiloTutorController {
 
         //mettere try catch e gestire eccezioni
         ripetizioneInfoDAO.modificaProfiloTutor(ripetizioneInfoModel);
+    }
+
+    public RipetizioneInfoModel caricaInformazioniProfilo(String email){
+
+        RipetizioneInfoDAO ripetizioneInfoDAO = new RipetizioneInfoDAO();
+        return ripetizioneInfoDAO.caricaInformazioniProfilo(email);
+
     }
 }

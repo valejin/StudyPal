@@ -37,10 +37,13 @@ public class RegistrazioneController {
                 //il controller applicativo si limita a propagarla al controller grafico
             }
 
-             System.out.println("registro l'utente");
-             registrazioneDao.registrazioneMethod(userModel);
+            System.out.println("registro l'utente");
+            registrazioneDao.registrazioneMethod(userModel);
 
-            registrazioneDao.registraTutorMethod(userModel.getEmail());
+            if (registrazioneUserBean.getRuolo()){
+                registrazioneDao.registraTutorMethod(userModel.getEmail());
+            }
+
 
         }
 

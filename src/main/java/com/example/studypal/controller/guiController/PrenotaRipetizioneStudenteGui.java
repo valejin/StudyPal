@@ -86,7 +86,7 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
 
         String materia;
 
-        //da fare il controllo se il campo isEmpty
+        //TODO: controllo se il campo isEmpty
         materia = this.cercaMateria.getText();
 
         Printer.println("La materia inserita è: " + materia);

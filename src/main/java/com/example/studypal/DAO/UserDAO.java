@@ -132,7 +132,7 @@ public class UserDAO {
 
     public void registraTutorMethod(String email) {
 
-        //crea una tupla nella tabella tutor
+        //crea una tupla nella tabella tutor... DEVE ESSERE INVOCATO SOLO PER I TUTOR!!!
 
         Connection connection;
         PreparedStatement statement = null;

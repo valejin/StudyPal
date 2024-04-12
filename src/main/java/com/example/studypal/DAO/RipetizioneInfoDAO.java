@@ -127,4 +127,44 @@ public class RipetizioneInfoDAO {
             logger.severe("errore in RipetizioneInfoDAO " + e.getMessage());
         }
     }
+
+    public RipetizioneInfoModel caricaInformazioniProfilo(String email){
+
+        //Printer.println("cercando il tutor " + email);
+        RipetizioneInfoModel infoTutor = new RipetizioneInfoModel();
+        Connection connection;
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+
+        String query = "SELECT * FROM tutor WHERE email=?";
+
+        try{
+            connection = Connect.getInstance().getDBConnection();
+            statement = connection.prepareStatement(query);
+            statement.setString(1, email);
+
+            rs = statement.executeQuery();
+
+            //TODO: capire se è veramente necessario.. è possibile che arrivati a questo punto l'email non sia presente nel database? Non credo
+            if(!rs.next()){
+                Printer.println("TUTOR NON PRESENTE");
+                return null;
+            } else {
+
+                infoTutor.setEmail(email);
+                infoTutor.setTariffa(rs.getInt("tariffa"));
+                infoTutor.setMateria(rs.getString("materie"));
+                infoTutor.setOnline(rs.getBoolean("webCam"));
+                infoTutor.setInPresenza(rs.getBoolean("inPresenza"));
+                infoTutor.setGiorni(rs.getString("giorni"));
+                infoTutor.setLuogo(rs.getString("luogo"));
+
+                return infoTutor;
+            }
+
+        } catch (SQLException e){
+            logger.severe("errore in RipetizioneInfoDAO" + e.getMessage());
+        }
+        return infoTutor;
+    }
 }
