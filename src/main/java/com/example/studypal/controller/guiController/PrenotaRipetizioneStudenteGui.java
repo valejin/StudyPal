@@ -3,6 +3,7 @@ package com.example.studypal.controller.guiController;
 import com.example.studypal.bean.BaseInfoBean;
 import com.example.studypal.controller.applicationController.PrenotaRipetizioneController;
 import com.example.studypal.other.Printer;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.w3c.dom.ls.LSOutput;
@@ -63,11 +64,11 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
 
     public void ricercaMethod(){
 
+        //this.giorno.getItems().isEmpty() &&
+        if( !this.tariffaSlider.isValueChanging() &&
+                (!this.inPresenza.isSelected() && !this.online.isSelected()) &&
+                this.luogo.getSelectionModel().isEmpty() && menuButtonIsEmpty(giorno)
 
-        if(this.luogo.getSelectionModel().isEmpty() &&
-                this.giorno.getItems().isEmpty() &&
-                (!this.inPresenza.isSelected() || !this.online.isSelected()) &&
-                !this.tariffaSlider.isValueChanging()
         ){
             //se tutti i campi aggiuntivi sono vuoti, allora la ricerca va fatta solo per materia
             ricercaMateria();
@@ -101,7 +102,22 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
     }
 
 
+    public boolean menuButtonIsEmpty(MenuButton menuButton){
+        ObservableList<MenuItem> items = menuButton.getItems();
+        Boolean answer = true;
 
+        for (MenuItem item : items) {
+            if (item instanceof CheckMenuItem) {
+                CheckMenuItem checkItem = (CheckMenuItem) item;
+                if (checkItem.isSelected()) {
+                    answer = false;
+                    return answer;
+                }
+            }
+        }
+
+        return answer;
+    }
 
 
 
