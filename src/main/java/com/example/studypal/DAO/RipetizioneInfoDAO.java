@@ -93,23 +93,91 @@ public class RipetizioneInfoDAO {
         PreparedStatement statement = null;
         ResultSet rs = null;
 
+
         UserModel userModel = new UserModel();
 
+        String query = "SELECT * FROM tutor where tariffa <= ?";
+
+        if (ripetizioneInfoModel.getLuogo() != null && !ripetizioneInfoModel.getLuogo().isEmpty()) {
+            query += "  AND luogo = ? AND LOWER(materie) LIKE ?";
+
+        }else{
+            query += "AND LOWER(materie) LIKE ?";
+        }
+        if (ripetizioneInfoModel.getInPresenza() != null && ripetizioneInfoModel.getOnline() != null){
+            query += " AND (inPresenza = ? OR webCam = ?)";
+            query += " AND giorni LIKE ?";
+        }else if (ripetizioneInfoModel.getInPresenza() != null) {
+            query += " AND inPresenza = ?";
+            query += " AND giorni LIKE ?";
+        }else if (ripetizioneInfoModel.getOnline() != null) {
+            query += " AND webCam = ?";
+            query += " AND giorni LIKE ?";
+        }
+
         //query per la ricerca di Materia
-        String query = "SELECT * FROM tutor where tariffa <= ? AND luogo = ? AND LOWER(materie) LIKE ? AND inPresenza = ? AND webCam = ? AND giorni LIKE ?";
+        //query = "SELECT * FROM tutor where tariffa <= ? AND luogo = ? AND LOWER(materie) LIKE ? AND inPresenza = ? AND webCam = ? AND giorni LIKE ?";
 
         try {
-
             Connection connection = Connect.getInstance().getDBConnection();
             statement = connection.prepareStatement(query);
 
-            //devo prendere i filtri da model
             statement.setInt(1, ripetizioneInfoModel.getTariffa());
-            statement.setString(2, ripetizioneInfoModel.getLuogo());
-            statement.setString(3, '%' + ripetizioneInfoModel.getMateria() + '%');
-            statement.setBoolean(4, ripetizioneInfoModel.getInPresenza());
-            statement.setBoolean(5, ripetizioneInfoModel.getOnline());
-            statement.setString(6, '%' + ripetizioneInfoModel.getGiorni() + '%');
+
+            if (ripetizioneInfoModel.getLuogo() != null && !ripetizioneInfoModel.getLuogo().isEmpty()) {
+                //devo prendere i filtri da model
+
+                statement.setString(2, ripetizioneInfoModel.getLuogo());
+                statement.setString(3, '%' + ripetizioneInfoModel.getMateria() + '%');
+
+                if (ripetizioneInfoModel.getInPresenza() != null && ripetizioneInfoModel.getOnline() != null) {
+                    statement.setBoolean(4, ripetizioneInfoModel.getInPresenza());
+                    statement.setBoolean(5, ripetizioneInfoModel.getOnline());
+                    statement.setString(6, '%' + ripetizioneInfoModel.getGiorni() + '%');
+                }else if (ripetizioneInfoModel.getInPresenza() != null) {
+                    statement.setBoolean(4, ripetizioneInfoModel.getInPresenza());
+                    statement.setString(5, '%' + ripetizioneInfoModel.getGiorni() + '%');
+                }else if (ripetizioneInfoModel.getOnline() != null) {
+                    statement.setBoolean(4, ripetizioneInfoModel.getOnline());
+                    statement.setString(5, '%' + ripetizioneInfoModel.getGiorni() + '%');
+                }
+
+            }else {
+                statement.setString(2, '%' + ripetizioneInfoModel.getMateria() + '%');
+
+                if (ripetizioneInfoModel.getInPresenza() != null && ripetizioneInfoModel.getOnline() != null) {
+                    statement.setBoolean(3, ripetizioneInfoModel.getInPresenza());
+                    statement.setBoolean(4, ripetizioneInfoModel.getOnline());
+                    statement.setString(5, '%' + ripetizioneInfoModel.getGiorni() + '%');
+                }else if (ripetizioneInfoModel.getInPresenza() != null) {
+                    statement.setBoolean(3, ripetizioneInfoModel.getInPresenza());
+                    statement.setString(4, '%' + ripetizioneInfoModel.getGiorni() + '%');
+                }else if (ripetizioneInfoModel.getOnline() != null) {
+                    statement.setBoolean(3, ripetizioneInfoModel.getOnline());
+                    statement.setString(4, '%' + ripetizioneInfoModel.getGiorni() + '%');
+                }
+
+            }
+
+
+            /*
+            if (ripetizioneInfoModel.getInPresenza() != null && ripetizioneInfoModel.getOnline() != null){
+
+
+                statement.setBoolean(4, ripetizioneInfoModel.getInPresenza());
+                statement.setBoolean(5, ripetizioneInfoModel.getOnline());
+                statement.setString(6, '%' + ripetizioneInfoModel.getGiorni() + '%');
+            }else{
+
+                statement.setInt(1, ripetizioneInfoModel.getTariffa());
+
+                statement.setString(2, '%' + ripetizioneInfoModel.getMateria() + '%');
+                statement.setBoolean(3, ripetizioneInfoModel.getInPresenza());
+                statement.setBoolean(4, ripetizioneInfoModel.getOnline());
+                statement.setString(5, '%' + ripetizioneInfoModel.getGiorni() + '%');
+            }
+
+             */
 
 
             rs = statement.executeQuery();
