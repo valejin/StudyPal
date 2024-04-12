@@ -118,6 +118,11 @@ public class RipetizioneInfoDAO {
         //query per la ricerca di Materia
         //query = "SELECT * FROM tutor where tariffa <= ? AND luogo = ? AND LOWER(materie) LIKE ? AND inPresenza = ? AND webCam = ? AND giorni LIKE ?";
 
+        /*
+        TODO: aggiustare    luogo    --> se non imposto niente cerca tutor che hanno luogo NULL e non li trova!
+                            modalità --> (risolto) se seleziono in Presenza non mi vengono restituiti tutor che abbiano disponibilità sia in presenza che online
+                            slider
+        */
         try {
             Connection connection = Connect.getInstance().getDBConnection();
             statement = connection.prepareStatement(query);

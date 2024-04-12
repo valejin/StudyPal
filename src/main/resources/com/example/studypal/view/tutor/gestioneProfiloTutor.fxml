@@ -64,14 +64,14 @@
                 </Button>
             </children>
          <effect>
-            <DropShadow>
+            <DropShadow height="25.0" radius="12.0" width="25.0">
                <color>
-                  <Color red="0.6290000081062317" green="0.6922474503517151" blue="0.7400000095367432" />
+                  <Color red="0.5137255191802979" green="0.6823529601097107" blue="0.7490196228027344" />
                </color>
             </DropShadow>
          </effect>
         </VBox>
-        <Text fx:id="titolo" fill="#000000ac" layoutX="363.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestione Profilo" textAlignment="CENTER" wrappingWidth="320.71179151535034" AnchorPane.leftAnchor="363.0" AnchorPane.rightAnchor="183.39999999999998" AnchorPane.topAnchor="43.16796875">
+        <Text fx:id="titolo" fill="#000000ac" layoutX="363.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestione Profilo" textAlignment="CENTER" wrappingWidth="320.71179151535034" AnchorPane.leftAnchor="363.0" AnchorPane.rightAnchor="183.4000000000001" AnchorPane.topAnchor="29.16796875">
             <font>
                 <Font size="32.0" />
             </font>
@@ -167,5 +167,6 @@
             </Label>
          </children>
       </AnchorPane>
+      <Text layoutX="379.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifica le informazioni pubbliche del tuo profilo" />
     </children>
 </AnchorPane>
