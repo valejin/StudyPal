@@ -6,14 +6,3 @@
 .custom-button:hover {
     -fx-background-color: #658863;
 }
-
-.selected-button {
-    -fx-background-color: rgb(132, 168, 130);
-    -fx-text-fill: #dedfdd;
-    -fx-border-color: #83aebf; /* Colore del bordo */
-    -fx-border-width: 2px; /* Spessore del bordo */
-    -fx-border-style: solid; /* Stile del bordo */}
-
-.selected-button:hover {
-    -fx-background-color: #658863;
-}

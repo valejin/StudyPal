@@ -65,10 +65,12 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
         tariffaSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             tariffaValue.setText(Integer.toString(newValue.intValue()) + "€");
         });
+        giorniMenu.setText(infoCorrentiProfilo.getGiorni());
+
         for (MenuItem item : giorniMenu.getItems()) {
             if (item instanceof CheckMenuItem) {
                 CheckMenuItem checkItem = (CheckMenuItem) item;
-                if (infoCorrentiProfilo.getGiorni().contains(checkItem.getText())) {
+                if (infoCorrentiProfilo.getGiorni()!=null && infoCorrentiProfilo.getGiorni().contains(checkItem.getText())) {
                     checkItem.setSelected(true);
                 }
             }
