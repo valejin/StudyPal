@@ -141,7 +141,7 @@
                         <Insets top="40.0" />
                      </VBox.margin>
                   </Text>
-                  <Slider fx:id="tariffaSlider" max="200.0" min="5.0" prefHeight="14.0" prefWidth="185.0">
+                  <Slider fx:id="tariffaSlider" majorTickUnit="5.0" max="50.0" min="5.0" prefHeight="14.0" prefWidth="185.0">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>

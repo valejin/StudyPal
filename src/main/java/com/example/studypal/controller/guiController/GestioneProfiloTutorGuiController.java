@@ -91,8 +91,8 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
 
         //tariffa slider--------------------------------------------------------------------
         tariffaSlider.setBlockIncrement(1);
-        tariffaSlider.setMin(0);
-        tariffaSlider.setMax(100);
+        tariffaSlider.setMin(5);
+        tariffaSlider.setMax(50);
         tariffaSlider.setShowTickLabels(true);
         tariffaSlider.setShowTickMarks(true);
         tariffaSlider.valueProperty().addListener((observable, oldValue, newValue) -> {

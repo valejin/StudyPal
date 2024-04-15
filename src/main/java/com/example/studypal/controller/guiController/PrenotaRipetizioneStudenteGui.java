@@ -43,8 +43,8 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
         // Imposta il valore minimo e massimo del Slider
 
         tariffaSlider.setMin(5);
-        tariffaSlider.setMax(40);
-        tariffaSlider.setValue(40); // Imposta un valore predefinito(minimo)
+        tariffaSlider.setMax(50);
+        tariffaSlider.setValue(50); // Imposta un valore predefinito(minimo)
         tariffaSlider.setShowTickLabels(true);
         tariffaSlider.setShowTickMarks(true);
 
@@ -73,7 +73,7 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
     public void ricercaMethod(){
 
         //this.giorno.getItems().isEmpty() &&
-        if( !this.tariffaSlider.isValueChanging() &&
+        if( this.tariffaSlider.getValue()==50 &&
                 (!this.inPresenza.isSelected() && !this.online.isSelected()) &&
                 this.luogo.getSelectionModel().isEmpty() && menuButtonIsEmpty(giorno)
 
