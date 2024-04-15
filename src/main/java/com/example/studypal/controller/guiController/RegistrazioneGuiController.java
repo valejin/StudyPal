@@ -64,7 +64,7 @@ public class RegistrazioneGuiController {
 
             //controllo sulle password
             if (!confermaPassword.equals(userPassword)){
-                campiError.setText("Password non corrispondenti.");
+                campiError.setText("Password non corrispondenti");
                 return;
             }
 
@@ -77,7 +77,7 @@ public class RegistrazioneGuiController {
             }
         }
         else{
-            campiError.setText("Campi obbligatori.");
+            campiError.setText("Campi obbligatori");
             return;
         }
 
@@ -102,7 +102,7 @@ public class RegistrazioneGuiController {
 
         }catch(EmailAlreadyInUseException e){
             Printer.errorPrint("controller applicativo: l'email è già in uso");
-            campiError.setText("Email già usato.");
+            campiError.setText("Email già usato");
 
         }
     }

@@ -99,37 +99,33 @@ public class RipetizioneInfoDAO {
         String query = "SELECT * FROM tutor where tariffa <= ?";
 
         if (ripetizioneInfoModel.getLuogo() != null && !ripetizioneInfoModel.getLuogo().isEmpty()) {
-            System.out.println("luogo selezionato");
+            Printer.println("luogo selezionato");
             query += "  AND luogo = ? AND LOWER(materie) LIKE ?";
 
         }else{
-            System.out.println("luogo non selezionato");
+            Printer.println("luogo non selezionato");
             query += " AND LOWER(materie) LIKE ?"; //se non ci è stato dato un luogo saltiamo il primo filtro
         }
         if (ripetizioneInfoModel.getInPresenza()  && ripetizioneInfoModel.getOnline()){
-            System.out.println("si cercano sia in presenza sia online");
+            Printer.println("si cercano sia in presenza sia online");
             query += " AND giorni LIKE ?";
         }else if (ripetizioneInfoModel.getInPresenza()) {
-            System.out.println("si cercano ripetizioni solo in presenza");
+            Printer.println("si cercano ripetizioni solo in presenza");
             query += " AND inPresenza = ?";
             query += " AND giorni LIKE ?";
         }else if (ripetizioneInfoModel.getOnline()) {
-            System.out.println("si cercano ripetizioni solo online");
+            Printer.println("si cercano ripetizioni solo online");
             query += " AND webCam = ?";
             query += " AND giorni LIKE ?";
         } else {
-            System.out.println("non ci interessa se online o in presenza");
+            Printer.println("non ci interessa se online o in presenza");
             query += " AND giorni LIKE ?";
         }
 
         //query per la ricerca di Materia
         //query = "SELECT * FROM tutor where tariffa <= ? AND luogo = ? AND LOWER(materie) LIKE ? AND inPresenza = ? AND webCam = ? AND giorni LIKE ?";
 
-        /*
-        TODO: aggiustare    luogo    --> se non imposto niente cerca tutor che hanno luogo NULL e non li trova!
-                            modalità --> (risolto) se seleziono in Presenza non mi vengono restituiti tutor che abbiano disponibilità sia in presenza che online
-                            slider
-        */
+
         try {
             Connection connection = Connect.getInstance().getDBConnection();
             statement = connection.prepareStatement(query);
@@ -160,7 +156,7 @@ public class RipetizioneInfoDAO {
                 }
 
             }else {
-                System.out.println("luogo non selezionato");
+                Printer.println("luogo non selezionato");
                 statement.setString(2, '%' + ripetizioneInfoModel.getMateria() + '%');
 
                 if (ripetizioneInfoModel.getInPresenza() && ripetizioneInfoModel.getOnline()) {
@@ -187,27 +183,6 @@ public class RipetizioneInfoDAO {
             }
 
 
-            /*
-            if (ripetizioneInfoModel.getInPresenza() != null && ripetizioneInfoModel.getOnline() != null){
-
-
-                statement.setBoolean(4, ripetizioneInfoModel.getInPresenza());
-                statement.setBoolean(5, ripetizioneInfoModel.getOnline());
-                statement.setString(6, '%' + ripetizioneInfoModel.getGiorni() + '%');
-            }else{
-
-                statement.setInt(1, ripetizioneInfoModel.getTariffa());
-
-                statement.setString(2, '%' + ripetizioneInfoModel.getMateria() + '%');
-                statement.setBoolean(3, ripetizioneInfoModel.getInPresenza());
-                statement.setBoolean(4, ripetizioneInfoModel.getOnline());
-                statement.setString(5, '%' + ripetizioneInfoModel.getGiorni() + '%');
-            }
-
-             */
-
-            //debug
-            String statementSQL = statement.unwrap(PreparedStatement.class).toString();
 
             rs = statement.executeQuery();
             System.out.println("query preparato");

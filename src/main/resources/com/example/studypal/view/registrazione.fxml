@@ -29,7 +29,7 @@
             <Text layoutX="324.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
             <Text layoutX="324.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Conferma password" />
             <Button fx:id="confermaButton" layoutX="213.0" layoutY="242.0" mnemonicParsing="false" onAction="#registrazioneMethod" text="Conferma" />
-            <Label fx:id="campiError" layoutX="179.0" layoutY="14.0" prefHeight="17.0" prefWidth="96.0" textFill="#b90303" />
+            <Label fx:id="campiError" layoutX="210.0" layoutY="10.0" prefHeight="17.0" prefWidth="149.0" textAlignment="CENTER" textFill="#b90303" />
             <PasswordField fx:id="passwordField" layoutX="320.0" layoutY="56.0" />
             <PasswordField fx:id="confermaPasswordField" layoutX="320.0" layoutY="117.0" />
          </children>

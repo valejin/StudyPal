@@ -28,6 +28,11 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
     private CheckBox inPresenza;
     @FXML
     private CheckBox online;
+    @FXML
+    private Label campiError;
+    @FXML
+    private Label luogoError;
+
 
 
     //eredita dal padre un attributo LoggedInUserBean
@@ -95,10 +100,19 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
 
         String materia;
 
-        //TODO: controllo se il campo isEmpty
         materia = this.cercaMateria.getText();
 
+        if(this.cercaMateria.getText().isEmpty()){
+            Printer.println("Non hai inserito la materia");
+            campiError.setText("Campo obbligatorio");
+            return;
+        }else{
+            campiError.setVisible(false);
+        }
+
+
         Printer.println("La materia inserita è: " + materia);
+
 
         //prendo un BEAN base e inserisco info
         BaseInfoBean baseInfoBean = new BaseInfoBean(materia);
@@ -147,6 +161,16 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
         //prendo i dati inseriti dall'utente
 
         materia = this.cercaMateria.getText();
+
+        if(this.cercaMateria.getText().isEmpty()){
+            Printer.println("Non hai inserito la materia");
+            campiError.setText("Campo obbligatorio");
+            return;
+        }else{
+            campiError.setVisible(false);
+        }
+
+
         Printer.println("   -La materia inserita è: " + materia);
 
 
@@ -158,6 +182,13 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
         if(this.inPresenza.isSelected()) {
             inPresenza = true;
             Printer.println("in presenza");
+            if(this.luogo.getSelectionModel().isEmpty()){
+                Printer.errorPrint("Seleziona un luogo");
+                luogoError.setText("Seleziona un luogo");
+                return;
+            }else{
+                luogoError.setVisible(false);
+            }
         }
 
         if(this.online.isSelected()) {
