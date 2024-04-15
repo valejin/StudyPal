@@ -7,8 +7,15 @@ import com.example.studypal.controller.applicationController.PrenotaRipetizioneC
 import com.example.studypal.other.Printer;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import org.w3c.dom.ls.LSOutput;
+
+import java.io.IOException;
+import java.util.logging.Logger;
 
 public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
 
@@ -34,6 +41,8 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
     private Label luogoError;
 
 
+    private static final Logger logger = Logger.getLogger(PrenotaRipetizioneStudenteGui.class.getName());
+
 
     //eredita dal padre un attributo LoggedInUserBean
     public PrenotaRipetizioneStudenteGui(LoggedInUserBean user) {this.user = user;}
@@ -42,11 +51,8 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
 
     @FXML
     public void initialize() {
-        //materia textfield ----------------------------------------------------------------------
-
 
         // Imposta il valore minimo e massimo del Slider
-
         tariffaSlider.setMin(5);
         tariffaSlider.setMax(50);
         tariffaSlider.setValue(50); // Imposta un valore predefinito(minimo)
@@ -74,7 +80,7 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
 
     }
 
-
+    /*----------------------------------------------------------------------------------------------------------------*/
     public void ricercaMethod(){
 
         //this.giorno.getItems().isEmpty() &&
@@ -91,8 +97,12 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
             ricercaConFiltri();
         }
 
+        System.out.println("ricerca completata");
+        caricaRisultati();
+
     }
 
+    /*----------------------------------------------------------------------------------------------------------------*/
     public void ricercaMateria(){
         /*
         prende la materia da BEAN
@@ -124,7 +134,7 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
 
     }
 
-
+    /*----------------------------------------------------------------------------------------------------------------*/
     public boolean menuButtonIsEmpty(MenuButton menuButton){
         ObservableList<MenuItem> items = menuButton.getItems();
         Boolean answer = true;
@@ -143,7 +153,7 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
     }
 
 
-
+    /*----------------------------------------------------------------------------------------------------------------*/
     public void ricercaConFiltri(){
 
         /*
@@ -175,7 +185,11 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
 
 
         luogo = (String)this.luogo.getValue();
-        Printer.println("   -Luogo: " + luogo);
+        if (this.luogo.getValue() == null) {
+            Printer.println("   -Luogo:");
+        } else {
+            Printer.println("   -Luogo: " + luogo);
+        }
 
         //checkBox: modalità di lezione ------------------------------------------------
         Printer.print("   -Modalità di lezione: ");
@@ -196,6 +210,10 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
             Printer.println("online");
         }
 
+        if(!this.inPresenza.isSelected() && !this.online.isSelected()) {
+            Printer.println(" ");
+        }
+
         //menuButton di giono-------------------------------------------------------
         ObservableList<MenuItem> items = giorno.getItems();
         StringBuilder selectedValues = new StringBuilder();
@@ -213,9 +231,9 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
         giorni = selectedValues.toString();
         Printer.println("   -Gioni selezionati: " + giorni);
 
-
         //tariffaSlider---------------------------------------------------
         tariffa = (int) Math.round(this.tariffaSlider.getValue());
+        Printer.println("   -Tariffa massima:"+ tariffa);
 
         //istanzio un RipetizioneInfoBean
         RipetizioneInfoBean ripetizioneInfoBean = new RipetizioneInfoBean(materia, inPresenza, online, luogo, giorni, tariffa, email);
@@ -231,10 +249,20 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
         //istanzio un controller applicativo e gli passo il Bean contenente i dati per la ricerca con filtri
         PrenotaRipetizioneController prenotaRipetizioneController = new PrenotaRipetizioneController();
         prenotaRipetizioneController.prenotaRipetizioneMethod(ripetizioneInfoBean);
-
-
-
-
     }
 
+
+    /*----------------------------------------------------------------------------------------------------------------*/
+    public void caricaRisultati () {
+        try {
+            FXMLLoader loader = new FXMLLoader(PrenotaRipetizioneStudenteGui.class.getResource("/com/example/studypal/view/studente/risultatoRicerca.fxml"));
+            loader.setControllerFactory(c -> new RisultatiRicercaGuiController(user));
+            Parent parent = loader.load();
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) cercaMateria.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            logger.severe("errore in PrenotaRipetizioneStudenteGui " + e.getMessage());
+        }
+    }
 }

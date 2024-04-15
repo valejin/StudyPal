@@ -57,7 +57,7 @@ public class RipetizioneInfoDAO {
             statement.setString(1, '%' + baseInfoModel.getMateria() + '%');
 
             rs = statement.executeQuery();
-            System.out.println("query preparato");
+            //System.out.println("query preparato");
 
 
 
@@ -130,7 +130,7 @@ public class RipetizioneInfoDAO {
             Connection connection = Connect.getInstance().getDBConnection();
             statement = connection.prepareStatement(query);
 
-            System.out.println(ripetizioneInfoModel.getTariffa());
+            //System.out.println(ripetizioneInfoModel.getTariffa());
             statement.setInt(1, ripetizioneInfoModel.getTariffa());
 
             if (ripetizioneInfoModel.getLuogo() != null && !ripetizioneInfoModel.getLuogo().isEmpty()) {
@@ -160,23 +160,23 @@ public class RipetizioneInfoDAO {
                 statement.setString(2, '%' + ripetizioneInfoModel.getMateria() + '%');
 
                 if (ripetizioneInfoModel.getInPresenza() && ripetizioneInfoModel.getOnline()) {
-                    System.out.println("online e in presenza");
+                    //System.out.println("online e in presenza");
                     statement.setBoolean(3, ripetizioneInfoModel.getInPresenza());
                     statement.setBoolean(4, ripetizioneInfoModel.getOnline());
                     statement.setString(5, '%' + ripetizioneInfoModel.getGiorni() + '%');
                 }else if (ripetizioneInfoModel.getInPresenza()) {
-                    System.out.println("solo in presenza");
+                    //System.out.println("solo in presenza");
                     statement.setBoolean(3, ripetizioneInfoModel.getInPresenza());
                     statement.setString(4, '%' + ripetizioneInfoModel.getGiorni() + '%');
                     String statementSQL = statement.unwrap(PreparedStatement.class).toString();
                     System.out.println(statementSQL);
 
                 }else if (ripetizioneInfoModel.getOnline()) {
-                    System.out.println("solo online");
+                    //System.out.println("solo online");
                     statement.setBoolean(3, ripetizioneInfoModel.getOnline());
                     statement.setString(4, '%' + ripetizioneInfoModel.getGiorni() + '%');
                 } else {
-                    System.out.println("non ci interessa");
+                    //System.out.println("non ci interessa");
                     statement.setString(3, '%' + ripetizioneInfoModel.getGiorni() + '%');
                 }
                 String statementSQL = statement.unwrap(PreparedStatement.class).toString();
@@ -202,10 +202,10 @@ public class RipetizioneInfoDAO {
                 Printer.println("La materia che stai cercando è: " + ripetizioneInfoModel.getMateria());
 
                 //stampo email di Tutor che soddisfanno la query
-                Printer.println("Email tutor che soddisfa la ricerca: ");
+                Printer.println("Email tutor che soddisfano la ricerca: ");
                 do {
                     userModel.setEmail(rs.getString("email"));
-                    Printer.println(userModel.getEmail());
+                    Printer.println("   " + userModel.getEmail());
                 } while (rs.next());
 
             } else {
