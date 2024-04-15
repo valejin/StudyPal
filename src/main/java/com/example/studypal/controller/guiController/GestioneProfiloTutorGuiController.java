@@ -51,6 +51,7 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
         /*
         TODO: controllare se i campi di infoCorrentiProfilo sono tutti selezionati e gestire il caso..
               perché dovrei voler modificare i miei dati e lasciare alcuni campi vuoti???
+              Magari se voglio dare ripetizioni esclusivamente online e non voglio inserire un luogo(?)
         */
 
         RipetizioneInfoModel infoCorrentiProfilo = new RipetizioneInfoModel();

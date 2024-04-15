@@ -44,7 +44,7 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
 
         tariffaSlider.setMin(5);
         tariffaSlider.setMax(40);
-        tariffaSlider.setValue(5); // Imposta un valore predefinito(minimo)
+        tariffaSlider.setValue(40); // Imposta un valore predefinito(minimo)
         tariffaSlider.setShowTickLabels(true);
         tariffaSlider.setShowTickMarks(true);
 
@@ -147,14 +147,14 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
         //prendo i dati inseriti dall'utente
 
         materia = this.cercaMateria.getText();
-        Printer.println("La materia inserita è: " + materia);
+        Printer.println("   -La materia inserita è: " + materia);
 
 
         luogo = (String)this.luogo.getValue();
-        Printer.println("Luogo: " + luogo);
+        Printer.println("   -Luogo: " + luogo);
 
         //checkBox: modalità di lezione ------------------------------------------------
-        Printer.println("Modalità di lezione: ");
+        Printer.print("   -Modalità di lezione: ");
         if(this.inPresenza.isSelected()) {
             inPresenza = true;
             Printer.println("in presenza");
@@ -180,7 +180,7 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
             }
         }
         giorni = selectedValues.toString();
-        Printer.println("Gioni selezionati: " + giorni);
+        Printer.println("   -Gioni selezionati: " + giorni);
 
 
         //tariffaSlider---------------------------------------------------
