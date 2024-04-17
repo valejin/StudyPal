@@ -58,15 +58,17 @@ public class RipetizioneInfoModel extends BaseInfoModel {
     public void setEmail(String email) { this.email = email; }
 
 
+    //cotruttore di default
     public RipetizioneInfoModel(){ };
 
     private String nome;
     private String cognome;
+    private String materie;
     //creo un costruttore non di default, con 2 attributi aggiuntivi (nome, cognome)
-    public RipetizioneInfoModel(String nome, String cognome, String materia, Boolean inPresenza,Boolean online, String luogo, String giorni, Integer tariffa, String email){
+    public RipetizioneInfoModel(String nome, String cognome, String materie, Boolean inPresenza,Boolean online, String luogo, String giorni, Integer tariffa, String email){
         this.nome = nome;
         this.cognome = cognome;
-        super(materia);
+        this.materie = super.materia;
         this.inPresenza = inPresenza;
         this.online = online;
         this.luogo = luogo;

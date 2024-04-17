@@ -8,7 +8,7 @@ public class BaseInfoModel {
     Le sue istanze vengono popolate dai controller applicativi e passate al ripetizioneDAO
     */
 
-    private String materia;
+    protected String materia;
 
     public String getMateria() {
         return materia;
