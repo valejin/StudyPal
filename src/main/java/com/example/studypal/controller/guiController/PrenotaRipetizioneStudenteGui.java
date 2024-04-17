@@ -229,7 +229,7 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
             }
         }
         giorni = selectedValues.toString();
-        Printer.println("   -Gioni selezionati: " + giorni);
+        Printer.println("   -Giorni selezionati: " + giorni);
 
         //tariffaSlider---------------------------------------------------
         tariffa = (int) Math.round(this.tariffaSlider.getValue());
