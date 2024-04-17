@@ -83,46 +83,38 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
     /*----------------------------------------------------------------------------------------------------------------*/
     public void ricercaMethod(){
 
-        //this.giorno.getItems().isEmpty() &&
-        if( this.tariffaSlider.getValue()==50 &&
-                (!this.inPresenza.isSelected() && !this.online.isSelected()) &&
-                this.luogo.getSelectionModel().isEmpty() && menuButtonIsEmpty(giorno)
+        if(this.cercaMateria.getText().isEmpty()) {
+            Printer.println("Non hai inserito la materia");
+            campiError.setText("Campo obbligatorio");
 
-        ){
-            //se tutti i campi aggiuntivi sono vuoti, allora la ricerca va fatta solo per materia
-            ricercaMateria();
-        }else{
-            //altrimenti la ricerca avviene anche con i filtri aggiunti
-            Printer.println("fai ricerca con filtri");
-            ricercaConFiltri();
+        } else {
+            //campiError.setVisible(false);
+            //this.giorno.getItems().isEmpty() &&
+            if (this.tariffaSlider.getValue() == 50 &&
+                    (!this.inPresenza.isSelected() && !this.online.isSelected()) &&
+                    this.luogo.getSelectionModel().isEmpty() && menuButtonIsEmpty(giorno)
+            ) {
+                //se tutti i campi aggiuntivi sono vuoti, allora la ricerca va fatta solo per materia
+                ricercaMateria();
+                caricaRisultati();
+            } else {
+                //altrimenti la ricerca avviene anche con i filtri aggiunti
+                Printer.println("fai ricerca con filtri");
+                ricercaConFiltri();
+                caricaRisultati();
+            }
+
+            System.out.println("ricerca completata");
+            //caricaRisultati();
         }
-
-        System.out.println("ricerca completata");
-        caricaRisultati();
-
     }
 
     /*----------------------------------------------------------------------------------------------------------------*/
     public void ricercaMateria(){
-        /*
-        prende la materia da BEAN
-         */
 
-        String materia;
-
-        materia = this.cercaMateria.getText();
-
-        if(this.cercaMateria.getText().isEmpty()){
-            Printer.println("Non hai inserito la materia");
-            campiError.setText("Campo obbligatorio");
-            return;
-        }else{
-            campiError.setVisible(false);
-        }
-
+        String materia = this.cercaMateria.getText();
 
         Printer.println("La materia inserita è: " + materia);
-
 
         //prendo un BEAN base e inserisco info
         BaseInfoBean baseInfoBean = new BaseInfoBean(materia);

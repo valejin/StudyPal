@@ -13,6 +13,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class RipetizioneInfoDAO {
@@ -27,9 +29,12 @@ public class RipetizioneInfoDAO {
      */
 
 
+    //dichiaro una lista di ripetizioneInfoModel in cui appendo i model popolati con le informazioni del result set della query di ricerca
+    List<RipetizioneInfoModel> risultatiRicerca = new ArrayList<>();
+
     private static final Logger logger = Logger.getLogger(UserDAO.class.getName());
 
-    public UserModel ricercaMateria(BaseInfoModel baseInfoModel) throws MateriaNonTrovataException {
+    public List<RipetizioneInfoModel> ricercaMateria(BaseInfoModel baseInfoModel) throws MateriaNonTrovataException {
         /*
         metodo per la ricerca di ripetizioni, restituisce tutti i tutor e rispettive informazioni di ripetizioni disponibiili
         applica i parametri di ricerca ricevuti tramite istanza di RipetizioneInfoModel
@@ -43,7 +48,7 @@ public class RipetizioneInfoDAO {
 
         System.out.println("Ricerca materia: ");
 
-        UserModel userModel = new UserModel();
+       // UserModel userModel = new UserModel();
 
         //query per la ricerca di Materia
         String query = "SELECT * FROM tutor where LOWER(materie) LIKE ?";
@@ -69,8 +74,25 @@ public class RipetizioneInfoDAO {
                 //stampo email di Tutor che soddisfanno la query
                 Printer.println("Email tutor che soddisfano la ricerca: ");
                 do {
-                    userModel.setEmail(rs.getString("email"));
-                    Printer.println("   " + userModel.getEmail());
+                    RipetizioneInfoModel risultatoCorrente = new RipetizioneInfoModel(rs.getString("nome"), rs.getString("cognome"),
+                            rs.getString("materie"), rs.getBoolean("inPresenza"),
+                            rs.getBoolean("webcam"), rs.getString("luogo"),
+                            rs.getString("giorni"), rs.getInt("tariffa"), rs.getString("email"));
+
+                    //DEBUG
+                    System.out.println("    nome: " + risultatoCorrente.getNome());
+                    System.out.println("    cognome: " + risultatoCorrente.getCognome());
+                    System.out.println("    materie: " + risultatoCorrente.getMaterie());
+                    System.out.println("    lezioni in presenza: " + risultatoCorrente.getInPresenza());
+                    System.out.println("    lezioni online: " + risultatoCorrente.getOnline());
+                    System.out.println("    luogo: " + risultatoCorrente.getLuogo());
+                    System.out.println("    giorni disponibili: " + risultatoCorrente.getGiorni());
+                    System.out.println("    tariffa: " + risultatoCorrente.getTariffa() + "€/h");
+                    System.out.println("    email: " + risultatoCorrente.getEmail());
+                    System.out.println("------------------------------------------------");
+                    risultatiRicerca.add(risultatoCorrente);
+                  /*  userModel.setEmail(rs.getString("email"));
+                    Printer.println("   " + userModel.getEmail());*/
                 }while (rs.next());
 
             }else{
@@ -84,11 +106,11 @@ public class RipetizioneInfoDAO {
         }
 
 
-        return userModel;
+        return risultatiRicerca;
     }
 
 
-    public void ricercaFiltri(RipetizioneInfoModel ripetizioneInfoModel) throws MateriaNonTrovataException{
+    public List<RipetizioneInfoModel> ricercaFiltri(RipetizioneInfoModel ripetizioneInfoModel) throws MateriaNonTrovataException{
 
         PreparedStatement statement = null;
         ResultSet rs = null;
@@ -204,19 +226,41 @@ public class RipetizioneInfoDAO {
                 //stampo email di Tutor che soddisfanno la query
                 Printer.println("Email tutor che soddisfano la ricerca: ");
                 do {
+                    /*
                     userModel.setEmail(rs.getString("email"));
                     Printer.println("   " + userModel.getEmail());
+                    */
+
+                    RipetizioneInfoModel risultatoCorrente = new RipetizioneInfoModel(rs.getString("nome"), rs.getString("cognome"),
+                            rs.getString("materie"), rs.getBoolean("inPresenza"),
+                            rs.getBoolean("webcam"), rs.getString("luogo"),
+                            rs.getString("giorni"), rs.getInt("tariffa"), rs.getString("email"));
+
+                    //DEBUG
+                    System.out.println("    nome: " + risultatoCorrente.getNome());
+                    System.out.println("    cognome: " + risultatoCorrente.getCognome());
+                    System.out.println("    materie: " + risultatoCorrente.getMaterie());
+                    System.out.println("    lezioni in presenza: " + risultatoCorrente.getInPresenza());
+                    System.out.println("    lezioni online: " + risultatoCorrente.getOnline());
+                    System.out.println("    luogo: " + risultatoCorrente.getLuogo());
+                    System.out.println("    giorni disponibili: " + risultatoCorrente.getGiorni());
+                    System.out.println("    tariffa: " + risultatoCorrente.getTariffa() + "€/h");
+                    System.out.println("    email: " + risultatoCorrente.getEmail());
+                    System.out.println("------------------------------------------------");
+                    risultatiRicerca.add(risultatoCorrente);
+
                 } while (rs.next());
 
             } else {
                 throw new MateriaNonTrovataException();
+
             }
 
         }catch(SQLException e) {
             logger.severe("errore in userDAO " + e.getMessage());
         }
 
-
+    return risultatiRicerca;
     }
 
 

@@ -138,7 +138,7 @@ public class UserDAO {
         PreparedStatement statement = null;
         ResultSet rs = null;
 
-        String query = "INSERT INTO tutor (email, tariffa, luogo, materie, inPresenza, webCam, giorni) VALUES (?, NULL, NULL, NULL, NULL, NULL, NULL)";
+        String query = "INSERT INTO tutor (email, tariffa, luogo, materie, inPresenza, webCam, giorni, nome, cognome) VALUES (?, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)";
 
         try{
             connection = Connect.getInstance().getDBConnection();

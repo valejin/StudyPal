@@ -64,11 +64,13 @@ public class RipetizioneInfoModel extends BaseInfoModel {
     private String nome;
     private String cognome;
     private String materie;
-    //creo un costruttore non di default, con 2 attributi aggiuntivi (nome, cognome)
-    public RipetizioneInfoModel(String nome, String cognome, String materie, Boolean inPresenza,Boolean online, String luogo, String giorni, Integer tariffa, String email){
+
+    //creo un costruttore non di default, con 2 attributi aggiuntivi (nome, cognome) - necessario per risultati della ricerca
+    public RipetizioneInfoModel(String nome, String cognome, String materie, Boolean inPresenza, Boolean online, String luogo, String giorni, Integer tariffa, String email){
         this.nome = nome;
         this.cognome = cognome;
-        this.materie = super.materia;
+       // this.materie = super.materia;
+        this.materie = materie;
         this.inPresenza = inPresenza;
         this.online = online;
         this.luogo = luogo;
@@ -79,4 +81,27 @@ public class RipetizioneInfoModel extends BaseInfoModel {
     }
 
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCognome() {
+        return cognome;
+    }
+
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
+    }
+
+    public String getMaterie() {
+        return materie;
+    }
+
+    public void setMaterie(String materie) {
+        this.materie = materie;
+    }
 }
