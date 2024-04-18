@@ -3,16 +3,13 @@ package com.example.studypal.controller.guiController;
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.RipetizioneInfoBean;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
+import javafx.util.Callback;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,7 +51,32 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
         // Aggiungi gli elementi alla TableView
         risultatiTable.getItems().addAll(tutorList);
 
+        // Imposta la factory per la colonna "Prenota"
+        prenota.setCellFactory(new Callback<TableColumn<RipetizioneInfoBean, Button>, TableCell<RipetizioneInfoBean, Button>>() {
+            @Override
+            public TableCell<RipetizioneInfoBean, Button> call(TableColumn<RipetizioneInfoBean, Button> param) {
+                return new TableCell<RipetizioneInfoBean, Button>() {
+                    final Button btn = new Button("Prenota");
 
+                    {
+                        btn.setOnAction(event -> {
+                            RipetizioneInfoBean tutor = getTableView().getItems().get(getIndex());
+                            scegliTutor(tutor);
+                        });
+                    }
+
+                    @Override
+                    protected void updateItem(Button item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btn);
+                        }
+                    }
+                };
+            }
+        });
 
 
 
@@ -69,7 +91,7 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
         this.user = user;
     }
 
-    public void scegliTutor() {
+    public void scegliTutor(RipetizioneInfoBean tutor) {
         System.out.println("ho scelto il tutor");
     }
 }
