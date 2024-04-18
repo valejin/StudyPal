@@ -9,8 +9,11 @@ public class RipetizioneInfoBean extends BaseInfoBean{
     private String luogo;
     private String giorni;
     private Integer tariffa;
-
     private String email;
+    private String nome;
+    private String cognome;
+    private String materie;
+
 
     //qui contiene tutte le informazioni per la ricerca con filtro, in caso di Prenota Ripetizione
     public RipetizioneInfoBean(String materia, Boolean inPresenza, Boolean online, String luogo, String giorni, Integer tariffa, String email){
@@ -22,6 +25,19 @@ public class RipetizioneInfoBean extends BaseInfoBean{
         this.tariffa = tariffa;
         this.email = email;
 
+    }
+
+    public RipetizioneInfoBean(String nome, String cognome, String materia, Boolean inPresenza, Boolean online, String luogo, String giorni, Integer tariffa, String email){
+        super();
+        this.inPresenza = inPresenza;
+        this.online = online;
+        this.luogo = luogo;
+        this.giorni = giorni;
+        this.tariffa = tariffa;
+        this.email = email;
+        this.nome = nome;
+        this.cognome = cognome;
+        this.materie = materia;
     }
 
     public Integer getTariffa() {
@@ -73,4 +89,26 @@ public class RipetizioneInfoBean extends BaseInfoBean{
         this.email = email;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    public String getCognome() {
+        return cognome;
+    }
+
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
+    }
+
+    public String getMaterie() {
+        return materie;
+    }
+
+    public void setMaterie(String materie) {
+        this.materie = materie;
+    }
 }

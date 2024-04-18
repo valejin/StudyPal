@@ -91,7 +91,8 @@ public class RipetizioneInfoDAO {
                     System.out.println("    email: " + risultatoCorrente.getEmail());
                     System.out.println("------------------------------------------------");
                     risultatiRicerca.add(risultatoCorrente);
-                  /*  userModel.setEmail(rs.getString("email"));
+
+                    /*  userModel.setEmail(rs.getString("email"));
                     Printer.println("   " + userModel.getEmail());*/
                 }while (rs.next());
 
@@ -236,7 +237,7 @@ public class RipetizioneInfoDAO {
                             rs.getBoolean("webcam"), rs.getString("luogo"),
                             rs.getString("giorni"), rs.getInt("tariffa"), rs.getString("email"));
 
-                    //DEBUG
+                    /*DEBUG
                     System.out.println("    nome: " + risultatoCorrente.getNome());
                     System.out.println("    cognome: " + risultatoCorrente.getCognome());
                     System.out.println("    materie: " + risultatoCorrente.getMaterie());
@@ -247,6 +248,8 @@ public class RipetizioneInfoDAO {
                     System.out.println("    tariffa: " + risultatoCorrente.getTariffa() + "€/h");
                     System.out.println("    email: " + risultatoCorrente.getEmail());
                     System.out.println("------------------------------------------------");
+                     */
+
                     risultatiRicerca.add(risultatoCorrente);
 
                 } while (rs.next());

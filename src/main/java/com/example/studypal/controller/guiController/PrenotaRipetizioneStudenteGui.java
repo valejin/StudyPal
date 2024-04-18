@@ -15,6 +15,8 @@ import javafx.stage.Stage;
 import org.w3c.dom.ls.LSOutput;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
@@ -43,6 +45,7 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
 
     private static final Logger logger = Logger.getLogger(PrenotaRipetizioneStudenteGui.class.getName());
 
+    List<RipetizioneInfoBean> risultatiRicercaBean = new ArrayList<>();
 
     //eredita dal padre un attributo LoggedInUserBean
     public PrenotaRipetizioneStudenteGui(LoggedInUserBean user) {this.user = user;}
@@ -122,7 +125,22 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
         PrenotaRipetizioneController prenotaRipetizioneController = new PrenotaRipetizioneController();
 
         //chiama il controller applicativo e gli passa il BEAN che contiene la materia
-        prenotaRipetizioneController.prenotaRipetizioneMethod(baseInfoBean);
+        risultatiRicercaBean = prenotaRipetizioneController.prenotaRipetizioneMethod(baseInfoBean);
+
+        //DEBUG
+        System.out.println("Controller grafico ha ricevuto questi risultati:");
+        for (RipetizioneInfoBean risultatoBean: risultatiRicercaBean) {
+            System.out.println("    nome: " + risultatoBean.getNome());
+            System.out.println("    cognome: " + risultatoBean.getCognome());
+            System.out.println("    materie: " + risultatoBean.getMaterie());
+            System.out.println("    lezioni in presenza: " + risultatoBean.getInPresenza());
+            System.out.println("    lezioni online: " + risultatoBean.getOnline());
+            System.out.println("    luogo: " + risultatoBean.getLuogo());
+            System.out.println("    giorni disponibili: " + risultatoBean.getGiorni());
+            System.out.println("    tariffa: " + risultatoBean.getTariffa() + "€/h");
+            System.out.println("    email: " + risultatoBean.getEmail());
+            System.out.println("------------------------------------------------");
+        }
 
     }
 
@@ -238,10 +256,30 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
         ripetizioneInfoBean.setGiorni(giorni);
         ripetizioneInfoBean.setTariffa(tariffa);
 
-        //istanzio un controller applicativo e gli passo il Bean contenente i dati per la ricerca con filtri
+        //istanzio un controller applicativo e gli passo la lista di Bean contenente i risultati della ricerca
         PrenotaRipetizioneController prenotaRipetizioneController = new PrenotaRipetizioneController();
-        prenotaRipetizioneController.prenotaRipetizioneMethod(ripetizioneInfoBean);
+        risultatiRicercaBean = prenotaRipetizioneController.prenotaRipetizioneMethod(ripetizioneInfoBean);
+
+        //DEBUG
+        System.out.println("Controller grafico ha ricevuto questi risultati:");
+        for (RipetizioneInfoBean risultatoBean: risultatiRicercaBean) {
+            System.out.println("    nome: " + risultatoBean.getNome());
+            System.out.println("    cognome: " + risultatoBean.getCognome());
+            System.out.println("    materie: " + risultatoBean.getMaterie());
+            System.out.println("    lezioni in presenza: " + risultatoBean.getInPresenza());
+            System.out.println("    lezioni online: " + risultatoBean.getOnline());
+            System.out.println("    luogo: " + risultatoBean.getLuogo());
+            System.out.println("    giorni disponibili: " + risultatoBean.getGiorni());
+            System.out.println("    tariffa: " + risultatoBean.getTariffa() + "€/h");
+            System.out.println("    email: " + risultatoBean.getEmail());
+            System.out.println("------------------------------------------------");
+        }
+
     }
+
+    /*todo: al controller grafico della prossima pagina dobbiamo passare la lista risultatiRicerca!!
+        fondamentale perché li dovrà mostrare all'utente
+    */
 
 
     /*----------------------------------------------------------------------------------------------------------------*/
