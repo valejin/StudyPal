@@ -1,7 +1,5 @@
 package com.example.studypal.DAO;
 
-import com.example.studypal.Query.Query;
-import com.example.studypal.bean.BaseInfoBean;
 import com.example.studypal.exceptions.MateriaNonTrovataException;
 import com.example.studypal.model.BaseInfoModel;
 import com.example.studypal.model.RipetizioneInfoModel;

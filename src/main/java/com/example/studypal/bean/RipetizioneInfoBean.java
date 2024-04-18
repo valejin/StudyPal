@@ -93,7 +93,7 @@ public class RipetizioneInfoBean extends BaseInfoBean{
         return nome;
     }
 
-    public void setNome(String nome) {
+    public void setNome() {
         this.nome = nome;
     }
     public String getCognome() {

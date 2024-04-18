@@ -98,13 +98,13 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
                     this.luogo.getSelectionModel().isEmpty() && menuButtonIsEmpty(giorno)
             ) {
                 //se tutti i campi aggiuntivi sono vuoti, allora la ricerca va fatta solo per materia
-                ricercaMateria();
-                caricaRisultati();
+                List<RipetizioneInfoBean> risultatiRicercaBean =  ricercaMateria();
+                caricaRisultati(risultatiRicercaBean);
             } else {
                 //altrimenti la ricerca avviene anche con i filtri aggiunti
                 Printer.println("fai ricerca con filtri");
-                ricercaConFiltri();
-                caricaRisultati();
+                List<RipetizioneInfoBean> risultatiRicercaBean =  ricercaConFiltri();
+                caricaRisultati(risultatiRicercaBean);
             }
 
             System.out.println("ricerca completata");
@@ -113,7 +113,7 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
     }
 
     /*----------------------------------------------------------------------------------------------------------------*/
-    public void ricercaMateria(){
+    public   List<RipetizioneInfoBean>  ricercaMateria(){
 
         String materia = this.cercaMateria.getText();
 
@@ -142,6 +142,7 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
             System.out.println("------------------------------------------------");
         }
 
+        return risultatiRicercaBean;
     }
 
     /*----------------------------------------------------------------------------------------------------------------*/
@@ -164,7 +165,7 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
 
 
     /*----------------------------------------------------------------------------------------------------------------*/
-    public void ricercaConFiltri(){
+    public List<RipetizioneInfoBean> ricercaConFiltri(){
 
         /*
         prendo luogo, inPresenza, online, giorno, tariffa da BEAN
@@ -185,7 +186,7 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
         if(this.cercaMateria.getText().isEmpty()){
             Printer.println("Non hai inserito la materia");
             campiError.setText("Campo obbligatorio");
-            return;
+            return null;
         }else{
             campiError.setVisible(false);
         }
@@ -209,7 +210,7 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
             if(this.luogo.getSelectionModel().isEmpty()){
                 Printer.errorPrint("Seleziona un luogo");
                 luogoError.setText("Seleziona un luogo");
-                return;
+                return null;
             }else{
                 luogoError.setVisible(false);
             }
@@ -275,6 +276,7 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
             System.out.println("------------------------------------------------");
         }
 
+        return risultatiRicercaBean;
     }
 
     /*todo: al controller grafico della prossima pagina dobbiamo passare la lista risultatiRicerca!!
@@ -283,10 +285,10 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
 
 
     /*----------------------------------------------------------------------------------------------------------------*/
-    public void caricaRisultati () {
+    public void caricaRisultati (List<RipetizioneInfoBean> risultatiRicercaBean) {
         try {
             FXMLLoader loader = new FXMLLoader(PrenotaRipetizioneStudenteGui.class.getResource("/com/example/studypal/view/studente/risultatoRicerca.fxml"));
-            loader.setControllerFactory(c -> new RisultatiRicercaGuiController(user));
+            loader.setControllerFactory(c -> new RisultatiRicercaGuiController(user, risultatiRicercaBean));
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) cercaMateria.getScene().getWindow();
