@@ -12,8 +12,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import org.w3c.dom.ls.LSOutput;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -80,7 +78,6 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
             }
         });
 
-         */
 
     }
 
@@ -169,7 +166,7 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
 
 
     /*----------------------------------------------------------------------------------------------------------------*/
-    public List<RipetizioneInfoBean> ricercaConFiltri(){
+    public List<RipetizioneInfoBean> ricercaConFiltri() {
 
         /*
         prendo luogo, inPresenza, online, giorno, tariffa da BEAN
@@ -187,11 +184,11 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
 
         materia = this.cercaMateria.getText();
 
-        if(this.cercaMateria.getText().isEmpty()){
+        if (this.cercaMateria.getText().isEmpty()) {
             Printer.println("Non hai inserito la materia");
             campiError.setText("Campo obbligatorio");
             return null;
-        }else{
+        } else {
             campiError.setVisible(false);
         }
 
@@ -199,7 +196,7 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
         Printer.println("   -La materia inserita è: " + materia);
 
 
-        luogo = (String)this.luogo.getValue();
+        luogo = (String) this.luogo.getValue();
         if (this.luogo.getValue() == null) {
             Printer.println("   -Luogo:");
         } else {
@@ -208,24 +205,24 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
 
         //checkBox: modalità di lezione ------------------------------------------------
         Printer.print("   -Modalità di lezione: ");
-        if(this.inPresenza.isSelected()) {
+        if (this.inPresenza.isSelected()) {
             inPresenza = true;
             Printer.println("in presenza");
-            if(this.luogo.getSelectionModel().isEmpty()){
+            if (this.luogo.getSelectionModel().isEmpty()) {
                 Printer.errorPrint("Seleziona un luogo");
                 luogoError.setText("Seleziona un luogo");
                 return null;
-            }else{
+            } else {
                 luogoError.setVisible(false);
             }
         }
 
-        if(this.online.isSelected()) {
+        if (this.online.isSelected()) {
             online = true;
             Printer.println("online");
         }
 
-        if(!this.inPresenza.isSelected() && !this.online.isSelected()) {
+        if (!this.inPresenza.isSelected() && !this.online.isSelected()) {
             Printer.println(" ");
         }
 
@@ -248,7 +245,7 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
 
         //tariffaSlider---------------------------------------------------
         tariffa = (int) Math.round(this.tariffaSlider.getValue());
-        Printer.println("   -Tariffa massima:"+ tariffa);
+        Printer.println("   -Tariffa massima:" + tariffa);
 
         //istanzio un RipetizioneInfoBean
         RipetizioneInfoBean ripetizioneInfoBean = new RipetizioneInfoBean(materia, inPresenza, online, luogo, giorni, tariffa, email);
@@ -279,6 +276,7 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
             System.out.println("    email: " + risultatoBean.getEmail());
             System.out.println("------------------------------------------------");
         }
+        */
 
         return risultatiRicercaBean;
     }
@@ -288,17 +286,17 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
     */
 
 
-    /*----------------------------------------------------------------------------------------------------------------*/
-    public void caricaRisultati (List<RipetizioneInfoBean> risultatiRicercaBean) {
-        try {
-            FXMLLoader loader = new FXMLLoader(PrenotaRipetizioneStudenteGui.class.getResource("/com/example/studypal/view/studente/risultatoRicerca.fxml"));
-            loader.setControllerFactory(c -> new RisultatiRicercaGuiController(user, risultatiRicercaBean));
-            Parent parent = loader.load();
-            Scene scene = new Scene(parent);
-            Stage stage = (Stage) cercaMateria.getScene().getWindow();
-            stage.setScene(scene);
-        } catch (IOException e) {
-            logger.severe("errore in PrenotaRipetizioneStudenteGui " + e.getMessage());
+        /*----------------------------------------------------------------------------------------------------------------*/
+        public void caricaRisultati (List < RipetizioneInfoBean > risultatiRicercaBean) {
+            try {
+                FXMLLoader loader = new FXMLLoader(PrenotaRipetizioneStudenteGui.class.getResource("/com/example/studypal/view/studente/risultatoRicerca.fxml"));
+                loader.setControllerFactory(c -> new RisultatiRicercaGuiController(user, risultatiRicercaBean));
+                Parent parent = loader.load();
+                Scene scene = new Scene(parent);
+                Stage stage = (Stage) cercaMateria.getScene().getWindow();
+                stage.setScene(scene);
+            } catch (IOException e) {
+                logger.severe("errore in PrenotaRipetizioneStudenteGui " + e.getMessage());
+            }
         }
     }
-}
