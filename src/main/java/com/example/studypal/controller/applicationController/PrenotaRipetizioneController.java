@@ -52,7 +52,7 @@ public class PrenotaRipetizioneController extends HomeStudenteController{
 
         }
 
-        //DEBUG
+        /*DEBUG
         System.out.println("Controller applicativo ha ricevuto questi risultati:");
         for (RipetizioneInfoBean risultatoBean: risultatiRicercaBean) {
             System.out.println("    nome: " + risultatoBean.getNome());
@@ -67,6 +67,8 @@ public class PrenotaRipetizioneController extends HomeStudenteController{
             System.out.println("------------------------------------------------");
         }
 
+         */
+
         return risultatiRicercaBean;
 
     }
@@ -78,7 +80,6 @@ public class PrenotaRipetizioneController extends HomeStudenteController{
         /*
             gli viene restituita una lista di RipetizioneInfoModel dal DAO
             Usa quelle informazioni per popolare una lista di RipetizioneInfoBean da passare al controller grafico
-
         */
 
         //istanzio un model
@@ -103,6 +104,9 @@ public class PrenotaRipetizioneController extends HomeStudenteController{
                 RipetizioneInfoBean risultatoBean = new RipetizioneInfoBean(risultato.getNome(), risultato.getCognome(), risultato.getMateria(),
                         risultato.getInPresenza(), risultato.getOnline(), risultato.getLuogo(),
                         risultato.getGiorni(), risultato.getTariffa(), risultato.getEmail());
+
+                System.out.println("MATERIE CON CUI CREO IL RIPETIZIONEINFOBEAN, VENGONO DAL MODEL " + risultato.getMateria());
+
                 risultatiRicercaBean.add(risultatoBean);
             }
 
@@ -111,7 +115,7 @@ public class PrenotaRipetizioneController extends HomeStudenteController{
         }
 
 
-        //DEBUG
+        /*DEBUG
         System.out.println("Controller applicativo ha ricevuto questi risultati:");
         for (RipetizioneInfoBean risultatoBean: risultatiRicercaBean) {
             System.out.println("    nome: " + risultatoBean.getNome());
@@ -126,6 +130,7 @@ public class PrenotaRipetizioneController extends HomeStudenteController{
             System.out.println("------------------------------------------------");
         }
 
+         */
 
         return risultatiRicercaBean;
     }

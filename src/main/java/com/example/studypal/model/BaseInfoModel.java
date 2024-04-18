@@ -10,6 +10,10 @@ public class BaseInfoModel {
 
     protected String materia;
 
+    public BaseInfoModel(){this.materia = null;}
+
+    public BaseInfoModel(String materia){this.materia = materia;}
+
     public String getMateria() {
         return materia;
     }

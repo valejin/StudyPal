@@ -81,7 +81,7 @@ public class LoginGuiController {
 
         } catch (CredenzialiSbagliateException e) {
             credenzialiError.setVisible(false);
-            credenzialiSbagliate.setText("Credenziali sbagliate.");
+            credenzialiSbagliate.setText("Utente inesistente");
         }
 
     }

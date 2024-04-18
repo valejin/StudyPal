@@ -24,7 +24,6 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
 
     @FXML
     private TextField cercaMateria;
-
     @FXML
     private ComboBox luogo;
     @FXML
@@ -81,6 +80,8 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
             }
         });
 
+         */
+
     }
 
     /*----------------------------------------------------------------------------------------------------------------*/
@@ -127,6 +128,7 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
         //chiama il controller applicativo e gli passa il BEAN che contiene la materia
         risultatiRicercaBean = prenotaRipetizioneController.prenotaRipetizioneMethod(baseInfoBean);
 
+        /*
         //DEBUG
         System.out.println("Controller grafico ha ricevuto questi risultati:");
         for (RipetizioneInfoBean risultatoBean: risultatiRicercaBean) {
@@ -141,6 +143,8 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
             System.out.println("    email: " + risultatoBean.getEmail());
             System.out.println("------------------------------------------------");
         }
+         */
+
 
         return risultatiRicercaBean;
     }
@@ -261,7 +265,7 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
         PrenotaRipetizioneController prenotaRipetizioneController = new PrenotaRipetizioneController();
         risultatiRicercaBean = prenotaRipetizioneController.prenotaRipetizioneMethod(ripetizioneInfoBean);
 
-        //DEBUG
+        /*DEBUG
         System.out.println("Controller grafico ha ricevuto questi risultati:");
         for (RipetizioneInfoBean risultatoBean: risultatiRicercaBean) {
             System.out.println("    nome: " + risultatoBean.getNome());

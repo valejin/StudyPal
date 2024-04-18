@@ -12,6 +12,9 @@ public class RipetizioneInfoModel extends BaseInfoModel {
     private String giorni;
     private Integer tariffa;
     private String email;
+    private String materie;
+    private String nome;
+    private String cognome;
 
     public Integer getTariffa() {
         return tariffa;
@@ -56,31 +59,6 @@ public class RipetizioneInfoModel extends BaseInfoModel {
     public String getEmail() { return email; }
 
     public void setEmail(String email) { this.email = email; }
-
-
-    //cotruttore di default
-    public RipetizioneInfoModel(){ };
-
-    private String nome;
-    private String cognome;
-    private String materie;
-
-    //creo un costruttore non di default, con 2 attributi aggiuntivi (nome, cognome) - necessario per risultati della ricerca
-    public RipetizioneInfoModel(String nome, String cognome, String materie, Boolean inPresenza, Boolean online, String luogo, String giorni, Integer tariffa, String email){
-        this.nome = nome;
-        this.cognome = cognome;
-       // this.materie = super.materia;
-        this.materie = materie;
-        this.inPresenza = inPresenza;
-        this.online = online;
-        this.luogo = luogo;
-        this.giorni = giorni;
-        this.tariffa = tariffa;
-        this.email = email;
-
-    }
-
-
     public String getNome() {
         return nome;
     }
@@ -104,4 +82,25 @@ public class RipetizioneInfoModel extends BaseInfoModel {
     public void setMaterie(String materie) {
         this.materie = materie;
     }
+
+    //cotruttore di default
+    public RipetizioneInfoModel(){ };
+
+    //costruttore non di default, con 2 attributi aggiuntivi (nome, cognome) - necessario per risultati della ricerca
+    public RipetizioneInfoModel(String nome, String cognome, String materie, Boolean inPresenza, Boolean online, String luogo, String giorni, Integer tariffa, String email){
+        super(materie);
+        this.nome = nome;
+        this.cognome = cognome;
+        //this.materie = materie;
+        this.inPresenza = inPresenza;
+        this.online = online;
+        this.luogo = luogo;
+        this.giorni = giorni;
+        this.tariffa = tariffa;
+        this.email = email;
+
+    }
+
+
+
 }

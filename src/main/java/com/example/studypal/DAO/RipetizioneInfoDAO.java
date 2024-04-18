@@ -36,7 +36,6 @@ public class RipetizioneInfoDAO {
         /*
         metodo per la ricerca di ripetizioni, restituisce tutti i tutor e rispettive informazioni di ripetizioni disponibiili
         applica i parametri di ricerca ricevuti tramite istanza di RipetizioneInfoModel
-
         La query cerca nella tabella Tutor
          */
 
@@ -45,8 +44,6 @@ public class RipetizioneInfoDAO {
         ResultSet rs = null;
 
         System.out.println("Ricerca materia: ");
-
-       // UserModel userModel = new UserModel();
 
         //query per la ricerca di Materia
         String query = "SELECT * FROM tutor where LOWER(materie) LIKE ?";
@@ -60,13 +57,9 @@ public class RipetizioneInfoDAO {
             statement.setString(1, '%' + baseInfoModel.getMateria() + '%');
 
             rs = statement.executeQuery();
-            //System.out.println("query preparato");
-
-
 
             if(rs.next()) {
-                //baseInfoModel.setMateria(rs.getString("materie"));
-                //Printer.println("Materia: " + baseInfoModel.getMateria());
+
                 Printer.println("La materia che stai cercando è: " + baseInfoModel.getMateria());
 
                 //stampo email di Tutor che soddisfanno la query
@@ -90,15 +83,11 @@ public class RipetizioneInfoDAO {
                     System.out.println("------------------------------------------------");
                     risultatiRicerca.add(risultatoCorrente);
 
-                    /*  userModel.setEmail(rs.getString("email"));
-                    Printer.println("   " + userModel.getEmail());*/
                 }while (rs.next());
 
             }else{
                 throw new MateriaNonTrovataException();
             }
-
-
 
         }catch(SQLException e) {
             logger.severe("errore in userDAO " + e.getMessage());
@@ -113,7 +102,6 @@ public class RipetizioneInfoDAO {
 
         PreparedStatement statement = null;
         ResultSet rs = null;
-
 
         UserModel userModel = new UserModel();
 
@@ -151,7 +139,6 @@ public class RipetizioneInfoDAO {
             Connection connection = Connect.getInstance().getDBConnection();
             statement = connection.prepareStatement(query);
 
-            //System.out.println(ripetizioneInfoModel.getTariffa());
             statement.setInt(1, ripetizioneInfoModel.getTariffa());
 
             if (ripetizioneInfoModel.getLuogo() != null && !ripetizioneInfoModel.getLuogo().isEmpty()) {
@@ -225,17 +212,15 @@ public class RipetizioneInfoDAO {
                 //stampo email di Tutor che soddisfanno la query
                 Printer.println("Email tutor che soddisfano la ricerca: ");
                 do {
-                    /*
-                    userModel.setEmail(rs.getString("email"));
-                    Printer.println("   " + userModel.getEmail());
-                    */
 
                     RipetizioneInfoModel risultatoCorrente = new RipetizioneInfoModel(rs.getString("nome"), rs.getString("cognome"),
                             rs.getString("materie"), rs.getBoolean("inPresenza"),
                             rs.getBoolean("webcam"), rs.getString("luogo"),
                             rs.getString("giorni"), rs.getInt("tariffa"), rs.getString("email"));
 
-                    /*DEBUG
+                        System.out.println("MATERIE MESSE NEL MODEL: " + risultatoCorrente.getMaterie());
+
+                    /*DEBUG*/
                     System.out.println("    nome: " + risultatoCorrente.getNome());
                     System.out.println("    cognome: " + risultatoCorrente.getCognome());
                     System.out.println("    materie: " + risultatoCorrente.getMaterie());
@@ -246,7 +231,6 @@ public class RipetizioneInfoDAO {
                     System.out.println("    tariffa: " + risultatoCorrente.getTariffa() + "€/h");
                     System.out.println("    email: " + risultatoCorrente.getEmail());
                     System.out.println("------------------------------------------------");
-                     */
 
                     risultatiRicerca.add(risultatoCorrente);
 
@@ -254,7 +238,6 @@ public class RipetizioneInfoDAO {
 
             } else {
                 throw new MateriaNonTrovataException();
-
             }
 
         }catch(SQLException e) {
@@ -285,7 +268,6 @@ public class RipetizioneInfoDAO {
 
         Connection connection;
         PreparedStatement statement = null;
-        //String query = "UPDATE tutor SET tariffa=? , luogo=? , materie=? , inPresenza=? , online=? , giorni=?";
         String query = "UPDATE tutor SET tariffa=?, luogo=?, materie=?, inPresenza=?, webCam=?, giorni=? WHERE email=?";
 
         try{

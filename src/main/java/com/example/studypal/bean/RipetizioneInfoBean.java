@@ -12,7 +12,7 @@ public class RipetizioneInfoBean extends BaseInfoBean{
     private String email;
     private String nome;
     private String cognome;
-    private String materie;
+
 
 
     //qui contiene tutte le informazioni per la ricerca con filtro, in caso di Prenota Ripetizione
@@ -28,7 +28,7 @@ public class RipetizioneInfoBean extends BaseInfoBean{
     }
 
     public RipetizioneInfoBean(String nome, String cognome, String materia, Boolean inPresenza, Boolean online, String luogo, String giorni, Integer tariffa, String email){
-        super();
+
         this.inPresenza = inPresenza;
         this.online = online;
         this.luogo = luogo;
@@ -37,7 +37,7 @@ public class RipetizioneInfoBean extends BaseInfoBean{
         this.email = email;
         this.nome = nome;
         this.cognome = cognome;
-        this.materie = materia;
+        this.materia = materia;
     }
 
     public Integer getTariffa() {
@@ -80,7 +80,6 @@ public class RipetizioneInfoBean extends BaseInfoBean{
         this.inPresenza = inPresenza;
     }
 
-
     public String getEmail() {
         return email;
     }
@@ -105,10 +104,10 @@ public class RipetizioneInfoBean extends BaseInfoBean{
     }
 
     public String getMaterie() {
-        return materie;
+        return this.materia;
     }
 
     public void setMaterie(String materie) {
-        this.materie = materie;
+        this.materia = materie;
     }
 }
