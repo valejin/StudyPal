@@ -45,7 +45,7 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
         cognome.setCellValueFactory(new PropertyValueFactory<RipetizioneInfoBean, String>("cognome"));
         tariffa.setCellValueFactory(new PropertyValueFactory<RipetizioneInfoBean, Integer>("tariffa"));
         giorni.setCellValueFactory(new PropertyValueFactory<RipetizioneInfoBean, String>("giorni"));
-        prenota.setCellValueFactory(new PropertyValueFactory<RipetizioneInfoBean, Button>("prenota"));
+
 
 
         // Aggiungi gli elementi alla TableView
@@ -93,5 +93,7 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
 
     public void scegliTutor(RipetizioneInfoBean tutor) {
         System.out.println("ho scelto il tutor");
+
+        //deve caricare la funzione di prenotazione di tutor
     }
 }
