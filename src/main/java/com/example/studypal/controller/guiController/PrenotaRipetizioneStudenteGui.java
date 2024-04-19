@@ -40,6 +40,7 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
     private Label luogoError;
 
 
+    RipetizioneInfoBean ripetizioneInfoBean;
     private static final Logger logger = Logger.getLogger(PrenotaRipetizioneStudenteGui.class.getName());
 
     List<RipetizioneInfoBean> risultatiRicercaBean = new ArrayList<>();
@@ -124,7 +125,7 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
 
         //chiama il controller applicativo e gli passa il BEAN che contiene la materia
         risultatiRicercaBean = prenotaRipetizioneController.prenotaRipetizioneMethod(baseInfoBean);
-
+//todo try catch!!!!!!! materia non trovata
         /*
         //DEBUG
         System.out.println("Controller grafico ha ricevuto questi risultati:");
@@ -248,7 +249,7 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
         Printer.println("   -Tariffa massima:" + tariffa);
 
         //istanzio un RipetizioneInfoBean
-        RipetizioneInfoBean ripetizioneInfoBean = new RipetizioneInfoBean(materia, inPresenza, online, luogo, giorni, tariffa, email);
+        ripetizioneInfoBean = new RipetizioneInfoBean(materia, inPresenza, online, luogo, giorni, tariffa, email);
 
         ripetizioneInfoBean.setEmail(email);
         ripetizioneInfoBean.setMateria(materia);
@@ -281,16 +282,13 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
         return risultatiRicercaBean;
     }
 
-    /*todo: al controller grafico della prossima pagina dobbiamo passare la lista risultatiRicerca!!
-        fondamentale perché li dovrà mostrare all'utente
-    */
 
 
         /*----------------------------------------------------------------------------------------------------------------*/
         public void caricaRisultati (List < RipetizioneInfoBean > risultatiRicercaBean) {
             try {
                 FXMLLoader loader = new FXMLLoader(PrenotaRipetizioneStudenteGui.class.getResource("/com/example/studypal/view/studente/risultatoRicerca.fxml"));
-                loader.setControllerFactory(c -> new RisultatiRicercaGuiController(user, risultatiRicercaBean));
+                loader.setControllerFactory(c -> new RisultatiRicercaGuiController(user, risultatiRicercaBean, ripetizioneInfoBean));
                 Parent parent = loader.load();
                 Scene scene = new Scene(parent);
                 Stage stage = (Stage) cercaMateria.getScene().getWindow();

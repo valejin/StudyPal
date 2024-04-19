@@ -112,6 +112,7 @@ public class PrenotaRipetizioneController extends HomeStudenteController{
 
         }catch(MateriaNonTrovataException e){
             Printer.println("Non produce risultato");
+            return null;
         }
 
 
