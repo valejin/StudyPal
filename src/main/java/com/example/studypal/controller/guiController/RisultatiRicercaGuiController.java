@@ -3,6 +3,7 @@ package com.example.studypal.controller.guiController;
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.RipetizioneInfoBean;
 import javafx.fxml.FXML;
+import javafx.scene.control.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -38,9 +39,21 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
     private TableColumn<RipetizioneInfoBean, String> giorni;
     @FXML
     private TableColumn<RipetizioneInfoBean, Button> prenota;
+    @FXML
+    private Label materiaRisultato;
+    @FXML
+    private Label luogoRisultato;
+    @FXML
+    private Label modalitaRisultato;
+    @FXML
+    private Label tariffaRisultato;
+    @FXML
+    private Label giorniRisultato;
+
 
     //inizializzo una lista, in cui popolo gli elementi della tabella
     List<RipetizioneInfoBean> tutorList = new ArrayList<>();
+    RipetizioneInfoBean filtri;
     private static final Logger logger = Logger.getLogger(RisultatiRicercaGuiController.class.getName());
 
     /*
@@ -49,12 +62,32 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
     }
     */
 
-    protected RisultatiRicercaGuiController(LoggedInUserBean user, List<RipetizioneInfoBean> risultatiRicercaBean){
+    protected RisultatiRicercaGuiController(LoggedInUserBean user,List<RipetizioneInfoBean> risultatiRicercaBean, RipetizioneInfoBean ripetizioneInfoBean){
         this.user = user;
         this.tutorList = risultatiRicercaBean;
+        this.filtri = ripetizioneInfoBean;
     }
 
     public void initialize(){
+
+        //setto i valori posti da utente
+        materiaRisultato.setText(filtri.getMateria());
+        luogoRisultato.setText(filtri.getLuogo());
+
+        if(filtri.getInPresenza() && filtri.getOnline()){
+            modalitaRisultato.setText("In presenza & Online");
+        } else if (filtri.getOnline()) {
+            modalitaRisultato.setText("Online");
+        } else if (filtri.getInPresenza()) {
+            modalitaRisultato.setText("In presenza");
+        }
+
+        int value = filtri.getTariffa();
+        tariffaRisultato.setText(Integer.toString(value));
+
+        giorniRisultato.setText(filtri.getGiorni());
+
+
         nome.setCellValueFactory(new PropertyValueFactory<RipetizioneInfoBean, String>("nome"));
         cognome.setCellValueFactory(new PropertyValueFactory<RipetizioneInfoBean, String>("cognome"));
         tariffa.setCellValueFactory(new PropertyValueFactory<RipetizioneInfoBean, Integer>("tariffa"));
@@ -100,6 +133,10 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
 
 
 
+
+    public RisultatiRicercaGuiController(LoggedInUserBean user){
+        this.user = user;
+    }
 
     public void scegliTutor(RipetizioneInfoBean tutor) {
         System.out.println("ho scelto il tutor");

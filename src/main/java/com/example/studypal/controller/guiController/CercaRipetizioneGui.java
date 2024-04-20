@@ -39,7 +39,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
     @FXML
     private Label luogoError;
 
-
+    RipetizioneInfoBean ripetizioneInfoBean;
     private static final Logger logger = Logger.getLogger(CercaRipetizioneGui.class.getName());
 
     List<RipetizioneInfoBean> risultatiRicercaBean = new ArrayList<>();
@@ -123,6 +123,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
 
         //chiama il controller applicativo e gli passa il BEAN che contiene la materia
         risultatiRicercaBean = cercaRipetizioneController.prenotaRipetizioneMethod(baseInfoBean);
+//todo try catch!!!!!!! materia non trovata
 
         /*
         //DEBUG
@@ -247,7 +248,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         Printer.println("   -Tariffa massima:" + tariffa);
 
         //istanzio un RipetizioneInfoBean
-        RipetizioneInfoBean ripetizioneInfoBean = new RipetizioneInfoBean(materia, inPresenza, online, luogo, giorni, tariffa, email);
+        ripetizioneInfoBean = new RipetizioneInfoBean(materia, inPresenza, online, luogo, giorni, tariffa, email);
 
         ripetizioneInfoBean.setEmail(email);
         ripetizioneInfoBean.setMateria(materia);
@@ -280,9 +281,6 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         return risultatiRicercaBean;
     }
 
-    /*todo: al controller grafico della prossima pagina dobbiamo passare la lista risultatiRicerca!!
-        fondamentale perché li dovrà mostrare all'utente
-    */
 
 
         /*----------------------------------------------------------------------------------------------------------------*/

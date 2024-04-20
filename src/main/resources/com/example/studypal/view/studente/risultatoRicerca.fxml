@@ -3,6 +3,7 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -10,6 +11,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -64,9 +66,9 @@
             <Font size="40.0" />
          </font>
       </Text>
-      <AnchorPane fx:id="zonaInfo" layoutX="222.0" layoutY="106.0" prefHeight="346.0" prefWidth="570.0">
+      <AnchorPane fx:id="zonaInfo" layoutX="219.0" layoutY="104.0" prefHeight="374.0" prefWidth="577.0">
          <children>
-            <ScrollPane fx:id="risultatiScroll" layoutX="-2.0" layoutY="-2.0" prefHeight="356.0" prefWidth="578.0">
+            <ScrollPane fx:id="risultatiScroll" layoutX="-2.0" layoutY="58.0" prefHeight="317.0" prefWidth="578.0">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="363.0" prefWidth="595.0">
                      <children>
@@ -86,9 +88,67 @@
                   </AnchorPane>
               </content>
             </ScrollPane>
+            <HBox layoutX="50.0" layoutY="-2.0" prefHeight="32.0" prefWidth="489.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Materia:" wrappingWidth="51.7366943359375">
+                     <HBox.margin>
+                        <Insets top="8.0" />
+                     </HBox.margin>
+                  </Text>
+                  <Label fx:id="materiaRisultato" prefHeight="18.0" prefWidth="89.0" text="Label">
+                     <HBox.margin>
+                        <Insets top="8.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Luogo:" wrappingWidth="40.53668212890625">
+                     <HBox.margin>
+                        <Insets top="8.0" />
+                     </HBox.margin>
+                  </Text>
+                  <Label fx:id="luogoRisultato" layoutX="62.0" layoutY="18.0" prefHeight="18.0" prefWidth="71.0" text="Label">
+                     <HBox.margin>
+                        <Insets top="8.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Text layoutX="126.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modalità:" wrappingWidth="51.7366943359375">
+                     <HBox.margin>
+                        <Insets top="8.0" />
+                     </HBox.margin>
+                  </Text>
+                  <Label fx:id="modalitaRisultato" layoutX="178.0" layoutY="18.0" prefHeight="18.0" prefWidth="82.0" text="Label">
+                     <HBox.margin>
+                        <Insets top="8.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Text layoutX="242.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tariffa:" wrappingWidth="38.936767578125">
+                     <HBox.margin>
+                        <Insets top="8.0" />
+                     </HBox.margin>
+                  </Text>
+                  <Label fx:id="tariffaRisultato" layoutX="294.0" layoutY="18.0" prefHeight="18.0" prefWidth="64.0" text="Label">
+                     <HBox.margin>
+                        <Insets top="8.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox layoutX="50.0" layoutY="26.0" prefHeight="32.0" prefWidth="527.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giorni:" wrappingWidth="38.9366455078125">
+                     <HBox.margin>
+                        <Insets top="8.0" />
+                     </HBox.margin>
+                  </Text>
+                  <Label fx:id="giorniRisultato" prefHeight="18.0" prefWidth="298.0" text="Label">
+                     <HBox.margin>
+                        <Insets top="8.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
          </children>
       </AnchorPane>
-      <Text layoutX="441.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I risultati della tua ricerca" />
+      <Text layoutX="388.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I risultati della tua ricerca (con i seguenti filtri)" wrappingWidth="258.6929931640625" />
    </children>
    <stylesheets>
       <URL value="@../../button.css" />
