@@ -66,7 +66,7 @@
          <effect>
             <DropShadow>
                <color>
-                  <Color red="0.6290000081062317" green="0.6922474503517151" blue="0.7400000095367432" />
+                  <Color red="0.49803921580314636" green="0.6509804129600525" blue="0.7568627595901489" />
                </color>
             </DropShadow>
          </effect>
@@ -76,14 +76,15 @@
                 <Font size="32.0" />
             </font>
         </Text>
-      <AnchorPane fx:id="zonaInfo" layoutX="254.0" layoutY="100.0" prefHeight="350.0" prefWidth="539.0" stylesheets="@../../base-prova.css">
+      <AnchorPane fx:id="zonaInfo" layoutX="254.0" layoutY="100.0" prefHeight="350.0" prefWidth="557.0" stylesheets="@../../base-prova.css">
          <children>
             <VBox layoutX="317.0" layoutY="33.0" prefHeight="250.0" prefWidth="175.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Luogo">
                      <VBox.margin>
                         <Insets />
-                     </VBox.margin></Text>
+                     </VBox.margin>
+                  </Text>
                   <ComboBox fx:id="luogoBox" editable="true" prefHeight="26.0" prefWidth="182.0" promptText="Seleziona una città...">
                      <VBox.margin>
                         <Insets top="5.0" />
@@ -92,7 +93,8 @@
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Materie">
                      <VBox.margin>
                         <Insets top="30.0" />
-                     </VBox.margin></Text>
+                     </VBox.margin>
+                  </Text>
                   <TextField fx:id="materieField" promptText="Inserisci le materie...">
                      <VBox.margin>
                         <Insets top="5.0" />
@@ -156,7 +158,7 @@
                   </Label>
                </children>
             </VBox>
-            <Button fx:id="confermaModifica" layoutX="215.0" layoutY="296.0" mnemonicParsing="false" onAction="#gestioneProfiloMethod" text="Conferma" />
+            <Button fx:id="confermaModifica" layoutX="214.0" layoutY="283.0" mnemonicParsing="false" onAction="#gestioneProfiloMethod" text="Conferma" />
             <Label fx:id="successoModifiche" layoutX="166.0" layoutY="263.0" textFill="#2672bf">
                <font>
                   <Font size="14.0" />

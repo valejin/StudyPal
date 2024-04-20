@@ -3,7 +3,7 @@ package com.example.studypal.controller.guiController;
 import com.example.studypal.bean.BaseInfoBean;
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.RipetizioneInfoBean;
-import com.example.studypal.controller.applicationController.PrenotaRipetizioneController;
+import com.example.studypal.controller.applicationController.CercaRipetizioneController;
 import com.example.studypal.other.Printer;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
+public class CercaRipetizioneGui extends HomeStudenteGui {
 
 
     @FXML
@@ -40,13 +40,12 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
     private Label luogoError;
 
 
-    private static final Logger logger = Logger.getLogger(PrenotaRipetizioneStudenteGui.class.getName());
+    private static final Logger logger = Logger.getLogger(CercaRipetizioneGui.class.getName());
 
     List<RipetizioneInfoBean> risultatiRicercaBean = new ArrayList<>();
 
     //eredita dal padre un attributo LoggedInUserBean
-    public PrenotaRipetizioneStudenteGui(LoggedInUserBean user) {this.user = user;}
-
+    public CercaRipetizioneGui(LoggedInUserBean user) {this.user = user;}
 
 
     @FXML
@@ -120,10 +119,10 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
         //prendo un BEAN base e inserisco info
         BaseInfoBean baseInfoBean = new BaseInfoBean(materia);
 
-        PrenotaRipetizioneController prenotaRipetizioneController = new PrenotaRipetizioneController();
+        CercaRipetizioneController cercaRipetizioneController = new CercaRipetizioneController();
 
         //chiama il controller applicativo e gli passa il BEAN che contiene la materia
-        risultatiRicercaBean = prenotaRipetizioneController.prenotaRipetizioneMethod(baseInfoBean);
+        risultatiRicercaBean = cercaRipetizioneController.prenotaRipetizioneMethod(baseInfoBean);
 
         /*
         //DEBUG
@@ -259,8 +258,8 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
         ripetizioneInfoBean.setTariffa(tariffa);
 
         //istanzio un controller applicativo e gli passo la lista di Bean contenente i risultati della ricerca
-        PrenotaRipetizioneController prenotaRipetizioneController = new PrenotaRipetizioneController();
-        risultatiRicercaBean = prenotaRipetizioneController.prenotaRipetizioneMethod(ripetizioneInfoBean);
+        CercaRipetizioneController cercaRipetizioneController = new CercaRipetizioneController();
+        risultatiRicercaBean = cercaRipetizioneController.prenotaRipetizioneMethod(ripetizioneInfoBean);
 
         /*DEBUG
         System.out.println("Controller grafico ha ricevuto questi risultati:");
@@ -289,14 +288,14 @@ public class PrenotaRipetizioneStudenteGui extends HomeStudenteGui {
         /*----------------------------------------------------------------------------------------------------------------*/
         public void caricaRisultati (List < RipetizioneInfoBean > risultatiRicercaBean) {
             try {
-                FXMLLoader loader = new FXMLLoader(PrenotaRipetizioneStudenteGui.class.getResource("/com/example/studypal/view/studente/risultatoRicerca.fxml"));
+                FXMLLoader loader = new FXMLLoader(CercaRipetizioneGui.class.getResource("/com/example/studypal/view/studente/risultatoRicerca.fxml"));
                 loader.setControllerFactory(c -> new RisultatiRicercaGuiController(user, risultatiRicercaBean));
                 Parent parent = loader.load();
                 Scene scene = new Scene(parent);
                 Stage stage = (Stage) cercaMateria.getScene().getWindow();
                 stage.setScene(scene);
             } catch (IOException e) {
-                logger.severe("errore in PrenotaRipetizioneStudenteGui " + e.getMessage());
+                logger.severe("errore in CercaRipetizioneGui " + e.getMessage());
             }
         }
     }

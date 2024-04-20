@@ -66,4 +66,13 @@ Button:hover {
 
 #zonaInfo {
     -fx-background-color: rgb(143, 194, 140);
+    -fx-background-radius: 15 15 15 15;
+    -fx-border-radius: 15 15 15 15;
+}
+
+#sfondoChiaro {
+    -fx-background-color: #d9e7df;
+    //-fx-border-radius: 20px;
+    -fx-background-radius: 15 15 15 15;
+    -fx-border-radius: 15 15 15 15;
 }

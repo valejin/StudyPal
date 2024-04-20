@@ -218,7 +218,7 @@ public class RipetizioneInfoDAO {
                             rs.getBoolean("webcam"), rs.getString("luogo"),
                             rs.getString("giorni"), rs.getInt("tariffa"), rs.getString("email"));
 
-                        System.out.println("MATERIE MESSE NEL MODEL: " + risultatoCorrente.getMaterie());
+                        //System.out.println("MATERIE MESSE NEL MODEL: " + risultatoCorrente.getMaterie());
 
                     /*DEBUG*/
                     System.out.println("    nome: " + risultatoCorrente.getNome());

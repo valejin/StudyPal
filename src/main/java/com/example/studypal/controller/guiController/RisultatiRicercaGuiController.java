@@ -3,22 +3,29 @@ package com.example.studypal.controller.guiController;
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.RipetizioneInfoBean;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class RisultatiRicercaGuiController extends HomeStudenteGui {
 
     /*
     Controller grafico per la gestione della pagina dei risultati di ricerca
-    Deve mostrare le informazioni relative ai tutor che soddisfano i requisiti della ricerca fatta in PrenotaRipetizioneStudenteGui
+    Deve mostrare le informazioni relative ai tutor che soddisfano i requisiti della ricerca fatta in CercaRipetizioneGui
      */
+
     @FXML
     private TableView<RipetizioneInfoBean> risultatiTable;
     @FXML
@@ -34,8 +41,15 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
 
     //inizializzo una lista, in cui popolo gli elementi della tabella
     List<RipetizioneInfoBean> tutorList = new ArrayList<>();
+    private static final Logger logger = Logger.getLogger(RisultatiRicercaGuiController.class.getName());
 
-    protected RisultatiRicercaGuiController(LoggedInUserBean user,List<RipetizioneInfoBean> risultatiRicercaBean){
+    /*
+    public RisultatiRicercaGuiController(LoggedInUserBean user){
+        this.user = user;
+    }
+    */
+
+    protected RisultatiRicercaGuiController(LoggedInUserBean user, List<RipetizioneInfoBean> risultatiRicercaBean){
         this.user = user;
         this.tutorList = risultatiRicercaBean;
     }
@@ -87,13 +101,26 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
 
 
 
-    public RisultatiRicercaGuiController(LoggedInUserBean user){
-        this.user = user;
-    }
-
     public void scegliTutor(RipetizioneInfoBean tutor) {
         System.out.println("ho scelto il tutor");
 
-        //deve caricare la funzione di prenotazione di tutor
+        /*
+            deve caricare la funzione di prenotazione di tutor
+            carica la pagina di conferma della prenotazione
+
+         */
+
+        try {
+            FXMLLoader loader = new FXMLLoader(RegistrazioneGuiController.class.getResource("/com/example/studypal/view/studente/prenotaRipetizione.fxml"));
+            loader.setControllerFactory(c -> new PrenotaRipetizioneGui(user, tutor));
+            Parent parent = loader.load();
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) risultatiTable.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            logger.severe("errore in RisultatiRicercaGuiController (caricamento pagina) " + e.getMessage());
+        }
+
+
     }
 }

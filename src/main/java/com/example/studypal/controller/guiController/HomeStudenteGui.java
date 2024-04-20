@@ -1,7 +1,6 @@
 package com.example.studypal.controller.guiController;
 
 import com.example.studypal.bean.LoggedInUserBean;
-import com.example.studypal.controller.applicationController.PrenotaRipetizioneController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -36,13 +35,12 @@ public class HomeStudenteGui {
     public void goToPrenotaRipetizione(){
         //metodo che porta alla pagina di gestione del profilo
         try {
-            FXMLLoader loader = new FXMLLoader(HomeStudenteGui.class.getResource("/com/example/studypal/view/studente/prenotaRipetizioneStudente.fxml"));
-            loader.setControllerFactory(c -> new PrenotaRipetizioneStudenteGui(user));
+            FXMLLoader loader = new FXMLLoader(HomeStudenteGui.class.getResource("/com/example/studypal/view/studente/cercaRipetizioneStudente.fxml"));
+            loader.setControllerFactory(c -> new CercaRipetizioneGui(user));
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) barraMenu.getScene().getWindow();
             stage.setScene(scene);
-
         } catch (IOException e) {
             logger.severe("errore in MenuBaseStudenteGuiController " + e.getMessage());
         }

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.PrenotaRipetizioneGui">
+   <children>
+      <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0" stylesheets="@../../base-prova.css">
+         <children>
+            <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+               <VBox.margin>
+                  <Insets top="60.0" />
+               </VBox.margin>
+               <image>
+                  <Image url="@../../immagini/iconStudent.png" />
+               </image>
+               <effect>
+                  <InnerShadow />
+               </effect>
+            </ImageView>
+            <Button mnemonicParsing="false" onMouseClicked="#goToPrenotaRipetizione" prefHeight="60.0" prefWidth="130.0" styleClass="custom-button" text="Prenota ripetizione" textAlignment="CENTER" wrapText="true">
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+               <stylesheets>
+                  <URL value="@../../base-prova.css" />
+                  <URL value="@../../button.css" />
+               </stylesheets>
+               <effect>
+                  <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
+               </effect>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="130.0" styleClass="custom-button" stylesheets="@../../button.css" text="Gestisci Prenotazioni" textAlignment="CENTER" wrapText="true">
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+               <effect>
+                  <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
+               </effect>
+            </Button>
+            <Button mnemonicParsing="false" onMouseClicked="#goToLogout" prefHeight="33.0" prefWidth="130.0" styleClass="custom-button" stylesheets="@../../button.css" text="Esci">
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+               <effect>
+                  <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
+               </effect>
+            </Button>
+         </children>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.49803921580314636" green="0.6509804129600525" blue="0.7568627595901489" />
+               </color>
+            </DropShadow>
+         </effect>
+      </VBox>
+      <AnchorPane fx:id="sfondoChiaro" layoutX="224.0" layoutY="95.0" prefHeight="369.0" prefWidth="544.0" stylesheets="@../../base-prova.css">
+         <children>
+            <Text fill="#5695bf" layoutX="73.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Controlla le informazioni presenti nella tua prenotazione">
+               <font>
+                  <Font size="16.0" />
+               </font></Text>
+            <VBox layoutX="72.0" layoutY="56.0" prefHeight="138.0" prefWidth="100.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cognome:">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Materia:">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modalità:">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Text layoutX="10.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giorni:">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Text>
+               </children>
+            </VBox>
+            <VBox layoutX="172.0" layoutY="55.0" prefHeight="150.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="nomeLabel" />
+                  <Label fx:id="cognomeLabel">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="materiaLabel">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="modLabel">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="giorniLabel" layoutX="10.0" layoutY="94.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <TextArea layoutX="73.0" layoutY="221.0" prefHeight="74.0" prefWidth="397.0" promptText="Inserisci delle informazioni aggiuntive per il tuo tutor..." />
+            <Button layoutX="234.0" layoutY="316.0" mnemonicParsing="false" styleClass="custom-button" stylesheets="@../../button.css" text="Invia" />
+            <Text layoutX="72.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Note aggiuntive:" />
+            <Line endX="100.0" layoutX="384.0" layoutY="38.0" opacity="0.66" startX="-325.0" startY="1.52587890625E-5" stroke="#5695bf" strokeLineCap="ROUND" strokeWidth="2.0" />
+         </children>
+         <effect>
+            <DropShadow blurType="TWO_PASS_BOX">
+               <color>
+                  <Color red="0.33725491166114807" green="0.5843137502670288" blue="0.7490196228027344" />
+               </color>
+            </DropShadow>
+         </effect></AnchorPane>
+      <Text fx:id="titolo" fill="#000000ab" layoutX="246.0" layoutY="72.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="#titolo" text="Conferma Prenotazione" textAlignment="CENTER" wrappingWidth="499.2001373767853">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
