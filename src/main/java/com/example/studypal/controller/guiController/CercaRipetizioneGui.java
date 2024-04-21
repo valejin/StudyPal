@@ -39,9 +39,8 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
     @FXML
     private Label luogoError;
 
-    RipetizioneInfoBean ripetizioneInfoBean;
     private static final Logger logger = Logger.getLogger(CercaRipetizioneGui.class.getName());
-
+    RipetizioneInfoBean ripetizioneInfoBean;
     List<RipetizioneInfoBean> risultatiRicercaBean = new ArrayList<>();
 
     //eredita dal padre un attributo LoggedInUserBean
@@ -285,15 +284,19 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
 
         /*----------------------------------------------------------------------------------------------------------------*/
         public void caricaRisultati (List < RipetizioneInfoBean > risultatiRicercaBean) {
+
+            //TODO: non funziona caricamento pagina nel caso di assenza filtri... faccio un costruttore a due parametri per RisultatiRicercaGuiController???
+
             try {
                 FXMLLoader loader = new FXMLLoader(CercaRipetizioneGui.class.getResource("/com/example/studypal/view/studente/risultatoRicerca.fxml"));
-                loader.setControllerFactory(c -> new RisultatiRicercaGuiController(user, risultatiRicercaBean));
+                loader.setControllerFactory(c -> new RisultatiRicercaGuiController(user, risultatiRicercaBean, ripetizioneInfoBean));
                 Parent parent = loader.load();
                 Scene scene = new Scene(parent);
                 Stage stage = (Stage) cercaMateria.getScene().getWindow();
                 stage.setScene(scene);
             } catch (IOException e) {
                 logger.severe("errore in CercaRipetizioneGui " + e.getMessage());
+                e.printStackTrace();
             }
         }
     }

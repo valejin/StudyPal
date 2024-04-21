@@ -70,22 +70,25 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
 
     public void initialize(){
 
-        //setto i valori posti da utente
-        materiaRisultato.setText(filtri.getMateria());
-        luogoRisultato.setText(filtri.getLuogo());
+        if (filtri != null){
+            //setto i valori posti da utente
+            materiaRisultato.setText(filtri.getMateria());
+            luogoRisultato.setText(filtri.getLuogo());
 
-        if(filtri.getInPresenza() && filtri.getOnline()){
-            modalitaRisultato.setText("In presenza & Online");
-        } else if (filtri.getOnline()) {
-            modalitaRisultato.setText("Online");
-        } else if (filtri.getInPresenza()) {
-            modalitaRisultato.setText("In presenza");
+            if(filtri.getInPresenza() && filtri.getOnline()){
+                modalitaRisultato.setText("In presenza & Online");
+            } else if (filtri.getOnline()) {
+                modalitaRisultato.setText("Online");
+            } else if (filtri.getInPresenza()) {
+                modalitaRisultato.setText("In presenza");
+            }
+
+            int value = filtri.getTariffa();
+            tariffaRisultato.setText(Integer.toString(value));
+
+            giorniRisultato.setText(filtri.getGiorni());
         }
 
-        int value = filtri.getTariffa();
-        tariffaRisultato.setText(Integer.toString(value));
-
-        giorniRisultato.setText(filtri.getGiorni());
 
 
         nome.setCellValueFactory(new PropertyValueFactory<RipetizioneInfoBean, String>("nome"));

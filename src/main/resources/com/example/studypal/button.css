@@ -15,7 +15,8 @@
 }
 
 .rounded-button:hover {
-    -fx-background-color: #658863;
+    -fx-background-color: #4f82a6;
     -fx-border-radius: 20px; /* Bordo arrotondato */
+    -fx-text-fill: #DEDFDDFF;
 
 }

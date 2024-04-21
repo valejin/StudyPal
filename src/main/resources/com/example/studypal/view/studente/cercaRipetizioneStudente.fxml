@@ -149,8 +149,8 @@
             <Button layoutX="424.0" layoutY="49.0" mnemonicParsing="false" onAction="#ricercaMethod" prefHeight="1.0" prefWidth="83.0" styleClass="rounded-button" text="Cerca" />
             <Line endX="100.0" layoutX="133.0" layoutY="126.0" startX="-100.0" stroke="#50944f" />
             <Line endX="100.0" layoutX="436.0" layoutY="125.0" startX="-100.0" stroke="#50944f" />
-            <Label fx:id="campiError" layoutX="214.0" layoutY="20.0" prefHeight="18.0" prefWidth="154.0" textAlignment="CENTER" textFill="#d40000" />
-            <Text layoutX="176.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cerca un tutor che soddisfi i tuoi desideri" />
+            <Label fx:id="campiError" layoutX="208.0" layoutY="29.0" prefHeight="18.0" prefWidth="154.0" textAlignment="CENTER" textFill="#d40000" />
+            <Text layoutX="176.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cerca un tutor che soddisfi i tuoi desideri" />
          </children>
       </AnchorPane>
    </children>
