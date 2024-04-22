@@ -3,6 +3,8 @@ package com.example.studypal.controller.guiController;
 import com.example.studypal.bean.CredenzialiBean;
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.controller.applicationController.LoginController;
+import com.example.studypal.controller.guiController.studente.HomeStudenteGui;
+import com.example.studypal.controller.guiController.tutor.HomeTutorGui;
 import com.example.studypal.exceptions.CredenzialiSbagliateException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

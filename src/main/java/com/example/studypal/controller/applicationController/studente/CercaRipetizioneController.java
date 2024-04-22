@@ -1,4 +1,4 @@
-package com.example.studypal.controller.applicationController;
+package com.example.studypal.controller.applicationController.studente;
 
 import com.example.studypal.DAO.RipetizioneInfoDAO;
 import com.example.studypal.bean.BaseInfoBean;
@@ -11,7 +11,7 @@ import com.example.studypal.other.Printer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CercaRipetizioneController extends HomeStudenteController{
+public class CercaRipetizioneController extends HomeStudenteController {
 
     /*
     controller applicativo che gestisce il caso d'uso prenota ripetizione da parte dello studente

@@ -1,6 +1,7 @@
-package com.example.studypal.controller.guiController;
+package com.example.studypal.controller.guiController.studente;
 
 import com.example.studypal.bean.LoggedInUserBean;
+import com.example.studypal.controller.guiController.LoginGuiController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -27,7 +28,7 @@ public class HomeStudenteGui {
 
 
     protected HomeStudenteGui() {}
-    protected HomeStudenteGui(LoggedInUserBean user) { this.user = user;}
+    public HomeStudenteGui(LoggedInUserBean user) { this.user = user;}
 
 
     //funzione per il bottone Prenota Ripetizione

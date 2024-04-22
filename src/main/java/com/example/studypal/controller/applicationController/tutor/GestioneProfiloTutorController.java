@@ -1,4 +1,4 @@
-package com.example.studypal.controller.applicationController;
+package com.example.studypal.controller.applicationController.tutor;
 
 import com.example.studypal.DAO.RipetizioneInfoDAO;
 import com.example.studypal.bean.RipetizioneInfoBean;

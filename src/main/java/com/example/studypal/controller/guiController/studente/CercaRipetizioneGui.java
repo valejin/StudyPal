@@ -1,9 +1,9 @@
-package com.example.studypal.controller.guiController;
+package com.example.studypal.controller.guiController.studente;
 
 import com.example.studypal.bean.BaseInfoBean;
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.RipetizioneInfoBean;
-import com.example.studypal.controller.applicationController.CercaRipetizioneController;
+import com.example.studypal.controller.applicationController.studente.CercaRipetizioneController;
 import com.example.studypal.other.Printer;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

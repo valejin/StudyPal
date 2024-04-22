@@ -1,17 +1,13 @@
-package com.example.studypal.controller.guiController;
+package com.example.studypal.controller.guiController.tutor;
 
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.RipetizioneInfoBean;
-import com.example.studypal.controller.applicationController.GestioneProfiloTutorController;
+import com.example.studypal.controller.applicationController.tutor.GestioneProfiloTutorController;
 import com.example.studypal.model.RipetizioneInfoModel;
 import com.example.studypal.other.Printer;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
-
-import java.sql.SQLException;
 
 public class GestioneProfiloTutorGuiController extends HomeTutorGui {
 

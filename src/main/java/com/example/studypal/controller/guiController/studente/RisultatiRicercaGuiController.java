@@ -1,7 +1,8 @@
-package com.example.studypal.controller.guiController;
+package com.example.studypal.controller.guiController.studente;
 
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.RipetizioneInfoBean;
+import com.example.studypal.controller.guiController.RegistrazioneGuiController;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.fxml.FXMLLoader;

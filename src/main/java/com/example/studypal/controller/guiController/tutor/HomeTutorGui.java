@@ -1,6 +1,7 @@
-package com.example.studypal.controller.guiController;
+package com.example.studypal.controller.guiController.tutor;
 
 import com.example.studypal.bean.LoggedInUserBean;
+import com.example.studypal.controller.guiController.LoginGuiController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -26,7 +27,7 @@ public class HomeTutorGui {
 
     //costruttori-------------------------------------------------------------
     protected HomeTutorGui() {}
-    protected HomeTutorGui(LoggedInUserBean user) { this.user = user;}
+    public HomeTutorGui(LoggedInUserBean user) { this.user = user;}
 
 
 
