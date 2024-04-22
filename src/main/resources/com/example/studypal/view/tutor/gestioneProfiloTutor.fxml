@@ -158,8 +158,8 @@
                   </Label>
                </children>
             </VBox>
-            <Button fx:id="confermaModifica" layoutX="214.0" layoutY="283.0" mnemonicParsing="false" onAction="#gestioneProfiloMethod" text="Conferma" />
-            <Label fx:id="successoModifiche" layoutX="166.0" layoutY="263.0" textFill="#2672bf">
+            <Button fx:id="confermaModifica" layoutX="214.0" layoutY="283.0" mnemonicParsing="false" onAction="#gestioneProfiloMethod" styleClass="rounded-button" stylesheets="@../../button.css" text="Conferma" />
+            <Label fx:id="successoModifiche" layoutX="166.0" layoutY="257.0" textFill="#2672bf">
                <font>
                   <Font size="14.0" />
                </font>

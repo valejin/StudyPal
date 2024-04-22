@@ -2,7 +2,6 @@ package com.example.studypal.controller.guiController.studente;
 
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.RipetizioneInfoBean;
-import com.example.studypal.controller.guiController.RegistrazioneGuiController;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.fxml.FXMLLoader;
@@ -152,14 +151,15 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
          */
 
         try {
-            FXMLLoader loader = new FXMLLoader(RegistrazioneGuiController.class.getResource("/com/example/studypal/view/studente/prenotaRipetizione.fxml"));
-            loader.setControllerFactory(c -> new PrenotaRipetizioneGui(user, tutor));
+            FXMLLoader loader = new FXMLLoader(PrenotaRipetizioneGui.class.getResource("/com/example/studypal/view/studente/prenotaRipetizione.fxml"));
+            loader.setControllerFactory(c -> new PrenotaRipetizioneGui(this.user, tutor, this.tutorList, this.filtri));
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) risultatiTable.getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {
             logger.severe("errore in RisultatiRicercaGuiController (caricamento pagina) " + e.getMessage());
+            e.printStackTrace();
         }
 
 

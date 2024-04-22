@@ -124,7 +124,7 @@
                   </Label>
                </children>
             </VBox>
-            <TextArea layoutX="73.0" layoutY="221.0" prefHeight="74.0" prefWidth="397.0" promptText="Inserisci delle informazioni aggiuntive per il tuo tutor..." />
+            <TextArea layoutX="73.0" layoutY="221.0" prefHeight="74.0" prefWidth="397.0" promptText="Inserisci un messaggio o delle informazioni aggiuntive per il tuo tutor..." />
             <Button layoutX="234.0" layoutY="316.0" mnemonicParsing="false" styleClass="custom-button" stylesheets="@../../button.css" text="Invia" />
             <Text layoutX="72.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Note aggiuntive:" />
             <Line endX="100.0" layoutX="384.0" layoutY="38.0" opacity="0.66" startX="-325.0" startY="1.52587890625E-5" stroke="#5695bf" strokeLineCap="ROUND" strokeWidth="2.0" />
@@ -136,10 +136,15 @@
                </color>
             </DropShadow>
          </effect></AnchorPane>
-      <Text fx:id="titolo" fill="#000000ab" layoutX="246.0" layoutY="72.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="#titolo" text="Conferma Prenotazione" textAlignment="CENTER" wrappingWidth="499.2001373767853">
+      <Text fx:id="titolo" fill="#000000ab" layoutX="268.0" layoutY="69.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="#titolo" text="Conferma Prenotazione" textAlignment="CENTER" wrappingWidth="499.2001373767853">
          <font>
             <Font size="40.0" />
          </font>
       </Text>
+      <ImageView fx:id="backButton" fitHeight="49.0" fitWidth="55.0" layoutX="224.0" layoutY="31.0" onMouseClicked="#goToRisultati" preserveRatio="true">
+         <image>
+            <Image url="@../../immagini/backButton.PNG" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
