@@ -61,7 +61,7 @@
             </Button>
          </children>
       </VBox>
-      <Text fx:id="titolo" fill="#000000ab" layoutX="281.0" layoutY="71.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="#titolo" text="Prenota Ripetizione" textAlignment="CENTER" wrappingWidth="451.2001373767853" AnchorPane.leftAnchor="281.0" AnchorPane.rightAnchor="81.39999999999998" AnchorPane.topAnchor="33.16796875">
+      <Text fx:id="titolo" fill="#000000ab" layoutX="282.0" layoutY="70.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="#titolo" text="Prenota Ripetizione" textAlignment="CENTER" wrappingWidth="451.2001373767853" AnchorPane.leftAnchor="282.0" AnchorPane.rightAnchor="80.39999999999998" AnchorPane.topAnchor="32.16796875">
          <font>
             <Font size="40.0" />
          </font>
@@ -148,7 +148,12 @@
             </HBox>
          </children>
       </AnchorPane>
-      <Text layoutX="388.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I risultati della tua ricerca (con i seguenti filtri)" wrappingWidth="258.6929931640625" />
+      <Text fill="#036319" layoutX="378.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I risultati della tua ricerca (con i seguenti filtri)" wrappingWidth="258.6929931640625" />
+      <ImageView fx:id="backButton" fitHeight="60.0" fitWidth="58.0" layoutX="233.0" layoutY="30.0" onMouseClicked="#goToRicerca" preserveRatio="true">
+         <image>
+            <Image url="@../../immagini/backButton.PNG" />
+         </image>
+      </ImageView>
    </children>
    <stylesheets>
       <URL value="@../../button.css" />

@@ -7,7 +7,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -33,29 +32,32 @@ public class PrenotaRipetizioneGui extends HomeStudenteGui {
     @FXML
     private Label giorniLabel;
     @FXML
-    private ImageView backButton;
+    private Label tariffaLabel;
 
     RipetizioneInfoBean informazioni, filtri;
     List<RipetizioneInfoBean> risultati;
+    private static final Logger logger = Logger.getLogger(PrenotaRipetizioneGui.class.getName());
+
     public PrenotaRipetizioneGui(LoggedInUserBean user, RipetizioneInfoBean tutor, List<RipetizioneInfoBean> risultatiRicercaBean, RipetizioneInfoBean filtriRicerca){
         this.user = user;
         this.informazioni = tutor;
         this.risultati = risultatiRicercaBean;
         this.filtri = filtriRicerca;
     }
-    private static final Logger logger = Logger.getLogger(PrenotaRipetizioneGui.class.getName());
 
     public PrenotaRipetizioneGui(LoggedInUserBean user, RipetizioneInfoBean tutor){
         this.user = user;
         this.informazioni = tutor;
     }
 
+
+    /*----------------------------------------------------------------------------------------------------------------*/
     public void initialize(){
 
         nomeLabel.setText(informazioni.getNome());
         cognomeLabel.setText((informazioni.getCognome()));
-        //emailLabel.setText(informazioni.getEmail());
-
+        emailLabel.setText(informazioni.getEmail());
+        tariffaLabel.setText(informazioni.getTariffa() + "€/h");
         materiaLabel.setText(filtri.getMateria());
 
         if (filtri.getGiorni() != null){
@@ -63,7 +65,12 @@ public class PrenotaRipetizioneGui extends HomeStudenteGui {
         } else {
             giorniLabel.setText("Non specificato");
         }
+        if (filtri.getInPresenza() && filtri.getOnline()){ modLabel.setText("In presenza, online");}
+        else if (filtri.getInPresenza()){ modLabel.setText("In presenza");}
+        else if (filtri.getOnline()){ modLabel.setText("Online");}
+        else {modLabel.setText("Non specificato");}
 
+        if (filtri.getGiorni() != null) {giorniLabel.setText(filtri.getGiorni());}
     }
 
     public void goToRisultati(){

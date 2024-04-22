@@ -39,16 +39,20 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
     @FXML
     private Label luogoError;
 
+    private String materia;
     private static final Logger logger = Logger.getLogger(CercaRipetizioneGui.class.getName());
     RipetizioneInfoBean ripetizioneInfoBean;
     List<RipetizioneInfoBean> risultatiRicercaBean = new ArrayList<>();
 
     //eredita dal padre un attributo LoggedInUserBean
     public CercaRipetizioneGui(LoggedInUserBean user) {this.user = user;}
-
+    public CercaRipetizioneGui(LoggedInUserBean user, String materia) {this.user = user; this.materia = materia;}
 
     @FXML
     public void initialize() {
+
+        //se siamo tornati indietro dalla pagina dei risultati
+        if (materia != null){ cercaMateria.setText(materia);}
 
         // Imposta il valore minimo e massimo del Slider
         tariffaSlider.setMin(5);
@@ -120,7 +124,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         //chiama il controller applicativo e gli passa il BEAN che contiene la materia
         risultatiRicercaBean = cercaRipetizioneController.prenotaRipetizioneMethod(baseInfoBean);
 
-        //todo try catch!!!!!!! materia non trovata
+        //todo try catch!!!!!!! materia non trovata + ricerca in presenza senza luogo dà errori a terminale
 
         /*
         //DEBUG
@@ -228,7 +232,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         for (MenuItem item : items) {
             if (item instanceof CheckMenuItem checkMenuItem) {
                 if (checkMenuItem.isSelected()) {
-                    if (selectedValues.length() > 0) {
+                    if (!selectedValues.isEmpty()) {
                         selectedValues.append(", ");
                     }
                     selectedValues.append(checkMenuItem.getText());
@@ -282,8 +286,6 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         /*----------------------------------------------------------------------------------------------------------------*/
         public void caricaRisultati (List < RipetizioneInfoBean > risultatiRicercaBean) {
 
-            //TODO: non funziona caricamento pagina nel caso di assenza filtri... faccio un costruttore a due parametri per RisultatiRicercaGuiController???
-
             try {
                 FXMLLoader loader = new FXMLLoader(CercaRipetizioneGui.class.getResource("/com/example/studypal/view/studente/risultatoRicerca.fxml"));
                 loader.setControllerFactory(c -> new RisultatiRicercaGuiController(user, risultatiRicercaBean, ripetizioneInfoBean));
@@ -295,4 +297,5 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
                 logger.severe("errore in CercaRipetizioneGui " + e.getMessage());
             }
         }
+
     }

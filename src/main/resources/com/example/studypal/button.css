@@ -1,10 +1,14 @@
 .custom-button {
     -fx-background-color: rgb(132, 168, 130);
     -fx-text-fill: #eceeeb;
+  /*  -fx-border-radius: 15 15 15 15; */
+
 }
 
 .custom-button:hover {
     -fx-background-color: #658863;
+   /* -fx-border-radius: 15 15 15 15; */
+
 }
 
 .rounded-button {

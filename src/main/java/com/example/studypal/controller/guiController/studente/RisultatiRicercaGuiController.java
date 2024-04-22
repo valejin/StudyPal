@@ -50,7 +50,6 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
     @FXML
     private Label giorniRisultato;
 
-
     //inizializzo una lista, in cui popolo gli elementi della tabella
     List<RipetizioneInfoBean> tutorList = new ArrayList<>();
     RipetizioneInfoBean filtri;
@@ -86,7 +85,7 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
         }
         if (filtri.getTariffa() != null){
             int value = filtri.getTariffa();
-            tariffaRisultato.setText(Integer.toString(value) + "€/h");
+            tariffaRisultato.setText(value + "€/h");
         } else {
             tariffaRisultato.setText("Non specificato");
         }
@@ -152,9 +151,7 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
         System.out.println("ho scelto il tutor");
 
         /*
-            deve caricare la funzione di prenotazione di tutor
             carica la pagina di conferma della prenotazione
-
          */
 
         try {
@@ -168,6 +165,21 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
             logger.severe("errore in RisultatiRicercaGuiController (caricamento pagina) " + e.getMessage());
         }
 
+
+    }
+
+    public void goToRicerca() {
+
+        try {
+            FXMLLoader loader = new FXMLLoader(CercaRipetizioneGui.class.getResource("/com/example/studypal/view/studente/cercaRipetizioneStudente.fxml"));
+            loader.setControllerFactory(c -> new CercaRipetizioneGui(user, this.filtri.getMateria()));
+            Parent parent = loader.load();
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) materiaRisultato.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            logger.severe("errore in RisultatiRicercaGuiController " + e.getMessage());
+        }
 
     }
 }

@@ -79,37 +79,37 @@
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
                      <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets top="15.0" />
                      </VBox.margin>
                   </Text>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Materia:">
                      <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets top="15.0" />
                      </VBox.margin>
                   </Text>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modalità:">
                      <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets top="15.0" />
                      </VBox.margin>
                   </Text>
                </children>
             </VBox>
-            <VBox layoutX="156.0" layoutY="56.0" prefHeight="150.0" prefWidth="100.0">
+            <VBox layoutX="156.0" layoutY="56.0" prefHeight="150.0" prefWidth="122.0">
                <children>
-                  <Label fx:id="nomeLabel" />
-                  <Label fx:id="emailLabel">
+                  <Label fx:id="nomeLabel" text="label" />
+                  <Label fx:id="emailLabel" text="label">
                      <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets top="14.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="materiaLabel">
+                  <Label fx:id="materiaLabel" prefHeight="18.0" prefWidth="104.0" text="label">
                      <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="modLabel">
+                  <Label fx:id="modLabel" prefHeight="18.0" prefWidth="106.0" text="label">
                      <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Label>
                </children>
@@ -118,32 +118,32 @@
             <Button layoutX="234.0" layoutY="316.0" mnemonicParsing="false" styleClass="custom-button" stylesheets="@../../button.css" text="Invia" />
             <Text layoutX="72.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Note aggiuntive:" />
             <Line endX="100.0" layoutX="384.0" layoutY="38.0" opacity="0.66" startX="-325.0" startY="1.52587890625E-5" stroke="#5695bf" strokeLineCap="ROUND" strokeWidth="2.0" />
-            <VBox layoutX="272.0" layoutY="56.0" prefHeight="138.0" prefWidth="100.0">
+            <VBox layoutX="293.0" layoutY="56.0" prefHeight="138.0" prefWidth="100.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cognome:" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tariffa:">
                      <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets top="15.0" />
                      </VBox.margin>
                   </Text>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giorni:">
                      <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets top="15.0" />
                      </VBox.margin>
                   </Text>
                </children>
             </VBox>
-            <VBox layoutX="349.0" layoutY="56.0" prefHeight="150.0" prefWidth="100.0">
+            <VBox layoutX="370.0" layoutY="56.0" prefHeight="150.0" prefWidth="100.0">
                <children>
-                  <Label fx:id="cognomeLabel" />
-                  <Label fx:id="tariffaLabel">
+                  <Label fx:id="cognomeLabel" text="label" />
+                  <Label fx:id="tariffaLabel" text="label">
                      <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="giorniLabel">
+                  <Label fx:id="giorniLabel" text="label">
                      <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets top="14.0" />
                      </VBox.margin>
                   </Label>
                </children>
@@ -156,10 +156,15 @@
                </color>
             </DropShadow>
          </effect></AnchorPane>
-      <Text fx:id="titolo" fill="#000000ab" layoutX="246.0" layoutY="72.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="#titolo" text="Conferma Prenotazione" textAlignment="CENTER" wrappingWidth="499.2001373767853">
+      <Text fx:id="titolo" fill="#000000ab" layoutX="268.0" layoutY="71.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="#titolo" text="Conferma Prenotazione" textAlignment="CENTER" wrappingWidth="499.2001373767853">
          <font>
             <Font size="40.0" />
          </font>
       </Text>
+      <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="224.0" layoutY="30.0" onMouseClicked="#goToRisultati" preserveRatio="true">
+         <image>
+            <Image url="@../../immagini/backButton.PNG" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
