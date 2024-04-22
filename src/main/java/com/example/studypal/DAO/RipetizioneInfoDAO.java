@@ -3,7 +3,7 @@ package com.example.studypal.DAO;
 import com.example.studypal.exceptions.MateriaNonTrovataException;
 import com.example.studypal.model.BaseInfoModel;
 import com.example.studypal.model.RipetizioneInfoModel;
-import com.example.studypal.model.UserModel;
+//import com.example.studypal.model.UserModel;
 import com.example.studypal.other.Connect;
 import com.example.studypal.other.Printer;
 
@@ -40,8 +40,8 @@ public class RipetizioneInfoDAO {
          */
 
 
-        PreparedStatement statement = null;
-        ResultSet rs = null;
+        PreparedStatement statement;
+        ResultSet rs;
 
         System.out.println("Ricerca materia: ");
 
@@ -100,10 +100,10 @@ public class RipetizioneInfoDAO {
 
     public List<RipetizioneInfoModel> ricercaFiltri(RipetizioneInfoModel ripetizioneInfoModel) throws MateriaNonTrovataException{
 
-        PreparedStatement statement = null;
-        ResultSet rs = null;
+        PreparedStatement statement;
+        ResultSet rs;
 
-        UserModel userModel = new UserModel();
+        //UserModel userModel = new UserModel();
 
         String query = "SELECT * FROM tutor where tariffa <= ?";
 
@@ -187,7 +187,7 @@ public class RipetizioneInfoDAO {
                     //System.out.println("non ci interessa");
                     statement.setString(3, '%' + ripetizioneInfoModel.getGiorni() + '%');
                 }
-                String statementSQL = statement.unwrap(PreparedStatement.class).toString();
+                //String statementSQL = statement.unwrap(PreparedStatement.class).toString();
             }
 
 
@@ -218,7 +218,7 @@ public class RipetizioneInfoDAO {
                             rs.getBoolean("webcam"), rs.getString("luogo"),
                             rs.getString("giorni"), rs.getInt("tariffa"), rs.getString("email"));
 
-                        //System.out.println("MATERIE MESSE NEL MODEL: " + risultatoCorrente.getMaterie());
+
 
                     /*DEBUG*/
                     System.out.println("    nome: " + risultatoCorrente.getNome());
@@ -267,7 +267,7 @@ public class RipetizioneInfoDAO {
          */
 
         Connection connection;
-        PreparedStatement statement = null;
+        PreparedStatement statement;
         String query = "UPDATE tutor SET tariffa=?, luogo=?, materie=?, inPresenza=?, webCam=?, giorni=? WHERE email=?";
 
         try{
@@ -296,8 +296,8 @@ public class RipetizioneInfoDAO {
         //Printer.println("cercando il tutor " + email);
         RipetizioneInfoModel infoTutor = new RipetizioneInfoModel();
         Connection connection;
-        PreparedStatement statement = null;
-        ResultSet rs = null;
+        PreparedStatement statement;
+        ResultSet rs;
 
         String query = "SELECT * FROM tutor WHERE email=?";
 

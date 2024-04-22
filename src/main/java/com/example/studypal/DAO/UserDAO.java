@@ -20,8 +20,7 @@ public class UserDAO {
     public UserModel loginMethod(CredenzialiModel credenzialiModel) throws LoginDBException{
         UserModel userModel = new UserModel();
 
-        PreparedStatement statement = null;
-        String ruolo;
+        PreparedStatement statement;
 
         //query per verificare credenziali utente
         String query = "SELECT * FROM utente where email=? AND password=?";
@@ -68,8 +67,8 @@ public class UserDAO {
     public void registrazioneMethod(UserModel registrazioneModel) {
 
         Connection connection;
-        PreparedStatement statement = null;
-        System.out.println("preparato lo statement");
+        PreparedStatement statement;
+        Printer.println("preparato lo statement");
 
         String query = "INSERT INTO utente (email, nome, cognome, password, isTutor) VALUES (?, ?, ?, ?, ?)";
 
@@ -100,8 +99,8 @@ public class UserDAO {
     public void controllaEmailMethod(UserModel registrazioneModel) throws EmailAlreadyInUseException {
 
         Connection connection;
-        PreparedStatement statement = null;
-        ResultSet rs = null;
+        PreparedStatement statement;
+        ResultSet rs;
 
         System.out.println("controllo email");
 
@@ -135,8 +134,7 @@ public class UserDAO {
         //crea una tupla nella tabella tutor... DEVE ESSERE INVOCATO SOLO PER I TUTOR!!!
 
         Connection connection;
-        PreparedStatement statement = null;
-        ResultSet rs = null;
+        PreparedStatement statement;
 
         String query = "INSERT INTO tutor (email, tariffa, luogo, materie, inPresenza, webCam, giorni, nome, cognome) VALUES (?, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)";
 

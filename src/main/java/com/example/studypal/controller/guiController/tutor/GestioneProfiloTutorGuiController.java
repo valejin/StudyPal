@@ -50,7 +50,7 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
               Magari se voglio dare ripetizioni esclusivamente online e non voglio inserire un luogo(?)
         */
 
-        RipetizioneInfoModel infoCorrentiProfilo = new RipetizioneInfoModel();
+        RipetizioneInfoModel infoCorrentiProfilo;
         infoCorrentiProfilo = caricaInformazioniProfilo(user.getEmail());
 
         /* mostro all'utente le sue informazioni correnti------------------------------------------------------------*/
@@ -59,14 +59,11 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
         luogoBox.setPromptText(infoCorrentiProfilo.getLuogo());
         materieField.setText(infoCorrentiProfilo.getMateria());
         tariffaSlider.setValue(infoCorrentiProfilo.getTariffa());
-        tariffaSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            tariffaValue.setText(Integer.toString(newValue.intValue()) + "€");
-        });
+        tariffaSlider.valueProperty().addListener((observable, oldValue, newValue) -> tariffaValue.setText(newValue.intValue() + "€"));
         giorniMenu.setText(infoCorrentiProfilo.getGiorni());
 
         for (MenuItem item : giorniMenu.getItems()) {
-            if (item instanceof CheckMenuItem) {
-                CheckMenuItem checkItem = (CheckMenuItem) item;
+            if (item instanceof CheckMenuItem checkItem) {
                 if (infoCorrentiProfilo.getGiorni()!=null && infoCorrentiProfilo.getGiorni().contains(checkItem.getText())) {
                     checkItem.setSelected(true);
                 }
@@ -91,9 +88,7 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
         tariffaSlider.setMax(50);
         tariffaSlider.setShowTickLabels(true);
         tariffaSlider.setShowTickMarks(true);
-        tariffaSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            tariffaValue.setText(Integer.toString(newValue.intValue()) + "€");
-        });
+        tariffaSlider.valueProperty().addListener((observable, oldValue, newValue) -> tariffaValue.setText(newValue.intValue() + "€"));
 
     }
 
@@ -106,10 +101,10 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
          */
 
         String materie;
-        Boolean inPresenza = false;
-        Boolean online = false;
+        boolean inPresenza = false;
+        boolean online = false;
         String luogo;
-        Integer tariffa;
+        int tariffa;
         String email = this.user.getEmail(); //questa è l'email del tutor loggato
 
 
@@ -126,8 +121,7 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
         ObservableList<MenuItem> items = giorniMenu.getItems();
         StringBuilder selectedValues = new StringBuilder();
         for (MenuItem item : items) {
-            if (item instanceof CheckMenuItem) {
-                CheckMenuItem checkMenuItem = (CheckMenuItem) item;
+            if (item instanceof CheckMenuItem checkMenuItem) {
                 if (checkMenuItem.isSelected()) {
                     if (!selectedValues.isEmpty()) {   //prima era selectedValues.length() > 0
                         selectedValues.append(", ");

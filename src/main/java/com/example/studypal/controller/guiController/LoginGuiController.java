@@ -10,10 +10,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,20 +19,11 @@ import java.util.logging.Logger;
 
 public class LoginGuiController {
 
-
-    private String loginPage = "com/example/studypal/view/login.fxml";
-
     @FXML
     private TextField emailField;
 
     @FXML
     private TextField passwordField;
-
-    @FXML
-    private Button loginButton;
-
-    @FXML
-    private Text signUpButton;
 
     @FXML
     private Label credenzialiError;
@@ -51,8 +40,8 @@ public class LoginGuiController {
     @FXML
      void loginMethod() {
 
-        String userEmail = null;
-        String userPassword = null;
+        String userEmail;
+        String userPassword;
 
 
         //controlla isempty()

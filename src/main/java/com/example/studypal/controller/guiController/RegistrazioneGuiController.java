@@ -3,9 +3,7 @@ package com.example.studypal.controller.guiController;
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.RegistrazioneUserBean;
 import com.example.studypal.controller.applicationController.RegistrazioneController;
-import com.example.studypal.exceptions.CredenzialiSbagliateException;
 import com.example.studypal.exceptions.EmailAlreadyInUseException;
-import com.example.studypal.exceptions.RegistrazioneDBException;
 import com.example.studypal.other.Printer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -137,6 +135,7 @@ public class RegistrazioneGuiController {
                 System.err.println("Impossibile ottenere la finestra di Login.");
             }
 
+            assert stage != null;
             stage.setScene(scene);
         } catch (IOException e) {
             logger.severe("errore in RegistrazioneGuiController " + e.getMessage());

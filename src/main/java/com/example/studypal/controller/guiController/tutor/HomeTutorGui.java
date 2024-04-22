@@ -43,25 +43,24 @@ public class HomeTutorGui {
             stage.setScene(scene);
         } catch (IOException e) {
             logger.severe("errore in HomeTutorGui " + e.getMessage());
-            e.printStackTrace();
         }
     }
-
+    @FXML
     public void goToGestisciPrenotazioni(){
-        /*
+
         //metodo che porta alla pagina di gestione delle prenotazioni
         try {
-            FXMLLoader loader = new FXMLLoader(GestisciPrenotazioniTutorGuiController.class.getResource("/com/example/studypal/view/tutor/gestioneProfiloTutor.fxml"));
-            loader.setControllerFactory(c -> new GestioneProfiloTutorGuiController());
+            FXMLLoader loader = new FXMLLoader(GestisciPrenotazioniGui.class.getResource("/com/example/studypal/view/tutor/gestisciPrenotazioni.fxml"));
+            loader.setControllerFactory(c -> new GestisciPrenotazioniGui(user));
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
-            Stage stage = (Stage) menu.getScene().getWindow();
+            Stage stage = (Stage) barraMenu.getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {
             logger.severe("errore in MenuBaseTutorGuiController " + e.getMessage());
         }
 
-         */
+
     }
 
     public void goToLogout(){

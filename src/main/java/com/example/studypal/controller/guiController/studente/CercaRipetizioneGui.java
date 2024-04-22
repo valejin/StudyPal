@@ -58,10 +58,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         tariffaSlider.setShowTickMarks(true);
 
         // Per visualizzare dinamicamente il valore di Slider
-        tariffaSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            tariffaValue.setText(Integer.toString(newValue.intValue()) + "€");
-
-        });
+        tariffaSlider.valueProperty().addListener((observable, oldValue, newValue) -> tariffaValue.setText(newValue.intValue() + "€"));
 
         //luogo----------------------------------------------
         luogo.getItems().addAll("Roma", "Milano", "Palermo");
@@ -148,11 +145,10 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
     /*----------------------------------------------------------------------------------------------------------------*/
     public boolean menuButtonIsEmpty(MenuButton menuButton){
         ObservableList<MenuItem> items = menuButton.getItems();
-        Boolean answer = true;
+        boolean answer = true;
 
         for (MenuItem item : items) {
-            if (item instanceof CheckMenuItem) {
-                CheckMenuItem checkItem = (CheckMenuItem) item;
+            if (item instanceof CheckMenuItem checkItem) {
                 if (checkItem.isSelected()) {
                     answer = false;
                     return answer;
@@ -229,8 +225,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         ObservableList<MenuItem> items = giorno.getItems();
         StringBuilder selectedValues = new StringBuilder();
         for (MenuItem item : items) {
-            if (item instanceof CheckMenuItem) {
-                CheckMenuItem checkMenuItem = (CheckMenuItem) item;
+            if (item instanceof CheckMenuItem checkMenuItem) {
                 if (checkMenuItem.isSelected()) {
                     if (selectedValues.length() > 0) {
                         selectedValues.append(", ");
@@ -296,7 +291,6 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
                 stage.setScene(scene);
             } catch (IOException e) {
                 logger.severe("errore in CercaRipetizioneGui " + e.getMessage());
-                e.printStackTrace();
             }
         }
     }

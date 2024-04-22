@@ -56,11 +56,6 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
     RipetizioneInfoBean filtri;
     private static final Logger logger = Logger.getLogger(RisultatiRicercaGuiController.class.getName());
 
-    /*
-    public RisultatiRicercaGuiController(LoggedInUserBean user){
-        this.user = user;
-    }
-    */
 
     protected RisultatiRicercaGuiController(LoggedInUserBean user,List<RipetizioneInfoBean> risultatiRicercaBean, RipetizioneInfoBean ripetizioneInfoBean){
         this.user = user;
@@ -91,10 +86,10 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
 
 
 
-        nome.setCellValueFactory(new PropertyValueFactory<RipetizioneInfoBean, String>("nome"));
-        cognome.setCellValueFactory(new PropertyValueFactory<RipetizioneInfoBean, String>("cognome"));
-        tariffa.setCellValueFactory(new PropertyValueFactory<RipetizioneInfoBean, Integer>("tariffa"));
-        giorni.setCellValueFactory(new PropertyValueFactory<RipetizioneInfoBean, String>("giorni"));
+        nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        cognome.setCellValueFactory(new PropertyValueFactory<>("cognome"));
+        tariffa.setCellValueFactory(new PropertyValueFactory<>("tariffa"));
+        giorni.setCellValueFactory(new PropertyValueFactory<>("giorni"));
 
 
 
@@ -102,10 +97,10 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
         risultatiTable.getItems().addAll(tutorList);
 
         // Imposta la factory per la colonna "Prenota"
-        prenota.setCellFactory(new Callback<TableColumn<RipetizioneInfoBean, Button>, TableCell<RipetizioneInfoBean, Button>>() {
+        prenota.setCellFactory(new Callback<>() {
             @Override
             public TableCell<RipetizioneInfoBean, Button> call(TableColumn<RipetizioneInfoBean, Button> param) {
-                return new TableCell<RipetizioneInfoBean, Button>() {
+                return new TableCell<>() {
                     final Button btn = new Button("Prenota");
 
                     {
@@ -159,7 +154,6 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
             stage.setScene(scene);
         } catch (IOException e) {
             logger.severe("errore in RisultatiRicercaGuiController (caricamento pagina) " + e.getMessage());
-            e.printStackTrace();
         }
 
 

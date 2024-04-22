@@ -17,7 +17,7 @@
       </Text>
       <AnchorPane layoutX="122.0" layoutY="127.0" prefHeight="314.0" prefWidth="550.0" AnchorPane.leftAnchor="122.0" AnchorPane.rightAnchor="122.0" AnchorPane.topAnchor="127.0">
          <children>
-            <Button fx:id="loginButton" layoutX="233.0" layoutY="199.0" mnemonicParsing="false" onAction="#loginMethod" prefHeight="39.0" prefWidth="89.0" text="Login">
+            <Button layoutX="233.0" layoutY="199.0" mnemonicParsing="false" onAction="#loginMethod" prefHeight="39.0" prefWidth="89.0" text="Login">
                <font>
                   <Font size="18.0" />
                </font>
@@ -42,7 +42,7 @@
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text fx:id="signUpButton" layoutX="277.0" layoutY="276.0" onMouseClicked="#caricaRegistrazione" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign up" underline="true">
+            <Text layoutX="277.0" layoutY="276.0" onMouseClicked="#caricaRegistrazione" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign up" underline="true">
                <font>
                   <Font size="17.0" />
                </font>

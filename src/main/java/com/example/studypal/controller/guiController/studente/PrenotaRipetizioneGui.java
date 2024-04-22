@@ -2,14 +2,11 @@ package com.example.studypal.controller.guiController.studente;
 
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.RipetizioneInfoBean;
-import com.example.studypal.model.UserModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -69,7 +66,6 @@ public class PrenotaRipetizioneGui extends HomeStudenteGui {
             stage.setScene(scene);
         } catch (IOException e) {
             logger.severe("errore in PrenotaRipetizioneGui (caricamento pagina) " + e.getMessage());
-            e.printStackTrace();
         }
     }
 

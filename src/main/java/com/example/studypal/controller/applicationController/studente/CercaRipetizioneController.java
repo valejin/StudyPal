@@ -17,7 +17,6 @@ public class CercaRipetizioneController extends HomeStudenteController {
     controller applicativo che gestisce il caso d'uso prenota ripetizione da parte dello studente
     */
 
-    String materie;
     List<RipetizioneInfoModel> risultatiRicerca;
     List<RipetizioneInfoBean> risultatiRicercaBean = new ArrayList<>();
 
