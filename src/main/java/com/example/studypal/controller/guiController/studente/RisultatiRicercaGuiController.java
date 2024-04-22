@@ -65,11 +65,15 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
 
     public void initialize(){
 
-        if (filtri != null){
-            //setto i valori posti da utente
-            materiaRisultato.setText(filtri.getMateria());
-            luogoRisultato.setText(filtri.getLuogo());
+        //setto i valori posti da utente
 
+        materiaRisultato.setText(filtri.getMateria());
+        if (filtri.getLuogo() != null){
+            luogoRisultato.setText(filtri.getLuogo());
+        } else {
+            luogoRisultato.setText("Non specificato");
+        }
+        if ((filtri.getInPresenza()!= null) || (filtri.getOnline() != null)) {
             if(filtri.getInPresenza() && filtri.getOnline()){
                 modalitaRisultato.setText("In presenza & Online");
             } else if (filtri.getOnline()) {
@@ -77,13 +81,21 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
             } else if (filtri.getInPresenza()) {
                 modalitaRisultato.setText("In presenza");
             }
-
+        } else {
+            modalitaRisultato.setText("Non specificato");
+        }
+        if (filtri.getTariffa() != null){
             int value = filtri.getTariffa();
-            tariffaRisultato.setText(Integer.toString(value));
-
-            giorniRisultato.setText(filtri.getGiorni());
+            tariffaRisultato.setText(Integer.toString(value) + "€/h");
+        } else {
+            tariffaRisultato.setText("Non specificato");
         }
 
+        if(filtri.getGiorni() != null) {
+            giorniRisultato.setText(filtri.getGiorni());
+        } else {
+            giorniRisultato.setText("Non specificato");
+        }
 
 
         nome.setCellValueFactory(new PropertyValueFactory<>("nome"));

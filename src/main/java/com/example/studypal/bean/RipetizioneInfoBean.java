@@ -13,7 +13,9 @@ public class RipetizioneInfoBean extends BaseInfoBean{
     private String nome;
     private String cognome;
 
-
+    public RipetizioneInfoBean(String materia){
+        super(materia);
+    }
 
     //qui contiene tutte le informazioni per la ricerca con filtro, in caso di Prenota Ripetizione
     public RipetizioneInfoBean(String materia, Boolean inPresenza, Boolean online, String luogo, String giorni, Integer tariffa, String email){

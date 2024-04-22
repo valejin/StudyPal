@@ -109,7 +109,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
     public   List<RipetizioneInfoBean>  ricercaMateria(){
 
         String materia = this.cercaMateria.getText();
-
+        ripetizioneInfoBean = new RipetizioneInfoBean(materia);
         Printer.println("La materia inserita è: " + materia);
 
         //prendo un BEAN base e inserisco info
@@ -119,7 +119,8 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
 
         //chiama il controller applicativo e gli passa il BEAN che contiene la materia
         risultatiRicercaBean = cercaRipetizioneController.prenotaRipetizioneMethod(baseInfoBean);
-//todo try catch!!!!!!! materia non trovata
+
+        //todo try catch!!!!!!! materia non trovata
 
         /*
         //DEBUG
@@ -244,6 +245,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         //istanzio un RipetizioneInfoBean
         ripetizioneInfoBean = new RipetizioneInfoBean(materia, inPresenza, online, luogo, giorni, tariffa, email);
 
+        //todo: è necessario settarli di nuovo se abbiamo usato il costruttore con i parametri?
         ripetizioneInfoBean.setEmail(email);
         ripetizioneInfoBean.setMateria(materia);
         ripetizioneInfoBean.setInPresenza(inPresenza);

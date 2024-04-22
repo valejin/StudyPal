@@ -25,6 +25,8 @@ public class PrenotaRipetizioneGui extends HomeStudenteGui {
     @FXML
     private Label cognomeLabel;
     @FXML
+    private Label emailLabel;
+    @FXML
     private Label materiaLabel;
     @FXML
     private Label modLabel;
@@ -52,8 +54,16 @@ public class PrenotaRipetizioneGui extends HomeStudenteGui {
 
         nomeLabel.setText(informazioni.getNome());
         cognomeLabel.setText((informazioni.getCognome()));
-        materiaLabel.setText(informazioni.getMateria());
-        giorniLabel.setText(informazioni.getGiorni());
+        //emailLabel.setText(informazioni.getEmail());
+
+        materiaLabel.setText(filtri.getMateria());
+
+        if (filtri.getGiorni() != null){
+            giorniLabel.setText(filtri.getGiorni());
+        } else {
+            giorniLabel.setText("Non specificato");
+        }
+
     }
 
     public void goToRisultati(){
