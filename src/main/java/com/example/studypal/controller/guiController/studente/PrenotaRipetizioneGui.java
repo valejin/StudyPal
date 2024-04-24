@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -33,6 +34,8 @@ public class PrenotaRipetizioneGui extends HomeStudenteGui {
     private Label giorniLabel;
     @FXML
     private Label tariffaLabel;
+    @FXML
+    private TextArea note;
 
     RipetizioneInfoBean informazioni, filtri;
     List<RipetizioneInfoBean> risultati;
@@ -76,6 +79,18 @@ public class PrenotaRipetizioneGui extends HomeStudenteGui {
         }
 
         if (filtri.getGiorni() != null) {giorniLabel.setText(filtri.getGiorni());}
+
+
+        // Aggiungi un listener per controllare il numero di caratteri
+        note.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() > 250) {
+                note.setText(oldValue); // Annulla l'input che supera il limite
+            }
+        });
+
+
+
+
     }
 
     public void goToRisultati(){
