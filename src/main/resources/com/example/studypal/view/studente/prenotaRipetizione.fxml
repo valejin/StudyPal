@@ -70,7 +70,7 @@
       </VBox>
       <AnchorPane fx:id="sfondoChiaro" layoutX="224.0" layoutY="95.0" prefHeight="369.0" prefWidth="544.0" stylesheets="@../../base-prova.css">
          <children>
-            <Text fill="#5695bf" layoutX="73.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Controlla le informazioni presenti nella tua prenotazione">
+            <Text fill="#5695bf" layoutX="90.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Controlla le informazioni presenti nella tua richiesta">
                <font>
                   <Font size="16.0" />
                </font></Text>
@@ -126,6 +126,11 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                   </Text>
+                  <Text layoutX="10.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Luogo:">
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </Text>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giorni:">
                      <VBox.margin>
                         <Insets top="15.0" />
@@ -138,12 +143,17 @@
                   <Label fx:id="cognomeLabel" text="label" />
                   <Label fx:id="tariffaLabel" text="label">
                      <VBox.margin>
-                        <Insets top="13.0" />
+                        <Insets top="14.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="giorniLabel" text="label">
+                  <Label fx:id="luogoLabel" text="label">
                      <VBox.margin>
                         <Insets top="14.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="giorniLabel" layoutX="10.0" layoutY="76.0" text="label">
+                     <VBox.margin>
+                        <Insets top="15.0" />
                      </VBox.margin>
                   </Label>
                </children>
