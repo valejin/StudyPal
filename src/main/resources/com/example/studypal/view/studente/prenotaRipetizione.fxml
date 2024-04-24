@@ -114,9 +114,9 @@
                   </Label>
                </children>
             </VBox>
-            <TextArea fx:id="note" layoutX="73.0" layoutY="221.0" prefHeight="74.0" prefWidth="397.0" promptText="Inserisci delle informazioni aggiuntive per il tuo tutor..." wrapText="true" />
+            <TextArea fx:id="note" layoutX="73.0" layoutY="221.0" prefHeight="74.0" prefWidth="397.0" promptText="Inserisci delle informazioni aggiuntive (data, ora, richieste particolari) per il tuo tutor..." />
             <Button layoutX="234.0" layoutY="316.0" mnemonicParsing="false" styleClass="custom-button" stylesheets="@../../button.css" text="Invia" />
-            <Text layoutX="72.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Note aggiuntive (specifica l'orario):" />
+            <Text layoutX="72.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Note aggiuntive:" />
             <Line endX="100.0" layoutX="384.0" layoutY="38.0" opacity="0.66" startX="-325.0" startY="1.52587890625E-5" stroke="#5695bf" strokeLineCap="ROUND" strokeWidth="2.0" />
             <VBox layoutX="293.0" layoutY="56.0" prefHeight="138.0" prefWidth="100.0">
                <children>
@@ -148,6 +148,7 @@
                   </Label>
                </children>
             </VBox>
+            <Text fill="#3f633f" layoutX="369.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(max. 250 caratteri)" />
          </children>
          <effect>
             <DropShadow blurType="TWO_PASS_BOX">

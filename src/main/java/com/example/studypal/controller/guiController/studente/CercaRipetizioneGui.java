@@ -295,6 +295,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
                 stage.setScene(scene);
             } catch (IOException e) {
                 logger.severe("errore in CercaRipetizioneGui " + e.getMessage());
+                e.printStackTrace();
             }
         }
 
