@@ -148,6 +148,7 @@
                   </Label>
                </children>
             </VBox>
+            <Text fill="#00000076" layoutX="370.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(Max 250 caratteri)" />
          </children>
          <effect>
             <DropShadow blurType="TWO_PASS_BOX">

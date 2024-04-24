@@ -6,11 +6,11 @@ public class RipetizioneInfoModel extends BaseInfoModel {
     model conterrà i dati relativi alla gestione profilo
      */
 
-    private Boolean inPresenza;
-    private Boolean online;
+    private boolean inPresenza;
+    private boolean online;
     private String luogo;
     private String giorni;
-    private Integer tariffa;
+    private int tariffa;
     private String email;
     private String materie;
     private String nome;
@@ -84,14 +84,13 @@ public class RipetizioneInfoModel extends BaseInfoModel {
     }
 
     //cotruttore di default
-    public RipetizioneInfoModel(){ };
+    public RipetizioneInfoModel(){ }
 
     //costruttore non di default, con 2 attributi aggiuntivi (nome, cognome) - necessario per risultati della ricerca
     public RipetizioneInfoModel(String nome, String cognome, String materie, Boolean inPresenza, Boolean online, String luogo, String giorni, Integer tariffa, String email){
         super(materie);
         this.nome = nome;
         this.cognome = cognome;
-        //this.materie = materie;
         this.inPresenza = inPresenza;
         this.online = online;
         this.luogo = luogo;
