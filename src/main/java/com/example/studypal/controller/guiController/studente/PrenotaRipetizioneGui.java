@@ -35,6 +35,8 @@ public class PrenotaRipetizioneGui extends HomeStudenteGui {
     @FXML
     private Label tariffaLabel;
     @FXML
+    private Label luogoLabel;
+    @FXML
     private TextArea note;
 
     RipetizioneInfoBean informazioni, filtri;
@@ -62,6 +64,7 @@ public class PrenotaRipetizioneGui extends HomeStudenteGui {
         emailLabel.setText(informazioni.getEmail());
         tariffaLabel.setText(informazioni.getTariffa() + "€/h");
         materiaLabel.setText(filtri.getMateria());
+        luogoLabel.setText(informazioni.getLuogo());
 
         if (filtri.getGiorni() != null){
             giorniLabel.setText(filtri.getGiorni());
@@ -77,9 +80,6 @@ public class PrenotaRipetizioneGui extends HomeStudenteGui {
         } else {
             modLabel.setText("Non specificato");
         }
-
-        if (filtri.getGiorni() != null) {giorniLabel.setText(filtri.getGiorni());}
-
 
         // Aggiungi un listener per controllare il numero di caratteri
         note.textProperty().addListener((observable, oldValue, newValue) -> {

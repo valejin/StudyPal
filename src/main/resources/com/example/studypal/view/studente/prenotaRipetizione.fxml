@@ -70,7 +70,7 @@
       </VBox>
       <AnchorPane fx:id="sfondoChiaro" layoutX="224.0" layoutY="95.0" prefHeight="369.0" prefWidth="544.0" stylesheets="@../../base-prova.css">
          <children>
-            <Text fill="#5695bf" layoutX="73.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Controlla le informazioni presenti nella tua prenotazione">
+            <Text fill="#5695bf" layoutX="90.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Controlla le informazioni presenti nella tua richiesta">
                <font>
                   <Font size="16.0" />
                </font></Text>
@@ -114,14 +114,19 @@
                   </Label>
                </children>
             </VBox>
-            <TextArea fx:id="note" layoutX="73.0" layoutY="221.0" prefHeight="74.0" prefWidth="397.0" promptText="Inserisci delle informazioni aggiuntive per il tuo tutor..." wrapText="true" />
+            <TextArea fx:id="note" layoutX="73.0" layoutY="221.0" prefHeight="74.0" prefWidth="397.0" promptText="Inserisci delle informazioni aggiuntive (data, ora, richieste particolari) per il tuo tutor..." />
             <Button layoutX="234.0" layoutY="316.0" mnemonicParsing="false" styleClass="custom-button" stylesheets="@../../button.css" text="Invia" />
-            <Text layoutX="72.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Note aggiuntive (specifica l'orario):" />
+            <Text layoutX="72.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Note aggiuntive:" />
             <Line endX="100.0" layoutX="384.0" layoutY="38.0" opacity="0.66" startX="-325.0" startY="1.52587890625E-5" stroke="#5695bf" strokeLineCap="ROUND" strokeWidth="2.0" />
             <VBox layoutX="293.0" layoutY="56.0" prefHeight="138.0" prefWidth="100.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cognome:" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tariffa:">
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Text layoutX="10.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Luogo:">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
@@ -138,17 +143,22 @@
                   <Label fx:id="cognomeLabel" text="label" />
                   <Label fx:id="tariffaLabel" text="label">
                      <VBox.margin>
-                        <Insets top="13.0" />
+                        <Insets top="14.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="giorniLabel" text="label">
+                  <Label fx:id="luogoLabel" text="label">
                      <VBox.margin>
                         <Insets top="14.0" />
                      </VBox.margin>
                   </Label>
+                  <Label fx:id="giorniLabel" layoutX="10.0" layoutY="76.0" text="label">
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </Label>
                </children>
             </VBox>
-            <Text fill="#00000076" layoutX="370.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(Max 250 caratteri)" />
+            <Text fill="#3f633f" layoutX="369.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(max. 250 caratteri)" />
          </children>
          <effect>
             <DropShadow blurType="TWO_PASS_BOX">
