@@ -163,6 +163,7 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
             stage.setScene(scene);
         } catch (IOException e) {
             logger.severe("errore in RisultatiRicercaGuiController (caricamento pagina) " + e.getMessage());
+            e.printStackTrace();
         }
 
 
@@ -179,6 +180,7 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
             stage.setScene(scene);
         } catch (IOException e) {
             logger.severe("errore in RisultatiRicercaGuiController " + e.getMessage());
+
         }
 
     }

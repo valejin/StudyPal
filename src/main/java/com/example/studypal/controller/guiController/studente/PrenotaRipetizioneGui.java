@@ -65,10 +65,15 @@ public class PrenotaRipetizioneGui extends HomeStudenteGui {
         } else {
             giorniLabel.setText("Non specificato");
         }
-        if (filtri.getInPresenza() && filtri.getOnline()){ modLabel.setText("In presenza, online");}
-        else if (filtri.getInPresenza()){ modLabel.setText("In presenza");}
-        else if (filtri.getOnline()){ modLabel.setText("Online");}
-        else {modLabel.setText("Non specificato");}
+        if (filtri.getInPresenza()!= null && filtri.getOnline() != null){
+            modLabel.setText("In presenza, online");
+        } else if (filtri.getInPresenza() != null){
+            modLabel.setText("In presenza");
+        } else if (filtri.getOnline() != null){
+            modLabel.setText("Online");
+        } else {
+            modLabel.setText("Non specificato");
+        }
 
         if (filtri.getGiorni() != null) {giorniLabel.setText(filtri.getGiorni());}
     }
