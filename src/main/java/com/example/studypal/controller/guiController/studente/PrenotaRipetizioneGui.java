@@ -1,7 +1,9 @@
 package com.example.studypal.controller.guiController.studente;
 
 import com.example.studypal.bean.LoggedInUserBean;
+import com.example.studypal.bean.PrenotazioneBean;
 import com.example.studypal.bean.RipetizioneInfoBean;
+import com.example.studypal.controller.applicationController.studente.PrenotaRipetizioneController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -42,6 +44,8 @@ public class PrenotaRipetizioneGui extends HomeStudenteGui {
     RipetizioneInfoBean informazioni, filtri;
     List<RipetizioneInfoBean> risultati;
     private static final Logger logger = Logger.getLogger(PrenotaRipetizioneGui.class.getName());
+
+    PrenotazioneBean prenotazioneBean;
 
     public PrenotaRipetizioneGui(LoggedInUserBean user, RipetizioneInfoBean tutor, List<RipetizioneInfoBean> risultatiRicercaBean, RipetizioneInfoBean filtriRicerca){
         this.user = user;
@@ -101,6 +105,33 @@ public class PrenotaRipetizioneGui extends HomeStudenteGui {
         } catch (IOException e) {
             logger.severe("errore in PrenotaRipetizioneGui (caricamento pagina) " + e.getMessage());
         }
+    }
+
+    public void prenota(){
+
+        /*
+        metodo lanciato quando viene premuto il pulsante invio di prenotazione,
+        carica le informazioni in un prenotazioneBean e le manda all'applicativo
+         */
+        prenotazioneBean.setEmailTutor(informazioni.getEmail());
+        prenotazioneBean.setEmailStudente(user.getEmail());
+        prenotazioneBean.setMateria(filtri.getMateria());
+
+        /* todo: controllare e gestire le modalità di lezione. Come le codifichiamo? Serve enum?
+        if (filtri.getInPresenza() != null && filtri.getOnline()) {
+            prenotazioneBean.setModLezione();
+        }
+        */
+        prenotazioneBean.setTariffa(informazioni.getTariffa());
+        if (filtri.getGiorni() != null){
+            prenotazioneBean.setGiorno(filtri.getGiorni());
+        }
+        prenotazioneBean.setNote(note.getText());
+
+        PrenotaRipetizioneController prenotaRipetizioneController = new PrenotaRipetizioneController();
+        prenotaRipetizioneController.prenota(prenotazioneBean);
+        //todo: i parametri della prenotazione li passerò al costruttore dell'applicativo o al metodo prenota???
+
     }
 
 }

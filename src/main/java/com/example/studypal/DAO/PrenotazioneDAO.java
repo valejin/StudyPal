@@ -30,7 +30,8 @@ public class PrenotazioneDAO {
             connection = Connect.getInstance().getDBConnection();
             statement = connection.prepareStatement(query);
 
-            statement.setString(1, );
+            //todo: finire di preparare lo statement con i dati presi dal model datoci dal controller applicativo
+            //statement.setString(1, );
 
         } catch (SQLException e) {
             logger.severe("errore in prenotazioneDAO " + e.getMessage());
