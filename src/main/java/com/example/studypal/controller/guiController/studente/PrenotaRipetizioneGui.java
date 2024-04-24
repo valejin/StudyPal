@@ -88,9 +88,6 @@ public class PrenotaRipetizioneGui extends HomeStudenteGui {
             }
         });
 
-
-
-
     }
 
     public void goToRisultati(){

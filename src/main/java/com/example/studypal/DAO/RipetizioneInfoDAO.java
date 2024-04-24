@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 public class RipetizioneInfoDAO {
 
     /*
-    DAO che gestisce le interazioni con il db relative alle informazioni utili alle prenotazioni di ripetizioni.
+    DAO che gestisce le interazioni con il db relative alle informazioni utili alle informazioni ddelle ripetizioni.
     Contiene:
         - metodo che effettua la ricerca di una ripetizione (PrenotaRipetizione)
         - metodo che effettua l'aggiornamento delle informazioni di un profilo tutor (GestioneProfiloTutor)
@@ -92,7 +92,6 @@ public class RipetizioneInfoDAO {
         }catch(SQLException e) {
             logger.severe("errore in userDAO " + e.getMessage());
         }
-
 
         return risultatiRicerca;
     }
@@ -248,14 +247,6 @@ public class RipetizioneInfoDAO {
     }
 
 
-
-
-    //-----------------------------------------------------------------------------------------------------------------------
-    public void prenotaRipetizione() {
-        /*
-        La query inserisce tuple nella tabella RipetizioniAttive quando viene effettuata una prenotazione di ripetizione
-         */
-    }
 
 
     //--------------------------------------------------------------------------------------------------------------------------------------
