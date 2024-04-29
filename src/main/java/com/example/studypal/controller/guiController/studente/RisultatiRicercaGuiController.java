@@ -150,9 +150,7 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
     public void scegliTutor(RipetizioneInfoBean tutor) {
         System.out.println("ho scelto il tutor");
 
-        /*
-            carica la pagina di conferma della prenotazione
-         */
+        /* carica la pagina di conferma della prenotazione */
 
         try {
             FXMLLoader loader = new FXMLLoader(PrenotaRipetizioneGui.class.getResource("/com/example/studypal/view/studente/prenotaRipetizione.fxml"));

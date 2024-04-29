@@ -6,7 +6,10 @@ import com.example.studypal.other.Printer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class PrenotazioneDAO {
@@ -49,5 +52,50 @@ public class PrenotazioneDAO {
             throw e;
             //todo: ??? è necessario rimandarla al controller applicativo?? In teoria questa si verifica solo in caso di errore vero e proprio (dato che è un inserimento)
         }
+    }
+
+    public List<PrenotazioneModel> richiesteInviate(String email) {
+
+        /* metodo che riceve la stringa contenente l'email con cui fare la query
+           restituisce una lista contenente tutte le richieste di prenotazione inviate ma ancora in attesa di conferma*/
+
+        List<PrenotazioneModel> listaRichieste = new ArrayList<>();
+
+        Connection connection;
+        PreparedStatement statement;
+        ResultSet rs;
+
+        String query = "SELECT * FROM richieste WHERE emailStudente=?";
+
+        try{
+            connection = Connect.getInstance().getDBConnection();
+            statement = connection.prepareStatement(query);
+            statement.setString(1, email);
+
+            rs = statement.executeQuery();
+
+            if(!rs.next()) {
+                Printer.println("Nessuna richiesta in attesa di conferma per l'account " + email + ".");
+                return null; //todo BRUTTO! Dovremmo lanciare un'eccezione
+            }
+
+            do {
+
+                PrenotazioneModel richiesta = new PrenotazioneModel(rs.getString("emailTutor"),
+                        rs.getString("emailStudente"), rs.getString("materia"),
+                        rs.getInt("modLezione"), rs.getInt("tariffa"),
+                        rs.getString("giorno"), rs.getString("note"));
+
+                listaRichieste.add(richiesta);
+
+
+            } while (rs.next());
+
+            System.out.println("dao: preso la lista di richieste in attesa");
+
+        } catch (SQLException e) {
+            Printer.println("Errore in PrenotazioneDAO (metodo: richiesteInviate)");
+        }
+        return listaRichieste;
     }
 }

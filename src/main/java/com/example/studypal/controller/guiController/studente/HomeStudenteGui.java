@@ -43,7 +43,7 @@ public class HomeStudenteGui {
             Stage stage = (Stage) barraMenu.getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {
-            logger.severe("errore in MenuBaseStudenteGuiController " + e.getMessage());
+            logger.severe("errore in HomeStudenteGui " + e.getMessage());
         }
     }
 
@@ -51,7 +51,7 @@ public class HomeStudenteGui {
 
         //metodo che porta alla pagina di gestione delle prenotazioni
         try {
-            FXMLLoader loader = new FXMLLoader(GestisciPrenotazioniStudenteGui.class.getResource("/com/example/studypal/view/studente/gestisciPrenotazioniStudente.fxml"));
+            FXMLLoader loader = new FXMLLoader(HomeStudenteGui.class.getResource("/com/example/studypal/view/studente/gestisciPrenotazioniStudente.fxml"));
             loader.setControllerFactory(c -> new GestisciPrenotazioniStudenteGui(user));
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
@@ -59,6 +59,7 @@ public class HomeStudenteGui {
             stage.setScene(scene);
         } catch (IOException e) {
             logger.severe("errore in HomeStudenteGui " + e.getMessage());
+            e.printStackTrace();
         }
 
 

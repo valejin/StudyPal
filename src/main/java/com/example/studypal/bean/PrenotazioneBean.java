@@ -11,6 +11,19 @@ public class PrenotazioneBean {
     private String giorno;
     private String note;
 
+    public PrenotazioneBean(){    }
+
+    public PrenotazioneBean(Integer idRichiesta, String emailTutor, String emailStudente, String materia, int modLezione, int tariffa, String giorno, String note) {
+        this.idRichiesta = idRichiesta;
+        this.emailTutor = emailTutor;
+        this.emailStudente = emailStudente;
+        this.materia = materia;
+        this.modLezione = modLezione;
+        this.tariffa = tariffa;
+        this.giorno = giorno;
+        this.note = note;
+    }
+
     public int getIdRichiesta() {
         return idRichiesta;
     }
