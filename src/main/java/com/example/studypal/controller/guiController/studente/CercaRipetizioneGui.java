@@ -249,7 +249,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         //istanzio un RipetizioneInfoBean
         ripetizioneInfoBean = new RipetizioneInfoBean(materia, inPresenza, online, luogo, giorni, tariffa, email);
 
-        //todo: è necessario settarli di nuovo se abbiamo usato il costruttore con i parametri?
+        //todo: è necessario settarli di nuovo se abbiamo usato il costruttore con i parametri? Non penso!
         ripetizioneInfoBean.setEmail(email);
         ripetizioneInfoBean.setMateria(materia);
         ripetizioneInfoBean.setInPresenza(inPresenza);

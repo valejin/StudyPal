@@ -132,8 +132,6 @@ public class PrenotaRipetizioneGui extends HomeStudenteGui {
 
         PrenotaRipetizioneController prenotaRipetizioneController = new PrenotaRipetizioneController();
         prenotaRipetizioneController.prenota(prenotazioneBean);
-        //todo: i parametri della prenotazione li passerò al costruttore dell'applicativo o al metodo prenota???
-
     }
 
 }

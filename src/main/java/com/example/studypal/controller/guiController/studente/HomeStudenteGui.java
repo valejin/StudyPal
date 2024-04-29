@@ -46,24 +46,24 @@ public class HomeStudenteGui {
             logger.severe("errore in MenuBaseStudenteGuiController " + e.getMessage());
         }
     }
-/*
+
     public void goToGestisciPrenotazioni(){
 
         //metodo che porta alla pagina di gestione delle prenotazioni
         try {
-            FXMLLoader loader = new FXMLLoader(GestisciPrenotazioniTutorGuiController.class.getResource("/com/example/studypal/view/tutor/gestioneProfiloTutor.fxml"));
-            loader.setControllerFactory(c -> new GestioneProfiloTutorGuiController());
+            FXMLLoader loader = new FXMLLoader(GestisciPrenotazioniStudenteGui.class.getResource("/com/example/studypal/view/studente/gestisciPrenotazioniStudente.fxml"));
+            loader.setControllerFactory(c -> new GestisciPrenotazioniStudenteGui(user));
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
-            Stage stage = (Stage) menu.getScene().getWindow();
+            Stage stage = (Stage) barraMenu.getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {
-            logger.severe("errore in MenuBaseTutorGuiController " + e.getMessage());
+            logger.severe("errore in HomeStudenteGui " + e.getMessage());
         }
 
 
     }
-*/
+
     public void goToLogout(){
         try {
 
