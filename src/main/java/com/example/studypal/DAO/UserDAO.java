@@ -104,7 +104,7 @@ public class UserDAO {
 
         System.out.println("controllo email");
 
-        String query = "SELECT * FROM utente where email=?";
+        String query = "SELECT * FROM utente WHERE email=?";
 
         try {
 
