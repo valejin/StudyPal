@@ -11,6 +11,16 @@ public class PrenotazioneModel {
     private String giorno;
     private String note;
 
+    public PrenotazioneModel(String emailTutor, String emailStudente, String materia, int modLezione, int tariffa, String giorno, String note) {
+        this.emailTutor = emailTutor;
+        this.emailStudente = emailStudente;
+        this.materia = materia;
+        this.modLezione = modLezione;
+        this.tariffa = tariffa;
+        this.giorno = giorno;
+        this.note = note;
+    }
+
     public int getIdRichiesta() {
         return idRichiesta;
     }

@@ -113,6 +113,8 @@ public class PrenotaRipetizioneGui extends HomeStudenteGui {
         metodo lanciato quando viene premuto il pulsante invio di prenotazione,
         carica le informazioni in un prenotazioneBean e le manda all'applicativo
          */
+        PrenotazioneBean prenotazioneBean = new PrenotazioneBean();
+
         prenotazioneBean.setEmailTutor(informazioni.getEmail());
         prenotazioneBean.setEmailStudente(user.getEmail());
         prenotazioneBean.setMateria(filtri.getMateria());
