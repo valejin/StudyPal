@@ -142,11 +142,6 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
 
 
 
-
-    public RisultatiRicercaGuiController(LoggedInUserBean user){
-        this.user = user;
-    }
-
     public void scegliTutor(RipetizioneInfoBean tutor) {
         System.out.println("ho scelto il tutor");
 

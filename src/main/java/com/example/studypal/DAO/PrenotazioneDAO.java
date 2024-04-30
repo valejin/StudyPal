@@ -66,7 +66,7 @@ public class PrenotazioneDAO {
     List<PrenotazioneModel> risultatiRicerca = new ArrayList<>();
 
     //Gestione Prenotazioni (TUTOR): prendere le richieste arrivate da DB
-    public List<PrenotazioneModel> richiesteArrivate(PrenotazioneModel prenotazioneModel) throws NonProduceRisultatoException{
+    public List<PrenotazioneModel> richiesteArrivate(String email) throws NonProduceRisultatoException{
         //viene passato il userModel per prendere email del tutor
 
         Connection connection;
@@ -82,19 +82,18 @@ public class PrenotazioneDAO {
             connection = Connect.getInstance().getDBConnection();
             statement = connection.prepareStatement(query);
 
-            statement.setString(1, prenotazioneModel.getEmailTutor());
+            statement.setString(1, email);
 
             rs = statement.executeQuery();
 
             if(rs.next()){
-                Printer.println("Sono arrivate le seguente richieste per il tutor" + prenotazioneModel.getEmailTutor());
+                Printer.println("Sono arrivate le seguente richieste per il tutor" + email);
 
                 //prendo email dello studente, materia richiesta, e aggiungo il pulsante VISUALIZZA per ciascun tupla estratta
                 do{
                     //popolo una nuova istanza di PrenotazioneModel per ritornare al CtlApplicativo
-                    PrenotazioneModel risultatoCorrente = new PrenotazioneModel();
-                    risultatoCorrente.setEmailStudente(rs.getString("emailStudente"));
-                    risultatoCorrente.setMateria(rs.getString("materia"));
+                    PrenotazioneModel risultatoCorrente = new PrenotazioneModel(rs.getString("emailTutor"), rs.getString("emailStudente"), rs.getString("materia"), rs.getInt("modLezione"), rs.getInt("tariffa"), rs.getString("giorni"), rs.getString("note"));
+
 
                     //aggiunggo la tupla in lista dei risultati di ricerca
                     risultatiRicerca.add(risultatoCorrente);

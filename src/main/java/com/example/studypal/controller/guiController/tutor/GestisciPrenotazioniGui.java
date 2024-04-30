@@ -24,6 +24,7 @@ public class GestisciPrenotazioniGui extends HomeTutorGui {
 
     private static final Logger logger = Logger.getLogger(GestisciPrenotazioniGui.class.getName());
 
+    public GestisciPrenotazioniGui(){}
 
     public GestisciPrenotazioniGui(LoggedInUserBean user){ this.user = user;}
 
@@ -32,8 +33,8 @@ public class GestisciPrenotazioniGui extends HomeTutorGui {
 
         //metodo che porta alla pagina di gestione delle prenotazioni
         try {
-            FXMLLoader loader = new FXMLLoader(GestisciPrenotazioniGui.class.getResource("/com/example/studypal/view/tutor/richiesteArrivate.fxml"));
-            loader.setControllerFactory(c -> new GestisciPrenotazioniGui(user));
+            FXMLLoader loader = new FXMLLoader(RichiesteArrivateGui.class.getResource("/com/example/studypal/view/tutor/richiesteArrivate.fxml"));
+            loader.setControllerFactory(c -> new RichiesteArrivateGui(user));
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) prenotazioniAttive.getScene().getWindow();
