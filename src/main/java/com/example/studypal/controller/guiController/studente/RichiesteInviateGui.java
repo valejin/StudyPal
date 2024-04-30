@@ -19,8 +19,6 @@ public class RichiesteInviateGui extends HomeStudenteGui{
     /* todo: forse dobbiamo separare i controller di gestisci prenotazioni e visualizza richieste inviate? */
 
     @FXML
-    Button richiesteInviate;
-    @FXML
     protected TableView<PrenotazioneBean> richiesteTable;
     @FXML
     protected TableColumn<PrenotazioneBean, String> materia;
@@ -45,7 +43,7 @@ public class RichiesteInviateGui extends HomeStudenteGui{
         //inizializza la tabella popolandola con le informazioni che gli passa il controller grafico precedente*/
 
         materia.setCellValueFactory(new PropertyValueFactory<>("materia"));
-        email.setCellValueFactory(new PropertyValueFactory<>("email"));
+        email.setCellValueFactory(new PropertyValueFactory<>("emailTutor"));
         tariffa.setCellValueFactory(new PropertyValueFactory<>("tariffa"));
 
         richiesteTable.getItems().addAll(richiesteList);

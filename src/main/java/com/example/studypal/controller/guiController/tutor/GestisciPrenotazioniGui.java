@@ -1,13 +1,11 @@
 package com.example.studypal.controller.guiController.tutor;
 
 import com.example.studypal.bean.LoggedInUserBean;
-import com.example.studypal.bean.RipetizioneInfoBean;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -19,13 +17,9 @@ public class GestisciPrenotazioniGui extends HomeTutorGui {
 
     @FXML
     private Button  prenotazioniAttive;
-    @FXML
-    private Button richiesteArrivate;
-
     private static final Logger logger = Logger.getLogger(GestisciPrenotazioniGui.class.getName());
 
     public GestisciPrenotazioniGui(){}
-
     public GestisciPrenotazioniGui(LoggedInUserBean user){ this.user = user;}
 
     //vado alla pagina di tutte le richieste arrivate per questo tutor
@@ -42,11 +36,5 @@ public class GestisciPrenotazioniGui extends HomeTutorGui {
         } catch (IOException e) {
             logger.severe("errore in GestisciPrenotazioniGuiController " + e.getMessage());
         }
-
-
     }
-
-
-
-
 }

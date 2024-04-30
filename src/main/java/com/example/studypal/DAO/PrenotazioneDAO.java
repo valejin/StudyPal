@@ -2,9 +2,6 @@ package com.example.studypal.DAO;
 
 import com.example.studypal.exceptions.NonProduceRisultatoException;
 import com.example.studypal.model.PrenotazioneModel;
-import com.example.studypal.model.RipetizioneInfoModel;
-import com.example.studypal.model.UserModel;
-import com.example.studypal.model.PrenotazioneModel;
 import com.example.studypal.other.Connect;
 import com.example.studypal.other.Printer;
 
@@ -141,13 +138,15 @@ public class PrenotazioneDAO {
 
             if (rs.next()){
                 System.out.println("leggo le richieste in attesa di conferma per l'utente " + email);
+                int i = 0;
                 do {
+                    System.out.println("richiesta n." + i);
                     PrenotazioneModel richiesta = new PrenotazioneModel(rs.getString("emailTutor"),
                             rs.getString("emailStudente"), rs.getString("materia"),
                             rs.getInt("modLezione"), rs.getInt("tariffa"),
-                            rs.getString("giorno"), rs.getString("note"));
+                            rs.getString("giorni"), rs.getString("note"));
                     listaRichieste.add(richiesta);
-
+                    i+=1;
                 } while (rs.next());
                 System.out.println("dao: preso la lista di richieste in attesa");
 
