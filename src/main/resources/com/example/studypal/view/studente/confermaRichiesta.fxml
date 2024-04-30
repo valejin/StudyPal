@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.studente.PrenotaRipetizioneGui">
+    <children>
+        <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0" stylesheets="@../../base-prova.css">
+            <children>
+                <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+                    <VBox.margin>
+                        <Insets top="60.0" />
+                    </VBox.margin>
+                    <image>
+                        <Image url="@../../immagini/iconStudent.png" />
+                    </image>
+                    <effect>
+                        <InnerShadow />
+                    </effect>
+                </ImageView>
+                <Button mnemonicParsing="false" onMouseClicked="#goToPrenotaRipetizione" prefHeight="60.0" prefWidth="130.0" styleClass="custom-button" text="Prenota ripetizione" textAlignment="CENTER" wrapText="true">
+                    <VBox.margin>
+                        <Insets top="40.0" />
+                    </VBox.margin>
+                    <stylesheets>
+                        <URL value="@../../base-prova.css" />
+                        <URL value="@../../button.css" />
+                    </stylesheets>
+                    <effect>
+                        <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
+                    </effect>
+                </Button>
+                <Button fx:id="gestisciPrenotazioni" mnemonicParsing="false" onAction="#goToGestisciPrenotazioni" prefHeight="60.0" prefWidth="130.0" styleClass="custom-button" stylesheets="@../../button.css" text="Gestisci Prenotazioni" textAlignment="CENTER" wrapText="true">
+                    <VBox.margin>
+                        <Insets top="30.0" />
+                    </VBox.margin>
+                    <effect>
+                        <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
+                    </effect>
+                </Button>
+                <Button mnemonicParsing="false" onMouseClicked="#goToLogout" prefHeight="33.0" prefWidth="130.0" styleClass="custom-button" stylesheets="@../../button.css" text="Esci">
+                    <VBox.margin>
+                        <Insets top="30.0" />
+                    </VBox.margin>
+                    <effect>
+                        <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
+                    </effect>
+                </Button>
+            </children>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.49803921580314636" green="0.6509804129600525" blue="0.7568627595901489" />
+               </color>
+            </DropShadow>
+         </effect>
+        </VBox>
+      <AnchorPane fx:id="sfondoChiaro" layoutX="226.0" layoutY="93.0" prefHeight="369.0" prefWidth="544.0" stylesheets="@../../base-prova.css">
+         <children>
+            <Text fx:id="indicazioni" fill="#5695bf" layoutX="65.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La richiesta è stata correttamente inviata!" textAlignment="CENTER" wrappingWidth="413.3706512451172">
+               <font>
+                  <Font name="Microsoft YaHei UI" size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="indicazioni1" fill="#2e2e2e" layoutX="94.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Verificate lo stato della prenotazione nella sezione &quot;Gestisci Prenotazioni&quot;." textAlignment="CENTER" wrappingWidth="354.17088317871094">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <ImageView layoutX="239.0" layoutY="202.0" opacity="0.39">
+               <image>
+                  <Image url="@../../immagini/congratsIcon.png" />
+               </image>
+            </ImageView>
+         </children>
+         <effect>
+            <DropShadow blurType="TWO_PASS_BOX">
+               <color>
+                  <Color red="0.33725491166114807" green="0.5843137502670288" blue="0.7490196228027344" />
+               </color>
+            </DropShadow>
+         </effect>
+      </AnchorPane>
+    </children>
+    <stylesheets>
+        <URL value="@../../button.css" />
+        <URL value="@../../base-prova.css" />
+    </stylesheets>
+</AnchorPane>

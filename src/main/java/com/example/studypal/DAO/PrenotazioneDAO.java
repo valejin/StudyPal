@@ -63,6 +63,7 @@ public class PrenotazioneDAO {
     }
 
 
+    /* todo: richieste arrivate e richieste inviate fanno la stessa cosa! Se facessimo setString impostandola a emailTutpr/emailStudente facendo un controllo su user.getRuolo?*/
     List<PrenotazioneModel> risultatiRicerca = new ArrayList<>();
 
     //Gestione Prenotazioni (TUTOR): prendere le richieste arrivate da DB
@@ -118,7 +119,7 @@ public class PrenotazioneDAO {
 
 
 
-    public List<PrenotazioneModel> richiesteInviate(String email) {
+    public List<PrenotazioneModel> richiesteInviate(String email) throws NonProduceRisultatoException {
 
         /* metodo che riceve la stringa contenente l'email con cui fare la query
            restituisce una lista contenente tutte le richieste di prenotazione inviate ma ancora in attesa di conferma*/
@@ -129,7 +130,7 @@ public class PrenotazioneDAO {
         PreparedStatement statement;
         ResultSet rs;
 
-        String query = "SELECT * FROM richieste WHERE emailStudente=?";
+        String query = "SELECT * FROM richieste WHERE emailStudente = ?";
 
         try{
             connection = Connect.getInstance().getDBConnection();
@@ -138,24 +139,22 @@ public class PrenotazioneDAO {
 
             rs = statement.executeQuery();
 
-            if(!rs.next()) {
+            if (rs.next()){
+                System.out.println("leggo le richieste in attesa di conferma per l'utente " + email);
+                do {
+                    PrenotazioneModel richiesta = new PrenotazioneModel(rs.getString("emailTutor"),
+                            rs.getString("emailStudente"), rs.getString("materia"),
+                            rs.getInt("modLezione"), rs.getInt("tariffa"),
+                            rs.getString("giorno"), rs.getString("note"));
+                    listaRichieste.add(richiesta);
+
+                } while (rs.next());
+                System.out.println("dao: preso la lista di richieste in attesa");
+
+            } else {
                 Printer.println("Nessuna richiesta in attesa di conferma per l'account " + email + ".");
-                return null; //todo BRUTTO! Dovremmo lanciare un'eccezione
+                throw new NonProduceRisultatoException();
             }
-
-            do {
-
-                PrenotazioneModel richiesta = new PrenotazioneModel(rs.getString("emailTutor"),
-                        rs.getString("emailStudente"), rs.getString("materia"),
-                        rs.getInt("modLezione"), rs.getInt("tariffa"),
-                        rs.getString("giorno"), rs.getString("note"));
-
-                listaRichieste.add(richiesta);
-
-
-            } while (rs.next());
-
-            System.out.println("dao: preso la lista di richieste in attesa");
 
         } catch (SQLException e) {
             Printer.println("Errore in PrenotazioneDAO (metodo: richiesteInviate)");

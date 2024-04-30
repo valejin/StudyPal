@@ -132,6 +132,22 @@ public class PrenotaRipetizioneGui extends HomeStudenteGui {
 
         PrenotaRipetizioneController prenotaRipetizioneController = new PrenotaRipetizioneController();
         prenotaRipetizioneController.prenota(prenotazioneBean);
+        caricaConferma();
     }
 
+    public void caricaConferma() {
+
+        /*nota: istanzio come controller grafico della pagina di conferma il HomeStudenteGui che ha tutte le funzionalità che mi servono*/
+
+        try {
+            FXMLLoader loader = new FXMLLoader(GestisciPrenotazioniStudenteGui.class.getResource("/com/example/studypal/view/studente/confermaRichiesta.fxml"));
+            loader.setControllerFactory(c -> new HomeStudenteGui(this.user));
+            Parent parent = loader.load();
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) nomeLabel.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            logger.severe("errore in PrenotaRipetizioneGui (caricamento pagina conferma) " + e.getMessage());
+        }
+    }
 }
