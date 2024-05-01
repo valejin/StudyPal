@@ -12,6 +12,11 @@ public class PrenotazioneModel {
     private String note;
 
     public PrenotazioneModel(String emailTutor, String emailStudente, String materia, int modLezione, int tariffa, String giorno, String note) {
+
+        /*
+        modalita lezione: 0 = non specificato, 1 = presenza, 2 = online
+         */
+
         this.emailTutor = emailTutor;
         this.emailStudente = emailStudente;
         this.materia = materia;

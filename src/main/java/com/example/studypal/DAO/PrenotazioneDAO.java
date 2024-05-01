@@ -22,8 +22,9 @@ public class PrenotazioneDAO {
            Tutor:
             - Gestione Prenotazione:
                 - Prenotazioni attive: prendere le prenotazioni attive dal DB, ovvero quelle già confermate dal tutor
-                - Richieste arrivate: prendere le richieste di prenotazione inviate dagli studenti dal DB
+                - Richieste arrivate: prendere le richieste di prenotazione inviate dagli studenti dal DB (FATTO)
      */
+
     private static final Logger logger = Logger.getLogger(PrenotazioneDAO.class.getName());
     public void prenota(PrenotazioneModel prenotazioneModel) throws SQLException {
         /*
@@ -63,7 +64,9 @@ public class PrenotazioneDAO {
     /* todo: richieste arrivate e richieste inviate fanno la stessa cosa! Se facessimo setString impostandola a emailTutpr/emailStudente facendo un controllo su user.getRuolo?*/
     List<PrenotazioneModel> risultatiRicerca = new ArrayList<>();
 
-    //Gestione Prenotazioni (TUTOR): prendere le richieste arrivate da DB
+
+
+/*--------------Gestione Prenotazioni (TUTOR): prendere le richieste arrivate da DB ---------------------------*/
     public List<PrenotazioneModel> richiesteArrivate(String email) throws NonProduceRisultatoException{
         //viene passato il userModel per prendere email del tutor
 
@@ -85,7 +88,7 @@ public class PrenotazioneDAO {
             rs = statement.executeQuery();
 
             if(rs.next()){
-                Printer.println("Sono arrivate le seguente richieste per il tutor" + email);
+                Printer.println("Sono arrivate le seguente richieste per il tutor: " + email);
 
                 //prendo email dello studente, materia richiesta, e aggiungo il pulsante VISUALIZZA per ciascun tupla estratta
                 do{
