@@ -24,3 +24,18 @@
     -fx-text-fill: #DEDFDDFF;
 
 }
+
+.info-button {
+    -fx-font-family: Perpetua;
+    -fx-background-color: #DEDFDDFF;
+    -fx-text-fill: #4f82a6;
+    -fx-border-radius: 20px;
+}
+
+.info-button:hover {
+    -fx-font-family: Perpetua;
+    -fx-background-color: #4f82a6;
+    -fx-border-radius: 20px; /* Bordo arrotondato */
+    -fx-text-fill: #DEDFDDFF;
+
+}

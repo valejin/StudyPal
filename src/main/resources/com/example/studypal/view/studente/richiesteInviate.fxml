@@ -68,9 +68,9 @@
          <children>
             <ScrollPane layoutX="-1.0" layoutY="28.0" prefHeight="358.0" prefWidth="562.0">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="350.0" prefWidth="300.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="350.0" prefWidth="300.0" stylesheets="@../../button.css">
                      <children>
-                        <TableView fx:id="richiesteTable" prefHeight="330.0" prefWidth="562.0">
+                        <TableView fx:id="richiesteTable" prefHeight="330.0" prefWidth="562.0" stylesheets="@../../button.css">
                            <columns>
                               <TableColumn fx:id="materia" minWidth="6.4000244140625" prefWidth="102.40008240938187" text="Materia" />
                               <TableColumn fx:id="email" prefWidth="192.8000030517578" text="Contatto del tutor" />

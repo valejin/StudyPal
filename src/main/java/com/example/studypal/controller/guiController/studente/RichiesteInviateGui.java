@@ -53,8 +53,7 @@ public class RichiesteInviateGui extends HomeStudenteGui{
             @Override
             public TableCell<PrenotazioneBean, Button> call(TableColumn<PrenotazioneBean, Button> param) {
                 return new TableCell<>() {
-                    final Button btn = new Button("Visualizza");
-
+                    final Button btn = new Button("info");
                     {
                         btn.setOnAction(event -> {
                             PrenotazioneBean prenotazione = getTableView().getItems().get(getIndex());
@@ -68,6 +67,8 @@ public class RichiesteInviateGui extends HomeStudenteGui{
                         if (empty) {
                             setGraphic(null);
                         } else {
+                            //setId("info-button");
+                            btn.setStyle("-fx-font-size: 20px; -fx-font-family: Perpetua; -fx-padding: 5px 10px");
                             setGraphic(btn);
                         }
                     }
