@@ -80,9 +80,7 @@ public class VisualizzaRichiestaGui extends HomeTutorGui {
     }
 
 
-/*-------------tasto di ritorno alla pagina delle richieste arrivate-----------------*/
-    //todo: creare il metodo per ritornare alla pagina prima, ovvero le RichiesteArrivate
-
+/*------------------tasto di ritorno alla pagina delle richieste arrivate-----------------*/
     public void goToRichiesteArrivate(){
         try {
             FXMLLoader loader = new FXMLLoader(VisualizzaRichiestaGui.class.getResource("/com/example/studypal/view/tutor/richiesteArrivate.fxml"));
@@ -97,11 +95,7 @@ public class VisualizzaRichiestaGui extends HomeTutorGui {
         }
 
 
-
-
     }
-
-
 
 
 

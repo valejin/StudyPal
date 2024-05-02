@@ -65,7 +65,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         tariffaSlider.valueProperty().addListener((observable, oldValue, newValue) -> tariffaValue.setText(newValue.intValue() + "€"));
 
         //luogo----------------------------------------------
-        luogo.getItems().addAll("Roma", "Milano", "Palermo");
+        luogo.getItems().addAll("Roma", "Milano", "Palermo", "Torino", "Napoli");
 
 
         //combobox giorni disponibili -------------------------------------------------------

@@ -96,8 +96,8 @@
             </VBox>
             <VBox layoutX="156.0" layoutY="56.0" prefHeight="150.0" prefWidth="122.0">
                <children>
-                  <Label fx:id="nomeLabel" text="label" />
-                  <Label fx:id="emailLabel" text="label">
+                  <Label fx:id="nomeLabel" prefHeight="18.0" prefWidth="120.0" text="label" />
+                  <Label fx:id="emailLabel" prefHeight="18.0" prefWidth="122.0" text="label">
                      <VBox.margin>
                         <Insets top="14.0" />
                      </VBox.margin>
@@ -140,18 +140,18 @@
             </VBox>
             <VBox layoutX="370.0" layoutY="56.0" prefHeight="150.0" prefWidth="100.0">
                <children>
-                  <Label fx:id="cognomeLabel" text="label" />
-                  <Label fx:id="tariffaLabel" text="label">
+                  <Label fx:id="cognomeLabel" prefHeight="18.0" prefWidth="113.0" text="label" />
+                  <Label fx:id="tariffaLabel" prefHeight="18.0" prefWidth="104.0" text="label">
                      <VBox.margin>
                         <Insets top="14.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="luogoLabel" text="label">
+                  <Label fx:id="luogoLabel" prefHeight="18.0" prefWidth="101.0" text="label">
                      <VBox.margin>
                         <Insets top="14.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="giorniLabel" layoutX="10.0" layoutY="76.0" text="label">
+                  <Label fx:id="giorniLabel" layoutX="10.0" layoutY="76.0" prefHeight="18.0" prefWidth="96.0" text="label">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
