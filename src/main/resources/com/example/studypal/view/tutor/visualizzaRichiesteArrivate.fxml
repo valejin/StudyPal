@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.tutor.VisualizzaRichiestaGui">
+    <children>
+        <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0" stylesheets="@../../menu.css">
+            <children>
+                <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../immagini/iconTutor.png" />
+                    </image>
+                    <VBox.margin>
+                        <Insets top="60.0" />
+                    </VBox.margin>
+                    <effect>
+                        <InnerShadow />
+                    </effect>
+                </ImageView>
+                <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToGestisciProfilo" prefHeight="60.0" prefWidth="130.0" styleClass="custom-button" stylesheets="@../../button.css" text="Gestisci Profilo" textAlignment="CENTER" wrapText="true">
+                    <VBox.margin>
+                        <Insets top="40.0" />
+                    </VBox.margin>
+                    <effect>
+                        <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
+                    </effect>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#goToGestisciPrenotazioni" prefHeight="60.0" prefWidth="130.0" styleClass="custom-button" stylesheets="@../../button.css" text="Gestisci Prenotazioni" textAlignment="CENTER" wrapText="true">
+                    <VBox.margin>
+                        <Insets top="30.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                    <effect>
+                        <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
+                    </effect>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#goToLogout" prefHeight="33.0" prefWidth="130.0" styleClass="custom-button" stylesheets="@../../button.css" text="Esci">
+                    <VBox.margin>
+                        <Insets top="30.0" />
+                    </VBox.margin>
+                    <effect>
+                        <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
+                    </effect>
+                </Button>
+            </children>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.49803921580314636" green="0.6509804129600525" blue="0.7568627595901489" />
+               </color>
+            </DropShadow>
+         </effect>
+        </VBox>
+        <Text fx:id="titolo" fill="#000000ac" layoutX="333.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dettagli Richiesta" textAlignment="CENTER" wrappingWidth="411.1118166446686" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="130.20000000000005" AnchorPane.topAnchor="43.16796875">
+            <font>
+                <Font size="32.0" />
+            </font>
+        </Text>
+      <AnchorPane fx:id="sfondoChiaro" layoutX="254.0" layoutY="100.0" prefHeight="350.0" prefWidth="557.0" stylesheets="@../../base-prova.css">
+         <children>
+            <VBox layoutX="76.0" layoutY="33.0" prefHeight="250.0" prefWidth="90.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email studente:" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Materia:">
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modalità lezione:">
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giorni preferibili:">
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Note aggiuntive:">
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                  </Text>
+               </children>
+            </VBox>
+            <VBox layoutX="179.0" layoutY="33.0" prefHeight="250.0" prefWidth="337.0">
+               <children>
+                  <Label fx:id="emailStudente" prefHeight="18.0" prefWidth="218.0" text="Label" />
+                  <Label fx:id="materia" prefHeight="18.0" prefWidth="226.0" text="Label">
+                     <VBox.margin>
+                        <Insets top="28.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="modLezione" prefHeight="18.0" prefWidth="218.0" text="Label">
+                     <VBox.margin>
+                        <Insets top="29.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="giorni" prefHeight="18.0" prefWidth="231.0" text="Label">
+                     <VBox.margin>
+                        <Insets top="28.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="note" alignment="TOP_LEFT" prefHeight="54.0" prefWidth="338.0" text="Label" wrapText="true">
+                     <VBox.margin>
+                        <Insets top="28.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <Button layoutX="135.0" layoutY="283.0" mnemonicParsing="false" styleClass="custom-button" stylesheets="@../../button.css" text="Conferma" />
+            <Label fx:id="successoModifiche" layoutX="166.0" layoutY="257.0" textFill="#2672bf">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <Glow level="0.23" />
+               </effect>
+            </Label>
+            <Button layoutX="317.0" layoutY="283.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="109.0" styleClass="custom-button2" stylesheets="@../../button.css" text="Rifiuta" />
+         </children>
+      </AnchorPane>
+      <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="234.0" layoutY="40.0" onMouseClicked="#goToRichiesteArrivate" preserveRatio="true">
+         <image>
+            <Image url="@../../immagini/backButton.PNG" />
+         </image>
+      </ImageView>
+    </children>
+</AnchorPane>

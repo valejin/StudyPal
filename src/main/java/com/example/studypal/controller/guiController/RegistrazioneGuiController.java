@@ -81,7 +81,6 @@ public class RegistrazioneGuiController {
 
         try {
             //inserisco gli input ottenuti in BEAN
-            System.out.println("invio i dati al controller");
             RegistrazioneUserBean registrazioneUserBean = new RegistrazioneUserBean(userEmail, userNome, userCognome, ruolo, userPassword, confermaPassword);
 
             registrazioneUserBean.setNome(userNome);
@@ -95,6 +94,7 @@ public class RegistrazioneGuiController {
             RegistrazioneController registrazioneController = new RegistrazioneController();
             registrazioneController.registrazioneMethod(registrazioneUserBean);
 
+            Printer.println("---------------------------------------------------------");
             Printer.println("L'utente è stato correttamente registrato.");
             caricaConferma();
 

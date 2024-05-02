@@ -34,6 +34,7 @@ public class UserDAO {
 
             try (ResultSet rs = statement.executeQuery()) {
 
+                Printer.println("---------------------------------------------------------");
                 if(!rs.next()) {
                     Printer.println("Il ResultSet è vuoto.");
                     throw new LoginDBException(0);
@@ -68,7 +69,6 @@ public class UserDAO {
 
         Connection connection;
         PreparedStatement statement;
-        Printer.println("preparato lo statement");
 
         String query = "INSERT INTO utente (email, nome, cognome, password, isTutor) VALUES (?, ?, ?, ?, ?)";
 
@@ -83,10 +83,8 @@ public class UserDAO {
             statement.setString(4, registrazioneModel.getPassword());
             statement.setBoolean(5, registrazioneModel.getRuolo());
 
-            System.out.println("preso la query");
             //inseriamo effettivamente l'utente nel database
             statement.executeUpdate();
-            System.out.println("inserito la query");
 
         } catch (SQLException e) {
             logger.severe("errore in userDAO " + e.getMessage());
@@ -102,7 +100,6 @@ public class UserDAO {
         PreparedStatement statement;
         ResultSet rs;
 
-        System.out.println("controllo email");
 
         String query = "SELECT * FROM utente WHERE email=?";
 
@@ -115,11 +112,9 @@ public class UserDAO {
             statement.setString(1, registrazioneModel.getEmail());
 
             rs = statement.executeQuery();
-            System.out.println("query ok");
 
             //se il result set non è vuoto, l'email è già in uso e lanciamo un'eccezione
             if (rs.next()) {
-                System.out.println("email presente dao");
                 throw new EmailAlreadyInUseException();
             }
 
@@ -144,6 +139,7 @@ public class UserDAO {
             statement.setString(1, email);
 
             statement.executeUpdate();
+            Printer.println("---------------------------------------------------------");
             Printer.println("tutor registrato");
         } catch (SQLException e) {
             logger.severe("errore in UserDAO registrazioneTutor " + e.getMessage());

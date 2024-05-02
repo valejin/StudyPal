@@ -4,15 +4,22 @@ import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.PrenotazioneBean;
 import com.example.studypal.bean.RipetizioneInfoBean;
 import com.example.studypal.controller.applicationController.tutor.RichiesteArrivateController;
+import com.example.studypal.controller.guiController.studente.PrenotaRipetizioneGui;
+import com.example.studypal.controller.guiController.studente.RichiesteInviateGui;
 import com.example.studypal.other.Printer;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -45,6 +52,9 @@ public class RichiesteArrivateGui extends GestisciPrenotazioniGui {
 
     public RichiesteArrivateGui(LoggedInUserBean user){
         this.user = user;
+    }
+
+    public RichiesteArrivateGui() {
     }
 
 
@@ -102,28 +112,28 @@ public class RichiesteArrivateGui extends GestisciPrenotazioniGui {
 
 
     public void visualizzaRichiesta(PrenotazioneBean prenotazioneBean) {
+        Printer.println("---------------------------------------------------------");
         Printer.println("Stai visualizzando la richiesta di: " + prenotazioneBean.getEmailStudente());
 
         /*
             carica la pagina con dettagli di richiesta
+        */
 
-
-
-            try {
-            FXMLLoader loader = new FXMLLoader(PrenotaRipetizioneGui.class.getResource("/com/example/studypal/view/studente/prenotaRipetizione.fxml"));
-            loader.setControllerFactory(c -> new PrenotaRipetizioneGui(this.user, tutor, this.tutorList, this.filtri));
+        try {
+            FXMLLoader loader = new FXMLLoader(RichiesteArrivateGui.class.getResource("/com/example/studypal/view/tutor/visualizzaRichiesteArrivate.fxml"));
+            loader.setControllerFactory(c -> new VisualizzaRichiestaGui(user, prenotazioneBean, richiesteList));
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) risultatiTable.getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {
-            logger.severe("errore in RisultatiRicercaGuiController (caricamento pagina) " + e.getMessage());
+            logger.severe("errore in VisualizzaRichiesteArrivateGuiController (caricamento pagina) " + e.getMessage());
             e.printStackTrace();
         }
 
 
 
-         */
+
 
     }
 

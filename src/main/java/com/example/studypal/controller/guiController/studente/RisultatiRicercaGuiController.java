@@ -62,6 +62,9 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
         this.filtri = ripetizioneInfoBean;
     }
 
+    public RisultatiRicercaGuiController() {
+    }
+
     public void initialize(){
 
         //setto i valori posti da utente
