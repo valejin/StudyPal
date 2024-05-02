@@ -21,6 +21,6 @@ public class Printer {
 
     //stampa messaggio di errore
     public static void errorPrint(String message) {
-        System.out.print(message);
+        System.out.println(message);
     }
 }

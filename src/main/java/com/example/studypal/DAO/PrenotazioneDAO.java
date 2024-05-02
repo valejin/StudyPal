@@ -74,6 +74,7 @@ public class PrenotazioneDAO {
         PreparedStatement statement;
         ResultSet rs;
 
+        Printer.println("---------------------------------------------------------");
         Printer.println("Cerco le Richieste di prenotazione");
 
         //query per la ricerca di email del tutor nella lista di tutte le richieste
@@ -88,13 +89,13 @@ public class PrenotazioneDAO {
             rs = statement.executeQuery();
 
             if(rs.next()){
-                Printer.println("Sono arrivate le seguente richieste per il tutor: " + email);
+                Printer.println("Lista di email richiedenti per il tutor: " + email);
 
                 //prendo email dello studente, materia richiesta, e aggiungo il pulsante VISUALIZZA per ciascun tupla estratta
                 do{
                     //popolo una nuova istanza di PrenotazioneModel per ritornare al CtlApplicativo
                     PrenotazioneModel risultatoCorrente = new PrenotazioneModel(rs.getString("emailTutor"), rs.getString("emailStudente"), rs.getString("materia"), rs.getInt("modLezione"), rs.getInt("tariffa"), rs.getString("giorni"), rs.getString("note"));
-
+                    Printer.println("   " + rs.getString("emailStudente"));
 
                     //aggiunggo la tupla in lista dei risultati di ricerca
                     risultatiRicerca.add(risultatoCorrente);
@@ -140,7 +141,8 @@ public class PrenotazioneDAO {
             rs = statement.executeQuery();
 
             if (rs.next()){
-                System.out.println("leggo le richieste in attesa di conferma per l'utente " + email);
+                Printer.println("---------------------------------------------------------");
+                Printer.println("leggo le richieste in attesa di conferma per l'utente " + email);
                 int i = 0;
                 do {
                     System.out.println("richiesta n." + i);
@@ -151,7 +153,7 @@ public class PrenotazioneDAO {
                     listaRichieste.add(richiesta);
                     i+=1;
                 } while (rs.next());
-                System.out.println("dao: preso la lista di richieste in attesa");
+                Printer.println("dao: preso la lista di richieste in attesa");
 
             } else {
                 Printer.println("Nessuna richiesta in attesa di conferma per l'account " + email + ".");

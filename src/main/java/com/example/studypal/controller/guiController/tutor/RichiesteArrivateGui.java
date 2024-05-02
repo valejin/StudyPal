@@ -112,6 +112,7 @@ public class RichiesteArrivateGui extends GestisciPrenotazioniGui {
 
 
     public void visualizzaRichiesta(PrenotazioneBean prenotazioneBean) {
+        Printer.println("---------------------------------------------------------");
         Printer.println("Stai visualizzando la richiesta di: " + prenotazioneBean.getEmailStudente());
 
         /*
@@ -120,7 +121,7 @@ public class RichiesteArrivateGui extends GestisciPrenotazioniGui {
 
         try {
             FXMLLoader loader = new FXMLLoader(RichiesteArrivateGui.class.getResource("/com/example/studypal/view/tutor/visualizzaRichiesteArrivate.fxml"));
-            loader.setControllerFactory(c -> new VisualizzaRichiestaGui(user, prenotazioneBean));
+            loader.setControllerFactory(c -> new VisualizzaRichiestaGui(user, prenotazioneBean, richiesteList));
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) risultatiTable.getScene().getWindow();

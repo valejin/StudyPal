@@ -65,7 +65,7 @@
             </DropShadow>
          </effect>
         </VBox>
-        <Text fx:id="titolo" fill="#000000ac" layoutX="326.4" layoutY="81.2" strokeType="OUTSIDE" strokeWidth="0.0" text="Dettagli Richiesta" textAlignment="CENTER" wrappingWidth="411.1118166446686" AnchorPane.leftAnchor="326.0" AnchorPane.rightAnchor="137.0" AnchorPane.topAnchor="43.0">
+        <Text fx:id="titolo" fill="#000000ac" layoutX="333.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dettagli Richiesta" textAlignment="CENTER" wrappingWidth="411.1118166446686" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="130.20000000000005" AnchorPane.topAnchor="43.16796875">
             <font>
                 <Font size="32.0" />
             </font>
@@ -134,5 +134,10 @@
             <Button layoutX="317.0" layoutY="283.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="109.0" styleClass="custom-button2" stylesheets="@../../button.css" text="Rifiuta" />
          </children>
       </AnchorPane>
+      <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="234.0" layoutY="40.0" onMouseClicked="#goToRichiesteArrivate" preserveRatio="true">
+         <image>
+            <Image url="@../../immagini/backButton.PNG" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

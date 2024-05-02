@@ -2,8 +2,18 @@ package com.example.studypal.controller.guiController.tutor;
 
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.PrenotazioneBean;
+import com.example.studypal.controller.guiController.studente.PrenotaRipetizioneGui;
+import com.example.studypal.controller.guiController.studente.RisultatiRicercaGuiController;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.logging.Logger;
 
 
 public class VisualizzaRichiestaGui extends HomeTutorGui {
@@ -25,12 +35,17 @@ public class VisualizzaRichiestaGui extends HomeTutorGui {
     private Label note;
 
     PrenotazioneBean dettagliRichiesta;
+
+    List<PrenotazioneBean> listRisultati;
     String email, materiaRichiesta, giorno, noteAggiuntive;
     int modalita;
 
-    public VisualizzaRichiestaGui(LoggedInUserBean user, PrenotazioneBean prenotazioneBean){
+    private static final Logger logger = Logger.getLogger(VisualizzaRichiestaGui.class.getName());
+
+    public VisualizzaRichiestaGui(LoggedInUserBean user, PrenotazioneBean prenotazioneBean, List<PrenotazioneBean> list){
         this.user = user;
         this.dettagliRichiesta = prenotazioneBean;
+        this.listRisultati = list;
     }
 
 
@@ -62,6 +77,27 @@ public class VisualizzaRichiestaGui extends HomeTutorGui {
         }
 
         note.setText(noteAggiuntive);
+    }
+
+
+/*-------------tasto di ritorno alla pagina delle richieste arrivate-----------------*/
+    //todo: creare il metodo per ritornare alla pagina prima, ovvero le RichiesteArrivate
+
+    public void goToRichiesteArrivate(){
+        try {
+            FXMLLoader loader = new FXMLLoader(VisualizzaRichiestaGui.class.getResource("/com/example/studypal/view/tutor/richiesteArrivate.fxml"));
+            loader.setControllerFactory(c -> new RichiesteArrivateGui(this.user));
+            Parent parent = loader.load();
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) emailStudente.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            logger.severe("errore in VisualizzaRichiesteGui (caricamento pagina) " + e.getMessage());
+            e.printStackTrace();
+        }
+
+
+
 
     }
 
@@ -69,7 +105,7 @@ public class VisualizzaRichiestaGui extends HomeTutorGui {
 
 
 
-    //todo: creare il metodo per ritornare alla pagina prima, ovvero le RichiesteArrivate
+
     //todo: creare la nuova tabella in DB per tenere conto delle prenotazioni attive
 
 
