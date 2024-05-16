@@ -116,6 +116,58 @@ public class PrenotazioneDAO {
     }
 
 
+/*--------------Gestione Prenotazioni (TUTOR): prendere le prenotazioni arrivate da DB ---------------------------*/
+    public List<PrenotazioneModel> prenotazioniAttive(String email) throws NonProduceRisultatoException{
+        //viene passato il userModel per prendere email del tutor
+
+        Connection connection;
+        PreparedStatement statement;
+        ResultSet rs;
+
+        Printer.println("---------------------------------------------------------");
+        Printer.println("Cerco le prenotazioni attive");
+
+        //query per la ricerca di email del tutor nella lista di tutte le richieste
+        String query = "SELECT * FROM richieste WHERE emailTutor = ? AND stato = ?";
+
+        try{
+            connection = Connect.getInstance().getDBConnection();
+            statement = connection.prepareStatement(query);
+
+            statement.setString(1, email);
+            //stato = 1 implica la conferma da parte del tutor della prenotazione
+            statement.setInt(2, 1);
+
+            rs = statement.executeQuery();
+
+            if(rs.next()){
+                Printer.println("Lista di prenotazioni attive per il tutor: " + email);
+
+                //prendo email dello studente, materia richiesta, e aggiungo il pulsante VISUALIZZA per ciascun tupla estratta
+                do{
+                    //popolo una nuova istanza di PrenotazioneModel per ritornare al CtlApplicativo
+                    PrenotazioneModel risultatoCorrente = new PrenotazioneModel(rs.getString("emailTutor"), rs.getString("emailStudente"), rs.getString("materia"), rs.getInt("modLezione"), rs.getInt("tariffa"), rs.getString("giorni"), rs.getString("note"));
+                    Printer.println("   " + rs.getString("emailStudente"));
+
+                    //aggiunggo la tupla in lista dei risultati di ricerca
+                    risultatiRicerca.add(risultatoCorrente);
+
+                }while(rs.next());
+
+            }else{
+                throw new NonProduceRisultatoException();
+            }
+
+
+        }catch(SQLException e){
+            Printer.println("Non ci sono le prenotazioni attive.");
+            logger.severe("errore in PrenotazioneDAO " + e.getMessage());
+        }
+
+        return risultatiRicerca;
+    }
+
+
 
 
 

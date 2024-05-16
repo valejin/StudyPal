@@ -38,4 +38,32 @@ public class GestisciPrenotazioniGui extends HomeTutorGui {
            // e.printStackTrace();
         }
     }
+
+
+
+    public void goToPrenotazioniAttive(){
+
+        //metodo che porta alle prenotazioni attive
+        try {
+            FXMLLoader loader = new FXMLLoader(GestisciPrenotazioniGui.class.getResource("/com/example/studypal/view/tutor/prenotazioniAttive.fxml"));
+            loader.setControllerFactory(c -> new PrenotazioniAttiveGui(user));
+            Parent parent = loader.load();
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) prenotazioniAttive.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            logger.severe("errore in GestisciPrenotazioniGuiController " + e.getMessage());
+            e.printStackTrace();
+        }
+
+
+
+
+    }
+
+
+
+
+
+
 }
