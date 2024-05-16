@@ -66,7 +66,7 @@
             </DropShadow>
          </effect>
         </VBox>
-        <Text fx:id="titolo" fill="#000000ac" layoutX="325.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestione Prenotazioni" textAlignment="CENTER" wrappingWidth="452.71179151535034" AnchorPane.leftAnchor="325.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="25.16796875">
+        <Text fx:id="titolo" fill="#000000ac" layoutX="313.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Richieste arrivate" textAlignment="CENTER" wrappingWidth="452.71179151535034" AnchorPane.leftAnchor="313.0" AnchorPane.rightAnchor="107.0" AnchorPane.topAnchor="26.0">
             <font>
                 <Font size="32.0" />
             </font>

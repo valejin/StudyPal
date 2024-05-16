@@ -122,7 +122,7 @@
                   </Label>
                </children>
             </VBox>
-            <Button layoutX="135.0" layoutY="283.0" mnemonicParsing="false" styleClass="custom-button" stylesheets="@../../button.css" text="Conferma" />
+            <Button fx:id="confermaButton" layoutX="135.0" layoutY="283.0" mnemonicParsing="false" onAction="#confermaRichiestaMethod" styleClass="custom-button" stylesheets="@../../button.css" text="Conferma" />
             <Label fx:id="successoModifiche" layoutX="166.0" layoutY="257.0" textFill="#2672bf">
                <font>
                   <Font size="14.0" />
@@ -131,7 +131,7 @@
                   <Glow level="0.23" />
                </effect>
             </Label>
-            <Button layoutX="317.0" layoutY="283.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="109.0" styleClass="custom-button2" stylesheets="@../../button.css" text="Rifiuta" />
+            <Button fx:id="rifiutaButton" layoutX="317.0" layoutY="283.0" mnemonicParsing="false" onAction="#rifiutaRichiestaMethod" prefHeight="39.0" prefWidth="109.0" styleClass="custom-button2" stylesheets="@../../button.css" text="Rifiuta" />
          </children>
       </AnchorPane>
       <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="234.0" layoutY="40.0" onMouseClicked="#goToRichiesteArrivate" preserveRatio="true">

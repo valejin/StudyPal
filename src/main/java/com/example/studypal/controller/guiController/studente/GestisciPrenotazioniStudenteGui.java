@@ -51,4 +51,8 @@ public class GestisciPrenotazioniStudenteGui extends HomeStudenteGui{
 
     }
 
+    public void goToRichiesteRifiutate(){
+
+    }
+
 }

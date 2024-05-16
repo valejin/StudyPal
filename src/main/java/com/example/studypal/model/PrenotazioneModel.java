@@ -11,12 +11,12 @@ public class PrenotazioneModel {
     private String giorno;
     private String note;
 
-    public PrenotazioneModel(String emailTutor, String emailStudente, String materia, int modLezione, int tariffa, String giorno, String note) {
+    public PrenotazioneModel(Integer idRichiesta, String emailTutor, String emailStudente, String materia, int modLezione, int tariffa, String giorno, String note) {
 
         /*
         modalita lezione: 0 = non specificato, 1 = presenza, 2 = online
          */
-
+        this.idRichiesta = idRichiesta;
         this.emailTutor = emailTutor;
         this.emailStudente = emailStudente;
         this.materia = materia;

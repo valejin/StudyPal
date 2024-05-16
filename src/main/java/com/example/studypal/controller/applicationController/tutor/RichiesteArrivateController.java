@@ -3,10 +3,8 @@ package com.example.studypal.controller.applicationController.tutor;
 import com.example.studypal.DAO.PrenotazioneDAO;
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.PrenotazioneBean;
-import com.example.studypal.bean.RipetizioneInfoBean;
 import com.example.studypal.exceptions.NonProduceRisultatoException;
 import com.example.studypal.model.PrenotazioneModel;
-import com.example.studypal.model.RipetizioneInfoModel;
 import com.example.studypal.other.Printer;
 
 import java.util.ArrayList;
@@ -25,7 +23,7 @@ public class RichiesteArrivateController {
         try {
             //istanzio il DAO
             PrenotazioneDAO prenotazioneDAO = new PrenotazioneDAO();
-            List<PrenotazioneModel> risultatiRicerca = new ArrayList<>();
+            List<PrenotazioneModel> risultatiRicerca;
 
             String email = user.getEmail();
 
@@ -50,5 +48,11 @@ public class RichiesteArrivateController {
     }
 
 
+    public void modificaStatoRichiesta(Integer richiesta, Integer stato){
+        //metodo che modifica lo stato di una richiesta, a seconda dei parametri ricevuti la conferma oppure la rifiuta
+
+        PrenotazioneDAO prenotazioneDAO = new PrenotazioneDAO();
+        prenotazioneDAO.modificaStatoRichiesta(richiesta, stato);
+    }
 
 }

@@ -58,12 +58,17 @@
         </VBox>
       <AnchorPane fx:id="sfondoChiaro" layoutX="229.0" layoutY="106.0" prefHeight="350.0" prefWidth="540.0" stylesheets="@../../base-prova.css">
          <children>
-            <Button fx:id="prenotazioniAttive" layoutX="46.0" layoutY="145.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="194.0" styleClass="custom-button" stylesheets="@../../button.css" text="Prenotazioni attive">
+            <Button fx:id="prenotazioniAttive" layoutX="173.0" layoutY="45.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="194.0" styleClass="custom-button" stylesheets="@../../button.css" text="Prenotazioni attive">
                <effect>
                   <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
                </effect>
             </Button>
-            <Button fx:id="richiesteInviate" layoutX="301.0" layoutY="145.0" mnemonicParsing="false" onAction="#goToRichiesteInviate" prefHeight="60.0" prefWidth="193.0" styleClass="custom-button" stylesheets="@../../button.css" text="Richieste inviate">
+            <Button fx:id="richiesteInviate" layoutX="173.0" layoutY="145.0" mnemonicParsing="false" onAction="#goToRichiesteInviate" prefHeight="60.0" prefWidth="193.0" styleClass="custom-button" stylesheets="@../../button.css" text="Richieste inviate">
+               <effect>
+                  <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
+               </effect>
+            </Button>
+            <Button fx:id="richiesteRifiutate" layoutX="173.0" layoutY="245.0" mnemonicParsing="false" onAction="#goToRichiesteRifiutate" prefHeight="60.0" prefWidth="193.0" styleClass="custom-button" stylesheets="@../../button.css" text="Richieste rifiutate">
                <effect>
                   <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
                </effect>

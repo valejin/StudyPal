@@ -94,7 +94,7 @@ public class PrenotazioneDAO {
                 //prendo email dello studente, materia richiesta, e aggiungo il pulsante VISUALIZZA per ciascun tupla estratta
                 do{
                     //popolo una nuova istanza di PrenotazioneModel per ritornare al CtlApplicativo
-                    PrenotazioneModel risultatoCorrente = new PrenotazioneModel(rs.getString("emailTutor"), rs.getString("emailStudente"), rs.getString("materia"), rs.getInt("modLezione"), rs.getInt("tariffa"), rs.getString("giorni"), rs.getString("note"));
+                    PrenotazioneModel risultatoCorrente = new PrenotazioneModel(rs.getInt("idrichieste"), rs.getString("emailTutor"), rs.getString("emailStudente"), rs.getString("materia"), rs.getInt("modLezione"), rs.getInt("tariffa"), rs.getString("giorni"), rs.getString("note"));
                     Printer.println("   " + rs.getString("emailStudente"));
 
                     //aggiunggo la tupla in lista dei risultati di ricerca
@@ -146,7 +146,7 @@ public class PrenotazioneDAO {
                 int i = 0;
                 do {
                     System.out.println("richiesta n." + i);
-                    PrenotazioneModel richiesta = new PrenotazioneModel(rs.getString("emailTutor"),
+                    PrenotazioneModel richiesta = new PrenotazioneModel(rs.getInt("idrichieste"), rs.getString("emailTutor"),
                             rs.getString("emailStudente"), rs.getString("materia"),
                             rs.getInt("modLezione"), rs.getInt("tariffa"),
                             rs.getString("giorni"), rs.getString("note"));
@@ -164,5 +164,36 @@ public class PrenotazioneDAO {
             Printer.println("Errore in PrenotazioneDAO (metodo: richiesteInviate)");
         }
         return listaRichieste;
+    }
+
+
+    /*------------------------------------CONFERMA/RIFIUTA (TUTOR) ---------------------------------------------------*/
+    public void modificaStatoRichiesta(Integer idRichiesta, Integer stato){
+        /*
+            stato:
+                    0 -> conferma
+                    1 -> rifiuta
+         */
+
+        Connection connection;
+        PreparedStatement statement;
+        String query = "UPDATE richieste SET stato = ? WHERE idrichieste = ?";
+
+        try {
+            connection = Connect.getInstance().getDBConnection();
+            statement = connection.prepareStatement(query);
+
+            statement.setInt(1, stato);
+            statement.setInt(2, idRichiesta);
+
+            statement.execute();
+            Printer.println("id richiesta: " + idRichiesta);
+            Printer.println("Stato della richiesta modificato con successo. Stato: " + stato);
+
+        } catch (SQLException e){
+            Printer.println("Errore in PrenotazioneDAO (metodo: modificaStatoRichieste)");
+
+        }
+
     }
 }

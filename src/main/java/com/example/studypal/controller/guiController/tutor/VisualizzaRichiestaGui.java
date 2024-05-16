@@ -2,8 +2,8 @@ package com.example.studypal.controller.guiController.tutor;
 
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.PrenotazioneBean;
-import com.example.studypal.controller.guiController.studente.PrenotaRipetizioneGui;
-import com.example.studypal.controller.guiController.studente.RisultatiRicercaGuiController;
+import com.example.studypal.controller.applicationController.tutor.RichiesteArrivateController;
+import com.example.studypal.other.Printer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -91,18 +91,33 @@ public class VisualizzaRichiestaGui extends HomeTutorGui {
             stage.setScene(scene);
         } catch (IOException e) {
             logger.severe("errore in VisualizzaRichiesteGui (caricamento pagina) " + e.getMessage());
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
 
     }
 
+/*-------------------CONFERMA/RIFIUTA---------------------------------------------------------------------------------*/
+    public void confermaRichiestaMethod(){
+        /*conferma la richiesta arrivata (dovrà essere modificato lo stato nella
+        tabella delle richieste e creata una tupla nella tabella delle prenotazioni attive)*/
 
+        //istanzio controller applicativo
+        Printer.println("IDRICHIESTA: " + this.dettagliRichiesta.getIdRichiesta());
+        RichiesteArrivateController richiesteArrivateController = new RichiesteArrivateController();
+        richiesteArrivateController.modificaStatoRichiesta(this.dettagliRichiesta.getIdRichiesta(),1);
+    }
 
+    public void rifiutaRichiestaMethod(){
+                /*rifiuta la richiesta arrivata (dovrà essere modificato lo stato nella
+        tabella delle richieste)*/
 
-    //todo: creare la nuova tabella in DB per tenere conto delle prenotazioni attive
+        Printer.println("IDRICHIESTA: " + this.dettagliRichiesta.getIdRichiesta());
+        RichiesteArrivateController richiesteArrivateController = new RichiesteArrivateController();
+        richiesteArrivateController.modificaStatoRichiesta(this.dettagliRichiesta.getIdRichiesta(),2);
 
+    }
 
-
+    //TODO MA PERCHé L'ID RICHIESTA è 0 ????????????????????????
 
 }

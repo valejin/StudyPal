@@ -35,7 +35,7 @@ public class GestisciPrenotazioniGui extends HomeTutorGui {
             stage.setScene(scene);
         } catch (IOException e) {
             logger.severe("errore in GestisciPrenotazioniGuiController " + e.getMessage());
-            e.printStackTrace();
+           // e.printStackTrace();
         }
     }
 }

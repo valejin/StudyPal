@@ -2,10 +2,7 @@ package com.example.studypal.controller.guiController.tutor;
 
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.PrenotazioneBean;
-import com.example.studypal.bean.RipetizioneInfoBean;
 import com.example.studypal.controller.applicationController.tutor.RichiesteArrivateController;
-import com.example.studypal.controller.guiController.studente.PrenotaRipetizioneGui;
-import com.example.studypal.controller.guiController.studente.RichiesteInviateGui;
 import com.example.studypal.other.Printer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -128,7 +125,7 @@ public class RichiesteArrivateGui extends GestisciPrenotazioniGui {
             stage.setScene(scene);
         } catch (IOException e) {
             logger.severe("errore in VisualizzaRichiesteArrivateGuiController (caricamento pagina) " + e.getMessage());
-            e.printStackTrace();
+           // e.printStackTrace();
         }
 
 
