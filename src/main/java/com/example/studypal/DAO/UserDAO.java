@@ -124,19 +124,22 @@ public class UserDAO {
 
     }
 
-    public void registraTutorMethod(String email) {
+    public void registraTutorMethod(String email, String nome, String cognome) {
 
         //crea una tupla nella tabella tutor... DEVE ESSERE INVOCATO SOLO PER I TUTOR!!!
 
         Connection connection;
         PreparedStatement statement;
 
-        String query = "INSERT INTO tutor (email, tariffa, luogo, materie, inPresenza, webCam, giorni, nome, cognome) VALUES (?, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)";
+        String query = "INSERT INTO tutor (email, tariffa, luogo, materie, inPresenza, webCam, giorni, nome, cognome) VALUES (?, NULL, NULL, NULL, NULL, NULL, NULL, ?, ?)";
 
         try{
             connection = Connect.getInstance().getDBConnection();
             statement = connection.prepareStatement(query);
             statement.setString(1, email);
+            statement.setString(2, nome);
+            statement.setString(3, cognome);
+
 
             statement.executeUpdate();
             Printer.println("---------------------------------------------------------");

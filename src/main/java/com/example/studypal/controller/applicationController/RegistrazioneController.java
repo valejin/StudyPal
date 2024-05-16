@@ -39,15 +39,13 @@ public class RegistrazioneController {
             registrazioneDao.registrazioneMethod(userModel);
 
             if (registrazioneUserBean.getRuolo()){
-                registrazioneDao.registraTutorMethod(userModel.getEmail());
+                registrazioneDao.registraTutorMethod(userModel.getEmail(), userModel.getNome(), userModel.getCognome());
             }
 
 
         }
 
-        /*
-        controlla se password e confermaPassword sono uguali (se non lo sono lancia eccezione)
-        */
 
-    }
+
+}
 
