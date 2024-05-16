@@ -35,7 +35,7 @@ public class GestisciPrenotazioniStudenteController {
             for (PrenotazioneModel richiesta: listaRichieste){
                 PrenotazioneBean richiestaBean = new PrenotazioneBean(richiesta.getIdRichiesta(), richiesta.getEmailTutor(),
                         richiesta.getEmailStudente(), richiesta.getMateria(), richiesta.getModLezione(),
-                        richiesta.getTariffa(), richiesta.getGiorno(), richiesta.getNote());
+                        richiesta.getTariffa(), richiesta.getGiorno(), richiesta.getNote(), richiesta.getStato());
                 listaRichiesteBean.add(richiestaBean);
             }
 

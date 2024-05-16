@@ -81,11 +81,16 @@ public class VisualizzaRichiestaGui extends HomeTutorGui {
     }
 
 
+
+
+
+
+
 /*------------------tasto di ritorno alla pagina delle richieste arrivate-----------------*/
     public void goToRichiesteArrivate(){
         try {
             FXMLLoader loader = new FXMLLoader(VisualizzaRichiestaGui.class.getResource("/com/example/studypal/view/tutor/richiesteArrivate.fxml"));
-            loader.setControllerFactory(c -> new RichiesteArrivateGui(this.user));
+            loader.setControllerFactory(c -> new RichiesteArrivateGui(this.user, 0));
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) emailStudente.getScene().getWindow();
@@ -97,6 +102,26 @@ public class VisualizzaRichiestaGui extends HomeTutorGui {
 
 
     }
+
+
+/*----------------------tasto di ritorno alla pagina di prenotazioni attive-------------------------*/
+public void goToPrenotazioniAttive() {
+
+    //metodo che porta alle prenotazioni attive
+    try {
+        FXMLLoader loader = new FXMLLoader(VisualizzaRichiestaGui.class.getResource("/com/example/studypal/view/tutor/prenotazioniAttive.fxml"));
+        loader.setControllerFactory(c -> new RichiesteArrivateGui(user, 1));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        Stage stage = (Stage) emailStudente.getScene().getWindow();
+        stage.setScene(scene);
+    } catch (IOException e) {
+        logger.severe("errore in GestisciPrenotazioniGuiController " + e.getMessage());
+        e.printStackTrace();
+    }
+}
+
+
 
 /*-------------------CONFERMA/RIFIUTA---------------------------------------------------------------------------------*/
     public void confermaRichiestaMethod(){

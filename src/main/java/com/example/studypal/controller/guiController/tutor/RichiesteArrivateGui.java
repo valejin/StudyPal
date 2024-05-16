@@ -42,13 +42,14 @@ public class RichiesteArrivateGui extends GestisciPrenotazioniGui {
 
     //inizializzo una lista, in cui popolo gli elementi della tabella
     List<PrenotazioneBean> richiesteList = new ArrayList<>();
-
+    private Integer flag;
 
     private static final Logger logger = Logger.getLogger(RichiesteArrivateGui.class.getName());
 
 
-    public RichiesteArrivateGui(LoggedInUserBean user){
+    public RichiesteArrivateGui(LoggedInUserBean user, Integer flag){
         this.user = user;
+        this.flag = flag;
     }
 
     public RichiesteArrivateGui() {
@@ -61,7 +62,7 @@ public class RichiesteArrivateGui extends GestisciPrenotazioniGui {
         RichiesteArrivateController richiesteArrivateController = new RichiesteArrivateController();
 
         //chiamo la funzione nel controller applicativo per ottenere una lista di BEAN dove contiene tutte le info per stampare a schermo
-        richiesteList = richiesteArrivateController.richiesteArrivate(user);
+        richiesteList = richiesteArrivateController.richiesteArrivate(user, flag);
 
 
         email.setCellValueFactory(new PropertyValueFactory<>("emailStudente"));
@@ -80,7 +81,12 @@ public class RichiesteArrivateGui extends GestisciPrenotazioniGui {
                     {
                         btn.setOnAction(event -> {
                             PrenotazioneBean bean = getTableView().getItems().get(getIndex());
-                            visualizzaRichiesta(bean);
+                            if(flag == 0) {
+                                visualizzaRichiesta(bean);
+                            }else if(flag == 1){
+                                visualizzaRichiesta(bean);
+                            }
+
                         });
                     }
 
@@ -109,17 +115,30 @@ public class RichiesteArrivateGui extends GestisciPrenotazioniGui {
         /*
             carica la pagina con dettagli di richiesta
         */
-
-        try {
-            FXMLLoader loader = new FXMLLoader(RichiesteArrivateGui.class.getResource("/com/example/studypal/view/tutor/visualizzaRichiesteArrivate.fxml"));
-            loader.setControllerFactory(c -> new VisualizzaRichiestaGui(user, prenotazioneBean, richiesteList));
-            Parent parent = loader.load();
-            Scene scene = new Scene(parent);
-            Stage stage = (Stage) risultatiTable.getScene().getWindow();
-            stage.setScene(scene);
-        } catch (IOException e) {
-            logger.severe("errore in VisualizzaRichiesteArrivateGuiController (caricamento pagina) " + e.getMessage());
-           // e.printStackTrace();
+        if(this.flag == 0) {
+            try {
+                FXMLLoader loader = new FXMLLoader(RichiesteArrivateGui.class.getResource("/com/example/studypal/view/tutor/visualizzaRichiesteArrivate.fxml"));
+                loader.setControllerFactory(c -> new VisualizzaRichiestaGui(user, prenotazioneBean, richiesteList));
+                Parent parent = loader.load();
+                Scene scene = new Scene(parent);
+                Stage stage = (Stage) risultatiTable.getScene().getWindow();
+                stage.setScene(scene);
+            } catch (IOException e) {
+                logger.severe("errore in VisualizzaRichiesteArrivateGuiController (caricamento pagina) " + e.getMessage());
+                // e.printStackTrace();
+            }
+        }else if(this.flag == 1){
+            try {
+                FXMLLoader loader = new FXMLLoader(RichiesteArrivateGui.class.getResource("/com/example/studypal/view/tutor/visualizzaPrenotazioniAttive.fxml"));
+                loader.setControllerFactory(c -> new VisualizzaRichiestaGui(user, prenotazioneBean, richiesteList));
+                Parent parent = loader.load();
+                Scene scene = new Scene(parent);
+                Stage stage = (Stage) risultatiTable.getScene().getWindow();
+                stage.setScene(scene);
+            } catch (IOException e) {
+                logger.severe("errore in VisualizzaRichiesteArrivateGuiController (caricamento pagina) " + e.getMessage());
+                // e.printStackTrace();
+            }
         }
     }
 

@@ -10,10 +10,13 @@ public class PrenotazioneBean {
     private int tariffa;
     private String giorno;
     private String note;
+    private int stato;
 
     public PrenotazioneBean(){    }
 
-    public PrenotazioneBean(Integer idRichiesta, String emailTutor, String emailStudente, String materia, int modLezione, int tariffa, String giorno, String note) {
+
+
+    public PrenotazioneBean(Integer idRichiesta, String emailTutor, String emailStudente, String materia, int modLezione, int tariffa, String giorno, String note, int stato) {
         this.idRichiesta = idRichiesta;
         this.emailTutor = emailTutor;
         this.emailStudente = emailStudente;
@@ -22,6 +25,7 @@ public class PrenotazioneBean {
         this.tariffa = tariffa;
         this.giorno = giorno;
         this.note = note;
+        this.stato = stato;
     }
 
     public int getIdRichiesta() {
@@ -88,5 +92,12 @@ public class PrenotazioneBean {
         this.note = note;
     }
 
+    public int getStato() {
+        return stato;
+    }
+
+    public void setStato(int stato) {
+        this.stato = stato;
+    }
 
 }

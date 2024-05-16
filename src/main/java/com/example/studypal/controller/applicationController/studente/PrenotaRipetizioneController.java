@@ -21,7 +21,7 @@ public class PrenotaRipetizioneController {
 
         /*istanzio model e ci inserisco i dati della prenotazione------------------*/
         PrenotazioneModel prenotazioneModel = new PrenotazioneModel(prenotazioneBean.getIdRichiesta(), prenotazioneBean.getEmailTutor(), prenotazioneBean.getEmailStudente(), prenotazioneBean.getMateria(),
-                prenotazioneBean.getModLezione(), prenotazioneBean.getTariffa(), prenotazioneBean.getGiorno(), prenotazioneBean.getNote());
+                prenotazioneBean.getModLezione(), prenotazioneBean.getTariffa(), prenotazioneBean.getGiorno(), prenotazioneBean.getNote(), prenotazioneBean.getStato());
 
         /*istanzio DAO e gli passo il model----------------------------------------*/
         try{

@@ -10,8 +10,9 @@ public class PrenotazioneModel {
     private int tariffa;
     private String giorno;
     private String note;
+    private int stato;
 
-    public PrenotazioneModel(Integer idRichiesta, String emailTutor, String emailStudente, String materia, int modLezione, int tariffa, String giorno, String note) {
+    public PrenotazioneModel(Integer idRichiesta, String emailTutor, String emailStudente, String materia, int modLezione, int tariffa, String giorno, String note, int stato) {
 
         /*
         modalita lezione: 0 = non specificato, 1 = presenza, 2 = online
@@ -24,7 +25,11 @@ public class PrenotazioneModel {
         this.tariffa = tariffa;
         this.giorno = giorno;
         this.note = note;
+        this.stato = stato;
     }
+/*
+    public PrenotazioneModel(int idrichieste, String emailTutor, String emailStudente, String materia, int modLezione, int tariffa, String giorni, String note, int stato) {
+    }*/
 
     public int getIdRichiesta() {
         return idRichiesta;
@@ -88,5 +93,13 @@ public class PrenotazioneModel {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public int getStato() {
+        return stato;
+    }
+
+    public void setStato(int stato) {
+        this.stato = stato;
     }
 }
