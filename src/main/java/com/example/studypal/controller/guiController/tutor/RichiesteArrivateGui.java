@@ -96,12 +96,6 @@ public class RichiesteArrivateGui extends GestisciPrenotazioniGui {
                 };
             }
         });
-
-
-
-
-
-
     }
 
 
@@ -127,11 +121,6 @@ public class RichiesteArrivateGui extends GestisciPrenotazioniGui {
             logger.severe("errore in VisualizzaRichiesteArrivateGuiController (caricamento pagina) " + e.getMessage());
            // e.printStackTrace();
         }
-
-
-
-
-
     }
 
 }

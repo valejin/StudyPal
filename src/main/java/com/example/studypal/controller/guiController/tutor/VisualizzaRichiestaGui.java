@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -106,6 +107,7 @@ public class VisualizzaRichiestaGui extends HomeTutorGui {
         Printer.println("IDRICHIESTA: " + this.dettagliRichiesta.getIdRichiesta());
         RichiesteArrivateController richiesteArrivateController = new RichiesteArrivateController();
         richiesteArrivateController.modificaStatoRichiesta(this.dettagliRichiesta.getIdRichiesta(),1);
+        caricaConferma();
     }
 
     public void rifiutaRichiestaMethod(){
@@ -115,9 +117,49 @@ public class VisualizzaRichiestaGui extends HomeTutorGui {
         Printer.println("IDRICHIESTA: " + this.dettagliRichiesta.getIdRichiesta());
         RichiesteArrivateController richiesteArrivateController = new RichiesteArrivateController();
         richiesteArrivateController.modificaStatoRichiesta(this.dettagliRichiesta.getIdRichiesta(),2);
+        caricaRifiuta();
+    }
+
+    public void caricaConferma(){
+        try{
+
+            FXMLLoader loader = new FXMLLoader(VisualizzaRichiestaGui.class.getResource("/com/example/studypal/view/confermaPOPUP.fxml"));
+            Parent parent = loader.load();
+            // Crea una nuova scena per il popup
+            Scene scene = new Scene(parent);
+
+            // Crea una nuova finestra di dialogo modale per il popup
+            Stage popupStage = new Stage();
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+            popupStage.setTitle("Popup");
+            popupStage.setScene(scene);
+
+            // Visualizza il popup
+            popupStage.showAndWait();
+        } catch(IOException e){
+            logger.severe("Errore caricamento popup di conferma" + e.getMessage());
+        }
 
     }
 
-    //TODO MA PERCHé L'ID RICHIESTA è 0 ????????????????????????
+    public void caricaRifiuta(){
+        try{
 
+            FXMLLoader loader = new FXMLLoader(VisualizzaRichiestaGui.class.getResource("/com/example/studypal/view/rifiutaPOPUP.fxml"));
+            Parent parent = loader.load();
+            // Crea una nuova scena per il popup
+            Scene scene = new Scene(parent);
+
+            // Crea una nuova finestra di dialogo modale per il popup
+            Stage popupStage = new Stage();
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+            popupStage.setTitle("Popup");
+            popupStage.setScene(scene);
+
+            // Visualizza il popup
+            popupStage.showAndWait();
+        } catch(IOException e){
+            logger.severe("Errore caricamento popup di rifiuto" + e.getMessage());
+        }
+    }
 }
