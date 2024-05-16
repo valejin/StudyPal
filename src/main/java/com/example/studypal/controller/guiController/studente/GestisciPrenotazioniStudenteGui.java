@@ -39,7 +39,7 @@ public class GestisciPrenotazioniStudenteGui extends HomeStudenteGui{
 
         try {
             FXMLLoader loader = new FXMLLoader(GestisciPrenotazioniStudenteGui.class.getResource("/com/example/studypal/view/studente/richiesteInviate.fxml"));
-            loader.setControllerFactory(c -> new RichiesteInviateGui(user));
+            loader.setControllerFactory(c -> new RichiesteInviateGui(user, 0));
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) richiesteInviate.getScene().getWindow();

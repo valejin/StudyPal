@@ -58,7 +58,7 @@
         </VBox>
       <AnchorPane fx:id="sfondoChiaro" layoutX="229.0" layoutY="106.0" prefHeight="350.0" prefWidth="540.0" stylesheets="@../../base-prova.css">
          <children>
-            <Button fx:id="prenotazioniAttive" layoutX="173.0" layoutY="45.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="194.0" styleClass="custom-button" stylesheets="@../../button.css" text="Prenotazioni attive">
+            <Button fx:id="prenotazioniAttive" layoutX="173.0" layoutY="45.0" mnemonicParsing="false" onAction="#goToPrenotazioniAttive" prefHeight="60.0" prefWidth="194.0" styleClass="custom-button" stylesheets="@../../button.css" text="Prenotazioni attive">
                <effect>
                   <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
                </effect>

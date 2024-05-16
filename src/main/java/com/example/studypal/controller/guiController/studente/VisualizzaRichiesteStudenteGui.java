@@ -71,10 +71,11 @@ public class VisualizzaRichiesteStudenteGui extends HomeStudenteGui {
         note.setText(noteAggiuntive);
     }
 
-    public void goToRichiesteInviate(){
+    /*----------------------------------FLAG 1: PRENOTAZIONI ATTIVE-----------------------------------------------------*/
+    public void goToPrenotazioniAttive(){
         try {
-            FXMLLoader loader = new FXMLLoader(VisualizzaRichiestaGui.class.getResource("/com/example/studypal/view/studente/richiesteInviate.fxml"));
-            loader.setControllerFactory(c -> new RichiesteInviateGui(this.user));
+            FXMLLoader loader = new FXMLLoader(VisualizzaRichiestaGui.class.getResource("/com/example/studypal/view/studente/prenotazioniAttive.fxml"));
+            loader.setControllerFactory(c -> new RichiesteInviateGui(this.user, 1));
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) emailTutor.getScene().getWindow();
@@ -84,6 +85,38 @@ public class VisualizzaRichiesteStudenteGui extends HomeStudenteGui {
             e.printStackTrace();
         }
     }
+
+    /*----------------------------------FLAG 0: RICHIESTE INVIATE-----------------------------------------------------*/
+    public void goToRichiesteInviate(){
+        try {
+            FXMLLoader loader = new FXMLLoader(VisualizzaRichiestaGui.class.getResource("/com/example/studypal/view/studente/richiesteInviate.fxml"));
+            loader.setControllerFactory(c -> new RichiesteInviateGui(this.user, 0));
+            Parent parent = loader.load();
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) emailTutor.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            logger.severe("errore in VisualizzaRichiesteStudenteGui (caricamento pagina) " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    /*----------------------------------FLAG 2: RICHIESTE RIFIUTATE-----------------------------------------------------*/
+    public void goToRichiesteRifiutate(){
+        try {
+            FXMLLoader loader = new FXMLLoader(VisualizzaRichiestaGui.class.getResource("/com/example/studypal/view/studente/richiesteRifiutate.fxml"));
+            loader.setControllerFactory(c -> new RichiesteInviateGui(this.user, 2));
+            Parent parent = loader.load();
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) emailTutor.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            logger.severe("errore in VisualizzaRichiesteStudenteGui (caricamento pagina) " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    //TODO: capire se serve davvero avere 3 fxml diversi!!!! Basta magari uno solo che viene popolato in maniera diversa?
 
     public void cancellaRichiesta() {
 

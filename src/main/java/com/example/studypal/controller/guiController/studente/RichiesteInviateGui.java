@@ -37,10 +37,13 @@ public class RichiesteInviateGui extends HomeStudenteGui{
     protected TableColumn<PrenotazioneBean, Button> visualizza;
 
     List<PrenotazioneBean> richiesteList= new ArrayList<>();
-
+    Integer flag;
     private static final Logger logger = Logger.getLogger(RichiesteInviateGui.class.getName());
 
-    public RichiesteInviateGui(LoggedInUserBean user){this.user = user;}
+    public RichiesteInviateGui(LoggedInUserBean user, Integer flag){
+        this.user = user;
+        this.flag = flag;
+    }
 
     public void initialize() {
 
@@ -82,8 +85,6 @@ public class RichiesteInviateGui extends HomeStudenteGui{
                 };
             }
         });
-
-
     }
 
     public void visualizza(PrenotazioneBean prenotazione) {
@@ -99,11 +100,5 @@ public class RichiesteInviateGui extends HomeStudenteGui{
             logger.severe("errore in RichiesteInviateGui (caricamento pagina 'visualizza') " + e.getMessage());
             //e.printStackTrace();
         }
-
-
-
-
     }
-
-
 }
