@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.logging.Logger;
@@ -16,6 +17,8 @@ public class GestisciPrenotazioniStudenteGui extends HomeStudenteGui{
 
     @FXML
     Button richiesteInviate;
+    @FXML
+    AnchorPane sfondoChiaro;
     @FXML
     protected TableColumn<PrenotazioneBean, String> materia;
     @FXML
@@ -46,7 +49,7 @@ public class GestisciPrenotazioniStudenteGui extends HomeStudenteGui{
             loader.setControllerFactory(c -> new RichiesteInviateGui(user, 0));
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
-            Stage stage = (Stage) richiesteInviate.getScene().getWindow();
+            Stage stage = (Stage) sfondoChiaro.getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {
             logger.severe("errore in GestisciPrenotazioniStudenteGui (caricamento richieste inviate) " + e.getMessage());

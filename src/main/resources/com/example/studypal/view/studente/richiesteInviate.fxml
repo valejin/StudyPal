@@ -59,7 +59,7 @@
                 </Button>
             </children>
         </VBox>
-      <Text fx:id="titolo" fill="#000000ac" layoutX="270.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestione Prenotazioni" textAlignment="CENTER" wrappingWidth="452.71179151535034">
+      <Text fx:id="titolo" fill="#000000ac" layoutX="270.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Richieste Inviate" textAlignment="CENTER" wrappingWidth="452.71179151535034">
          <font>
             <Font size="32.0" />
          </font>
@@ -85,6 +85,11 @@
             <Text layoutX="124.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Richieste di prenotazioni inviate in attesa di conferma" textAlignment="CENTER" wrappingWidth="312.0000610351562" />
          </children>
       </AnchorPane>
+      <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="216.0" layoutY="24.0" onMouseClicked="#goToGestisciPrenotazioni" preserveRatio="true">
+         <image>
+            <Image url="@../../immagini/backButton.PNG" />
+         </image>
+      </ImageView>
     </children>
     <stylesheets>
         <URL value="@../../button.css" />

@@ -51,7 +51,7 @@ public class HomeStudenteGui {
 
         //metodo che porta alla pagina di gestione delle prenotazioni
         try {
-            FXMLLoader loader = new FXMLLoader(HomeStudenteGui.class.getResource("/com/example/studypal/view/studente/gestisciPrenotazioniStudente.fxml"));
+            FXMLLoader loader = new FXMLLoader(HomeStudenteGui.class.getResource("/com/example/studypal/view/studente/PROVA.fxml"));
             loader.setControllerFactory(c -> new GestisciPrenotazioniStudenteGui(user));
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
