@@ -124,7 +124,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         //chiama il controller applicativo e gli passa il BEAN che contiene la materia
         risultatiRicercaBean = cercaRipetizioneController.prenotaRipetizioneMethod(baseInfoBean);
 
-        //todo try catch!!!!!!! materia non trovata + ricerca in presenza senza luogo dà errori a terminale
+        //todo try catch!!!!!!! ricerca in presenza senza luogo dà errori a terminale
 
         /*
         //DEBUG
@@ -295,7 +295,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
                 stage.setScene(scene);
             } catch (IOException e) {
                 logger.severe("errore in CercaRipetizioneGui " + e.getMessage());
-                e.printStackTrace();
+                //e.printStackTrace();
             }
         }
 

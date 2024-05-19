@@ -28,6 +28,10 @@ public class GestisciPrenotazioniStudenteGui extends HomeStudenteGui{
     public GestisciPrenotazioniStudenteGui(LoggedInUserBean user){this.user=user;}
 
 
+    public void goToPrenotazioniAttive(){
+
+    }
+
     public void goToRichiesteInviate(){
 
         /*
