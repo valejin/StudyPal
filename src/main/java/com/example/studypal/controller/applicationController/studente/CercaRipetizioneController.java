@@ -36,19 +36,18 @@ public class CercaRipetizioneController extends HomeStudenteController {
 
         risultatiRicerca = ripetizioneInfoDAO.ricercaMateria(baseInfoModel);
 
-        }catch(MateriaNonTrovataException e){
-            Printer.errorPrint("controller Applicativo: materia non trovata");
-        }
-
         //carico nella lista di ripetizioneInfoBean i risultati della ricerca
 
         for ( RipetizioneInfoModel risultato: risultatiRicerca){
-            RipetizioneInfoBean risultatoBean = new RipetizioneInfoBean(risultato.getNome(), risultato.getCognome(),risultato.getMateria(),
-                    risultato.getInPresenza(), risultato.getOnline(), risultato.getLuogo(),
-                    risultato.getGiorni(), risultato.getTariffa(), risultato.getEmail());
+        RipetizioneInfoBean risultatoBean = new RipetizioneInfoBean(risultato.getNome(), risultato.getCognome(),risultato.getMateria(),
+                risultato.getInPresenza(), risultato.getOnline(), risultato.getLuogo(),
+                risultato.getGiorni(), risultato.getTariffa(), risultato.getEmail());
 
-            risultatiRicercaBean.add(risultatoBean);
+        risultatiRicercaBean.add(risultatoBean);
+        }
 
+        }catch(MateriaNonTrovataException e){
+            Printer.errorPrint("controller Applicativo: materia non trovata");
         }
 
         /*DEBUG
