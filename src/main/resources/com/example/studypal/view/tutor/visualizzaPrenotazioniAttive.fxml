@@ -65,7 +65,7 @@
             </DropShadow>
          </effect>
         </VBox>
-        <Text fx:id="titolo" fill="#000000ac" layoutX="333.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dettagli Richiesta" textAlignment="CENTER" wrappingWidth="411.1118166446686" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="130.20000000000005" AnchorPane.topAnchor="43.16796875">
+        <Text fx:id="titolo" fill="#000000ac" layoutX="332.8" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dettagli Richiesta" textAlignment="CENTER" wrappingWidth="411.1118166446686" AnchorPane.leftAnchor="332.8" AnchorPane.rightAnchor="106.08818335533147" AnchorPane.topAnchor="33.0">
             <font>
                 <Font size="32.0" />
             </font>
@@ -159,7 +159,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="234.0" layoutY="40.0" onMouseClicked="#goToPrenotazioniAttive" preserveRatio="true">
+      <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="250.0" layoutY="29.0" onMouseClicked="#goToPrenotazioniAttive" preserveRatio="true">
          <image>
             <Image url="@../../immagini/backButton.PNG" />
          </image>

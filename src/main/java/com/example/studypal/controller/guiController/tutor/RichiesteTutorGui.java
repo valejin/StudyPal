@@ -121,7 +121,7 @@ public class RichiesteTutorGui extends GestisciPrenotazioniGui {
                 Stage stage = (Stage) risultatiTable.getScene().getWindow();
                 stage.setScene(scene);
             } catch (IOException e) {
-                logger.severe("errore in VisualizzaRichiesteArrivateGuiController (caricamento pagina) " + e.getMessage());
+                logger.severe("errore in RichiesteTutorGui (caricamento richiesta arrivata) " + e.getMessage());
                 // e.printStackTrace();
             }
         }else if(this.flag == 1){
@@ -133,19 +133,19 @@ public class RichiesteTutorGui extends GestisciPrenotazioniGui {
                 Stage stage = (Stage) risultatiTable.getScene().getWindow();
                 stage.setScene(scene);
             } catch (IOException e) {
-                logger.severe("errore in VisualizzaRichiesteArrivateGuiController (caricamento pagina) " + e.getMessage());
+                logger.severe("errore in RichiesteTutorGui (caricamento prenotazione attiva) " + e.getMessage());
                 // e.printStackTrace();
             }
         }else if(this.flag == 2){
             try {
-                FXMLLoader loader = new FXMLLoader(RichiesteTutorGui.class.getResource("/com/example/studypal/view/tutor/prenotazioniRifiutate.fxml"));
+                FXMLLoader loader = new FXMLLoader(RichiesteTutorGui.class.getResource("/com/example/studypal/view/tutor/visualizzaPrenotazioniRifiutate.fxml"));
                 loader.setControllerFactory(c -> new VisualizzaRichiestaGui(user, prenotazioneBean, richiesteList));
                 Parent parent = loader.load();
                 Scene scene = new Scene(parent);
                 Stage stage = (Stage) risultatiTable.getScene().getWindow();
                 stage.setScene(scene);
             } catch (IOException e) {
-                logger.severe("errore in VisualizzaRichiesteArrivateGuiController (caricamento pagina) " + e.getMessage());
+                logger.severe("errore in RichiesteTutorGui (caricamento richiesta rifiutata) " + e.getMessage());
             }
 
         }

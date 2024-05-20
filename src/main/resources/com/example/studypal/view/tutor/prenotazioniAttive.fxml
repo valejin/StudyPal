@@ -66,34 +66,35 @@
             </DropShadow>
          </effect>
         </VBox>
-        <Text fx:id="titolo" fill="#000000ac" layoutX="313.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenotazioni Attive" textAlignment="CENTER" wrappingWidth="452.71179151535034" AnchorPane.leftAnchor="313.0" AnchorPane.rightAnchor="107.0" AnchorPane.topAnchor="25.0">
+        <Text fx:id="titolo" fill="#000000ac" layoutX="296.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenotazioni Attive" textAlignment="CENTER" wrappingWidth="452.71179151535034" AnchorPane.leftAnchor="296.0" AnchorPane.rightAnchor="101.28820848464966" AnchorPane.topAnchor="34.16796875">
             <font>
                 <Font size="32.0" />
             </font>
         </Text>
-      <AnchorPane fx:id="zonaInfo" layoutX="213.0" layoutY="86.0" prefHeight="400.0" prefWidth="622.0" stylesheets="@../../base-prova.css">
+      <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="232.0" layoutY="31.0" onMouseClicked="#goToGestisciPrenotazioni" preserveRatio="true">
+         <image>
+            <Image url="@../../immagini/backButton.PNG" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="zonaInfo" layoutX="217.0" layoutY="85.0" prefHeight="400.0" prefWidth="590.0" stylesheets="@../../base-prova.css">
          <children>
-            <ScrollPane layoutX="13.0" layoutY="14.0" prefHeight="369.0" prefWidth="596.0">
+            <ScrollPane layoutX="7.0" layoutY="28.0" prefHeight="357.0" prefWidth="596.0">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="350.0" prefWidth="595.0">
                      <children>
-                        <TableView fx:id="risultatiTable" prefHeight="353.0" prefWidth="596.0">
+                        <TableView fx:id="risultatiTable" prefHeight="330.0" prefWidth="581.0">
                            <columns>
-                              <TableColumn fx:id="email" prefWidth="287.19993287324905" text="email" />
-                              <TableColumn fx:id="materia" prefWidth="160.79998779296875" text="materia" />
-                              <TableColumn fx:id="visualizza" minWidth="0.0" prefWidth="147.199951171875" text="visualizza" />
+                              <TableColumn fx:id="email" prefWidth="280.0000122189522" text="email" />
+                              <TableColumn fx:id="materia" prefWidth="163.20004272460938" text="materia" />
+                              <TableColumn fx:id="visualizza" minWidth="0.0" prefWidth="152.79998779296875" text="visualizza" />
                            </columns>
                         </TableView>
                      </children>
                   </AnchorPane>
                </content>
             </ScrollPane>
+            <Text layoutX="187.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenotazioni precedentemente confermate" textAlignment="CENTER" wrappingWidth="247.99999999999994" />
          </children>
       </AnchorPane>
-      <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="213.0" layoutY="21.0" onMouseClicked="#goToGestisciPrenotazioni" preserveRatio="true">
-         <image>
-            <Image url="@../../immagini/backButton.PNG" />
-         </image>
-      </ImageView>
     </children>
 </AnchorPane>

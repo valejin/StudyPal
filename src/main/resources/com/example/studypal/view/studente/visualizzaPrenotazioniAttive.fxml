@@ -12,128 +12,116 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.studypal.controller.guiController.studente.VisualizzaRichiesteStudenteGui">
+<AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.studente.VisualizzaRichiesteStudenteGui">
     <stylesheets>
-        <URL value="@../../button.css"/>
-        <URL value="@../../base-prova.css"/>
+        <URL value="@../../button.css" />
+        <URL value="@../../base-prova.css" />
     </stylesheets>
-    <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0"
-          stylesheets="@../../base-prova.css">
+    <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0" stylesheets="@../../base-prova.css">
         <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
             <VBox.margin>
-                <Insets top="60.0"/>
+                <Insets top="60.0" />
             </VBox.margin>
             <effect>
-                <InnerShadow/>
+                <InnerShadow />
             </effect>
-            <Image url="@../../immagini/iconStudent.png"/>
+            <Image url="@../../immagini/iconStudent.png" />
         </ImageView>
-        <Button mnemonicParsing="false" onMouseClicked="#goToPrenotaRipetizione" prefHeight="60.0" prefWidth="130.0"
-                styleClass="custom-button" text="Prenota ripetizione" textAlignment="CENTER" wrapText="true">
+        <Button mnemonicParsing="false" onMouseClicked="#goToPrenotaRipetizione" prefHeight="60.0" prefWidth="130.0" styleClass="custom-button" text="Prenota ripetizione" textAlignment="CENTER" wrapText="true">
             <VBox.margin>
-                <Insets top="40.0"/>
+                <Insets top="40.0" />
             </VBox.margin>
             <stylesheets>
-                <URL value="@../../base-prova.css"/>
-                <URL value="@../../button.css"/>
+                <URL value="@../../base-prova.css" />
+                <URL value="@../../button.css" />
             </stylesheets>
             <effect>
-                <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0"/>
+                <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
             </effect>
         </Button>
-        <Button fx:id="gestisciPrenotazioni" mnemonicParsing="false" onAction="#goToGestisciPrenotazioni"
-                prefHeight="60.0" prefWidth="130.0" styleClass="custom-button" stylesheets="@../../button.css"
-                text="Gestisci Prenotazioni" textAlignment="CENTER" wrapText="true">
+        <Button fx:id="gestisciPrenotazioni" mnemonicParsing="false" onAction="#goToGestisciPrenotazioni" prefHeight="60.0" prefWidth="130.0" styleClass="custom-button" stylesheets="@../../button.css" text="Gestisci Prenotazioni" textAlignment="CENTER" wrapText="true">
             <VBox.margin>
-                <Insets top="30.0"/>
+                <Insets top="30.0" />
             </VBox.margin>
             <effect>
-                <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0"/>
+                <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
             </effect>
         </Button>
-        <Button mnemonicParsing="false" onMouseClicked="#goToLogout" prefHeight="33.0" prefWidth="130.0"
-                styleClass="custom-button" stylesheets="@../../button.css" text="Esci">
+        <Button mnemonicParsing="false" onMouseClicked="#goToLogout" prefHeight="33.0" prefWidth="130.0" styleClass="custom-button" stylesheets="@../../button.css" text="Esci">
             <VBox.margin>
-                <Insets top="30.0"/>
+                <Insets top="30.0" />
             </VBox.margin>
             <effect>
-                <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0"/>
+                <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
             </effect>
         </Button>
     </VBox>
-    <AnchorPane fx:id="sfondoChiaro" layoutX="216.0" layoutY="112.0" prefHeight="350.0" prefWidth="557.0"
-                stylesheets="@../../base-prova.css">
+    <AnchorPane fx:id="sfondoChiaro" layoutX="244.0" layoutY="113.0" prefHeight="350.0" prefWidth="557.0" stylesheets="@../../base-prova.css">
         <VBox layoutX="76.0" layoutY="33.0" prefHeight="250.0" prefWidth="90.0">
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tutor:"/>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tutor:" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email tutor:">
                 <VBox.margin>
-                    <Insets top="15.0"/>
+                    <Insets top="15.0" />
                 </VBox.margin>
             </Text>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Materia:">
                 <VBox.margin>
-                    <Insets top="15.0"/>
+                    <Insets top="15.0" />
                 </VBox.margin>
             </Text>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modalità lezione:">
                 <VBox.margin>
-                    <Insets top="15.0"/>
+                    <Insets top="15.0" />
                 </VBox.margin>
             </Text>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giorni preferibili:">
                 <VBox.margin>
-                    <Insets top="15.0"/>
+                    <Insets top="15.0" />
                 </VBox.margin>
             </Text>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Note aggiuntive:">
                 <VBox.margin>
-                    <Insets top="15.0"/>
+                    <Insets top="15.0" />
                 </VBox.margin>
             </Text>
         </VBox>
         <VBox layoutX="195.0" layoutY="61.0" prefHeight="216.0" prefWidth="338.0">
             <Label fx:id="emailTutor" prefHeight="18.0" prefWidth="226.0" text="Label">
                 <VBox.margin>
-                    <Insets/>
+                    <Insets />
                 </VBox.margin>
             </Label>
             <Label fx:id="materia" prefHeight="18.0" prefWidth="218.0" text="Label">
                 <VBox.margin>
-                    <Insets top="13.0"/>
+                    <Insets top="13.0" />
                 </VBox.margin>
             </Label>
             <Label fx:id="modLezione" prefHeight="18.0" prefWidth="231.0" text="Label">
                 <VBox.margin>
-                    <Insets top="15.0"/>
+                    <Insets top="15.0" />
                 </VBox.margin>
             </Label>
             <Label fx:id="giorni" text="Label">
                 <VBox.margin>
-                    <Insets top="14.0"/>
+                    <Insets top="14.0" />
                 </VBox.margin>
             </Label>
-            <Label fx:id="note" alignment="TOP_LEFT" prefHeight="54.0" prefWidth="338.0" text="Label"
-                   wrapText="true">
+            <Label fx:id="note" alignment="TOP_LEFT" prefHeight="54.0" prefWidth="338.0" text="Label" wrapText="true">
                 <VBox.margin>
-                    <Insets top="14.0"/>
+                    <Insets top="14.0" />
                 </VBox.margin>
             </Label>
         </VBox>
-        <Button layoutX="179.0" layoutY="277.0" mnemonicParsing="false" onAction="#cancellaRichiesta"
-                prefHeight="39.0" prefWidth="200.0" styleClass="custom-button2" stylesheets="@../../button.css"
-                text="Cancella Prenotazione"/>
-        <Label fx:id="nome" layoutX="195.0" layoutY="32.0" prefHeight="18.0" prefWidth="91.0" text="Label"/>
-        <Label fx:id="cognome" layoutX="308.0" layoutY="32.0" text="Label"/>
+        <Button layoutX="179.0" layoutY="277.0" mnemonicParsing="false" onAction="#cancellaRichiesta" prefHeight="39.0" prefWidth="200.0" styleClass="custom-button2" stylesheets="@../../button.css" text="Cancella Prenotazione" />
+        <Label fx:id="nome" layoutX="195.0" layoutY="32.0" prefHeight="18.0" prefWidth="91.0" text="Label" />
+        <Label fx:id="cognome" layoutX="308.0" layoutY="32.0" text="Label" />
     </AnchorPane>
-    <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="216.0" layoutY="36.0"
-               onMouseClicked="#goToPrenotazioniAttive" preserveRatio="true">
-        <Image url="@../../immagini/backButton.PNG"/>
+    <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="244.0" layoutY="37.0" onMouseClicked="#goToPrenotazioniAttive" preserveRatio="true">
+        <Image url="@../../immagini/backButton.PNG" />
     </ImageView>
-    <Text fx:id="titolo" fill="#000000ac" layoutX="289.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0"
-          text="Dettagli Richiesta" textAlignment="CENTER" wrappingWidth="411.1118166446686">
+    <Text fx:id="titolo" fill="#000000ac" layoutX="317.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dettagli Richiesta" textAlignment="CENTER" wrappingWidth="411.1118166446686">
         <font>
-            <Font size="32.0"/>
+            <Font size="32.0" />
         </font>
     </Text>
 </AnchorPane>

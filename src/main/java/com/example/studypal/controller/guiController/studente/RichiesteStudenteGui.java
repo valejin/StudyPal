@@ -103,21 +103,21 @@ public class RichiesteStudenteGui extends HomeStudenteGui{
         if (this.flag == 0){
             //richieste inviate in attesa di conferma
             try {
-                FXMLLoader loader = new FXMLLoader(RichiesteTutorGui.class.getResource("/com/example/studypal/view/tutor/visualizzaRichiesteArrivate.fxml"));
+                FXMLLoader loader = new FXMLLoader(RichiesteTutorGui.class.getResource("/com/example/studypal/view/studente/visualizzaRichiesteInviate.fxml"));
                 loader.setControllerFactory(c -> new VisualizzaRichiesteStudenteGui(user, prenotazioneBean, richiesteList));
                 Parent parent = loader.load();
                 Scene scene = new Scene(parent);
                 Stage stage = (Stage) richiesteTable.getScene().getWindow();
                 stage.setScene(scene);
             } catch (IOException e) {
-                logger.severe("errore in RichiesteStudenteGui (caricamento pagina richieste arrivate) " + e.getMessage());
-                // e.printStackTrace();
+                logger.severe("errore in RichiesteStudenteGui (caricamento pagina richieste inviate) " + e.getMessage());
+                e.printStackTrace();
             }
 
         } else if (this.flag == 1){
             //richieste confermate (prenotazioni attive)
             try {
-                FXMLLoader loader = new FXMLLoader(RichiesteTutorGui.class.getResource("/com/example/studypal/view/tutor/visualizzaPrenotazioniAttive.fxml"));
+                FXMLLoader loader = new FXMLLoader(RichiesteTutorGui.class.getResource("/com/example/studypal/view/studente/visualizzaPrenotazioniAttive.fxml"));
                 loader.setControllerFactory(c -> new VisualizzaRichiesteStudenteGui(user, prenotazioneBean, richiesteList));
                 Parent parent = loader.load();
                 Scene scene = new Scene(parent);
@@ -131,7 +131,7 @@ public class RichiesteStudenteGui extends HomeStudenteGui{
 
         } else if (this.flag == 2){
             try {
-                FXMLLoader loader = new FXMLLoader(RichiesteTutorGui.class.getResource("/com/example/studypal/view/tutor/visualizzaRichiesteRifiutate.fxml"));
+                FXMLLoader loader = new FXMLLoader(RichiesteTutorGui.class.getResource("/com/example/studypal/view/studente/visualizzaRichiesteRifiutate.fxml"));
                 loader.setControllerFactory(c -> new VisualizzaRichiesteStudenteGui(user, prenotazioneBean, richiesteList));
                 Parent parent = loader.load();
                 Scene scene = new Scene(parent);

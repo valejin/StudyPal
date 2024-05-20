@@ -95,7 +95,7 @@ public class VisualizzaRichiesteStudenteGui extends HomeStudenteGui {
     /*----------------------------------FLAG 1: PRENOTAZIONI ATTIVE -----------------------------------------------------*/
     public void goToPrenotazioniAttive(){
         try {
-            FXMLLoader loader = new FXMLLoader(VisualizzaRichiestaGui.class.getResource("/com/example/studypal/view/studente/prenotazioniAttive.fxml"));
+            FXMLLoader loader = new FXMLLoader(VisualizzaRichiestaGui.class.getResource("/com/example/studypal/view/studente/prenotazioniAttiveStudente.fxml"));
             loader.setControllerFactory(c -> new RichiesteStudenteGui(this.user, 1));
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
