@@ -81,11 +81,8 @@ public class RichiesteArrivateGui extends GestisciPrenotazioniGui {
                     {
                         btn.setOnAction(event -> {
                             PrenotazioneBean bean = getTableView().getItems().get(getIndex());
-                            if(flag == 0) {
-                                visualizzaRichiesta(bean);
-                            }else if(flag == 1){
-                                visualizzaRichiesta(bean);
-                            }
+
+                            visualizzaRichiesta(bean);
 
                         });
                     }
@@ -139,6 +136,19 @@ public class RichiesteArrivateGui extends GestisciPrenotazioniGui {
                 logger.severe("errore in VisualizzaRichiesteArrivateGuiController (caricamento pagina) " + e.getMessage());
                 // e.printStackTrace();
             }
+        }else if(this.flag == 2){
+            try {
+                FXMLLoader loader = new FXMLLoader(RichiesteArrivateGui.class.getResource("/com/example/studypal/view/tutor/prenotazioniRifiutate.fxml"));
+                loader.setControllerFactory(c -> new VisualizzaRichiestaGui(user, prenotazioneBean, richiesteList));
+                Parent parent = loader.load();
+                Scene scene = new Scene(parent);
+                Stage stage = (Stage) risultatiTable.getScene().getWindow();
+                stage.setScene(scene);
+            } catch (IOException e) {
+                logger.severe("errore in VisualizzaRichiesteArrivateGuiController (caricamento pagina) " + e.getMessage());
+                e.printStackTrace();
+            }
+
         }
     }
 

@@ -68,6 +68,7 @@ public class PrenotazioneDAO {
 
 /*--------------Gestione Prenotazioni (TUTOR): prendere le richieste arrivate da DB ---------------------------*/
 /*--------------Gestione Prenotazioni (TUTOR): prendere le prenotazioni arrivate da DB ------------------------*/
+/*--------------Gestione Prenotazioni (TUTOR): prendere le prenotazioni rifiutate da DB ------------------------*/
     /*
     una volta la richiesta in attesa viene confermata dal tutor, sparisce dalla lista di richieste arrivate
     */
@@ -89,6 +90,8 @@ public class PrenotazioneDAO {
         }else if(flag == 1){
             //qui ho le richieste confermate =>prenotazioni attive
             query = "SELECT * FROM richieste WHERE emailTutor = ? AND stato = 1";
+        }else if(flag == 2){
+            query = "SELECT * FROM richieste WHERE emailTutor = ? AND stato = 2";
         }
 
 
