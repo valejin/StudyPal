@@ -34,7 +34,7 @@ Button {
     -fx-padding: 10px 20px; /* Spazio intorno al testo */
     -fx-font-family: Verdana, sans-serif; /* Utilizza il font Arial o un font sans-serif di backup */
 
-    -fx-font-size: 14px; /* Dimensione del font 18px */
+    -fx-font-size: 18px; /* Dimensione del font 18px */
     -fx-cursor: pointer; /* Cambia il cursore quando si passa sopra */
     -fx-border-radius: 8px; /* Bordo arrotondato */
 }
@@ -126,4 +126,30 @@ Button:hover {
 //-fx-border-radius: 20px;
     -fx-background-radius: 15 15 15 15;
     -fx-border-radius: 15 15 15 15;
+}
+
+.testo {
+    -fx-text-fill: #333333;
+    -fx-effect: dropshadow(gaussian, rgba(40, 164, 37, 0.34), 10, 0.7, 0, 0);
+    -fx-background-color: white;
+    -fx-border-radius: 30; /* Arrotonda solo l'angolo*/
+    -fx-min-width: 200px; /* Larghezza minima */
+    -fx-min-height: 40px; /* Altezza minima */
+    -fx-max-width: 300px; /* Larghezza massima */
+    -fx-max-height: 60px; /* Altezza massima */
+}
+
+#email {
+    -fx-font-size: 15px; /* Imposta la grandezza del testo a 14 pixel */
+    -fx-alignment: center-left; /* Centra il testo orizzontalmente e verticalmente */
+}
+
+#materia {
+    -fx-font-size: 15px; /* Imposta la grandezza del testo a 14 pixel */
+    -fx-alignment: center-left; /* Centra il testo orizzontalmente e verticalmente */
+}
+
+#visualizza {
+    -fx-font-size: 15px; /* Imposta la grandezza del testo a 14 pixel */
+    -fx-alignment: CENTER; /* Centra il testo orizzontalmente e verticalmente */
 }

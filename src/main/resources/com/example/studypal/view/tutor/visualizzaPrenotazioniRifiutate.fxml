@@ -70,9 +70,9 @@
                 <Font size="32.0" />
             </font>
         </Text>
-      <AnchorPane fx:id="sfondoChiaro" layoutX="246.0" layoutY="106.0" prefHeight="350.0" prefWidth="557.0" stylesheets="@../../base-prova.css">
+      <AnchorPane fx:id="sfondoChiaro" layoutX="247.0" layoutY="107.0" prefHeight="362.0" prefWidth="558.0" stylesheets="@../../base-prova.css">
          <children>
-            <VBox layoutX="65.0" layoutY="26.0" prefHeight="250.0" prefWidth="90.0">
+            <VBox layoutX="81.0" layoutY="60.0" prefHeight="250.0" prefWidth="90.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Email studente:">
                      <font>
@@ -112,7 +112,7 @@
                   </Text>
                </children>
             </VBox>
-            <VBox layoutX="192.0" layoutY="26.0" prefHeight="250.0" prefWidth="337.0">
+            <VBox layoutX="213.0" layoutY="60.0" prefHeight="250.0" prefWidth="296.0">
                <children>
                   <Label fx:id="emailStudente" prefHeight="18.0" prefWidth="218.0" text="Label">
                      <font>
@@ -122,6 +122,9 @@
                      <VBox.margin>
                         <Insets top="28.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Label>
                   <Label fx:id="modLezione" prefHeight="18.0" prefWidth="218.0" text="Label">
                      <VBox.margin>
@@ -149,7 +152,6 @@
                   </Label>
                </children>
             </VBox>
-            <Button fx:id="confermaButton" layoutX="128.0" layoutY="292.0" mnemonicParsing="false" onAction="#confermaRichiestaMethod" styleClass="custom-button" stylesheets="@../../button.css" text="Conferma" />
             <Label fx:id="successoModifiche" layoutX="166.0" layoutY="257.0" textFill="#2672bf">
                <font>
                   <Font size="14.0" />
@@ -158,10 +160,9 @@
                   <Glow level="0.23" />
                </effect>
             </Label>
-            <Button fx:id="rifiutaButton" layoutX="306.0" layoutY="292.0" mnemonicParsing="false" onAction="#rifiutaRichiestaMethod" prefHeight="44.0" prefWidth="128.0" styleClass="custom-button2" stylesheets="@../../button.css" text="Rifiuta" />
          </children>
       </AnchorPane>
-      <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="234.0" layoutY="40.0" onMouseClicked="#goToRichiesteArrivate" preserveRatio="true">
+      <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="234.0" layoutY="40.0" onMouseClicked="#goToPrenotazioniRifiutate" preserveRatio="true">
          <image>
             <Image url="@../../immagini/backButton.PNG" />
          </image>

@@ -8,14 +8,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="myPane" prefHeight="500.0" prefWidth="800.0" styleClass="sfondo" stylesheets="@../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.LoginGuiController">
+<AnchorPane fx:id="myPane" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" styleClass="sfondo" stylesheets="@../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.LoginGuiController">
    <children>
-      <Text fx:id="titolo" layoutX="291.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titolo" text="StudyPal" textAlignment="CENTER" wrappingWidth="217.60000000000014">
+      <Text fx:id="titolo" layoutX="316.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titolo" text="StudyPal" textAlignment="CENTER" wrappingWidth="217.60000000000014">
          <font>
             <Font name="Bodoni MT Italic" size="66.0" />
          </font>
       </Text>
-      <AnchorPane layoutX="122.0" layoutY="127.0" prefHeight="314.0" prefWidth="550.0" AnchorPane.leftAnchor="122.0" AnchorPane.rightAnchor="122.0" AnchorPane.topAnchor="127.0">
+      <AnchorPane layoutX="154.0" layoutY="142.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="550.0" AnchorPane.leftAnchor="154.0" AnchorPane.rightAnchor="136.39999999999998" AnchorPane.topAnchor="142.0">
          <children>
             <Button layoutX="233.0" layoutY="199.0" mnemonicParsing="false" onAction="#loginMethod" prefHeight="39.0" prefWidth="89.0" text="Login">
                <font>
@@ -32,7 +32,7 @@
                   <Font size="17.0" />
                </font>
             </Text>
-            <TextField fx:id="emailField" layoutX="144.0" layoutY="59.0" prefHeight="39.0" prefWidth="266.0" promptText="Email">
+            <TextField fx:id="emailField" layoutX="144.0" layoutY="59.0" prefHeight="39.0" prefWidth="266.0" promptText="Email" styleClass="testo" stylesheets="@../base-prova.css">
                <font>
                   <Font size="14.0" />
                </font>
@@ -47,7 +47,7 @@
                   <Font size="17.0" />
                </font>
             </Text>
-            <PasswordField fx:id="passwordField" layoutX="145.0" layoutY="139.0" prefHeight="39.0" prefWidth="266.0" promptText="Password">
+            <PasswordField fx:id="passwordField" layoutX="145.0" layoutY="139.0" prefHeight="39.0" prefWidth="266.0" promptText="Password" styleClass="testo" stylesheets="@../base-prova.css">
                <font>
                   <Font size="14.0" />
                </font>

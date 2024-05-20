@@ -66,7 +66,7 @@
             </DropShadow>
          </effect>
         </VBox>
-        <Text fx:id="titolo" fill="#000000ac" layoutX="309.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Richieste arrivate" textAlignment="CENTER" wrappingWidth="452.71179151535034" AnchorPane.leftAnchor="309.0" AnchorPane.rightAnchor="88.28820848464966" AnchorPane.topAnchor="26.16796875">
+        <Text fx:id="titolo" fill="#000000ac" layoutX="309.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Richieste Arrivate" textAlignment="CENTER" wrappingWidth="452.71179151535034" AnchorPane.leftAnchor="309.0" AnchorPane.rightAnchor="88.28820848464966" AnchorPane.topAnchor="26.16796875">
             <font>
                 <Font size="32.0" />
             </font>
@@ -79,9 +79,9 @@
                      <children>
                         <TableView fx:id="risultatiTable" prefHeight="330.0" prefWidth="596.0">
                           <columns>
-                            <TableColumn fx:id="email" prefWidth="287.19993287324905" text="email" />
-                              <TableColumn fx:id="materia" prefWidth="160.79998779296875" text="materia" />
-                            <TableColumn fx:id="visualizza" minWidth="0.0" prefWidth="147.199951171875" text="visualizza" />
+                            <TableColumn fx:id="email" prefWidth="280.0000122189522" text="email" />
+                              <TableColumn fx:id="materia" prefWidth="163.20004272460938" text="materia" />
+                            <TableColumn fx:id="visualizza" minWidth="0.0" prefWidth="152.79998779296875" text="visualizza" />
                           </columns>
                         </TableView>
                      </children>

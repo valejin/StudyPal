@@ -20,7 +20,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.tutor.GestioneProfiloTutorGuiController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.tutor.GestioneProfiloTutorGuiController">
     <children>
         <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0" stylesheets="@../../menu.css">
             <children>
@@ -71,41 +71,50 @@
             </DropShadow>
          </effect>
         </VBox>
-        <Text fx:id="titolo" fill="#000000ac" layoutX="340.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestione Profilo" textAlignment="CENTER" wrappingWidth="320.71179151535034" AnchorPane.leftAnchor="340.0" AnchorPane.rightAnchor="139.28820848464966" AnchorPane.topAnchor="42.16796875">
+        <Text fx:id="titolo" fill="#000000ac" layoutX="370.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestione Profilo" textAlignment="CENTER" wrappingWidth="320.71179151535034" AnchorPane.leftAnchor="370.0" AnchorPane.rightAnchor="159.28820848464966" AnchorPane.topAnchor="43.16796875">
             <font>
                 <Font size="32.0" />
             </font>
         </Text>
-      <AnchorPane fx:id="zonaInfo" layoutX="250.0" layoutY="98.0" prefHeight="350.0" prefWidth="500.0" stylesheets="@../../base-prova.css">
+      <AnchorPane fx:id="zonaInfo" layoutX="244.0" layoutY="100.0" prefHeight="372.0" prefWidth="572.0" stylesheets="@../../base-prova.css">
          <children>
-            <VBox layoutX="295.0" layoutY="32.0" prefHeight="250.0" prefWidth="175.0">
+            <VBox layoutX="304.0" layoutY="26.0" prefHeight="280.0" prefWidth="220.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Luogo">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Luogo">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Text>
-                  <ComboBox fx:id="luogoBox" editable="true" prefHeight="26.0" prefWidth="182.0" promptText="Seleziona una città...">
+                  <ComboBox fx:id="luogoBox" editable="true" prefHeight="33.0" prefWidth="220.0" promptText="Seleziona una città..." styleClass="testo">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
                   </ComboBox>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Materie">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Materie">
                      <VBox.margin>
                         <Insets top="30.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Text>
-                  <TextField fx:id="materieField" promptText="Inserisci le materie...">
+                  <TextField fx:id="materieField" prefHeight="34.0" prefWidth="220.0" promptText="Inserisci le materie..." styleClass="testo">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
                   </TextField>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giorni Disponibili">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Giorni Disponibili">
                      <VBox.margin>
                         <Insets top="30.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Text>
-                  <MenuButton fx:id="giorniMenu" mnemonicParsing="false" prefHeight="26.0" prefWidth="185.0" text="giorni..." textFill="#9c9c9c">
+                  <MenuButton fx:id="giorniMenu" mnemonicParsing="false" prefHeight="26.0" prefWidth="231.0" styleClass="testo" text="giorni..." textFill="#9c9c9c">
                     <items>
                         <CheckMenuItem mnemonicParsing="false" text="Lunedì" />
                         <CheckMenuItem mnemonicParsing="false" text="Martedì" />
@@ -121,27 +130,39 @@
                   </MenuButton>
                </children>
             </VBox>
-            <VBox layoutX="45.0" layoutY="26.0" prefHeight="250.0" prefWidth="175.0">
+            <VBox layoutX="49.0" layoutY="26.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="220.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modalità di lezione">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Modalità di lezione">
                      <VBox.margin>
-                        <Insets top="30.0" />
+                        <Insets top="40.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Text>
                   <CheckBox fx:id="inPresenzaBox" mnemonicParsing="false" text="In presenza">
                      <VBox.margin>
                         <Insets left="20.0" top="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </CheckBox>
                   <CheckBox fx:id="onlineBox" mnemonicParsing="false" text="Online">
                      <VBox.margin>
                         <Insets left="20.0" top="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </CheckBox>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tariffa (€/h)">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Tariffa (€/h)">
                      <VBox.margin>
                         <Insets top="40.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Text>
                   <Slider fx:id="tariffaSlider" majorTickUnit="5.0" max="50.0" min="5.0" prefHeight="14.0" prefWidth="185.0">
                      <VBox.margin>
@@ -158,7 +179,7 @@
                   </Label>
                </children>
             </VBox>
-            <Button fx:id="confermaModifica" layoutX="196.0" layoutY="282.0" mnemonicParsing="false" onAction="#gestioneProfiloMethod" styleClass="rounded-button" stylesheets="@../../button.css" text="Conferma" />
+            <Button fx:id="confermaModifica" layoutX="222.0" layoutY="314.0" mnemonicParsing="false" onAction="#gestioneProfiloMethod" styleClass="rounded-button" stylesheets="@../../button.css" text="Conferma" />
             <Label fx:id="successoModifiche" layoutX="166.0" layoutY="257.0" textFill="#2672bf">
                <font>
                   <Font size="14.0" />

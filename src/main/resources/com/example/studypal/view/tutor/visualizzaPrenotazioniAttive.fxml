@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.tutor.VisualizzaRichiestaGui">
+<AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.tutor.VisualizzaRichiestaGui">
     <children>
         <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0" stylesheets="@../../menu.css">
             <children>
@@ -70,36 +70,54 @@
                 <Font size="32.0" />
             </font>
         </Text>
-      <AnchorPane fx:id="sfondoChiaro" layoutX="254.0" layoutY="100.0" prefHeight="350.0" prefWidth="557.0" stylesheets="@../../base-prova.css">
+      <AnchorPane fx:id="sfondoChiaro" layoutX="250.0" layoutY="105.0" prefHeight="350.0" prefWidth="557.0" stylesheets="@../../base-prova.css">
          <children>
             <VBox layoutX="71.0" layoutY="60.0" prefHeight="250.0" prefWidth="90.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email studente:" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Materia:">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Email studente:">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Materia:">
                      <VBox.margin>
                         <Insets top="30.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modalità lezione:">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Modalità lezione:">
                      <VBox.margin>
                         <Insets top="30.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giorni preferibili:">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Giorni preferibili:">
                      <VBox.margin>
                         <Insets top="30.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Note aggiuntive:">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Note aggiuntive:">
                      <VBox.margin>
                         <Insets top="30.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Text>
                </children>
             </VBox>
-            <VBox layoutX="174.0" layoutY="60.0" prefHeight="250.0" prefWidth="337.0">
+            <VBox layoutX="196.0" layoutY="60.0" prefHeight="250.0" prefWidth="337.0">
                <children>
-                  <Label fx:id="emailStudente" prefHeight="18.0" prefWidth="218.0" text="Label" />
+                  <Label fx:id="emailStudente" prefHeight="18.0" prefWidth="218.0" text="Label">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Label>
                   <Label fx:id="materia" prefHeight="18.0" prefWidth="226.0" text="Label">
                      <VBox.margin>
                         <Insets top="28.0" />
@@ -109,16 +127,25 @@
                      <VBox.margin>
                         <Insets top="29.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Label>
                   <Label fx:id="giorni" prefHeight="18.0" prefWidth="231.0" text="Label">
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="29.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Label>
                   <Label fx:id="note" alignment="TOP_LEFT" prefHeight="54.0" prefWidth="338.0" text="Label" wrapText="true">
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="30.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Label>
                </children>
             </VBox>

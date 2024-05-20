@@ -122,6 +122,23 @@ public void goToPrenotazioniAttive() {
 }
 
 
+/*----------------------tasto di ritorno alla pagina di prenotazioni rifiutate-------------------------*/
+public void goToPrenotazioniRifiutate(){
+
+    //metodo che porta alle prenotazioni rifiutate
+    try {
+        FXMLLoader loader = new FXMLLoader(VisualizzaRichiestaGui.class.getResource("/com/example/studypal/view/tutor/prenotazioniRifiutate.fxml"));
+        loader.setControllerFactory(c -> new RichiesteArrivateGui(user, 2));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        Stage stage = (Stage) emailStudente.getScene().getWindow();
+        stage.setScene(scene);
+    } catch (IOException e) {
+        logger.severe("errore in GestisciPrenotazioniGuiController " + e.getMessage());
+        e.printStackTrace();
+    }
+}
+
 
 /*-------------------CONFERMA/RIFIUTA---------------------------------------------------------------------------------*/
     public void confermaRichiestaMethod(){
@@ -146,6 +163,7 @@ public void goToPrenotazioniAttive() {
         richiesteArrivateController.modificaStatoRichiesta(this.dettagliRichiesta.getIdRichiesta(),2);
         caricaRifiuta();
         goToRichiesteArrivate();
+
     }
 
     public void caricaConferma(){

@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.tutor.RichiesteArrivateGui">
+<AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.tutor.RichiesteArrivateGui">
     <children>
         <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0" stylesheets="@../../menu.css">
             <children>
@@ -71,7 +71,7 @@
                 <Font size="32.0" />
             </font>
         </Text>
-      <AnchorPane fx:id="zonaInfo" layoutX="228.0" layoutY="86.0" prefHeight="400.0" prefWidth="622.0" stylesheets="@../../base-prova.css">
+      <AnchorPane fx:id="zonaInfo" layoutX="213.0" layoutY="86.0" prefHeight="400.0" prefWidth="622.0" stylesheets="@../../base-prova.css">
          <children>
             <ScrollPane layoutX="13.0" layoutY="14.0" prefHeight="369.0" prefWidth="596.0">
                <content>
@@ -90,5 +90,10 @@
             </ScrollPane>
          </children>
       </AnchorPane>
+      <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="213.0" layoutY="22.0" onMouseClicked="#goToGestisciPrenotazioni" preserveRatio="true">
+         <image>
+            <Image url="@../../immagini/backButton.PNG" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>
