@@ -40,6 +40,14 @@ public class RichiesteInviateGui extends HomeStudenteGui{
     Integer flag;
     private static final Logger logger = Logger.getLogger(RichiesteInviateGui.class.getName());
 
+    /* NOTA: il controller grafico si occupa di gestire le pagine di:
+      - richieste inviate
+      - richieste rifiutate
+      - prenotazioni attive
+     Sfruttiamo un flag per personalizzare i metodi che di base fanno la stessa cosa.
+     Passiamo il flag al controller applicativo che poi differrenzierà la logica.
+    */
+
     public RichiesteInviateGui(LoggedInUserBean user, Integer flag){
         this.user = user;
         this.flag = flag;

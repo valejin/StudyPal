@@ -64,28 +64,86 @@
             </effect>
         </Button>
     </VBox>
-    <AnchorPane fx:id="sfondoChiaro" layoutX="229.0" layoutY="106.0" prefHeight="350.0" prefWidth="540.0" stylesheets="@../../base-prova.css">
+    <AnchorPane layoutX="229.0" layoutY="100.0" prefHeight="350.0" prefWidth="540.0" stylesheets="@../../base-prova.css">
         <children>
-          <Button fx:id="prenotazioniAttive" layoutX="173.0" layoutY="45.0" mnemonicParsing="false" onAction="#goToPrenotazioniAttive" prefHeight="60.0" prefWidth="194.0" styleClass="custom-button" stylesheets="@../../button.css" text="Prenotazioni attive">
-              <effect>
-                  <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
-              </effect>
-          </Button>
-          <Button fx:id="richiesteInviate" layoutX="173.0" layoutY="145.0" mnemonicParsing="false" onAction="#goToRichiesteInviate" prefHeight="60.0" prefWidth="193.0" styleClass="custom-button" stylesheets="@../../button.css" text="Richieste inviate">
-              <effect>
-                  <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
-              </effect>
-          </Button>
-          <Button fx:id="richiesteRifiutate" layoutX="173.0" layoutY="245.0" mnemonicParsing="false" onAction="#goToRichiesteRifiutate" prefHeight="60.0" prefWidth="193.0" styleClass="custom-button" stylesheets="@../../button.css" text="Richieste rifiutate">
-              <effect>
-                  <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
-              </effect>
-          </Button>
+         <AnchorPane fx:id="sfondoChiaro" layoutX="14.0" layoutY="36.0" onMouseClicked="#goToPrenotazioniAttive" prefHeight="256.0" prefWidth="150.0" styleClass="anchor-verde" stylesheets="@../../base-prova.css">
+            <children>
+               <ImageView fitHeight="60.0" fitWidth="54.0" layoutX="48.0" layoutY="74.0" opacity="0.72">
+                  <image>
+                     <Image url="@../../immagini/checkIcon.png" />
+                  </image>
+               </ImageView>
+               <Text fill="#0c840a" layoutX="15.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenotazioni Attive" textAlignment="CENTER" wrappingWidth="120.0">
+                  <font>
+                     <Font name="Verdana Pro" size="16.0" />
+                  </font>
+               </Text>
+               <Text fill="#000000b1" layoutX="24.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Visualizza le prenotazioni confermate dai tuoi tutor" textAlignment="CENTER" wrappingWidth="101.73469543457031" />
+            </children>
+            <effect>
+               <DropShadow>
+                  <color>
+                     <Color red="0.0470588244497776" green="0.5176470875740051" blue="0.03921568766236305" />
+                  </color>
+               </DropShadow>
+            </effect>
+         </AnchorPane>
+         <AnchorPane fx:id="sfondoChiaro" layoutX="375.0" layoutY="36.0" onMouseClicked="#goToRichiesteRifiutate" prefHeight="256.0" prefWidth="150.0" styleClass="anchor-rosso" stylesheets="@../../base-prova.css">
+            <children>
+               <ImageView fitHeight="60.0" fitWidth="63.0" layoutX="44.0" layoutY="78.0" opacity="0.64">
+                  <image>
+                     <Image url="@../../immagini/crossIcon.png" />
+                  </image>
+               </ImageView>
+               <Text fill="#b22740" layoutX="15.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Richieste Rifiutate" textAlignment="CENTER" wrappingWidth="120.0">
+                  <font>
+                     <Font name="Verdana Pro" size="16.0" />
+                  </font>
+               </Text>
+               <Text fill="#000000b1" layoutX="31.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Esamina le richieste che sono state rifiutate" textAlignment="CENTER" wrappingWidth="89.73469543457031" />
+            </children>
+            <effect>
+               <DropShadow>
+                  <color>
+                     <Color red="0.7686274647712708" green="0.1411764770746231" blue="0.25882354378700256" />
+                  </color>
+               </DropShadow>
+            </effect>
+         </AnchorPane>
+         <AnchorPane fx:id="sfondoChiaro" layoutX="195.0" layoutY="36.0" onMouseClicked="#goToRichiesteInviate" prefHeight="256.0" prefWidth="150.0" styleClass="anchor-blu" stylesheets="@../../base-prova.css">
+            <children>
+               <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="48.0" layoutY="81.0">
+                  <image>
+                     <Image url="@../../immagini/clockIcon.png" />
+                  </image>
+               </ImageView>
+               <Text fill="#2770b4" layoutX="15.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Richieste Inviate" textAlignment="CENTER" wrappingWidth="120.0">
+                  <font>
+                     <Font name="Verdana Pro" size="16.0" />
+                  </font>
+               </Text>
+               <Text fill="#000000b1" layoutX="35.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Controlla le richieste ancora in stato di attesa" textAlignment="CENTER" wrappingWidth="80.13471984863281" />
+            </children>
+            <effect>
+               <DropShadow>
+                  <color>
+                     <Color red="0.15294118225574493" green="0.43921568989753723" blue="0.7058823704719543" />
+                  </color>
+               </DropShadow>
+            </effect>
+         </AnchorPane>
         </children>
+      <effect>
+         <DropShadow>
+            <color>
+               <Color red="0.49803921580314636" green="0.6509804129600525" blue="0.7568627595901489" />
+            </color>
+         </DropShadow>
+      </effect>
     </AnchorPane>
-    <Text fx:id="titolo" fill="#000000ac" layoutX="273.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestione Prenotazioni" textAlignment="CENTER" wrappingWidth="452.71179151535034">
+    <Text fx:id="titolo" fill="#000000ac" layoutX="262.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestione Prenotazioni" textAlignment="CENTER" wrappingWidth="452.71179151535034">
         <font>
-          <Font size="32.0" />
+            <Font size="32.0" />
         </font>
     </Text>
 </AnchorPane>
