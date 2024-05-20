@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.tutor.RichiesteArrivateGui">
+<AnchorPane minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.tutor.RichiesteArrivateGui">
     <children>
         <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0" stylesheets="@../../menu.css">
             <children>
@@ -66,12 +66,12 @@
             </DropShadow>
          </effect>
         </VBox>
-        <Text fx:id="titolo" fill="#000000ac" layoutX="313.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Richieste arrivate" textAlignment="CENTER" wrappingWidth="452.71179151535034" AnchorPane.leftAnchor="313.0" AnchorPane.rightAnchor="107.0" AnchorPane.topAnchor="26.0">
+        <Text fx:id="titolo" fill="#000000ac" layoutX="309.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Richieste arrivate" textAlignment="CENTER" wrappingWidth="452.71179151535034" AnchorPane.leftAnchor="309.0" AnchorPane.rightAnchor="88.28820848464966" AnchorPane.topAnchor="26.16796875">
             <font>
                 <Font size="32.0" />
             </font>
         </Text>
-      <AnchorPane fx:id="zonaInfo" layoutX="228.0" layoutY="82.0" prefHeight="400.0" prefWidth="622.0" stylesheets="@../../base-prova.css">
+      <AnchorPane fx:id="zonaInfo" layoutX="215.0" layoutY="77.0" prefHeight="400.0" prefWidth="590.0" stylesheets="@../../base-prova.css">
          <children>
             <ScrollPane layoutX="13.0" layoutY="28.0" prefHeight="357.0" prefWidth="596.0">
               <content>
@@ -91,5 +91,10 @@
             <Text layoutX="211.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Richieste di prenotazioni arrivate" textAlignment="CENTER" wrappingWidth="199.99999999999994" />
          </children>
       </AnchorPane>
+      <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="215.0" layoutY="23.0" onMouseClicked="#goToGestisciPrenotazioni" preserveRatio="true">
+         <image>
+            <Image url="@../../immagini/backButton.PNG" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

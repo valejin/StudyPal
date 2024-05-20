@@ -59,4 +59,9 @@ public class GestisciPrenotazioniGui extends HomeTutorGui {
             e.printStackTrace();
         }
     }
+
+    public void goToRichiesteRifiutate(){
+
+    }
+
 }

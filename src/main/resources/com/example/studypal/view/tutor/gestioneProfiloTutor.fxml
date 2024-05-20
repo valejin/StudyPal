@@ -20,7 +20,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.tutor.GestioneProfiloTutorGuiController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.tutor.GestioneProfiloTutorGuiController">
     <children>
         <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0" stylesheets="@../../menu.css">
             <children>
@@ -71,14 +71,14 @@
             </DropShadow>
          </effect>
         </VBox>
-        <Text fx:id="titolo" fill="#000000ac" layoutX="363.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestione Profilo" textAlignment="CENTER" wrappingWidth="320.71179151535034" AnchorPane.leftAnchor="363.0" AnchorPane.rightAnchor="183.39999999999998" AnchorPane.topAnchor="43.16796875">
+        <Text fx:id="titolo" fill="#000000ac" layoutX="340.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestione Profilo" textAlignment="CENTER" wrappingWidth="320.71179151535034" AnchorPane.leftAnchor="340.0" AnchorPane.rightAnchor="139.28820848464966" AnchorPane.topAnchor="42.16796875">
             <font>
                 <Font size="32.0" />
             </font>
         </Text>
-      <AnchorPane fx:id="zonaInfo" layoutX="254.0" layoutY="100.0" prefHeight="350.0" prefWidth="557.0" stylesheets="@../../base-prova.css">
+      <AnchorPane fx:id="zonaInfo" layoutX="250.0" layoutY="98.0" prefHeight="350.0" prefWidth="500.0" stylesheets="@../../base-prova.css">
          <children>
-            <VBox layoutX="317.0" layoutY="33.0" prefHeight="250.0" prefWidth="175.0">
+            <VBox layoutX="295.0" layoutY="32.0" prefHeight="250.0" prefWidth="175.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Luogo">
                      <VBox.margin>
@@ -121,7 +121,7 @@
                   </MenuButton>
                </children>
             </VBox>
-            <VBox layoutX="46.0" layoutY="33.0" prefHeight="250.0" prefWidth="175.0">
+            <VBox layoutX="45.0" layoutY="26.0" prefHeight="250.0" prefWidth="175.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modalità di lezione">
                      <VBox.margin>
@@ -158,7 +158,7 @@
                   </Label>
                </children>
             </VBox>
-            <Button fx:id="confermaModifica" layoutX="214.0" layoutY="283.0" mnemonicParsing="false" onAction="#gestioneProfiloMethod" styleClass="rounded-button" stylesheets="@../../button.css" text="Conferma" />
+            <Button fx:id="confermaModifica" layoutX="196.0" layoutY="282.0" mnemonicParsing="false" onAction="#gestioneProfiloMethod" styleClass="rounded-button" stylesheets="@../../button.css" text="Conferma" />
             <Label fx:id="successoModifiche" layoutX="166.0" layoutY="257.0" textFill="#2672bf">
                <font>
                   <Font size="14.0" />

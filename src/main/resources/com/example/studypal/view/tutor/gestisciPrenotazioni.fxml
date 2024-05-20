@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.tutor.GestisciPrenotazioniGui">
+<AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.tutor.GestisciPrenotazioniGui">
     <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0" stylesheets="@../../menu.css">
         <effect>
             <DropShadow>
@@ -58,12 +58,12 @@
             </effect>
         </Button>
     </VBox>
-    <Text fx:id="titolo" fill="#000000ac" layoutX="315.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestione Prenotazioni" textAlignment="CENTER" wrappingWidth="452.71179151535034" AnchorPane.leftAnchor="315.0" AnchorPane.rightAnchor="105.0" AnchorPane.topAnchor="53.16796875">
+    <Text fx:id="titolo" fill="#000000ac" layoutX="278.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestione Prenotazioni" textAlignment="CENTER" wrappingWidth="452.71179151535034" AnchorPane.leftAnchor="278.0" AnchorPane.rightAnchor="69.28820848464966" AnchorPane.topAnchor="49.16796875">
         <font>
             <Font size="32.0" />
         </font>
     </Text>
-    <AnchorPane fx:id="sfondoChiaro" layoutX="330.0" layoutY="129.0" onMouseClicked="#goToPrenotazioniAttive" prefHeight="256.0" prefWidth="200.0" styleClass="anchor-verde" stylesheets="@../../base-prova.css">
+    <AnchorPane fx:id="sfondoChiaro" layoutX="267.0" layoutY="153.0" onMouseClicked="#goToPrenotazioniAttive" prefHeight="256.0" prefWidth="150.0" styleClass="anchor-verde" stylesheets="@../../base-prova.css">
         <effect>
             <DropShadow>
                 <color>
@@ -71,17 +71,17 @@
                 </color>
             </DropShadow>
         </effect>
-        <ImageView fitHeight="60.0" fitWidth="54.0" layoutX="73.0" layoutY="75.0" opacity="0.72">
+        <ImageView fitHeight="60.0" fitWidth="54.0" layoutX="53.0" layoutY="73.0" opacity="0.72">
             <Image url="@../../immagini/checkIcon.png" />
         </ImageView>
-        <Text fill="#0c840a" layoutX="40.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenotazioni Attive" textAlignment="CENTER" wrappingWidth="120.0">
+        <Text fill="#0c840a" layoutX="20.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenotazioni Attive" textAlignment="CENTER" wrappingWidth="120.0">
             <font>
                 <Font name="Verdana Pro" size="16.0" />
             </font>
         </Text>
-        <Text fill="#000000b1" layoutX="49.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Visualizza le prenotazioni che hai confermato" textAlignment="CENTER" wrappingWidth="101.73469543457031" />
+        <Text fill="#000000b1" layoutX="29.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Visualizza le prenotazioni che hai confermato" textAlignment="CENTER" wrappingWidth="101.73469543457031" />
     </AnchorPane>
-    <AnchorPane layoutX="554.0" layoutY="129.0" onMouseClicked="#goToRichiesteArrivate" prefHeight="256.0" prefWidth="200.0" styleClass="anchor-blu" stylesheets="@../../base-prova.css">
+    <AnchorPane layoutX="443.0" layoutY="153.0" onMouseClicked="#goToRichiesteArrivate" prefHeight="256.0" prefWidth="150.0" styleClass="anchor-blu" stylesheets="@../../base-prova.css">
         <effect>
             <DropShadow>
                 <color>
@@ -89,14 +89,36 @@
                 </color>
             </DropShadow>
         </effect>
-        <Text fill="#2770b4" layoutX="40.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Richieste arrivate" textAlignment="CENTER" wrappingWidth="120.0">
+        <Text fill="#2770b4" layoutX="15.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Richieste arrivate" textAlignment="CENTER" wrappingWidth="120.0">
             <font>
                 <Font name="Verdana Pro" size="16.0" />
             </font>
         </Text>
-        <Text fill="#000000b1" layoutX="49.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Conferma le richieste di ripetizioni in attesa di risposta" textAlignment="CENTER" wrappingWidth="101.73469543457031" />
-        <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="73.0" layoutY="85.0">
+        <Text fill="#000000b1" layoutX="29.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Conferma le richieste di ripetizioni in attesa di risposta" textAlignment="CENTER" wrappingWidth="101.73469543457031" />
+        <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="48.0" layoutY="74.0">
             <Image url="@../../immagini/clockIcon.png" />
         </ImageView>
     </AnchorPane>
+   <AnchorPane layoutX="622.0" layoutY="153.0" onMouseClicked="#goToRichiesteRifiutate" prefHeight="256.0" prefWidth="150.0" styleClass="anchor-rosso" stylesheets="@../../base-prova.css">
+      <children>
+         <Text fill="#b22740" layoutX="15.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Richieste Rifiutate" textAlignment="CENTER" wrappingWidth="120.0">
+            <font>
+               <Font name="Verdana Pro" size="16.0" />
+            </font>
+         </Text>
+         <Text fill="#000000b1" layoutX="31.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Esamina le richieste che hai rifiutato in passato" textAlignment="CENTER" wrappingWidth="89.73469543457031" />
+         <ImageView fitHeight="60.0" fitWidth="54.0" layoutX="48.0" layoutY="76.0" opacity="0.4">
+            <image>
+               <Image url="@../../immagini/binIcon.png" />
+            </image>
+         </ImageView>
+      </children>
+      <effect>
+         <DropShadow>
+            <color>
+               <Color red="0.7686274647712708" green="0.1411764770746231" blue="0.25882354378700256" />
+            </color>
+         </DropShadow>
+      </effect>
+   </AnchorPane>
 </AnchorPane>
