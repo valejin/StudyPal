@@ -22,18 +22,14 @@ public class GestisciPrenotazioniStudenteController {
     }
 
 
-    /*----------------------------------------PRENOTAZIONI ATTIVE-----------------------------------------------------*/
-
-
-    /*------------------------------------------RICHIESTE INVIATE-----------------------------------------------------*/
-    public List<PrenotazioneBean> richiesteInviate (String email) {
+    public List<PrenotazioneBean> richiesteInviate (String email, Integer flag) {
         /* metodo che viene invocato dal controller grafico per ricevere la lista di richieste inviate dallo studente*/
 
         List<PrenotazioneBean> listaRichiesteBean = new ArrayList<>();
 
         try{
             PrenotazioneDAO prenotazioneDAO = new PrenotazioneDAO();
-            List<PrenotazioneModel> listaRichieste = prenotazioneDAO.richiesteInviate(email);
+            List<PrenotazioneModel> listaRichieste = prenotazioneDAO.richiesteInviate(email, flag);
 
             /* converto i model a bean per restituirli al controller grafico*/
             for (PrenotazioneModel richiesta: listaRichieste){
@@ -48,7 +44,5 @@ public class GestisciPrenotazioniStudenteController {
         }
         return listaRichiesteBean;
     }
-
-    /*----------------------------------------RICHIESTE RIFIUTATE-----------------------------------------------------*/
 
 }

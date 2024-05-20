@@ -21,7 +21,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.studente.CercaRipetizioneGui">
+<AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.studente.CercaRipetizioneGui">
    <stylesheets>
       <URL value="@../../button.css" />
       <URL value="@../../base-prova.css" />
@@ -76,12 +76,12 @@
          </DropShadow>
       </effect>
    </VBox>
-   <Text fx:id="titolo" fill="#000000ab" layoutX="281.0" layoutY="71.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="#titolo" text="Prenota Ripetizione" textAlignment="CENTER" wrappingWidth="451.2001373767853" AnchorPane.leftAnchor="281.0" AnchorPane.rightAnchor="81.39999999999998" AnchorPane.topAnchor="33.16796875">
+   <Text fx:id="titolo" fill="#000000ab" layoutX="298.0" layoutY="72.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="#titolo" text="Prenota Ripetizione" textAlignment="CENTER" wrappingWidth="451.2001373767853" AnchorPane.leftAnchor="298.0" AnchorPane.rightAnchor="100.79986262321472" AnchorPane.topAnchor="34.16796875">
       <font>
          <Font size="40.0" />
       </font>
    </Text>
-   <AnchorPane fx:id="zonaInfo" layoutX="222.0" layoutY="85.0" prefHeight="380.0" prefWidth="570.0">
+   <AnchorPane fx:id="zonaInfo" layoutX="239.0" layoutY="86.0" prefHeight="380.0" prefWidth="570.0">
       <children>
          <VBox layoutX="51.0" layoutY="137.0" prefHeight="217.0" prefWidth="200.0">
             <children>

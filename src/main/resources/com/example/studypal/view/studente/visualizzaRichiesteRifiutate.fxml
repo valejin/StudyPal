@@ -93,49 +93,50 @@
             </Text>
         </VBox>
         <VBox layoutX="195.0" layoutY="67.0" prefHeight="216.0" prefWidth="338.0">
-            <children>
-                <Label fx:id="emailTutor" prefHeight="18.0" prefWidth="226.0" text="Label">
-                    <VBox.margin>
-                        <Insets/>
-                    </VBox.margin>
-                </Label>
-                <Label fx:id="materia" prefHeight="18.0" prefWidth="218.0" text="Label">
-                    <VBox.margin>
-                        <Insets top="15.0"/>
-                    </VBox.margin>
-                </Label>
-                <Label fx:id="modLezione" prefHeight="18.0" prefWidth="231.0" text="Label">
-                    <VBox.margin>
-                        <Insets top="15.0"/>
-                    </VBox.margin>
-                </Label>
-                <Label fx:id="giorni" text="Label">
-                    <VBox.margin>
-                        <Insets top="15.0"/>
-                    </VBox.margin>
-                </Label>
-                <Label fx:id="note" alignment="TOP_LEFT" prefHeight="54.0" prefWidth="338.0" text="Label"
-                       wrapText="true">
-                    <VBox.margin>
-                        <Insets top="15.0"/>
-                    </VBox.margin>
-                </Label>
-            </children>
+            <Label fx:id="emailTutor" prefHeight="18.0" prefWidth="226.0" text="Label">
+                <VBox.margin>
+                    <Insets/>
+                </VBox.margin>
+            </Label>
+            <Label fx:id="materia" prefHeight="18.0" prefWidth="218.0" text="Label">
+                <VBox.margin>
+                    <Insets top="15.0"/>
+                </VBox.margin>
+            </Label>
+            <Label fx:id="modLezione" prefHeight="18.0" prefWidth="231.0" text="Label">
+                <VBox.margin>
+                    <Insets top="15.0"/>
+                </VBox.margin>
+            </Label>
+            <Label fx:id="giorni" text="Label">
+                <VBox.margin>
+                    <Insets top="15.0"/>
+                </VBox.margin>
+            </Label>
+            <Label fx:id="note" alignment="TOP_LEFT" prefHeight="54.0" prefWidth="338.0" text="Label"
+                   wrapText="true">
+                <VBox.margin>
+                    <Insets top="15.0"/>
+                </VBox.margin>
+            </Label>
         </VBox>
-        <Button layoutX="193.0" layoutY="277.0" mnemonicParsing="false" onAction="#cancellaRichiesta"
-                prefHeight="39.0" prefWidth="171.0" styleClass="custom-button2" stylesheets="@../../button.css"
-                text="Cancella Richiesta"/>
         <Label fx:id="nome" layoutX="195.0" layoutY="32.0" prefHeight="18.0" prefWidth="91.0" text="Label"/>
         <Label fx:id="cognome" layoutX="308.0" layoutY="32.0" text="Label"/>
+        <Text fill="#b22740" layoutX="147.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              text="La richiesta è stata rifiutata dal tutor.">
+            <font>
+                <Font name="Arial Bold Italic" size="15.0"/>
+            </font>
+        </Text>
     </AnchorPane>
     <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="216.0" layoutY="36.0"
-               onMouseClicked="#goToRichiesteInviate" preserveRatio="true">
+               onMouseClicked="#goToRichiesteRifiutate" preserveRatio="true">
         <Image url="@../../immagini/backButton.PNG"/>
     </ImageView>
     <Text fx:id="titolo" fill="#000000ac" layoutX="289.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0"
           text="Dettagli Richiesta" textAlignment="CENTER" wrappingWidth="411.1118166446686">
         <font>
-          <Font size="32.0"/>
+            <Font size="32.0"/>
         </font>
     </Text>
 </AnchorPane>

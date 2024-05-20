@@ -90,7 +90,7 @@ public class VisualizzaRichiestaGui extends HomeTutorGui {
     public void goToRichiesteArrivate(){
         try {
             FXMLLoader loader = new FXMLLoader(VisualizzaRichiestaGui.class.getResource("/com/example/studypal/view/tutor/richiesteArrivate.fxml"));
-            loader.setControllerFactory(c -> new RichiesteArrivateGui(this.user, 0));
+            loader.setControllerFactory(c -> new RichiesteTutorGui(this.user, 0));
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) emailStudente.getScene().getWindow();
@@ -110,7 +110,7 @@ public void goToPrenotazioniAttive() {
     //metodo che porta alle prenotazioni attive
     try {
         FXMLLoader loader = new FXMLLoader(VisualizzaRichiestaGui.class.getResource("/com/example/studypal/view/tutor/prenotazioniAttive.fxml"));
-        loader.setControllerFactory(c -> new RichiesteArrivateGui(user, 1));
+        loader.setControllerFactory(c -> new RichiesteTutorGui(user, 1));
         Parent parent = loader.load();
         Scene scene = new Scene(parent);
         Stage stage = (Stage) emailStudente.getScene().getWindow();
@@ -155,7 +155,7 @@ public void goToPrenotazioniRifiutate(){
     }
 
     public void rifiutaRichiestaMethod(){
-                /*rifiuta la richiesta arrivata (dovrà essere modificato lo stato nella
+        /*rifiuta la richiesta arrivata (dovrà essere modificato lo stato nella
         tabella delle richieste)*/
 
         Printer.println("IDRICHIESTA: " + this.dettagliRichiesta.getIdRichiesta());

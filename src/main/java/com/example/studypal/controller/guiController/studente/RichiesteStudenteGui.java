@@ -3,7 +3,7 @@ package com.example.studypal.controller.guiController.studente;
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.PrenotazioneBean;
 import com.example.studypal.controller.applicationController.studente.GestisciPrenotazioniStudenteController;
-import com.example.studypal.controller.guiController.tutor.RichiesteArrivateGui;
+import com.example.studypal.controller.guiController.tutor.RichiesteTutorGui;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,9 +21,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class RichiesteInviateGui extends HomeStudenteGui{
+public class RichiesteStudenteGui extends HomeStudenteGui{
 
-    /* todo: forse dobbiamo separare i controller di gestisci prenotazioni e visualizza richieste inviate? */
+    /* controller grafico che si occupa delle pagine relative alle prenotazioni (prenotazioni attive, richieste inviate, richieste rifiutate)
+        in base al flag differenzia il comportamento*/
 
     @FXML
     protected TableView<PrenotazioneBean> richiesteTable;
@@ -37,8 +38,8 @@ public class RichiesteInviateGui extends HomeStudenteGui{
     protected TableColumn<PrenotazioneBean, Button> visualizza;
 
     List<PrenotazioneBean> richiesteList= new ArrayList<>();
-    Integer flag;
-    private static final Logger logger = Logger.getLogger(RichiesteInviateGui.class.getName());
+    private Integer flag;
+    private static final Logger logger = Logger.getLogger(RichiesteStudenteGui.class.getName());
 
     /* NOTA: il controller grafico si occupa di gestire le pagine di:
       - richieste inviate
@@ -48,7 +49,7 @@ public class RichiesteInviateGui extends HomeStudenteGui{
      Passiamo il flag al controller applicativo che poi differrenzierà la logica.
     */
 
-    public RichiesteInviateGui(LoggedInUserBean user, Integer flag){
+    public RichiesteStudenteGui(LoggedInUserBean user, Integer flag){
         this.user = user;
         this.flag = flag;
     }
@@ -57,7 +58,7 @@ public class RichiesteInviateGui extends HomeStudenteGui{
 
 
         GestisciPrenotazioniStudenteController gestisciPrenotazioniStudenteController = new GestisciPrenotazioniStudenteController(user);
-        richiesteList = gestisciPrenotazioniStudenteController.richiesteInviate(user.getEmail());
+        richiesteList = gestisciPrenotazioniStudenteController.richiesteInviate(user.getEmail(), this.flag);
 
         //inizializza la tabella popolandola con le informazioni che gli passa il controller grafico precedente*/
 
@@ -95,18 +96,53 @@ public class RichiesteInviateGui extends HomeStudenteGui{
         });
     }
 
-    public void visualizza(PrenotazioneBean prenotazione) {
+    public void visualizza(PrenotazioneBean prenotazioneBean) {
 
-        try {
-            FXMLLoader loader = new FXMLLoader(RichiesteArrivateGui.class.getResource("/com/example/studypal/view/studente/visualizzaRichiesteInviate.fxml"));
-            loader.setControllerFactory(c -> new VisualizzaRichiesteStudenteGui(user, prenotazione, richiesteList));
-            Parent parent = loader.load();
-            Scene scene = new Scene(parent);
-            Stage stage = (Stage) richiesteTable.getScene().getWindow();
-            stage.setScene(scene);
-        } catch (IOException e) {
-            logger.severe("errore in RichiesteInviateGui (caricamento pagina 'visualizza') " + e.getMessage());
-            //e.printStackTrace();
+        //TODO: qui possiamo fare direttamente una sola pagina fxml e modificarne il titolo nell'initialize tramite label. Dovremmo passare anche il flag così che il prossimo controller grafico possa differenziare le informazioni da caricare(?)
+
+        if (this.flag == 0){
+            //richieste inviate in attesa di conferma
+            try {
+                FXMLLoader loader = new FXMLLoader(RichiesteTutorGui.class.getResource("/com/example/studypal/view/tutor/visualizzaRichiesteArrivate.fxml"));
+                loader.setControllerFactory(c -> new VisualizzaRichiesteStudenteGui(user, prenotazioneBean, richiesteList));
+                Parent parent = loader.load();
+                Scene scene = new Scene(parent);
+                Stage stage = (Stage) richiesteTable.getScene().getWindow();
+                stage.setScene(scene);
+            } catch (IOException e) {
+                logger.severe("errore in RichiesteStudenteGui (caricamento pagina richieste arrivate) " + e.getMessage());
+                // e.printStackTrace();
+            }
+
+        } else if (this.flag == 1){
+            //richieste confermate (prenotazioni attive)
+            try {
+                FXMLLoader loader = new FXMLLoader(RichiesteTutorGui.class.getResource("/com/example/studypal/view/tutor/visualizzaPrenotazioniAttive.fxml"));
+                loader.setControllerFactory(c -> new VisualizzaRichiesteStudenteGui(user, prenotazioneBean, richiesteList));
+                Parent parent = loader.load();
+                Scene scene = new Scene(parent);
+                Stage stage = (Stage) richiesteTable.getScene().getWindow();
+                stage.setScene(scene);
+            } catch (IOException e) {
+                logger.severe("errore in RichiesteStudenteGui (caricamento pagina prenotazioni attive) " + e.getMessage());
+                // e.printStackTrace();
+            }
+
+
+        } else if (this.flag == 2){
+            try {
+                FXMLLoader loader = new FXMLLoader(RichiesteTutorGui.class.getResource("/com/example/studypal/view/tutor/visualizzaRichiesteRifiutate.fxml"));
+                loader.setControllerFactory(c -> new VisualizzaRichiesteStudenteGui(user, prenotazioneBean, richiesteList));
+                Parent parent = loader.load();
+                Scene scene = new Scene(parent);
+                Stage stage = (Stage) richiesteTable.getScene().getWindow();
+                stage.setScene(scene);
+            } catch (IOException e) {
+                logger.severe("errore in RichiesteStudenteGui (caricamento pagina richieste rifiutate) " + e.getMessage());
+                // e.printStackTrace();
+            }
         }
+
+
     }
 }

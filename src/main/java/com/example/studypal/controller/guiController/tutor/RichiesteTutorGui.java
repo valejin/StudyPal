@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class RichiesteArrivateGui extends GestisciPrenotazioniGui {
+public class RichiesteTutorGui extends GestisciPrenotazioniGui {
     /*
     Controller grafico per la gestione della pagina dei risultati arrivati a un determinato tutor
     Devo mostrare: email dello studente, materia richiesta, bottone VISUALIZZA
@@ -44,15 +44,15 @@ public class RichiesteArrivateGui extends GestisciPrenotazioniGui {
     List<PrenotazioneBean> richiesteList = new ArrayList<>();
     private Integer flag;
 
-    private static final Logger logger = Logger.getLogger(RichiesteArrivateGui.class.getName());
+    private static final Logger logger = Logger.getLogger(RichiesteTutorGui.class.getName());
 
 
-    public RichiesteArrivateGui(LoggedInUserBean user, Integer flag){
+    public RichiesteTutorGui(LoggedInUserBean user, Integer flag){
         this.user = user;
         this.flag = flag;
     }
 
-    public RichiesteArrivateGui() {
+    public RichiesteTutorGui() {
     }
 
 
@@ -114,7 +114,7 @@ public class RichiesteArrivateGui extends GestisciPrenotazioniGui {
         */
         if(this.flag == 0) {
             try {
-                FXMLLoader loader = new FXMLLoader(RichiesteArrivateGui.class.getResource("/com/example/studypal/view/tutor/visualizzaRichiesteArrivate.fxml"));
+                FXMLLoader loader = new FXMLLoader(RichiesteTutorGui.class.getResource("/com/example/studypal/view/tutor/visualizzaRichiesteArrivate.fxml"));
                 loader.setControllerFactory(c -> new VisualizzaRichiestaGui(user, prenotazioneBean, richiesteList));
                 Parent parent = loader.load();
                 Scene scene = new Scene(parent);
@@ -126,7 +126,7 @@ public class RichiesteArrivateGui extends GestisciPrenotazioniGui {
             }
         }else if(this.flag == 1){
             try {
-                FXMLLoader loader = new FXMLLoader(RichiesteArrivateGui.class.getResource("/com/example/studypal/view/tutor/visualizzaPrenotazioniAttive.fxml"));
+                FXMLLoader loader = new FXMLLoader(RichiesteTutorGui.class.getResource("/com/example/studypal/view/tutor/visualizzaPrenotazioniAttive.fxml"));
                 loader.setControllerFactory(c -> new VisualizzaRichiestaGui(user, prenotazioneBean, richiesteList));
                 Parent parent = loader.load();
                 Scene scene = new Scene(parent);
@@ -138,7 +138,7 @@ public class RichiesteArrivateGui extends GestisciPrenotazioniGui {
             }
         }else if(this.flag == 2){
             try {
-                FXMLLoader loader = new FXMLLoader(RichiesteArrivateGui.class.getResource("/com/example/studypal/view/tutor/visualizzaPrenotazioniRifiutate.fxml"));
+                FXMLLoader loader = new FXMLLoader(RichiesteTutorGui.class.getResource("/com/example/studypal/view/tutor/prenotazioniRifiutate.fxml"));
                 loader.setControllerFactory(c -> new VisualizzaRichiestaGui(user, prenotazioneBean, richiesteList));
                 Parent parent = loader.load();
                 Scene scene = new Scene(parent);
@@ -146,7 +146,6 @@ public class RichiesteArrivateGui extends GestisciPrenotazioniGui {
                 stage.setScene(scene);
             } catch (IOException e) {
                 logger.severe("errore in VisualizzaRichiesteArrivateGuiController (caricamento pagina) " + e.getMessage());
-                // e.printStackTrace();
             }
 
         }

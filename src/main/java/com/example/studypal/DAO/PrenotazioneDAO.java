@@ -139,9 +139,9 @@ public class PrenotazioneDAO {
 
 
 
-
-
-    public List<PrenotazioneModel> richiesteInviate(String email) throws NonProduceRisultatoException {
+/* -----------------------------------------------------STUDENTE------------------------------------------------------*/
+    //TODO sistemare stampe a terminale e differenziare i vari casi
+    public List<PrenotazioneModel> richiesteInviate(String email, Integer flag) throws NonProduceRisultatoException {
 
         /* metodo che riceve la stringa contenente l'email con cui fare la query
            restituisce una lista contenente tutte le richieste di prenotazione inviate ma ancora in attesa di conferma*/
@@ -152,7 +152,18 @@ public class PrenotazioneDAO {
         PreparedStatement statement;
         ResultSet rs;
 
-        String query = "SELECT * FROM richieste WHERE emailStudente = ?";
+        if (flag == 0){
+            //richieste inviate in attesa di conferma
+            query = "SELECT * FROM richieste WHERE emailStudente = ? AND stato = 0";
+
+        } else if (flag == 1){
+            //richieste confermate (prenotazioni attive)
+            query = "SELECT * FROM richieste WHERE emailStudente = ? AND stato = 1";
+
+        } else if (flag == 2){
+            query = "SELECT * FROM richieste WHERE emailStudente = ? AND stato = 2";
+
+        }
 
         try{
             connection = Connect.getInstance().getDBConnection();
@@ -186,6 +197,7 @@ public class PrenotazioneDAO {
         }
         return listaRichieste;
     }
+
 
 
     /*------------------------------------CONFERMA/RIFIUTA (TUTOR) ---------------------------------------------------*/

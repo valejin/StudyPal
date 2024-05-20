@@ -5,9 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -30,8 +28,8 @@ public class GestisciPrenotazioniGui extends HomeTutorGui {
 
         //metodo che porta alla pagina di gestione delle prenotazioni
         try {
-            FXMLLoader loader = new FXMLLoader(RichiesteArrivateGui.class.getResource("/com/example/studypal/view/tutor/richiesteArrivate.fxml"));
-            loader.setControllerFactory(c -> new RichiesteArrivateGui(user, 0));
+            FXMLLoader loader = new FXMLLoader(RichiesteTutorGui.class.getResource("/com/example/studypal/view/tutor/richiesteArrivate.fxml"));
+            loader.setControllerFactory(c -> new RichiesteTutorGui(user, 0));
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) sfondoChiaro.getScene().getWindow();
@@ -49,7 +47,7 @@ public class GestisciPrenotazioniGui extends HomeTutorGui {
         //metodo che porta alle prenotazioni attive
         try {
             FXMLLoader loader = new FXMLLoader(GestisciPrenotazioniGui.class.getResource("/com/example/studypal/view/tutor/prenotazioniAttive.fxml"));
-            loader.setControllerFactory(c -> new RichiesteArrivateGui(user, 1));
+            loader.setControllerFactory(c -> new RichiesteTutorGui(user, 1));
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) sfondoChiaro.getScene().getWindow();
@@ -64,7 +62,7 @@ public class GestisciPrenotazioniGui extends HomeTutorGui {
         //metodo che porta alle prenotazioni attive
         try {
             FXMLLoader loader = new FXMLLoader(GestisciPrenotazioniGui.class.getResource("/com/example/studypal/view/tutor/prenotazioniRifiutate.fxml"));
-            loader.setControllerFactory(c -> new RichiesteArrivateGui(user, 2));
+            loader.setControllerFactory(c -> new RichiesteTutorGui(user, 2));
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) sfondoChiaro.getScene().getWindow();

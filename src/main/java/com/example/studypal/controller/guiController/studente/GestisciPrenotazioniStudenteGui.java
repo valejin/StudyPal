@@ -30,20 +30,9 @@ public class GestisciPrenotazioniStudenteGui extends HomeStudenteGui{
 
     public void goToPrenotazioniAttive(){
 
-    }
-
-    public void goToRichiesteInviate(){
-
-        /*
-            carica la nuova pagina dove vengono mostrate le prenotazioni inviate
-            deve fare richiesta delle richieste inviate e passarle al costruttore del controller grafico
-
-        */
-
-
         try {
-            FXMLLoader loader = new FXMLLoader(GestisciPrenotazioniStudenteGui.class.getResource("/com/example/studypal/view/studente/richiesteInviate.fxml"));
-            loader.setControllerFactory(c -> new RichiesteInviateGui(user, 0));
+            FXMLLoader loader = new FXMLLoader(GestisciPrenotazioniStudenteGui.class.getResource("/com/example/studypal/view/studente/prenotazioniAttiveStudente.fxml"));
+            loader.setControllerFactory(c -> new RichiesteStudenteGui(user, 1));
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) sfondoChiaro.getScene().getWindow();
@@ -55,7 +44,39 @@ public class GestisciPrenotazioniStudenteGui extends HomeStudenteGui{
 
     }
 
+    public void goToRichiesteInviate(){
+        /*
+            carica la nuova pagina dove vengono mostrate le prenotazioni inviate
+            deve fare richiesta delle richieste inviate e passarle al costruttore del controller grafico
+
+        */
+
+        try {
+            FXMLLoader loader = new FXMLLoader(GestisciPrenotazioniStudenteGui.class.getResource("/com/example/studypal/view/studente/richiesteInviate.fxml"));
+            loader.setControllerFactory(c -> new RichiesteStudenteGui(user, 0));
+            Parent parent = loader.load();
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) sfondoChiaro.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            logger.severe("errore in GestisciPrenotazioniStudenteGui (caricamento richieste inviate) " + e.getMessage());
+        }
+
+    }
+
     public void goToRichiesteRifiutate(){
+
+        try {
+            FXMLLoader loader = new FXMLLoader(GestisciPrenotazioniStudenteGui.class.getResource("/com/example/studypal/view/studente/richiesteRifiutate.fxml"));
+            loader.setControllerFactory(c -> new RichiesteStudenteGui(user, 2));
+            Parent parent = loader.load();
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) sfondoChiaro.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            logger.severe("errore in GestisciPrenotazioniStudenteGui (caricamento richieste rifiutate) " + e.getMessage());
+        }
+
 
     }
 
