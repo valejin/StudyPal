@@ -79,7 +79,7 @@
                 <Font name="Verdana Pro" size="16.0" />
             </font>
         </Text>
-        <Text fill="#000000b1" layoutX="29.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Visualizza le prenotazioni che hai confermato" textAlignment="CENTER" wrappingWidth="101.73469543457031" />
+        <Text fill="#000000b1" layoutX="39.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Visualizza le prenotazioni che hai confermato" textAlignment="CENTER" wrappingWidth="71.33473205566406" />
     </AnchorPane>
     <AnchorPane layoutX="443.0" layoutY="153.0" onMouseClicked="#goToRichiesteArrivate" prefHeight="256.0" prefWidth="150.0" styleClass="anchor-blu" stylesheets="@../../base-prova.css">
         <effect>
@@ -94,8 +94,8 @@
                 <Font name="Verdana Pro" size="16.0" />
             </font>
         </Text>
-        <Text fill="#000000b1" layoutX="29.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Conferma le richieste di ripetizioni in attesa di risposta" textAlignment="CENTER" wrappingWidth="101.73469543457031" />
-        <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="48.0" layoutY="74.0">
+        <Text fill="#000000b1" layoutX="24.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Conferma le richieste di ripetizioni in attesa di risposta" textAlignment="CENTER" wrappingWidth="101.73469543457031" />
+        <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="48.0" layoutY="79.0">
             <Image url="@../../immagini/clockIcon.png" />
         </ImageView>
     </AnchorPane>
@@ -106,8 +106,8 @@
                <Font name="Verdana Pro" size="16.0" />
             </font>
          </Text>
-         <Text fill="#000000b1" layoutX="31.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Esamina le richieste che hai rifiutato in passato" textAlignment="CENTER" wrappingWidth="89.73469543457031" />
-         <ImageView fitHeight="60.0" fitWidth="54.0" layoutX="48.0" layoutY="76.0" opacity="0.4">
+         <Text fill="#000000b1" layoutX="31.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Esamina le richieste che hai rifiutato in passato" textAlignment="CENTER" wrappingWidth="89.73469543457031" />
+         <ImageView fitHeight="54.0" fitWidth="48.0" layoutX="52.0" layoutY="82.0" opacity="0.4">
             <image>
                <Image url="@../../immagini/binIcon.png" />
             </image>
