@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -15,8 +17,9 @@ public class GestisciPrenotazioniGui extends HomeTutorGui {
 
     //controller grafico che contiene i metodi di gestione delle prenotazioni
 
+
     @FXML
-    private Button  prenotazioniAttive;
+    private AnchorPane sfondoChiaro;
     private static final Logger logger = Logger.getLogger(GestisciPrenotazioniGui.class.getName());
 
     public GestisciPrenotazioniGui(){}
@@ -31,7 +34,7 @@ public class GestisciPrenotazioniGui extends HomeTutorGui {
             loader.setControllerFactory(c -> new RichiesteArrivateGui(user, 0));
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
-            Stage stage = (Stage) prenotazioniAttive.getScene().getWindow();
+            Stage stage = (Stage) sfondoChiaro.getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {
             logger.severe("errore in GestisciPrenotazioniGuiController " + e.getMessage());
@@ -49,21 +52,11 @@ public class GestisciPrenotazioniGui extends HomeTutorGui {
             loader.setControllerFactory(c -> new RichiesteArrivateGui(user, 1));
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
-            Stage stage = (Stage) prenotazioniAttive.getScene().getWindow();
+            Stage stage = (Stage) sfondoChiaro.getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {
             logger.severe("errore in GestisciPrenotazioniGuiController " + e.getMessage());
             e.printStackTrace();
         }
-
-
-
-
     }
-
-
-
-
-
-
 }

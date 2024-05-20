@@ -88,7 +88,7 @@
                </DropShadow>
             </effect>
          </AnchorPane>
-         <AnchorPane fx:id="sfondoChiaro" layoutX="375.0" layoutY="36.0" onMouseClicked="#goToRichiesteRifiutate" prefHeight="256.0" prefWidth="150.0" styleClass="anchor-rosso" stylesheets="@../../base-prova.css">
+         <AnchorPane layoutX="375.0" layoutY="36.0" onMouseClicked="#goToRichiesteRifiutate" prefHeight="256.0" prefWidth="150.0" styleClass="anchor-rosso" stylesheets="@../../base-prova.css">
             <children>
                <ImageView fitHeight="60.0" fitWidth="63.0" layoutX="44.0" layoutY="78.0" opacity="0.64">
                   <image>
@@ -110,7 +110,7 @@
                </DropShadow>
             </effect>
          </AnchorPane>
-         <AnchorPane fx:id="sfondoChiaro" layoutX="195.0" layoutY="36.0" onMouseClicked="#goToRichiesteInviate" prefHeight="256.0" prefWidth="150.0" styleClass="anchor-blu" stylesheets="@../../base-prova.css">
+         <AnchorPane layoutX="195.0" layoutY="36.0" onMouseClicked="#goToRichiesteInviate" prefHeight="256.0" prefWidth="150.0" styleClass="anchor-blu" stylesheets="@../../base-prova.css">
             <children>
                <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="48.0" layoutY="81.0">
                   <image>
