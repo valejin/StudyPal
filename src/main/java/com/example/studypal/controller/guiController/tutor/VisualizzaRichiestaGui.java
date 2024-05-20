@@ -133,6 +133,8 @@ public void goToPrenotazioniAttive() {
         RichiesteArrivateController richiesteArrivateController = new RichiesteArrivateController();
         richiesteArrivateController.modificaStatoRichiesta(this.dettagliRichiesta.getIdRichiesta(),1);
         caricaConferma();
+        goToRichiesteArrivate();
+
     }
 
     public void rifiutaRichiestaMethod(){

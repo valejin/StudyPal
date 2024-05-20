@@ -67,6 +67,10 @@ public class PrenotazioneDAO {
     private String query;
 
 /*--------------Gestione Prenotazioni (TUTOR): prendere le richieste arrivate da DB ---------------------------*/
+/*--------------Gestione Prenotazioni (TUTOR): prendere le prenotazioni arrivate da DB ------------------------*/
+    /*
+    una volta la richiesta in attesa viene confermata dal tutor, sparisce dalla lista di richieste arrivate
+    */
     public List<PrenotazioneModel> richiesteArrivate(String email, int flag) throws NonProduceRisultatoException{
         //viene passato il userModel per prendere email del tutor
 
@@ -80,9 +84,11 @@ public class PrenotazioneDAO {
 
         //query per la ricerca di email del tutor nella lista di tutte le richieste
         if(flag == 0) {
-            query = "SELECT * FROM richieste WHERE emailTutor = ?";
+            //qui ho le richieste in attesa
+            query = "SELECT * FROM richieste WHERE emailTutor = ? AND stato = 0";
         }else if(flag == 1){
-            query = "SELECT * FROM richieste WHERE emailTutor = ? AND stato = ?";
+            //qui ho le richieste confermate =>prenotazioni attive
+            query = "SELECT * FROM richieste WHERE emailTutor = ? AND stato = 1";
         }
 
 
@@ -93,13 +99,8 @@ public class PrenotazioneDAO {
 
             //in base al valore del flag: flag == 0 richieste arrivate; flag == 1 prenotazioni attive
 
-            if(flag == 0) {
-                statement.setString(1, email);
-            } else if (flag == 1){
-                statement.setString(1, email);
-                //stato = 1 implica la conferma da parte del tutor della prenotazione
-                statement.setInt(2, 1);
-            }
+            statement.setString(1, email);
+
 
             rs = statement.executeQuery();
 
@@ -131,56 +132,6 @@ public class PrenotazioneDAO {
     }
 
 
-/*--------------Gestione Prenotazioni (TUTOR): prendere le prenotazioni arrivate da DB ---------------------------*/
-    public List<PrenotazioneModel> prenotazioniAttive(String email) throws NonProduceRisultatoException{
-        //viene passato il userModel per prendere email del tutor
-
-        Connection connection;
-        PreparedStatement statement;
-        ResultSet rs;
-
-        Printer.println("---------------------------------------------------------");
-        Printer.println("Cerco le prenotazioni attive");
-
-        //query per la ricerca di email del tutor nella lista di tutte le richieste
-        String query = "SELECT * FROM richieste WHERE emailTutor = ? AND stato = ?";
-
-        try{
-            connection = Connect.getInstance().getDBConnection();
-            statement = connection.prepareStatement(query);
-
-            statement.setString(1, email);
-            //stato = 1 implica la conferma da parte del tutor della prenotazione
-            statement.setInt(2, 1);
-
-            rs = statement.executeQuery();
-
-            if(rs.next()){
-                Printer.println("Lista di prenotazioni attive per il tutor: " + email);
-
-                //prendo email dello studente, materia richiesta, e aggiungo il pulsante VISUALIZZA per ciascun tupla estratta
-                do{
-                    //popolo una nuova istanza di PrenotazioneModel per ritornare al CtlApplicativo
-                    PrenotazioneModel risultatoCorrente = new PrenotazioneModel(rs.getInt("idrichieste"), rs.getString("emailTutor"), rs.getString("emailStudente"), rs.getString("materia"), rs.getInt("modLezione"), rs.getInt("tariffa"), rs.getString("giorni"), rs.getString("note"), rs.getInt("stato"));
-                    Printer.println("   " + rs.getString("emailStudente"));
-
-                    //aggiunggo la tupla in lista dei risultati di ricerca
-                    risultatiRicerca.add(risultatoCorrente);
-
-                }while(rs.next());
-
-            }else{
-                throw new NonProduceRisultatoException();
-            }
-
-
-        }catch(SQLException e){
-            Printer.println("Non ci sono le prenotazioni attive.");
-            logger.severe("errore in PrenotazioneDAO " + e.getMessage());
-        }
-
-        return risultatiRicerca;
-    }
 
 
 
