@@ -76,7 +76,7 @@
          </DropShadow>
       </effect>
    </VBox>
-   <Text fx:id="titolo" fill="#000000ab" layoutX="298.0" layoutY="72.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="#titolo" text="Prenota Ripetizione" textAlignment="CENTER" wrappingWidth="451.2001373767853" AnchorPane.leftAnchor="298.0" AnchorPane.rightAnchor="100.79986262321472" AnchorPane.topAnchor="34.16796875">
+   <Text fx:id="titolo" fill="#000000ab" layoutX="310.0" layoutY="64.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="#titolo" text="Prenota Ripetizione" textAlignment="CENTER" wrappingWidth="428.8001129627228" AnchorPane.leftAnchor="310.0" AnchorPane.rightAnchor="111.19988703727722" AnchorPane.topAnchor="26.16796875">
       <font>
          <Font size="40.0" />
       </font>
@@ -85,31 +85,43 @@
       <children>
          <VBox layoutX="51.0" layoutY="137.0" prefHeight="217.0" prefWidth="200.0">
             <children>
-               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Luogo:">
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Luogo:">
                   <VBox.margin>
                      <Insets top="30.0" />
                   </VBox.margin>
+                  <font>
+                     <Font size="15.0" />
+                  </font>
                </Text>
-               <ComboBox fx:id="luogo" editable="true" prefHeight="26.0" prefWidth="207.0" />
+               <ComboBox fx:id="luogo" editable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="207.0" />
                <Label fx:id="luogoError" prefHeight="18.0" prefWidth="310.0" textFill="#bf0000" />
-               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modalità di lezione:">
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Modalità di lezione:">
                   <VBox.margin>
                      <Insets top="12.0" />
                   </VBox.margin>
+                  <font>
+                     <Font size="15.0" />
+                  </font>
                </Text>
                <CheckBox fx:id="inPresenza" mnemonicParsing="false" text="In Presenza">
                   <VBox.margin>
                      <Insets top="5.0" />
                   </VBox.margin>
+                  <font>
+                     <Font size="15.0" />
+                  </font>
                </CheckBox>
                <CheckBox fx:id="online" mnemonicParsing="false" text="Online">
                   <VBox.margin>
                      <Insets top="5.0" />
                   </VBox.margin>
+                  <font>
+                     <Font size="15.0" />
+                  </font>
                </CheckBox>
             </children>
          </VBox>
-         <TextField fx:id="cercaMateria" layoutX="121.0" layoutY="55.0" prefHeight="26.0" prefWidth="271.0">
+         <TextField fx:id="cercaMateria" layoutX="119.0" layoutY="58.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="271.0" styleClass="testo">
             <effect>
                <DropShadow>
                   <color>
@@ -118,16 +130,25 @@
                </DropShadow>
             </effect>
          </TextField>
-         <Text layoutX="121.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cerca Materia:" />
-         <Text layoutX="245.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filtri Aggiuntivi" />
+         <Text layoutX="119.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Cerca Materia:">
+            <font>
+               <Font size="15.0" />
+            </font></Text>
+         <Text layoutX="232.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Filtri Aggiuntivi">
+            <font>
+               <Font size="16.0" />
+            </font></Text>
          <VBox layoutX="325.0" layoutY="137.0" prefHeight="217.0" prefWidth="200.0">
             <children>
-               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giorno:">
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Giorno:">
                   <VBox.margin>
                      <Insets top="30.0" />
                   </VBox.margin>
+                  <font>
+                     <Font size="15.0" />
+                  </font>
                </Text>
-               <MenuButton fx:id="giorno" mnemonicParsing="false" prefHeight="26.0" prefWidth="210.0" text="Seleziona uno o più giorni..." textFill="#9c9c9c">
+               <MenuButton fx:id="giorno" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="207.0" text="Seleziona uno o più giorni..." textFill="#9c9c9c">
                   <items>
                      <CheckMenuItem mnemonicParsing="false" text="Lunedì" />
                      <CheckMenuItem mnemonicParsing="false" text="Martedì" />
@@ -138,10 +159,13 @@
                      <CheckMenuItem mnemonicParsing="false" text="Domenica" />
                   </items>
                </MenuButton>
-               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tariffa (€/h):">
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Tariffa (€/h):">
                   <VBox.margin>
                      <Insets top="30.0" />
                   </VBox.margin>
+                  <font>
+                     <Font size="15.0" />
+                  </font>
                </Text>
                <Slider fx:id="tariffaSlider" blockIncrement="5.0" majorTickUnit="5.0" max="50.0" min="5.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="5.0">
                   <VBox.margin>
@@ -151,11 +175,14 @@
                <Label fx:id="tariffaValue" />
             </children>
          </VBox>
-         <Button layoutX="424.0" layoutY="49.0" mnemonicParsing="false" onAction="#ricercaMethod" prefHeight="1.0" prefWidth="83.0" styleClass="rounded-button" text="Cerca" />
-         <Line endX="100.0" layoutX="133.0" layoutY="126.0" startX="-100.0" stroke="#50944f" />
-         <Line endX="100.0" layoutX="436.0" layoutY="125.0" startX="-100.0" stroke="#50944f" />
+         <Button layoutX="423.0" layoutY="58.0" maxHeight="-Infinity" mnemonicParsing="false" onAction="#ricercaMethod" prefHeight="26.0" prefWidth="83.0" styleClass="rounded-button" text="Cerca" />
+         <Line endX="86.5999755859375" layoutX="133.0" layoutY="137.0" startX="-100.0" stroke="#50944f" />
+         <Line endX="100.0" layoutX="436.0" layoutY="136.0" startX="-84.4000244140625" stroke="#50944f" />
          <Label fx:id="campiError" layoutX="208.0" layoutY="29.0" prefHeight="18.0" prefWidth="154.0" textAlignment="CENTER" textFill="#d40000" />
-         <Text layoutX="176.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cerca un tutor che soddisfi i tuoi desideri" />
+         <Text layoutX="140.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Cerca un tutor che soddisfi i tuoi desideri">
+            <font>
+               <Font size="16.0" />
+            </font></Text>
       </children>
    </AnchorPane>
 </AnchorPane>

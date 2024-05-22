@@ -82,7 +82,10 @@
                   </AnchorPane>
                </content>
             </ScrollPane>
-            <Text layoutX="124.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Richieste di prenotazioni inviate in attesa di conferma" textAlignment="CENTER" wrappingWidth="312.0000610351562" />
+            <Text layoutX="132.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Richieste di prenotazioni inviate in attesa di conferma" textAlignment="CENTER" wrappingWidth="344.00012207031244">
+               <font>
+                  <Font size="14.0" />
+               </font></Text>
          </children>
       </AnchorPane>
       <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="216.0" layoutY="24.0" onMouseClicked="#goToGestisciPrenotazioni" preserveRatio="true">

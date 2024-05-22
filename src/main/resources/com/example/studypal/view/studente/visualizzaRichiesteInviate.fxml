@@ -58,31 +58,49 @@
     </VBox>
     <AnchorPane fx:id="sfondoChiaro" layoutX="248.0" layoutY="113.0" prefHeight="350.0" prefWidth="557.0" stylesheets="@../../base-prova.css">
         <VBox layoutX="76.0" layoutY="33.0" prefHeight="250.0" prefWidth="90.0">
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tutor:" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email tutor:">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Tutor:">
+            <font>
+               <Font size="15.0" />
+            </font></Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Email tutor:">
                 <VBox.margin>
                     <Insets top="15.0" />
                 </VBox.margin>
+            <font>
+               <Font size="15.0" />
+            </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Materia:">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Materia:">
                 <VBox.margin>
                     <Insets top="15.0" />
                 </VBox.margin>
+            <font>
+               <Font size="15.0" />
+            </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modalità lezione:">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Modalità lezione:">
                 <VBox.margin>
                     <Insets top="15.0" />
                 </VBox.margin>
+            <font>
+               <Font size="15.0" />
+            </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giorni preferibili:">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Giorni preferibili:">
                 <VBox.margin>
                     <Insets top="15.0" />
                 </VBox.margin>
+            <font>
+               <Font size="15.0" />
+            </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Note aggiuntive:">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Note aggiuntive:">
                 <VBox.margin>
                     <Insets top="15.0" />
                 </VBox.margin>
+            <font>
+               <Font size="15.0" />
+            </font>
             </Text>
         </VBox>
         <VBox layoutX="195.0" layoutY="67.0" prefHeight="216.0" prefWidth="338.0">
@@ -91,6 +109,9 @@
                     <VBox.margin>
                         <Insets />
                     </VBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
                 </Label>
                 <Label fx:id="materia" prefHeight="18.0" prefWidth="218.0" text="Label">
                     <VBox.margin>
@@ -99,18 +120,24 @@
                 </Label>
                 <Label fx:id="modLezione" prefHeight="18.0" prefWidth="231.0" text="Label">
                     <VBox.margin>
-                        <Insets top="15.0" />
+                        <Insets top="14.0" />
                     </VBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
                 </Label>
                 <Label fx:id="giorni" text="Label">
                     <VBox.margin>
-                        <Insets top="15.0" />
+                        <Insets top="14.0" />
                     </VBox.margin>
                 </Label>
                 <Label fx:id="note" alignment="TOP_LEFT" prefHeight="54.0" prefWidth="338.0" text="Label" wrapText="true">
                     <VBox.margin>
-                        <Insets top="15.0" />
+                        <Insets top="14.0" />
                     </VBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
                 </Label>
             </children>
         </VBox>

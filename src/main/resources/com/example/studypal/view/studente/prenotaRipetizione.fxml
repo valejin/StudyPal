@@ -76,89 +76,143 @@
                </font></Text>
             <VBox layoutX="72.0" layoutY="56.0" prefHeight="138.0" prefWidth="100.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Nome:">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Email:">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Materia:">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Materia:">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modalità:">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Modalità:">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Text>
                </children>
             </VBox>
-            <VBox layoutX="156.0" layoutY="56.0" prefHeight="150.0" prefWidth="122.0">
+            <VBox layoutX="140.0" layoutY="56.0" prefHeight="150.0" prefWidth="138.0">
                <children>
-                  <Label fx:id="nomeLabel" prefHeight="18.0" prefWidth="120.0" text="label" />
-                  <Label fx:id="emailLabel" prefHeight="18.0" prefWidth="122.0" text="label">
-                     <VBox.margin>
-                        <Insets top="14.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label fx:id="materiaLabel" prefHeight="18.0" prefWidth="104.0" text="label">
+                  <Label fx:id="nomeLabel" prefHeight="22.0" prefWidth="145.0" text="label">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Label>
+                  <Label fx:id="emailLabel" prefHeight="22.0" prefWidth="144.0" text="label">
                      <VBox.margin>
                         <Insets top="13.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Label>
-                  <Label fx:id="modLabel" prefHeight="18.0" prefWidth="106.0" text="label">
+                  <Label fx:id="materiaLabel" prefHeight="22.0" prefWidth="143.0" text="label">
                      <VBox.margin>
                         <Insets top="13.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="modLabel" prefHeight="22.0" prefWidth="145.0" text="label">
+                     <VBox.margin>
+                        <Insets top="13.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Label>
                </children>
             </VBox>
-            <TextArea fx:id="note" layoutX="73.0" layoutY="221.0" prefHeight="74.0" prefWidth="397.0" promptText="Inserisci delle informazioni aggiuntive (data, ora, richieste particolari) per il tuo tutor..." wrapText="true" />
+            <TextArea fx:id="note" layoutX="72.0" layoutY="224.0" prefHeight="74.0" prefWidth="397.0" promptText="Inserisci delle informazioni aggiuntive (data, ora, richieste particolari) per il tuo tutor..." wrapText="true" />
             <Button layoutX="234.0" layoutY="316.0" mnemonicParsing="false" onAction="#prenota" styleClass="custom-button" stylesheets="@../../button.css" text="Invia" />
-            <Text layoutX="72.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Note aggiuntive:" />
+            <Text layoutX="73.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Note aggiuntive:">
+               <font>
+                  <Font size="15.0" />
+               </font></Text>
             <Line endX="100.0" layoutX="384.0" layoutY="38.0" opacity="0.66" startX="-325.0" startY="1.52587890625E-5" stroke="#5695bf" strokeLineCap="ROUND" strokeWidth="2.0" />
             <VBox layoutX="293.0" layoutY="56.0" prefHeight="138.0" prefWidth="100.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cognome:" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tariffa:">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Cognome:">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Tariffa:">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Text>
-                  <Text layoutX="10.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Luogo:">
+                  <Text layoutX="10.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Luogo:">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giorni:">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Giorni:">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Text>
                </children>
             </VBox>
-            <VBox layoutX="370.0" layoutY="56.0" prefHeight="150.0" prefWidth="100.0">
+            <VBox layoutX="370.0" layoutY="56.0" prefHeight="150.0" prefWidth="148.0">
                <children>
-                  <Label fx:id="cognomeLabel" prefHeight="18.0" prefWidth="113.0" text="label" />
-                  <Label fx:id="tariffaLabel" prefHeight="18.0" prefWidth="104.0" text="label">
+                  <Label fx:id="cognomeLabel" prefHeight="22.0" prefWidth="157.0" text="label">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Label>
+                  <Label fx:id="tariffaLabel" prefHeight="22.0" prefWidth="153.0" text="label">
+                     <VBox.margin>
+                        <Insets top="13.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="luogoLabel" prefHeight="22.0" prefWidth="148.0" text="label">
                      <VBox.margin>
                         <Insets top="14.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Label>
-                  <Label fx:id="luogoLabel" prefHeight="18.0" prefWidth="101.0" text="label">
+                  <Label fx:id="giorniLabel" layoutX="10.0" layoutY="76.0" prefHeight="22.0" prefWidth="154.0" text="label">
                      <VBox.margin>
-                        <Insets top="14.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
-                  </Label>
-                  <Label fx:id="giorniLabel" layoutX="10.0" layoutY="76.0" prefHeight="18.0" prefWidth="96.0" text="label">
-                     <VBox.margin>
-                        <Insets top="15.0" />
-                     </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Label>
                </children>
             </VBox>
-            <Text fill="#3f633f" layoutX="369.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(max. 250 caratteri)" />
+            <Text fill="#3f633f" layoutX="343.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(max. 250 caratteri)">
+               <font>
+                  <Font size="15.0" />
+               </font></Text>
          </children>
          <effect>
             <DropShadow blurType="TWO_PASS_BOX">

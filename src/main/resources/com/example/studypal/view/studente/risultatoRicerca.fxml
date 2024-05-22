@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.studente.RisultatiRicercaGuiController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.studente.RisultatiRicercaGuiController">
    <children>
       <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0" stylesheets="@../../base-prova.css">
          <children>
@@ -66,89 +66,122 @@
             <Font size="40.0" />
          </font>
       </Text>
-      <AnchorPane fx:id="zonaInfo" layoutX="232.0" layoutY="99.0" prefHeight="376.0" prefWidth="570.0">
+      <AnchorPane fx:id="zonaInfo" layoutX="224.0" layoutY="99.0" prefHeight="382.0" prefWidth="606.0">
          <children>
-            <ScrollPane fx:id="risultatiScroll" layoutX="-2.0" layoutY="58.0" prefHeight="317.0" prefWidth="578.0">
+            <ScrollPane fx:id="risultatiScroll" layoutX="-2.0" layoutY="58.0" prefHeight="318.0" prefWidth="606.0">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="363.0" prefWidth="595.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="320.0" prefWidth="608.0">
                      <children>
-                        <TableView fx:id="risultatiTable" layoutX="1.0" prefHeight="338.0" prefWidth="577.0">
+                        <TableView fx:id="risultatiTable" layoutX="1.0" prefHeight="318.0" prefWidth="606.0">
                           <columns>
-                            <TableColumn prefWidth="192.00001221895218" text="Tutor">
+                            <TableColumn prefWidth="187.19999384880066" text="Tutor">
                                  <columns>
-                                    <TableColumn fx:id="nome" prefWidth="103.20002442598343" text="Nome" />
-                                    <TableColumn fx:id="cognome" prefWidth="67.199951171875" text="Cognome" />
+                                    <TableColumn fx:id="nome" prefWidth="87.99998164176941" text="Nome" />
+                                    <TableColumn fx:id="cognome" editable="false" prefWidth="84.0" text="Cognome" />
                                  </columns></TableColumn>
-                            <TableColumn fx:id="tariffa" prefWidth="46.4000244140625" text="Tariffa" />
-                              <TableColumn fx:id="giorni" prefWidth="218.40003967285156" text="Disponibilità" />
-                              <TableColumn fx:id="prenota" minWidth="0.0" prefWidth="122.4000244140625" text="Prenota" />
+                            <TableColumn fx:id="tariffa" editable="false" minWidth="4.0" prefWidth="56.79998779296875" text="Tariffa" />
+                              <TableColumn fx:id="giorni" editable="false" prefWidth="236.8000030517578" text="Disponibilità" />
+                              <TableColumn fx:id="prenota" editable="false" minWidth="0.0" prefWidth="128.79998779296875" text="Prenota" />
                           </columns>
                         </TableView>
                      </children>
                   </AnchorPane>
               </content>
             </ScrollPane>
-            <HBox layoutX="50.0" layoutY="-2.0" prefHeight="32.0" prefWidth="489.0">
+            <HBox layoutX="15.0" layoutY="-2.0" prefHeight="32.0" prefWidth="590.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Materia:" wrappingWidth="51.7366943359375">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Materia:" wrappingWidth="58.1368408203125">
                      <HBox.margin>
                         <Insets top="8.0" />
                      </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Text>
-                  <Label fx:id="materiaRisultato" prefHeight="18.0" prefWidth="89.0" text="Label">
+                  <Label fx:id="materiaRisultato" prefHeight="22.0" prefWidth="96.0" text="Label">
                      <HBox.margin>
                         <Insets top="8.0" />
                      </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Label>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Luogo:" wrappingWidth="40.53668212890625">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Luogo:" wrappingWidth="53.336669921875">
                      <HBox.margin>
                         <Insets left="5.0" top="8.0" />
                      </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Text>
-                  <Label fx:id="luogoRisultato" layoutX="62.0" layoutY="18.0" prefHeight="18.0" prefWidth="98.0" text="Label">
+                  <Label fx:id="luogoRisultato" layoutX="62.0" layoutY="18.0" prefHeight="22.0" prefWidth="124.0" text="Label">
                      <HBox.margin>
                         <Insets top="8.0" />
                      </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Label>
-                  <Text layoutX="126.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modalità:" wrappingWidth="51.7366943359375">
+                  <Text layoutX="126.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Modalità:" wrappingWidth="67.7366943359375">
                      <HBox.margin>
                         <Insets left="5.0" right="5.0" top="8.0" />
                      </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Text>
-                  <Label fx:id="modalitaRisultato" layoutX="178.0" layoutY="18.0" prefHeight="18.0" prefWidth="130.0" text="Label" wrapText="true">
+                  <Label fx:id="modalitaRisultato" layoutX="178.0" layoutY="18.0" prefHeight="22.0" prefWidth="178.0" text="Label" wrapText="true">
                      <HBox.margin>
                         <Insets top="8.0" />
                      </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Label>
                </children>
             </HBox>
-            <HBox layoutX="50.0" layoutY="26.0" prefHeight="32.0" prefWidth="527.0">
+            <HBox layoutX="15.0" layoutY="26.0" prefHeight="32.0" prefWidth="566.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tariffa:" wrappingWidth="38.936767578125">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Tariffa:" wrappingWidth="46.936767578125">
                      <HBox.margin>
                         <Insets top="8.0" />
                      </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Text>
-                  <Label fx:id="tariffaRisultato" prefHeight="18.0" prefWidth="92.0" text="Label">
+                  <Label fx:id="tariffaRisultato" prefHeight="22.0" prefWidth="96.0" text="Label">
                      <HBox.margin>
                         <Insets top="8.0" />
                      </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Label>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giorni:" wrappingWidth="38.9366455078125">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Giorni:" wrappingWidth="53.336669921875">
                      <HBox.margin>
                         <Insets left="15.0" top="8.0" />
                      </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Text>
                   <Label fx:id="giorniRisultato" prefHeight="18.0" prefWidth="298.0" text="Label">
                      <HBox.margin>
                         <Insets top="8.0" />
                      </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Label>
                </children>
             </HBox>
          </children>
       </AnchorPane>
-      <Text fill="#036319" layoutX="392.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I risultati della tua ricerca (con i seguenti filtri)" wrappingWidth="258.6929931640625" />
+      <Text fill="#036319" layoutX="387.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I risultati della tua ricerca (con i seguenti filtri)" wrappingWidth="298.39999999999986">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
       <ImageView fx:id="backButton" fitHeight="60.0" fitWidth="58.0" layoutX="233.0" layoutY="32.0" onMouseClicked="#goToRicerca" preserveRatio="true">
          <image>
             <Image url="@../../immagini/backButton.PNG" />

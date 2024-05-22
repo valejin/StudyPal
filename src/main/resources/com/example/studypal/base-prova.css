@@ -140,16 +140,41 @@ Button:hover {
 }
 
 #email {
-    -fx-font-size: 15px; /* Imposta la grandezza del testo a 14 pixel */
-    -fx-alignment: center-left; /* Centra il testo orizzontalmente e verticalmente */
+    -fx-font-size: 15px; /* Imposta la grandezza del testo a 15 pixel */
+    -fx-alignment: center-left;
 }
 
 #materia {
-    -fx-font-size: 15px; /* Imposta la grandezza del testo a 14 pixel */
-    -fx-alignment: center-left; /* Centra il testo orizzontalmente e verticalmente */
+    -fx-font-size: 15px; /* Imposta la grandezza del testo a 15 pixel */
+    -fx-alignment: center-left;
 }
 
 #visualizza {
-    -fx-font-size: 15px; /* Imposta la grandezza del testo a 14 pixel */
-    -fx-alignment: CENTER; /* Centra il testo orizzontalmente e verticalmente */
+    -fx-font-size: 15px; /* Imposta la grandezza del testo a 15 pixel */
+    -fx-alignment: center-left;
+}
+
+#tariffa {
+    -fx-font-size: 15px; /* Imposta la grandezza del testo a 15 pixel */
+    -fx-alignment: center-left;
+}
+
+#giorni{
+    -fx-font-size: 15px; /* Imposta la grandezza del testo a 15 pixel */
+    -fx-alignment: center-left;
+}
+
+#prenota {
+    -fx-font-size: 15px; /* Imposta la grandezza del testo a 15 pixel */
+    -fx-alignment: center-left;
+}
+
+#nome {
+    -fx-font-size: 15px; /* Imposta la grandezza del testo a 15 pixel */
+    -fx-alignment: center-left;
+}
+
+#cognome {
+    -fx-font-size: 15px; /* Imposta la grandezza del testo a 15 pixel */
+    -fx-alignment: center-left;
 }

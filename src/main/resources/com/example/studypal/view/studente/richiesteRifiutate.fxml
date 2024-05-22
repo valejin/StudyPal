@@ -82,7 +82,10 @@
                         </AnchorPane>
                     </content>
                 </ScrollPane>
-                <Text layoutX="140.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Richieste di ripetizioni che sono state rifiutate dai tuoi tutor" textAlignment="CENTER" wrappingWidth="345.6000366210937" />
+                <Text layoutX="118.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Richieste di ripetizioni che sono state rifiutate dai tuoi tutor" textAlignment="CENTER" wrappingWidth="372.0000610351562">
+               <font>
+                  <Font size="14.0" />
+               </font></Text>
             </children>
         </AnchorPane>
         <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="216.0" layoutY="24.0" onMouseClicked="#goToGestisciPrenotazioni" preserveRatio="true">
