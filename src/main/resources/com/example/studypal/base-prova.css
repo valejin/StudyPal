@@ -34,7 +34,7 @@ Button {
     -fx-padding: 10px 20px; /* Spazio intorno al testo */
     -fx-font-family: Verdana, sans-serif; /* Utilizza il font Arial o un font sans-serif di backup */
 
-    -fx-font-size: 18px; /* Dimensione del font 18px */
+    -fx-font-size: 14px; /* Dimensione del font 18px */
     -fx-cursor: pointer; /* Cambia il cursore quando si passa sopra */
     -fx-border-radius: 8px; /* Bordo arrotondato */
 }
