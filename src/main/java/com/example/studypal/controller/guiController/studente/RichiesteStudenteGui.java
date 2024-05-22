@@ -111,7 +111,7 @@ public class RichiesteStudenteGui extends HomeStudenteGui{
                 stage.setScene(scene);
             } catch (IOException e) {
                 logger.severe("errore in RichiesteStudenteGui (caricamento pagina richieste inviate) " + e.getMessage());
-                e.printStackTrace();
+                //e.printStackTrace();
             }
 
         } else if (this.flag == 1){

@@ -95,17 +95,20 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
                     this.luogo.getSelectionModel().isEmpty() && menuButtonIsEmpty(giorno)
             ) {
                 //se tutti i campi aggiuntivi sono vuoti, allora la ricerca va fatta solo per materia
-                List<RipetizioneInfoBean> risultatiRicercaBean =  ricercaMateria();
+                List<RipetizioneInfoBean> risultatiRicercaBean = ricercaMateria();
                 caricaRisultati(risultatiRicercaBean);
+                System.out.println("ricerca completata");
+
+            } else if (this.inPresenza.isSelected() && this.luogo.getSelectionModel().isEmpty()){
+                luogoError.setText("Inserire un luogo");
+
             } else {
                 //altrimenti la ricerca avviene anche con i filtri aggiunti
                 Printer.println("fai ricerca con filtri");
                 List<RipetizioneInfoBean> risultatiRicercaBean =  ricercaConFiltri();
                 caricaRisultati(risultatiRicercaBean);
+                System.out.println("ricerca completata");
             }
-
-            System.out.println("ricerca completata");
-            //caricaRisultati();
         }
     }
 
@@ -123,8 +126,6 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
 
         //chiama il controller applicativo e gli passa il BEAN che contiene la materia
         risultatiRicercaBean = cercaRipetizioneController.prenotaRipetizioneMethod(baseInfoBean);
-
-        //todo try catch!!!!!!! ricerca in presenza senza luogo dà errori a terminale
 
         /*
         //DEBUG

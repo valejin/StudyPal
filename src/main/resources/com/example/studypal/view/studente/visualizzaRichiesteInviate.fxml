@@ -104,42 +104,40 @@
             </Text>
         </VBox>
         <VBox layoutX="195.0" layoutY="67.0" prefHeight="216.0" prefWidth="338.0">
-            <children>
-                <Label fx:id="emailTutor" prefHeight="18.0" prefWidth="226.0" text="Label">
-                    <VBox.margin>
-                        <Insets />
-                    </VBox.margin>
-               <font>
-                  <Font size="15.0" />
-               </font>
-                </Label>
-                <Label fx:id="materia" prefHeight="18.0" prefWidth="218.0" text="Label">
-                    <VBox.margin>
-                        <Insets top="15.0" />
-                    </VBox.margin>
-                </Label>
-                <Label fx:id="modLezione" prefHeight="18.0" prefWidth="231.0" text="Label">
-                    <VBox.margin>
-                        <Insets top="14.0" />
-                    </VBox.margin>
-               <font>
-                  <Font size="15.0" />
-               </font>
-                </Label>
-                <Label fx:id="giorni" text="Label">
-                    <VBox.margin>
-                        <Insets top="14.0" />
-                    </VBox.margin>
-                </Label>
-                <Label fx:id="note" alignment="TOP_LEFT" prefHeight="54.0" prefWidth="338.0" text="Label" wrapText="true">
-                    <VBox.margin>
-                        <Insets top="14.0" />
-                    </VBox.margin>
-               <font>
-                  <Font size="15.0" />
-               </font>
-                </Label>
-            </children>
+            <Label fx:id="emailTutor" prefHeight="18.0" prefWidth="226.0" text="Label">
+                <VBox.margin>
+                    <Insets/>
+                </VBox.margin>
+                <font>
+                    <Font size="15.0"/>
+                </font>
+            </Label>
+            <Label fx:id="materia" prefHeight="18.0" prefWidth="218.0" text="Label">
+                <VBox.margin>
+                    <Insets top="15.0"/>
+                </VBox.margin>
+            </Label>
+            <Label fx:id="modLezione" prefHeight="18.0" prefWidth="231.0" text="Label">
+                <VBox.margin>
+                    <Insets top="14.0"/>
+                </VBox.margin>
+                <font>
+                    <Font size="15.0"/>
+                </font>
+            </Label>
+            <Label fx:id="giorni" text="Label">
+                <VBox.margin>
+                    <Insets top="14.0"/>
+                </VBox.margin>
+            </Label>
+            <Label fx:id="note" alignment="TOP_LEFT" prefHeight="54.0" prefWidth="338.0" text="Label" wrapText="true">
+                <VBox.margin>
+                    <Insets top="14.0"/>
+                </VBox.margin>
+                <font>
+                    <Font size="15.0"/>
+                </font>
+            </Label>
         </VBox>
         <Button layoutX="193.0" layoutY="277.0" mnemonicParsing="false" onAction="#cancellaRichiesta" prefHeight="39.0" prefWidth="171.0" styleClass="custom-button2" stylesheets="@../../button.css" text="Cancella Richiesta" />
         <Label fx:id="nome" layoutX="195.0" layoutY="32.0" prefHeight="18.0" prefWidth="91.0" text="Label" />
