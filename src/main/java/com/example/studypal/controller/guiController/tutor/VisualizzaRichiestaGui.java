@@ -117,7 +117,7 @@ public void goToPrenotazioniAttive() {
         stage.setScene(scene);
     } catch (IOException e) {
         logger.severe("errore in GestisciPrenotazioniGuiController " + e.getMessage());
-        e.printStackTrace();
+        //e.printStackTrace();
     }
 }
 
@@ -135,7 +135,7 @@ public void goToPrenotazioniRifiutate(){
         stage.setScene(scene);
     } catch (IOException e) {
         logger.severe("errore in GestisciPrenotazioniGuiController " + e.getMessage());
-        e.printStackTrace();
+        //e.printStackTrace();
     }
 }
 

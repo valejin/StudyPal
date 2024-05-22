@@ -26,6 +26,8 @@ public class PrenotazioneDAO {
      */
 
     private static final Logger logger = Logger.getLogger(PrenotazioneDAO.class.getName());
+
+    /*-------------------------------------------PRENOTAZIONE----------------------------------------------------------*/
     public void prenota(PrenotazioneModel prenotazioneModel) throws SQLException {
         /*
         fa la query per inserire la richiesta di ripetizione nel database
@@ -66,10 +68,10 @@ public class PrenotazioneDAO {
 
     private String query;
 
-/*--------------Gestione Prenotazioni (TUTOR): prendere le richieste arrivate da DB ---------------------------*/
-/*--------------Gestione Prenotazioni (TUTOR): prendere le prenotazioni arrivate da DB ------------------------*/
-/*--------------Gestione Prenotazioni (TUTOR): prendere le prenotazioni rifiutate da DB ------------------------*/
-    /*
+    /*--------------Gestione Prenotazioni (TUTOR): prendere le richieste arrivate da DB ---------------------------*/
+    /*--------------Gestione Prenotazioni (TUTOR): prendere le prenotazioni arrivate da DB ------------------------*/
+    /*--------------Gestione Prenotazioni (TUTOR): prendere le prenotazioni rifiutate da DB ------------------------*/
+        /*
     una volta la richiesta in attesa viene confermata dal tutor, sparisce dalla lista di richieste arrivate
     */
     public List<PrenotazioneModel> richiesteArrivate(String email, int flag) throws NonProduceRisultatoException{
@@ -139,7 +141,7 @@ public class PrenotazioneDAO {
 
 
 
-/* -----------------------------------------------------STUDENTE------------------------------------------------------*/
+    /* -------------------------------------------------STUDENTE------------------------------------------------------*/
     //TODO sistemare stampe a terminale e differenziare i vari casi
     public List<PrenotazioneModel> richiesteInviate(String email, Integer flag) throws NonProduceRisultatoException {
 
@@ -228,5 +230,24 @@ public class PrenotazioneDAO {
 
         }
 
+    }
+
+    /*------------------------------------------CANCELLA (STUDENTE)-------------------------------------------*/
+    public void cancellaRichiesta(Integer idRichiesta){
+
+        Connection connection;
+        PreparedStatement statement;
+        String query = "DELETE FROM richieste WHERE idrichieste = ?";
+        try {
+            connection = Connect.getInstance().getDBConnection();
+            statement = connection.prepareStatement(query);
+            statement.setInt(1, idRichiesta);
+            statement.execute();
+            Printer.println("id richiesta da eliminare: " + idRichiesta);
+
+        } catch(SQLException e){
+            Printer.println("Errore in PrenotazioneDAO (metodo: cancellaRichiesta)");
+        }
+        Printer.println("Richiesta eliminata con successo.");
     }
 }
