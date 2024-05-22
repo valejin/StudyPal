@@ -92,24 +92,28 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
             //this.giorno.getItems().isEmpty() &&
             if (this.tariffaSlider.getValue() == 50 &&
                     (!this.inPresenza.isSelected() && !this.online.isSelected()) &&
-                    this.luogo.getSelectionModel().isEmpty() && menuButtonIsEmpty(giorno)
+                    this.luogo.getSelectionModel().isEmpty() && this.luogo.getValue()==null && menuButtonIsEmpty(giorno)
+
             ) {
                 //se tutti i campi aggiuntivi sono vuoti, allora la ricerca va fatta solo per materia
-                List<RipetizioneInfoBean> risultatiRicercaBean =  ricercaMateria();
+                List<RipetizioneInfoBean> risultatiRicercaBean = ricercaMateria();
                 caricaRisultati(risultatiRicercaBean);
+                System.out.println("ricerca completata");
+
+            } else if (this.inPresenza.isSelected() && this.luogo.getSelectionModel().isEmpty()){
+                luogoError.setText("Inserire un luogo");
+
             } else {
                 //altrimenti la ricerca avviene anche con i filtri aggiunti
-                Printer.println("fai ricerca con filtri");
+                Printer.println("Ricerca con filtri...");
                 List<RipetizioneInfoBean> risultatiRicercaBean =  ricercaConFiltri();
                 caricaRisultati(risultatiRicercaBean);
+                System.out.println("ricerca completata!");
             }
-
-            System.out.println("ricerca completata");
-            //caricaRisultati();
         }
     }
 
-    /*----------------------------------------------------------------------------------------------------------------*/
+    /*-------------------------------------RICERCA PER SOLA MATERIA---------------------------------------------------*/
     public   List<RipetizioneInfoBean>  ricercaMateria(){
 
         String materia = this.cercaMateria.getText();
@@ -123,8 +127,6 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
 
         //chiama il controller applicativo e gli passa il BEAN che contiene la materia
         risultatiRicercaBean = cercaRipetizioneController.prenotaRipetizioneMethod(baseInfoBean);
-
-        //todo try catch!!!!!!! ricerca in presenza senza luogo dà errori a terminale
 
         /*
         //DEBUG
@@ -165,7 +167,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
     }
 
 
-    /*----------------------------------------------------------------------------------------------------------------*/
+    /*-------------------------------------------- RICERCA CON FILTRI ------------------------------------------------*/
     public List<RipetizioneInfoBean> ricercaConFiltri() {
 
         /*
@@ -192,15 +194,15 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
             campiError.setVisible(false);
         }
 
-
-        Printer.println("   -La materia inserita è: " + materia);
-
+        Printer.println("FILTRI PER LA RICERCA:");
+        Printer.println("   -Materia: " + materia);
 
         luogo = (String) this.luogo.getValue();
-        if (this.luogo.getValue() == null) {
-            Printer.println("   -Luogo:");
+        Printer.print("   -Luogo: ");
+        if (this.luogo.getValue() != null) {
+            Printer.println(luogo);
         } else {
-            Printer.println("   -Luogo: " + luogo);
+            Printer.println("");
         }
 
         //checkBox: modalità di lezione ------------------------------------------------
@@ -244,7 +246,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
 
         //tariffaSlider---------------------------------------------------
         tariffa = (int) Math.round(this.tariffaSlider.getValue());
-        Printer.println("   -Tariffa massima:" + tariffa);
+        Printer.println("   -Tariffa massima: " + tariffa);
 
         //istanzio un RipetizioneInfoBean
         ripetizioneInfoBean = new RipetizioneInfoBean(materia, inPresenza, online, luogo, giorni, tariffa, email);

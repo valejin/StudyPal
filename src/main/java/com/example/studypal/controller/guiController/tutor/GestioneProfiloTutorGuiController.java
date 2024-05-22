@@ -156,9 +156,7 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
     public RipetizioneInfoModel caricaInformazioniProfilo(String email) {
 
         //metodo che prende le informazioni del tutor e le carica nella pagina di gestione profilo del tutor
-
         GestioneProfiloTutorController gestioneProfiloTutorController = new GestioneProfiloTutorController();
-
         return gestioneProfiloTutorController.caricaInformazioniProfilo(email);
     }
 }

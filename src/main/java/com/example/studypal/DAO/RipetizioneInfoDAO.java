@@ -43,7 +43,6 @@ public class RipetizioneInfoDAO {
         PreparedStatement statement;
         ResultSet rs;
 
-        System.out.println("Ricerca materia: ");
 
         //query per la ricerca di Materia
         String query = "SELECT * FROM tutor where LOWER(materie) LIKE ?";
@@ -60,9 +59,10 @@ public class RipetizioneInfoDAO {
 
             if(rs.next()) {
 
-                Printer.println("La materia che stai cercando è: " + baseInfoModel.getMateria());
+                //Printer.println("La materia che stai cercando è: " + baseInfoModel.getMateria());
 
-                //stampo email di Tutor che soddisfanno la query
+                //stampo email di Tutor che soddisfano la query
+                Printer.println("------------------------------------------------");
                 Printer.println("Email tutor che soddisfano la ricerca: ");
                 do {
                     RipetizioneInfoModel risultatoCorrente = new RipetizioneInfoModel(rs.getString("nome"), rs.getString("cognome"),
@@ -73,7 +73,7 @@ public class RipetizioneInfoDAO {
                     //DEBUG
                     System.out.println("    nome: " + risultatoCorrente.getNome());
                     System.out.println("    cognome: " + risultatoCorrente.getCognome());
-                    System.out.println("    materie: " + risultatoCorrente.getMaterie());
+                    //System.out.println("    materie: " + risultatoCorrente.getMaterie());
                     System.out.println("    lezioni in presenza: " + risultatoCorrente.getInPresenza());
                     System.out.println("    lezioni online: " + risultatoCorrente.getOnline());
                     System.out.println("    luogo: " + risultatoCorrente.getLuogo());
@@ -102,37 +102,31 @@ public class RipetizioneInfoDAO {
         PreparedStatement statement;
         ResultSet rs;
 
-        //UserModel userModel = new UserModel();
-
         String query = "SELECT * FROM tutor where tariffa <= ?";
 
         if (ripetizioneInfoModel.getLuogo() != null && !ripetizioneInfoModel.getLuogo().isEmpty()) {
-            Printer.println("luogo selezionato");
+            //Printer.println("luogo selezionato");
             query += "  AND luogo = ? AND LOWER(materie) LIKE ?";
 
         }else{
-            Printer.println("luogo non selezionato");
+            //Printer.println("luogo non selezionato");
             query += " AND LOWER(materie) LIKE ?"; //se non ci è stato dato un luogo saltiamo il primo filtro
         }
         if (ripetizioneInfoModel.getInPresenza()  && ripetizioneInfoModel.getOnline()){
-            Printer.println("si cercano sia in presenza sia online");
+            //Printer.println("si cercano sia in presenza sia online");
             query += " AND giorni LIKE ?";
         }else if (ripetizioneInfoModel.getInPresenza()) {
-            Printer.println("si cercano ripetizioni solo in presenza");
+            //Printer.println("si cercano ripetizioni solo in presenza");
             query += " AND inPresenza = ?";
             query += " AND giorni LIKE ?";
         }else if (ripetizioneInfoModel.getOnline()) {
-            Printer.println("si cercano ripetizioni solo online");
+            //Printer.println("si cercano ripetizioni solo online");
             query += " AND webCam = ?";
             query += " AND giorni LIKE ?";
         } else {
-            Printer.println("non ci interessa se online o in presenza");
+            //Printer.println("non ci interessa se online o in presenza");
             query += " AND giorni LIKE ?";
         }
-
-        //query per la ricerca di Materia
-        //query = "SELECT * FROM tutor where tariffa <= ? AND luogo = ? AND LOWER(materie) LIKE ? AND inPresenza = ? AND webCam = ? AND giorni LIKE ?";
-
 
         try {
             Connection connection = Connect.getInstance().getDBConnection();
@@ -163,7 +157,7 @@ public class RipetizioneInfoDAO {
                 }
 
             }else {
-                Printer.println("luogo non selezionato");
+                //Printer.println("luogo non selezionato");
                 statement.setString(2, '%' + ripetizioneInfoModel.getMateria() + '%');
 
                 if (ripetizioneInfoModel.getInPresenza() && ripetizioneInfoModel.getOnline()) {
@@ -186,13 +180,9 @@ public class RipetizioneInfoDAO {
                     //System.out.println("non ci interessa");
                     statement.setString(3, '%' + ripetizioneInfoModel.getGiorni() + '%');
                 }
-                //String statementSQL = statement.unwrap(PreparedStatement.class).toString();
             }
 
-
-
             rs = statement.executeQuery();
-            System.out.println("query preparato");
 
             /*  usati per debug
             System.out.println(ripetizioneInfoModel.getTariffa());
@@ -202,7 +192,6 @@ public class RipetizioneInfoDAO {
             System.out.println(ripetizioneInfoModel.getOnline());
             System.out.println(ripetizioneInfoModel.getGiorni());
             */
-
 
             if (rs.next()) {
 
