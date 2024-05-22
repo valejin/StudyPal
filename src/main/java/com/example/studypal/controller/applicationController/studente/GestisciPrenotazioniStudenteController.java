@@ -23,7 +23,7 @@ public class GestisciPrenotazioniStudenteController {
 
 
     public List<PrenotazioneBean> richiesteInviate (String email, Integer flag) {
-        /* metodo che viene invocato dal controller grafico per ricevere la lista di richieste inviate dallo studente*/
+        /* metodo che viene invocato dal controller grafico per ricevere la lista di richieste inviate/rifiutate/accettate dello studente*/
 
         List<PrenotazioneBean> listaRichiesteBean = new ArrayList<>();
 
@@ -44,5 +44,18 @@ public class GestisciPrenotazioniStudenteController {
         }
         return listaRichiesteBean;
     }
+
+    /*----------------------------------------------------------------------------------------------------------------*/
+
+    public void cancellaRichiesta(Integer idRichiesta){
+
+        /* istanzio il DAO e gli passo l'id della richiesta da eliminare.
+        Nota: non c'è bisogno di try catch, la richiesta è sicuramente presente nel DB dato che l'abbiamo caricata noi in precedenza*/
+
+        PrenotazioneDAO prenotazioneDAO = new PrenotazioneDAO();
+        prenotazioneDAO.cancellaRichiesta(idRichiesta);
+
+    }
+
 
 }
