@@ -3,6 +3,7 @@ package com.example.studypal.controller.applicationController;
 import com.example.studypal.DAO.UserDAO;
 import com.example.studypal.bean.CredenzialiBean;
 import com.example.studypal.bean.LoggedInUserBean;
+import com.example.studypal.exceptions.UtenteInesistenteException;
 import com.example.studypal.model.CredenzialiModel;
 import com.example.studypal.model.UserModel;
 import com.example.studypal.exceptions.CredenzialiSbagliateException;
@@ -17,7 +18,7 @@ public class LoginController {
 
     boolean ruolo;
 
-   public LoggedInUserBean loginMethod(CredenzialiBean credenzialiBean) throws CredenzialiSbagliateException {
+   public LoggedInUserBean loginMethod(CredenzialiBean credenzialiBean) throws CredenzialiSbagliateException, UtenteInesistenteException{
         CredenzialiModel credenzialiModel = new CredenzialiModel();
         LoggedInUserBean loggedInUserBean = new LoggedInUserBean(email, nome, cognome, ruolo);
 
@@ -41,10 +42,12 @@ public class LoginController {
             //al momento non usiamo il valore di ritorno: restituisce il bean contenente le informazioni dell'utente che ha effettuato l'accesso
             return loggedInUserBean;
 
-        } catch (LoginDBException e) {
+        } catch (CredenzialiSbagliateException e) {
             Printer.errorPrint("controller applicativo credenziali sbagliate");
-            //lancia l'eccezione
-            throw new CredenzialiSbagliateException("Credenziali sbagliate");
+            throw new CredenzialiSbagliateException("");
+        } catch (UtenteInesistenteException u) {
+            Printer.errorPrint("controller applicativo utente inesistente");
+            throw new UtenteInesistenteException();
         }
    }
 

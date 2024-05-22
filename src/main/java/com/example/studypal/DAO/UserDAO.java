@@ -1,7 +1,10 @@
 package com.example.studypal.DAO;
 
 
+import com.example.studypal.Query.QueryLogin;
+import com.example.studypal.exceptions.CredenzialiSbagliateException;
 import com.example.studypal.exceptions.EmailAlreadyInUseException;
+import com.example.studypal.exceptions.UtenteInesistenteException;
 import com.example.studypal.model.CredenzialiModel;
 import com.example.studypal.model.UserModel;
 import com.example.studypal.exceptions.LoginDBException;
@@ -17,27 +20,48 @@ public class UserDAO {
     private static final Logger logger = Logger.getLogger(UserDAO.class.getName());
 
 //-----------------------------------------------------------------------------------------------
-    public UserModel loginMethod(CredenzialiModel credenzialiModel) throws LoginDBException{
+    public UserModel loginMethod(CredenzialiModel credenzialiModel) throws CredenzialiSbagliateException, UtenteInesistenteException{
         UserModel userModel = new UserModel();
 
-        PreparedStatement statement;
+        //PreparedStatement statement;
+        Statement stmt;
 
         //query per verificare credenziali utente
-        String query = "SELECT * FROM utente where email=? AND password=?";
+        //String query = "SELECT * FROM utente WHERE email=? AND password=?";
 
         try{
 
             Connection connection = Connect.getInstance().getDBConnection();
-            statement = connection.prepareStatement(query);
-            statement.setString(1, credenzialiModel.getEmail());
-            statement.setString(2, credenzialiModel.getPassword());
+            stmt = connection.createStatement();
 
-            try (ResultSet rs = statement.executeQuery()) {
+            String email = credenzialiModel.getEmail();
+            String password = credenzialiModel.getPassword();
+
+            //stmt = connection.prepareStatement(query);
+            //statement.setString(1, credenzialiModel.getEmail());
+            //statement.setString(2, credenzialiModel.getPassword());
+            // nel try: ResultSet rs = statement.executeQuery()
+
+            //dopo che ho verificato se l'email inserito dall'utente è stata registrata o meno
+            try{
+                Printer.println("controllo email");
+                ResultSet rs = QueryLogin.checkEmail(stmt, email);
+                if (rs == null){
+                    throw new UtenteInesistenteException();
+                }
+            } catch(UtenteInesistenteException e){
+                Printer.println("L'email non è registrata");
+                throw new UtenteInesistenteException();
+            }
+
+
+            //verifico i credenziali inseriti dall'utente
+            try (ResultSet rs = QueryLogin.loginUser(stmt, email, password)) {
 
                 Printer.println("---------------------------------------------------------");
                 if(!rs.next()) {
                     Printer.println("Il ResultSet è vuoto.");
-                    throw new LoginDBException(0);
+                    throw new CredenzialiSbagliateException("Credenziali sbagliate");
                 }
                 else {
                     userModel.setNome(rs.getString("nome"));

@@ -6,6 +6,7 @@ import com.example.studypal.controller.applicationController.LoginController;
 import com.example.studypal.controller.guiController.studente.HomeStudenteGui;
 import com.example.studypal.controller.guiController.tutor.HomeTutorGui;
 import com.example.studypal.exceptions.CredenzialiSbagliateException;
+import com.example.studypal.exceptions.UtenteInesistenteException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -44,7 +45,7 @@ public class LoginGuiController {
         String userPassword;
 
 
-        //controlla isempty()
+        //controlla se i campi sono compilati
         if (!this.emailField.getText().isEmpty() && !this.passwordField.getText().isEmpty()) {
             userEmail = this.emailField.getText();
             userPassword = this.passwordField.getText();
@@ -71,6 +72,9 @@ public class LoginGuiController {
             caricaHome(loggedInUserBean.getRuolo());
 
         } catch (CredenzialiSbagliateException e) {
+            credenzialiError.setVisible(false);
+            credenzialiSbagliate.setText("Credenziali sbagliate");
+        } catch (UtenteInesistenteException u) {
             credenzialiError.setVisible(false);
             credenzialiSbagliate.setText("Utente inesistente");
         }
