@@ -41,11 +41,11 @@ public class PrenotaRipetizioneGui extends HomeStudenteGui {
     @FXML
     private TextArea note;
 
-    RipetizioneInfoBean informazioni, filtri;
+    RipetizioneInfoBean informazioni;
+    RipetizioneInfoBean filtri;
     List<RipetizioneInfoBean> risultati;
     private static final Logger logger = Logger.getLogger(PrenotaRipetizioneGui.class.getName());
 
-    PrenotazioneBean prenotazioneBean;
 
     public PrenotaRipetizioneGui(LoggedInUserBean user, RipetizioneInfoBean tutor, List<RipetizioneInfoBean> risultatiRicercaBean, RipetizioneInfoBean filtriRicerca){
         this.user = user;
@@ -53,12 +53,6 @@ public class PrenotaRipetizioneGui extends HomeStudenteGui {
         this.risultati = risultatiRicercaBean;
         this.filtri = filtriRicerca;
     }
-
-    public PrenotaRipetizioneGui(LoggedInUserBean user, RipetizioneInfoBean tutor){
-        this.user = user;
-        this.informazioni = tutor;
-    }
-
 
     /*----------------------------------------------------------------------------------------------------------------*/
     public void initialize(){
@@ -75,7 +69,7 @@ public class PrenotaRipetizioneGui extends HomeStudenteGui {
         } else {
             giorniLabel.setText("Non specificato");
         }
-        if (filtri.getInPresenza()!= null && filtri.getOnline() != null){
+        if (filtri.getInPresenza()!=null && filtri.getOnline()!=null){
             modLabel.setText("In presenza, online");
         } else if (filtri.getInPresenza() != null){
             modLabel.setText("In presenza");
@@ -91,7 +85,6 @@ public class PrenotaRipetizioneGui extends HomeStudenteGui {
                 note.setText(oldValue); // Annulla l'input che supera il limite
             }
         });
-
     }
 
     public void goToRisultati(){
@@ -118,13 +111,8 @@ public class PrenotaRipetizioneGui extends HomeStudenteGui {
         prenotazioneBean.setEmailTutor(informazioni.getEmail());
         prenotazioneBean.setEmailStudente(user.getEmail());
         prenotazioneBean.setMateria(filtri.getMateria());
-
-        /* todo: controllare e gestire le modalità di lezione. Come le codifichiamo? Serve enum?
-        if (filtri.getInPresenza() != null && filtri.getOnline()) {
-            prenotazioneBean.setModLezione();
-        }
-        */
         prenotazioneBean.setTariffa(informazioni.getTariffa());
+
         if (filtri.getGiorni() != null){
             prenotazioneBean.setGiorno(filtri.getGiorni());
         }
@@ -135,10 +123,11 @@ public class PrenotaRipetizioneGui extends HomeStudenteGui {
         caricaConferma();
     }
 
+
+    /*-------------------------------------------------CAMBIO PAGINA--------------------------------------------------*/
     public void caricaConferma() {
 
         /*nota: istanzio come controller grafico della pagina di conferma il HomeStudenteGui che ha tutte le funzionalità che mi servono*/
-
         try {
             FXMLLoader loader = new FXMLLoader(GestisciPrenotazioniStudenteGui.class.getResource("/com/example/studypal/view/studente/confermaRichiesta.fxml"));
             loader.setControllerFactory(c -> new HomeStudenteGui(this.user));

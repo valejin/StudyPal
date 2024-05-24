@@ -159,10 +159,8 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
             stage.setScene(scene);
         } catch (IOException e) {
             logger.severe("errore in RisultatiRicercaGuiController (caricamento pagina) " + e.getMessage());
-            //e.printStackTrace();
+            e.printStackTrace();
         }
-
-
     }
 
     public void goToRicerca() {
