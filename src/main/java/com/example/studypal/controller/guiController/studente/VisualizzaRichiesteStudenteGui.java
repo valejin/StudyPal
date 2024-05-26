@@ -3,6 +3,7 @@ package com.example.studypal.controller.guiController.studente;
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.PrenotazioneBean;
 import com.example.studypal.controller.applicationController.studente.GestisciPrenotazioniStudenteController;
+import com.example.studypal.controller.guiController.PopupGui;
 import com.example.studypal.controller.guiController.tutor.VisualizzaRichiestaGui;
 import com.example.studypal.other.Printer;
 import javafx.fxml.FXML;
@@ -44,11 +45,15 @@ public class VisualizzaRichiesteStudenteGui extends HomeStudenteGui {
 
     private static final Logger logger = Logger.getLogger(VisualizzaRichiesteStudenteGui.class.getName());
 
+
+
     public VisualizzaRichiesteStudenteGui(LoggedInUserBean user, PrenotazioneBean prenotazioneSelezionata, List<PrenotazioneBean> listaRichieste){
         this.user = user;
         this.dettagliRichiesta = prenotazioneSelezionata;
         this.listaRichieste = listaRichieste;
     }
+
+
 
     public void initialize(){
 
@@ -77,12 +82,13 @@ public class VisualizzaRichiesteStudenteGui extends HomeStudenteGui {
         } else if (modalita == 2) {
             modLezione.setText("Online");
         }
-
         note.setText(noteAggiuntive);
     }
 
 
-    /*----------------------------------FLAG 0: RICHIESTE INVIATE-----------------------------------------------------*/
+
+
+    /*--------------------------------------FLAG 0: RICHIESTE INVIATE-------------------------------------------------*/
     public void goToRichiesteInviate(){
         try {
             FXMLLoader loader = new FXMLLoader(VisualizzaRichiestaGui.class.getResource("/com/example/studypal/view/studente/richiesteInviate.fxml"));
@@ -95,7 +101,8 @@ public class VisualizzaRichiesteStudenteGui extends HomeStudenteGui {
             logger.severe("errore in VisualizzaRichiesteStudenteGui (caricamento pagina R.I.+) " + e.getMessage());
         }
     }
-    /*----------------------------------FLAG 1: PRENOTAZIONI ATTIVE -----------------------------------------------------*/
+
+    /*---------------------------------------FLAG 1: PRENOTAZIONI ATTIVE ---------------------------------------------*/
     public void goToPrenotazioniAttive(){
         try {
             FXMLLoader loader = new FXMLLoader(VisualizzaRichiestaGui.class.getResource("/com/example/studypal/view/studente/prenotazioniAttiveStudente.fxml"));
@@ -109,6 +116,8 @@ public class VisualizzaRichiesteStudenteGui extends HomeStudenteGui {
         }
     }
 
+
+    /*------------------------------------------FLAG 2: RICHIESTE RIFIUTATE-------------------------------------------*/
     public void goToRichiesteRifiutate(){
         try {
             FXMLLoader loader = new FXMLLoader(VisualizzaRichiestaGui.class.getResource("/com/example/studypal/view/studente/richiesteRifiutate.fxml"));
@@ -121,6 +130,10 @@ public class VisualizzaRichiesteStudenteGui extends HomeStudenteGui {
             logger.severe("errore in VisualizzaRichiesteStudenteGui (caricamento pagina R.R.) " + e.getMessage());
         }
     }
+
+
+
+    /*------------------------------------------CANCELLAZIONE---------------------------------------------------------*/
 
     public void cancellaRichiesta() {
 
@@ -156,20 +169,22 @@ public class VisualizzaRichiesteStudenteGui extends HomeStudenteGui {
         }
     }
 
+
+
     /*-----------------------------------------------RECENSIONE-------------------------------------------------------*/
     public void recensioneMethod(){
 
         try{
 
             FXMLLoader loader = new FXMLLoader(VisualizzaRichiestaGui.class.getResource("/com/example/studypal/view/recensionePOPUP.fxml"));
+            loader.setControllerFactory(c -> new PopupGui(this.dettagliRichiesta.getIdRichiesta()));
             Parent parent = loader.load();
             // Crea una nuova scena per il popup
             Scene scene = new Scene(parent);
-
             // Crea una nuova finestra di dialogo modale per il popup
             Stage popupStage = new Stage();
             popupStage.initModality(Modality.APPLICATION_MODAL);
-            popupStage.setTitle("Popup");
+            popupStage.setTitle("Recensione");
             popupStage.setScene(scene);
 
             // Visualizza il popup

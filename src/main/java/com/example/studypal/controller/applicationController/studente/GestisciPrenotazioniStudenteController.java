@@ -21,6 +21,7 @@ public class GestisciPrenotazioniStudenteController {
         this.user = user;
     }
 
+    public GestisciPrenotazioniStudenteController(){}
 
     public List<PrenotazioneBean> richiesteInviate (String email, Integer flag) {
         /* metodo che viene invocato dal controller grafico per ricevere la lista di richieste inviate/rifiutate/accettate dello studente*/
@@ -57,5 +58,12 @@ public class GestisciPrenotazioniStudenteController {
 
     }
 
+    /*----------------------------------------------------------------------------------------------------------------*/
+
+    public void recensioneMethod(Integer idRichiesta, Integer recensione){
+
+        PrenotazioneDAO prenotazioneDAO = new PrenotazioneDAO();
+        prenotazioneDAO.recensioneMethod(idRichiesta, recensione);
+    }
 
 }

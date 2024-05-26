@@ -53,7 +53,7 @@ public class PrenotazioneDAO {
             //eseguo
             statement.execute();
 
-            System.out.println("Ho eseguito la query. Controlla il db per vedere se la prenotazione è stata correttamente inserita.");
+            Printer.println("Ho eseguito la query. Controlla il db per vedere se la prenotazione è stata correttamente inserita.");
 
         } catch (SQLException e) {
             logger.severe("errore in prenotazioneDAO " + e.getMessage());
@@ -179,7 +179,7 @@ public class PrenotazioneDAO {
                 Printer.println("leggo le richieste in attesa di conferma per l'utente " + email);
                 int i = 0;
                 do {
-                    System.out.println("richiesta n." + i);
+                    Printer.println("richiesta n." + i);
                     PrenotazioneModel richiesta = new PrenotazioneModel(rs.getInt("idrichieste"), rs.getString("emailTutor"),
                             rs.getString("emailStudente"), rs.getString("materia"),
                             rs.getInt("modLezione"), rs.getInt("tariffa"),
@@ -250,4 +250,27 @@ public class PrenotazioneDAO {
         }
         Printer.println("Richiesta eliminata con successo.");
     }
+
+
+    /*-------------------------------------------RECENSIONE-----------------------------------------------------------*/
+
+    public void recensioneMethod(int idRichiesta, int recensione){
+
+        Connection connection;
+        PreparedStatement statement;
+        String query ="UPDATE richieste SET recensione = ? WHERE idrichieste = ?";
+        try {
+            connection = Connect.getInstance().getDBConnection();
+            statement = connection.prepareStatement(query);
+            statement.setInt(1, recensione);
+            statement.setInt(2, idRichiesta);
+            statement.execute();
+            //Printer.println("id richiesta da recensire: " + idRichiesta);
+
+        } catch(SQLException e){
+            Printer.println("Errore in PrenotazioneDAO (metodo: recensioneMethod)");
+        }
+        Printer.println("Recensione salvata con successo.");
+    }
+
 }
