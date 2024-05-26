@@ -100,7 +100,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
                 caricaRisultati(risultatiRicercaBean);
                 System.out.println("ricerca completata");
 
-            } else if (this.inPresenza.isSelected() && this.luogo.getSelectionModel().isEmpty()){
+            } else if (this.inPresenza.isSelected() && this.luogo.getSelectionModel().isEmpty() && this.luogo.getValue()==null){
                 luogoError.setText("Inserire un luogo");
 
             } else {
@@ -108,7 +108,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
                 Printer.println("Ricerca con filtri...");
                 List<RipetizioneInfoBean> risultatiRicercaBean =  ricercaConFiltri();
                 caricaRisultati(risultatiRicercaBean);
-                System.out.println("ricerca completata!");
+                Printer.println("ricerca completata!");
             }
         }
     }
@@ -210,7 +210,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         if (this.inPresenza.isSelected()) {
             inPresenza = true;
             Printer.println("in presenza");
-            if (this.luogo.getSelectionModel().isEmpty()) {
+            if (this.luogo.getSelectionModel().isEmpty() && this.luogo.getValue()==null) {
                 Printer.errorPrint("Seleziona un luogo");
                 luogoError.setText("Seleziona un luogo");
                 return null;
@@ -297,7 +297,6 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
                 stage.setScene(scene);
             } catch (IOException e) {
                 logger.severe("errore in CercaRipetizioneGui " + e.getMessage());
-                //e.printStackTrace();
             }
         }
 

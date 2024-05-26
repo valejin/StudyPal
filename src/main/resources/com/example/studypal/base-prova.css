@@ -130,7 +130,7 @@ Button:hover {
 
 .testo {
     -fx-text-fill: #333333;
-    -fx-effect: dropshadow(gaussian, rgba(40, 164, 37, 0.34), 10, 0.7, 0, 0);
+    -fx-effect: dropshadow(gaussian, rgba(60, 161, 57, 0.34), 10, 0.7, 0, 0);
     -fx-background-color: white;
     -fx-border-radius: 30; /* Arrotonda solo l'angolo*/
     -fx-min-width: 200px; /* Larghezza minima */
