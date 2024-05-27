@@ -2,6 +2,7 @@ package com.example.studypal.controller.guiController.studente;
 
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.RipetizioneInfoBean;
+import com.example.studypal.other.Printer;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.fxml.FXMLLoader;
@@ -67,7 +68,7 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
 
     public void initialize(){
 
-        //setto i valori posti da utente
+        /* ------------ FILTRI ----------------*/
 
         materiaRisultato.setText(filtri.getMateria());
         if (filtri.getLuogo() != null){
@@ -100,12 +101,20 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
         }
 
 
+        /*abbrevio i giorni prima di mostrarli*/
+
+        for (RipetizioneInfoBean tutor: this.tutorList){
+            tutor.abbreviaGiorni();
+            Printer.println(tutor.getGiorni());
+        }
+
+
+        /* --------------------------TABELLA----------------------------*/
+
         nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         cognome.setCellValueFactory(new PropertyValueFactory<>("cognome"));
         tariffa.setCellValueFactory(new PropertyValueFactory<>("tariffa"));
         giorni.setCellValueFactory(new PropertyValueFactory<>("giorni"));
-
-
 
         // Aggiungi gli elementi alla TableView
         risultatiTable.getItems().addAll(tutorList);
@@ -136,9 +145,6 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
                 };
             }
         });
-
-
-
     }
 
 

@@ -1,5 +1,8 @@
 package com.example.studypal.bean;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class RipetizioneInfoBean extends BaseInfoBean{
 
     //questo bean estende BaseInfoBean che contiene il nome materia
@@ -40,6 +43,23 @@ public class RipetizioneInfoBean extends BaseInfoBean{
         this.nome = nome;
         this.cognome = cognome;
         this.materia = materia;
+    }
+
+
+    public void abbreviaGiorni() {
+
+        Map<String, String> giorniMap = new HashMap<>();
+        giorniMap.put("Lunedì", "L");
+        giorniMap.put("Martedì", "Ma");
+        giorniMap.put("Mercoledì", "Me");
+        giorniMap.put("Giovedì", "G");
+        giorniMap.put("Venerdì", "V");
+        giorniMap.put("Sabato", "S");
+        giorniMap.put("Domenica", "D");
+
+        for (Map.Entry<String, String> entry : giorniMap.entrySet()) {
+            this.giorni = this.giorni.replace(entry.getKey(), entry.getValue());
+        }
     }
 
     public Integer getTariffa() {
