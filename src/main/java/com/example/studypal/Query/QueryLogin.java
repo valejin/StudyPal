@@ -1,7 +1,6 @@
 package com.example.studypal.Query;
 
 import com.example.studypal.exceptions.CredenzialiSbagliateException;
-import com.example.studypal.exceptions.EmailAlreadyInUseException;
 import com.example.studypal.exceptions.UtenteInesistenteException;
 import com.example.studypal.other.Printer;
 
@@ -16,7 +15,6 @@ public class QueryLogin {
 
         try{
             String sql = String.format(Query.RICERCA_EMAIL, email);
-            System.out.println("sono qui 1");
             ResultSet rs = stmt.executeQuery(sql);
 
             if (!rs.next()){

@@ -178,3 +178,32 @@ Button:hover {
     -fx-font-size: 15px; /* Imposta la grandezza del testo a 15 pixel */
     -fx-alignment: center-left;
 }
+
+
+.check-box .box{
+    /*-fx-border-color: rgba(60, 161, 57, 0.34); /* Cambia il colore del contorno */
+    -fx-effect: dropshadow(gaussian, rgba(60, 161, 57, 0.34), 10, 0.7, 0, 0);
+    -fx-border-width: 2; /* Cambia la larghezza del contorno */
+    -fx-border-radius: 0; /* Cambia l'angolatura degli spigoli */
+}
+
+
+.slider .track {
+    -fx-background-color: linear-gradient(to right, #8fc28c 0%, #68b763 50%, #245424 100%);
+    -fx-background-insets: 0 0 -1 0;
+}
+
+
+.combo-box {
+    -fx-effect: dropshadow(gaussian, rgba(60, 161, 57, 0.34), 10, 0.7, 0, 0);
+    -fx-border-radius: 30; /* Cambia l'angolatura degli spigoli */
+}
+
+
+.menu-button {
+    -fx-effect: dropshadow(gaussian, rgba(60, 161, 57, 0.34), 10, 0.7, 0, 0);
+    -fx-border-radius: 30; /* Cambia l'angolatura degli spigoli */
+}
+
+
+

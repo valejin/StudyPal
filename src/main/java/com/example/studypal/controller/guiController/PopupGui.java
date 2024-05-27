@@ -19,7 +19,7 @@ public class PopupGui {
     public void initialize(){
         recensioneSlider.setMinorTickCount(0);
         recensioneSlider.setSnapToTicks(true);
-
+        recensioneSlider.setBlockIncrement(1);
     }
 
     public void recensioneMethod(){

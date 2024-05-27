@@ -74,14 +74,11 @@
                      <children>
                         <TableView fx:id="risultatiTable" layoutX="1.0" prefHeight="318.0" prefWidth="606.0">
                           <columns>
-                            <TableColumn prefWidth="187.19999384880066" text="Tutor">
-                                 <columns>
-                                    <TableColumn fx:id="nome" prefWidth="87.99998164176941" text="Nome" />
-                                    <TableColumn fx:id="cognome" editable="false" prefWidth="84.0" text="Cognome" />
-                                 </columns></TableColumn>
-                            <TableColumn fx:id="tariffa" editable="false" minWidth="4.0" prefWidth="56.79998779296875" text="Tariffa" />
-                              <TableColumn fx:id="giorni" editable="false" prefWidth="236.8000030517578" text="Disponibilità" />
-                              <TableColumn fx:id="prenota" editable="false" minWidth="0.0" prefWidth="128.79998779296875" text="Prenota" />
+                              <TableColumn fx:id="nome" prefWidth="101.60001826286316" resizable="false" text="Nome" />
+                              <TableColumn fx:id="cognome" editable="false" prefWidth="96.79998779296875" text="Cognome" />
+                            <TableColumn fx:id="tariffa" editable="false" minWidth="4.0" prefWidth="51.20001220703125" resizable="false" text="Tariffa" />
+                              <TableColumn fx:id="giorni" editable="false" prefWidth="219.19996643066406" resizable="false" text="Disponibilità" />
+                              <TableColumn fx:id="prenota" editable="false" minWidth="0.0" prefWidth="128.79998779296875" resizable="false" text="Prenota" />
                           </columns>
                         </TableView>
                      </children>
@@ -182,7 +179,7 @@
          <font>
             <Font size="14.0" />
          </font></Text>
-      <ImageView fx:id="backButton" fitHeight="60.0" fitWidth="58.0" layoutX="233.0" layoutY="32.0" onMouseClicked="#goToRicerca" preserveRatio="true">
+      <ImageView fx:id="backButton" fitHeight="60.0" fitWidth="58.0" layoutX="211.0" layoutY="33.0" onMouseClicked="#goToRicerca" preserveRatio="true">
          <image>
             <Image url="@../../immagini/backButton.PNG" />
          </image>

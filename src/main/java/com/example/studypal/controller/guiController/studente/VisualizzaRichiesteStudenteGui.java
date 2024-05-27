@@ -65,7 +65,7 @@ public class VisualizzaRichiesteStudenteGui extends HomeStudenteGui {
         if (giorno != null && !giorno.isEmpty()) {
             giorni.setText(giorno);
         }else{
-            giorni.setText("Non specificato");
+            giorni.setText("Qualsiasi");
         }
 
         noteAggiuntive = dettagliRichiesta.getNote();
@@ -76,7 +76,7 @@ public class VisualizzaRichiesteStudenteGui extends HomeStudenteGui {
         materia.setText(materiaRichiesta);
 
         if(modalita == 0) {
-            modLezione.setText("Non specificato");
+            modLezione.setText("In presenza & Online");
         } else if (modalita == 1) {
             modLezione.setText("In presenza");
         } else if (modalita == 2) {

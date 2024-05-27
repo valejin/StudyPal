@@ -60,6 +60,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         tariffaSlider.setValue(50); // Imposta un valore predefinito(minimo)
         tariffaSlider.setShowTickLabels(true);
         tariffaSlider.setShowTickMarks(true);
+        tariffaSlider.setBlockIncrement(1);
 
         // Per visualizzare dinamicamente il valore di Slider
         tariffaSlider.valueProperty().addListener((observable, oldValue, newValue) -> tariffaValue.setText(newValue.intValue() + "€"));

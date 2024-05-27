@@ -93,7 +93,7 @@
                      <Font size="15.0" />
                   </font>
                </Text>
-               <ComboBox fx:id="luogo" editable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="207.0" />
+               <ComboBox fx:id="luogo" editable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="207.0" styleClass="combo-box" />
                <Label fx:id="luogoError" prefHeight="18.0" prefWidth="310.0" textFill="#bf0000" />
                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Modalità di lezione:">
                   <VBox.margin>

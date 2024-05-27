@@ -84,19 +84,19 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
                 modalitaRisultato.setText("In presenza");
             }
         } else {
-            modalitaRisultato.setText("Non specificato");
+            modalitaRisultato.setText("In presenza & Online");
         }
         if (filtri.getTariffa() != null){
             int value = filtri.getTariffa();
             tariffaRisultato.setText(value + "€/h");
         } else {
-            tariffaRisultato.setText("Non specificato");
+            tariffaRisultato.setText("50€/h");
         }
 
         if(filtri.getGiorni() != null) {
             giorniRisultato.setText(filtri.getGiorni());
         } else {
-            giorniRisultato.setText("Non specificato");
+            giorniRisultato.setText("Qualsiasi");
         }
 
 
