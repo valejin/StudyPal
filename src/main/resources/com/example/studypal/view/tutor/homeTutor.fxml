@@ -12,9 +12,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="850.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.tutor.HomeTutorGui">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.tutor.HomeTutorGui">
    <children>
-      <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0" stylesheets="@../../menu.css">
+      <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="200.0" stylesheets="@../../menu.css">
          <children>
             <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -63,19 +63,19 @@
             </DropShadow>
          </effect>
       </VBox>
-      <Text fx:id="titolo" fill="#000000ac" layoutX="398.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Benvenuto  a  StudyPal" textAlignment="CENTER" wrappingWidth="257.51171875" AnchorPane.leftAnchor="398.0" AnchorPane.rightAnchor="194.48828125" AnchorPane.topAnchor="63.16796875">
+      <Text fx:id="titolo" fill="#000000ac" layoutX="350.6" layoutY="122.63203125" strokeType="OUTSIDE" strokeWidth="0.0" text="Benvenuto  a  StudyPal" textAlignment="CENTER" wrappingWidth="479.91168212890625" AnchorPane.leftAnchor="350.6" AnchorPane.rightAnchor="169.48831787109373" AnchorPane.topAnchor="84.8">
          <font>
             <Font size="40.0" />
          </font>
       </Text>
-      <ImageView fitHeight="206.0" fitWidth="211.0" layoutX="423.0" layoutY="203.0" opacity="0.66" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="301.0" fitWidth="306.0" layoutX="439.0" layoutY="187.0" opacity="0.66" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../immagini/iconaConversazione.png" />
          </image>
       </ImageView>
-      <Text fill="#000000ab" layoutX="513.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sono tutor" textAlignment="CENTER" wrappingWidth="48.13946533203125">
+      <Text fill="#000000ab" layoutX="573.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sono tutor" textAlignment="CENTER" wrappingWidth="64.13946533203125">
          <font>
-            <Font name="Rockwell Italic" size="12.0" />
+            <Font name="Rockwell Italic" size="20.0" />
          </font>
       </Text>
    </children>

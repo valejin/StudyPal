@@ -15,9 +15,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.tutor.RichiesteTutorGui">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.tutor.RichiesteTutorGui">
     <children>
-        <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0" stylesheets="@../../menu.css">
+        <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="200.0" stylesheets="@../../menu.css">
             <children>
                 <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -66,22 +66,22 @@
             </DropShadow>
          </effect>
         </VBox>
-        <Text fx:id="titolo" fill="#000000ac" layoutX="313.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenotazioni Rifiutate" textAlignment="CENTER" wrappingWidth="452.71179151535034" AnchorPane.leftAnchor="313.0" AnchorPane.rightAnchor="107.0" AnchorPane.topAnchor="25.0">
+        <Text fx:id="titolo" fill="#000000ac" layoutX="382.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenotazioni Rifiutate" textAlignment="CENTER" wrappingWidth="452.71179151535034" AnchorPane.leftAnchor="382.0" AnchorPane.rightAnchor="165.28820848464966" AnchorPane.topAnchor="25.16796875">
             <font>
                 <Font size="32.0" />
             </font>
         </Text>
-      <AnchorPane fx:id="zonaInfo" layoutX="213.0" layoutY="86.0" prefHeight="400.0" prefWidth="622.0" stylesheets="@../../base-prova.css">
+      <AnchorPane fx:id="zonaInfo" layoutX="213.0" layoutY="86.0" prefHeight="502.0" prefWidth="774.0" stylesheets="@../../base-prova.css">
          <children>
-            <ScrollPane layoutX="13.0" layoutY="14.0" prefHeight="369.0" prefWidth="596.0">
+            <ScrollPane layoutX="10.0" layoutY="11.0" prefHeight="482.0" prefWidth="755.0">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="350.0" prefWidth="595.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="478.0" prefWidth="753.0">
                      <children>
-                        <TableView fx:id="risultatiTable" prefHeight="353.0" prefWidth="596.0">
+                        <TableView fx:id="risultatiTable" prefHeight="482.0" prefWidth="755.0">
                            <columns>
                               <TableColumn fx:id="email" prefWidth="287.19993287324905" text="email" />
-                              <TableColumn fx:id="materia" prefWidth="160.79998779296875" text="materia" />
-                              <TableColumn fx:id="visualizza" minWidth="0.0" prefWidth="147.199951171875" text="visualizza" />
+                              <TableColumn fx:id="materia" prefWidth="300.0" text="materia" />
+                              <TableColumn fx:id="visualizza" minWidth="0.0" prefWidth="167.20000000000005" resizable="false" text="visualizza" />
                            </columns>
                         </TableView>
                      </children>
@@ -90,7 +90,7 @@
             </ScrollPane>
          </children>
       </AnchorPane>
-      <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="213.0" layoutY="22.0" onMouseClicked="#goToGestisciPrenotazioni" preserveRatio="true">
+      <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="203.0" layoutY="22.0" onMouseClicked="#goToGestisciPrenotazioni" preserveRatio="true">
          <image>
             <Image url="@../../immagini/backButton.PNG" />
          </image>

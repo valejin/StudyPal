@@ -15,9 +15,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.tutor.RichiesteTutorGui">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.tutor.RichiesteTutorGui">
     <children>
-        <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0" stylesheets="@../../menu.css">
+        <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="200.0" stylesheets="@../../menu.css">
             <children>
                 <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -66,34 +66,34 @@
             </DropShadow>
          </effect>
         </VBox>
-        <Text fx:id="titolo" fill="#000000ac" layoutX="296.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenotazioni Attive" textAlignment="CENTER" wrappingWidth="452.71179151535034" AnchorPane.leftAnchor="296.0" AnchorPane.rightAnchor="101.28820848464966" AnchorPane.topAnchor="34.16796875">
+        <Text fx:id="titolo" fill="#000000ac" layoutX="369.8" layoutY="72.23203125" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenotazioni Attive" textAlignment="CENTER" wrappingWidth="452.71179151535034" AnchorPane.leftAnchor="369.8" AnchorPane.rightAnchor="177.4882084846497" AnchorPane.topAnchor="34.400000000000006">
             <font>
                 <Font size="32.0" />
             </font>
         </Text>
-      <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="232.0" layoutY="31.0" onMouseClicked="#goToGestisciPrenotazioni" preserveRatio="true">
+      <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="206.0" layoutY="31.0" onMouseClicked="#goToGestisciPrenotazioni" preserveRatio="true">
          <image>
             <Image url="@../../immagini/backButton.PNG" />
          </image>
       </ImageView>
-      <AnchorPane fx:id="zonaInfo" layoutX="217.0" layoutY="85.0" prefHeight="400.0" prefWidth="590.0" stylesheets="@../../base-prova.css">
+      <AnchorPane fx:id="zonaInfo" layoutX="217.0" layoutY="85.0" prefHeight="497.0" prefWidth="764.0" stylesheets="@../../base-prova.css">
          <children>
-            <ScrollPane layoutX="7.0" layoutY="28.0" prefHeight="357.0" prefWidth="596.0">
+            <ScrollPane layoutX="7.0" layoutY="28.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="750.0">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="350.0" prefWidth="595.0">
+                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="466.0" prefWidth="749.0">
                      <children>
-                        <TableView fx:id="risultatiTable" prefHeight="330.0" prefWidth="581.0">
+                        <TableView fx:id="risultatiTable" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="750.0">
                            <columns>
-                              <TableColumn fx:id="email" prefWidth="280.0000122189522" text="email" />
-                              <TableColumn fx:id="materia" prefWidth="163.20004272460938" text="materia" />
-                              <TableColumn fx:id="visualizza" minWidth="0.0" prefWidth="152.79998779296875" text="visualizza" />
+                              <TableColumn fx:id="email" prefWidth="289.0" resizable="false" text="email" />
+                              <TableColumn fx:id="materia" prefWidth="300.0" resizable="false" text="materia" />
+                              <TableColumn fx:id="visualizza" minWidth="0.0" prefWidth="148.0" resizable="false" text="visualizza" />
                            </columns>
                         </TableView>
                      </children>
                   </AnchorPane>
                </content>
             </ScrollPane>
-            <Text layoutX="187.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenotazioni precedentemente confermate" textAlignment="CENTER" wrappingWidth="247.99999999999994" />
+            <Text layoutX="258.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenotazioni precedentemente confermate" textAlignment="CENTER" wrappingWidth="247.99999999999994" />
          </children>
       </AnchorPane>
     </children>

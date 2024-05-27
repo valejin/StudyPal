@@ -14,9 +14,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.tutor.VisualizzaRichiestaGui">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.tutor.VisualizzaRichiestaGui">
     <children>
-        <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0" stylesheets="@../../menu.css">
+        <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="200.0" stylesheets="@../../menu.css">
             <children>
                 <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -65,12 +65,12 @@
             </DropShadow>
          </effect>
         </VBox>
-        <Text fx:id="titolo" fill="#000000ac" layoutX="332.8" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dettagli Richiesta" textAlignment="CENTER" wrappingWidth="411.1118166446686" AnchorPane.leftAnchor="332.8" AnchorPane.rightAnchor="106.08818335533147" AnchorPane.topAnchor="33.0">
+        <Text fx:id="titolo" fill="#000000ac" layoutX="412.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dettagli Richiesta" textAlignment="CENTER" wrappingWidth="368.7117922306061" AnchorPane.leftAnchor="412.0" AnchorPane.rightAnchor="219.28820776939392" AnchorPane.topAnchor="32.16796875">
             <font>
                 <Font size="32.0" />
             </font>
         </Text>
-      <AnchorPane fx:id="sfondoChiaro" layoutX="250.0" layoutY="105.0" prefHeight="350.0" prefWidth="557.0" stylesheets="@../../base-prova.css">
+      <AnchorPane fx:id="sfondoChiaro" layoutX="213.0" layoutY="86.0" prefHeight="502.0" prefWidth="774.0" stylesheets="@../../base-prova.css">
          <children>
             <VBox layoutX="71.0" layoutY="60.0" prefHeight="250.0" prefWidth="90.0">
                <children>
