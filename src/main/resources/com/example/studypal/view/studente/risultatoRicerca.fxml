@@ -77,7 +77,7 @@
                               <TableColumn fx:id="nome" prefWidth="101.60001826286316" resizable="false" text="Nome" />
                               <TableColumn fx:id="cognome" editable="false" prefWidth="96.79998779296875" text="Cognome" />
                             <TableColumn fx:id="tariffa" editable="false" minWidth="4.0" prefWidth="51.20001220703125" resizable="false" text="Tariffa" />
-                              <TableColumn fx:id="materia" prefWidth="114.40003967285156" text="Materie" />
+                              <TableColumn fx:id="materia" prefWidth="114.40003967285156" text="Materia" />
                               <TableColumn fx:id="giorni" editable="false" prefWidth="104.7999267578125" resizable="false" text="Disponibilità" />
                               <TableColumn fx:id="prenota" editable="false" minWidth="0.0" prefWidth="118.39996337890625" resizable="false" />
                           </columns>
