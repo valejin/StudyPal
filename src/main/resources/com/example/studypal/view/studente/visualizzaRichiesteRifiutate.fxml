@@ -12,12 +12,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.studente.VisualizzaRichiesteStudenteGui">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.studente.VisualizzaRichiesteStudenteGui">
     <stylesheets>
         <URL value="@../../button.css" />
         <URL value="@../../base-prova.css" />
     </stylesheets>
-    <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0" stylesheets="@../../base-prova.css">
+    <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="200.0" stylesheets="@../../base-prova.css">
         <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
             <VBox.margin>
                 <Insets top="60.0" />
@@ -56,8 +56,8 @@
             </effect>
         </Button>
     </VBox>
-    <AnchorPane fx:id="sfondoChiaro" layoutX="243.0" layoutY="113.0" prefHeight="350.0" prefWidth="557.0" stylesheets="@../../base-prova.css">
-        <VBox layoutX="76.0" layoutY="33.0" prefHeight="250.0" prefWidth="90.0">
+    <AnchorPane fx:id="sfondoChiaro" layoutX="243.0" layoutY="115.0" prefHeight="445.0" prefWidth="720.0" stylesheets="@../../base-prova.css">
+        <VBox layoutX="131.0" layoutY="65.0" prefHeight="250.0" prefWidth="90.0">
             <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Tutor:">
             <font>
                <Font size="15.0" />
@@ -86,7 +86,7 @@
                <Font size="15.0" />
             </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Giorni preferibili:">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Giorno:">
                 <VBox.margin>
                     <Insets top="15.0" />
                 </VBox.margin>
@@ -96,14 +96,14 @@
             </Text>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Note aggiuntive:">
                 <VBox.margin>
-                    <Insets top="15.0" />
+                    <Insets top="20.0" />
                 </VBox.margin>
             <font>
                <Font size="15.0" />
             </font>
             </Text>
         </VBox>
-        <VBox layoutX="195.0" layoutY="67.0" prefHeight="216.0" prefWidth="338.0">
+        <VBox layoutX="276.0" layoutY="100.0" prefHeight="130.0" prefWidth="338.0">
             <Label fx:id="emailTutor" prefHeight="18.0" prefWidth="226.0" text="Label">
                 <VBox.margin>
                     <Insets top="2.0" />
@@ -130,27 +130,27 @@
                     <Insets top="13.0" />
                 </VBox.margin>
             </Label>
-            <Label fx:id="note" alignment="TOP_LEFT" prefHeight="54.0" prefWidth="338.0" text="Label" wrapText="true">
-                <VBox.margin>
-                    <Insets top="14.0" />
-                </VBox.margin>
-            <font>
-               <Font size="15.0" />
-            </font>
-            </Label>
         </VBox>
-        <Label fx:id="nome" layoutX="195.0" layoutY="32.0" prefHeight="18.0" prefWidth="91.0" text="Label" />
-        <Label fx:id="cognome" layoutX="308.0" layoutY="32.0" text="Label" />
-        <Text fill="#b22740" layoutX="147.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La richiesta è stata rifiutata dal tutor.">
+        <Label fx:id="nome" layoutX="276.0" layoutY="65.0" prefHeight="18.0" prefWidth="91.0" text="Label" />
+        <Label fx:id="cognome" layoutX="389.0" layoutY="65.0" text="Label" />
+        <Text fill="#b22740" layoutX="233.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La richiesta è stata rifiutata dal tutor." wrappingWidth="262.56591796875">
             <font>
                 <Font name="Arial Bold Italic" size="15.0" />
             </font>
         </Text>
+        <AnchorPane fx:id="zonaInfo" layoutX="263.0" layoutY="238.0" prefHeight="120.0" prefWidth="353.0">
+            <Label fx:id="note" alignment="TOP_LEFT" layoutX="14.0" layoutY="11.0" prefHeight="94.0" prefWidth="326.0"
+                   text="Label" wrapText="true">
+                <font>
+                    <Font size="15.0"/>
+                </font>
+            </Label>
+        </AnchorPane>
     </AnchorPane>
-    <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="243.0" layoutY="37.0" onMouseClicked="#goToRichiesteRifiutate" preserveRatio="true">
+    <ImageView fx:id="backButton" fitHeight="60.0" fitWidth="75.0" layoutX="229.0" layoutY="25.0" onMouseClicked="#goToRichiesteRifiutate" preserveRatio="true">
         <Image url="@../../immagini/backButton.PNG" />
     </ImageView>
-    <Text fx:id="titolo" fill="#000000ac" layoutX="316.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dettagli Richiesta" textAlignment="CENTER" wrappingWidth="411.1118166446686">
+    <Text fx:id="titolo" fill="#000000ac" layoutX="397.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dettagli Richiesta" textAlignment="CENTER" wrappingWidth="411.1118166446686" AnchorPane.topAnchor="30.0">
         <font>
             <Font size="32.0" />
         </font>

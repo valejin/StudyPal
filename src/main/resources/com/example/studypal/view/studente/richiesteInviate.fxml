@@ -14,88 +14,93 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.studente.RichiesteStudenteGui">
-    <children>
-        <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0" stylesheets="@../../base-prova.css">
-            <children>
-                <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
-                    <VBox.margin>
-                        <Insets top="60.0" />
-                    </VBox.margin>
-                    <image>
-                        <Image url="@../../immagini/iconStudent.png" />
-                    </image>
-                    <effect>
-                        <InnerShadow />
-                    </effect>
-                </ImageView>
-                <Button mnemonicParsing="false" onMouseClicked="#goToPrenotaRipetizione" prefHeight="60.0" prefWidth="130.0" styleClass="custom-button" text="Prenota ripetizione" textAlignment="CENTER" wrapText="true">
-                    <VBox.margin>
-                        <Insets top="40.0" />
-                    </VBox.margin>
-                    <stylesheets>
-                        <URL value="@../../base-prova.css" />
-                        <URL value="@../../button.css" />
-                    </stylesheets>
-                    <effect>
-                        <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
-                    </effect>
-                </Button>
-                <Button mnemonicParsing="false" onAction="#goToGestisciPrenotazioni" prefHeight="60.0" prefWidth="130.0" styleClass="custom-button" stylesheets="@../../button.css" text="Gestisci Prenotazioni" textAlignment="CENTER" wrapText="true">
-                    <VBox.margin>
-                        <Insets top="30.0" />
-                    </VBox.margin>
-                    <effect>
-                        <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
-                    </effect>
-                </Button>
-                <Button mnemonicParsing="false" onMouseClicked="#goToLogout" prefHeight="33.0" prefWidth="130.0" styleClass="custom-button" stylesheets="@../../button.css" text="Esci">
-                    <VBox.margin>
-                        <Insets top="30.0" />
-                    </VBox.margin>
-                    <effect>
-                        <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
-                    </effect>
-                </Button>
-            </children>
-        </VBox>
-      <Text fx:id="titolo" fill="#000000ac" layoutX="294.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Richieste Inviate" textAlignment="CENTER" wrappingWidth="452.71179151535034">
-         <font>
-            <Font size="32.0" />
-         </font>
-      </Text>
-      <AnchorPane fx:id="zonaInfo" layoutX="216.0" layoutY="86.0" prefHeight="400.0" prefWidth="609.0" stylesheets="@../../base-prova.css">
-         <children>
-            <ScrollPane layoutX="-1.0" layoutY="28.0" prefHeight="358.0" prefWidth="610.0">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="350.0" prefWidth="300.0" stylesheets="@../../button.css">
-                     <children>
-                        <TableView fx:id="richiesteTable" prefHeight="330.0" prefWidth="610.0" stylesheets="@../../button.css">
-                           <columns>
-                              <TableColumn fx:id="materia" minWidth="6.4000244140625" prefWidth="127.1999939084053" text="Materia" />
-                              <TableColumn fx:id="email" prefWidth="219.2000274658203" text="Contatto del tutor" />
-                              <TableColumn fx:id="tariffa" prefWidth="110.4000244140625" text="Tariffa" />
-                              <TableColumn fx:id="visualizza" minWidth="0.0" prefWidth="151.99997558593748" text="Visualizza" />
-                           </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </ScrollPane>
-            <Text layoutX="132.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Richieste di prenotazioni inviate in attesa di conferma" textAlignment="CENTER" wrappingWidth="344.00012207031244">
-               <font>
-                  <Font size="14.0" />
-               </font></Text>
-         </children>
-      </AnchorPane>
-      <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="216.0" layoutY="24.0" onMouseClicked="#goToGestisciPrenotazioni" preserveRatio="true">
-         <image>
-            <Image url="@../../immagini/backButton.PNG" />
-         </image>
-      </ImageView>
-    </children>
+<AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.studypal.controller.guiController.studente.RichiesteStudenteGui">
     <stylesheets>
-        <URL value="@../../button.css" />
-        <URL value="@../../base-prova.css" />
+        <URL value="@../../button.css"/>
+        <URL value="@../../base-prova.css"/>
     </stylesheets>
+    <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="200.0"
+          stylesheets="@../../base-prova.css">
+        <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+            <VBox.margin>
+                <Insets top="60.0"/>
+            </VBox.margin>
+            <effect>
+                <InnerShadow/>
+            </effect>
+            <Image url="@../../immagini/iconStudent.png"/>
+        </ImageView>
+        <Button mnemonicParsing="false" onMouseClicked="#goToPrenotaRipetizione" prefHeight="60.0" prefWidth="130.0"
+                styleClass="custom-button" text="Prenota ripetizione" textAlignment="CENTER" wrapText="true">
+            <VBox.margin>
+                <Insets top="40.0"/>
+            </VBox.margin>
+            <stylesheets>
+                <URL value="@../../base-prova.css"/>
+                <URL value="@../../button.css"/>
+            </stylesheets>
+            <effect>
+                <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0"/>
+            </effect>
+        </Button>
+        <Button mnemonicParsing="false" onAction="#goToGestisciPrenotazioni" prefHeight="60.0" prefWidth="130.0"
+                styleClass="custom-button" stylesheets="@../../button.css" text="Gestisci Prenotazioni"
+                textAlignment="CENTER" wrapText="true">
+            <VBox.margin>
+                <Insets top="30.0"/>
+            </VBox.margin>
+            <effect>
+                <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0"/>
+            </effect>
+        </Button>
+        <Button mnemonicParsing="false" onMouseClicked="#goToLogout" prefHeight="33.0" prefWidth="130.0"
+                styleClass="custom-button" stylesheets="@../../button.css" text="Esci">
+            <VBox.margin>
+                <Insets top="30.0"/>
+            </VBox.margin>
+            <effect>
+                <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0"/>
+            </effect>
+        </Button>
+    </VBox>
+    <Text fx:id="titolo" fill="#000000ac" layoutX="377.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0"
+          text="Richieste Inviate" textAlignment="CENTER" wrappingWidth="452.71179151535034"
+          AnchorPane.topAnchor="30.16796875">
+        <font>
+          <Font size="32.0"/>
+        </font>
+    </Text>
+    <AnchorPane fx:id="zonaInfo" layoutX="245.0" layoutY="86.0" prefHeight="474.0" prefWidth="715.0"
+                stylesheets="@../../base-prova.css">
+        <ScrollPane layoutY="55.0" prefHeight="425.0" prefWidth="715.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="477.0" prefWidth="698.0"
+                        stylesheets="@../../button.css">
+                <TableView fx:id="richiesteTable" prefHeight="481.0" prefWidth="703.0"
+                           stylesheets="@../../button.css">
+                    <columns>
+                        <TableColumn fx:id="materia" minWidth="6.4000244140625"
+                                     prefWidth="185.6000183224678" text="Materia"/>
+                        <TableColumn fx:id="email" prefWidth="203.19996643066406"
+                                     text="Contatto del tutor"/>
+                        <TableColumn fx:id="tariffa" prefWidth="132.0" text="Tariffa"/>
+                        <TableColumn fx:id="visualizza" minWidth="0.0" prefWidth="181.5999755859375"
+                                     text="Visualizza"/>
+                    </columns>
+                </TableView>
+            </AnchorPane>
+        </ScrollPane>
+        <Text layoutX="185.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              text="Richieste di prenotazioni inviate in attesa di conferma" textAlignment="CENTER"
+              wrappingWidth="344.00012207031244">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Text>
+    </AnchorPane>
+    <ImageView fx:id="backButton" fitHeight="60.0" fitWidth="70.0" layoutX="234.0" layoutY="27.0"
+               onMouseClicked="#goToGestisciPrenotazioni" preserveRatio="true">
+        <Image url="@../../immagini/backButton.PNG"/>
+    </ImageView>
 </AnchorPane>

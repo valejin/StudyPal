@@ -16,220 +16,230 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.studente.PrenotaRipetizioneGui">
-   <children>
-      <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0" stylesheets="@../../base-prova.css">
-         <children>
-            <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
-               <VBox.margin>
-                  <Insets top="60.0" />
-               </VBox.margin>
-               <image>
-                  <Image url="@../../immagini/iconStudent.png" />
-               </image>
-               <effect>
-                  <InnerShadow />
-               </effect>
-            </ImageView>
-            <Button mnemonicParsing="false" onMouseClicked="#goToPrenotaRipetizione" prefHeight="60.0" prefWidth="130.0" styleClass="custom-button" text="Prenota ripetizione" textAlignment="CENTER" wrapText="true">
-               <VBox.margin>
-                  <Insets top="40.0" />
-               </VBox.margin>
-               <stylesheets>
-                  <URL value="@../../base-prova.css" />
-                  <URL value="@../../button.css" />
-               </stylesheets>
-               <effect>
-                  <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
-               </effect>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#goToGestisciPrenotazioni" prefHeight="60.0" prefWidth="130.0" styleClass="custom-button" stylesheets="@../../button.css" text="Gestisci Prenotazioni" textAlignment="CENTER" wrapText="true">
-               <VBox.margin>
-                  <Insets top="30.0" />
-               </VBox.margin>
-               <effect>
-                  <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
-               </effect>
-            </Button>
-            <Button mnemonicParsing="false" onMouseClicked="#goToLogout" prefHeight="33.0" prefWidth="130.0" styleClass="custom-button" stylesheets="@../../button.css" text="Esci">
-               <VBox.margin>
-                  <Insets top="30.0" />
-               </VBox.margin>
-               <effect>
-                  <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
-               </effect>
-            </Button>
-         </children>
+<AnchorPane minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../../base-prova.css"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.studypal.controller.guiController.studente.PrenotaRipetizioneGui">
+   <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="200.0"
+         stylesheets="@../../base-prova.css">
+      <effect>
+         <DropShadow>
+            <color>
+               <Color red="0.49803921580314636" green="0.6509804129600525" blue="0.7568627595901489"/>
+            </color>
+         </DropShadow>
+      </effect>
+      <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+         <VBox.margin>
+            <Insets top="60.0"/>
+         </VBox.margin>
          <effect>
-            <DropShadow>
-               <color>
-                  <Color red="0.49803921580314636" green="0.6509804129600525" blue="0.7568627595901489" />
-               </color>
-            </DropShadow>
+            <InnerShadow/>
          </effect>
-      </VBox>
-      <AnchorPane fx:id="sfondoChiaro" layoutX="250.0" layoutY="98.0" prefHeight="369.0" prefWidth="544.0" stylesheets="@../../base-prova.css">
-         <children>
-            <Text fill="#5695bf" layoutX="90.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Controlla le informazioni presenti nella tua richiesta">
-               <font>
-                  <Font size="16.0" />
-               </font></Text>
-            <VBox layoutX="72.0" layoutY="56.0" prefHeight="138.0" prefWidth="100.0">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Nome:">
-                     <font>
-                        <Font size="15.0" />
-                     </font></Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Email:">
-                     <VBox.margin>
-                        <Insets top="15.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Materia:">
-                     <VBox.margin>
-                        <Insets top="15.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Modalità:">
-                     <VBox.margin>
-                        <Insets top="15.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Text>
-               </children>
-            </VBox>
-            <VBox layoutX="140.0" layoutY="56.0" prefHeight="150.0" prefWidth="138.0">
-               <children>
-                  <Label fx:id="nomeLabel" prefHeight="22.0" prefWidth="145.0" text="label">
-                     <font>
-                        <Font size="15.0" />
-                     </font></Label>
-                  <Label fx:id="emailLabel" prefHeight="22.0" prefWidth="144.0" text="label">
-                     <VBox.margin>
-                        <Insets top="13.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="materiaLabel" prefHeight="22.0" prefWidth="143.0" text="label">
-                     <VBox.margin>
-                        <Insets top="13.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="modLabel" prefHeight="22.0" prefWidth="145.0" text="label">
-                     <VBox.margin>
-                        <Insets top="13.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-               </children>
-            </VBox>
-            <TextArea fx:id="note" layoutX="72.0" layoutY="224.0" prefHeight="74.0" prefWidth="397.0" promptText="Inserisci delle informazioni aggiuntive (data, ora, richieste particolari) per il tuo tutor..." wrapText="true" />
-            <Button layoutX="234.0" layoutY="316.0" mnemonicParsing="false" onAction="#prenota" styleClass="custom-button" stylesheets="@../../button.css" text="Invia" />
-            <Text layoutX="73.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Note aggiuntive:">
-               <font>
-                  <Font size="15.0" />
-               </font></Text>
-            <Line endX="100.0" layoutX="384.0" layoutY="38.0" opacity="0.66" startX="-325.0" startY="1.52587890625E-5" stroke="#5695bf" strokeLineCap="ROUND" strokeWidth="2.0" />
-            <VBox layoutX="293.0" layoutY="56.0" prefHeight="138.0" prefWidth="100.0">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Cognome:">
-                     <font>
-                        <Font size="15.0" />
-                     </font></Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Tariffa:">
-                     <VBox.margin>
-                        <Insets top="15.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="10.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Luogo:">
-                     <VBox.margin>
-                        <Insets top="15.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Giorni:">
-                     <VBox.margin>
-                        <Insets top="15.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Text>
-               </children>
-            </VBox>
-            <VBox layoutX="370.0" layoutY="56.0" prefHeight="150.0" prefWidth="148.0">
-               <children>
-                  <Label fx:id="cognomeLabel" prefHeight="22.0" prefWidth="157.0" text="label">
-                     <font>
-                        <Font size="15.0" />
-                     </font></Label>
-                  <Label fx:id="tariffaLabel" prefHeight="22.0" prefWidth="153.0" text="label">
-                     <VBox.margin>
-                        <Insets top="13.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="luogoLabel" prefHeight="22.0" prefWidth="148.0" text="label">
-                     <VBox.margin>
-                        <Insets top="14.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="giorniLabel" layoutX="10.0" layoutY="76.0" prefHeight="22.0" prefWidth="154.0" text="label">
-                     <VBox.margin>
-                        <Insets top="13.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-               </children>
-            </VBox>
-            <Text fill="#3f633f" layoutX="343.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(max. 250 caratteri)">
-               <font>
-                  <Font size="15.0" />
-               </font></Text>
-         </children>
+         <Image url="@../../immagini/iconStudent.png"/>
+      </ImageView>
+      <Button mnemonicParsing="false" onMouseClicked="#goToPrenotaRipetizione" prefHeight="60.0" prefWidth="130.0"
+              styleClass="custom-button" text="Prenota ripetizione" textAlignment="CENTER" wrapText="true">
+         <VBox.margin>
+            <Insets top="40.0"/>
+         </VBox.margin>
+         <stylesheets>
+            <URL value="@../../base-prova.css"/>
+            <URL value="@../../button.css"/>
+         </stylesheets>
          <effect>
-            <DropShadow blurType="TWO_PASS_BOX">
-               <color>
-                  <Color red="0.33725491166114807" green="0.5843137502670288" blue="0.7490196228027344" />
-               </color>
-            </DropShadow>
-         </effect></AnchorPane>
-      <Text fx:id="titolo" fill="#000000ab" layoutX="292.0" layoutY="74.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="#titolo" text="Conferma Prenotazione" textAlignment="CENTER" wrappingWidth="499.2001373767853">
+            <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0"/>
+         </effect>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#goToGestisciPrenotazioni" prefHeight="60.0" prefWidth="130.0"
+              styleClass="custom-button" stylesheets="@../../button.css" text="Gestisci Prenotazioni"
+              textAlignment="CENTER" wrapText="true">
+         <VBox.margin>
+            <Insets top="30.0"/>
+         </VBox.margin>
+         <effect>
+            <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0"/>
+         </effect>
+      </Button>
+      <Button mnemonicParsing="false" onMouseClicked="#goToLogout" prefHeight="33.0" prefWidth="130.0"
+              styleClass="custom-button" stylesheets="@../../button.css" text="Esci">
+         <VBox.margin>
+            <Insets top="30.0"/>
+         </VBox.margin>
+         <effect>
+            <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0"/>
+         </effect>
+      </Button>
+   </VBox>
+   <AnchorPane fx:id="sfondoChiaro" layoutX="242.0" layoutY="99.0" prefHeight="470.0" prefWidth="720.0"
+               stylesheets="@../../base-prova.css">
+      <effect>
+         <DropShadow blurType="TWO_PASS_BOX">
+            <color>
+               <Color red="0.33725491166114807" green="0.5843137502670288" blue="0.7490196228027344"/>
+            </color>
+         </DropShadow>
+      </effect>
+      <Text fill="#5695bf" layoutX="186.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0"
+            text="Controlla le informazioni presenti nella tua richiesta">
          <font>
-            <Font size="40.0" />
+            <Font size="16.0"/>
          </font>
       </Text>
-      <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="248.0" layoutY="33.0" onMouseClicked="#goToRisultati" preserveRatio="true">
-         <image>
-            <Image url="@../../immagini/backButton.PNG" />
-         </image>
-      </ImageView>
-   </children>
+      <TextArea fx:id="note" layoutX="168.0" layoutY="291.0" prefHeight="74.0" prefWidth="397.0"
+                promptText="Inserisci delle informazioni aggiuntive (data, ora, richieste particolari) per il tuo tutor..."
+                wrapText="true"/>
+      <Text layoutX="170.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo"
+            text="Note aggiuntive:">
+         <font>
+            <Font size="15.0"/>
+         </font>
+      </Text>
+      <Line endX="100.0" layoutX="470.0" layoutY="55.0" opacity="0.66" startX="-325.0" startY="1.52587890625E-5"
+            stroke="#5695bf" strokeLineCap="ROUND" strokeWidth="2.0"/>
+      <Text fill="#3f633f" layoutX="440.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0"
+            text="(max. 250 caratteri)">
+         <font>
+            <Font size="15.0"/>
+         </font>
+      </Text>
+      <Button layoutX="322.0" layoutY="395.0" mnemonicParsing="false" onAction="#prenota" styleClass="custom-button"
+              stylesheets="@../../button.css" text="Invia"/>
+      <VBox layoutX="155.0" layoutY="93.0" prefHeight="138.0" prefWidth="100.0">
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Nome:">
+            <font>
+               <Font size="15.0"/>
+            </font>
+         </Text>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Email:">
+            <VBox.margin>
+               <Insets top="15.0"/>
+            </VBox.margin>
+            <font>
+               <Font size="15.0"/>
+            </font>
+         </Text>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Materia:">
+            <VBox.margin>
+               <Insets top="15.0"/>
+            </VBox.margin>
+            <font>
+               <Font size="15.0"/>
+            </font>
+         </Text>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Modalità:">
+            <VBox.margin>
+               <Insets top="15.0"/>
+            </VBox.margin>
+            <font>
+               <Font size="15.0"/>
+            </font>
+         </Text>
+      </VBox>
+      <VBox layoutX="229.0" layoutY="93.0" prefHeight="150.0" prefWidth="138.0">
+         <Label fx:id="nomeLabel" prefHeight="22.0" prefWidth="145.0" text="label">
+            <font>
+               <Font size="15.0"/>
+            </font>
+         </Label>
+         <Label fx:id="emailLabel" prefHeight="22.0" prefWidth="144.0" text="label">
+            <VBox.margin>
+               <Insets top="13.0"/>
+            </VBox.margin>
+            <font>
+               <Font size="15.0"/>
+            </font>
+         </Label>
+         <Label fx:id="materiaLabel" prefHeight="22.0" prefWidth="143.0" text="label">
+            <VBox.margin>
+               <Insets top="13.0"/>
+            </VBox.margin>
+            <font>
+               <Font size="15.0"/>
+            </font>
+         </Label>
+         <Label fx:id="modLabel" prefHeight="22.0" prefWidth="145.0" text="label">
+            <VBox.margin>
+               <Insets top="13.0"/>
+            </VBox.margin>
+            <font>
+               <Font size="15.0"/>
+            </font>
+         </Label>
+      </VBox>
+      <VBox layoutX="403.0" layoutY="93.0" prefHeight="138.0" prefWidth="100.0">
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Cognome:">
+            <font>
+               <Font size="15.0"/>
+            </font>
+         </Text>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Tariffa:">
+            <VBox.margin>
+               <Insets top="15.0"/>
+            </VBox.margin>
+            <font>
+               <Font size="15.0"/>
+            </font>
+         </Text>
+         <Text layoutX="10.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo"
+               text="Luogo:">
+            <VBox.margin>
+               <Insets top="15.0"/>
+            </VBox.margin>
+            <font>
+               <Font size="15.0"/>
+            </font>
+         </Text>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Giorni:">
+            <VBox.margin>
+               <Insets top="15.0"/>
+            </VBox.margin>
+            <font>
+               <Font size="15.0"/>
+            </font>
+         </Text>
+      </VBox>
+      <VBox layoutX="493.0" layoutY="93.0" prefHeight="150.0" prefWidth="148.0">
+         <Label fx:id="cognomeLabel" prefHeight="22.0" prefWidth="157.0" text="label">
+            <font>
+               <Font size="15.0"/>
+            </font>
+         </Label>
+         <Label fx:id="tariffaLabel" prefHeight="22.0" prefWidth="153.0" text="label">
+            <VBox.margin>
+               <Insets top="13.0"/>
+            </VBox.margin>
+            <font>
+               <Font size="15.0"/>
+            </font>
+         </Label>
+         <Label fx:id="luogoLabel" prefHeight="22.0" prefWidth="148.0" text="label">
+            <VBox.margin>
+               <Insets top="14.0"/>
+            </VBox.margin>
+            <font>
+               <Font size="15.0"/>
+            </font>
+         </Label>
+         <Label fx:id="giorniLabel" layoutX="10.0" layoutY="76.0" prefHeight="22.0" prefWidth="154.0"
+                text="label">
+            <VBox.margin>
+               <Insets top="13.0"/>
+            </VBox.margin>
+            <font>
+               <Font size="15.0"/>
+            </font>
+         </Label>
+      </VBox>
+   </AnchorPane>
+   <Text fx:id="titolo" fill="#000000ab" layoutX="352.0" layoutY="77.0" stroke="BLACK" strokeType="OUTSIDE"
+         strokeWidth="0.0" styleClass="#titolo" text="Conferma Prenotazione" textAlignment="CENTER"
+         wrappingWidth="499.2001373767853" AnchorPane.topAnchor="39.16796875">
+      <font>
+         <Font size="40.0"/>
+      </font>
+   </Text>
+   <ImageView fx:id="backButton" fitHeight="60.0" fitWidth="70.0" layoutX="231.0" layoutY="33.0"
+              onMouseClicked="#goToRisultati" preserveRatio="true">
+      <Image url="@../../immagini/backButton.PNG"/>
+   </ImageView>
 </AnchorPane>

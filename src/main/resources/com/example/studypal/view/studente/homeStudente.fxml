@@ -13,72 +13,77 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.studente.HomeStudenteGui">
-   <children>
-      <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0" stylesheets="@../../base-prova.css">
-         <children>
-            <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
-               <VBox.margin>
-                  <Insets top="60.0" />
-               </VBox.margin>
-               <image>
-                  <Image url="@../../immagini/iconStudent.png" />
-               </image>
-               <effect>
-                  <InnerShadow />
-               </effect>
-            </ImageView>
-            <Button mnemonicParsing="false" onMouseClicked="#goToPrenotaRipetizione" prefHeight="60.0" prefWidth="130.0" styleClass="custom-button" stylesheets="@../../button.css" text="Prenota ripetizione" textAlignment="CENTER" wrapText="true">
-               <VBox.margin>
-                  <Insets top="40.0" />
-               </VBox.margin>
-               <effect>
-                  <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
-               </effect>
-            </Button>
-            <Button fx:id="gestisciPrenotazioni" mnemonicParsing="false" onAction="#goToGestisciPrenotazioni" prefHeight="60.0" prefWidth="130.0" styleClass="custom-button" stylesheets="@../../button.css" text="Gestisci Prenotazioni" textAlignment="CENTER" wrapText="true">
-               <VBox.margin>
-                  <Insets top="30.0" />
-               </VBox.margin>
-               <effect>
-                  <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
-               </effect>
-            </Button>
-            <Button mnemonicParsing="false" onMouseClicked="#goToLogout" prefHeight="33.0" prefWidth="130.0" styleClass="custom-button" stylesheets="@../../button.css" text="Esci">
-               <VBox.margin>
-                  <Insets top="30.0" />
-               </VBox.margin>
-               <effect>
-                  <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
-               </effect>
-            </Button>
-         </children>
-         <effect>
-            <DropShadow>
-               <color>
-                  <Color red="0.4022611975669861" green="0.6268070340156555" blue="0.8105263113975525" />
-               </color>
-            </DropShadow>
-         </effect>
-      </VBox>
-      <Text fx:id="titolo" fill="#000000ab" layoutX="385.0" layoutY="92.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="#titolo" text="Benvenuto a StudyPal" textAlignment="CENTER" wrappingWidth="308.800048828125" AnchorPane.leftAnchor="385.0" AnchorPane.rightAnchor="156.199951171875" AnchorPane.topAnchor="54.16796875">
-         <font>
-            <Font size="40.0" />
-         </font>
-      </Text>
-      <ImageView fitHeight="206.0" fitWidth="211.0" layoutX="436.0" layoutY="196.0" opacity="0.66" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../immagini/iconaConversazione.png" />
-         </image>
-      </ImageView>
-      <Text fill="#000000ab" layoutX="529.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sono studente" textAlignment="CENTER" wrappingWidth="48.13946533203125">
-         <font>
-            <Font name="Rockwell Italic" size="12.0" />
-         </font>
-      </Text>
-   </children>
+<AnchorPane minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.studypal.controller.guiController.studente.HomeStudenteGui">
    <stylesheets>
-      <URL value="@../../button.css" />
-      <URL value="@../../base-prova.css" />
+      <URL value="@../../button.css"/>
+      <URL value="@../../base-prova.css"/>
    </stylesheets>
+   <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="200.0"
+         stylesheets="@../../base-prova.css">
+      <effect>
+         <DropShadow>
+            <color>
+               <Color red="0.4022611975669861" green="0.6268070340156555" blue="0.8105263113975525"/>
+            </color>
+         </DropShadow>
+      </effect>
+      <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+         <VBox.margin>
+            <Insets top="60.0"/>
+         </VBox.margin>
+         <effect>
+            <InnerShadow/>
+         </effect>
+         <Image url="@../../immagini/iconStudent.png"/>
+      </ImageView>
+      <Button mnemonicParsing="false" onMouseClicked="#goToPrenotaRipetizione" prefHeight="60.0" prefWidth="130.0"
+              styleClass="custom-button" stylesheets="@../../button.css" text="Prenota ripetizione"
+              textAlignment="CENTER" wrapText="true">
+         <VBox.margin>
+            <Insets top="40.0"/>
+         </VBox.margin>
+         <effect>
+            <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0"/>
+         </effect>
+      </Button>
+      <Button fx:id="gestisciPrenotazioni" mnemonicParsing="false" onAction="#goToGestisciPrenotazioni"
+              prefHeight="60.0" prefWidth="130.0" styleClass="custom-button" stylesheets="@../../button.css"
+              text="Gestisci Prenotazioni" textAlignment="CENTER" wrapText="true">
+         <VBox.margin>
+            <Insets top="30.0"/>
+         </VBox.margin>
+         <effect>
+            <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0"/>
+         </effect>
+      </Button>
+      <Button mnemonicParsing="false" onMouseClicked="#goToLogout" prefHeight="33.0" prefWidth="130.0"
+              styleClass="custom-button" stylesheets="@../../button.css" text="Esci">
+         <VBox.margin>
+            <Insets top="30.0"/>
+         </VBox.margin>
+         <effect>
+            <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0"/>
+         </effect>
+      </Button>
+   </VBox>
+   <Text fx:id="titolo" fill="#000000ab" layoutX="435.0" layoutY="164.0" stroke="BLACK" strokeType="OUTSIDE"
+         strokeWidth="0.0" styleClass="#titolo" text="Benvenuto a StudyPal" textAlignment="CENTER"
+         wrappingWidth="308.800048828125" AnchorPane.leftAnchor="435.0" AnchorPane.rightAnchor="256.199951171875"
+         AnchorPane.topAnchor="126.16796875">
+      <font>
+         <Font size="40.0"/>
+      </font>
+   </Text>
+   <ImageView fitHeight="206.0" fitWidth="211.0" layoutX="486.0" layoutY="268.0" opacity="0.66" pickOnBounds="true"
+              preserveRatio="true">
+      <Image url="@../../immagini/iconaConversazione.png"/>
+   </ImageView>
+   <Text fill="#000000ab" layoutX="579.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sono studente"
+         textAlignment="CENTER" wrappingWidth="48.13946533203125">
+      <font>
+         <Font name="Rockwell Italic" size="12.0"/>
+      </font>
+   </Text>
 </AnchorPane>

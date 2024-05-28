@@ -12,22 +12,21 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Logger;
 
 public class VisualizzaRichiesteStudenteGui extends HomeStudenteGui {
-    public Text titolo;
     /* controller grafico delle varie pagine "visualizza dettagli richiesta/prenotazione"*/
 
     @FXML
     public Button gestisciPrenotazioni;
     @FXML
-    Label nome, cognome;
+    Label nome;
+    @FXML
+    Label cognome;
     @FXML
     Label emailTutor;
     @FXML
@@ -40,7 +39,10 @@ public class VisualizzaRichiesteStudenteGui extends HomeStudenteGui {
     private Label note;
     PrenotazioneBean dettagliRichiesta;
     List <PrenotazioneBean> listaRichieste;
-    String email, materiaRichiesta, giorno, noteAggiuntive;
+    String email;
+    String materiaRichiesta;
+    String giorno;
+    String noteAggiuntive;
     int modalita;
 
     private static final Logger logger = Logger.getLogger(VisualizzaRichiesteStudenteGui.class.getName());
