@@ -14,9 +14,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.tutor.VisualizzaRichiestaGui">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.tutor.VisualizzaRichiestaGui">
     <children>
-        <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0" stylesheets="@../../menu.css">
+        <VBox fx:id="barraMenu" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="200.0" stylesheets="@../../menu.css">
             <children>
                 <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -65,14 +65,14 @@
             </DropShadow>
          </effect>
         </VBox>
-        <Text fx:id="titolo" fill="#000000ac" layoutX="333.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dettagli Richiesta" textAlignment="CENTER" wrappingWidth="411.1118166446686" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="130.20000000000005" AnchorPane.topAnchor="43.16796875">
+        <Text fx:id="titolo" fill="#000000ac" layoutX="420.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dettagli Richiesta" textAlignment="CENTER" wrappingWidth="359.9118654727936" AnchorPane.leftAnchor="432.0" AnchorPane.rightAnchor="220.08813452720642" AnchorPane.topAnchor="30.0">
             <font>
                 <Font size="32.0" />
             </font>
         </Text>
-      <AnchorPane fx:id="sfondoChiaro" layoutX="247.0" layoutY="107.0" prefHeight="362.0" prefWidth="558.0" stylesheets="@../../base-prova.css">
+      <AnchorPane fx:id="sfondoChiaro" layoutX="247.0" layoutY="107.0" prefHeight="458.0" prefWidth="706.0" stylesheets="@../../base-prova.css">
          <children>
-            <VBox layoutX="81.0" layoutY="60.0" prefHeight="250.0" prefWidth="90.0">
+            <VBox layoutX="139.0" layoutY="104.0" prefHeight="250.0" prefWidth="90.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Email studente:">
                      <font>
@@ -112,7 +112,8 @@
                   </Text>
                </children>
             </VBox>
-            <VBox layoutX="213.0" layoutY="60.0" prefHeight="250.0" prefWidth="296.0">
+            <AnchorPane fx:id="sfondoVerdeChiaro" layoutX="258.0" layoutY="294.0" maxHeight="92.0" maxWidth="370.0" prefHeight="92.0" prefWidth="370.0" />
+            <VBox layoutX="266.0" layoutY="104.0" prefHeight="274.0" prefWidth="353.0">
                <children>
                   <Label fx:id="emailStudente" prefHeight="18.0" prefWidth="218.0" text="Label">
                      <font>
@@ -142,7 +143,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="note" alignment="TOP_LEFT" prefHeight="54.0" prefWidth="338.0" text="Label" wrapText="true">
+                  <Label fx:id="note" alignment="TOP_LEFT" prefHeight="80.0" prefWidth="348.0" text="Label" wrapText="true">
                      <VBox.margin>
                         <Insets top="28.0" />
                      </VBox.margin>
@@ -152,7 +153,7 @@
                   </Label>
                </children>
             </VBox>
-            <Label fx:id="successoModifiche" layoutX="166.0" layoutY="257.0" textFill="#2672bf">
+            <Label fx:id="successoModifiche" layoutX="170.0" layoutY="386.0" prefHeight="30.0" prefWidth="398.0" textFill="#2672bf">
                <font>
                   <Font size="14.0" />
                </font>
@@ -162,7 +163,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="234.0" layoutY="40.0" onMouseClicked="#goToPrenotazioniRifiutate" preserveRatio="true">
+      <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="235.0" layoutY="28.0" onMouseClicked="#goToPrenotazioniRifiutate" preserveRatio="true">
          <image>
             <Image url="@../../immagini/backButton.PNG" />
          </image>

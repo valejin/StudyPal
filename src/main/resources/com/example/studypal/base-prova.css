@@ -34,7 +34,7 @@ Button {
     -fx-padding: 10px 20px; /* Spazio intorno al testo */
     -fx-font-family: Verdana, sans-serif; /* Utilizza il font Arial o un font sans-serif di backup */
 
-    -fx-font-size: 14px; /* Dimensione del font 18px */
+    -fx-font-size: 16px; /* Dimensione del font */
     -fx-cursor: pointer; /* Cambia il cursore quando si passa sopra */
     -fx-border-radius: 8px; /* Bordo arrotondato */
 }
@@ -137,6 +137,7 @@ Button:hover {
     -fx-min-height: 40px; /* Altezza minima */
     -fx-max-width: 300px; /* Larghezza massima */
     -fx-max-height: 60px; /* Altezza massima */
+    -fx-font-size: 14px;
 }
 
 #email {
@@ -203,6 +204,12 @@ Button:hover {
 .menu-button {
     -fx-effect: dropshadow(gaussian, rgba(60, 161, 57, 0.34), 10, 0.7, 0, 0);
     -fx-border-radius: 30; /* Cambia l'angolatura degli spigoli */
+}
+
+#sfondoVerdeChiaro {
+    -fx-background-color: rgba(136, 176, 133, 0.53);
+    -fx-background-radius: 15 15 15 15;
+    -fx-border-radius: 15 15 15 15;
 }
 
 

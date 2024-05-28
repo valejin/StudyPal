@@ -9,17 +9,17 @@
 
 <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" stylesheets="@../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.RegistrazioneGuiController">
    <children>
-      <Pane layoutX="133.0" layoutY="68.0" prefHeight="378.0" prefWidth="602.0" stylesheets="@../base-prova.css">
+      <Pane layoutX="133.0" layoutY="54.0" prefHeight="378.0" prefWidth="602.0" stylesheets="@../base-prova.css">
          <children>
             <Text fill="#404040" layoutX="111.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrazione avvenuta con successo!" textAlignment="CENTER" wrappingWidth="380.46124267578125">
                <font>
                   <Font name="Bodoni MT Bold Italic" size="35.0" />
                </font>
             </Text>
-            <Button fx:id="tornaLogin" layoutX="262.0" layoutY="246.0" mnemonicParsing="false" onAction="#goToLogin" stylesheets="@../base-prova.css" text="Login" />
-            <Text fx:id="indicazioni" layoutX="107.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tornate alla schermata del login per accedere alla piattaforma" wrappingWidth="386.9707489013672">
+            <Button fx:id="tornaLogin" layoutX="262.0" layoutY="254.0" mnemonicParsing="false" onAction="#goToLogin" stylesheets="@../base-prova.css" text="Login" />
+            <Text fx:id="indicazioni" layoutX="80.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tornate alla schermata del login per accedere alla piattaforma" wrappingWidth="447.77061462402344">
                <font>
-                  <Font size="14.0" />
+                  <Font size="16.0" />
                </font></Text>
             <Label fx:id="campiError" layoutX="225.0" layoutY="237.0" />
          </children>
