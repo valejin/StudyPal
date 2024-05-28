@@ -70,9 +70,9 @@
                 <Font size="32.0" />
             </font>
         </Text>
-      <AnchorPane fx:id="sfondoChiaro" layoutX="213.0" layoutY="86.0" prefHeight="502.0" prefWidth="774.0" stylesheets="@../../base-prova.css">
+      <AnchorPane fx:id="sfondoChiaro" layoutX="254.0" layoutY="106.0" prefHeight="454.0" prefWidth="702.0" stylesheets="@../../base-prova.css">
          <children>
-            <VBox layoutX="71.0" layoutY="60.0" prefHeight="250.0" prefWidth="90.0">
+            <VBox layoutX="166.0" layoutY="102.0" prefHeight="250.0" prefWidth="90.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Email studente:">
                      <font>
@@ -112,7 +112,7 @@
                   </Text>
                </children>
             </VBox>
-            <VBox layoutX="196.0" layoutY="60.0" prefHeight="250.0" prefWidth="337.0">
+            <VBox layoutX="291.0" layoutY="102.0" prefHeight="250.0" prefWidth="337.0">
                <children>
                   <Label fx:id="emailStudente" prefHeight="18.0" prefWidth="218.0" text="Label">
                      <font>
@@ -159,7 +159,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="250.0" layoutY="29.0" onMouseClicked="#goToPrenotazioniAttive" preserveRatio="true">
+      <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="244.0" layoutY="29.0" onMouseClicked="#goToPrenotazioniAttive" preserveRatio="true">
          <image>
             <Image url="@../../immagini/backButton.PNG" />
          </image>
