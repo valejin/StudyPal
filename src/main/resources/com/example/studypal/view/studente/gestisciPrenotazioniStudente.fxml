@@ -68,78 +68,66 @@
         <effect>
             <DropShadow>
                 <color>
-                    <Color red="0.49803921580314636" green="0.6509804129600525" blue="0.7568627595901489"/>
+                    <Color red="0.49803921580314636" green="0.6509804129600525" blue="0.7568627595901489" />
                 </color>
             </DropShadow>
         </effect>
-        <AnchorPane fx:id="sfondoChiaro" layoutX="33.0" layoutY="73.0" onMouseClicked="#goToPrenotazioniAttive"
-                    prefHeight="280.0" prefWidth="170.0" styleClass="anchor-verde" stylesheets="@../../base-prova.css">
+        <AnchorPane fx:id="sfondoChiaro" layoutX="33.0" layoutY="73.0" onMouseClicked="#goToPrenotazioniAttive" prefHeight="280.0" prefWidth="170.0" styleClass="anchor-verde" stylesheets="@../../base-prova.css">
             <effect>
                 <DropShadow>
                     <color>
-                        <Color red="0.0470588244497776" green="0.5176470875740051" blue="0.03921568766236305"/>
+                        <Color red="0.0470588244497776" green="0.5176470875740051" blue="0.03921568766236305" />
                     </color>
                 </DropShadow>
             </effect>
             <ImageView fitHeight="60.0" fitWidth="54.0" layoutX="58.0" layoutY="91.0" opacity="0.72">
-                <Image url="@../../immagini/checkIcon.png"/>
+                <Image url="@../../immagini/checkIcon.png" />
             </ImageView>
-            <Text fill="#0c840a" layoutX="25.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                  text="Prenotazioni Attive" textAlignment="CENTER" wrappingWidth="120.0">
+            <Text fill="#0c840a" layoutX="25.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenotazioni Attive" textAlignment="CENTER" wrappingWidth="120.0">
                 <font>
-                    <Font name="Verdana Pro" size="18.0"/>
+                    <Font name="Verdana Pro" size="18.0" />
                 </font>
             </Text>
-            <Text fill="#000000b1" layoutX="34.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                  text="Visualizza le prenotazioni confermate dai tuoi tutor" textAlignment="CENTER"
-                  wrappingWidth="101.73469543457031"/>
+            <Text fill="#000000b1" layoutX="34.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Visualizza le prenotazioni confermate dai tuoi tutor" textAlignment="CENTER" wrappingWidth="101.73469543457031" />
         </AnchorPane>
-        <AnchorPane layoutX="460.0" layoutY="73.0" onMouseClicked="#goToRichiesteRifiutate" prefHeight="280.0"
-                    prefWidth="170.0" styleClass="anchor-rosso" stylesheets="@../../base-prova.css">
+        <AnchorPane layoutX="460.0" layoutY="73.0" onMouseClicked="#goToRichiesteRifiutate" prefHeight="280.0" prefWidth="170.0" styleClass="anchor-rosso" stylesheets="@../../base-prova.css">
             <effect>
                 <DropShadow>
                     <color>
-                        <Color red="0.7686274647712708" green="0.1411764770746231" blue="0.25882354378700256"/>
+                        <Color red="0.7686274647712708" green="0.1411764770746231" blue="0.25882354378700256" />
                     </color>
                 </DropShadow>
             </effect>
             <ImageView fitHeight="60.0" fitWidth="63.0" layoutX="53.0" layoutY="96.0" opacity="0.64">
-                <Image url="@../../immagini/crossIcon.png"/>
+                <Image url="@../../immagini/crossIcon.png" />
             </ImageView>
-            <Text fill="#b22740" layoutX="25.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                  text="Richieste Rifiutate" textAlignment="CENTER" wrappingWidth="120.0">
+            <Text fill="#b22740" layoutX="25.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Richieste Rifiutate" textAlignment="CENTER" wrappingWidth="120.0">
                 <font>
-                    <Font name="Verdana Pro" size="18.0"/>
+                    <Font name="Verdana Pro" size="18.0" />
                 </font>
             </Text>
-            <Text fill="#000000b1" layoutX="40.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                  text="Esamina le richieste che sono state rifiutate" textAlignment="CENTER"
-                  wrappingWidth="89.73469543457031"/>
+            <Text fill="#000000b1" layoutX="40.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Esamina le richieste che sono state rifiutate" textAlignment="CENTER" wrappingWidth="89.73469543457031" />
         </AnchorPane>
-        <AnchorPane layoutX="248.0" layoutY="73.0" onMouseClicked="#goToRichiesteInviate" prefHeight="280.0"
-                    prefWidth="170.0" styleClass="anchor-blu" stylesheets="@../../base-prova.css">
+        <AnchorPane layoutX="248.0" layoutY="73.0" onMouseClicked="#goToRichiesteInviate" prefHeight="280.0" prefWidth="170.0" styleClass="anchor-blu" stylesheets="@../../base-prova.css">
             <effect>
                 <DropShadow>
                     <color>
-                        <Color red="0.15294118225574493" green="0.43921568989753723" blue="0.7058823704719543"/>
+                        <Color red="0.15294118225574493" green="0.43921568989753723" blue="0.7058823704719543" />
                     </color>
                 </DropShadow>
             </effect>
             <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="58.0" layoutY="102.0">
-                <Image url="@../../immagini/clockIcon.png"/>
+                <Image url="@../../immagini/clockIcon.png" />
             </ImageView>
-            <Text fill="#2770b4" layoutX="25.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                  text="Richieste Inviate" textAlignment="CENTER" wrappingWidth="120.0">
+            <Text fill="#2770b4" layoutX="25.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Richieste Inviate" textAlignment="CENTER" wrappingWidth="120.0">
                 <font>
-                    <Font name="Verdana Pro" size="18.0"/>
+                    <Font name="Verdana Pro" size="18.0" />
                 </font>
             </Text>
-            <Text fill="#000000b1" layoutX="45.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                  text="Controlla le richieste ancora in stato di attesa" textAlignment="CENTER"
-                  wrappingWidth="80.13471984863281"/>
+            <Text fill="#000000b1" layoutX="45.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Controlla le richieste ancora in stato di attesa" textAlignment="CENTER" wrappingWidth="80.13471984863281" />
         </AnchorPane>
     </AnchorPane>
-    <Text fx:id="titolo" fill="#000000ac" layoutX="378.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestione Prenotazioni" textAlignment="CENTER" wrappingWidth="452.71179151535034" AnchorPane.leftAnchor="378.0" AnchorPane.topAnchor="51.0">
+    <Text fx:id="titolo" fill="#000000ac" layoutX="378.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestione Prenotazioni" textAlignment="CENTER" wrappingWidth="452.71179151535034" AnchorPane.leftAnchor="378.0" AnchorPane.topAnchor="30.0">
         <font>
             <Font size="32.0" />
         </font>

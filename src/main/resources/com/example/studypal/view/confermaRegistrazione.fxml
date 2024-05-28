@@ -17,7 +17,7 @@
                </font>
             </Text>
             <Button fx:id="tornaLogin" layoutX="262.0" layoutY="254.0" mnemonicParsing="false" onAction="#goToLogin" stylesheets="@../base-prova.css" text="Login" />
-            <Text fx:id="indicazioni" layoutX="80.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tornate alla schermata del login per accedere alla piattaforma" wrappingWidth="447.77061462402344">
+            <Text fx:id="indicazioni" layoutX="80.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tornate alla schermata del login per accedere alla piattaforma." wrappingWidth="447.77061462402344">
                <font>
                   <Font size="16.0" />
                </font></Text>

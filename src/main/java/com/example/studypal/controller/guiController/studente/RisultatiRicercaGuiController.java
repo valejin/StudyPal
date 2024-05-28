@@ -77,12 +77,14 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
             luogoRisultato.setText("Non specificato");
         }
         if ((filtri.getInPresenza()!= null) || (filtri.getOnline() != null)) {
-            if(filtri.getInPresenza() && filtri.getOnline()){
+            if(Boolean.TRUE.equals(filtri.getInPresenza()) && Boolean.TRUE.equals(filtri.getOnline())){
                 modalitaRisultato.setText("In presenza & Online");
-            } else if (filtri.getOnline()) {
+            } else if (Boolean.TRUE.equals(filtri.getOnline())) {
                 modalitaRisultato.setText("Online");
-            } else if (filtri.getInPresenza()) {
+            } else if (Boolean.TRUE.equals(filtri.getInPresenza())) {
                 modalitaRisultato.setText("In presenza");
+            } else if (Boolean.FALSE.equals(filtri.getInPresenza()) && Boolean.FALSE.equals(filtri.getOnline())){
+                modalitaRisultato.setText("In presenza o Online");
             }
         } else {
             modalitaRisultato.setText("In presenza & Online");
@@ -152,7 +154,7 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
 
 
     public void scegliTutor(RipetizioneInfoBean tutor) {
-        System.out.println("ho scelto il tutor");
+        Printer.println("ho scelto il tutor");
 
         /* carica la pagina di conferma della prenotazione */
 
@@ -165,7 +167,6 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
             stage.setScene(scene);
         } catch (IOException e) {
             logger.severe("errore in RisultatiRicercaGuiController (caricamento pagina) " + e.getMessage());
-            e.printStackTrace();
         }
     }
 

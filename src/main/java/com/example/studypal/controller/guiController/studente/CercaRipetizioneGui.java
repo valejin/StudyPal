@@ -14,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -23,7 +24,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
     @FXML
     private TextField cercaMateria;
     @FXML
-    private ComboBox luogo;
+    private ComboBox<String> luogo;
     @FXML
     private MenuButton giorno;
     @FXML
@@ -41,7 +42,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
 
     private String materia;
     private static final Logger logger = Logger.getLogger(CercaRipetizioneGui.class.getName());
-    RipetizioneInfoBean ripetizioneInfoBean;
+    RipetizioneInfoBean ripetizioneInfoBean; /*filtri*/
     List<RipetizioneInfoBean> risultatiRicercaBean = new ArrayList<>();
 
     //eredita dal padre un attributo LoggedInUserBean
@@ -71,15 +72,12 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
 
         //combobox giorni disponibili -------------------------------------------------------
         giorno.setOnAction(event -> {
-            if (giorno.isShowing()) {
-                giorno.hide();
-            } else {
-                giorno.show();
-            }
+            StringBuilder selectedValues = getSelectedValues();
+            giorno.setText(selectedValues.toString());
         });
 
-
     }
+
 
     /*----------------------------------------------------------------------------------------------------------------*/
     public void ricercaMethod(){
@@ -89,8 +87,6 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
             campiError.setText("Campo obbligatorio");
 
         } else {
-            //campiError.setVisible(false);
-            //this.giorno.getItems().isEmpty() &&
             if (this.tariffaSlider.getValue() == 50 &&
                     (!this.inPresenza.isSelected() && !this.online.isSelected()) &&
                     this.luogo.getSelectionModel().isEmpty() && this.luogo.getValue()==null && menuButtonIsEmpty(giorno)
@@ -99,7 +95,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
                 //se tutti i campi aggiuntivi sono vuoti, allora la ricerca va fatta solo per materia
                 List<RipetizioneInfoBean> risultatiRicercaBean = ricercaMateria();
                 caricaRisultati(risultatiRicercaBean);
-                System.out.println("ricerca completata");
+                Printer.println("ricerca completata");
 
             } else if (this.inPresenza.isSelected() && this.luogo.getSelectionModel().isEmpty() && this.luogo.getValue()==null){
                 luogoError.setText("Inserire un luogo");
@@ -129,24 +125,6 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         //chiama il controller applicativo e gli passa il BEAN che contiene la materia
         risultatiRicercaBean = cercaRipetizioneController.prenotaRipetizioneMethod(baseInfoBean);
 
-        /*
-        //DEBUG
-        System.out.println("Controller grafico ha ricevuto questi risultati:");
-        for (RipetizioneInfoBean risultatoBean: risultatiRicercaBean) {
-            System.out.println("    nome: " + risultatoBean.getNome());
-            System.out.println("    cognome: " + risultatoBean.getCognome());
-            System.out.println("    materie: " + risultatoBean.getMaterie());
-            System.out.println("    lezioni in presenza: " + risultatoBean.getInPresenza());
-            System.out.println("    lezioni online: " + risultatoBean.getOnline());
-            System.out.println("    luogo: " + risultatoBean.getLuogo());
-            System.out.println("    giorni disponibili: " + risultatoBean.getGiorni());
-            System.out.println("    tariffa: " + risultatoBean.getTariffa() + "€/h");
-            System.out.println("    email: " + risultatoBean.getEmail());
-            System.out.println("------------------------------------------------");
-        }
-         */
-
-
         return risultatiRicercaBean;
     }
 
@@ -156,12 +134,11 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         boolean answer = true;
 
         for (MenuItem item : items) {
-            if (item instanceof CheckMenuItem checkItem) {
-                if (checkItem.isSelected()) {
+            if (item instanceof CheckMenuItem checkItem && checkItem.isSelected()) {
                     answer = false;
                     return answer;
                 }
-            }
+
         }
 
         return answer;
@@ -190,7 +167,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         if (this.cercaMateria.getText().isEmpty()) {
             Printer.println("Non hai inserito la materia");
             campiError.setText("Campo obbligatorio");
-            return null;
+            return Collections.emptyList();
         } else {
             campiError.setVisible(false);
         }
@@ -198,7 +175,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         Printer.println("FILTRI PER LA RICERCA:");
         Printer.println("   -Materia: " + materia);
 
-        luogo = (String) this.luogo.getValue();
+        luogo = this.luogo.getValue();
         Printer.print("   -Luogo: ");
         if (this.luogo.getValue() != null) {
             Printer.println(luogo);
@@ -214,7 +191,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
             if (this.luogo.getSelectionModel().isEmpty() && this.luogo.getValue()==null) {
                 Printer.errorPrint("Seleziona un luogo");
                 luogoError.setText("Seleziona un luogo");
-                return null;
+                return Collections.emptyList();
             } else {
                 luogoError.setVisible(false);
             }
@@ -230,18 +207,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         }
 
         //menuButton di giono-------------------------------------------------------
-        ObservableList<MenuItem> items = giorno.getItems();
-        StringBuilder selectedValues = new StringBuilder();
-        for (MenuItem item : items) {
-            if (item instanceof CheckMenuItem checkMenuItem) {
-                if (checkMenuItem.isSelected()) {
-                    if (!selectedValues.isEmpty()) {
-                        selectedValues.append(", ");
-                    }
-                    selectedValues.append(checkMenuItem.getText());
-                }
-            }
-        }
+        StringBuilder selectedValues = getSelectedValues();
         giorni = selectedValues.toString();
         Printer.println("   -Giorni selezionati: " + giorni);
 
@@ -284,9 +250,28 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         return risultatiRicercaBean;
     }
 
+    private StringBuilder getSelectedValues() {
+
+        /* funzione che costruisce la stringa che indica i giorni selezionati
+        * todo: ma perché restituisce stringbuilder? che vuol dire non capisco aaaaaa
+        * */
+
+        ObservableList<MenuItem> items = giorno.getItems();
+        StringBuilder selectedValues = new StringBuilder();
+        for (MenuItem item : items) {
+            if (item instanceof CheckMenuItem checkMenuItem && checkMenuItem.isSelected()) {
+                    if (!selectedValues.isEmpty()) {
+                        selectedValues.append(", ");
+                    }
+                    selectedValues.append(checkMenuItem.getText());
+                }
+
+        }
+        return selectedValues;
+    }
 
 
-        /*----------------------------------------------------------------------------------------------------------------*/
+    /*----------------------------------------------------------------------------------------------------------------*/
         public void caricaRisultati (List < RipetizioneInfoBean > risultatiRicercaBean) {
 
             try {

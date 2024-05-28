@@ -17,7 +17,7 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
     private Label tariffaValue;
 
     @FXML
-    private ComboBox luogoBox;
+    private ComboBox<String> luogoBox;
 
     @FXML
     private CheckBox inPresenzaBox;
@@ -40,34 +40,27 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
 
     //eredita dal padre un attributo LoggedInUserBean
     public GestioneProfiloTutorGuiController(LoggedInUserBean user){ this.user = user;}
+    RipetizioneInfoModel infoCorrentiProfilo;
 
 
     public void initialize() {
-
-        /*
-        TODO: controllare se i campi di infoCorrentiProfilo sono tutti selezionati e gestire il caso..
-              perché dovrei voler modificare i miei dati e lasciare alcuni campi vuoti???
-              Magari se voglio dare ripetizioni esclusivamente online e non voglio inserire un luogo(?)
-        */
-
-        RipetizioneInfoModel infoCorrentiProfilo;
-        infoCorrentiProfilo = caricaInformazioniProfilo(user.getEmail());
+        
+        this.infoCorrentiProfilo = caricaInformazioniProfilo(user.getEmail());
 
         /* mostro all'utente le sue informazioni correnti------------------------------------------------------------*/
-        inPresenzaBox.setSelected(infoCorrentiProfilo.getInPresenza());
-        onlineBox.setSelected(infoCorrentiProfilo.getOnline());
-        luogoBox.setPromptText(infoCorrentiProfilo.getLuogo());
-        materieField.setText(infoCorrentiProfilo.getMateria());
-        tariffaSlider.setValue(infoCorrentiProfilo.getTariffa());
+        inPresenzaBox.setSelected(this.infoCorrentiProfilo.getInPresenza());
+        onlineBox.setSelected(this.infoCorrentiProfilo.getOnline());
+        luogoBox.setPromptText(this.infoCorrentiProfilo.getLuogo());
+        materieField.setText(this.infoCorrentiProfilo.getMateria());
+        tariffaSlider.setValue(this.infoCorrentiProfilo.getTariffa());
         tariffaSlider.valueProperty().addListener((observable, oldValue, newValue) -> tariffaValue.setText(newValue.intValue() + "€"));
-        giorniMenu.setText(infoCorrentiProfilo.getGiorni());
+        giorniMenu.setText(this.infoCorrentiProfilo.getGiorni());
 
         for (MenuItem item : giorniMenu.getItems()) {
-            if (item instanceof CheckMenuItem checkItem) {
-                if (infoCorrentiProfilo.getGiorni()!=null && infoCorrentiProfilo.getGiorni().contains(checkItem.getText())) {
+            if (item instanceof CheckMenuItem checkItem && infoCorrentiProfilo.getGiorni()!=null && this.infoCorrentiProfilo.getGiorni().contains(checkItem.getText())) {
                     checkItem.setSelected(true);
                 }
-            }
+
         }
 
         //combobox luogo---------------------------------------------------------------------
@@ -89,7 +82,9 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
         tariffaSlider.setShowTickLabels(true);
         tariffaSlider.setShowTickMarks(true);
         tariffaSlider.valueProperty().addListener((observable, oldValue, newValue) -> tariffaValue.setText(newValue.intValue() + "€"));
-
+        if (this.infoCorrentiProfilo.getTariffa() != null){
+            tariffaValue.setText(this.infoCorrentiProfilo.getTariffa() + "€");
+        }
     }
 
 
@@ -107,30 +102,21 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
         int tariffa;
         String email = this.user.getEmail(); //questa è l'email del tutor loggato
 
-
-        //TODO: controllo isempty... necessario davvero qui?
-
         materie = this.materieField.getText();
-        luogo = (String) this.luogoBox.getValue(); //TODO: controllare se c'è un modo migliore rispetto al cast!!
         tariffa = (int) Math.round(this.tariffaSlider.getValue());
+
+        if (this.luogoBox.getValue() == null){
+            luogo = this.infoCorrentiProfilo.getLuogo();
+        } else {
+            luogo = this.luogoBox.getValue();
+        }
+
 
         if (this.inPresenzaBox.isSelected()){ inPresenza = true;}
         if (this.onlineBox.isSelected()) { online = true;}
 
         /*gestione del menubutton dei giorni-------------------------------------------------------------------------*/
-        ObservableList<MenuItem> items = giorniMenu.getItems();
-        StringBuilder selectedValues = new StringBuilder();
-        for (MenuItem item : items) {
-            if (item instanceof CheckMenuItem checkMenuItem) {
-                if (checkMenuItem.isSelected()) {
-                    if (!selectedValues.isEmpty()) {   //prima era selectedValues.length() > 0
-                        selectedValues.append(", ");
-                    }
-                    selectedValues.append(checkMenuItem.getText());
-                }
-            }
-        }
-        String giorni = selectedValues.toString();
+        String giorni = getGiorni();
 
 
         //stampo i valori a terminale-----------------------------------------------------------------------------------
@@ -151,9 +137,23 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
         successoModifiche.setText("Modifiche avvenute con successo");
     }
 
+    private String getGiorni() {
+        ObservableList<MenuItem> items = giorniMenu.getItems();
+        StringBuilder selectedValues = new StringBuilder();
+        for (MenuItem item : items) {
+            if (item instanceof CheckMenuItem checkMenuItem && checkMenuItem.isSelected()) {
+                    if (!selectedValues.isEmpty()) {   //prima era selectedValues.length() > 0
+                        selectedValues.append(", ");
+                    }
+                    selectedValues.append(checkMenuItem.getText());
+                }
 
-    //TODO: si può mettere direttamente in initialize?
-    public RipetizioneInfoModel caricaInformazioniProfilo(String email) {
+        }
+        return selectedValues.toString();
+    }
+
+
+    private RipetizioneInfoModel caricaInformazioniProfilo(String email) {
 
         //metodo che prende le informazioni del tutor e le carica nella pagina di gestione profilo del tutor
         GestioneProfiloTutorController gestioneProfiloTutorController = new GestioneProfiloTutorController();

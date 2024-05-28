@@ -169,7 +169,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Slider>
-                  <Label fx:id="tariffaValue" alignment="TOP_CENTER" contentDisplay="CENTER" textAlignment="CENTER">
+                  <Label fx:id="tariffaValue" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="216.0" textAlignment="CENTER">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -180,7 +180,7 @@
                </children>
             </VBox>
             <Button fx:id="confermaModifica" layoutX="303.0" layoutY="416.0" mnemonicParsing="false" onAction="#gestioneProfiloMethod" styleClass="rounded-button" stylesheets="@../../button.css" text="Conferma" />
-            <Label fx:id="successoModifiche" alignment="CENTER" contentDisplay="CENTER" layoutX="151.0" layoutY="296.0" prefHeight="20.0" prefWidth="269.0" textFill="#2672bf">
+            <Label fx:id="successoModifiche" alignment="CENTER" contentDisplay="CENTER" layoutX="227.0" layoutY="380.0" prefHeight="20.0" prefWidth="269.0" textFill="#2672bf">
                <font>
                   <Font size="14.0" />
                </font>
