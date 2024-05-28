@@ -65,7 +65,7 @@
             </DropShadow>
          </effect>
         </VBox>
-        <Text fx:id="titolo" fill="#000000ac" layoutX="449.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dettagli Richiesta" textAlignment="CENTER" wrappingWidth="354.31176686286926" AnchorPane.leftAnchor="449.0" AnchorPane.rightAnchor="196.68823313713074" AnchorPane.topAnchor="26.0">
+        <Text fx:id="titolo" fill="#000000ac" layoutX="449.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dettagli Richiesta" textAlignment="CENTER" wrappingWidth="354.31176686286926" AnchorPane.leftAnchor="449.0" AnchorPane.rightAnchor="196.68823313713074" AnchorPane.topAnchor="30.0">
             <font>
                 <Font size="32.0" />
             </font>
@@ -112,6 +112,7 @@
                   </Text>
                </children>
             </VBox>
+            <AnchorPane fx:id="sfondoVerdeChiaro" layoutX="237.0" layoutY="252.0" maxHeight="92.0" maxWidth="370.0" prefHeight="92.0" prefWidth="370.0" />
             <VBox layoutX="250.0" layoutY="53.0" prefHeight="250.0" prefWidth="337.0">
                <children>
                   <Label fx:id="emailStudente" prefHeight="18.0" prefWidth="218.0" text="Label">
@@ -159,10 +160,9 @@
                </effect>
             </Label>
             <Button fx:id="rifiutaButton" layoutX="392.0" layoutY="372.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#rifiutaRichiestaMethod" prefHeight="39.0" prefWidth="114.0" styleClass="custom-button2" stylesheets="@../../button.css" text="Rifiuta" />
-            <AnchorPane fx:id="sfondoVerdeChiaro" layoutX="237.0" layoutY="252.0" maxHeight="92.0" maxWidth="370.0" prefHeight="92.0" prefWidth="370.0" />
          </children>
       </AnchorPane>
-      <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="234.0" layoutY="24.2" onMouseClicked="#goToRichiesteArrivate" preserveRatio="true" AnchorPane.topAnchor="24.0">
+      <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="234.0" layoutY="25.8" onMouseClicked="#goToRichiesteArrivate" preserveRatio="true" AnchorPane.topAnchor="25.8">
          <image>
             <Image url="@../../immagini/backButton.PNG" />
          </image>

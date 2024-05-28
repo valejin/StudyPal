@@ -66,19 +66,19 @@
             </DropShadow>
          </effect>
         </VBox>
-        <Text fx:id="titolo" fill="#000000ac" layoutX="369.8" layoutY="72.23203125" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenotazioni Attive" textAlignment="CENTER" wrappingWidth="452.71179151535034" AnchorPane.leftAnchor="369.8" AnchorPane.rightAnchor="177.4882084846497" AnchorPane.topAnchor="34.400000000000006">
+        <Text fx:id="titolo" fill="#000000ac" layoutX="369.8" layoutY="72.23203125" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenotazioni Attive" textAlignment="CENTER" wrappingWidth="452.71179151535034" AnchorPane.leftAnchor="380.0" AnchorPane.rightAnchor="177.4882084846497" AnchorPane.topAnchor="30.0">
             <font>
                 <Font size="32.0" />
             </font>
         </Text>
-      <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="206.0" layoutY="31.0" onMouseClicked="#goToGestisciPrenotazioni" preserveRatio="true">
+      <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="206.0" layoutY="27.0" onMouseClicked="#goToGestisciPrenotazioni" preserveRatio="true">
          <image>
             <Image url="@../../immagini/backButton.PNG" />
          </image>
       </ImageView>
       <AnchorPane fx:id="zonaInfo" layoutX="217.0" layoutY="85.0" prefHeight="497.0" prefWidth="764.0" stylesheets="@../../base-prova.css">
          <children>
-            <ScrollPane layoutX="7.0" layoutY="28.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="750.0">
+            <ScrollPane layoutX="7.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="750.0">
                <content>
                   <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="466.0" prefWidth="749.0">
                      <children>
@@ -93,7 +93,6 @@
                   </AnchorPane>
                </content>
             </ScrollPane>
-            <Text layoutX="258.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenotazioni precedentemente confermate" textAlignment="CENTER" wrappingWidth="247.99999999999994" />
          </children>
       </AnchorPane>
     </children>

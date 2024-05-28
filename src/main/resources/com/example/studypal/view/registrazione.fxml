@@ -27,7 +27,7 @@
                <font>
                   <Font size="18.0" />
                </font></Button>
-            <Label fx:id="campiError" alignment="CENTER" contentDisplay="CENTER" layoutX="234.0" layoutY="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="233.0" textAlignment="CENTER" textFill="#b90303">
+            <Label fx:id="campiError" alignment="CENTER" contentDisplay="CENTER" layoutX="218.0" layoutY="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="513.0" textAlignment="CENTER" textFill="#b90303">
                <font>
                   <Font size="16.0" />
                </font></Label>

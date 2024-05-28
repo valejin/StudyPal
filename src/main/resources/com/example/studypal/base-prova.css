@@ -137,6 +137,7 @@ Button:hover {
     -fx-min-height: 40px; /* Altezza minima */
     -fx-max-width: 300px; /* Larghezza massima */
     -fx-max-height: 60px; /* Altezza massima */
+    -fx-font-size: 14px;
 }
 
 #email {

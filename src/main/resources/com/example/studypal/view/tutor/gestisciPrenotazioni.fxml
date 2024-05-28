@@ -58,7 +58,7 @@
             </effect>
         </Button>
     </VBox>
-    <Text fx:id="titolo" fill="#000000ac" layoutX="433.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestione Prenotazioni" textAlignment="CENTER" wrappingWidth="452.71179151535034" AnchorPane.leftAnchor="367.0" AnchorPane.rightAnchor="180.28820848464966" AnchorPane.topAnchor="48.16796875">
+    <Text fx:id="titolo" fill="#000000ac" layoutX="433.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestione Prenotazioni" textAlignment="CENTER" wrappingWidth="452.71179151535034" AnchorPane.leftAnchor="380.0" AnchorPane.rightAnchor="180.28820848464966" AnchorPane.topAnchor="30.0">
         <font>
             <Font size="32.0" />
         </font>
