@@ -14,92 +14,75 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0"
-            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.studypal.controller.guiController.studente.RichiesteStudenteGui">
+<AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.studente.RichiesteStudenteGui">
     <stylesheets>
-        <URL value="@../../button.css"/>
-        <URL value="@../../base-prova.css"/>
+        <URL value="@../../button.css" />
+        <URL value="@../../base-prova.css" />
     </stylesheets>
-    <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="200.0"
-          stylesheets="@../../base-prova.css">
+    <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="200.0" stylesheets="@../../base-prova.css">
         <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
             <VBox.margin>
-                <Insets top="60.0"/>
+                <Insets top="60.0" />
             </VBox.margin>
             <effect>
-                <InnerShadow/>
+                <InnerShadow />
             </effect>
-            <Image url="@../../immagini/iconStudent.png"/>
+            <Image url="@../../immagini/iconStudent.png" />
         </ImageView>
-        <Button mnemonicParsing="false" onMouseClicked="#goToPrenotaRipetizione" prefHeight="60.0" prefWidth="130.0"
-                styleClass="custom-button" text="Prenota ripetizione" textAlignment="CENTER" wrapText="true">
+        <Button mnemonicParsing="false" onMouseClicked="#goToPrenotaRipetizione" prefHeight="60.0" prefWidth="130.0" styleClass="custom-button" text="Prenota ripetizione" textAlignment="CENTER" wrapText="true">
             <VBox.margin>
-                <Insets top="40.0"/>
+                <Insets top="40.0" />
             </VBox.margin>
             <stylesheets>
-                <URL value="@../../base-prova.css"/>
-                <URL value="@../../button.css"/>
+                <URL value="@../../base-prova.css" />
+                <URL value="@../../button.css" />
             </stylesheets>
             <effect>
-                <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0"/>
+                <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
             </effect>
         </Button>
-        <Button mnemonicParsing="false" onAction="#goToGestisciPrenotazioni" prefHeight="60.0" prefWidth="130.0"
-                styleClass="custom-button" stylesheets="@../../button.css" text="Gestisci Prenotazioni"
-                textAlignment="CENTER" wrapText="true">
+        <Button mnemonicParsing="false" onAction="#goToGestisciPrenotazioni" prefHeight="60.0" prefWidth="130.0" styleClass="custom-button" stylesheets="@../../button.css" text="Gestisci Prenotazioni" textAlignment="CENTER" wrapText="true">
             <VBox.margin>
-                <Insets top="30.0"/>
+                <Insets top="30.0" />
             </VBox.margin>
             <effect>
-                <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0"/>
+                <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
             </effect>
         </Button>
-        <Button mnemonicParsing="false" onMouseClicked="#goToLogout" prefHeight="33.0" prefWidth="130.0"
-                styleClass="custom-button" stylesheets="@../../button.css" text="Esci">
+        <Button mnemonicParsing="false" onMouseClicked="#goToLogout" prefHeight="33.0" prefWidth="130.0" styleClass="custom-button" stylesheets="@../../button.css" text="Esci">
             <VBox.margin>
-                <Insets top="30.0"/>
+                <Insets top="30.0" />
             </VBox.margin>
             <effect>
-                <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0"/>
+                <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
             </effect>
         </Button>
     </VBox>
-    <Text fx:id="titolo" fill="#000000ac" layoutX="380.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0"
-          text="Richieste Rifiutate" textAlignment="CENTER" wrappingWidth="452.71179151535034"
-          AnchorPane.topAnchor="30.0">
+    <Text fx:id="titolo" fill="#000000ac" layoutX="380.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Richieste Rifiutate" textAlignment="CENTER" wrappingWidth="452.71179151535034" AnchorPane.topAnchor="30.0">
         <font>
-            <Font size="32.0"/>
+            <Font size="32.0" />
         </font>
     </Text>
-    <AnchorPane fx:id="zonaInfo" layoutX="246.0" layoutY="100.0" prefHeight="470.0" prefWidth="720.0"
-                stylesheets="@../../base-prova.css">
+    <AnchorPane fx:id="zonaInfo" layoutX="246.0" layoutY="100.0" prefHeight="470.0" prefWidth="720.0" stylesheets="@../../base-prova.css">
         <ScrollPane layoutX="-2.0" layoutY="56.0" prefHeight="418.0" prefWidth="720.0">
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="482.0" prefWidth="704.0"
-                        stylesheets="@../../button.css">
-                <TableView fx:id="richiesteTable" prefHeight="486.0" prefWidth="706.0"
-                           stylesheets="@../../button.css">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="482.0" prefWidth="704.0" stylesheets="@../../button.css">
+                <TableView fx:id="richiesteTable" prefHeight="486.0" prefWidth="706.0" stylesheets="@../../button.css">
                     <columns>
-                        <TableColumn fx:id="materia" minWidth="6.4000244140625"
-                                     prefWidth="186.40000611543655" text="Materia"/>
-                        <TableColumn fx:id="email" prefWidth="242.3999786376953" text="Contatto del tutor"/>
-                        <TableColumn fx:id="tariffa" prefWidth="118.39996337890625" text="Tariffa"/>
-                        <TableColumn fx:id="visualizza" minWidth="0.0" prefWidth="161.5999755859375"
-                                     text="Visualizza"/>
+                        <TableColumn fx:id="materia" minWidth="6.4000244140625" prefWidth="186.40000611543655" text="Materia" />
+                        <TableColumn fx:id="email" prefWidth="300.8000030517578" text="Contatto del tutor" />
+                        <TableColumn fx:id="tariffa" editable="false" prefWidth="93.60003662109375" resizable="false" text="Tariffa (€/h)" />
+                        <TableColumn fx:id="visualizza" editable="false" minWidth="0.0" prefWidth="135.199951171875" resizable="false" text="Visualizza" />
                     </columns>
                 </TableView>
             </AnchorPane>
         </ScrollPane>
-        <Text layoutX="174.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              text="Richieste di ripetizioni che sono state rifiutate dai tuoi tutor" textAlignment="CENTER"
-              wrappingWidth="372.0000610351562">
+        <Text layoutX="174.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Richieste di ripetizioni che sono state rifiutate dai tuoi tutor" textAlignment="CENTER" wrappingWidth="372.0000610351562">
             <font>
-                <Font size="14.0"/>
+                <Font size="14.0" />
             </font>
         </Text>
     </AnchorPane>
-    <ImageView fx:id="backButton" fitHeight="60.0" fitWidth="70.0" layoutX="231.0" layoutY="24.0"
-               onMouseClicked="#goToGestisciPrenotazioni" preserveRatio="true">
-        <Image url="@../../immagini/backButton.PNG"/>
+    <ImageView fx:id="backButton" fitHeight="60.0" fitWidth="70.0" layoutX="231.0" layoutY="24.0" onMouseClicked="#goToGestisciPrenotazioni" preserveRatio="true">
+        <Image url="@../../immagini/backButton.PNG" />
     </ImageView>
 </AnchorPane>

@@ -93,7 +93,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
 
             ) {
                 //se tutti i campi aggiuntivi sono vuoti, allora la ricerca va fatta solo per materia
-                List<RipetizioneInfoBean> risultatiRicercaBean = ricercaMateria();
+                risultatiRicercaBean = ricercaMateria();
                 caricaRisultati(risultatiRicercaBean);
                 Printer.println("ricerca completata");
 
@@ -103,7 +103,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
             } else {
                 //altrimenti la ricerca avviene anche con i filtri aggiunti
                 Printer.println("Ricerca con filtri...");
-                List<RipetizioneInfoBean> risultatiRicercaBean =  ricercaConFiltri();
+                risultatiRicercaBean =  ricercaConFiltri();
                 caricaRisultati(risultatiRicercaBean);
                 Printer.println("ricerca completata!");
             }
@@ -138,9 +138,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
                     answer = false;
                     return answer;
                 }
-
         }
-
         return answer;
     }
 
