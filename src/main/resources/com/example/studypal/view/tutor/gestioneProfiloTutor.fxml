@@ -3,10 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.CheckMenuItem?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
@@ -71,31 +69,100 @@
             </DropShadow>
          </effect>
         </VBox>
-        <Text fx:id="titolo" fill="#000000ac" layoutX="433.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestione Profilo" textAlignment="CENTER" wrappingWidth="320.71179151535034" AnchorPane.leftAnchor="433.0" AnchorPane.rightAnchor="246.28820848464966" AnchorPane.topAnchor="34.16796875">
+        <Text fx:id="titolo" fill="#000000ac" layoutX="433.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestione Profilo" textAlignment="CENTER" wrappingWidth="320.71179151535034" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="246.28820848464966" AnchorPane.topAnchor="30.0">
             <font>
                 <Font size="32.0" />
             </font>
         </Text>
       <AnchorPane fx:id="zonaInfo" layoutX="242.0" layoutY="101.0" prefHeight="470.0" prefWidth="715.0" stylesheets="@../../base-prova.css">
          <children>
-            <VBox layoutX="421.0" layoutY="72.0" prefHeight="280.0" prefWidth="220.0">
+            <VBox layoutX="421.0" layoutY="72.0" prefHeight="174.0" prefWidth="220.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Luogo">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Text>
-                  <ComboBox fx:id="luogoBox" editable="true" prefHeight="33.0" prefWidth="220.0" promptText="Seleziona una città..." styleClass="testo">
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </ComboBox>
+                  <VBox prefHeight="126.0" prefWidth="118.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Luogo">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <ComboBox fx:id="luogoBox" editable="true" prefHeight="33.0" prefWidth="220.0" promptText="Seleziona una città..." styleClass="testo">
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </ComboBox>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Giorni Disponibili">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="40.0" />
+                           </VBox.margin>
+                        </Text>
+                        <CheckBox fx:id="lunediBox" mnemonicParsing="false" text="Lunedì">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="martediBox" mnemonicParsing="false" text="Martedì">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="2.0" />
+                           </VBox.margin>
+                        </CheckBox>
+                        <CheckBox fx:id="mercolediBox" mnemonicParsing="false" text="Mercoledì">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="2.0" />
+                           </VBox.margin>
+                        </CheckBox>
+                        <CheckBox fx:id="giovediBox" mnemonicParsing="false" text="Giovedì">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="2.0" />
+                           </VBox.margin>
+                        </CheckBox>
+                        <CheckBox fx:id="venerdiBox" mnemonicParsing="false" text="Venerdì">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="2.0" />
+                           </VBox.margin>
+                        </CheckBox>
+                        <CheckBox fx:id="sabatoBox" mnemonicParsing="false" text="Sabato">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="2.0" />
+                           </VBox.margin>
+                        </CheckBox>
+                        <CheckBox fx:id="domenicaBox" mnemonicParsing="false" text="Domenica">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="2.0" />
+                           </VBox.margin>
+                        </CheckBox>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox layoutX="95.0" layoutY="72.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="220.0">
+               <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Materie">
                      <VBox.margin>
-                        <Insets top="30.0" />
+                        <Insets />
                      </VBox.margin>
                      <font>
                         <Font size="15.0" />
@@ -105,33 +172,10 @@
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
-                  </TextField>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Giorni Disponibili">
-                     <VBox.margin>
-                        <Insets top="30.0" />
-                     </VBox.margin>
                      <font>
-                        <Font size="15.0" />
+                        <Font size="14.0" />
                      </font>
-                  </Text>
-                  <MenuButton fx:id="giorniMenu" mnemonicParsing="false" prefHeight="26.0" prefWidth="231.0" styleClass="testo" text="giorni..." textFill="#9c9c9c">
-                    <items>
-                        <CheckMenuItem mnemonicParsing="false" text="Lunedì" />
-                        <CheckMenuItem mnemonicParsing="false" text="Martedì" />
-                        <CheckMenuItem mnemonicParsing="false" text="Mercoledì" />
-                        <CheckMenuItem mnemonicParsing="false" text="Giovedì" />
-                        <CheckMenuItem mnemonicParsing="false" text="Venerdì" />
-                        <CheckMenuItem mnemonicParsing="false" text="Sabato" />
-                        <CheckMenuItem mnemonicParsing="false" text="Domenica" />
-                    </items>
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </MenuButton>
-               </children>
-            </VBox>
-            <VBox layoutX="95.0" layoutY="72.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="220.0">
-               <children>
+                  </TextField>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Modalità di lezione">
                      <VBox.margin>
                         <Insets top="40.0" />
@@ -150,7 +194,7 @@
                   </CheckBox>
                   <CheckBox fx:id="onlineBox" mnemonicParsing="false" text="Online">
                      <VBox.margin>
-                        <Insets left="20.0" top="10.0" />
+                        <Insets left="20.0" top="5.0" />
                      </VBox.margin>
                      <font>
                         <Font size="15.0" />
