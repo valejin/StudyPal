@@ -43,8 +43,12 @@ public class HomeTutorGui {
             stage.setScene(scene);
         } catch (IOException e) {
             logger.severe("errore in HomeTutorGui " + e.getMessage());
+            e.printStackTrace();
         }
     }
+
+
+
     @FXML
     public void goToGestisciPrenotazioni(){
 

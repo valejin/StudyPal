@@ -1,6 +1,7 @@
 package com.example.studypal.bean;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class RipetizioneInfoBean extends BaseInfoBean{
@@ -16,12 +17,45 @@ public class RipetizioneInfoBean extends BaseInfoBean{
     private String nome;
     private String cognome;
 
+
+    //qui contiene tutte le informazioni per la ricerca con filtro, in caso di Prenota Ripetizione
+
     public RipetizioneInfoBean(String materia){
         super(materia);
     }
 
-    //qui contiene tutte le informazioni per la ricerca con filtro, in caso di Prenota Ripetizione
-    public RipetizioneInfoBean(String materia, Boolean inPresenza, Boolean online, String luogo, String giorni, Integer tariffa, String email){
+
+    /* costruttore lato controller grafico (lista di booleani)--------------------------------------------------------*/
+    public RipetizioneInfoBean(String materia, Boolean inPresenza, Boolean online, String luogo, List<Boolean> giorni, Integer tariffa, String email){
+        super(materia);
+        this.inPresenza = inPresenza;
+        this.online = online;
+        this.luogo = luogo;
+        this.giorni = convertiGiorni(giorni);
+        this.tariffa = tariffa;
+        this.email = email;
+
+    }
+
+    public RipetizioneInfoBean(String nome, String cognome, String materia, Boolean inPresenza, Boolean online,
+                               String luogo, List<Boolean> giorni, Integer tariffa, String email){
+
+        this.inPresenza = inPresenza;
+        this.online = online;
+        this.luogo = luogo;
+        this.giorni = convertiGiorni(giorni);
+        this.tariffa = tariffa;
+        this.email = email;
+        this.nome = nome;
+        this.cognome = cognome;
+        this.materia = materia;
+    }
+
+
+    /* costruttori per lato controller applicativo (stringa)----------------------------------------------------------*/
+
+    public RipetizioneInfoBean(String materia, Boolean inPresenza, Boolean online, String luogo,
+                               String giorni, Integer tariffa, String email){
         super(materia);
         this.inPresenza = inPresenza;
         this.online = online;
@@ -46,6 +80,7 @@ public class RipetizioneInfoBean extends BaseInfoBean{
     }
 
 
+    /* abbreviazione dei giorni --------------------------------------------------------------------------------------*/
     public void abbreviaGiorni() {
 
         Map<String, String> giorniMap = new HashMap<>();
@@ -60,6 +95,25 @@ public class RipetizioneInfoBean extends BaseInfoBean{
         for (Map.Entry<String, String> entry : giorniMap.entrySet()) {
             this.giorni = this.giorni.replace(entry.getKey(), entry.getValue());
         }
+    }
+
+
+    /* conversione dei giorni da bool a string------------------------------------------------------------------------*/
+    public String convertiGiorni(List<Boolean> giorniBool){
+
+        String[] daysOfWeek = {"Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato", "Domenica"};
+
+        StringBuilder giorniStringa = new StringBuilder();
+
+        for (int i = 0; i < giorniBool.size(); i++) {
+            if (Boolean.TRUE.equals(giorniBool.get(i))) {
+                if (!giorniStringa.isEmpty()) {
+                    giorniStringa.append(", ");
+                }
+                giorniStringa.append(daysOfWeek[i]);
+            }
+        }
+        return giorniStringa.toString();
     }
 
     public Integer getTariffa() {
