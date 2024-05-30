@@ -23,7 +23,7 @@
       </Text>
       <Pane layoutX="37.0" layoutY="126.0" prefHeight="415.0" prefWidth="930.0" stylesheets="@../base-prova.css">
          <children>
-            <Button fx:id="confermaButton" layoutX="390.0" layoutY="356.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#registrazioneMethod" prefHeight="47.0" prefWidth="154.0" styleClass="custom-button" stylesheets="@../button.css" text="Conferma">
+            <Button fx:id="confermaButton" layoutX="390.0" layoutY="356.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#registrazioneMethod" prefHeight="47.0" prefWidth="154.0" styleClass="custom-button_conferma" stylesheets="@../button.css" text="Conferma">
                <font>
                   <Font size="18.0" />
                </font></Button>
