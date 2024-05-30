@@ -7,12 +7,14 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -59,6 +61,13 @@
             <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
          </effect>
       </Button>
+      <effect>
+         <DropShadow>
+            <color>
+               <Color red="0.4157504737377167" green="0.6768239140510559" blue="0.9052631855010986" opacity="0.8799999952316284" />
+            </color>
+         </DropShadow>
+      </effect>
    </VBox>
    <Text fx:id="titolo" fill="#000000ab" layoutX="374.0" layoutY="66.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="#titolo" text="Prenota Ripetizione" textAlignment="CENTER" wrappingWidth="451.2001373767853" AnchorPane.leftAnchor="374.0" AnchorPane.rightAnchor="174.79986262321472" AnchorPane.topAnchor="30.0">
       <font>
@@ -74,8 +83,8 @@
                   <TableColumn fx:id="cognome" editable="false" prefWidth="144.0" text="Cognome" />
                   <TableColumn fx:id="tariffa" editable="false" minWidth="4.0" prefWidth="92.80000305175781" resizable="false" text="Tariffa (€/h)" />
                   <TableColumn fx:id="materia" prefWidth="128.79998779296875" text="Materia" />
-                  <TableColumn fx:id="giorni" editable="false" prefWidth="112.0" resizable="false" text="Disponibilità" />
-                  <TableColumn fx:id="prenota" editable="false" minWidth="0.0" prefWidth="125.60003662109375" resizable="false" />
+                  <TableColumn fx:id="giorni" editable="false" prefWidth="121.59991455078125" resizable="false" text="Disponibilità" />
+                  <TableColumn fx:id="prenota" editable="false" minWidth="0.0" prefWidth="116.800048828125" resizable="false" />
                </columns>
             </TableView>
          </AnchorPane>
@@ -94,7 +103,7 @@
                <Insets top="8.0" />
             </HBox.margin>
             <font>
-               <Font size="15.0" />
+               <Font size="14.0" />
             </font>
          </Label>
          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Luogo:" wrappingWidth="53.336669921875">
@@ -110,7 +119,7 @@
                <Insets top="8.0" />
             </HBox.margin>
             <font>
-               <Font size="15.0" />
+               <Font size="14.0" />
             </font>
          </Label>
          <Text layoutX="126.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Modalità:" wrappingWidth="67.7366943359375">
@@ -126,7 +135,7 @@
                <Insets top="8.0" />
             </HBox.margin>
             <font>
-               <Font size="15.0" />
+               <Font size="14.0" />
             </font>
          </Label>
       </HBox>
@@ -144,7 +153,7 @@
                <Insets left="10.0" top="8.0" />
             </HBox.margin>
             <font>
-               <Font size="15.0" />
+               <Font size="14.0" />
             </font>
          </Label>
          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Giorni:" wrappingWidth="53.336669921875">
@@ -160,7 +169,7 @@
                <Insets top="8.0" />
             </HBox.margin>
             <font>
-               <Font size="15.0" />
+               <Font size="14.0" />
             </font>
          </Label>
       </HBox>
@@ -170,7 +179,7 @@
          <Font size="14.0" />
       </font>
    </Text>
-   <ImageView fx:id="backButton" fitHeight="60.0" fitWidth="68.0" layoutX="228.0" layoutY="24.0" onMouseClicked="#goToRicerca" preserveRatio="true">
+   <ImageView fx:id="backButton" fitHeight="60.0" fitWidth="68.0" layoutX="228.0" layoutY="26.0" onMouseClicked="#goToRicerca" preserveRatio="true">
       <Image url="@../../immagini/backButton.PNG" />
    </ImageView>
 </AnchorPane>
