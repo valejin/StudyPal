@@ -5,9 +5,10 @@ import com.example.studypal.bean.RipetizioneInfoBean;
 import com.example.studypal.controller.applicationController.tutor.GestioneProfiloTutorController;
 import com.example.studypal.model.RipetizioneInfoModel;
 import com.example.studypal.other.Printer;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GestioneProfiloTutorGuiController extends HomeTutorGui {
 
@@ -15,28 +16,34 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
 
     @FXML
     private Label tariffaValue;
-
     @FXML
     private ComboBox<String> luogoBox;
-
     @FXML
     private CheckBox inPresenzaBox;
-
     @FXML
     private CheckBox onlineBox;
-
     @FXML
     private Slider tariffaSlider;
-
     @FXML
     private TextField materieField;
-
     @FXML
-    private MenuButton giorniMenu;
-
+    private CheckBox lunediBox;
+    @FXML
+    private CheckBox martediBox;
+    @FXML
+    private CheckBox mercolediBox;
+    @FXML
+    private CheckBox giovediBox;
+    @FXML
+    private CheckBox venerdiBox;
+    @FXML
+    private CheckBox sabatoBox;
+    @FXML
+    private CheckBox domenicaBox;
     @FXML
     private Label successoModifiche;
 
+    private List<CheckBox> listaCheckbox;
 
     //eredita dal padre un attributo LoggedInUserBean
     public GestioneProfiloTutorGuiController(LoggedInUserBean user){ this.user = user;}
@@ -44,7 +51,10 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
 
 
     public void initialize() {
-        
+
+        listaCheckbox = List.of(lunediBox, martediBox, mercolediBox, giovediBox, venerdiBox, sabatoBox, domenicaBox);
+        /* lista usata per iterare attraverso le checkbox e leggerne i valori senza fare troppi if*/
+
         this.infoCorrentiProfilo = caricaInformazioniProfilo(user.getEmail());
 
         /* mostro all'utente le sue informazioni correnti------------------------------------------------------------*/
@@ -54,26 +64,26 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
         materieField.setText(this.infoCorrentiProfilo.getMateria());
         tariffaSlider.setValue(this.infoCorrentiProfilo.getTariffa());
         tariffaSlider.valueProperty().addListener((observable, oldValue, newValue) -> tariffaValue.setText(newValue.intValue() + "€"));
-        giorniMenu.setText(this.infoCorrentiProfilo.getGiorni());
+
+
+        //combobox luogo---------------------------------------------------------------------
+        luogoBox.getItems().addAll("Roma", "Milano", "Napoli","Palermo", "Torino");
+
+        //combobox giorni disponibili -------------------------------------------------------
+        /*giorniMenu.setText(this.infoCorrentiProfilo.getGiorni());
 
         for (MenuItem item : giorniMenu.getItems()) {
             if (item instanceof CheckMenuItem checkItem && infoCorrentiProfilo.getGiorni()!=null && this.infoCorrentiProfilo.getGiorni().contains(checkItem.getText())) {
                     checkItem.setSelected(true);
                 }
 
-        }
-
-        //combobox luogo---------------------------------------------------------------------
-        luogoBox.getItems().addAll("Roma", "Milano", "Napoli","Palermo", "Torino");
-
-        //combobox giorni disponibili -------------------------------------------------------
         giorniMenu.setOnAction(event -> {
             if (giorniMenu.isShowing()) {
                 giorniMenu.hide();
             } else {
                 giorniMenu.show();
             }
-        });
+        });*/
 
         //tariffa slider--------------------------------------------------------------------
         tariffaSlider.setBlockIncrement(1);
@@ -94,14 +104,15 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
         prende le informazioni inserite dall'utente e le inserisce in un'istanza di RipetizioneInfoBean
         invia il bean al controller applicativo che popolerà un model per mandarlo al DAO
          */
-
+        String email;
         String materie;
-        boolean inPresenza = false;
-        boolean online = false;
         String luogo;
         int tariffa;
-        String email = this.user.getEmail(); //questa è l'email del tutor loggato
+        boolean inPresenza = false;
+        boolean online = false;
+        List<Boolean> giorni;
 
+        email = this.user.getEmail(); //questa è l'email del tutor loggato
         materie = this.materieField.getText();
         tariffa = (int) Math.round(this.tariffaSlider.getValue());
 
@@ -111,25 +122,25 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
             luogo = this.luogoBox.getValue();
         }
 
-
         if (this.inPresenzaBox.isSelected()){ inPresenza = true;}
         if (this.onlineBox.isSelected()) { online = true;}
 
         /*gestione del menubutton dei giorni-------------------------------------------------------------------------*/
-        String giorni = getGiorni();
+        giorni = getGiorni(listaCheckbox);
 
+
+
+        //creo il bean, istanzio il controller applicativo e chiamo il suo metodo---------------------------------------
+        RipetizioneInfoBean ripetizioneInfoBean = new RipetizioneInfoBean(materie, inPresenza, online, luogo, giorni, tariffa, email);
 
         //stampo i valori a terminale-----------------------------------------------------------------------------------
         Printer.println("Modifiche desiderate dall'utente " + email);
         Printer.println("    Materie: " + materie);
         Printer.println("    Modalità: " + inPresenza + " " + online);
         Printer.println("    Luogo: " + luogo);
-        Printer.println("    Giorni: " + giorni );
+        Printer.println("    Giorni: " + ripetizioneInfoBean.getGiorni());
         Printer.println("    Tariffa: " + tariffa + "€/h");
 
-
-        //creo il bean, istanzio il controller applicativo e chiamo il suo metodo---------------------------------------
-        RipetizioneInfoBean ripetizioneInfoBean = new RipetizioneInfoBean(materie, inPresenza, online, luogo, giorni, tariffa, email);
         GestioneProfiloTutorController gestioneProfiloTutorController = new GestioneProfiloTutorController();
         gestioneProfiloTutorController.gestioneProfiloMethod(ripetizioneInfoBean);
 
@@ -137,6 +148,18 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
         successoModifiche.setText("Modifiche avvenute con successo");
     }
 
+
+
+    public List<Boolean> getGiorni(List<CheckBox> listaCheckbox) {
+        List<Boolean> giorni = new ArrayList<>();
+        for (CheckBox checkBox : listaCheckbox) {
+            giorni.add(checkBox.isSelected());
+        }
+        return giorni;
+    }
+
+
+    /*
     private String getGiorni() {
         ObservableList<MenuItem> items = giorniMenu.getItems();
         StringBuilder selectedValues = new StringBuilder();
@@ -151,7 +174,7 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
         }
         return selectedValues.toString();
     }
-
+    */
 
     private RipetizioneInfoModel caricaInformazioniProfilo(String email) {
 

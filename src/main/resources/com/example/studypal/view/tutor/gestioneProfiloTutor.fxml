@@ -213,7 +213,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Slider>
-                  <Label fx:id="tariffaValue" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="216.0" textAlignment="CENTER">
+                  <Label fx:id="tariffaValue" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="140.0" textAlignment="RIGHT">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
