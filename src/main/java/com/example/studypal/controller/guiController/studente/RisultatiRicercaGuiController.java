@@ -136,6 +136,7 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
                             setStyle("-fx-text-fill: blue; -fx-underline: true; -fx-cursor: hand;");
                             setOnMouseClicked(event -> {
                                 RipetizioneInfoBean selectedTutor = getTableView().getItems().get(getIndex());
+
                                 //openTutorProfile(selectedTutor);
                             });
                         } else {

@@ -3,6 +3,8 @@ package com.example.studypal.model;
 public class PrenotazioneModel {
 
     private int idRichiesta;
+    private String nome;
+    private String cognome;
     private String emailTutor;
     private String emailStudente;
     private String materia;
@@ -12,12 +14,14 @@ public class PrenotazioneModel {
     private String note;
     private int stato;
 
-    public PrenotazioneModel(Integer idRichiesta, String emailTutor, String emailStudente, String materia, int modLezione, int tariffa, String giorno, String note, int stato) {
+    public PrenotazioneModel(Integer idRichiesta, String nome, String cognome, String emailTutor, String emailStudente, String materia, int modLezione, int tariffa, String giorno, String note, int stato) {
 
         /*
         modalita lezione: 0 = non specificato, 1 = presenza, 2 = online
          */
         this.idRichiesta = idRichiesta;
+        this.nome = nome;
+        this.cognome = cognome;
         this.emailTutor = emailTutor;
         this.emailStudente = emailStudente;
         this.materia = materia;
@@ -30,6 +34,22 @@ public class PrenotazioneModel {
 /*
     public PrenotazioneModel(int idrichieste, String emailTutor, String emailStudente, String materia, int modLezione, int tariffa, String giorni, String note, int stato) {
     }*/
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCognome() {
+        return cognome;
+    }
+
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
+    }
 
     public int getIdRichiesta() {
         return idRichiesta;

@@ -35,7 +35,7 @@ public class RichiesteArrivateController extends GestisciPrenotazioniGui {
 
             //passo la lista di model alla lista di BEAN
             for (PrenotazioneModel risultato : risultatiRicerca) {
-                PrenotazioneBean risultatoBean = new PrenotazioneBean(risultato.getIdRichiesta(), risultato.getEmailTutor(), risultato.getEmailStudente(), risultato.getMateria(), risultato.getModLezione(), risultato.getTariffa(), risultato.getGiorno(), risultato.getNote(), risultato.getStato());
+                PrenotazioneBean risultatoBean = new PrenotazioneBean(risultato.getIdRichiesta(), risultato.getNome(), risultato.getCognome(), risultato.getEmailTutor(), risultato.getEmailStudente(), risultato.getMateria(), risultato.getModLezione(), risultato.getTariffa(), risultato.getGiorno(), risultato.getNote(), risultato.getStato());
 
                 prenotazioneBean.add(risultatoBean);
             }

@@ -3,6 +3,9 @@ package com.example.studypal.bean;
 public class PrenotazioneBean {
 
     private int idRichiesta;
+    private String nome;
+    private String cognome;
+
     private String emailTutor;
     private String emailStudente;
     private String materia;
@@ -16,8 +19,10 @@ public class PrenotazioneBean {
 
 
 
-    public PrenotazioneBean(Integer idRichiesta, String emailTutor, String emailStudente, String materia, int modLezione, int tariffa, String giorno, String note, int stato) {
+    public PrenotazioneBean(Integer idRichiesta, String nome, String cognome, String emailTutor, String emailStudente, String materia, int modLezione, int tariffa, String giorno, String note, int stato) {
         this.idRichiesta = idRichiesta;
+        this.nome = nome;
+        this.cognome = cognome;
         this.emailTutor = emailTutor;
         this.emailStudente = emailStudente;
         this.materia = materia;
@@ -27,6 +32,25 @@ public class PrenotazioneBean {
         this.note = note;
         this.stato = stato;
     }
+
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCognome() {
+        return cognome;
+    }
+
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
+    }
+
+
 
     public int getIdRichiesta() {
         return idRichiesta;

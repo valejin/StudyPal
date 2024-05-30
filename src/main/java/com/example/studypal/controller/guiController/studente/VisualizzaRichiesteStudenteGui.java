@@ -24,11 +24,11 @@ public class VisualizzaRichiesteStudenteGui extends HomeStudenteGui {
     @FXML
     public Button gestisciPrenotazioni;
     @FXML
-    Label nome;
+    private Label nome;
     @FXML
-    Label cognome;
+    private Label cognome;
     @FXML
-    Label emailTutor;
+    private Label emailTutor;
     @FXML
     private Label materia;
     @FXML
@@ -39,6 +39,9 @@ public class VisualizzaRichiesteStudenteGui extends HomeStudenteGui {
     private Label note;
     PrenotazioneBean dettagliRichiesta;
     List <PrenotazioneBean> listaRichieste;
+
+    String nomeTutor;
+    String cognomeTutor;
     String email;
     String materiaRichiesta;
     String giorno;
@@ -59,6 +62,9 @@ public class VisualizzaRichiesteStudenteGui extends HomeStudenteGui {
 
     public void initialize(){
 
+        nomeTutor = dettagliRichiesta.getNome();
+        cognomeTutor = dettagliRichiesta.getCognome();
+
         email = dettagliRichiesta.getEmailTutor();
         materiaRichiesta = dettagliRichiesta.getMateria();
         modalita = dettagliRichiesta.getModLezione();
@@ -74,6 +80,12 @@ public class VisualizzaRichiesteStudenteGui extends HomeStudenteGui {
 
 
         /* -------------------setto i label nell'interfaccia utente---------------------------------*/
+        nome.setText(nomeTutor);
+        System.out.println(nomeTutor);
+        cognome.setText(cognomeTutor);
+        System.out.println(cognomeTutor);
+
+
         emailTutor.setText(email);
         materia.setText(materiaRichiesta);
 

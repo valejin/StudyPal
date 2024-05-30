@@ -34,7 +34,7 @@ public class GestisciPrenotazioniStudenteController {
 
             /* converto i model a bean per restituirli al controller grafico*/
             for (PrenotazioneModel richiesta: listaRichieste){
-                PrenotazioneBean richiestaBean = new PrenotazioneBean(richiesta.getIdRichiesta(), richiesta.getEmailTutor(),
+                PrenotazioneBean richiestaBean = new PrenotazioneBean(richiesta.getIdRichiesta(), richiesta.getNome(), richiesta.getCognome(),  richiesta.getEmailTutor(),
                         richiesta.getEmailStudente(), richiesta.getMateria(), richiesta.getModLezione(),
                         richiesta.getTariffa(), richiesta.getGiorno(), richiesta.getNote(), richiesta.getStato());
                 listaRichiesteBean.add(richiestaBean);
