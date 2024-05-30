@@ -162,7 +162,10 @@
                <Insets top="5.0" />
             </VBox.margin>
          </Slider>
-         <Label fx:id="tariffaValue" />
+         <Label fx:id="tariffaValue" contentDisplay="RIGHT" prefHeight="18.0" prefWidth="33.0">
+            <VBox.margin>
+               <Insets left="85.0" />
+            </VBox.margin></Label>
       </VBox>
       <Button layoutX="484.0" layoutY="63.0" maxHeight="-Infinity" mnemonicParsing="false" onAction="#ricercaMethod" prefHeight="26.0" prefWidth="83.0" styleClass="rounded-button" stylesheets="@../../button.css" text="Cerca" />
       <Line endX="86.5999755859375" layoutX="194.0" layoutY="183.0" startX="-100.0" stroke="#50944f" />
