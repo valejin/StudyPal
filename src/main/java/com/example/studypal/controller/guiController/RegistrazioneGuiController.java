@@ -4,6 +4,7 @@ import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.RegistrazioneUserBean;
 import com.example.studypal.controller.applicationController.RegistrazioneController;
 import com.example.studypal.exceptions.EmailAlreadyInUseException;
+import com.example.studypal.exceptions.EmailNonValidaException;
 import com.example.studypal.other.Printer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +17,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RegistrazioneGuiController {
 
@@ -39,6 +42,11 @@ public class RegistrazioneGuiController {
     private static final Logger logger = Logger.getLogger(RegistrazioneGuiController.class.getName());
 
     protected RegistrazioneGuiController(LoggedInUserBean user) { this.user = user;}
+
+    // Pattern regex per validare l'email
+    private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
+    private static final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
+
     @FXML
     void registrazioneMethod() {
         //metodo attivato dal pulsante di conferma sulla schermata di registrazione
@@ -50,13 +58,27 @@ public class RegistrazioneGuiController {
         String confermaPassword;
         boolean ruolo;
 
+
+
         //se sono stati compilati tutti i campi
         if(!this.nomeField.getText().isEmpty() && !this.cognomeField.getText().isEmpty() && !this.emailField.getText().isEmpty() && !this.passwordField.getText().isEmpty() && !this.confermaPasswordField.getText().isEmpty()){
 
             //prendo i dati inseriti dall'utente
             userNome = this.nomeField.getText();
             userCognome = this.cognomeField.getText();
+
+
+            //controllo la forma dell'email inserito
             userEmail = this.emailField.getText();
+            try{
+                isValidEmail(userEmail);
+            } catch(EmailNonValidaException e){
+                campiError.setText("L'email non è valida");
+                return;
+            }
+
+
+
             userPassword = this.passwordField.getText();
             confermaPassword = this.confermaPasswordField.getText();
 
@@ -104,6 +126,18 @@ public class RegistrazioneGuiController {
 
         }
     }
+
+
+    //funzione per il controllo della forma di email-------------------------------------------------
+    public static void isValidEmail(String email) throws EmailNonValidaException {
+        if (email == null || !EMAIL_PATTERN.matcher(email).matches()) {
+            throw new EmailNonValidaException();
+        }
+    }
+
+
+
+
 
     //cambio pagina: quando effettuato correttamente la registrazione--------------------------------------------------------------
     public void caricaConferma () {

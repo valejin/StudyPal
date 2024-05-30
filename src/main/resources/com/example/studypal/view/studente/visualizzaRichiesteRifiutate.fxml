@@ -147,7 +147,7 @@
                 <Font name="Arial Bold Italic" size="15.0" />
             </font>
         </Text>
-        <AnchorPane fx:id="zonaInfo" layoutX="263.0" layoutY="238.0" prefHeight="120.0" prefWidth="353.0">
+        <AnchorPane fx:id="sfondoVerdeChiaro" layoutX="263.0" layoutY="238.0" prefHeight="120.0" prefWidth="353.0">
             <Label fx:id="note" alignment="TOP_LEFT" layoutX="14.0" layoutY="11.0" prefHeight="94.0" prefWidth="326.0" text="Label" wrapText="true">
                 <font>
                     <Font size="15.0" />

@@ -1,14 +1,16 @@
 .custom-button {
     -fx-background-color: rgb(104, 138, 102);
     -fx-text-fill: #eceeeb;
-  /*  -fx-border-radius: 15 15 15 15; */
+    -fx-border-radius: 15 15 15 15;
+    -fx-font-size: 16px;
 
 }
 
 .custom-button2 {
     -fx-background-color: rgba(218, 49, 49, 0.8);
     -fx-text-fill: #eceeeb;
-    /*-fx-border-radius: 15 15 15 15; */
+    -fx-border-radius: 15 15 15 15;
+    -fx-font-size: 16px;
 
 }
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -7,19 +8,23 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" stylesheets="@../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.RegistrazioneGuiController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.RegistrazioneGuiController">
    <children>
-      <Pane layoutX="133.0" layoutY="54.0" prefHeight="378.0" prefWidth="602.0" stylesheets="@../base-prova.css">
+      <Pane layoutX="199.0" layoutY="110.0" prefHeight="378.0" prefWidth="602.0" stylesheets="@../base-prova.css">
          <children>
-            <Text fill="#404040" layoutX="111.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrazione avvenuta con successo!" textAlignment="CENTER" wrappingWidth="380.46124267578125">
+            <Text fill="#404040" layoutX="81.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrazione avvenuta con successo!" textAlignment="CENTER" wrappingWidth="439.66119384765625">
                <font>
-                  <Font name="Bodoni MT Bold Italic" size="35.0" />
+                  <Font name="Bodoni MT Bold Italic" size="40.0" />
                </font>
             </Text>
-            <Button fx:id="tornaLogin" layoutX="262.0" layoutY="254.0" mnemonicParsing="false" onAction="#goToLogin" stylesheets="@../base-prova.css" text="Login" />
-            <Text fx:id="indicazioni" layoutX="80.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tornate alla schermata del login per accedere alla piattaforma." wrappingWidth="447.77061462402344">
+            <Button fx:id="tornaLogin" layoutX="254.0" layoutY="254.0" mnemonicParsing="false" onAction="#goToLogin" prefHeight="50.0" prefWidth="94.0" styleClass="custom-button" text="Login">
+               <stylesheets>
+                  <URL value="@../base-prova.css" />
+                  <URL value="@../button.css" />
+               </stylesheets></Button>
+            <Text fx:id="indicazioni" layoutX="65.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tornate alla schermata del login per accedere alla piattaforma." wrappingWidth="471.7706756591797">
                <font>
-                  <Font size="16.0" />
+                  <Font size="17.0" />
                </font></Text>
             <Label fx:id="campiError" layoutX="225.0" layoutY="237.0" />
          </children>

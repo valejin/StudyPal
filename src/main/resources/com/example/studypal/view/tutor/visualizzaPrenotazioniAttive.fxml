@@ -72,12 +72,22 @@
         </Text>
       <AnchorPane fx:id="sfondoChiaro" layoutX="254.0" layoutY="106.0" prefHeight="454.0" prefWidth="702.0" stylesheets="@../../base-prova.css">
          <children>
-            <VBox layoutX="166.0" layoutY="102.0" prefHeight="250.0" prefWidth="90.0">
+            <AnchorPane fx:id="sfondoVerdeChiaro" layoutX="225.0" layoutY="274.0" maxHeight="92.0" maxWidth="370.0" prefHeight="92.0" prefWidth="370.0" />
+            <Label fx:id="successoModifiche" layoutX="219.0" layoutY="399.0" prefHeight="20.0" prefWidth="256.0" textFill="#2672bf">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <Glow level="0.23" />
+               </effect>
+            </Label>
+            <VBox layoutX="107.0" layoutY="76.0" prefHeight="250.0" prefWidth="90.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Email studente:">
                      <font>
                         <Font size="15.0" />
-                     </font></Text>
+                     </font>
+                  </Text>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Materia:">
                      <VBox.margin>
                         <Insets top="30.0" />
@@ -112,13 +122,13 @@
                   </Text>
                </children>
             </VBox>
-            <AnchorPane fx:id="sfondoVerdeChiaro" layoutX="284.0" layoutY="297.0" maxHeight="92.0" maxWidth="370.0" prefHeight="92.0" prefWidth="370.0" />
-            <VBox layoutX="291.0" layoutY="102.0" prefHeight="283.0" prefWidth="356.0">
+            <VBox layoutX="232.0" layoutY="76.0" prefHeight="283.0" prefWidth="356.0">
                <children>
                   <Label fx:id="emailStudente" prefHeight="18.0" prefWidth="218.0" text="Label">
                      <font>
                         <Font size="15.0" />
-                     </font></Label>
+                     </font>
+                  </Label>
                   <Label fx:id="materia" prefHeight="18.0" prefWidth="226.0" text="Label">
                      <VBox.margin>
                         <Insets top="28.0" />
@@ -150,14 +160,6 @@
                   </Label>
                </children>
             </VBox>
-            <Label fx:id="successoModifiche" layoutX="219.0" layoutY="399.0" prefHeight="20.0" prefWidth="256.0" textFill="#2672bf">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <effect>
-                  <Glow level="0.23" />
-               </effect>
-            </Label>
          </children>
       </AnchorPane>
       <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="244.0" layoutY="27.0" onMouseClicked="#goToPrenotazioniAttive" preserveRatio="true">

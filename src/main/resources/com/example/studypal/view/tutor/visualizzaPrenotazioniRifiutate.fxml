@@ -72,7 +72,7 @@
         </Text>
       <AnchorPane fx:id="sfondoChiaro" layoutX="247.0" layoutY="107.0" prefHeight="458.0" prefWidth="706.0" stylesheets="@../../base-prova.css">
          <children>
-            <VBox layoutX="139.0" layoutY="104.0" prefHeight="250.0" prefWidth="90.0">
+            <VBox layoutX="135.0" layoutY="67.0" prefHeight="250.0" prefWidth="90.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Email studente:">
                      <font>
@@ -112,8 +112,8 @@
                   </Text>
                </children>
             </VBox>
-            <AnchorPane fx:id="sfondoVerdeChiaro" layoutX="258.0" layoutY="294.0" maxHeight="92.0" maxWidth="370.0" prefHeight="92.0" prefWidth="370.0" />
-            <VBox layoutX="266.0" layoutY="104.0" prefHeight="274.0" prefWidth="353.0">
+            <AnchorPane fx:id="sfondoVerdeChiaro" layoutX="253.0" layoutY="260.0" maxHeight="92.0" maxWidth="370.0" prefHeight="92.0" prefWidth="370.0" />
+            <VBox layoutX="262.0" layoutY="67.0" prefHeight="274.0" prefWidth="353.0">
                <children>
                   <Label fx:id="emailStudente" prefHeight="18.0" prefWidth="218.0" text="Label">
                      <font>
@@ -161,6 +161,11 @@
                   <Glow level="0.23" />
                </effect>
             </Label>
+            <Text fill="#b22740" layoutX="208.0" layoutY="391.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La richiesta è stata rifiutata precedentemente.">
+               <font>
+                  <Font name="Arial Bold Italic" size="15.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
       <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="62.0" layoutX="235.0" layoutY="28.0" onMouseClicked="#goToPrenotazioniRifiutate" preserveRatio="true">
