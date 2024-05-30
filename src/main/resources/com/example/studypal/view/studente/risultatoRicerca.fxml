@@ -43,7 +43,7 @@
             <InnerShadow blurType="ONE_PASS_BOX" height="11.0" radius="5.0" width="11.0" />
          </effect>
       </Button>
-      <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="130.0" styleClass="custom-button" stylesheets="@../../button.css" text="Gestisci Prenotazioni" textAlignment="CENTER" wrapText="true">
+      <Button mnemonicParsing="false" onAction="#goToGestisciPrenotazioni" prefHeight="60.0" prefWidth="130.0" styleClass="custom-button" stylesheets="@../../button.css" text="Gestisci Prenotazioni" textAlignment="CENTER" wrapText="true">
          <VBox.margin>
             <Insets top="30.0" />
          </VBox.margin>
