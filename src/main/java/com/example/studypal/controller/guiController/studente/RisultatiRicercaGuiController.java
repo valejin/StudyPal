@@ -118,8 +118,38 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
         tariffa.setCellValueFactory(new PropertyValueFactory<>("tariffa"));
         giorni.setCellValueFactory(new PropertyValueFactory<>("giorni"));
 
+
         // Aggiungi gli elementi alla TableView
         risultatiTable.getItems().addAll(tutorList);
+
+
+        // Aggiungi una cell factory personalizzata alla colonna "nome"
+        nome.setCellFactory(new Callback<TableColumn<RipetizioneInfoBean, String>, TableCell<RipetizioneInfoBean, String>>() {
+            @Override
+            public TableCell<RipetizioneInfoBean, String> call(TableColumn<RipetizioneInfoBean, String> param) {
+                return new TableCell<RipetizioneInfoBean, String>() {
+                    @Override
+                    protected void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item != null) {
+                            setText(item);
+                            setStyle("-fx-text-fill: blue; -fx-underline: true; -fx-cursor: hand;");
+                            setOnMouseClicked(event -> {
+                                RipetizioneInfoBean selectedTutor = getTableView().getItems().get(getIndex());
+                                //openTutorProfile(selectedTutor);
+                            });
+                        } else {
+                            setText(null);
+                            setStyle(null);
+                            setOnMouseClicked(null);
+                        }
+                    }
+                };
+            }
+        });
+
+
+
 
         // Imposta la factory per la colonna "Prenota"
         prenota.setCellFactory(new Callback<>() {
@@ -148,6 +178,8 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
             }
         });
     }
+
+
 
 
 
