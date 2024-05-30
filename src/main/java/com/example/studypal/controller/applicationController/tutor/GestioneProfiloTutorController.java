@@ -20,7 +20,7 @@ public class GestioneProfiloTutorController {
         //popoliamo model
         ripetizioneInfoModel.setLuogo(ripetizioneInfoBean.getLuogo());
         ripetizioneInfoModel.setMateria(ripetizioneInfoBean.getMateria());
-        //ripetizioneInfoModel.setGiorni(ripetizioneInfoBean.getGiorni());
+        ripetizioneInfoModel.setGiorni(ripetizioneInfoBean.getGiorni());
 
         ripetizioneInfoModel.setInPresenza(ripetizioneInfoBean.getInPresenza());
         ripetizioneInfoModel.setOnline(ripetizioneInfoBean.getOnline());
@@ -34,10 +34,16 @@ public class GestioneProfiloTutorController {
         ripetizioneInfoDAO.modificaProfiloTutor(ripetizioneInfoModel);
     }
 
-    public RipetizioneInfoModel caricaInformazioniProfilo(String email){
+    public RipetizioneInfoBean caricaInformazioniProfilo(String email){
 
         RipetizioneInfoDAO ripetizioneInfoDAO = new RipetizioneInfoDAO();
-        return ripetizioneInfoDAO.caricaInformazioniProfilo(email);
+        RipetizioneInfoModel ripetizioneInfoModel = ripetizioneInfoDAO.caricaInformazioniProfilo(email);
+
+        System.out.println("giorni controller " + ripetizioneInfoModel.getGiorni());
+
+        return new RipetizioneInfoBean(ripetizioneInfoModel.getMateria(),
+                ripetizioneInfoModel.getInPresenza(), ripetizioneInfoModel.getOnline(), ripetizioneInfoModel.getLuogo(),
+                ripetizioneInfoModel.getGiorni(), ripetizioneInfoModel.getTariffa(), ripetizioneInfoModel.getEmail());
 
     }
 }

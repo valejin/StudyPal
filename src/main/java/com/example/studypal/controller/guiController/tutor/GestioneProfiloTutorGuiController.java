@@ -3,12 +3,10 @@ package com.example.studypal.controller.guiController.tutor;
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.RipetizioneInfoBean;
 import com.example.studypal.controller.applicationController.tutor.GestioneProfiloTutorController;
-import com.example.studypal.model.RipetizioneInfoModel;
 import com.example.studypal.other.Printer;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class GestioneProfiloTutorGuiController extends HomeTutorGui {
@@ -48,7 +46,7 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
 
     //eredita dal padre un attributo LoggedInUserBean
     public GestioneProfiloTutorGuiController(LoggedInUserBean user){ this.user = user;}
-    RipetizioneInfoModel infoCorrentiProfilo;
+    RipetizioneInfoBean infoCorrentiProfilo;
 
 
     public void initialize() {
@@ -73,11 +71,14 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
         //checkbox giorni disponibili -------------------------------------------------------
         String[] giorniSettimana = {"Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato", "Domenica"};
 
-        for (int i = 0; i < listaCheckbox.size(); i++) {
-            CheckBox checkBox = listaCheckbox.get(i);
-            String giorno = giorniSettimana[i];
+        if (this.infoCorrentiProfilo.getGiorni() != null){
+            Printer.println("SONO QUI");
+            for (int i = 0; i < listaCheckbox.size(); i++) {
+                CheckBox checkBox = listaCheckbox.get(i);
+                String giorno = giorniSettimana[i];
 
-            checkBox.setSelected(this.infoCorrentiProfilo.getGiorni().contains(giorno));
+                checkBox.setSelected(this.infoCorrentiProfilo.getGiorni().contains(giorno));
+            }
         }
 
 
@@ -121,9 +122,8 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
         if (this.inPresenzaBox.isSelected()){ inPresenza = true;}
         if (this.onlineBox.isSelected()) { online = true;}
 
-        /*gestione del menubutton dei giorni-------------------------------------------------------------------------*/
+        /*gestione dei giorni (lista di booleani) -------------------------------------------------------------------*/
         giorni = getGiorni(listaCheckbox);
-
 
 
         //creo il bean, istanzio il controller applicativo e chiamo il suo metodo---------------------------------------
@@ -140,6 +140,10 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
         GestioneProfiloTutorController gestioneProfiloTutorController = new GestioneProfiloTutorController();
         gestioneProfiloTutorController.gestioneProfiloMethod(ripetizioneInfoBean);
 
+        /* il problema sta nel fatto che salvo le info del profilo nel ripetizioneInfoBean e poi lo passo subito al
+        * controller, senza prima convertirlo! Quindi al controller arriva come gionri una lista di booleani invece
+        * che una stringa e per questo non riesce a salvarla nel db*/
+
         //se sono arrivato qui è andato tutto a buon fine e posso comunicarlo all'utente
         successoModifiche.setText("Modifiche avvenute con successo");
     }
@@ -154,25 +158,7 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
         return giorni;
     }
 
-
-    /*
-    private String getGiorni() {
-        ObservableList<MenuItem> items = giorniMenu.getItems();
-        StringBuilder selectedValues = new StringBuilder();
-        for (MenuItem item : items) {
-            if (item instanceof CheckMenuItem checkMenuItem && checkMenuItem.isSelected()) {
-                    if (!selectedValues.isEmpty()) {   //prima era selectedValues.length() > 0
-                        selectedValues.append(", ");
-                    }
-                    selectedValues.append(checkMenuItem.getText());
-                }
-
-        }
-        return selectedValues.toString();
-    }
-    */
-
-    private RipetizioneInfoModel caricaInformazioniProfilo(String email) {
+    private RipetizioneInfoBean caricaInformazioniProfilo(String email) {
 
         //metodo che prende le informazioni del tutor e le carica nella pagina di gestione profilo del tutor
         GestioneProfiloTutorController gestioneProfiloTutorController = new GestioneProfiloTutorController();
