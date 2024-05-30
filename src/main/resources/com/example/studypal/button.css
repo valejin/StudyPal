@@ -2,15 +2,13 @@
     -fx-background-color: rgb(104, 138, 102);
     -fx-text-fill: #eceeeb;
     -fx-border-radius: 15 15 15 15;
-    -fx-font-size: 16px;
-
 }
 
 .custom-button2 {
     -fx-background-color: rgba(218, 49, 49, 0.8);
     -fx-text-fill: #eceeeb;
     -fx-border-radius: 15 15 15 15;
-    -fx-font-size: 16px;
+
 
 }
 
@@ -72,4 +70,18 @@
     -fx-text-fill: #DEDFDDFF;
     -fx-border-radius: 20px;
     -fx-padding: 5px 10px; /* Imposta i margini interni (alto/basso sinistra/destra) */
+}
+
+
+.custom-button_conferma {
+    -fx-background-color: rgb(104, 138, 102);
+    -fx-text-fill: #eceeeb;
+    -fx-border-radius: 15 15 15 15;
+    -fx-font-size: 17px;
+}
+
+.custom-button_conferma:hover {
+    -fx-background-color: #4a7947;
+    -fx-border-radius: 15 15 15 15;
+
 }
