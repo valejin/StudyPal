@@ -38,7 +38,7 @@ public class RichiesteStudenteGui extends HomeStudenteGui{
     protected TableColumn<PrenotazioneBean, Button> visualizza;
 
     List<PrenotazioneBean> richiesteList= new ArrayList<>();
-    private Integer flag;
+    private final Integer flag;
     private static final Logger logger = Logger.getLogger(RichiesteStudenteGui.class.getName());
 
     /* NOTA: il controller grafico si occupa di gestire le pagine di:

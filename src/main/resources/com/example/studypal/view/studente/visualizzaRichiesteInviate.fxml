@@ -135,10 +135,9 @@
         <Label fx:id="nome" layoutX="283.0" layoutY="43.0" prefHeight="18.0" prefWidth="91.0" text="Label" />
         <Label fx:id="cognome" layoutX="396.0" layoutY="43.0" text="Label" />
         <AnchorPane fx:id="zonaInfo" layoutX="271.0" layoutY="220.0" prefHeight="120.0" prefWidth="353.0">
-            <Label fx:id="note" alignment="TOP_LEFT" layoutX="14.0" layoutY="11.0" prefHeight="95.0" prefWidth="322.0"
-                   text="Label" wrapText="true">
+            <Label fx:id="note" alignment="TOP_LEFT" layoutX="14.0" layoutY="11.0" prefHeight="95.0" prefWidth="322.0" wrapText="true">
                 <font>
-                    <Font size="15.0"/>
+                    <Font size="15.0" />
                 </font>
             </Label>
         </AnchorPane>

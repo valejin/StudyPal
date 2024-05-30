@@ -141,6 +141,18 @@ Button:hover {
     -fx-font-size: 14px;
 }
 
+.testo-grande{
+    -fx-text-fill: #333333;
+    -fx-effect: dropshadow(gaussian, rgba(39, 147, 180, 0.38), 10, 0.7, 0, 0);
+    -fx-background-color: white;
+    -fx-border-radius: 30; /* Arrotonda solo l'angolo*/
+    -fx-min-width: 200px; /* Larghezza minima */
+    -fx-min-height: 40px; /* Altezza minima */
+    -fx-max-width: 300px; /* Larghezza massima */
+    -fx-max-height: 60px; /* Altezza massima */
+    -fx-font-size: 16px;
+}
+
 
 #email {
     -fx-font-size: 15px; /* Imposta la grandezza del testo a 15 pixel */

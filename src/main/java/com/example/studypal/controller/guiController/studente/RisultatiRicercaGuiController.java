@@ -135,9 +135,8 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
                             setText(item);
                             setStyle("-fx-text-fill: blue; -fx-underline: true; -fx-cursor: hand;");
                             setOnMouseClicked(event -> {
-                                RipetizioneInfoBean selectedTutor = getTableView().getItems().get(getIndex());
-
-                                //openTutorProfile(selectedTutor);
+                                RipetizioneInfoBean tutorSelezionato = getTableView().getItems().get(getIndex());
+                                apriProfiloTutor(tutorSelezionato);
                             });
                         } else {
                             setText(null);
@@ -206,16 +205,30 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
     public void goToRicerca() {
 
         try {
-            FXMLLoader loader = new FXMLLoader(CercaRipetizioneGui.class.getResource("/com/example/studypal/view/studente/cercaRipetizioneStudente.fxml"));
+            FXMLLoader loader = new FXMLLoader(RisultatiRicercaGuiController.class.getResource("/com/example/studypal/view/studente/cercaRipetizioneStudente.fxml"));
             loader.setControllerFactory(c -> new CercaRipetizioneGui(user, this.filtri.getMateria()));
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) materiaRisultato.getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {
-            logger.severe("errore in RisultatiRicercaGuiController " + e.getMessage());
+            logger.severe("errore in RisultatiRicercaGuiController (ritorno a ricerca) " + e.getMessage());
 
         }
 
+    }
+
+    public void apriProfiloTutor(RipetizioneInfoBean tutor){
+        try {
+            FXMLLoader loader = new FXMLLoader(RisultatiRicercaGuiController.class.getResource("/com/example/studypal/view/studente/profiloTutor.fxml"));
+            loader.setControllerFactory(c -> new ProfiloTutorGui(user, tutor, this.tutorList, this.filtri));
+            Parent parent = loader.load();
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) materiaRisultato.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            logger.severe("errore in RisultatiRicercaGuiController (caricamento profilo tutor)" + e.getMessage());
+
+        }
     }
 }
