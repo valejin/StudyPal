@@ -8,6 +8,7 @@ import com.example.studypal.other.Printer;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GestioneProfiloTutorGuiController extends HomeTutorGui {
@@ -69,21 +70,16 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
         //combobox luogo---------------------------------------------------------------------
         luogoBox.getItems().addAll("Roma", "Milano", "Napoli","Palermo", "Torino");
 
-        //combobox giorni disponibili -------------------------------------------------------
-        /*giorniMenu.setText(this.infoCorrentiProfilo.getGiorni());
+        //checkbox giorni disponibili -------------------------------------------------------
+        String[] giorniSettimana = {"Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato", "Domenica"};
 
-        for (MenuItem item : giorniMenu.getItems()) {
-            if (item instanceof CheckMenuItem checkItem && infoCorrentiProfilo.getGiorni()!=null && this.infoCorrentiProfilo.getGiorni().contains(checkItem.getText())) {
-                    checkItem.setSelected(true);
-                }
+        for (int i = 0; i < listaCheckbox.size(); i++) {
+            CheckBox checkBox = listaCheckbox.get(i);
+            String giorno = giorniSettimana[i];
 
-        giorniMenu.setOnAction(event -> {
-            if (giorniMenu.isShowing()) {
-                giorniMenu.hide();
-            } else {
-                giorniMenu.show();
-            }
-        });*/
+            checkBox.setSelected(this.infoCorrentiProfilo.getGiorni().contains(giorno));
+        }
+
 
         //tariffa slider--------------------------------------------------------------------
         tariffaSlider.setBlockIncrement(1);
