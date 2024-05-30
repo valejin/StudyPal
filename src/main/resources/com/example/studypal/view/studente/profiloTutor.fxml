@@ -88,14 +88,6 @@
                      <Font size="20.0" />
                   </font>
                </Text>
-               <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo-grande" text="Insegnamenti offerti:">
-                  <VBox.margin>
-                     <Insets top="15.0" />
-                  </VBox.margin>
-                  <font>
-                     <Font size="20.0" />
-                  </font>
-               </Text>
                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modalità:">
                   <VBox.margin>
                      <Insets top="15.0" />
@@ -134,23 +126,23 @@
                            <Font size="20.0" />
                         </font>
                      </Text>
+                     <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo-grande" text="Insegnamenti offerti:">
+                        <VBox.margin>
+                           <Insets top="15.0" />
+                        </VBox.margin>
+                        <font>
+                           <Font size="20.0" />
+                        </font>
+                     </Text>
                   </children>
                </VBox>
             </children>
          </VBox>
-         <VBox layoutX="358.0" layoutY="99.0" prefHeight="223.0" prefWidth="290.0">
+         <VBox layoutX="358.0" layoutY="99.0" prefHeight="278.0" prefWidth="290.0">
             <children>
                <Label fx:id="emailLabel" prefHeight="22.0" prefWidth="144.0" text="label">
                   <VBox.margin>
                      <Insets top="15.0" />
-                  </VBox.margin>
-                  <font>
-                     <Font size="15.0" />
-                  </font>
-               </Label>
-               <Label fx:id="materieLabel" prefHeight="22.0" prefWidth="290.0" text="label">
-                  <VBox.margin>
-                     <Insets top="17.0" />
                   </VBox.margin>
                   <font>
                      <Font size="15.0" />
@@ -164,7 +156,7 @@
                      <Font size="15.0" />
                   </font>
                </Label>
-               <VBox prefHeight="150.0" prefWidth="148.0">
+               <VBox prefHeight="218.0" prefWidth="290.0">
                   <children>
                      <Label fx:id="tariffaLabel" prefHeight="22.0" prefWidth="153.0" text="label">
                         <VBox.margin>
@@ -183,6 +175,14 @@
                         </font>
                      </Label>
                      <Label fx:id="giorniLabel" layoutX="10.0" layoutY="76.0" prefHeight="22.0" prefWidth="154.0" text="label">
+                        <VBox.margin>
+                           <Insets top="15.0" />
+                        </VBox.margin>
+                        <font>
+                           <Font size="15.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="materieLabel" alignment="TOP_LEFT" prefHeight="80.0" prefWidth="290.0" text="label">
                         <VBox.margin>
                            <Insets top="15.0" />
                         </VBox.margin>
