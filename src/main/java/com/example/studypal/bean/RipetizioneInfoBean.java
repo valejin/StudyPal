@@ -83,17 +83,19 @@ public class RipetizioneInfoBean extends BaseInfoBean{
     /* abbreviazione dei giorni --------------------------------------------------------------------------------------*/
     public void abbreviaGiorni() {
 
-        Map<String, String> giorniMap = new HashMap<>();
-        giorniMap.put("Lunedì", "L");
-        giorniMap.put("Martedì", "Ma");
-        giorniMap.put("Mercoledì", "Me");
-        giorniMap.put("Giovedì", "G");
-        giorniMap.put("Venerdì", "V");
-        giorniMap.put("Sabato", "S");
-        giorniMap.put("Domenica", "D");
+        if(this.giorni != null) {
+            Map<String, String> giorniMap = new HashMap<>();
+            giorniMap.put("Lunedì", "L");
+            giorniMap.put("Martedì", "Ma");
+            giorniMap.put("Mercoledì", "Me");
+            giorniMap.put("Giovedì", "G");
+            giorniMap.put("Venerdì", "V");
+            giorniMap.put("Sabato", "S");
+            giorniMap.put("Domenica", "D");
 
-        for (Map.Entry<String, String> entry : giorniMap.entrySet()) {
-            this.giorni = this.giorni.replace(entry.getKey(), entry.getValue());
+            for (Map.Entry<String, String> entry : giorniMap.entrySet()) {
+                this.giorni = this.giorni.replace(entry.getKey(), entry.getValue());
+            }
         }
     }
 

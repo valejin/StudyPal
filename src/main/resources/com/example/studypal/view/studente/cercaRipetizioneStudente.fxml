@@ -68,7 +68,7 @@
          </effect>
       </Button>
    </VBox>
-   <Text fx:id="titolo" fill="#000000ab" layoutX="365.0" layoutY="62.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="#titolo" text="Prenota Ripetizione" textAlignment="CENTER" wrappingWidth="428.8001129627228" AnchorPane.leftAnchor="365.0" AnchorPane.rightAnchor="206.19988703727722" AnchorPane.topAnchor="40.0">
+   <Text fx:id="titolo" fill="#000000ab" layoutX="374.0" layoutY="69.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="#titolo" text="Prenota Ripetizione" textAlignment="CENTER" wrappingWidth="428.8001129627228" AnchorPane.leftAnchor="385.0" AnchorPane.rightAnchor="197.19988703727722" AnchorPane.topAnchor="30.0">
       <font>
          <Font size="40.0" />
       </font>

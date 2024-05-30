@@ -20,7 +20,8 @@ public class GestioneProfiloTutorController {
         //popoliamo model
         ripetizioneInfoModel.setLuogo(ripetizioneInfoBean.getLuogo());
         ripetizioneInfoModel.setMateria(ripetizioneInfoBean.getMateria());
-        ripetizioneInfoModel.setGiorni(ripetizioneInfoBean.getGiorni());
+        //ripetizioneInfoModel.setGiorni(ripetizioneInfoBean.getGiorni());
+
         ripetizioneInfoModel.setInPresenza(ripetizioneInfoBean.getInPresenza());
         ripetizioneInfoModel.setOnline(ripetizioneInfoBean.getOnline());
         ripetizioneInfoModel.setTariffa(ripetizioneInfoBean.getTariffa());
