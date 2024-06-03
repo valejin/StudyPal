@@ -122,6 +122,12 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         // Per visualizzare dinamicamente il valore di Slider
         tariffaSlider.valueProperty().addListener((observable, oldValue, newValue) -> tariffaValue.setText(newValue.intValue() + "€"));
 
+        // Verifica se la stringa tariffa non è vuota
+        if (tariffa != null) {
+            tariffaSlider.setValue(tariffa);
+        }
+
+
         //luogo----------------------------------------------
         luogo.getItems().addAll("Roma", "Milano", "Palermo", "Torino", "Napoli");
         if(luoghi != null) {
