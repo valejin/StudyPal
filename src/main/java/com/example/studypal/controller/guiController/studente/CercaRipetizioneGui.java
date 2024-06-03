@@ -53,19 +53,59 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
     private List<CheckBox> listaCheckbox;
 
     private String materia;
+    private Integer tariffa;
+    private String luoghi;
+    private Boolean inPresenze;
+    private Boolean onlinee;
+    private String giorni;
+
+
     private static final Logger logger = Logger.getLogger(CercaRipetizioneGui.class.getName());
     RipetizioneInfoBean ripetizioneInfoBean; /*filtri*/
     List<RipetizioneInfoBean> risultatiRicercaBean = new ArrayList<>();
 
     //eredita dal padre un attributo LoggedInUserBean
     public CercaRipetizioneGui(LoggedInUserBean user) {this.user = user;}
-    public CercaRipetizioneGui(LoggedInUserBean user, String materia) {this.user = user; this.materia = materia;}
+    public CercaRipetizioneGui(LoggedInUserBean user, String materia, Integer tariffa, String luoghi, Boolean inPresenze, Boolean onlinee, String giorni) {
+        this.user = user;
+        this.materia = materia;
+        this.tariffa = tariffa;
+        this.luoghi = luoghi;
+        this.inPresenze = inPresenze;
+        this.onlinee = onlinee;
+        this.giorni = giorni;
+
+    }
 
     @FXML
     public void initialize() {
 
         listaCheckbox = List.of(lunediBox, martediBox, mercolediBox, giovediBox, venerdiBox, sabatoBox, domenicaBox);
         /* lista usata per iterare attraverso le checkbox e leggerne i valori senza fare troppi if*/
+        if(giorni != null){
+            // Verifica e seleziona i CheckBox in base ai giorni presenti nella stringa
+            if (giorni.contains("L")) {
+                lunediBox.setSelected(true);
+            }
+            if (giorni.contains("Ma")) {
+                martediBox.setSelected(true);
+            }
+            if (giorni.contains("Me")) {
+                mercolediBox.setSelected(true);
+            }
+            if (giorni.contains("G")) {
+                giovediBox.setSelected(true);
+            }
+            if (giorni.contains("V")) {
+                venerdiBox.setSelected(true);
+            }
+            if (giorni.contains("S")) {
+                sabatoBox.setSelected(true);
+            }
+            if (giorni.contains("D")) {
+                domenicaBox.setSelected(true);
+            }
+        }
 
 
         //se siamo tornati indietro dalla pagina dei risultati
@@ -84,6 +124,17 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
 
         //luogo----------------------------------------------
         luogo.getItems().addAll("Roma", "Milano", "Palermo", "Torino", "Napoli");
+        if(luoghi != null) {
+            luogo.setValue(luoghi);
+        }
+
+        //modalità
+        if(inPresenze != null){
+            inPresenza.setSelected(true);
+        }
+        if(onlinee != null){
+            online.setSelected(true);
+        }
 
     }
 

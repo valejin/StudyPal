@@ -206,7 +206,7 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
 
         try {
             FXMLLoader loader = new FXMLLoader(RisultatiRicercaGuiController.class.getResource("/com/example/studypal/view/studente/cercaRipetizioneStudente.fxml"));
-            loader.setControllerFactory(c -> new CercaRipetizioneGui(user, this.filtri.getMateria()));
+            loader.setControllerFactory(c -> new CercaRipetizioneGui(user, this.filtri.getMateria(), this.filtri.getTariffa(), this.filtri.getLuogo(), this.filtri.getInPresenza(), this.filtri.getOnline(), this.filtri.getGiorni()));
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) materiaRisultato.getScene().getWindow();
