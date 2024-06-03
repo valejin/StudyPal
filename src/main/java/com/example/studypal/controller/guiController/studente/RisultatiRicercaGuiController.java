@@ -151,12 +151,12 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
 
 
 
-        // Imposta la factory per la colonna "Prenota"
+        // Imposta la factory per la colonna "Richiedi"
         prenota.setCellFactory(new Callback<>() {
             @Override
             public TableCell<RipetizioneInfoBean, Button> call(TableColumn<RipetizioneInfoBean, Button> param) {
                 return new TableCell<>() {
-                    final Button btn = new Button("Prenota");
+                    final Button btn = new Button("Richiedi");
 
                     {
                         btn.setOnAction(event -> {

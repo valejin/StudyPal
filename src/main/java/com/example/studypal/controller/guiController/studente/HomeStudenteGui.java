@@ -44,6 +44,7 @@ public class HomeStudenteGui {
             stage.setScene(scene);
         } catch (IOException e) {
             logger.severe("errore in HomeStudenteGui " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
