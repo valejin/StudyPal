@@ -40,13 +40,11 @@ public class RipetizioneInfoDAO {
         La query cerca nella tabella Tutor
          */
 
-
         PreparedStatement statement;
         ResultSet rs;
 
-
-        //query per la ricerca di Materia
-        String query = "SELECT * FROM tutor where LOWER(materie) LIKE ?";
+        //query per la ricerca di Materia, esplicito campi di interesse per evitare code smell
+        String query = "SELECT email, tariffa, luogo, materie, inPresenza, webCam, giorni, nome, cognome FROM tutor where LOWER(materie) LIKE ?";
 
         try {
 
@@ -100,10 +98,10 @@ public class RipetizioneInfoDAO {
         PreparedStatement statement;
         ResultSet rs;
 
-        String query = "SELECT * FROM tutor where tariffa <= ?";
+        String query = "SELECT email, tariffa, luogo, materie, inPresenza, webCam, giorni, nome, cognome FROM tutor where tariffa <= ?";
 
         if (ripetizioneInfoModel.getLuogo() != null && !ripetizioneInfoModel.getLuogo().isEmpty()) {
-            //Printer.println("luogo selezionato");
+            //luogo selezionato
             query += "  AND luogo = ? AND LOWER(materie) LIKE ?";
 
         }else{
@@ -111,17 +109,16 @@ public class RipetizioneInfoDAO {
         }
         if (ripetizioneInfoModel.getInPresenza()  && ripetizioneInfoModel.getOnline()){
             query += " AND giorni LIKE ?";
-        }else if (ripetizioneInfoModel.getInPresenza()) {
+        }else if (Boolean.TRUE.equals(ripetizioneInfoModel.getInPresenza())) {
             query += " AND inPresenza = ?";
             query += " AND giorni LIKE ?";
-        }else if (ripetizioneInfoModel.getOnline()) {
+        }else if (Boolean.TRUE.equals(ripetizioneInfoModel.getOnline())) {
             query += " AND webCam = ?";
             query += " AND giorni LIKE ?";
         } else {
             query += " AND giorni LIKE ?";
         }
 
-        //todo: like produce risultati cercando in AND non in OR???
 
         try {
             Connection connection = Connect.getInstance().getDBConnection();
@@ -137,10 +134,10 @@ public class RipetizioneInfoDAO {
 
                 if (ripetizioneInfoModel.getInPresenza() && ripetizioneInfoModel.getOnline()) {
                     statement.setString(4, '%' + ripetizioneInfoModel.getGiorni() + '%');
-                }else if (ripetizioneInfoModel.getInPresenza()) {
+                }else if (Boolean.TRUE.equals(ripetizioneInfoModel.getInPresenza())) {
                     statement.setBoolean(4, ripetizioneInfoModel.getInPresenza());
                     statement.setString(5, '%' + ripetizioneInfoModel.getGiorni() + '%');
-                }else if (ripetizioneInfoModel.getOnline()) {
+                }else if (Boolean.TRUE.equals(ripetizioneInfoModel.getOnline())) {
                     statement.setBoolean(4, ripetizioneInfoModel.getOnline());
                     statement.setString(5, '%' + ripetizioneInfoModel.getGiorni() + '%');
                 } else {
@@ -148,20 +145,20 @@ public class RipetizioneInfoDAO {
                 }
 
             }else {
-                //Printer.println("luogo non selezionato");
+                //luogo non selezionato
                 statement.setString(2, '%' + ripetizioneInfoModel.getMateria() + '%');
 
                 if (ripetizioneInfoModel.getInPresenza() && ripetizioneInfoModel.getOnline()) {
                     statement.setBoolean(3, ripetizioneInfoModel.getInPresenza());
                     statement.setBoolean(4, ripetizioneInfoModel.getOnline());
                     statement.setString(5, '%' + ripetizioneInfoModel.getGiorni() + '%');
-                }else if (ripetizioneInfoModel.getInPresenza()) {
+                }else if (Boolean.TRUE.equals(ripetizioneInfoModel.getInPresenza())) {
                     statement.setBoolean(3, ripetizioneInfoModel.getInPresenza());
                     statement.setString(4, '%' + ripetizioneInfoModel.getGiorni() + '%');
                     String statementSQL = statement.unwrap(PreparedStatement.class).toString();
-                    System.out.println(statementSQL);
+                    Printer.println(statementSQL);
 
-                }else if (ripetizioneInfoModel.getOnline()) {
+                }else if (Boolean.TRUE.equals(ripetizioneInfoModel.getOnline())) {
                     statement.setBoolean(3, ripetizioneInfoModel.getOnline());
                     statement.setString(4, '%' + ripetizioneInfoModel.getGiorni() + '%');
                 } else {
@@ -171,14 +168,6 @@ public class RipetizioneInfoDAO {
 
             rs = statement.executeQuery();
 
-            /*  usati per debug
-            System.out.println(ripetizioneInfoModel.getTariffa());
-            System.out.println(ripetizioneInfoModel.getLuogo());
-            System.out.println(ripetizioneInfoModel.getMateria());
-            System.out.println(ripetizioneInfoModel.getInPresenza());
-            System.out.println(ripetizioneInfoModel.getOnline());
-            System.out.println(ripetizioneInfoModel.getGiorni());
-            */
 
             if (rs.next()) {
 
@@ -233,7 +222,7 @@ public class RipetizioneInfoDAO {
          */
 
         Connection connection;
-        PreparedStatement statement = null;
+        PreparedStatement statement;
         String query = "UPDATE tutor SET tariffa=?, luogo=?, materie=?, inPresenza=?, webCam=?, giorni=? WHERE email=?";
 
         try{
@@ -254,7 +243,6 @@ public class RipetizioneInfoDAO {
         } catch (SQLException e) {
             logger.severe("errore in RipetizioneInfoDAO " + e.getMessage());
         }
-
     }
 
 
@@ -265,7 +253,7 @@ public class RipetizioneInfoDAO {
         PreparedStatement statement;
         ResultSet rs;
 
-        String query = "SELECT * FROM tutor WHERE email=?";
+        String query = "SELECT email, tariffa, luogo, materie, inPresenza, webCam, giorni, nome, cognome FROM tutor WHERE email=?";
 
         try{
             connection = Connect.getInstance().getDBConnection();
@@ -274,7 +262,6 @@ public class RipetizioneInfoDAO {
 
             rs = statement.executeQuery();
 
-            //TODO: capire se è veramente necessario.. è possibile che arrivati a questo punto l'email non sia presente nel database? Non credo
             if(!rs.next()){
                 Printer.println("TUTOR NON PRESENTE");
                 return null;

@@ -71,7 +71,7 @@
          <Font size="40.0" />
       </font>
    </Text>
-   <AnchorPane fx:id="zonaInfo" layoutX="231.0" layoutY="98.0" prefHeight="468.0" prefWidth="692.0">
+   <AnchorPane fx:id="zonaInfo" layoutX="253.0" layoutY="98.0" prefHeight="468.0" prefWidth="692.0">
       <VBox layoutX="112.0" layoutY="143.0" prefHeight="217.0" prefWidth="200.0">
          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Luogo:">
             <VBox.margin>
@@ -140,36 +140,57 @@
             <VBox.margin>
                <Insets top="5.0" />
             </VBox.margin>
+            <font>
+               <Font size="15.0" />
+            </font>
          </CheckBox>
          <CheckBox fx:id="martediBox" layoutX="10.0" layoutY="60.0" mnemonicParsing="false" text="Martedì">
             <VBox.margin>
                <Insets top="5.0" />
             </VBox.margin>
+            <font>
+               <Font size="15.0" />
+            </font>
          </CheckBox>
          <CheckBox fx:id="mercolediBox" layoutX="10.0" layoutY="77.0" mnemonicParsing="false" text="Mercoledì">
             <VBox.margin>
                <Insets top="5.0" />
             </VBox.margin>
+            <font>
+               <Font size="15.0" />
+            </font>
          </CheckBox>
          <CheckBox fx:id="giovediBox" layoutX="10.0" layoutY="95.0" mnemonicParsing="false" text="Giovedì">
             <VBox.margin>
                <Insets top="7.0" />
             </VBox.margin>
+            <font>
+               <Font size="15.0" />
+            </font>
          </CheckBox>
          <CheckBox fx:id="venerdiBox" layoutX="10.0" layoutY="112.0" mnemonicParsing="false" text="Venerdì">
             <VBox.margin>
                <Insets top="5.0" />
             </VBox.margin>
+            <font>
+               <Font size="15.0" />
+            </font>
          </CheckBox>
          <CheckBox fx:id="sabatoBox" layoutX="10.0" layoutY="130.0" mnemonicParsing="false" text="Sabato">
             <VBox.margin>
                <Insets top="5.0" />
             </VBox.margin>
+            <font>
+               <Font size="15.0" />
+            </font>
          </CheckBox>
          <CheckBox fx:id="domenicaBox" layoutX="10.0" layoutY="148.0" mnemonicParsing="false" text="Domenica">
             <VBox.margin>
                <Insets top="5.0" />
             </VBox.margin>
+            <font>
+               <Font size="15.0" />
+            </font>
          </CheckBox>
       </VBox>
       <Button layoutX="484.0" layoutY="63.0" maxHeight="-Infinity" mnemonicParsing="false" onAction="#ricercaMethod" prefHeight="26.0" prefWidth="83.0" styleClass="rounded-button" stylesheets="@../../button.css" text="Cerca" />
@@ -181,12 +202,12 @@
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="277.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Tariffa max. (€/h):">
+      <Text layoutX="277.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Tariffa max. (€/h):">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Slider fx:id="tariffaSlider" blockIncrement="5.0" layoutX="222.0" layoutY="388.0" majorTickUnit="5.0" max="50.0" min="5.0" prefHeight="38.0" prefWidth="247.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="5.0" />
-      <Label fx:id="tariffaValue" contentDisplay="RIGHT" layoutX="329.0" layoutY="426.0" prefHeight="18.0" prefWidth="33.0" />
+      <Slider fx:id="tariffaSlider" blockIncrement="5.0" layoutX="222.0" layoutY="399.0" majorTickUnit="5.0" max="50.0" min="5.0" prefHeight="38.0" prefWidth="247.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="5.0" />
+      <Label fx:id="tariffaValue" contentDisplay="RIGHT" layoutX="329.0" layoutY="437.0" prefHeight="18.0" prefWidth="33.0" />
    </AnchorPane>
 </AnchorPane>
