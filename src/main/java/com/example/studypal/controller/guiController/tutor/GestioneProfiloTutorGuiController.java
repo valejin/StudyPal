@@ -72,7 +72,6 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
         String[] giorniSettimana = {"Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato", "Domenica"};
 
         if (this.infoCorrentiProfilo.getGiorni() != null){
-            Printer.println("SONO QUI");
             for (int i = 0; i < listaCheckbox.size(); i++) {
                 CheckBox checkBox = listaCheckbox.get(i);
                 String giorno = giorniSettimana[i];
