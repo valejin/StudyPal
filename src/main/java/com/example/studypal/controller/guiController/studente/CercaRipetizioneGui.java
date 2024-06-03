@@ -5,7 +5,6 @@ import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.RipetizioneInfoBean;
 import com.example.studypal.controller.applicationController.studente.CercaRipetizioneController;
 import com.example.studypal.other.Printer;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -26,8 +25,6 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
     @FXML
     private ComboBox<String> luogo;
     @FXML
-    private MenuButton giorno;
-    @FXML
     private Slider tariffaSlider;
     @FXML
     private Label tariffaValue;
@@ -39,6 +36,21 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
     private Label campiError;
     @FXML
     private Label luogoError;
+    @FXML
+    private CheckBox lunediBox;
+    @FXML
+    private CheckBox martediBox;
+    @FXML
+    private CheckBox mercolediBox;
+    @FXML
+    private CheckBox giovediBox;
+    @FXML
+    private CheckBox venerdiBox;
+    @FXML
+    private CheckBox sabatoBox;
+    @FXML
+    private CheckBox domenicaBox;
+    private List<CheckBox> listaCheckbox;
 
     private String materia;
     private static final Logger logger = Logger.getLogger(CercaRipetizioneGui.class.getName());
@@ -51,6 +63,10 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
 
     @FXML
     public void initialize() {
+
+        listaCheckbox = List.of(lunediBox, martediBox, mercolediBox, giovediBox, venerdiBox, sabatoBox, domenicaBox);
+        /* lista usata per iterare attraverso le checkbox e leggerne i valori senza fare troppi if*/
+
 
         //se siamo tornati indietro dalla pagina dei risultati
         if (materia != null){ cercaMateria.setText(materia);}
@@ -69,13 +85,6 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         //luogo----------------------------------------------
         luogo.getItems().addAll("Roma", "Milano", "Palermo", "Torino", "Napoli");
 
-
-        //combobox giorni disponibili -------------------------------------------------------
-        giorno.setOnAction(event -> {
-            StringBuilder selectedValues = getSelectedValues();
-            giorno.setText(selectedValues.toString());
-        });
-
     }
 
 
@@ -89,7 +98,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         } else {
             if (this.tariffaSlider.getValue() == 50 &&
                     (!this.inPresenza.isSelected() && !this.online.isSelected()) &&
-                    this.luogo.getSelectionModel().isEmpty() && this.luogo.getValue()==null && menuButtonIsEmpty(giorno)
+                    this.luogo.getSelectionModel().isEmpty() && this.luogo.getValue()==null && Boolean.TRUE.equals(giorniVuoti(listaCheckbox))
 
             ) {
                 //se tutti i campi aggiuntivi sono vuoti, allora la ricerca va fatta solo per materia
@@ -128,19 +137,6 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         return risultatiRicercaBean;
     }
 
-    /*----------------------------------------------------------------------------------------------------------------*/
-    public boolean menuButtonIsEmpty(MenuButton menuButton){
-        ObservableList<MenuItem> items = menuButton.getItems();
-        boolean answer = true;
-
-        for (MenuItem item : items) {
-            if (item instanceof CheckMenuItem checkItem && checkItem.isSelected()) {
-                    answer = false;
-                    return answer;
-                }
-        }
-        return answer;
-    }
 
 
     /*-------------------------------------------- RICERCA CON FILTRI ------------------------------------------------*/
@@ -153,8 +149,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         String luogo;
         boolean inPresenza = false;
         boolean online = false;
-        String giorni;
-        Integer tariffa;
+        int tariffa;
         String email = this.user.getEmail();
 
         //i campi sono già stati controllati se sono vuoti in ricercaMethod
@@ -205,8 +200,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         }
 
         //menuButton di giono-------------------------------------------------------
-        StringBuilder selectedValues = getSelectedValues();
-        giorni = selectedValues.toString();
+        List <Boolean> giorni = getGiorni(listaCheckbox);
         Printer.println("   -Giorni selezionati: " + giorni);
 
         //tariffaSlider---------------------------------------------------
@@ -216,56 +210,47 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         //istanzio un RipetizioneInfoBean
         ripetizioneInfoBean = new RipetizioneInfoBean(materia, inPresenza, online, luogo, giorni, tariffa, email);
 
-        //todo: è necessario settarli di nuovo se abbiamo usato il costruttore con i parametri? Non penso!
-        ripetizioneInfoBean.setEmail(email);
-        ripetizioneInfoBean.setMateria(materia);
-        ripetizioneInfoBean.setInPresenza(inPresenza);
-        ripetizioneInfoBean.setOnline(online);
-        ripetizioneInfoBean.setLuogo(luogo);
-        ripetizioneInfoBean.setGiorni(giorni);
-        ripetizioneInfoBean.setTariffa(tariffa);
-
         //istanzio un controller applicativo e gli passo la lista di Bean contenente i risultati della ricerca
         CercaRipetizioneController cercaRipetizioneController = new CercaRipetizioneController();
         risultatiRicercaBean = cercaRipetizioneController.prenotaRipetizioneMethod(ripetizioneInfoBean);
 
-        /*DEBUG
-        System.out.println("Controller grafico ha ricevuto questi risultati:");
         for (RipetizioneInfoBean risultatoBean: risultatiRicercaBean) {
-            System.out.println("    nome: " + risultatoBean.getNome());
-            System.out.println("    cognome: " + risultatoBean.getCognome());
-            System.out.println("    materie: " + risultatoBean.getMaterie());
-            System.out.println("    lezioni in presenza: " + risultatoBean.getInPresenza());
-            System.out.println("    lezioni online: " + risultatoBean.getOnline());
-            System.out.println("    luogo: " + risultatoBean.getLuogo());
-            System.out.println("    giorni disponibili: " + risultatoBean.getGiorni());
-            System.out.println("    tariffa: " + risultatoBean.getTariffa() + "€/h");
-            System.out.println("    email: " + risultatoBean.getEmail());
-            System.out.println("------------------------------------------------");
+            Printer.println("    nome: " + risultatoBean.getNome());
+            Printer.println("    cognome: " + risultatoBean.getCognome());
+            Printer.println("    materie: " + risultatoBean.getMaterie());
+            Printer.println("    lezioni in presenza: " + risultatoBean.getInPresenza());
+            Printer.println("    lezioni online: " + risultatoBean.getOnline());
+            Printer.println("    luogo: " + risultatoBean.getLuogo());
+            Printer.println("    giorni di interesse: " + risultatoBean.getGiorni());
+            Printer.println("    tariffa massima: " + risultatoBean.getTariffa() + "€/h");
+            Printer.println("    email: " + risultatoBean.getEmail());
+            Printer.println("------------------------------------------------");
         }
-        */
+
 
         return risultatiRicercaBean;
     }
 
-    private StringBuilder getSelectedValues() {
 
-        /* funzione che costruisce la stringa che indica i giorni selezionati
-        * todo: ma perché restituisce stringbuilder? che vuol dire non capisco aaaaaa
-        * */
 
-        ObservableList<MenuItem> items = giorno.getItems();
-        StringBuilder selectedValues = new StringBuilder();
-        for (MenuItem item : items) {
-            if (item instanceof CheckMenuItem checkMenuItem && checkMenuItem.isSelected()) {
-                    if (!selectedValues.isEmpty()) {
-                        selectedValues.append(", ");
-                    }
-                    selectedValues.append(checkMenuItem.getText());
-                }
-
+    /*---------------------funzione per leggere le checkbox selezionate dall'utente-----------------------------------*/
+    public List<Boolean> getGiorni(List<CheckBox> listaCheckbox) {
+        List<Boolean> giorni = new ArrayList<>();
+        for (CheckBox checkBox : listaCheckbox) {
+            giorni.add(checkBox.isSelected());
         }
-        return selectedValues;
+        return giorni;
+    }
+
+    /*-----------------------------funzione che controlla se sono stati selezionati giorni----------------------------*/
+    public Boolean giorniVuoti(List<CheckBox> giorni){
+
+        for (CheckBox checkBox : giorni) {
+            if (checkBox.isSelected()){
+                return false;
+            }
+        }
+        return true;
     }
 
 
@@ -281,7 +266,6 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
                 stage.setScene(scene);
             } catch (IOException e) {
                 logger.severe("errore in CercaRipetizioneGui " + e.getMessage());
-                e.printStackTrace();
             }
         }
 

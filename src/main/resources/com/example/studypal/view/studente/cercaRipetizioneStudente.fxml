@@ -4,10 +4,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.CheckMenuItem?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
@@ -74,7 +72,7 @@
       </font>
    </Text>
    <AnchorPane fx:id="zonaInfo" layoutX="231.0" layoutY="98.0" prefHeight="468.0" prefWidth="692.0">
-      <VBox layoutX="112.0" layoutY="183.0" prefHeight="217.0" prefWidth="200.0">
+      <VBox layoutX="112.0" layoutY="143.0" prefHeight="217.0" prefWidth="200.0">
          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Luogo:">
             <VBox.margin>
                <Insets top="30.0" />
@@ -124,13 +122,13 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="293.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Filtri Aggiuntivi">
+      <Text layoutX="293.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Filtri Aggiuntivi">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <VBox layoutX="386.0" layoutY="183.0" prefHeight="217.0" prefWidth="200.0">
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Giorno:">
+      <VBox layoutX="451.0" layoutY="143.0" prefHeight="217.0" prefWidth="200.0">
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Giorni d'interesse:">
             <VBox.margin>
                <Insets top="30.0" />
             </VBox.margin>
@@ -138,43 +136,57 @@
                <Font size="15.0" />
             </font>
          </Text>
-         <MenuButton fx:id="giorno" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="207.0" text="Seleziona uno o più giorni..." textFill="#9c9c9c">
-            <items>
-               <CheckMenuItem mnemonicParsing="false" text="Lunedì" />
-               <CheckMenuItem mnemonicParsing="false" text="Martedì" />
-               <CheckMenuItem mnemonicParsing="false" text="Mercoledì" />
-               <CheckMenuItem mnemonicParsing="false" text="Giovedì" />
-               <CheckMenuItem mnemonicParsing="false" text="Venerdì" />
-               <CheckMenuItem mnemonicParsing="false" text="Sabato" />
-               <CheckMenuItem mnemonicParsing="false" text="Domenica" />
-            </items>
-         </MenuButton>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Tariffa max. (€/h):">
-            <VBox.margin>
-               <Insets top="30.0" />
-            </VBox.margin>
-            <font>
-               <Font size="15.0" />
-            </font>
-         </Text>
-         <Slider fx:id="tariffaSlider" blockIncrement="5.0" majorTickUnit="5.0" max="50.0" min="5.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="5.0">
+         <CheckBox fx:id="lunediBox" mnemonicParsing="false" text="Lunedì">
             <VBox.margin>
                <Insets top="5.0" />
             </VBox.margin>
-         </Slider>
-         <Label fx:id="tariffaValue" contentDisplay="RIGHT" prefHeight="18.0" prefWidth="33.0">
+         </CheckBox>
+         <CheckBox fx:id="martediBox" layoutX="10.0" layoutY="60.0" mnemonicParsing="false" text="Martedì">
             <VBox.margin>
-               <Insets left="85.0" />
-            </VBox.margin></Label>
+               <Insets top="5.0" />
+            </VBox.margin>
+         </CheckBox>
+         <CheckBox fx:id="mercolediBox" layoutX="10.0" layoutY="77.0" mnemonicParsing="false" text="Mercoledì">
+            <VBox.margin>
+               <Insets top="5.0" />
+            </VBox.margin>
+         </CheckBox>
+         <CheckBox fx:id="giovediBox" layoutX="10.0" layoutY="95.0" mnemonicParsing="false" text="Giovedì">
+            <VBox.margin>
+               <Insets top="7.0" />
+            </VBox.margin>
+         </CheckBox>
+         <CheckBox fx:id="venerdiBox" layoutX="10.0" layoutY="112.0" mnemonicParsing="false" text="Venerdì">
+            <VBox.margin>
+               <Insets top="5.0" />
+            </VBox.margin>
+         </CheckBox>
+         <CheckBox fx:id="sabatoBox" layoutX="10.0" layoutY="130.0" mnemonicParsing="false" text="Sabato">
+            <VBox.margin>
+               <Insets top="5.0" />
+            </VBox.margin>
+         </CheckBox>
+         <CheckBox fx:id="domenicaBox" layoutX="10.0" layoutY="148.0" mnemonicParsing="false" text="Domenica">
+            <VBox.margin>
+               <Insets top="5.0" />
+            </VBox.margin>
+         </CheckBox>
       </VBox>
       <Button layoutX="484.0" layoutY="63.0" maxHeight="-Infinity" mnemonicParsing="false" onAction="#ricercaMethod" prefHeight="26.0" prefWidth="83.0" styleClass="rounded-button" stylesheets="@../../button.css" text="Cerca" />
-      <Line endX="86.5999755859375" layoutX="194.0" layoutY="183.0" startX="-100.0" stroke="#50944f" />
-      <Line endX="100.0" layoutX="497.0" layoutY="182.0" startX="-84.4000244140625" stroke="#50944f" />
+      <Line endX="86.5999755859375" layoutX="194.0" layoutY="143.0" startX="-100.0" stroke="#50944f" />
+      <Line endX="100.0" layoutX="497.0" layoutY="142.0" startX="-84.4000244140625" stroke="#50944f" />
       <Label fx:id="campiError" layoutX="286.0" layoutY="110.0" prefHeight="18.0" prefWidth="107.0" textAlignment="CENTER" textFill="#d40000" wrapText="true" />
       <Text layoutX="147.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
+      <Text layoutX="277.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Tariffa max. (€/h):">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Slider fx:id="tariffaSlider" blockIncrement="5.0" layoutX="222.0" layoutY="388.0" majorTickUnit="5.0" max="50.0" min="5.0" prefHeight="38.0" prefWidth="247.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="5.0" />
+      <Label fx:id="tariffaValue" contentDisplay="RIGHT" layoutX="329.0" layoutY="426.0" prefHeight="18.0" prefWidth="33.0" />
    </AnchorPane>
 </AnchorPane>

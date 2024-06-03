@@ -70,16 +70,15 @@ public class RipetizioneInfoDAO {
                             rs.getString("giorni"), rs.getInt("tariffa"), rs.getString("email"));
 
                     //DEBUG
-                    System.out.println("    nome: " + risultatoCorrente.getNome());
-                    System.out.println("    cognome: " + risultatoCorrente.getCognome());
-                    //System.out.println("    materie: " + risultatoCorrente.getMaterie());
-                    System.out.println("    lezioni in presenza: " + risultatoCorrente.getInPresenza());
-                    System.out.println("    lezioni online: " + risultatoCorrente.getOnline());
-                    System.out.println("    luogo: " + risultatoCorrente.getLuogo());
-                    System.out.println("    giorni disponibili: " + risultatoCorrente.getGiorni());
-                    System.out.println("    tariffa: " + risultatoCorrente.getTariffa() + "€/h");
-                    System.out.println("    email: " + risultatoCorrente.getEmail());
-                    System.out.println("------------------------------------------------");
+                    Printer.println("    nome: " + risultatoCorrente.getNome());
+                    Printer.println("    cognome: " + risultatoCorrente.getCognome());
+                    Printer.println("    lezioni in presenza: " + risultatoCorrente.getInPresenza());
+                    Printer.println("    lezioni online: " + risultatoCorrente.getOnline());
+                    Printer.println("    luogo: " + risultatoCorrente.getLuogo());
+                    Printer.println("    giorni disponibili: " + risultatoCorrente.getGiorni());
+                    Printer.println("    tariffa: " + risultatoCorrente.getTariffa() + "€/h");
+                    Printer.println("    email: " + risultatoCorrente.getEmail());
+                    Printer.println("------------------------------------------------");
                     risultatiRicerca.add(risultatoCorrente);
 
                 }while (rs.next());
@@ -121,6 +120,8 @@ public class RipetizioneInfoDAO {
         } else {
             query += " AND giorni LIKE ?";
         }
+
+        //todo: like produce risultati cercando in AND non in OR???
 
         try {
             Connection connection = Connect.getInstance().getDBConnection();
@@ -193,16 +194,16 @@ public class RipetizioneInfoDAO {
                             rs.getString("giorni"), rs.getInt("tariffa"), rs.getString("email"));
 
                     /*DEBUG*/
-                    System.out.println("    nome: " + risultatoCorrente.getNome());
-                    System.out.println("    cognome: " + risultatoCorrente.getCognome());
-                    System.out.println("    materie: " + risultatoCorrente.getMaterie());
-                    System.out.println("    lezioni in presenza: " + risultatoCorrente.getInPresenza());
-                    System.out.println("    lezioni online: " + risultatoCorrente.getOnline());
-                    System.out.println("    luogo: " + risultatoCorrente.getLuogo());
-                    System.out.println("    giorni disponibili: " + risultatoCorrente.getGiorni());
-                    System.out.println("    tariffa: " + risultatoCorrente.getTariffa() + "€/h");
-                    System.out.println("    email: " + risultatoCorrente.getEmail());
-                    System.out.println("------------------------------------------------");
+                    Printer.println("    nome: " + risultatoCorrente.getNome());
+                    Printer.println("    cognome: " + risultatoCorrente.getCognome());
+                    Printer.println("    materie: " + risultatoCorrente.getMaterie());
+                    Printer.println("    lezioni in presenza: " + risultatoCorrente.getInPresenza());
+                    Printer.println("    lezioni online: " + risultatoCorrente.getOnline());
+                    Printer.println("    luogo: " + risultatoCorrente.getLuogo());
+                    Printer.println("    giorni disponibili: " + risultatoCorrente.getGiorni());
+                    Printer.println("    tariffa: " + risultatoCorrente.getTariffa() + "€/h");
+                    Printer.println("    email: " + risultatoCorrente.getEmail());
+                    Printer.println("------------------------------------------------");
 
                     risultatiRicerca.add(risultatoCorrente);
 
@@ -232,7 +233,7 @@ public class RipetizioneInfoDAO {
          */
 
         Connection connection;
-        PreparedStatement statement;
+        PreparedStatement statement = null;
         String query = "UPDATE tutor SET tariffa=?, luogo=?, materie=?, inPresenza=?, webCam=?, giorni=? WHERE email=?";
 
         try{
@@ -248,12 +249,12 @@ public class RipetizioneInfoDAO {
             statement.setString(7, ripetizioneInfoModel.getEmail());
 
             statement.executeUpdate();
-
             Printer.println("Profilo dell'utente " + ripetizioneInfoModel.getEmail() + " aggiornato con successo!");
-
+            statement.close();
         } catch (SQLException e) {
             logger.severe("errore in RipetizioneInfoDAO " + e.getMessage());
         }
+
     }
 
 
