@@ -46,6 +46,7 @@ public class GestisciPrenotazioniStudenteController {
         return listaRichiesteBean;
     }
 
+
     /*----------------------------------------------------------------------------------------------------------------*/
 
     public void cancellaRichiesta(Integer idRichiesta){
@@ -57,6 +58,7 @@ public class GestisciPrenotazioniStudenteController {
         prenotazioneDAO.cancellaRichiesta(idRichiesta);
 
     }
+
 
     /*----------------------------------------------------------------------------------------------------------------*/
 

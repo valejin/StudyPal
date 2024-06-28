@@ -81,11 +81,7 @@ public class VisualizzaRichiesteStudenteGui extends HomeStudenteGui {
 
         /* -------------------setto i label nell'interfaccia utente---------------------------------*/
         nome.setText(nomeTutor);
-        System.out.println(nomeTutor);
         cognome.setText(cognomeTutor);
-        System.out.println(cognomeTutor);
-
-
         emailTutor.setText(email);
         materia.setText(materiaRichiesta);
 

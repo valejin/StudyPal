@@ -37,7 +37,7 @@ public class PrenotazioneDAO {
         //non ci interessa resultSet
 
         Printer.println("Stiamo inserendo la richiesta nel nostro database.");
-        String query = "INSERT INTO richieste (emailTutor, emailStudente, materia, modLezione, tariffa, giorni, note) VALUES (?, ?, ?, ?, ?, ?, ?) ";
+        String query = "INSERT INTO richieste (emailTutor, emailStudente, materia, modLezione, tariffa, giorni, note, nomeTutor, cognomeTutor) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) ";
         try{
             connection = Connect.getInstance().getDBConnection();
             statement = connection.prepareStatement(query);
@@ -49,6 +49,8 @@ public class PrenotazioneDAO {
             statement.setInt(5, prenotazioneModel.getTariffa());
             statement.setString(6, prenotazioneModel.getGiorno());
             statement.setString(7, prenotazioneModel.getNote());
+            statement.setString(8, prenotazioneModel.getNome());
+            statement.setString(9, prenotazioneModel.getCognome());
 
             //eseguo
             statement.execute();
@@ -187,7 +189,7 @@ public class PrenotazioneDAO {
                     listaRichieste.add(richiesta);
                     i+=1;
                 } while (rs.next());
-                Printer.println("dao: preso la lista di richieste in attesa");
+                //Printer.println("dao: preso la lista di richieste in attesa");
 
             } else {
                 Printer.println("Nessuna richiesta in attesa di conferma per l'account " + email + ".");
@@ -265,7 +267,6 @@ public class PrenotazioneDAO {
             statement.setInt(1, recensione);
             statement.setInt(2, idRichiesta);
             statement.execute();
-            //Printer.println("id richiesta da recensire: " + idRichiesta);
 
         } catch(SQLException e){
             Printer.println("Errore in PrenotazioneDAO (metodo: recensioneMethod)");

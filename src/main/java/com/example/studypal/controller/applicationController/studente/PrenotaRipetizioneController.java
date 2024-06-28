@@ -3,6 +3,7 @@ package com.example.studypal.controller.applicationController.studente;
 import com.example.studypal.DAO.PrenotazioneDAO;
 import com.example.studypal.bean.PrenotazioneBean;
 import com.example.studypal.model.PrenotazioneModel;
+import com.example.studypal.other.Printer;
 
 import java.sql.SQLException;
 
@@ -22,6 +23,7 @@ public class PrenotaRipetizioneController {
         /*istanzio model e ci inserisco i dati della prenotazione------------------*/
         PrenotazioneModel prenotazioneModel = new PrenotazioneModel(prenotazioneBean.getIdRichiesta(), prenotazioneBean.getNome(), prenotazioneBean.getCognome(), prenotazioneBean.getEmailTutor(), prenotazioneBean.getEmailStudente(), prenotazioneBean.getMateria(),
                 prenotazioneBean.getModLezione(), prenotazioneBean.getTariffa(), prenotazioneBean.getGiorno(), prenotazioneBean.getNote(), prenotazioneBean.getStato());
+
 
         /*istanzio DAO e gli passo il model----------------------------------------*/
         try{

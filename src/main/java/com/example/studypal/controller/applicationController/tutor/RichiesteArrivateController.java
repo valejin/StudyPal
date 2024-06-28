@@ -14,7 +14,7 @@ import java.util.List;
 public class RichiesteArrivateController extends GestisciPrenotazioniGui {
 
 
-    //funzione chiamato da Controller grafico corrispondente per ottenere le info per stampare a schermo
+    //funzione chiamata da Controller grafico corrispondente per ottenere le info per stampare a schermo
     public List<PrenotazioneBean> richiesteArrivate(LoggedInUserBean user, int flag) {
 
         //creo una lista di BEAN che prende i dati

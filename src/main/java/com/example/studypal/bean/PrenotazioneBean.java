@@ -5,7 +5,6 @@ public class PrenotazioneBean {
     private int idRichiesta;
     private String nome;
     private String cognome;
-
     private String emailTutor;
     private String emailStudente;
     private String materia;

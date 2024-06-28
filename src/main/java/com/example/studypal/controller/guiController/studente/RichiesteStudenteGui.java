@@ -46,7 +46,7 @@ public class RichiesteStudenteGui extends HomeStudenteGui{
       - richieste rifiutate
       - prenotazioni attive
      Sfruttiamo un flag per personalizzare i metodi che di base fanno la stessa cosa.
-     Passiamo il flag al controller applicativo che poi differrenzierà la logica.
+     Passiamo il flag al controller applicativo che poi differenzierà la logica.
     */
 
     public RichiesteStudenteGui(LoggedInUserBean user, Integer flag){
@@ -87,7 +87,6 @@ public class RichiesteStudenteGui extends HomeStudenteGui{
                         if (empty) {
                             setGraphic(null);
                         } else {
-                            //btn.setStyle("-fx-font-size: 20px; -fx-font-family: Perpetua; -fx-padding: 5px 10px");
                             setGraphic(btn);
                         }
                     }
@@ -97,8 +96,6 @@ public class RichiesteStudenteGui extends HomeStudenteGui{
     }
 
     public void visualizza(PrenotazioneBean prenotazioneBean) {
-
-        //TODO: qui possiamo fare direttamente una sola pagina fxml e modificarne il titolo nell'initialize tramite label. Dovremmo passare anche il flag così che il prossimo controller grafico possa differenziare le informazioni da caricare(?)
 
         if (this.flag == 0){
             //richieste inviate in attesa di conferma
@@ -111,7 +108,6 @@ public class RichiesteStudenteGui extends HomeStudenteGui{
                 stage.setScene(scene);
             } catch (IOException e) {
                 logger.severe("errore in RichiesteStudenteGui (caricamento pagina richieste inviate) " + e.getMessage());
-                //e.printStackTrace();
             }
 
         } else if (this.flag == 1){
@@ -125,7 +121,6 @@ public class RichiesteStudenteGui extends HomeStudenteGui{
                 stage.setScene(scene);
             } catch (IOException e) {
                 logger.severe("errore in RichiesteStudenteGui (caricamento pagina prenotazioni attive) " + e.getMessage());
-                // e.printStackTrace();
             }
 
 
@@ -139,7 +134,6 @@ public class RichiesteStudenteGui extends HomeStudenteGui{
                 stage.setScene(scene);
             } catch (IOException e) {
                 logger.severe("errore in RichiesteStudenteGui (caricamento pagina richieste rifiutate) " + e.getMessage());
-                // e.printStackTrace();
             }
         }
 
