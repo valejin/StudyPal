@@ -12,7 +12,12 @@ import java.util.Scanner;
 public class LoginCLI {
 
     /* controller grafico che gestisce il login per l'interfaccia a riga di comando */
+
+    //todo: correggere tutte le stampe a terminale che avevamo prima per il debug!
+
     LoggedInUserBean user;
+
+    public LoginCLI(){}
     public LoginCLI(LoggedInUserBean user){ this.user = user;}
 
     private Scanner scanner = new Scanner(System.in);
@@ -34,9 +39,11 @@ public class LoginCLI {
                 case (1):
                     //login
                     login();
+                    esci=true;
                     break;
                 case (2):
                     registrazione();
+                    esci=true;
                     break;
                 default:
                     Printer.println("L'opzione scelta non è valida.");
@@ -50,15 +57,15 @@ public class LoginCLI {
         Printer.println("   1. Login");
         Printer.println("   2. Registrazione");
         Printer.println("   0. Esci");
-        Printer.println("Opzione scelta: ");
+        Printer.print("Opzione scelta: ");
     }
 
     private void login(){
 
-        Printer.println("   Email: ");
+        Printer.print("   Email: ");
         String email = scanner.next();
 
-        Printer.print(" Password: ");
+        Printer.print("   Password: ");
         String password = scanner.next();
 
         /*ora istanziamo il controller applicativo e chiamiamo il suo metodo login così come
@@ -89,8 +96,17 @@ public class LoginCLI {
         //da finire
     }
 
-    private void mostraHome(Boolean ruolo){
+    private void mostraHome(Boolean isTutor){
         //qui dovremmo passare all'altro stato (state pattern)
+        Printer.println("Il Login è stato correttamente effettuato.");
+        Printer.print("Ruolo: ");
+        if (isTutor){
+            Printer.println("Tutor");
+        } else {
+            Printer.println("Studente");
+        }
+
+
     }
 
 }
