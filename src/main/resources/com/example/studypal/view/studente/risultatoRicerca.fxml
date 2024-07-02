@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.effect.InnerShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.studente.RisultatiRicercaGuiController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.studente.RisultatiRicercaGuiController">
    <stylesheets>
       <URL value="@../../button.css" />
       <URL value="@../../base-prova.css" />
@@ -140,7 +131,7 @@
          </Label>
       </HBox>
       <HBox layoutX="13.0" layoutY="36.0" prefHeight="32.0" prefWidth="566.0">
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Tariffa:" wrappingWidth="46.936767578125">
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Tariffa max:" wrappingWidth="74.936767578125">
             <HBox.margin>
                <Insets top="8.0" />
             </HBox.margin>
@@ -148,7 +139,7 @@
                <Font size="15.0" />
             </font>
          </Text>
-         <Label fx:id="tariffaRisultato" prefHeight="22.0" prefWidth="213.0" text="Label">
+         <Label fx:id="tariffaRisultato" prefHeight="22.0" prefWidth="181.0" text="Label">
             <HBox.margin>
                <Insets left="10.0" top="8.0" />
             </HBox.margin>

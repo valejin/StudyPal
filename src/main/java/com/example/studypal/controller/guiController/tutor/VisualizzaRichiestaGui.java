@@ -76,8 +76,10 @@ public class VisualizzaRichiestaGui extends HomeTutorGui {
         } else if (modalita == 2) {
             modLezione.setText("Online");
         }
-
-        note.setText(noteAggiuntive);
+        
+        if (!noteAggiuntive.isEmpty()){
+            note.setText("\"" + noteAggiuntive + "\"");
+        }
     }
 
 

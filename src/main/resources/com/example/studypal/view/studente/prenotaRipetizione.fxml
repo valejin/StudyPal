@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.effect.InnerShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.studente.PrenotaRipetizioneGui">
+<AnchorPane minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../../base-prova.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.studente.PrenotaRipetizioneGui">
    <VBox fx:id="barraMenu" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="200.0" stylesheets="@../../base-prova.css">
       <effect>
          <DropShadow>
@@ -88,7 +82,7 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <Button layoutX="322.0" layoutY="395.0" mnemonicParsing="false" onAction="#prenota" styleClass="custom-button" stylesheets="@../../button.css" text="Invia" />
+      <Button layoutX="324.0" layoutY="395.0" mnemonicParsing="false" onAction="#prenota" styleClass="custom-button" stylesheets="@../../button.css" text="Invia" />
       <VBox layoutX="155.0" layoutY="93.0" prefHeight="138.0" prefWidth="100.0">
          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Nome:">
             <font>
@@ -120,13 +114,13 @@
             </font>
          </Text>
       </VBox>
-      <VBox layoutX="229.0" layoutY="93.0" prefHeight="150.0" prefWidth="138.0">
+      <VBox layoutX="229.0" layoutY="93.0" prefHeight="150.0" prefWidth="165.0">
          <Label fx:id="nomeLabel" prefHeight="22.0" prefWidth="145.0" text="label">
             <font>
                <Font size="15.0" />
             </font>
          </Label>
-         <Label fx:id="emailLabel" prefHeight="22.0" prefWidth="144.0" text="label">
+         <Label fx:id="emailLabel" prefHeight="22.0" prefWidth="173.0" text="label">
             <VBox.margin>
                <Insets top="13.0" />
             </VBox.margin>
