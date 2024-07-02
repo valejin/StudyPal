@@ -43,10 +43,8 @@ public class LoginController {
             return loggedInUserBean;
 
         } catch (CredenzialiSbagliateException e) {
-            Printer.errorPrint("controller applicativo credenziali sbagliate");
             throw new CredenzialiSbagliateException("");
         } catch (UtenteInesistenteException u) {
-            Printer.errorPrint("controller applicativo utente inesistente");
             throw new UtenteInesistenteException();
         }
    }

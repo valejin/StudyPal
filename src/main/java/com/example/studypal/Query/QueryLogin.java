@@ -18,12 +18,11 @@ public class QueryLogin {
             ResultSet rs = stmt.executeQuery(sql);
 
             if (!rs.next()){
-                Printer.errorPrint("L'email non è usata");
                 throw new UtenteInesistenteException();
             }
             return rs;
+
         } catch (SQLException e){
-            Printer.println("Errore in Query Login");
             throw new UtenteInesistenteException();
         }
     }

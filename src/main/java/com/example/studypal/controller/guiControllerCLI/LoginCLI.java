@@ -86,9 +86,9 @@ public class LoginCLI {
             mostraHome(user.getRuolo());
 
         } catch (CredenzialiSbagliateException e) {
-            Printer.errorPrint("Credenziali sbagliate");
+            Printer.errorPrint("Credenziali sbagliate.");
         } catch (UtenteInesistenteException u) {
-            Printer.errorPrint("Utente inesistente");
+            Printer.errorPrint("Attenzione! Utente inesistente.");
         }
 
     }

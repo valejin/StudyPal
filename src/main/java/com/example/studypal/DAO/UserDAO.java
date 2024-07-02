@@ -7,7 +7,6 @@ import com.example.studypal.exceptions.EmailAlreadyInUseException;
 import com.example.studypal.exceptions.UtenteInesistenteException;
 import com.example.studypal.model.CredenzialiModel;
 import com.example.studypal.model.UserModel;
-import com.example.studypal.exceptions.LoginDBException;
 import com.example.studypal.other.Connect;
 import com.example.studypal.other.Printer;
 
@@ -44,13 +43,13 @@ public class UserDAO {
 
             //dopo che ho verificato se l'email inserito dall'utente è stata registrata o meno
             try{
-                Printer.println("controllo email");
+                //Printer.println("controllo email");
                 ResultSet rs = QueryLogin.checkEmail(stmt, email);
                 if (rs == null){
                     throw new UtenteInesistenteException();
                 }
             } catch(UtenteInesistenteException e){
-                Printer.println("L'email non è registrata");
+                //Printer.println("L'email non è registrata");
                 throw new UtenteInesistenteException();
             }
 
@@ -58,25 +57,26 @@ public class UserDAO {
             //verifico i credenziali inseriti dall'utente
             try (ResultSet rs = QueryLogin.loginUser(stmt, email, password)) {
 
-                Printer.println("---------------------------------------------------------");
+                //Printer.println("---------------------------------------------------------");
                 if(!rs.next()) {
-                    Printer.println("Il ResultSet è vuoto.");
+                    //Printer.println("Il ResultSet è vuoto.");
                     throw new CredenzialiSbagliateException("Credenziali sbagliate");
                 }
                 else {
                     userModel.setNome(rs.getString("nome"));
                     userModel.setEmail(rs.getString("email"));
-                    Printer.println("Email: " + userModel.getEmail());
+                    //Printer.println("Email: " + userModel.getEmail());
                     userModel.setCognome(rs.getString("cognome"));
-                    Printer.println("Accesso effettuato per l'utente: " + userModel.getNome());
+                    //Printer.println("Accesso effettuato per l'utente: " + userModel.getNome());
                     userModel.setRuolo(rs.getBoolean("isTutor"));
 
+                    /*
                     if(!userModel.getRuolo()){
                         Printer.println("L'utente è iscritto come: Studente");
                     }else{
                         Printer.println("L'utente è iscritto come: Tutor");
                     }
-
+                    */
                 }
             }
 
@@ -166,8 +166,8 @@ public class UserDAO {
 
 
             statement.executeUpdate();
-            Printer.println("---------------------------------------------------------");
-            Printer.println("tutor registrato");
+            //Printer.println("---------------------------------------------------------");
+            //Printer.println("tutor registrato");
         } catch (SQLException e) {
             logger.severe("errore in UserDAO registrazioneTutor " + e.getMessage());
 

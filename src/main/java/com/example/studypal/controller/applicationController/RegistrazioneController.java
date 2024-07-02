@@ -25,7 +25,6 @@ public class RegistrazioneController {
 
             UserDAO registrazioneDao = new UserDAO();
 
-
             try{
                 registrazioneDao.controllaEmailMethod(userModel);
 
@@ -35,17 +34,11 @@ public class RegistrazioneController {
                 //il controller applicativo si limita a propagarla al controller grafico
             }
 
-            System.out.println("registro l'utente");
             registrazioneDao.registrazioneMethod(userModel);
 
             if (registrazioneUserBean.getRuolo()){
                 registrazioneDao.registraTutorMethod(userModel.getEmail(), userModel.getNome(), userModel.getCognome());
             }
-
-
         }
-
-
-
 }
 
