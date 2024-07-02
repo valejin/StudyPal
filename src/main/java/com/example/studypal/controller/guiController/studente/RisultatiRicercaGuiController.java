@@ -124,7 +124,7 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
 
 
         // Aggiungi una cell factory personalizzata alla colonna "nome"
-        nome.setCellFactory(new Callback<TableColumn<RipetizioneInfoBean, String>, TableCell<RipetizioneInfoBean, String>>() {
+        nome.setCellFactory(new Callback<>() {
             @Override
             public TableCell<RipetizioneInfoBean, String> call(TableColumn<RipetizioneInfoBean, String> param) {
                 return new TableCell<RipetizioneInfoBean, String>() {
@@ -186,7 +186,6 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
 
 
     public void scegliTutor(RipetizioneInfoBean tutor) {
-        Printer.println("ho scelto il tutor");
 
         /* carica la pagina di conferma della prenotazione */
 

@@ -36,7 +36,6 @@ public class PrenotazioneDAO {
         PreparedStatement statement;
         //non ci interessa resultSet
 
-        Printer.println("Stiamo inserendo la richiesta nel nostro database.");
         String query = "INSERT INTO richieste (emailTutor, emailStudente, materia, modLezione, tariffa, giorni, note, nomeTutor, cognomeTutor) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) ";
         try{
             connection = Connect.getInstance().getDBConnection();
@@ -55,7 +54,6 @@ public class PrenotazioneDAO {
             //eseguo
             statement.execute();
 
-            Printer.println("Ho eseguito la query. Controlla il db per vedere se la prenotazione è stata correttamente inserita.");
 
         } catch (SQLException e) {
             logger.severe("errore in prenotazioneDAO " + e.getMessage());

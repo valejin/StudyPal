@@ -11,6 +11,8 @@ import java.util.Scanner;
 
 public class Starter extends Application {
 
+    //todo: qui voglio implementare polimorfismo! si può  fare con due classi che specializzano la classe starter
+
     @Override
     public void start(Stage stage) throws IOException {
 
