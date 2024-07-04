@@ -6,6 +6,7 @@ import com.example.studypal.bean.PrenotazioneBean;
 import com.example.studypal.exceptions.NonProduceRisultatoException;
 import com.example.studypal.model.PrenotazioneModel;
 import com.example.studypal.other.Printer;
+import com.example.studypal.pattern.observer.RichiesteArrivateCollection;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +57,7 @@ public class GestisciPrenotazioniStudenteController {
 
         PrenotazioneDAO prenotazioneDAO = new PrenotazioneDAO();
         prenotazioneDAO.cancellaRichiesta(idRichiesta);
+        RichiesteArrivateCollection.getInstance().rimuoviRichiesta(idRichiesta);
 
     }
 

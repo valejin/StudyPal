@@ -45,6 +45,14 @@ public class Starter extends Application {
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
+
+        Stage secondoStage = new Stage();
+        FXMLLoader secondofxmlLoader = new FXMLLoader(Starter.class.getResource("view/login.fxml"));
+        Scene secondaScene = new Scene(secondofxmlLoader.load());
+        secondoStage.setTitle("StudyPal");
+        secondoStage.setResizable(false);
+        secondoStage.setScene(secondaScene);
+        secondoStage.show();
     }
 
     public void interfacciaCLI(){

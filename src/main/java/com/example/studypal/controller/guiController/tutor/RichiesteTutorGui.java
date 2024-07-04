@@ -3,7 +3,10 @@ package com.example.studypal.controller.guiController.tutor;
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.PrenotazioneBean;
 import com.example.studypal.controller.applicationController.tutor.GestisciPrenotazioniController;
+import com.example.studypal.model.PrenotazioneModel;
 import com.example.studypal.other.Printer;
+import com.example.studypal.pattern.observer.Observer;
+import com.example.studypal.pattern.observer.RichiesteArrivateCollection;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class RichiesteTutorGui extends GestisciPrenotazioniGui {
+public class RichiesteTutorGui extends GestisciPrenotazioniGui implements Observer {
     /*
     Controller grafico per la gestione della pagina dei risultati arrivati a un determinato tutor
     Devo mostrare: email dello studente, materia richiesta, bottone VISUALIZZA
@@ -41,6 +44,8 @@ public class RichiesteTutorGui extends GestisciPrenotazioniGui {
 
 
     //inizializzo una lista, in cui popolo gli elementi della tabella
+    private RichiesteArrivateCollection richiesteArrivateCollection; //istanza del Concrete Subject del pattern Observer
+    List<PrenotazioneModel> richiesteListModel = new ArrayList<>();
     List<PrenotazioneBean> richiesteList = new ArrayList<>();
     private Integer flag;
 
@@ -58,10 +63,14 @@ public class RichiesteTutorGui extends GestisciPrenotazioniGui {
 
     public void initialize(){
 
+        //pattern Observer
+        richiesteArrivateCollection = RichiesteArrivateCollection.getInstance();
+        richiesteArrivateCollection.attach(this);
+
         //creo un'istanza di controller applicativo corrispondente
         GestisciPrenotazioniController gestisciPrenotazioniController = new GestisciPrenotazioniController();
 
-        //chiamo la funzione nel controller applicativo per ottenere una lista di BEAN dove contiene tutte le info per stampare a schermo
+        //chiamo la funzione nel controller applicativo per ottenere una lista di BEAN che contiene tutte le info per la tabella
         richiesteList = gestisciPrenotazioniController.richiesteArrivate(user, flag);
 
 
@@ -102,8 +111,23 @@ public class RichiesteTutorGui extends GestisciPrenotazioniGui {
     }
 
 
+    /*-------------------------------------------PATTERN OBSERVER-----------------------------------------------------*/
+
+    @Override
+
+    public void update(){
+
+        richiesteListModel = richiesteArrivateCollection.ottieniStato();
+
+        //ora converto la lista di model in una lista di bean e per fare questo sfrutto un metodo del controller grafico
+        GestisciPrenotazioniController gestisciPrenotazioniController = new GestisciPrenotazioniController();
+        richiesteList = gestisciPrenotazioniController.convertiRichieste(richiesteListModel);
+        risultatiTable.getItems().addAll(richiesteList);
+
+    }
 
 
+    /*---------------------------------------------CARICA PAGINA------------------------------------------------------*/
 
     public void visualizzaRichiesta(PrenotazioneBean prenotazioneBean) {
         Printer.println("---------------------------------------------------------");

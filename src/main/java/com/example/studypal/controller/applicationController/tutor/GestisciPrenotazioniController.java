@@ -56,4 +56,18 @@ public class GestisciPrenotazioniController extends GestisciPrenotazioniGui {
         prenotazioneDAO.modificaStatoRichiesta(richiesta, stato);
     }
 
+    public List<PrenotazioneBean> convertiRichieste(List<PrenotazioneModel> richiesteList){
+        //questo metodo serve per convertire in Bean i model della collezione per il pattern observer
+
+        List<PrenotazioneBean> prenotazioneBean = new ArrayList<>();
+
+        for (PrenotazioneModel risultato : richiesteList) {
+            PrenotazioneBean risultatoBean = new PrenotazioneBean(risultato.getIdRichiesta(), risultato.getNome(), risultato.getCognome(), risultato.getEmailTutor(), risultato.getEmailStudente(), risultato.getMateria(), risultato.getModLezione(), risultato.getTariffa(), risultato.getGiorno(), risultato.getNote(), risultato.getStato());
+
+            prenotazioneBean.add(risultatoBean);
+        }
+
+        return prenotazioneBean;
+    }
+
 }

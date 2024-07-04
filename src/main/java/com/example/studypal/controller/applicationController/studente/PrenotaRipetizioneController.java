@@ -4,6 +4,7 @@ import com.example.studypal.DAO.PrenotazioneDAO;
 import com.example.studypal.bean.PrenotazioneBean;
 import com.example.studypal.model.PrenotazioneModel;
 import com.example.studypal.other.Printer;
+import com.example.studypal.pattern.observer.RichiesteArrivateCollection;
 
 import java.sql.SQLException;
 
@@ -29,6 +30,7 @@ public class PrenotaRipetizioneController {
         try{
             PrenotazioneDAO prenotazioneDAO = new PrenotazioneDAO();
             prenotazioneDAO.prenota(prenotazioneModel);
+            RichiesteArrivateCollection.getInstance().aggiungiRichiesta(prenotazioneModel); //pattern Observer
 
         } catch (SQLException e){
             System.out.println("prenota controller errore");
