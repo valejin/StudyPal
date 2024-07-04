@@ -1,9 +1,11 @@
 package com.example.studypal.DAO;
 
 
+import com.example.studypal.Query.Query;
 import com.example.studypal.Query.QueryLogin;
 import com.example.studypal.exceptions.CredenzialiSbagliateException;
 import com.example.studypal.exceptions.EmailAlreadyInUseException;
+import com.example.studypal.exceptions.EmailNonValidaException;
 import com.example.studypal.exceptions.UtenteInesistenteException;
 import com.example.studypal.model.CredenzialiModel;
 import com.example.studypal.model.UserModel;
@@ -20,13 +22,10 @@ public class UserDAO {
 
 //-----------------------------------------------------------------------------------------------
     public UserModel loginMethod(CredenzialiModel credenzialiModel) throws CredenzialiSbagliateException, UtenteInesistenteException{
+
         UserModel userModel = new UserModel();
 
-        //PreparedStatement statement;
         Statement stmt;
-
-        //query per verificare credenziali utente
-        //String query = "SELECT * FROM utente WHERE email=? AND password=?";
 
         try{
 
@@ -36,20 +35,14 @@ public class UserDAO {
             String email = credenzialiModel.getEmail();
             String password = credenzialiModel.getPassword();
 
-            //stmt = connection.prepareStatement(query);
-            //statement.setString(1, credenzialiModel.getEmail());
-            //statement.setString(2, credenzialiModel.getPassword());
-            // nel try: ResultSet rs = statement.executeQuery()
 
             //dopo che ho verificato se l'email inserito dall'utente è stata registrata o meno
             try{
-                //Printer.println("controllo email");
                 ResultSet rs = QueryLogin.checkEmail(stmt, email);
                 if (rs == null){
                     throw new UtenteInesistenteException();
                 }
             } catch(UtenteInesistenteException e){
-                //Printer.println("L'email non è registrata");
                 throw new UtenteInesistenteException();
             }
 
@@ -59,15 +52,12 @@ public class UserDAO {
 
                 //Printer.println("---------------------------------------------------------");
                 if(!rs.next()) {
-                    //Printer.println("Il ResultSet è vuoto.");
                     throw new CredenzialiSbagliateException("Credenziali sbagliate");
                 }
                 else {
                     userModel.setNome(rs.getString("nome"));
                     userModel.setEmail(rs.getString("email"));
-                    //Printer.println("Email: " + userModel.getEmail());
                     userModel.setCognome(rs.getString("cognome"));
-                    //Printer.println("Accesso effettuato per l'utente: " + userModel.getNome());
                     userModel.setRuolo(rs.getBoolean("isTutor"));
 
                     /*
@@ -92,26 +82,17 @@ public class UserDAO {
     public void registrazioneMethod(UserModel registrazioneModel) {
 
         Connection connection;
-        PreparedStatement statement;
-
-        String query = "INSERT INTO utente (email, nome, cognome, password, isTutor) VALUES (?, ?, ?, ?, ?)";
+        Statement stmt;
 
         try {
-
             connection = Connect.getInstance().getDBConnection();
-            statement = connection.prepareStatement(query);
+            stmt = connection.createStatement();
 
-            statement.setString(1, registrazioneModel.getEmail());
-            statement.setString(2, registrazioneModel.getNome());
-            statement.setString(3, registrazioneModel.getCognome());
-            statement.setString(4, registrazioneModel.getPassword());
-            statement.setBoolean(5, registrazioneModel.getRuolo());
-
-            //inseriamo effettivamente l'utente nel database
-            statement.executeUpdate();
+            QueryLogin.registerUser(stmt, registrazioneModel);
 
         } catch (SQLException e) {
             logger.severe("errore in userDAO " + e.getMessage());
+
         }
     }
 
@@ -121,26 +102,32 @@ public class UserDAO {
     public void controllaEmailMethod(UserModel registrazioneModel) throws EmailAlreadyInUseException {
 
         Connection connection;
-        PreparedStatement statement;
-        ResultSet rs;
+        boolean rs;
+        Statement stmt;
 
-
-        String query = "SELECT * FROM utente WHERE email=?";
 
         try {
 
             //accediamo al db dall'unica istanza di connessione
             connection = Connect.getInstance().getDBConnection();
-            statement = connection.prepareStatement(query);
 
-            statement.setString(1, registrazioneModel.getEmail());
+            stmt = connection.createStatement();
+            String email = registrazioneModel.getEmail();
 
-            rs = statement.executeQuery();
 
-            //se il result set non è vuoto, l'email è già in uso e lanciamo un'eccezione
-            if (rs.next()) {
-                throw new EmailAlreadyInUseException();
+            try{
+                rs = QueryLogin.emailReg(stmt, email);
+
+                //se il result set non è vuoto, l'email è già in uso e lanciamo un'eccezione
+                if (rs) {
+                    throw new EmailAlreadyInUseException();
+                }
+
+            } catch(EmailAlreadyInUseException e){
+                Printer.println("L'email è già registrata");
+                throw e;
             }
+
 
         } catch (SQLException e) {
             logger.severe("errore in userDAO " + e.getMessage());

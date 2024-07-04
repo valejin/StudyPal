@@ -70,10 +70,10 @@
          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="466.0" prefWidth="700.0">
             <TableView fx:id="risultatiTable" layoutX="1.0" prefHeight="471.0" prefWidth="704.0">
                <columns>
-                  <TableColumn fx:id="nome" prefWidth="101.60001826286316" resizable="false" text="Nome" />
-                  <TableColumn fx:id="cognome" editable="false" prefWidth="144.0" text="Cognome" />
+                  <TableColumn fx:id="nome" editable="false" prefWidth="119.99995112419128" resizable="false" text="Nome" />
+                  <TableColumn fx:id="cognome" editable="false" prefWidth="126.4000244140625" text="Cognome" />
                   <TableColumn fx:id="tariffa" editable="false" minWidth="4.0" prefWidth="92.80000305175781" resizable="false" text="Tariffa (€/h)" />
-                  <TableColumn fx:id="materia" prefWidth="128.79998779296875" text="Materia" />
+                  <TableColumn fx:id="materia" editable="false" prefWidth="128.79998779296875" text="Materia" />
                   <TableColumn fx:id="giorni" editable="false" prefWidth="121.59991455078125" resizable="false" text="Disponibilità" />
                   <TableColumn fx:id="prenota" editable="false" minWidth="0.0" prefWidth="116.800048828125" resizable="false" />
                </columns>

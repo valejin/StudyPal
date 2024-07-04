@@ -29,7 +29,6 @@ public class RegistrazioneController {
                 registrazioneDao.controllaEmailMethod(userModel);
 
             } catch (EmailAlreadyInUseException e) {
-                System.out.println("email già presente nel sistema");
                 throw new EmailAlreadyInUseException();
                 //il controller applicativo si limita a propagarla al controller grafico
             }
