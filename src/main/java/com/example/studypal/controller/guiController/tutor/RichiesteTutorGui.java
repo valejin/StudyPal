@@ -2,7 +2,7 @@ package com.example.studypal.controller.guiController.tutor;
 
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.PrenotazioneBean;
-import com.example.studypal.controller.applicationController.tutor.RichiesteArrivateController;
+import com.example.studypal.controller.applicationController.tutor.GestisciPrenotazioniController;
 import com.example.studypal.other.Printer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -59,10 +59,10 @@ public class RichiesteTutorGui extends GestisciPrenotazioniGui {
     public void initialize(){
 
         //creo un'istanza di controller applicativo corrispondente
-        RichiesteArrivateController richiesteArrivateController = new RichiesteArrivateController();
+        GestisciPrenotazioniController gestisciPrenotazioniController = new GestisciPrenotazioniController();
 
         //chiamo la funzione nel controller applicativo per ottenere una lista di BEAN dove contiene tutte le info per stampare a schermo
-        richiesteList = richiesteArrivateController.richiesteArrivate(user, flag);
+        richiesteList = gestisciPrenotazioniController.richiesteArrivate(user, flag);
 
 
         email.setCellValueFactory(new PropertyValueFactory<>("emailStudente"));
@@ -122,7 +122,6 @@ public class RichiesteTutorGui extends GestisciPrenotazioniGui {
                 stage.setScene(scene);
             } catch (IOException e) {
                 logger.severe("errore in RichiesteTutorGui (caricamento richiesta arrivata) " + e.getMessage());
-                // e.printStackTrace();
             }
         }else if(this.flag == 1){
             try {
@@ -134,7 +133,6 @@ public class RichiesteTutorGui extends GestisciPrenotazioniGui {
                 stage.setScene(scene);
             } catch (IOException e) {
                 logger.severe("errore in RichiesteTutorGui (caricamento prenotazione attiva) " + e.getMessage());
-                // e.printStackTrace();
             }
         }else if(this.flag == 2){
             try {
@@ -147,8 +145,6 @@ public class RichiesteTutorGui extends GestisciPrenotazioniGui {
             } catch (IOException e) {
                 logger.severe("errore in RichiesteTutorGui (caricamento richiesta rifiutata) " + e.getMessage());
             }
-
         }
     }
-
 }

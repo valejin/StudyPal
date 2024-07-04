@@ -2,7 +2,7 @@ package com.example.studypal.controller.guiController.tutor;
 
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.PrenotazioneBean;
-import com.example.studypal.controller.applicationController.tutor.RichiesteArrivateController;
+import com.example.studypal.controller.applicationController.tutor.GestisciPrenotazioniController;
 import com.example.studypal.other.Printer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,7 +38,10 @@ public class VisualizzaRichiestaGui extends HomeTutorGui {
     PrenotazioneBean dettagliRichiesta;
 
     List<PrenotazioneBean> listRisultati;
-    String email, materiaRichiesta, giorno, noteAggiuntive;
+    String email;
+    String materiaRichiesta;
+    String giorno;
+    String noteAggiuntive;
     int modalita;
 
     private static final Logger logger = Logger.getLogger(VisualizzaRichiestaGui.class.getName());
@@ -99,10 +102,7 @@ public class VisualizzaRichiestaGui extends HomeTutorGui {
             stage.setScene(scene);
         } catch (IOException e) {
             logger.severe("errore in VisualizzaRichiesteGui (caricamento pagina) " + e.getMessage());
-            //e.printStackTrace();
         }
-
-
     }
 
 
@@ -119,7 +119,6 @@ public void goToPrenotazioniAttive() {
         stage.setScene(scene);
     } catch (IOException e) {
         logger.severe("errore in GestisciPrenotazioniGuiController " + e.getMessage());
-        //e.printStackTrace();
     }
 }
 
@@ -137,7 +136,6 @@ public void goToPrenotazioniRifiutate(){
         stage.setScene(scene);
     } catch (IOException e) {
         logger.severe("errore in GestisciPrenotazioniGuiController " + e.getMessage());
-        //e.printStackTrace();
     }
 }
 
@@ -149,8 +147,8 @@ public void goToPrenotazioniRifiutate(){
 
         //istanzio controller applicativo
         Printer.println("IDRICHIESTA: " + this.dettagliRichiesta.getIdRichiesta());
-        RichiesteArrivateController richiesteArrivateController = new RichiesteArrivateController();
-        richiesteArrivateController.modificaStatoRichiesta(this.dettagliRichiesta.getIdRichiesta(),1);
+        GestisciPrenotazioniController gestisciPrenotazioniController = new GestisciPrenotazioniController();
+        gestisciPrenotazioniController.modificaStatoRichiesta(this.dettagliRichiesta.getIdRichiesta(),1);
         caricaConferma();
         goToRichiesteArrivate();
 
@@ -161,8 +159,8 @@ public void goToPrenotazioniRifiutate(){
         tabella delle richieste)*/
 
         Printer.println("IDRICHIESTA: " + this.dettagliRichiesta.getIdRichiesta());
-        RichiesteArrivateController richiesteArrivateController = new RichiesteArrivateController();
-        richiesteArrivateController.modificaStatoRichiesta(this.dettagliRichiesta.getIdRichiesta(),2);
+        GestisciPrenotazioniController gestisciPrenotazioniController = new GestisciPrenotazioniController();
+        gestisciPrenotazioniController.modificaStatoRichiesta(this.dettagliRichiesta.getIdRichiesta(),2);
         caricaRifiuta();
         goToRichiesteArrivate();
 
