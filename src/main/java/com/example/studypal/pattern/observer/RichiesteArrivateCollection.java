@@ -40,7 +40,7 @@ public class RichiesteArrivateCollection extends Subject {
         notifyObservers();
 
         //debug
-        Printer.print("RICHIESTE COLLECTION:");
+        Printer.println("RICHIESTE COLLECTION:");
         for (PrenotazioneModel richiestaModel: richiesteList){
             Printer.println("id: " + richiestaModel.getIdRichiesta());
         }

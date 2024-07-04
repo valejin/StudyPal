@@ -57,7 +57,22 @@ public class GestisciPrenotazioniStudenteController {
 
         PrenotazioneDAO prenotazioneDAO = new PrenotazioneDAO();
         prenotazioneDAO.cancellaRichiesta(idRichiesta);
+
+        Printer.println("DEBUG ID: " + idRichiesta);
+
+        Printer.println("DEBUG RICHIESTE COLLECTION:");
+        for (PrenotazioneModel richiestaModel: RichiesteArrivateCollection.getInstance().ottieniStato()){
+            Printer.println("id: " + richiestaModel.getIdRichiesta());
+        }
+
+
         RichiesteArrivateCollection.getInstance().rimuoviRichiesta(idRichiesta);
+
+        //debug
+        Printer.print("DEBUG RICHIESTE COLLECTION:");
+        for (PrenotazioneModel richiestaModel: RichiesteArrivateCollection.getInstance().ottieniStato()){
+            Printer.println("id: " + richiestaModel.getIdRichiesta());
+        }
 
     }
 
