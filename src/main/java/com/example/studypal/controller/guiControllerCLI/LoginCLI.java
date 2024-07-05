@@ -6,10 +6,11 @@ import com.example.studypal.controller.applicationController.LoginController;
 import com.example.studypal.exceptions.CredenzialiSbagliateException;
 import com.example.studypal.exceptions.UtenteInesistenteException;
 import com.example.studypal.other.Printer;
+import com.example.studypal.pattern.state.AbstractState;
 
 import java.util.Scanner;
 
-public class LoginCLI {
+public class LoginCLI extends AbstractState {
 
     /* controller grafico che gestisce il login per l'interfaccia a riga di comando */
 
@@ -92,6 +93,16 @@ public class LoginCLI {
         }
 
     }
+
+
+
+    /*--------------------------------------------- PATTERN STATE ---------------------------------------------*/
+    @Override
+    public void goNext(){
+        //viene chiamata da mostraHome(?) per cambiare pagina (ovvero cambiare stato nella macchina a stati)
+
+    }
+
     private void registrazione(){
         //da finire
     }

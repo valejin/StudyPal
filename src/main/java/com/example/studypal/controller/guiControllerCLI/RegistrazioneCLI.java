@@ -1,4 +1,7 @@
 package com.example.studypal.controller.guiControllerCLI;
 
-public class RegistrazioneCLI {
+import com.example.studypal.pattern.state.AbstractState;
+
+public class RegistrazioneCLI extends AbstractState {
+    /* stato concreto relativo alla registrazione, parte del pattern State */
 }
