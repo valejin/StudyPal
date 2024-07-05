@@ -1,7 +1,9 @@
 package com.example.studypal.Query;
 
 import com.example.studypal.exceptions.CredenzialiSbagliateException;
+import com.example.studypal.exceptions.EmailAlreadyInUseException;
 import com.example.studypal.exceptions.UtenteInesistenteException;
+import com.example.studypal.model.UserModel;
 import com.example.studypal.other.Printer;
 
 import java.sql.ResultSet;
@@ -11,6 +13,7 @@ import java.sql.Statement;
 
 public class QueryLogin {
 
+    //controllo email inserito nel LOGIN
     public static ResultSet checkEmail(Statement stmt, String email) throws UtenteInesistenteException {
 
         try{
@@ -28,6 +31,25 @@ public class QueryLogin {
     }
 
 
+    //controllo email inserito nella REGISTRAZIONE
+    public static boolean emailReg(Statement stmt, String email) throws EmailAlreadyInUseException {
+
+        try{
+            String sql = String.format(Query.RICERCA_EMAIL, email);
+            ResultSet rs = stmt.executeQuery(sql);
+            System.out.println("prova 0");
+
+            if (rs.next()){
+                System.out.println("prova 1");
+                throw new EmailAlreadyInUseException();
+            }
+            return false;
+        }catch (SQLException e){
+            throw new EmailAlreadyInUseException();
+        }
+    }
+
+
 
 
     public static ResultSet loginUser(Statement stmt, String email, String password) throws CredenzialiSbagliateException{
@@ -38,4 +60,41 @@ public class QueryLogin {
             throw new CredenzialiSbagliateException("");
         }
     }
+
+
+
+
+    public static void registerUser(Statement stmt, UserModel registrazioneModel){
+        try{
+
+            String email = registrazioneModel.getEmail();
+            String nome = registrazioneModel.getNome();
+            String cognome = registrazioneModel.getCognome();
+            String password = registrazioneModel.getPassword();
+            Boolean ruolo = registrazioneModel.getRuolo();
+
+
+
+            // Esegui prima l'inserimento nella tabella 'utente'
+            String sql = String.format(Query.REGISTRAZIONE, email, nome, cognome, password, ruolo);
+            stmt.executeUpdate(sql);
+
+        }catch (SQLException e){
+            e.printStackTrace();
+            Printer.errorPrint(String.format("QueryLogin: %s", e.getMessage()));
+
+        }
+
+    }
+
+    private static void handleException(Exception e) {
+        Printer.errorPrint(String.format("QueryLogin: %s", e.getMessage()));
+    }
+
+
+
+
 }
+
+
+

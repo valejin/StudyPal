@@ -68,8 +68,8 @@
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="482.0" prefWidth="704.0" stylesheets="@../../button.css">
                 <TableView fx:id="richiesteTable" prefHeight="486.0" prefWidth="706.0" stylesheets="@../../button.css">
                     <columns>
-                        <TableColumn fx:id="materia" minWidth="6.4000244140625" prefWidth="186.40000611543655" text="Materia" />
-                        <TableColumn fx:id="email" prefWidth="300.8000030517578" text="Contatto del tutor" />
+                        <TableColumn fx:id="materia" editable="false" minWidth="6.4000244140625" prefWidth="186.40000611543655" text="Materia" />
+                        <TableColumn fx:id="email" editable="false" prefWidth="300.8000030517578" text="Contatto del tutor" />
                         <TableColumn fx:id="tariffa" editable="false" prefWidth="93.60003662109375" resizable="false" text="Tariffa (€/h)" />
                         <TableColumn fx:id="visualizza" editable="false" minWidth="0.0" prefWidth="135.199951171875" resizable="false" text="Visualizza" />
                     </columns>
