@@ -37,10 +37,8 @@ public class QueryLogin {
         try{
             String sql = String.format(Query.RICERCA_EMAIL, email);
             ResultSet rs = stmt.executeQuery(sql);
-            System.out.println("prova 0");
 
             if (rs.next()){
-                System.out.println("prova 1");
                 throw new EmailAlreadyInUseException();
             }
             return false;
@@ -80,7 +78,6 @@ public class QueryLogin {
             stmt.executeUpdate(sql);
 
         }catch (SQLException e){
-            e.printStackTrace();
             Printer.errorPrint(String.format("QueryLogin: %s", e.getMessage()));
 
         }

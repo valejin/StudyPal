@@ -1,11 +1,8 @@
 package com.example.studypal.DAO;
 
-
-import com.example.studypal.Query.Query;
 import com.example.studypal.Query.QueryLogin;
 import com.example.studypal.exceptions.CredenzialiSbagliateException;
 import com.example.studypal.exceptions.EmailAlreadyInUseException;
-import com.example.studypal.exceptions.EmailNonValidaException;
 import com.example.studypal.exceptions.UtenteInesistenteException;
 import com.example.studypal.model.CredenzialiModel;
 import com.example.studypal.model.UserModel;
@@ -39,7 +36,7 @@ public class UserDAO {
             //dopo che ho verificato se l'email inserito dall'utente è stata registrata o meno
             try{
                 ResultSet rs = QueryLogin.checkEmail(stmt, email);
-                if (rs == null){
+                if (!rs.next()){
                     throw new UtenteInesistenteException();
                 }
             } catch(UtenteInesistenteException e){
