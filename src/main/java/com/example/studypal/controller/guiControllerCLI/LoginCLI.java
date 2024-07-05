@@ -52,8 +52,8 @@ public class LoginCLI extends AbstractState {
         }
     }
 
-
-    private void stampaBenvenuto(){
+    @Override
+    public void stampaBenvenuto(){
         Printer.println("--------------Benvenuto a StudyPal!--------------");
         Printer.println("   1. Login");
         Printer.println("   2. Registrazione");
