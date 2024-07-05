@@ -2,6 +2,8 @@ package com.example.studypal;
 
 import com.example.studypal.controller.guiControllerCLI.LoginCLI;
 import com.example.studypal.other.Printer;
+import com.example.studypal.pattern.state.StateMachine;
+import com.example.studypal.pattern.state.StateMachineImpl;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -55,9 +57,29 @@ public class Starter extends Application {
         secondoStage.show();
     }
 
-    public void interfacciaCLI(){
+    public void interfacciaCLI() {
         LoginCLI loginCLI = new LoginCLI();
         loginCLI.start();
+
+
+        //questa classe mi fa da client per il pattern state, in quanto opera le transizioni di stato
+
+        //istanzio la concrete state machine
+        StateMachine cli = new StateMachineImpl();
+        cli.setState(new LoginCLI());
+
+        Scanner scanner = new Scanner(System.in);
+        int scelta = scanner.nextInt();
+
+        while ((scelta) != 0) { //finché non ci viene chiesto di uscire
+
+            /* qui dovremmo fare uno switch case sulle opzioni che mostriamo all'utente, ma
+            sono specifiche dello stato in cui ci troviamo.
+            In base all'opzione scelta decidiamo se compiere l'azione specifica dello stato o fare una transizione
+            */
+
+
+        }
     }
 
     public static void main(String[] args) {

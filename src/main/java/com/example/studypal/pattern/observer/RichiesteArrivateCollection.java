@@ -2,10 +2,8 @@ package com.example.studypal.pattern.observer;
 
 import com.example.studypal.model.PrenotazioneModel;
 import com.example.studypal.other.Printer;
-
 import java.util.ArrayList;
 import java.util.List;
-
 public class RichiesteArrivateCollection extends Subject {
 
     /*

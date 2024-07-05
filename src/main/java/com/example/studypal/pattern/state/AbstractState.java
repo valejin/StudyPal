@@ -8,7 +8,7 @@ public abstract class AbstractState {
     * Contiene:
     *      - un'operazione astratta per il passaggio di stato e degli attributi che vengono ereditati dalle classi che
     *       la concretizzano.
-    *      - un'operazione mostraMenu che viene implementata in maniera diveresa a seconda della pagina in cui ci troviamo
+    *      - un'operazione mostraMenu che viene implementata in maniera diversa a seconda della pagina in cui ci troviamo
     *      - un attributo che identifica la sessione (utente loggato)
     *
     *      - una lista degli stati verso cui ci possiamo muovere a partire da quello corrente
@@ -17,15 +17,17 @@ public abstract class AbstractState {
 
     public List<AbstractState> statiRaggiungibili;
 
-    public void goNext(){
-    }
+    public void entry(StateMachineImpl contextSM){
+        //metodo per far entrare la CLI (concrete state machine) nello stato corrente
+
+    };
+    public void exit(StateMachineImpl contextSM){};
+
 
     public void mostraMenu(){}
 
     public void stampaBenvenuto(){}
 
-    public void entry(){
-        //metodo per far entrare la CLI (concrete state machine) nello stato corrente
-    }
+
 }
 

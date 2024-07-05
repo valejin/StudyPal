@@ -7,6 +7,7 @@ import com.example.studypal.exceptions.CredenzialiSbagliateException;
 import com.example.studypal.exceptions.UtenteInesistenteException;
 import com.example.studypal.other.Printer;
 import com.example.studypal.pattern.state.AbstractState;
+import com.example.studypal.pattern.state.StateMachineImpl;
 
 import java.util.Scanner;
 
@@ -98,8 +99,13 @@ public class LoginCLI extends AbstractState {
 
     /*--------------------------------------------- PATTERN STATE ---------------------------------------------*/
     @Override
-    public void goNext(){
+    public void entry(StateMachineImpl contextSM){
         //viene chiamata da mostraHome(?) per cambiare pagina (ovvero cambiare stato nella macchina a stati)
+
+    }
+
+    @Override
+    public void exit(StateMachineImpl contextSM){
 
     }
 

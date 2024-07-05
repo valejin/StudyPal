@@ -8,6 +8,6 @@ public interface StateMachine {
 
     public void goNext();
 
-
+    public void setState(AbstractState s);
 
 }

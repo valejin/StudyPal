@@ -34,20 +34,11 @@ public class UserDAO {
 
 
             //dopo che ho verificato se l'email inserito dall'utente è stata registrata o meno
-            try{
-                ResultSet rs = QueryLogin.checkEmail(stmt, email);
-                if (!rs.next()){
-                    throw new UtenteInesistenteException();
-                }
-            } catch(UtenteInesistenteException e){
-                throw new UtenteInesistenteException();
-            }
-
+            QueryLogin.checkEmail(stmt, email);
 
             //verifico i credenziali inseriti dall'utente
             try (ResultSet rs = QueryLogin.loginUser(stmt, email, password)) {
 
-                //Printer.println("---------------------------------------------------------");
                 if(!rs.next()) {
                     throw new CredenzialiSbagliateException("Credenziali sbagliate");
                 }
@@ -56,19 +47,13 @@ public class UserDAO {
                     userModel.setEmail(rs.getString("email"));
                     userModel.setCognome(rs.getString("cognome"));
                     userModel.setRuolo(rs.getBoolean("isTutor"));
-
-                    /*
-                    if(!userModel.getRuolo()){
-                        Printer.println("L'utente è iscritto come: Studente");
-                    }else{
-                        Printer.println("L'utente è iscritto come: Tutor");
-                    }
-                    */
                 }
             }
 
         }catch (SQLException e) {
             logger.severe("errore in userDAO " + e.getMessage());
+        }catch (UtenteInesistenteException e){
+            throw new UtenteInesistenteException();
         }
 
         return userModel;
