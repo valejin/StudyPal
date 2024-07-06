@@ -13,7 +13,7 @@ public interface StateMachine {
 
     public void transition(AbstractState nuovoStato);
 
-    public void action();
+    public void action(Integer option);
 
     public void setState(AbstractState s);
 

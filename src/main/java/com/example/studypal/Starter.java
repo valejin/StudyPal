@@ -11,7 +11,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Scanner;
 
+import static javafx.application.Application.launch;
+
 public class Starter extends Application {
+    public static void main(String[] args) {
+        launch();
+    }
 
     //todo: qui voglio implementare polimorfismo! si può  fare con due classi che specializzano la classe starter
 
@@ -59,9 +64,19 @@ public class Starter extends Application {
 
     public void interfacciaCLI() {
         LoginCLI loginCLI = new LoginCLI();
-        loginCLI.start();
+        loginCLI.stampaBenvenuto();
+        loginCLI.mostraMenu();
+
+        //qui devo mettere uno scanner per capire input messo dal utente, 1.login 2.registrazione etc.
+        Scanner scan = new Scanner(System.in);
+        Integer option = scan.nextInt();
+
+        //fisso lo stato iniziale dello stateMacchine
+        StateMachineImpl SM = new StateMachineImpl();
+        loginCLI.action(SM, option);
 
 
+        /*
         //questa classe mi fa da client per il pattern state, in quanto opera le transizioni di stato
 
         //istanzio la concrete state machine
@@ -79,10 +94,8 @@ public class Starter extends Application {
             */
 
 
+
         }
     }
 
-    public static void main(String[] args) {
-        launch();
-    }
-}
+

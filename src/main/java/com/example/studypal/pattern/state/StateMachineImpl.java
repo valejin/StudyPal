@@ -45,8 +45,8 @@ public class StateMachineImpl implements StateMachine {
     }
 
     @Override
-    public void action(){
-        this.statoCorrente.action(this);
+    public void action(Integer option){
+        this.statoCorrente.action(this, option);
     }
 
     public void setState(AbstractState stato){
