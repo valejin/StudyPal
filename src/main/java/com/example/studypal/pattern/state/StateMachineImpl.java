@@ -31,6 +31,9 @@ public class StateMachineImpl implements StateMachine {
             - cambiamento di stato
             - esecuzione dell'azione specifica dello stato
         */
+
+        this.statoCorrente.action(this, 0);
+
     }
 
     @Override

@@ -71,9 +71,17 @@ public class Starter extends Application {
         Scanner scan = new Scanner(System.in);
         Integer option = scan.nextInt();
 
+
         //fisso lo stato iniziale dello stateMacchine
         StateMachineImpl SM = new StateMachineImpl();
         loginCLI.action(SM, option);
+
+
+        while (option != 0){
+
+            SM.goNext();
+
+        }
 
 
         /*

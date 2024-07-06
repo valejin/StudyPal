@@ -109,6 +109,8 @@ public class LoginCLI extends AbstractState {
                 case(2):
                     //registrazione, effettuo il metodo goNext per cambiare la pagina (transizione)
 
+                    RegistrazioneCLI registrazioneCLI = new RegistrazioneCLI();
+                    goNext(SM, registrazioneCLI);
 
 
 
@@ -196,7 +198,9 @@ public class LoginCLI extends AbstractState {
     }
 
 
-    /*------------------------------------DA TOGLIERE------------------------------*/
+    /*------------------------------------ PASSAGGIO------------------------------*/
+
+
     private void registrazione(){
         //in realtà questo metodo non serve, dobbiamo passare all'altro stato (transition)
     }
