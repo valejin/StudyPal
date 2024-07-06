@@ -41,7 +41,7 @@ public class LoginCLI extends AbstractState {
                     break;
                 case (1):
                     //login, chiama il metodo principale dello stato attuale (doAction)
-                    action();
+                    //action();
                     esci=true;
                     break;
                 case (2):
