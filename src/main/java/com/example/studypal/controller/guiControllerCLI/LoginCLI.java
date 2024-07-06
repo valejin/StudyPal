@@ -82,6 +82,7 @@ public class LoginCLI extends AbstractState {
             this.user = loginController.loginMethod(credenzialiBean);
 
             //dobbiamo cambiare stato!! (transition)
+
             mostraHome(user.getRuolo());
 
         } catch (CredenzialiSbagliateException e) {
@@ -110,7 +111,7 @@ public class LoginCLI extends AbstractState {
     @Override
     public void stampaBenvenuto() {
         Printer.println("--------------Benvenuto a StudyPal!--------------");
-        Printer.println("");
+        Printer.println("E' necessario accedere al sistema.");
     }
 
     @Override
@@ -136,8 +137,5 @@ public class LoginCLI extends AbstractState {
         } else {
             Printer.println("Studente");
         }
-
-
     }
-
 }
