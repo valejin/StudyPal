@@ -31,6 +31,7 @@ public class LoginCLI extends AbstractState {
         while (!esci){
             stampaBenvenuto();
 
+            mostraMenu();
             int scelta = scanner.nextInt();
 
             switch(scelta){
@@ -39,11 +40,12 @@ public class LoginCLI extends AbstractState {
                     esci = true;
                     break;
                 case (1):
-                    //login
-                    login();
+                    //login, chiama il metodo principale dello stato attuale (doAction)
+                    action();
                     esci=true;
                     break;
                 case (2):
+                    //dobbiamo cambiare stato!! (transition)
                     registrazione();
                     esci=true;
                     break;
@@ -53,16 +55,10 @@ public class LoginCLI extends AbstractState {
         }
     }
 
-    @Override
-    public void stampaBenvenuto(){
-        Printer.println("--------------Benvenuto a StudyPal!--------------");
-        Printer.println("   1. Login");
-        Printer.println("   2. Registrazione");
-        Printer.println("   0. Esci");
-        Printer.print("Opzione scelta: ");
-    }
 
-    private void login(){
+    /*-----------------------------------------AZIONE----------------------------------------------*/
+    @Override
+    public void action(StateMachineImpl SM){
 
         Printer.print("   Email: ");
         String email = scanner.next();
@@ -85,6 +81,7 @@ public class LoginCLI extends AbstractState {
             //prendiamo i dati dell'utente loggato (sessione)
             this.user = loginController.loginMethod(credenzialiBean);
 
+            //dobbiamo cambiare stato!! (transition)
             mostraHome(user.getRuolo());
 
         } catch (CredenzialiSbagliateException e) {
@@ -101,16 +98,33 @@ public class LoginCLI extends AbstractState {
     @Override
     public void entry(StateMachineImpl contextSM){
         //viene chiamata da mostraHome(?) per cambiare pagina (ovvero cambiare stato nella macchina a stati)
-
     }
 
     @Override
     public void exit(StateMachineImpl contextSM){
-
+        //qui dobbiamo specificare azioni particolari relative all'uscita da questo stato
+        Printer.println("Verrete reindirizzati alla prossima pagina");
     }
 
+
+    @Override
+    public void stampaBenvenuto() {
+        Printer.println("--------------Benvenuto a StudyPal!--------------");
+        Printer.println("");
+    }
+
+    @Override
+    public void mostraMenu(){
+        Printer.println("   1. Login");
+        Printer.println("   2. Registrazione");
+        Printer.println("   0. Esci");
+        Printer.print("Opzione scelta: ");
+    }
+
+
+    /*------------------------------------DA TOGLIERE------------------------------*/
     private void registrazione(){
-        //da finire
+        //in realtà questo metodo non serve, dobbiamo passare all'altro stato (transition)
     }
 
     private void mostraHome(Boolean isTutor){

@@ -12,10 +12,18 @@ public abstract class AbstractState {
     *      - un attributo che identifica la sessione (utente loggato)
     *
     *      - una lista degli stati verso cui ci possiamo muovere a partire da quello corrente
-    *      - una funzione di stampaBenvenuto nello stato
+    *      - una funzione di stampaBenvenuto (poi con ovverride ogni stato sceglie cosa fare)
     * */
 
+    protected AbstractState(){
+        //costruttore, utilizzabile solo dalle classi figlie
+    }
+
     public List<AbstractState> statiRaggiungibili;
+
+
+
+    /* per la transizione di stato--------------------------------------------------*/
 
     public void entry(StateMachineImpl contextSM){
         //metodo per far entrare la CLI (concrete state machine) nello stato corrente
@@ -23,6 +31,17 @@ public abstract class AbstractState {
     };
     public void exit(StateMachineImpl contextSM){};
 
+    public void statiDisponibili(){
+        /*restituisce gli stati che possiamo raggiungere tramite una transizione*/
+    }
+
+
+
+    /*per l'azione---------------------------------------------------------------------*/
+
+    public void action(StateMachineImpl SM){
+        //rappresenta l'azione principale dello stato
+    }
 
     public void mostraMenu(){}
 
