@@ -63,7 +63,7 @@ public class LoginCLI extends AbstractState {
 
         boolean esci = false;
 
-        while(option != 0){
+        //while(option != 0){
 
             switch(option){
                 case(0):
@@ -98,6 +98,21 @@ public class LoginCLI extends AbstractState {
                         //dobbiamo cambiare stato!! (transition)
                         mostraHome(user.getRuolo());
 
+                        Printer.println("-----Menu tutor-----");
+                        Printer.println("   1. Gestisci profilo");
+                        Printer.println("   2. Gestisci prenotazioni");
+                        Printer.println("   0. Logout");
+
+                        Printer.print("Option: ");
+                        option = scanner.nextInt();
+
+                        if(option > 2){
+                            Printer.errorPrint("Input inserito invalido.");
+                        }else{
+                            SM.goNext();
+
+                        }
+
                     } catch (CredenzialiSbagliateException e) {
                         Printer.errorPrint("Credenziali sbagliate.");
                     } catch (UtenteInesistenteException u) {
@@ -117,52 +132,9 @@ public class LoginCLI extends AbstractState {
 
 
 
+        //}
 
 
-        }
-
-
-
-
-
-
-
-
-
-
-
-        /*
-        Printer.print("   Email: ");
-        String email = scanner.next();
-
-        Printer.print("   Password: ");
-        String password = scanner.next();
-
-        /*ora istanziamo il controller applicativo e chiamiamo il suo metodo login così come
-        nel controller grafico della prima interfaccia
-
-        try {
-
-            CredenzialiBean credenzialiBean = new CredenzialiBean();
-            credenzialiBean.setEmail(email);
-            credenzialiBean.setPassword(password);
-
-            //istanziamo il controller applicativo che si deve occupare del login e gli passiamo il bean contenente le credenziali
-            LoginController loginController = new LoginController();
-
-            //prendiamo i dati dell'utente loggato (sessione)
-            this.user = loginController.loginMethod(credenzialiBean);
-
-            //dobbiamo cambiare stato!! (transition)
-
-            mostraHome(user.getRuolo());
-
-        } catch (CredenzialiSbagliateException e) {
-            Printer.errorPrint("Credenziali sbagliate.");
-        } catch (UtenteInesistenteException u) {
-            Printer.errorPrint("Attenzione! Utente inesistente.");
-        }
-        */
 
     }
 
