@@ -17,8 +17,6 @@ public class HomeStudenteCLI extends AbstractState {
     @Override
     public void action(StateMachineImpl SM){
 
-        mostraMenu();
-
         /* l'azione della Home sta nel presentare le opzioni disponibili, quindi appare molto semplice*/
 
         int option = 0;
@@ -51,12 +49,14 @@ public class HomeStudenteCLI extends AbstractState {
 
     @Override
     public void stampaBenvenuto(){
+        Printer.println("-------------- HOME STUDENTE --------------");
         Printer.println("Ciao " + this.user.getNome() + ", scegli un'opzione:");
     }
 
     @Override
     public void entry(StateMachineImpl cli){
         stampaBenvenuto();
+        mostraMenu();
     }
 
 }

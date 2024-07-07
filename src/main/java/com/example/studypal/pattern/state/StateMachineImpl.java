@@ -29,7 +29,7 @@ public class StateMachineImpl implements StateMachine {
         /* metodo che prepara lo stato iniziale*/
 
         statoCorrente = new InitialState();
-
+        goNext(); //lo stato iniziale è l'unico che viene fatto partire "manualmente" dalla state machine
     }
 
     @Override

@@ -22,27 +22,29 @@ public class InitialState extends AbstractState {
 
         int scelta = scan.nextInt();
 
-        switch(scelta){
-            case(0):
-                //in realtà questo non è necessario perché si blocca starter direttamente
-                Printer.println("Arrivederci!");
-                break;
+        do{
+            switch(scelta){
+                case(0):
+                    //in realtà questo non è necessario perché si blocca starter direttamente
+                    Printer.println("Arrivederci!");
+                    break;
 
-            case(1):
-                //vado allo stato di login
-                nextState = new LoginCLI();
-                goNext(SM, nextState);
-                break;
-            case(2):
-                //registrazione, effettuo il metodo goNext per cambiare la pagina (transizione)
-                RegistrazioneCLI registrazioneCLI = new RegistrazioneCLI();
-                goNext(SM, registrazioneCLI);
-                break;
+                case(1):
+                    //vado allo stato di login
+                    nextState = new LoginCLI();
+                    goNext(SM, nextState);  //questo fa solo camiare lo stato corrente, poi deve essere il client (Starter) a far avanzare la macchina a stati
+                    break;
+                case(2):
+                    //registrazione, effettuo il metodo goNext per cambiare la pagina (transizione)
+                    RegistrazioneCLI registrazioneCLI = new RegistrazioneCLI();
+                    goNext(SM, registrazioneCLI);
+                    break;
 
-            default:
-                Printer.println("Input invalido."); //todo sistemare perché così non richiediamo l'input all'utente
-                break;
-        }
+                default:
+                    Printer.print("Input invalido. Scegliere un'opzione tra quelle disponibili: ");
+                    break;
+            }
+        } while((scelta = scan.nextInt()) > 2);
 
     }
 
@@ -61,7 +63,7 @@ public class InitialState extends AbstractState {
 
     @Override
     public void exit(StateMachineImpl stateMachine){
-        System.out.println("uscendo dallo stato iniziale");
+        System.out.println("initial state -> login");
     }
 
 }

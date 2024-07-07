@@ -64,6 +64,9 @@ public class Starter extends Application {
 
     public void interfacciaCLI() {
 
+        //todo: se inseriamo qualcosa che non è un int va in errore. Gestire il caso (eccezione?)
+
+
         //qui devo mettere uno scanner per capire input messo dall'utente, solo per leggere se uscire
         Scanner scan = new Scanner(System.in);
 
@@ -77,30 +80,10 @@ public class Starter extends Application {
             System.out.println("start state");
             SM.goNext();
             System.out.println("done");
-
+            //qua si aspetta di leggere per continuare ad andare avanti!! Non viene eseguita la action del login
         } while (scan.nextInt() != 0);
 
-
-        /*
-        //questa classe mi fa da client per il pattern state, in quanto opera le transizioni di stato
-
-        //istanzio la concrete state machine
-        StateMachine cli = new StateMachineImpl();
-        cli.setState(new LoginCLI());
-
-        Scanner scanner = new Scanner(System.in);
-        int scelta = scanner.nextInt();
-
-        while ((scelta) != 0) { //finché non ci viene chiesto di uscire
-
-            /* qui dovremmo fare uno switch case sulle opzioni che mostriamo all'utente, ma
-            sono specifiche dello stato in cui ci troviamo.
-            In base all'opzione scelta decidiamo se compiere l'azione specifica dello stato o fare una transizione
-            */
-
-
-
-        }
     }
+}
 
 
