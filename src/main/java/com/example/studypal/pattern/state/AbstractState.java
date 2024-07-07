@@ -25,7 +25,6 @@ public abstract class AbstractState {
     protected ArrayList<AbstractState> prevStates;
 
 
-
     /* per la transizione di stato--------------------------------------------------*/
 
     public void entry(StateMachineImpl contextSM){
@@ -38,7 +37,9 @@ public abstract class AbstractState {
         /*restituisce gli stati che possiamo raggiungere tramite una transizione*/
     }
 
-
+    public void goNext(StateMachineImpl SM, AbstractState newState){
+        SM.transition(newState);
+    }
 
     /*per l'azione---------------------------------------------------------------------*/
 
@@ -49,7 +50,6 @@ public abstract class AbstractState {
     public void mostraMenu(){}
 
     public void stampaBenvenuto(){}
-
 
 }
 

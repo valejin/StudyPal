@@ -1,7 +1,5 @@
 package com.example.studypal.pattern.state;
 
-import com.example.studypal.other.Printer;
-
 public class StateMachineImpl implements StateMachine {
 
     /* Dall'esempio del professore deve contenere:
@@ -34,7 +32,8 @@ public class StateMachineImpl implements StateMachine {
             - esecuzione dell'azione specifica dello stato
         */
 
-        Printer.println("cambio scena");
+        this.statoCorrente.action(this, 0);
+
     }
 
     @Override
