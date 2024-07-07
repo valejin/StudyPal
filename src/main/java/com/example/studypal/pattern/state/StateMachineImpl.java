@@ -1,7 +1,5 @@
 package com.example.studypal.pattern.state;
 
-import com.example.studypal.controller.guiControllerCLI.LoginCLI;
-
 public class StateMachineImpl implements StateMachine {
 
     /* Dall'esempio del professore deve contenere:
@@ -9,8 +7,10 @@ public class StateMachineImpl implements StateMachine {
             -implementazione del metodo goNext che fa partire la transizione/azione dello stato corrente
                     NOTA: possiamo fare che il metodo azione() dell'abstract state prenda in input la scelta dell'utente
                     letta dalla CLI! Poi all'interno del metodo dello stato controlliamo il valore ed eseguiamo con switch case l'azione corretta
-            -funzione di cambiamento di stato (entry/exit)
+            -funzioni di cambiamento di stato (entry/exit)
     * */
+
+    public boolean inEsecuzione = true;
 
     private AbstractState statoCorrente;
 
@@ -30,6 +30,7 @@ public class StateMachineImpl implements StateMachine {
 
         statoCorrente = new InitialState();
         goNext(); //lo stato iniziale è l'unico che viene fatto partire "manualmente" dalla state machine
+        //System.out.println("SM DONE START");
     }
 
     @Override
@@ -44,9 +45,9 @@ public class StateMachineImpl implements StateMachine {
 
         /* al momento esegue solo l'azione dello stato corrente perché le transizioni
             sono chiamate all'interno dell'azione dei singoli stati*/
-
+      //  System.out.println("acting on current state");
         this.statoCorrente.action(this);
-
+     //   System.out.println("SM DONE GONEXT");
     }
 
     @Override

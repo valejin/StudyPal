@@ -1,8 +1,6 @@
 package com.example.studypal;
 
-import com.example.studypal.controller.guiControllerCLI.LoginCLI;
 import com.example.studypal.other.Printer;
-import com.example.studypal.pattern.state.StateMachine;
 import com.example.studypal.pattern.state.StateMachineImpl;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,14 +9,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static javafx.application.Application.launch;
 
 public class Starter extends Application {
     public static void main(String[] args) {
         launch();
     }
 
-    //todo: qui voglio implementare polimorfismo! si può  fare con due classi che specializzano la classe starter
+    //todo: qui voglio implementare polimorfismo! si può fare con due classi che specializzano la classe starter
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -67,28 +64,28 @@ public class Starter extends Application {
         //todo: se inseriamo qualcosa che non è un int va in errore. Gestire il caso (eccezione?)
 
 
-        //qui devo mettere uno scanner per capire input messo dall'utente, solo per leggere se uscire
-        Scanner scan = new Scanner(System.in);
-
         //fisso lo stato iniziale dello stateMachine
         StateMachineImpl SM = new StateMachineImpl();
 
         SM.start();
 
-        do {
-            /* option=0 -> exit */
-            System.out.println("start state");
+        /*
+        if (SM.inEsecuzione){
+            System.out.println("SM IN ESECUZIONE");
+        } else if (!SM.inEsecuzione) {
+            System.out.println("SM NON IN ESECUZIONE");
+        }
+        */
+
+        while (SM.inEsecuzione) {
+
+            //System.out.println("start state");
 
             SM.goNext(); //viene eseguita l'azione dello stato attuale, che al termine causerà la transizione allo stato successivo
 
-            System.out.println("done");
+            //System.out.println("done");
 
-            /*Qua si aspetta di leggere per continuare ad andare avanti (e quindi eseguire l'azione dello stato corrente)!!
-             Non viene eseguita la action del login. Dobbiamo fargli compiere l'azione senza dover leggere prima!
-             Quindi o facciamo il controllo sullo 0 (exit) dentro gli stati o ci inventiamo qualcos'altro*/
-
-        } while (scan.nextInt() != 0);
-
+        }
     }
 }
 

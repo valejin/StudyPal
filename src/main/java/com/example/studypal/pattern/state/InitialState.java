@@ -19,33 +19,31 @@ public class InitialState extends AbstractState {
         this.mostraMenu();
 
         Scanner scan = new Scanner(System.in);
+        int scelta;
 
-        int scelta = scan.nextInt();
-
-        do{
+        while((scelta = scan.nextInt()) < 3) {
             switch(scelta){
                 case(0):
-                    //in realtà questo non è necessario perché si blocca starter direttamente
                     Printer.println("Arrivederci!");
-                    break;
-
+                    SM.inEsecuzione = false;
+                    return;
                 case(1):
                     //vado allo stato di login
+                   // System.out.println("avete scelto login");
                     nextState = new LoginCLI();
                     goNext(SM, nextState);  //questo fa solo camiare lo stato corrente, poi deve essere il client (Starter) a far avanzare la macchina a stati
-                    break;
+                    return;
                 case(2):
                     //registrazione, effettuo il metodo goNext per cambiare la pagina (transizione)
                     RegistrazioneCLI registrazioneCLI = new RegistrazioneCLI();
                     goNext(SM, registrazioneCLI);
-                    break;
+                    return;
 
                 default:
                     Printer.print("Input invalido. Scegliere un'opzione tra quelle disponibili: ");
-                    break;
+                    return;
             }
-        } while((scelta = scan.nextInt()) > 2);
-
+        }
     }
 
     @Override
@@ -56,6 +54,7 @@ public class InitialState extends AbstractState {
         Printer.print("Opzione scelta: ");
     }
 
+    @Override
     public void stampaBenvenuto(){
         Printer.println("--------------Benvenuto a StudyPal!--------------");
         Printer.println("E' necessario avere un account per continuare.");

@@ -30,8 +30,8 @@ public abstract class AbstractState {
     public void entry(StateMachineImpl contextSM){
         //metodo per far entrare la CLI (concrete state machine) nello stato corrente
 
-    };
-    public void exit(StateMachineImpl contextSM){};
+    }
+    public void exit(StateMachineImpl contextSM){}
 
     public void statiDisponibili(){
         /*restituisce gli stati che possiamo raggiungere tramite una transizione*/
@@ -39,6 +39,7 @@ public abstract class AbstractState {
 
     public void goNext(StateMachineImpl SM, AbstractState newState){
         SM.transition(newState);
+       // System.out.println("STATE GO NEXT DONE");
     }
 
     /*per l'azione---------------------------------------------------------------------*/

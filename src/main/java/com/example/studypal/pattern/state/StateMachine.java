@@ -4,6 +4,8 @@ public interface StateMachine {
 
     /* interfaccia della macchina a stati */
 
+
+
     void goNext();
 
     void goBack();
