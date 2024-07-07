@@ -78,9 +78,15 @@ public class Starter extends Application {
         do {
             /* option=0 -> exit */
             System.out.println("start state");
-            SM.goNext();
+
+            SM.goNext(); //viene eseguita l'azione dello stato attuale, che al termine causerà la transizione allo stato successivo
+
             System.out.println("done");
-            //qua si aspetta di leggere per continuare ad andare avanti!! Non viene eseguita la action del login
+
+            /*Qua si aspetta di leggere per continuare ad andare avanti (e quindi eseguire l'azione dello stato corrente)!!
+             Non viene eseguita la action del login. Dobbiamo fargli compiere l'azione senza dover leggere prima!
+             Quindi o facciamo il controllo sullo 0 (exit) dentro gli stati o ci inventiamo qualcos'altro*/
+
         } while (scan.nextInt() != 0);
 
     }

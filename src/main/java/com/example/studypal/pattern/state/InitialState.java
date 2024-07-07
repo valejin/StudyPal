@@ -63,7 +63,7 @@ public class InitialState extends AbstractState {
 
     @Override
     public void exit(StateMachineImpl stateMachine){
-        System.out.println("initial state -> login");
+        System.out.println("uscendo da initial state");
     }
 
 }

@@ -98,6 +98,7 @@ public class RegistrazioneCLI extends AbstractState {
     @Override
     public void entry(StateMachineImpl contextSM){
         /* capire se è necessaria qualche inizializzazione per lo stato*/
+        stampaBenvenuto();
     }
 
     @Override
