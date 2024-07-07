@@ -63,25 +63,22 @@ public class Starter extends Application {
     }
 
     public void interfacciaCLI() {
-        LoginCLI loginCLI = new LoginCLI();
-        loginCLI.stampaBenvenuto();
-        loginCLI.mostraMenu();
 
-        //qui devo mettere uno scanner per capire input messo dal utente, 1.login 2.registrazione etc.
+        //qui devo mettere uno scanner per capire input messo dall'utente, solo per leggere se uscire
         Scanner scan = new Scanner(System.in);
-        Integer option = scan.nextInt();
 
-
-        //fisso lo stato iniziale dello stateMacchine
+        //fisso lo stato iniziale dello stateMachine
         StateMachineImpl SM = new StateMachineImpl();
-        loginCLI.action(SM, option);
 
+        SM.start();
 
-        while (option != 0){
-
+        do {
+            /* option=0 -> exit */
+            System.out.println("start state");
             SM.goNext();
+            System.out.println("done");
 
-        }
+        } while (scan.nextInt() != 0);
 
 
         /*

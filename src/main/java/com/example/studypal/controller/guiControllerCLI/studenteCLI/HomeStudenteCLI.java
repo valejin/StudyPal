@@ -15,12 +15,13 @@ public class HomeStudenteCLI extends AbstractState {
     public HomeStudenteCLI(LoggedInUserBean user){ this.user = user;}
 
     @Override
-    public void action(StateMachineImpl cli, Integer option){
+    public void action(StateMachineImpl SM){
 
         mostraMenu();
 
         /* l'azione della Home sta nel presentare le opzioni disponibili, quindi appare molto semplice*/
 
+        int option = 0;
 
         switch(option){
             case(1):
@@ -32,7 +33,7 @@ public class HomeStudenteCLI extends AbstractState {
             case(3):
                 //logout, non va fatto così ma giusto per metterci qualcosa!!!!!
                 LoginCLI loginCLI = new LoginCLI();
-                loginCLI.action(cli, 1);
+                this.goNext(SM, loginCLI);
                 break;
             default:
                 Printer.println("Input invalido.");

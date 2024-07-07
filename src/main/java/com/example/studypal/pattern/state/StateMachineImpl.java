@@ -1,5 +1,7 @@
 package com.example.studypal.pattern.state;
 
+import com.example.studypal.controller.guiControllerCLI.LoginCLI;
+
 public class StateMachineImpl implements StateMachine {
 
     /* Dall'esempio del professore deve contenere:
@@ -23,6 +25,14 @@ public class StateMachineImpl implements StateMachine {
     * */
 
     @Override
+    public void start(){
+        /* metodo che prepara lo stato iniziale*/
+
+        statoCorrente = new InitialState();
+
+    }
+
+    @Override
     public void goNext( ) {
         /*realizza l'operazione presente nell'interfaccia, permette il passaggio di stato
           dobbiamo fare uno switch case sulla lista degli stati raggiungibili dello stato attuale?
@@ -32,14 +42,18 @@ public class StateMachineImpl implements StateMachine {
             - esecuzione dell'azione specifica dello stato
         */
 
-        this.statoCorrente.action(this, 0);
+        /* al momento esegue solo l'azione dello stato corrente perché le transizioni
+            sono chiamate all'interno dell'azione dei singoli stati*/
+
+        this.statoCorrente.action(this);
 
     }
 
     @Override
     public void goBack(){
-        /*torna allo stato precedente*/
+        /*torna allo stato precedente, useremo la lista degli stati passati per tornare indietro*/
     }
+
     @Override
     public void transition(AbstractState nuovoStato){
         this.statoCorrente.exit(this);
@@ -48,14 +62,11 @@ public class StateMachineImpl implements StateMachine {
     }
 
     @Override
-    public void action(Integer option){
-        this.statoCorrente.action(this, option);
+    public void action(){
+        this.statoCorrente.action(this);
     }
 
-    public void setState(AbstractState stato){
-        //questa da cancellare, era un esempio
-        this.statoCorrente = stato;
-    }
+
 
     /* --------------ALTRE FUNZIONI DELLA CLI --------------------------*/
 

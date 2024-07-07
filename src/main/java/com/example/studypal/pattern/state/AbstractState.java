@@ -40,7 +40,7 @@ public abstract class AbstractState {
 
     /*per l'azione---------------------------------------------------------------------*/
 
-    public void action(StateMachineImpl SM, Integer option){
+    public void action(StateMachineImpl SM){
         //rappresenta l'azione principale dello stato
     }
 
