@@ -65,7 +65,7 @@ public class LoginCLI extends AbstractState {
         } catch (CredenzialiSbagliateException e) {
             Printer.errorPrint("Credenziali sbagliate.");
         } catch (UtenteInesistenteException u) {
-            Printer.errorPrint("Attenzione! Utente inesistente.");
+            Printer.errorPrint("Utente inesistente.");
         }
 
     }

@@ -22,10 +22,10 @@ public class RegistrazioneCLI extends AbstractState {
     public void action(StateMachineImpl contextSM){
         //metodo effettivo per la registrazione
 
-        Printer.println("   Nome: ");
+        Printer.print("   Nome: ");
         String nome = scanner.next();
 
-        Printer.println("   Cognome: ");
+        Printer.print("   Cognome: ");
         String cognome = scanner.next();
 
         Printer.print("   Email: ");
@@ -49,7 +49,7 @@ public class RegistrazioneCLI extends AbstractState {
 
         while(sbagliato){
 
-            Printer.println("   Ruolo[tutor/studente]: ");
+            Printer.print("   Ruolo[tutor/studente]: ");
             String ruolo = scanner.next();
 
             switch (ruolo) {
@@ -61,7 +61,7 @@ public class RegistrazioneCLI extends AbstractState {
                     sbagliato = false;
                     break;
                 default:
-                    Printer.println("Input invalido!");
+                    Printer.errorPrint("Input invalido. Seleziona un'opzione valida.");
                     break;
             }
         }
@@ -86,7 +86,7 @@ public class RegistrazioneCLI extends AbstractState {
             //TRANSITION!!!!
 
         }catch(EmailAlreadyInUseException e){
-            Printer.errorPrint("Email è già in uso");
+            Printer.errorPrint("Email già in uso.");
 
         }
 

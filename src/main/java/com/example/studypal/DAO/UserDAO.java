@@ -106,7 +106,7 @@ public class UserDAO {
                 }
 
             } catch(EmailAlreadyInUseException e){
-                Printer.println("L'email è già registrata");
+                //Printer.println("L'email è già registrata");
                 throw e;
             }
 
