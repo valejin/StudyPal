@@ -1,5 +1,6 @@
 package com.example.studypal.pattern.state;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AbstractState {
@@ -20,6 +21,8 @@ public abstract class AbstractState {
     }
 
     public List<AbstractState> statiRaggiungibili;
+
+    protected ArrayList<AbstractState> prevStates;
 
 
     /* per la transizione di stato--------------------------------------------------*/
