@@ -15,7 +15,6 @@ public class StateMachineImpl implements StateMachine {
             -funzioni di cambiamento di stato (entry/exit)
     * */
 
-    public boolean inEsecuzione = true;
 
     private Stack<AbstractState> stateHistory;
 
