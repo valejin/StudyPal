@@ -1,8 +1,6 @@
 package com.example.studypal;
 
-import com.example.studypal.controller.guiControllerCLI.LoginCLI;
 import com.example.studypal.other.Printer;
-import com.example.studypal.pattern.state.StateMachine;
 import com.example.studypal.pattern.state.StateMachineImpl;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,14 +9,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static javafx.application.Application.launch;
 
 public class Starter extends Application {
     public static void main(String[] args) {
         launch();
     }
 
-    //todo: qui voglio implementare polimorfismo! si può  fare con due classi che specializzano la classe starter
+    //todo: qui voglio implementare polimorfismo! si può fare con due classi che specializzano la classe starter
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -82,17 +79,19 @@ public class Starter extends Application {
         Scanner scan = new Scanner(System.in);
         Integer option = scan.nextInt();
 
+        //todo: se inseriamo qualcosa che non è un int va in errore. Gestire il caso (eccezione?)
 
         //fisso lo stato iniziale dello stateMacchine
         StateMachineImpl SM = new StateMachineImpl();
         loginCLI.action(SM, option);
 
 
-        while (option != 0){
-            SM.goNext();
-        }
+        context.start();
 
-         */
+
+        while (context.getState() != null) {
+            context.goNext(); //viene eseguita l'azione dello stato attuale, che al termine causerà la transizione allo stato successivo
+        }
 
 
         /*

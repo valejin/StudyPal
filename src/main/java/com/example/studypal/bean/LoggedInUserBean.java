@@ -41,4 +41,6 @@ public class LoggedInUserBean {
     public void setRuolo(boolean ruoloUtente) { this.isTutor = ruoloUtente; }
     public boolean getRuolo() { return this.isTutor; }
 
+    public boolean isTutor() { return this.isTutor; }
+
 }
