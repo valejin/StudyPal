@@ -69,23 +69,12 @@ public class Starter extends Application {
 
         context.start();
 
-        /*
-        if (SM.inEsecuzione){
-            System.out.println("SM IN ESECUZIONE");
-        } else if (!SM.inEsecuzione) {
-            System.out.println("SM NON IN ESECUZIONE");
-        }
-        */
 
         while (context.getState() != null) {
-
-            //System.out.println("start state");
-
             context.goNext(); //viene eseguita l'azione dello stato attuale, che al termine causerà la transizione allo stato successivo
-
-            //System.out.println("done");
-
         }
+
+        Printer.println("Applicazione terminata.");
     }
 }
 

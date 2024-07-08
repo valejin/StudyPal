@@ -24,14 +24,6 @@ public class StateMachineImpl implements StateMachine {
     private LoggedInUserBean user;
 
 
-    /* macchina a stati concreta, rappresenta l'effettiva "pagina" in cui ci troviamo. Deve contenere tutte le informazioni
-    *  e i metodi necessari al funzionamento di una generica pagina dell'app.
-    *  Le caratteristiche comuni a tutte le pagine sono:
-    *       - menu sidebar
-    *       - LoggedInUserBean user (in particolare il ruolo!)
-    *       - metodo per tornare indietro
-    * */
-
     public StateMachineImpl(){
         this.stateHistory = new Stack<>();
         this.currentState = new InitialState(); //oppure start()
@@ -40,10 +32,8 @@ public class StateMachineImpl implements StateMachine {
     @Override
     public void start(){
         /* metodo che prepara lo stato iniziale*/
-
         currentState = new InitialState();
         goNext(); //lo stato iniziale è l'unico che viene fatto partire "manualmente" dalla state machine
-        //System.out.println("SM DONE START");
     }
 
     @Override
@@ -65,7 +55,9 @@ public class StateMachineImpl implements StateMachine {
 
     @Override
     public void transition(AbstractState nextState){
+
         this.currentState.exit(this);
+
         if(currentState != null) {
                stateHistory.push(currentState);
         }
@@ -87,6 +79,10 @@ public class StateMachineImpl implements StateMachine {
 
     public AbstractState getState(){
         return currentState;
+    }
+
+    public void setState(){
+        this.currentState = null;
     }
 
 }

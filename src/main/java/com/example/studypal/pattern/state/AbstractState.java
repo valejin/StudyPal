@@ -30,6 +30,10 @@ public abstract class AbstractState {
     }
     public void exit(StateMachineImpl contextSM){}
 
+    public void goBack(StateMachineImpl context){
+        context.goBack();
+    }
+
 
     public void goNext(StateMachineImpl context, AbstractState newState){
         context.transition(newState);
