@@ -25,25 +25,12 @@ public class StateMachineImpl implements StateMachine {
         this.currentState = new LoginCLI(); // Stato iniziale
     }
 
-
-
-
-    /* macchina a stati concreta, rappresenta l'effettiva "pagina" in cui ci troviamo. Deve contenere tutte le informazioni
-    *  e i metodi necessari al funzionamento di una generica pagina dell'app.
-    *  Le caratteristiche comuni a tutte le pagine sono:
-    *       - menu sidebar
-    *       - LoggedInUserBean user (in particolare il ruolo!)
-    *       - metodo per tornare indietro
-    * */
-
     @Override
     public void goNext( ) {
 
         if (currentState != null) {
             currentState.action(this); // Esegue la logica dello stato corrente e va al prossimo stato
         }
-
-        //this.statoCorrente.action(this, 0);
 
     }
 
@@ -68,10 +55,6 @@ public class StateMachineImpl implements StateMachine {
         }
         this.currentState = nextState;
         this.currentState.entry(this);
-
-        //System.out.println("go next da transition:");
-       // goNext(); // Esegue l'azione del nuovo stato
-
 
     }
 
