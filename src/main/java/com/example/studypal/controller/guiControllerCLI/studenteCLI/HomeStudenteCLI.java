@@ -17,7 +17,7 @@ public class HomeStudenteCLI extends AbstractState {
     public HomeStudenteCLI(LoggedInUserBean user){ this.user = user;}
 
     @Override
-    public void action(StateMachineImpl SM){
+    public void action(StateMachineImpl context){
 
         /* l'azione della Home sta nel presentare le opzioni disponibili, quindi appare molto semplice*/
 
@@ -29,7 +29,7 @@ public class HomeStudenteCLI extends AbstractState {
             switch(scelta){
                 case(0):
                     Printer.println("Arrivederci!");
-                    SM.inEsecuzione = false;
+                    context.setState();
                     return;
                 case(1):
                     //transizione a prenotaRipetizione
@@ -41,7 +41,7 @@ public class HomeStudenteCLI extends AbstractState {
                     break;
                 case(3):
                     LoginCLI loginCLI = new LoginCLI();
-                    this.goNext(SM, loginCLI);
+                    this.goNext(context, loginCLI);
                     break;
                 default:
                     Printer.println("Input invalido. Scegliere un'opzione tra quelle disponibili: ");

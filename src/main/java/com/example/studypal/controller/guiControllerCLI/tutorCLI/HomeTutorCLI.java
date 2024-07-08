@@ -45,7 +45,7 @@ public class HomeTutorCLI extends AbstractState {
             case 0:
                 //goNext(context, new LoginCLI()); // Torna alla pagina di login
                 context.setState();
-                break;
+                return;
             default:
                 Printer.println("Scelta non valida. Riprova.");
                 goNext(context, new HomeTutorCLI(user));

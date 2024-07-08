@@ -67,50 +67,12 @@ public class Starter extends Application {
             context.goNext();
         }
 
-        Printer.println("Applicazione terminata.");
+        Printer.println("Applicazione terminata. Arrivederci!");
 
 
 
-        /*LoginCLI loginCLI = new LoginCLI();
-        loginCLI.stampaBenvenuto();
-        loginCLI.mostraMenu();
-
-        //qui devo mettere uno scanner per capire input messo dal utente, 1.login 2.registrazione etc.
-        Scanner scan = new Scanner(System.in);
-        Integer option = scan.nextInt();
 
         //todo: se inseriamo qualcosa che non è un int va in errore. Gestire il caso (eccezione?)
-
-        //fisso lo stato iniziale dello stateMacchine
-        StateMachineImpl SM = new StateMachineImpl();
-        loginCLI.action(SM, option);
-
-
-        context.start();
-
-
-        while (context.getState() != null) {
-            context.goNext(); //viene eseguita l'azione dello stato attuale, che al termine causerà la transizione allo stato successivo
-        }
-
-
-        /*
-        //questa classe mi fa da client per il pattern state, in quanto opera le transizioni di stato
-
-        //istanzio la concrete state machine
-        StateMachine cli = new StateMachineImpl();
-        cli.setState(new LoginCLI());
-
-        Scanner scanner = new Scanner(System.in);
-        int scelta = scanner.nextInt();
-
-        while ((scelta) != 0) { //finché non ci viene chiesto di uscire
-
-            /* qui dovremmo fare uno switch case sulle opzioni che mostriamo all'utente, ma
-            sono specifiche dello stato in cui ci troviamo.
-            In base all'opzione scelta decidiamo se compiere l'azione specifica dello stato o fare una transizione
-            */
-
 
 
         }

@@ -12,7 +12,9 @@ public interface StateMachine {
     public void transition(AbstractState nuovoStato);
 
 
-    public void setState(AbstractState s);
+    public void setState();
+
+    AbstractState getState();
 
     void start();
 }

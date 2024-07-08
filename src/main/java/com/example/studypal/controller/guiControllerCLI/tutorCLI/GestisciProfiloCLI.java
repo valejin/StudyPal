@@ -43,8 +43,6 @@ public class GestisciProfiloCLI extends AbstractState {
                     mostraMenu();
                     choice = scanner.nextInt();
                     scanner.nextLine(); // Consuma newline
-
-                    System.out.println("22");
                     break;
                 case 2:
                     modificaProfilo(scanner);
@@ -64,6 +62,7 @@ public class GestisciProfiloCLI extends AbstractState {
 
     private void visualizzaProfilo() {
         Printer.println(" ");
+        Printer.print("Home Tutor -> Gestisci Profilo -> ");
         Printer.println("Dettagli Profilo:");
         Printer.println("Nome: " + user.getNome());
         Printer.println("Email: " + user.getEmail());
@@ -140,6 +139,7 @@ public class GestisciProfiloCLI extends AbstractState {
     public void mostraMenu(){
 
         Printer.println(" ");
+        Printer.print("Home Tutor -> ");
         Printer.println("Gestione Profilo:");
         Printer.println("1. Visualizza Profilo");
         Printer.println("2. Modifica Profilo");

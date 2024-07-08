@@ -12,7 +12,7 @@ public class InitialState extends AbstractState {
 
 
     @Override
-    public void action(StateMachineImpl SM){
+    public void action(StateMachineImpl context){
 
         AbstractState nextState;
         this.stampaBenvenuto();
@@ -21,23 +21,21 @@ public class InitialState extends AbstractState {
         Scanner scan = new Scanner(System.in);
         int scelta;
 
-        while((scelta = scan.nextInt()) < 3) {
+        while((context.getState() != null && (scelta = scan.nextInt()) < 3) ) {
             switch(scelta){
                 case(0):
                     Printer.println("Arrivederci!");
-                    SM.inEsecuzione = false;
+                    context.setState();
                     return;
                 case(1):
-                    //vado allo stato di login
-                   // System.out.println("avete scelto login");
                     nextState = new LoginCLI();
-                    goNext(SM, nextState);  //questo fa solo camiare lo stato corrente, poi deve essere il client (Starter) a far avanzare la macchina a stati
-                    return;
+                    goNext(context, nextState);  //questo fa solo camiare lo stato corrente, poi deve essere il client (Starter) a far avanzare la macchina a stati
+                    break;
                 case(2):
                     //registrazione, effettuo il metodo goNext per cambiare la pagina (transizione)
                     nextState = new RegistrazioneCLI();
-                    goNext(SM, nextState);
-                    return;
+                    goNext(context, nextState);
+                    break;
 
                 default:
                     Printer.print("Input invalido. Scegliere un'opzione tra quelle disponibili: ");
