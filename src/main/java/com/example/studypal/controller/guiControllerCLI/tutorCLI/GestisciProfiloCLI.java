@@ -45,7 +45,6 @@ public class GestisciProfiloCLI extends AbstractState {
                     modificaProfilo(scanner);
                     mostraMenu();
                     break;
-
                 default:
                     Printer.errorPrint("Scelta non valida. Riprova: ");
                     break;

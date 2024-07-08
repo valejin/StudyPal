@@ -47,7 +47,9 @@ public class StateMachineImpl implements StateMachine {
     public void goBack(){
         /*torna allo stato precedente, useremo la lista degli stati passati per tornare indietro*/
         if (!stateHistory.isEmpty()){
+            this.currentState.exit(this);
             this.currentState = stateHistory.pop();
+            this.currentState.entry(this);
             goNext();
         }
     }
