@@ -63,7 +63,18 @@ public class Starter extends Application {
     }
 
     public void interfacciaCLI() {
-        LoginCLI loginCLI = new LoginCLI();
+
+        StateMachineImpl context = new StateMachineImpl();
+
+        while (context.getState() != null) {
+            context.goNext();
+        }
+
+        Printer.println("Applicazione terminata.");
+
+
+
+        /*LoginCLI loginCLI = new LoginCLI();
         loginCLI.stampaBenvenuto();
         loginCLI.mostraMenu();
 
@@ -78,10 +89,10 @@ public class Starter extends Application {
 
 
         while (option != 0){
-
             SM.goNext();
-
         }
+
+         */
 
 
         /*

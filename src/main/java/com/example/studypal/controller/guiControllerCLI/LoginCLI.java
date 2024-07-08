@@ -3,6 +3,8 @@ package com.example.studypal.controller.guiControllerCLI;
 import com.example.studypal.bean.CredenzialiBean;
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.controller.applicationController.LoginController;
+import com.example.studypal.controller.guiControllerCLI.studenteCLI.HomeStudenteCLI;
+import com.example.studypal.controller.guiControllerCLI.tutorCLI.HomeTutorCLI;
 import com.example.studypal.exceptions.CredenzialiSbagliateException;
 import com.example.studypal.exceptions.UtenteInesistenteException;
 import com.example.studypal.other.Printer;
@@ -10,6 +12,7 @@ import com.example.studypal.pattern.state.AbstractState;
 import com.example.studypal.pattern.state.StateMachineImpl;
 
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class LoginCLI extends AbstractState {
 
@@ -18,6 +21,7 @@ public class LoginCLI extends AbstractState {
     //todo: correggere tutte le stampe a terminale che avevamo prima per il debug!
 
     LoggedInUserBean user;
+    private static final Logger logger = Logger.getLogger(LoginCLI.class.getName());
 
     public LoginCLI(){}
     public LoginCLI(LoggedInUserBean user){ this.user = user;}
@@ -58,79 +62,34 @@ public class LoginCLI extends AbstractState {
 
     /*-----------------------------------------AZIONE----------------------------------------------*/
     @Override
-    public void action(StateMachineImpl SM, Integer option){
+    public void action(StateMachineImpl context){
 
+        Scanner scanner = new Scanner(System.in);
+        Printer.println("Inserisci email: ");
+        String email = scanner.nextLine();
+        Printer.println("Inserisci password: ");
+        String password = scanner.nextLine();
 
-        boolean esci = false;
-
-        //while(option != 0){
-
-            switch(option){
-                case(0):
-                    Printer.println("Arrivederci!");
-                    esci = true;
-                    break;
-
-                case(1):
-                    //login, chiama il metodo principale dello stato attuale (doAction)
-                    Printer.println("Pagina Login:");
-                    Printer.print("   Email: ");
-                    String email = scanner.next();
-
-                    Printer.print("   Password: ");
-                    String password = scanner.next();
 
         /*ora istanziamo il controller applicativo e chiamiamo il suo metodo login così come
         nel controller grafico della prima interfaccia*/
 
-                    try {
+        try {
+            CredenzialiBean credenzialiBean = new CredenzialiBean();
+            credenzialiBean.setEmail(email);
+            credenzialiBean.setPassword(password);
 
-                        CredenzialiBean credenzialiBean = new CredenzialiBean();
-                        credenzialiBean.setEmail(email);
-                        credenzialiBean.setPassword(password);
+            LoginController loginController = new LoginController();
+            LoggedInUserBean loggedInUserBean = loginController.loginMethod(credenzialiBean);
 
-                        //istanziamo il controller applicativo che si deve occupare del login e gli passiamo il bean contenente le credenziali
-                        LoginController loginController = new LoginController();
+            context.setUser(loggedInUserBean);
+            caricaHome(context, loggedInUserBean.getRuolo());
 
-                        //prendiamo i dati dell'utente loggato (sessione)
-                        this.user = loginController.loginMethod(credenzialiBean);
-
-                        //dobbiamo cambiare stato!! (transition)
-                        mostraHome(user.getRuolo());
-
-                        Printer.println("-----Menu tutor-----");
-                        Printer.println("   1. Gestisci profilo");
-                        Printer.println("   2. Gestisci prenotazioni");
-                        Printer.println("   0. Logout");
-
-                        Printer.print("Option: ");
-                        option = scanner.nextInt();
-
-                        if(option > 2){
-                            Printer.errorPrint("Input inserito invalido.");
-                        }else{
-                            SM.goNext();
-
-                        }
-
-                    } catch (CredenzialiSbagliateException e) {
-                        Printer.errorPrint("Credenziali sbagliate.");
-                    } catch (UtenteInesistenteException u) {
-                        Printer.errorPrint("Attenzione! Utente inesistente.");
-                    }
-
-                    break;
-
-                case(2):
-                    //registrazione, effettuo il metodo goNext per cambiare la pagina (transizione)
-
-                    RegistrazioneCLI registrazioneCLI = new RegistrazioneCLI();
-                    goNext(SM, registrazioneCLI);
-
-
-
-
-            }
+        } catch (CredenzialiSbagliateException e) {
+            Printer.println("Credenziali sbagliate.");
+        } catch (UtenteInesistenteException u) {
+            Printer.println("Utente inesistente.");
+        }
 
 
 
@@ -177,14 +136,11 @@ public class LoginCLI extends AbstractState {
         //in realtà questo metodo non serve, dobbiamo passare all'altro stato (transition)
     }
 
-    private void mostraHome(Boolean isTutor){
-        //qui dovremmo passare all'altro stato (state pattern)
-        Printer.println("Il Login è stato correttamente effettuato.");
-        Printer.print("Ruolo: ");
-        if (isTutor){
-            Printer.println("Tutor");
+    private void caricaHome(StateMachineImpl context, boolean isTutor) {
+        if (isTutor) {
+            context.transition(new HomeTutorCLI(context.getUser()));
         } else {
-            Printer.println("Studente");
+            context.transition(new HomeStudenteCLI(context.getUser()));
         }
     }
 }

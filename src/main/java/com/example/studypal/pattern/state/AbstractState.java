@@ -1,6 +1,5 @@
 package com.example.studypal.pattern.state;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AbstractState {
@@ -20,9 +19,8 @@ public abstract class AbstractState {
         //costruttore, utilizzabile solo dalle classi figlie
     }
 
-    public List<AbstractState> statiRaggiungibili;
 
-    protected ArrayList<AbstractState> prevStates;
+
 
 
     /* per la transizione di stato--------------------------------------------------*/
@@ -31,21 +29,21 @@ public abstract class AbstractState {
         //metodo per far entrare la CLI (concrete state machine) nello stato corrente
 
     };
-    public void exit(StateMachineImpl contextSM){};
+    public void exit(StateMachineImpl contextSM){}
 
-    public void statiDisponibili(){
-        /*restituisce gli stati che possiamo raggiungere tramite una transizione*/
+
+    public void goBack(StateMachineImpl context) {
+        context.goBack();
     }
 
-    public void goNext(StateMachineImpl SM, AbstractState newState){
-        SM.transition(newState);
+    public void goNext(StateMachineImpl context, AbstractState nextState) {
+        context.transition(nextState);
     }
+
 
     /*per l'azione---------------------------------------------------------------------*/
 
-    public void action(StateMachineImpl SM, Integer option){
-        //rappresenta l'azione principale dello stato
-    }
+    public abstract void action(StateMachineImpl context);
 
     public void mostraMenu(){}
 

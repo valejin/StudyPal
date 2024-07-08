@@ -1,5 +1,10 @@
 package com.example.studypal.pattern.state;
 
+import com.example.studypal.bean.LoggedInUserBean;
+import com.example.studypal.controller.guiControllerCLI.LoginCLI;
+
+import java.util.Stack;
+
 public class StateMachineImpl implements StateMachine {
 
     /* Dall'esempio del professore deve contenere:
@@ -10,9 +15,18 @@ public class StateMachineImpl implements StateMachine {
             -funzione di cambiamento di stato (entry/exit)
     * */
 
-    private AbstractState statoCorrente;
+    private Stack<AbstractState> stateHistory;
+    private AbstractState currentState;
+    private LoggedInUserBean user;
 
-    private AbstractState statoPrecedente;
+
+    public StateMachineImpl() {
+        this.stateHistory = new Stack<>();
+        this.currentState = new LoginCLI(); // Stato iniziale
+    }
+
+
+
 
     /* macchina a stati concreta, rappresenta l'effettiva "pagina" in cui ci troviamo. Deve contenere tutte le informazioni
     *  e i metodi necessari al funzionamento di una generica pagina dell'app.
@@ -24,39 +38,64 @@ public class StateMachineImpl implements StateMachine {
 
     @Override
     public void goNext( ) {
-        /*realizza l'operazione presente nell'interfaccia, permette il passaggio di stato
-          dobbiamo fare uno switch case sulla lista degli stati raggiungibili dello stato attuale?
-          Oppure similmente all'esempio del professore dobbiamo lanciare degli eventi dal client (il nostro main che lancia la CLI)
-          e catturarli qui dentro distinguendo i casi
-            - cambiamento di stato
-            - esecuzione dell'azione specifica dello stato
-        */
 
-        this.statoCorrente.action(this, 0);
+        if (currentState != null) {
+            currentState.action(this); // Esegue la logica dello stato corrente e va al prossimo stato
+        }
+
+        //this.statoCorrente.action(this, 0);
 
     }
 
     @Override
-    public void goBack(){
-        /*torna allo stato precedente*/
-    }
-    @Override
-    public void transition(AbstractState nuovoStato){
-        this.statoCorrente.exit(this);
-        this.statoCorrente = nuovoStato;
-        this.statoCorrente.entry(this);
+    public void goBack() {
+        if (!stateHistory.isEmpty()) {
+            this.currentState = stateHistory.pop();
+            goNext(); // Esegue l'azione dello stato precedente
+        }
     }
 
+
+
+
     @Override
-    public void action(Integer option){
-        this.statoCorrente.action(this, option);
+    public void transition(AbstractState nextState) {
+
+        this.currentState.exit(this);
+
+        if (currentState != null) {
+            stateHistory.push(currentState);
+        }
+        this.currentState = nextState;
+        this.currentState.entry(this);
+
+        //System.out.println("go next da transition:");
+       // goNext(); // Esegue l'azione del nuovo stato
+
+
     }
 
-    public void setState(AbstractState stato){
-        //questa da cancellare, era un esempio
-        this.statoCorrente = stato;
-    }
+
+
 
     /* --------------ALTRE FUNZIONI DELLA CLI --------------------------*/
+
+
+    public LoggedInUserBean getUser() {
+        return user;
+    }
+
+
+    public void setUser(LoggedInUserBean user) {
+        this.user = user;
+    }
+
+    public AbstractState getState() {
+        return currentState;
+    }
+
+    public void setState(){
+        this.currentState = null;
+    }
 
 }

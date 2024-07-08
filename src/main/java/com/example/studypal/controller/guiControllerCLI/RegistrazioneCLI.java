@@ -19,7 +19,7 @@ public class RegistrazioneCLI extends AbstractState {
     private final Scanner scanner = new Scanner(System.in);
 
     @Override
-    public void action(StateMachineImpl contextSM, Integer option){
+    public void action(StateMachineImpl contextSM){
         //metodo effettivo per la registrazione
 
         Printer.println("   Nome: ");

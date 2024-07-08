@@ -15,13 +15,14 @@ public class HomeStudenteCLI extends AbstractState {
     public HomeStudenteCLI(LoggedInUserBean user){ this.user = user;}
 
     @Override
-    public void action(StateMachineImpl cli, Integer option){
+    public void action(StateMachineImpl cli){
 
         mostraMenu();
 
         /* l'azione della Home sta nel presentare le opzioni disponibili, quindi appare molto semplice*/
 
 
+        /*
         switch(option){
             case(1):
                 //transizione a prenotaRipetizione
@@ -38,6 +39,8 @@ public class HomeStudenteCLI extends AbstractState {
                 Printer.println("Input invalido.");
                 break;
         }
+
+         */
     }
 
     @Override

@@ -2,6 +2,8 @@ package com.example.studypal.pattern.state;
 
 public interface StateMachine {
 
+    //equivale al context
+
     /* interfaccia della macchina a stati, contiene:
         -l' operazione goNext() che viene scatenata da una scelta dell'utente (ovvero un cambiamento di pagina)
         -
@@ -13,8 +15,7 @@ public interface StateMachine {
 
     public void transition(AbstractState nuovoStato);
 
-    public void action(Integer option);
 
-    public void setState(AbstractState s);
+    //public void start();
 
 }
