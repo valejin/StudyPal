@@ -4,6 +4,7 @@ import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.controller.guiControllerCLI.LoginCLI;
 import com.example.studypal.other.Printer;
 import com.example.studypal.pattern.state.AbstractState;
+import com.example.studypal.pattern.state.InitialState;
 import com.example.studypal.pattern.state.StateMachineImpl;
 
 import java.util.Scanner;
@@ -22,15 +23,11 @@ public class HomeStudenteCLI extends AbstractState {
         /* l'azione della Home sta nel presentare le opzioni disponibili, quindi appare molto semplice*/
 
         Scanner scan = new Scanner(System.in);
-        int scelta;
+        int choice;
 
-        while((scelta = scan.nextInt()) < 4) {
+        while((choice = scan.nextInt()) != 0) {
 
-            switch(scelta){
-                case(0):
-                    Printer.println("Arrivederci!");
-                    context.setState();
-                    return;
+            switch(choice){
                 case(1):
                     //transizione a prenotaRipetizione
                     System.out.println("goToPrenotaRipetizione");
@@ -39,27 +36,27 @@ public class HomeStudenteCLI extends AbstractState {
                     //transizione a gestisciPrenotazioni
                     System.out.println("goToGestisciPrenotazioni");
                     break;
-                case(3):
-                    LoginCLI loginCLI = new LoginCLI();
-                    this.goNext(context, loginCLI);
-                    break;
                 default:
-                    Printer.println("Input invalido. Scegliere un'opzione tra quelle disponibili: ");
+                    Printer.errorPrint("Input invalido. Scegliere un'opzione tra quelle disponibili: ");
                     break;
             }
         }
+
+        goNext(context, new InitialState());
+
     }
 
     @Override
     public void mostraMenu(){
         Printer.println("   1. Prenota Ripetizione");
         Printer.println("   2. Gestisci Prenotazioni");
-        Printer.println("   0. Esci");
-        Printer.print("   Opzione scelta: ");
+        Printer.println("   0. Logout");
+        Printer.print("Opzione scelta: ");
     }
 
     @Override
     public void stampaBenvenuto(){
+        Printer.println(" ");
         Printer.println("-------------- HOME STUDENTE --------------");
         Printer.println("Ciao " + this.user.getNome() + ", scegli un'opzione:");
     }

@@ -27,7 +27,7 @@ public class LoginCLI extends AbstractState {
 
     /*-----------------------------------------AZIONE----------------------------------------------*/
     @Override
-    public void action(StateMachineImpl SM) {
+    public void action(StateMachineImpl context) {
 
         Printer.print("   Email: ");
         String email = scanner.next();
@@ -49,7 +49,6 @@ public class LoginCLI extends AbstractState {
 
             //prendiamo i dati dell'utente loggato (sessione)
             this.user = loginController.loginMethod(credenzialiBean);
-            Printer.println("Il Login è stato correttamente effettuato.");
 
             //ho finito, mi preparo al passaggio di stato
             AbstractState homeCLI;
@@ -60,12 +59,14 @@ public class LoginCLI extends AbstractState {
                 homeCLI = new HomeStudenteCLI(user);
             }
 
-            goNext(SM, homeCLI); //chiamo il metodo goNext dello stato attuale che farà transizionare la stateMachine
+            goNext(context, homeCLI); //chiamo il metodo goNext dello stato attuale che farà transizionare la stateMachine
 
         } catch (CredenzialiSbagliateException e) {
             Printer.errorPrint("Credenziali sbagliate.");
+            action(context);
         } catch (UtenteInesistenteException u) {
             Printer.errorPrint("Utente inesistente.");
+            action(context);
         }
 
     }
@@ -88,6 +89,7 @@ public class LoginCLI extends AbstractState {
 
     @Override
     public void stampaBenvenuto() {
+        Printer.println(" ");
         Printer.println("-------------- LOGIN --------------");
     }
 }

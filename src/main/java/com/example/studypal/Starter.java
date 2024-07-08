@@ -69,11 +69,7 @@ public class Starter extends Application {
 
         Printer.println("Applicazione terminata. Arrivederci!");
 
-
-
-
         //todo: se inseriamo qualcosa che non è un int va in errore. Gestire il caso (eccezione?)
-
 
         }
     }

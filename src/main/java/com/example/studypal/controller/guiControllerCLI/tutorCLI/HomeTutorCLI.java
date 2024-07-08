@@ -4,6 +4,7 @@ import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.controller.guiControllerCLI.LoginCLI;
 import com.example.studypal.other.Printer;
 import com.example.studypal.pattern.state.AbstractState;
+import com.example.studypal.pattern.state.InitialState;
 import com.example.studypal.pattern.state.StateMachineImpl;
 
 import java.util.Scanner;
@@ -24,33 +25,48 @@ public class HomeTutorCLI extends AbstractState {
     public void action(StateMachineImpl context) {
         Scanner scanner = new Scanner(System.in);
 
-        Printer.println(" ");
-        Printer.println("Home Tutor:");
+        int choice;
+
+        while((choice = scanner.nextInt()) != 0) {
+
+            scanner.nextLine(); // Consuma newline
+
+            switch (choice) {
+                case 1:
+                    goNext(context, new GestisciProfiloCLI(user));
+                    break;
+                case 2:
+                    goNext(context, new GestisciPrenotazioniCLI(user));
+                    break;
+                default:
+                    Printer.errorPrint("Scelta non valida. Riprova: ");
+                    break;
+            }
+        }
+
+        goNext(context, new InitialState());
+    }
+
+    @Override
+    public void mostraMenu(){
         Printer.println("1. Gestisci Profilo");
         Printer.println("2. Gestisci Prenotazioni");
         Printer.println("0. Logout");
         Printer.print("Scegli un'opzione: ");
-
-        int choice = scanner.nextInt();
-        scanner.nextLine(); // Consuma newline
-        System.out.println("home - ho letto");
-
-        switch (choice) {
-            case 1:
-                goNext(context, new GestisciProfiloCLI(user));
-                break;
-            case 2:
-                goNext(context, new GestisciPrenotazioniCLI(user));
-                break;
-            case 0:
-                //goNext(context, new LoginCLI()); // Torna alla pagina di login
-                context.setState();
-                return;
-            default:
-                Printer.println("Scelta non valida. Riprova.");
-                goNext(context, new HomeTutorCLI(user));
-                break;
-        }
     }
+
+    @Override
+    public void stampaBenvenuto() {
+        Printer.println(" ");
+        Printer.println("-------------- HOME TUTOR --------------");
+        Printer.println("Ciao " + this.user.getNome() + ", scegli un'opzione:");
+    }
+
+    @Override
+    public void entry(StateMachineImpl cli){
+        stampaBenvenuto();
+        mostraMenu();
+    }
+
 }
 

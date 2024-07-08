@@ -21,10 +21,10 @@ public class InitialState extends AbstractState {
         Scanner scan = new Scanner(System.in);
         int scelta;
 
-        while((context.getState() != null && (scelta = scan.nextInt()) < 3) ) {
+        while((context.getState() != null )){
+            scelta = scan.nextInt();
             switch(scelta){
                 case(0):
-                    Printer.println("Arrivederci!");
                     context.setState();
                     return;
                 case(1):
@@ -36,10 +36,9 @@ public class InitialState extends AbstractState {
                     nextState = new RegistrazioneCLI();
                     goNext(context, nextState);
                     break;
-
                 default:
-                    Printer.print("Input invalido. Scegliere un'opzione tra quelle disponibili: ");
-                    return;
+                    Printer.errorPrint("Input invalido. Scegliere un'opzione tra quelle disponibili: ");
+                    break;
             }
         }
     }
@@ -54,13 +53,14 @@ public class InitialState extends AbstractState {
 
     @Override
     public void stampaBenvenuto(){
+        Printer.println(" ");
         Printer.println("--------------Benvenuto a StudyPal!--------------");
         Printer.println("E' necessario avere un account per continuare.");
     }
 
     @Override
     public void exit(StateMachineImpl stateMachine){
-        System.out.println("uscendo da initial state");
+
     }
 
 }

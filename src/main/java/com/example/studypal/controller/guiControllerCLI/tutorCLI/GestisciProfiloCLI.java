@@ -24,7 +24,6 @@ public class GestisciProfiloCLI extends AbstractState {
     }
 
 
-
     @Override
     public void action(StateMachineImpl context) {
 
@@ -32,31 +31,28 @@ public class GestisciProfiloCLI extends AbstractState {
 
         this.infoCorrentiProfilo = caricaInformazioniProfilo(user.getEmail());
 
-        int choice = scanner.nextInt();
-        scanner.nextLine(); // Consuma newline
+        int choice;
 
-        while(choice != 0) {
+        while((choice = scanner.nextInt()) != 0) {
+            scanner.nextLine(); // Consuma newline
 
             switch (choice) {
                 case 1:
                     visualizzaProfilo();
                     mostraMenu();
-                    choice = scanner.nextInt();
-                    scanner.nextLine(); // Consuma newline
                     break;
                 case 2:
                     modificaProfilo(scanner);
                     mostraMenu();
-                    choice = scanner.nextInt();
-                    scanner.nextLine(); // Consuma newline
                     break;
 
                 default:
-                    Printer.println("Scelta non valida. Riprova: ");
+                    Printer.errorPrint("Scelta non valida. Riprova: ");
                     break;
             }
         }
         goBack(context);
+
     }
 
 
@@ -65,6 +61,7 @@ public class GestisciProfiloCLI extends AbstractState {
         Printer.print("Home Tutor -> Gestisci Profilo -> ");
         Printer.println("Dettagli Profilo:");
         Printer.println("Nome: " + user.getNome());
+        Printer.println("Cognome: " + user.getCognome());
         Printer.println("Email: " + user.getEmail());
         Printer.println("Ruolo: " + (user.getRuolo() ? "Tutor" : "Studente"));
         Printer.println("In Presenza: " + infoCorrentiProfilo.getInPresenza());
