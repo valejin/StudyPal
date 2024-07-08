@@ -10,7 +10,6 @@ import java.util.logging.Logger;
 
 public class GestisciPrenotazioniCLI extends AbstractState {
 
-    private static final Logger logger = Logger.getLogger(GestisciPrenotazioniCLI.class.getName());
     private final LoggedInUserBean user;
 
 
@@ -25,19 +24,23 @@ public class GestisciPrenotazioniCLI extends AbstractState {
 
         Scanner scanner = new Scanner(System.in);
 
-        int choice = scanner.nextInt();
-        scanner.nextLine(); // Consuma newline
+        int choice;
 
-        if (choice != 0) {
+        if ((choice = scanner.nextInt()) != 0) {
+            scanner.nextLine(); // Consuma newline
+
             switch (choice) {
                 case 1:
-                    goToRichiesteArrivate();
+                    goToRichiesteArrivate(context);
+                    mostraMenu();
                     break;
                 case 2:
-                    goToPrenotazioniAttive();
+                    goToPrenotazioniAttive(context);
+                    mostraMenu();
                     break;
                 case 3:
-                    goToRichiesteRifiutate();
+                    goToRichiesteRifiutate(context);
+                    mostraMenu();
                     break;
                 default:
                     Printer.println("Scelta non valida. Riprova.");
@@ -51,26 +54,23 @@ public class GestisciPrenotazioniCLI extends AbstractState {
 
 
 
-    public void goToRichiesteArrivate() {
-        System.out.println("Navigando a: Richieste Arrivate");
-        // Implementa la logica per visualizzare le richieste arrivate
-        // Ad esempio: RichiesteTutorCLI richiesteTutorCLI = new RichiesteTutorCLI(user, 0);
+    public void goToRichiesteArrivate(StateMachineImpl context) {
+        goNext(context, new RichiesteTutorCLI(user, 0));
+
     }
 
-    public void goToPrenotazioniAttive() {
-        System.out.println("Navigando a: Prenotazioni Attive");
-        // Implementa la logica per visualizzare le prenotazioni attive
-        // Ad esempio: PrenotazioniAttiveCLI prenotazioniAttiveCLI = new PrenotazioniAttiveCLI(user);
+    public void goToPrenotazioniAttive(StateMachineImpl context) {
+        goNext(context, new RichiesteTutorCLI(user, 1));
     }
 
-    public void goToRichiesteRifiutate() {
-        System.out.println("Navigando a: Richieste Rifiutate");
-        // Implementa la logica per visualizzare le richieste rifiutate
-        // Ad esempio: RichiesteRifiutateCLI richiesteRifiutateCLI = new RichiesteRifiutateCLI(user);
+    public void goToRichiesteRifiutate(StateMachineImpl context) {
+        goNext(context, new RichiesteTutorCLI(user, 1));
     }
 
     @Override
     public void mostraMenu(){
+        Printer.println(" ");
+        Printer.print("Home Tutor -> ");
         Printer.println("Gestione Prenotazioni:");
         Printer.println("1. Richieste Arrivate");
         Printer.println("2. Prenotazioni Attive");
