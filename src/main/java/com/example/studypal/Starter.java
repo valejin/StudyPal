@@ -65,9 +65,9 @@ public class Starter extends Application {
 
 
         //fisso lo stato iniziale dello stateMachine
-        StateMachineImpl SM = new StateMachineImpl();
+        StateMachineImpl context = new StateMachineImpl();
 
-        SM.start();
+        context.start();
 
         /*
         if (SM.inEsecuzione){
@@ -77,11 +77,11 @@ public class Starter extends Application {
         }
         */
 
-        while (SM.inEsecuzione) {
+        while (context.getState() != null) {
 
             //System.out.println("start state");
 
-            SM.goNext(); //viene eseguita l'azione dello stato attuale, che al termine causerà la transizione allo stato successivo
+            context.goNext(); //viene eseguita l'azione dello stato attuale, che al termine causerà la transizione allo stato successivo
 
             //System.out.println("done");
 

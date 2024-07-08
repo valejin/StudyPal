@@ -1,5 +1,10 @@
 package com.example.studypal.pattern.state;
 
+import com.example.studypal.bean.LoggedInUserBean;
+import com.example.studypal.controller.guiControllerCLI.LoginCLI;
+
+import java.util.Stack;
+
 public class StateMachineImpl implements StateMachine {
 
     /* Dall'esempio del professore deve contenere:
@@ -12,9 +17,12 @@ public class StateMachineImpl implements StateMachine {
 
     public boolean inEsecuzione = true;
 
-    private AbstractState statoCorrente;
+    private Stack<AbstractState> stateHistory;
 
-    private AbstractState statoPrecedente;
+    private AbstractState currentState;
+
+    private LoggedInUserBean user;
+
 
     /* macchina a stati concreta, rappresenta l'effettiva "pagina" in cui ci troviamo. Deve contenere tutte le informazioni
     *  e i metodi necessari al funzionamento di una generica pagina dell'app.
@@ -24,51 +32,61 @@ public class StateMachineImpl implements StateMachine {
     *       - metodo per tornare indietro
     * */
 
+    public StateMachineImpl(){
+        this.stateHistory = new Stack<>();
+        this.currentState = new InitialState(); //oppure start()
+    }
+
     @Override
     public void start(){
         /* metodo che prepara lo stato iniziale*/
 
-        statoCorrente = new InitialState();
+        currentState = new InitialState();
         goNext(); //lo stato iniziale è l'unico che viene fatto partire "manualmente" dalla state machine
         //System.out.println("SM DONE START");
     }
 
     @Override
     public void goNext( ) {
-        /*realizza l'operazione presente nell'interfaccia, permette il passaggio di stato
-          dobbiamo fare uno switch case sulla lista degli stati raggiungibili dello stato attuale?
-          Oppure similmente all'esempio del professore dobbiamo lanciare degli eventi dal client (il nostro main che lancia la CLI)
-          e catturarli qui dentro distinguendo i casi
-            - cambiamento di stato
-            - esecuzione dell'azione specifica dello stato
-        */
 
-        /* al momento esegue solo l'azione dello stato corrente perché le transizioni
-            sono chiamate all'interno dell'azione dei singoli stati*/
-      //  System.out.println("acting on current state");
-        this.statoCorrente.action(this);
-     //   System.out.println("SM DONE GONEXT");
+        if (currentState != null){
+            this.currentState.action(this);
+        }
     }
 
     @Override
     public void goBack(){
         /*torna allo stato precedente, useremo la lista degli stati passati per tornare indietro*/
+        if (!stateHistory.isEmpty()){
+            this.currentState = stateHistory.pop();
+            goNext();
+        }
     }
 
     @Override
-    public void transition(AbstractState nuovoStato){
-        this.statoCorrente.exit(this);
-        this.statoCorrente = nuovoStato;
-        this.statoCorrente.entry(this);
+    public void transition(AbstractState nextState){
+        this.currentState.exit(this);
+        if(currentState != null) {
+               stateHistory.push(currentState);
+        }
+        this.currentState = nextState;
+        this.currentState.entry(this);
+        goNext();
     }
-
-    @Override
-    public void action(){
-        this.statoCorrente.action(this);
-    }
-
 
 
     /* --------------ALTRE FUNZIONI DELLA CLI --------------------------*/
+
+    public LoggedInUserBean getUser(){
+        return user;
+    }
+
+    public void setUser(LoggedInUserBean user){
+        this.user = user;
+    }
+
+    public AbstractState getState(){
+        return currentState;
+    }
 
 }

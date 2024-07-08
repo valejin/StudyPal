@@ -20,9 +20,6 @@ public abstract class AbstractState {
         //costruttore, utilizzabile solo dalle classi figlie
     }
 
-    public List<AbstractState> statiRaggiungibili;
-
-    protected ArrayList<AbstractState> prevStates;
 
 
     /* per la transizione di stato--------------------------------------------------*/
@@ -33,13 +30,9 @@ public abstract class AbstractState {
     }
     public void exit(StateMachineImpl contextSM){}
 
-    public void statiDisponibili(){
-        /*restituisce gli stati che possiamo raggiungere tramite una transizione*/
-    }
 
-    public void goNext(StateMachineImpl SM, AbstractState newState){
-        SM.transition(newState);
-       // System.out.println("STATE GO NEXT DONE");
+    public void goNext(StateMachineImpl context, AbstractState newState){
+        context.transition(newState);
     }
 
     /*per l'azione---------------------------------------------------------------------*/

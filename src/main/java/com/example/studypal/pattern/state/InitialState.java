@@ -35,8 +35,8 @@ public class InitialState extends AbstractState {
                     return;
                 case(2):
                     //registrazione, effettuo il metodo goNext per cambiare la pagina (transizione)
-                    RegistrazioneCLI registrazioneCLI = new RegistrazioneCLI();
-                    goNext(SM, registrazioneCLI);
+                    nextState = new RegistrazioneCLI();
+                    goNext(SM, nextState);
                     return;
 
                 default:
