@@ -20,37 +20,33 @@ public class GestisciPrenotazioniCLI extends AbstractState {
 
     @Override
     public void action(StateMachineImpl context) {
+
+        //menu mostrato da funzione entry
+
         Scanner scanner = new Scanner(System.in);
-        Printer.println("Gestione Prenotazioni:");
-        Printer.println("1. Richieste Arrivate");
-        Printer.println("2. Prenotazioni Attive");
-        Printer.println("3. Richieste Rifiutate");
-        Printer.println("4. Torna Indietro");
-        Printer.println("Scegli un'opzione: ");
 
         int choice = scanner.nextInt();
         scanner.nextLine(); // Consuma newline
 
-        switch (choice) {
-            case 1:
-                goToRichiesteArrivate();
-                break;
-            case 2:
-                goToPrenotazioniAttive();
-                break;
-            case 3:
-                goToRichiesteRifiutate();
-                break;
-            case 0:
-                goBack(context);
-
-                return;
-            default:
-                Printer.println("Scelta non valida. Riprova.");
-                break;
+        if (choice != 0) {
+            switch (choice) {
+                case 1:
+                    goToRichiesteArrivate();
+                    break;
+                case 2:
+                    goToPrenotazioniAttive();
+                    break;
+                case 3:
+                    goToRichiesteRifiutate();
+                    break;
+                default:
+                    Printer.println("Scelta non valida. Riprova.");
+                    break;
+            }
         }
 
-        goNext(context, new GestisciPrenotazioniCLI(user)); // Torna al menu delle prenotazioni dopo l'operazione
+
+        goBack(context);
     }
 
 
@@ -71,6 +67,21 @@ public class GestisciPrenotazioniCLI extends AbstractState {
         System.out.println("Navigando a: Richieste Rifiutate");
         // Implementa la logica per visualizzare le richieste rifiutate
         // Ad esempio: RichiesteRifiutateCLI richiesteRifiutateCLI = new RichiesteRifiutateCLI(user);
+    }
+
+    @Override
+    public void mostraMenu(){
+        Printer.println("Gestione Prenotazioni:");
+        Printer.println("1. Richieste Arrivate");
+        Printer.println("2. Prenotazioni Attive");
+        Printer.println("3. Richieste Rifiutate");
+        Printer.println("0. Torna Indietro");
+        Printer.println("Scegli un'opzione: ");
+    }
+
+    @Override
+    public void entry(StateMachineImpl context){
+        mostraMenu();
     }
 
 }
