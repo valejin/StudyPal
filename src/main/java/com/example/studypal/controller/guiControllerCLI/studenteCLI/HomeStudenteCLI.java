@@ -30,7 +30,7 @@ public class HomeStudenteCLI extends AbstractState {
             switch(choice){
                 case(1):
                     //transizione a prenotaRipetizione
-                    System.out.println("goToPrenotaRipetizione");
+                    goNext(context, new PrenotaRipetizioneCLI(user));
                     break;
                 case(2):
                     //transizione a gestisciPrenotazioni
