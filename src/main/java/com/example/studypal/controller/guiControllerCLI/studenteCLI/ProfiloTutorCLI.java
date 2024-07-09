@@ -18,6 +18,6 @@ public class ProfiloTutorCLI extends AbstractState {
 
     @Override
     public void action(StateMachineImpl context){
-        Printer.println("DA IMPLEMENTARE");
+        Printer.errorPrint("DA IMPLEMENTARE");
     }
 }

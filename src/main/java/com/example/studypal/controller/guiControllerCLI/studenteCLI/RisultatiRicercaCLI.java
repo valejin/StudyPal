@@ -58,7 +58,7 @@ public class RisultatiRicercaCLI extends AbstractState {
                     //richiedi tutor
                     Printer.print("Indice del tutor da richiedere: ");
                     RipetizioneInfoBean info = tutorList.get(scan.nextInt());
-                    goNext(context, new PrenotaRipetizioneCLI(user, info));
+                    goNext(context, new PrenotaRipetizioneCLI(user, info, filtri));
                     break;
                 default:
                     Printer.errorPrint("Input invalido. Scegliere un'opzione tra quelle disponibili: ");
@@ -71,6 +71,7 @@ public class RisultatiRicercaCLI extends AbstractState {
     }
     @Override
     public void mostraMenu(){
+        Printer.println(" ");
         Printer.println("   1. Visualizza un profilo.");
         Printer.println("   2. Richiedi tutor.");
         Printer.println("   0. Torna indietro.");
@@ -82,6 +83,9 @@ public class RisultatiRicercaCLI extends AbstractState {
         Printer.println(" ");
         Printer.printlnBlu("Home studente -> Prenota ripetizione -> Ricerca -> Risultati ricerca");
         Printer.println("La ricerca ha prodotto i seguenti risultati:");
+        Printer.println(" ");
+        Printer.println("----------------------------------");
+
     }
 
     @Override

@@ -4,7 +4,6 @@ import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.PrenotazioneBean;
 import com.example.studypal.bean.RipetizioneInfoBean;
 import com.example.studypal.controller.applicationController.studente.PrenotaRipetizioneController;
-import com.example.studypal.other.Printer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -110,7 +109,6 @@ public class PrenotaRipetizioneGui extends HomeStudenteGui {
         PrenotazioneBean prenotazioneBean = new PrenotazioneBean();
         prenotazioneBean.setNome(informazioni.getNome());
         prenotazioneBean.setCognome(informazioni.getCognome());
-       // Printer.println("METODO PRENOTA DEBUG: " + prenotazioneBean.getNome() + " " + prenotazioneBean.getCognome());
         prenotazioneBean.setEmailTutor(informazioni.getEmail());
         prenotazioneBean.setEmailStudente(user.getEmail());
         prenotazioneBean.setMateria(filtri.getMateria());
