@@ -19,6 +19,7 @@ public class VisualizzaRichiesteStudenteCLI extends AbstractState {
     List<PrenotazioneBean> listRisultati;
     int flag;
 
+    //todo: IMPORTANTE gestire il caso in cui cancelliamo tutte le richieste e poi torniamo indietro, eccezione!!!!!
 
     public VisualizzaRichiesteStudenteCLI(LoggedInUserBean user, PrenotazioneBean prenotazioneBean, List<PrenotazioneBean> list, Integer flag) {
         this.user = user;
@@ -50,7 +51,7 @@ public class VisualizzaRichiesteStudenteCLI extends AbstractState {
             Printer.println("Qualsiasi");
         }
         Printer.println("   Note aggiuntive: " + dettagliRichiesta.getNote());
-
+        Printer.println(" ");
         Printer.println("La richiesta è in attesa di conferma.");
 
         int choice = -1;
@@ -68,6 +69,7 @@ public class VisualizzaRichiesteStudenteCLI extends AbstractState {
                         break;
                     case 1:
                         cancellaRichiesta();
+                        choice = 0;
                         break;
                     default:
                         Printer.errorPrint("Scelta non valida. Riprova.");
@@ -78,6 +80,8 @@ public class VisualizzaRichiesteStudenteCLI extends AbstractState {
                 scan.nextLine(); // Consuma l'input non valido
             }
         }
+
+        goBack(context);
     }
 
 
@@ -95,6 +99,8 @@ public class VisualizzaRichiesteStudenteCLI extends AbstractState {
             Printer.println("   1. Cancella richiesta");
         }
         Printer.println("   0. Torna indietro");
+        Printer.print("Opzione scelta: ");
+
     }
 
     private String getMenuTitle() {
