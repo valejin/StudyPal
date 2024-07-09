@@ -91,6 +91,7 @@ public class RipetizioneInfoModel extends BaseInfoModel {
         super(materie);
         this.nome = nome;
         this.cognome = cognome;
+        this.materie = materie;
         this.inPresenza = inPresenza;
         this.online = online;
         this.luogo = luogo;

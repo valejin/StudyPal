@@ -50,25 +50,7 @@ public class CercaRipetizioneController extends HomeStudenteController {
             Printer.errorPrint("controller Applicativo: materia non trovata");
         }
 
-        /*DEBUG
-        System.out.println("Controller applicativo ha ricevuto questi risultati:");
-        for (RipetizioneInfoBean risultatoBean: risultatiRicercaBean) {
-            System.out.println("    nome: " + risultatoBean.getNome());
-            System.out.println("    cognome: " + risultatoBean.getCognome());
-            System.out.println("    materie: " + risultatoBean.getMaterie());
-            System.out.println("    lezioni in presenza: " + risultatoBean.getInPresenza());
-            System.out.println("    lezioni online: " + risultatoBean.getOnline());
-            System.out.println("    luogo: " + risultatoBean.getLuogo());
-            System.out.println("    giorni disponibili: " + risultatoBean.getGiorni());
-            System.out.println("    tariffa: " + risultatoBean.getTariffa() + "€/h");
-            System.out.println("    email: " + risultatoBean.getEmail());
-            System.out.println("------------------------------------------------");
-        }
-
-         */
-
         return risultatiRicercaBean;
-
     }
 
 
@@ -103,8 +85,6 @@ public class CercaRipetizioneController extends HomeStudenteController {
                         risultato.getInPresenza(), risultato.getOnline(), risultato.getLuogo(),
                         risultato.getGiorni(), risultato.getTariffa(), risultato.getEmail());
 
-                //System.out.println("MATERIE CON CUI CREO IL RIPETIZIONEINFOBEAN, VENGONO DAL MODEL " + risultato.getMateria());
-
                 risultatiRicercaBean.add(risultatoBean);
             }
 
@@ -112,23 +92,6 @@ public class CercaRipetizioneController extends HomeStudenteController {
             Printer.println("Non produce risultato");
         }
 
-
-        /*DEBUG
-        System.out.println("Controller applicativo ha ricevuto questi risultati:");
-        for (RipetizioneInfoBean risultatoBean: risultatiRicercaBean) {
-            System.out.println("    nome: " + risultatoBean.getNome());
-            System.out.println("    cognome: " + risultatoBean.getCognome());
-            System.out.println("    materie: " + risultatoBean.getMaterie());
-            System.out.println("    lezioni in presenza: " + risultatoBean.getInPresenza());
-            System.out.println("    lezioni online: " + risultatoBean.getOnline());
-            System.out.println("    luogo: " + risultatoBean.getLuogo());
-            System.out.println("    giorni disponibili: " + risultatoBean.getGiorni());
-            System.out.println("    tariffa: " + risultatoBean.getTariffa() + "€/h");
-            System.out.println("    email: " + risultatoBean.getEmail());
-            System.out.println("------------------------------------------------");
-        }
-
-         */
 
         return risultatiRicercaBean;
     }

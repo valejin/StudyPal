@@ -191,6 +191,21 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         //chiama il controller applicativo e gli passa il BEAN che contiene la materia
         risultatiRicercaBean = cercaRipetizioneController.prenotaRipetizioneMethod(baseInfoBean);
 
+
+        Printer.println("GUI: Email tutor che soddisfano la ricerca: ");
+        for (RipetizioneInfoBean risultatoBean: risultatiRicercaBean) {
+            Printer.println("    nome: " + risultatoBean.getNome());
+            Printer.println("    cognome: " + risultatoBean.getCognome());
+            Printer.println("    materie: " + risultatoBean.getMaterie());
+            Printer.println("    lezioni in presenza: " + risultatoBean.getInPresenza());
+            Printer.println("    lezioni online: " + risultatoBean.getOnline());
+            Printer.println("    luogo: " + risultatoBean.getLuogo());
+            Printer.println("    giorni di interesse: " + risultatoBean.getGiorni());
+            Printer.println("    tariffa massima: " + risultatoBean.getTariffa() + "€/h");
+            Printer.println("    email: " + risultatoBean.getEmail());
+            Printer.println("------------------------------------------------");
+        }
+
         return risultatiRicercaBean;
     }
 
@@ -270,19 +285,6 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         //istanzio un controller applicativo e gli passo la lista di Bean contenente i risultati della ricerca
         CercaRipetizioneController cercaRipetizioneController = new CercaRipetizioneController();
         risultatiRicercaBean = cercaRipetizioneController.prenotaRipetizioneMethod(ripetizioneInfoBean);
-
-        for (RipetizioneInfoBean risultatoBean: risultatiRicercaBean) {
-            Printer.println("    nome: " + risultatoBean.getNome());
-            Printer.println("    cognome: " + risultatoBean.getCognome());
-            Printer.println("    materie: " + risultatoBean.getMaterie());
-            Printer.println("    lezioni in presenza: " + risultatoBean.getInPresenza());
-            Printer.println("    lezioni online: " + risultatoBean.getOnline());
-            Printer.println("    luogo: " + risultatoBean.getLuogo());
-            Printer.println("    giorni di interesse: " + risultatoBean.getGiorni());
-            Printer.println("    tariffa massima: " + risultatoBean.getTariffa() + "€/h");
-            Printer.println("    email: " + risultatoBean.getEmail());
-            Printer.println("------------------------------------------------");
-        }
 
 
         return risultatiRicercaBean;
