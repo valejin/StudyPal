@@ -2,6 +2,7 @@ package com.example.studypal.controller.guiControllerCLI.studenteCLI;
 
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.PrenotazioneBean;
+import com.example.studypal.controller.applicationController.studente.GestisciPrenotazioniStudenteController;
 import com.example.studypal.controller.applicationController.tutor.GestisciPrenotazioniController;
 import com.example.studypal.controller.guiControllerCLI.tutorCLI.VisualizzaRichiesteCLI;
 import com.example.studypal.other.Printer;
@@ -18,6 +19,8 @@ public class RichiesteStudenteCLI extends AbstractState {
     private final Integer flag;
     private List<PrenotazioneBean> richiesteList;
 
+    Scanner scanner = new Scanner(System.in);
+
 
     public RichiesteStudenteCLI(LoggedInUserBean user, Integer flag) {
         this.user = user;
@@ -27,78 +30,15 @@ public class RichiesteStudenteCLI extends AbstractState {
 
     @Override
     public void action(StateMachineImpl context) {
-        Scanner scanner = new Scanner(System.in);
-
-        int choice = -1;
-
-        while (choice != 0) {
-            mostraMenu();
-
-            try {
-                choice = scanner.nextInt();
-                scanner.nextLine(); // Consuma newline
-
-                if (choice == 1) {
-                    visualizzaRichieste(context);
-                    mostraMenu();
-                    break;
-                } else {
-                    Printer.errorPrint("Scelta non valida. Riprova.");
-                    break;
-                }
-            }catch (InputMismatchException e){
-                Printer.errorPrint("Input non valido. Inserisci un numero intero.");
-                scanner.nextLine(); // Consuma l'input non valido
-            }
-        }
-        goBack(context);   //torno allo stato precedente
-
-    }
-
-
-    @Override
-    public void mostraMenu(){
 
         Printer.println(" ");
-        Printer.printlnBlu(getMenuTitle() + ": ");
-        Printer.println("1. Visualizza Richieste");
-        Printer.println("0. Torna Indietro");
-        Printer.print("Scegli un'opzione: ");
-
-    }
-
-    @Override
-    public void entry(StateMachineImpl context){
-        //mostraMenu();
-    }
-
-
-
-    private String getMenuTitle() {
-        switch (flag) {
-            case 0:
-                return "Home Studente -> Gestisci Prenotazioni -> Richieste Arrivate";
-            case 1:
-                return "Home Studente -> Gestisci Prenotazioni -> Prenotazioni Attive";
-            case 2:
-                return "Home Studente -> Gestisci Prenotazioni -> Richieste Rifiutate";
-            default:
-                return "Home Studente -> Gestisci Prenotazioni";
-        }
-    }
-
-    public void visualizzaRichieste(StateMachineImpl context) {
-
-        Scanner scanner = new Scanner(System.in);
-
-        Printer.println(" ");
-        Printer.printlnBlu(getMenuTitle() + " -> Visualizza Richieste: ");
+        Printer.printlnBlu(getMenuTitle());
 
         // Creo un'istanza del controller applicativo corrispondente
-        GestisciPrenotazioniController gestisciPrenotazioniController = new GestisciPrenotazioniController();
+        GestisciPrenotazioniStudenteController gestisciPrenotazioniController = new GestisciPrenotazioniStudenteController();
 
         // Chiamo la funzione nel controller applicativo per ottenere una lista di BEAN che contiene tutte le info per la tabella
-        richiesteList = gestisciPrenotazioniController.richiesteArrivate(user, flag);
+        richiesteList = gestisciPrenotazioniController.richiesteInviate(user.getEmail(), flag);
 
         if (richiesteList.isEmpty()) {
             Printer.println("Nessuna richiesta trovata.");
@@ -134,10 +74,28 @@ public class RichiesteStudenteCLI extends AbstractState {
 
             if (scelta > 0 && scelta <= richiesteList.size()) {
                 PrenotazioneBean prenotazioneSelezionata = richiesteList.get(scelta - 1);
-                goNext(context, new VisualizzaRichiesteCLI(user, prenotazioneSelezionata, richiesteList, flag)); // Transizione a VisualizzaRichiesteCLI
+                goNext(context, new VisualizzaRichiesteStudenteCLI(user, prenotazioneSelezionata, richiesteList, flag)); // Transizione a VisualizzaRichiesteCLI
             }
         }
     }
 
+    @Override
+    public void mostraMenu(){
+        Printer.println(" ");
+        Printer.printlnBlu(getMenuTitle() + ": ");
+        Printer.println("1. Visualizza Richieste");
+        Printer.println("0. Torna Indietro");
+        Printer.print("Scegli un'opzione: ");
+    }
+
+
+    private String getMenuTitle() {
+        return switch (flag) {
+            case 0 -> "Home Studente -> Gestisci Prenotazioni -> Richieste Inviate";
+            case 1 -> "Home Studente -> Gestisci Prenotazioni -> Prenotazioni Attive";
+            case 2 -> "Home Studente -> Gestisci Prenotazioni -> Richieste Rifiutate";
+            default -> "Home Studente -> Gestisci Prenotazioni";
+        };
+    }
 
 }

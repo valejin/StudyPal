@@ -141,7 +141,6 @@ public class PrenotazioneDAO {
 
 
     /* -------------------------------------------------STUDENTE------------------------------------------------------*/
-    //TODO sistemare stampe a terminale e differenziare i vari casi
     public List<PrenotazioneModel> richiesteInviate(String email, Integer flag) throws NonProduceRisultatoException {
 
         /* metodo che riceve la stringa contenente l'email con cui fare la query
@@ -174,11 +173,10 @@ public class PrenotazioneDAO {
             rs = statement.executeQuery();
 
             if (rs.next()){
-                Printer.println("---------------------------------------------------------");
-                Printer.println("leggo le richieste in attesa di conferma per l'utente " + email);
+
                 int i = 0;
                 do {
-                    Printer.println("richiesta n." + i);
+                    //Printer.println("richiesta n." + i);
                     PrenotazioneModel richiesta = new PrenotazioneModel(rs.getInt("idrichieste"), rs.getString("nomeTutor"), rs.getString("cognomeTutor"), rs.getString("emailTutor"),
                             rs.getString("emailStudente"), rs.getString("materia"),
                             rs.getInt("modLezione"), rs.getInt("tariffa"),
@@ -186,10 +184,9 @@ public class PrenotazioneDAO {
                     listaRichieste.add(richiesta);
                     i+=1;
                 } while (rs.next());
-                //Printer.println("dao: preso la lista di richieste in attesa");
 
             } else {
-                Printer.println("Nessuna richiesta in attesa di conferma per l'account " + email + ".");
+                //Printer.println("Nessuna richiesta in attesa di conferma per l'account " + email + ".");
                 throw new NonProduceRisultatoException();
             }
 

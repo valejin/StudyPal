@@ -56,7 +56,6 @@ public class HomeTutorCLI extends AbstractState {
 
     @Override
     public void mostraMenu(){
-        Printer.println(" ");
         Printer.println("1. Gestisci Profilo");
         Printer.println("2. Gestisci Prenotazioni");
         Printer.println("0. Logout");

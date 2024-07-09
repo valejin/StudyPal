@@ -82,7 +82,7 @@ public class GestisciPrenotazioniStudenteCLI extends AbstractState {
     public void mostraMenu(){
         Printer.println(" ");
         Printer.printlnBlu("Home Studente -> Gestione Prenotazioni:");
-        Printer.println("   1. Richieste Arrivate");
+        Printer.println("   1. Richieste Inviate");
         Printer.println("   2. Prenotazioni Attive");
         Printer.println("   3. Richieste Rifiutate");
         Printer.println("   0. Torna Indietro");
