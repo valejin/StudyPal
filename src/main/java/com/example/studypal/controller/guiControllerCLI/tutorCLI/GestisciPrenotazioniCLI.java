@@ -5,6 +5,7 @@ import com.example.studypal.other.Printer;
 import com.example.studypal.pattern.state.AbstractState;
 import com.example.studypal.pattern.state.StateMachineImpl;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -24,30 +25,37 @@ public class GestisciPrenotazioniCLI extends AbstractState {
 
         Scanner scanner = new Scanner(System.in);
 
-        int choice;
+        int choice = -1;
 
-        if ((choice = scanner.nextInt()) != 0) {
-            scanner.nextLine(); // Consuma newline
 
-            switch (choice) {
-                case 1:
-                    goToRichiesteArrivate(context);
-                    mostraMenu();
-                    break;
-                case 2:
-                    goToPrenotazioniAttive(context);
-                    mostraMenu();
-                    break;
-                case 3:
-                    goToRichiesteRifiutate(context);
-                    mostraMenu();
-                    break;
-                default:
-                    Printer.println("Scelta non valida. Riprova.");
-                    break;
+        while(choice != 0) {
+            mostraMenu();
+
+            try {
+                choice = scanner.nextInt();
+                scanner.nextLine(); // Consuma newline
+
+                switch (choice) {
+                    case 0:
+                        break;
+                    case 1:
+                        goToRichiesteArrivate(context);
+                        break;
+                    case 2:
+                        goToPrenotazioniAttive(context);
+                        break;
+                    case 3:
+                        goToRichiesteRifiutate(context);
+                        break;
+                    default:
+                        Printer.errorPrint("Scelta non valida. Riprova.");
+                        break;
+                }
+            } catch (InputMismatchException e) {
+                Printer.errorPrint("Input non valido. Inserisci un numero intero.");
+                scanner.nextLine(); // Consuma l'input non valido
             }
         }
-
 
         goBack(context);
     }
@@ -80,7 +88,7 @@ public class GestisciPrenotazioniCLI extends AbstractState {
 
     @Override
     public void entry(StateMachineImpl context){
-        mostraMenu();
+        //mostraMenu();
     }
 
 }

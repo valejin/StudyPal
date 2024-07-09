@@ -7,6 +7,7 @@ import com.example.studypal.other.Printer;
 import com.example.studypal.pattern.state.AbstractState;
 import com.example.studypal.pattern.state.StateMachineImpl;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -40,31 +41,38 @@ public class VisualizzaRichiesteCLI extends AbstractState {
         Printer.println("Giorni: " + (dettagliRichiesta.getGiorno() != null && !dettagliRichiesta.getGiorno().isEmpty() ? dettagliRichiesta.getGiorno() : "Non specificato"));
         Printer.println("Note: " + (dettagliRichiesta.getNote() != null && !dettagliRichiesta.getNote().isEmpty() ? "\"" + dettagliRichiesta.getNote() + "\"" : "Nessuna nota"));
 
-        mostraMenu();
 
 
-        int choice;
 
-        while ((choice = scanner.nextInt()) != 0) {
+        int choice = -1;
 
-            scanner.nextLine(); // Consuma newline
+        while (choice != 0) {
 
-            switch (choice) {
-                case 1:
-                    confermaRichiesta();
+            mostraMenu();
 
-                    mostraMenu();
-                    break;
-                case 2:
-                    rifiutaRichiesta();
+            try {
+                choice = scanner.nextInt();
+                scanner.nextLine(); // Consuma newline
 
-                    mostraMenu();
-                    break;
+                switch (choice) {
+                    case 0:
+                        break;
+                    case 1:
+                        confermaRichiesta();
+                        break;
+                    case 2:
+                        rifiutaRichiesta();
+                        break;
 
-                default:
-                    Printer.println("Scelta non valida. Riprova.");
-                    break;
+                    default:
+                        Printer.errorPrint("Scelta non valida. Riprova.");
+                        break;
+                }
+            } catch (InputMismatchException e) {
+                Printer.errorPrint("Input non valido. Inserisci un numero intero.");
+                scanner.nextLine(); // Consuma l'input non valido
             }
+
         }
 
         goBack(context);   //ritorno allo stato precedente

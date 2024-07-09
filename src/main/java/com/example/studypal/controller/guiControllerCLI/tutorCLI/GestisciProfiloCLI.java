@@ -8,6 +8,7 @@ import com.example.studypal.pattern.state.AbstractState;
 import com.example.studypal.pattern.state.StateMachineImpl;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
@@ -31,23 +32,33 @@ public class GestisciProfiloCLI extends AbstractState {
 
         this.infoCorrentiProfilo = caricaInformazioniProfilo(user.getEmail());
 
-        int choice;
+        int choice =-1;
+        //nel while: choice = scanner.nextInt()) != 0
 
-        while((choice = scanner.nextInt()) != 0) {
-            scanner.nextLine(); // Consuma newline
+        while(choice != 0) {
 
-            switch (choice) {
-                case 1:
-                    visualizzaProfilo();
-                    mostraMenu();
-                    break;
-                case 2:
-                    modificaProfilo(scanner);
-                    mostraMenu();
-                    break;
-                default:
-                    Printer.errorPrint("Scelta non valida. Riprova: ");
-                    break;
+            mostraMenu();
+
+            try {
+                choice = scanner.nextInt();
+                scanner.nextLine(); // Consuma newline
+
+                switch (choice) {
+                    case 0:
+                        break;
+                    case 1:
+                        visualizzaProfilo();
+                        break;
+                    case 2:
+                        modificaProfilo(scanner);
+                        break;
+                    default:
+                        Printer.errorPrint("Scelta non valida. Riprova: ");
+                        break;
+                }
+            }catch (InputMismatchException e){
+                Printer.errorPrint("Input non valido. Inserisci un numero intero.");
+                scanner.nextLine(); // Consuma l'input non valido
             }
         }
         goBack(context);
@@ -144,7 +155,7 @@ public class GestisciProfiloCLI extends AbstractState {
 
     @Override
     public void entry(StateMachineImpl context){
-        mostraMenu();
+        //mostraMenu();
     }
 
 }
