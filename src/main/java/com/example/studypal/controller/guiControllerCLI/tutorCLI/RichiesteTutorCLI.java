@@ -4,10 +4,10 @@ import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.PrenotazioneBean;
 import com.example.studypal.controller.applicationController.tutor.GestisciPrenotazioniController;
 import com.example.studypal.other.Printer;
-import com.example.studypal.pattern.observer.RichiesteArrivateCollection;
 import com.example.studypal.pattern.state.AbstractState;
 import com.example.studypal.pattern.state.StateMachineImpl;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -25,22 +25,31 @@ public class RichiesteTutorCLI extends AbstractState {
     }
 
 
+
     @Override
     public void action(StateMachineImpl context) {
         Scanner scanner = new Scanner(System.in);
 
-        int choice;
+        int choice = -1;
 
-        while ((choice = scanner.nextInt()) != 0) {
-            scanner.nextLine(); // Consuma newline
+        while (choice != 0) {
+            mostraMenu();
 
-            if(choice == 1) {
-                visualizzaRichieste(context);
-                mostraMenu();
-                break;
-            }else {
-                Printer.println("Scelta non valida. Riprova.");
-                break;
+            try {
+                choice = scanner.nextInt();
+                scanner.nextLine(); // Consuma newline
+
+                if (choice == 1) {
+                    visualizzaRichieste(context);
+                    mostraMenu();
+                    break;
+                } else {
+                    Printer.errorPrint("Scelta non valida. Riprova.");
+                    break;
+                }
+            }catch (InputMismatchException e){
+                Printer.errorPrint("Input non valido. Inserisci un numero intero.");
+                scanner.nextLine(); // Consuma l'input non valido
             }
         }
         goBack(context);   //torno allo stato precedente
@@ -49,6 +58,8 @@ public class RichiesteTutorCLI extends AbstractState {
 
 
     public void visualizzaRichieste(StateMachineImpl context) {
+
+        Scanner scanner = new Scanner(System.in);
 
         Printer.println(" ");
         Printer.printlnBlu(getMenuTitle() + " -> Visualizza Richieste: ");
@@ -67,8 +78,29 @@ public class RichiesteTutorCLI extends AbstractState {
                 Printer.println((i + 1) + ". " + prenotazione.getEmailStudente() + " - " + prenotazione.getMateria());
             }
 
-            Printer.print("Seleziona una richiesta da visualizzare (0 per tornare indietro): ");
-            int scelta = new Scanner(System.in).nextInt();
+
+            boolean inputValido = false;
+            int scelta = 0;
+
+
+            while(!inputValido) {
+                try {
+
+                    Printer.print("Seleziona una richiesta da visualizzare (0 per tornare indietro): ");
+                    scelta =scanner.nextInt();
+                    scanner.nextLine(); // Consuma newline
+                    inputValido = true; // Imposta inputValido a true se la lettura è andata a buon fine
+
+                    if (scelta < 0 || scelta > richiesteList.size()) {
+                        Printer.errorPrint("Scelta non valida. Riprova.");
+                        inputValido = false; // Riprova se la scelta non è nel range corretto
+                    }
+
+                }catch(InputMismatchException e){
+                    Printer.errorPrint("Input non valido. Inserisci un numero intero.");
+                    scanner.nextLine(); // Consuma l'input non valido
+                }
+            }
 
             if (scelta > 0 && scelta <= richiesteList.size()) {
                 PrenotazioneBean prenotazioneSelezionata = richiesteList.get(scelta - 1);
@@ -92,7 +124,7 @@ public class RichiesteTutorCLI extends AbstractState {
 
     @Override
     public void entry(StateMachineImpl context){
-        mostraMenu();
+        //mostraMenu();
     }
 
 
