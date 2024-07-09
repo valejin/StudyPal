@@ -16,7 +16,6 @@ import java.util.Scanner;
 public class LoginCLI extends AbstractState {
 
     /* controller grafico che gestisce il login per l'interfaccia a riga di comando */
-
     LoggedInUserBean user;
 
     public LoginCLI() {
@@ -83,13 +82,13 @@ public class LoginCLI extends AbstractState {
     @Override
     public void exit(StateMachineImpl contextSM){
         //qui dobbiamo specificare azioni particolari relative all'uscita da questo stato
-        Printer.println("login -> home");
+        //Printer.println("login -> home");
     }
 
 
     @Override
     public void stampaBenvenuto() {
         Printer.println(" ");
-        Printer.println("-------------- LOGIN --------------");
+        Printer.printlnBlu("-------------- LOGIN --------------");
     }
 }

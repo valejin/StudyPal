@@ -15,11 +15,14 @@ public class VisualizzaRichiesteCLI extends AbstractState {
     private final LoggedInUserBean user;
     private final PrenotazioneBean dettagliRichiesta;
     private final List<PrenotazioneBean> listRisultati;
+    private final Integer flag;
 
-    public VisualizzaRichiesteCLI(LoggedInUserBean user, PrenotazioneBean prenotazioneBean, List<PrenotazioneBean> list) {
+
+    public VisualizzaRichiesteCLI(LoggedInUserBean user, PrenotazioneBean prenotazioneBean, List<PrenotazioneBean> list, Integer flag) {
         this.user = user;
         this.dettagliRichiesta = prenotazioneBean;
         this.listRisultati = list;
+        this.flag = flag;
     }
 
 
@@ -29,7 +32,8 @@ public class VisualizzaRichiesteCLI extends AbstractState {
         Scanner scanner = new Scanner(System.in);
 
         Printer.println(" ");
-        Printer.println("Dettagli Richiesta:");
+        Printer.printlnBlu(getMenuTitle() + " -> Dettagli Richiesta:");
+
         Printer.println("Email Studente: " + dettagliRichiesta.getEmailStudente());
         Printer.println("Materia: " + dettagliRichiesta.getMateria());
         Printer.println("Modalità Lezione: " + getModalitaLezione(dettagliRichiesta.getModLezione()));
@@ -48,10 +52,12 @@ public class VisualizzaRichiesteCLI extends AbstractState {
             switch (choice) {
                 case 1:
                     confermaRichiesta();
+
                     mostraMenu();
                     break;
                 case 2:
                     rifiutaRichiesta();
+
                     mostraMenu();
                     break;
 
@@ -103,16 +109,31 @@ public class VisualizzaRichiesteCLI extends AbstractState {
     public void mostraMenu(){
 
         Printer.println(" ");
-        Printer.println("Home Tutor -> Gestisci Prenotazioni -> Richieste Arrivate -> ");
-        Printer.println("1. Conferma Richiesta");
-        Printer.println("2. Rifiuta Richiesta");
+        Printer.printlnBlu(getMenuTitle() + " -> Gestisci Richiesta Sovrastante:");
+
+        if (flag == 0) {  // Solo per richieste arrivate
+            Printer.println("1. Conferma Richiesta");
+            Printer.println("2. Rifiuta Richiesta");
+        }
+
+
         Printer.println("0. Torna Indietro");
         Printer.print("Scegli un'opzione: ");
     }
 
 
-
-
+    private String getMenuTitle() {
+        switch (flag) {
+            case 0:
+                return "Home Tutor -> Gestisci Prenotazioni -> Richieste Arrivate";
+            case 1:
+                return "Home Tutor -> Gestisci Prenotazioni -> Prenotazioni Attive";
+            case 2:
+                return "Home Tutor -> Gestisci Prenotazioni -> Richieste Rifiutate";
+            default:
+                return "Home Tutor -> Gestisci Prenotazioni";
+        }
+    }
 
 
 

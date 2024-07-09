@@ -4,7 +4,6 @@ import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.PrenotazioneBean;
 import com.example.studypal.controller.applicationController.tutor.GestisciPrenotazioniController;
 import com.example.studypal.other.Printer;
-import com.example.studypal.pattern.observer.Observer;
 import com.example.studypal.pattern.observer.RichiesteArrivateCollection;
 import com.example.studypal.pattern.state.AbstractState;
 import com.example.studypal.pattern.state.StateMachineImpl;
@@ -17,7 +16,7 @@ public class RichiesteTutorCLI extends AbstractState {
     private final LoggedInUserBean user;
     private final Integer flag;
     private List<PrenotazioneBean> richiesteList;
-    private RichiesteArrivateCollection richiesteArrivateCollection;
+
 
 
     public RichiesteTutorCLI(LoggedInUserBean user, Integer flag) {
@@ -50,7 +49,9 @@ public class RichiesteTutorCLI extends AbstractState {
 
 
     public void visualizzaRichieste(StateMachineImpl context) {
-        Printer.println("Richieste Arrivate:");
+
+        Printer.println(" ");
+        Printer.printlnBlu(getMenuTitle() + " -> Visualizza Richieste: ");
 
         // Creo un'istanza del controller applicativo corrispondente
         GestisciPrenotazioniController gestisciPrenotazioniController = new GestisciPrenotazioniController();
@@ -71,7 +72,7 @@ public class RichiesteTutorCLI extends AbstractState {
 
             if (scelta > 0 && scelta <= richiesteList.size()) {
                 PrenotazioneBean prenotazioneSelezionata = richiesteList.get(scelta - 1);
-                goNext(context, new VisualizzaRichiesteCLI(user, prenotazioneSelezionata, richiesteList)); // Transizione a VisualizzaRichiesteCLI
+                goNext(context, new VisualizzaRichiesteCLI(user, prenotazioneSelezionata, richiesteList, flag)); // Transizione a VisualizzaRichiesteCLI
             }
         }
     }
@@ -82,7 +83,7 @@ public class RichiesteTutorCLI extends AbstractState {
     public void mostraMenu(){
 
         Printer.println(" ");
-        Printer.println("Gestione Richieste:");
+        Printer.printlnBlu(getMenuTitle() + ": ");
         Printer.println("1. Visualizza Richieste");
         Printer.println("0. Torna Indietro");
         Printer.print("Scegli un'opzione: ");
@@ -95,6 +96,19 @@ public class RichiesteTutorCLI extends AbstractState {
     }
 
 
+
+    private String getMenuTitle() {
+        switch (flag) {
+            case 0:
+                return "Home Tutor -> Gestisci Prenotazioni -> Richieste Arrivate";
+            case 1:
+                return "Home Tutor -> Gestisci Prenotazioni -> Prenotazioni Attive";
+            case 2:
+                return "Home Tutor -> Gestisci Prenotazioni -> Richieste Rifiutate";
+            default:
+                return "Home Tutor -> Gestisci Prenotazioni";
+        }
+    }
 
 
 

@@ -22,6 +22,20 @@ public class Printer {
         System.out.println(message);
     }
 
+    //stampa la guida per ogni pagina in CLI
+    public static void printlnBlu(String message) {
+        final String ANSI_BLUE = "\u001B[34m";
+        final String ANSI_RESET = "\u001B[0m";
+        System.out.println(ANSI_BLUE + message + ANSI_RESET);
+    }
+
+
+    public static void printBlu(String message) {
+        final String ANSI_BLUE = "\u001B[34m";
+        final String ANSI_RESET = "\u001B[0m";
+        System.out.println(ANSI_BLUE + message + ANSI_RESET);
+    }
+
 
     //stampa messaggio di errore
     public static void errorPrint(String message) {

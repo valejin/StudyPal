@@ -6,7 +6,7 @@ import com.example.studypal.pattern.state.AbstractState;
 import com.example.studypal.pattern.state.StateMachineImpl;
 
 import java.util.Scanner;
-import java.util.logging.Logger;
+
 
 public class GestisciPrenotazioniCLI extends AbstractState {
 
@@ -64,19 +64,18 @@ public class GestisciPrenotazioniCLI extends AbstractState {
     }
 
     public void goToRichiesteRifiutate(StateMachineImpl context) {
-        goNext(context, new RichiesteTutorCLI(user, 1));
+        goNext(context, new RichiesteTutorCLI(user, 2));
     }
 
     @Override
     public void mostraMenu(){
         Printer.println(" ");
-        Printer.print("Home Tutor -> ");
-        Printer.println("Gestione Prenotazioni:");
+        Printer.printlnBlu("Home Tutor -> Gestione Prenotazioni:");
         Printer.println("1. Richieste Arrivate");
         Printer.println("2. Prenotazioni Attive");
         Printer.println("3. Richieste Rifiutate");
         Printer.println("0. Torna Indietro");
-        Printer.println("Scegli un'opzione: ");
+        Printer.print("Scegli un'opzione: ");
     }
 
     @Override

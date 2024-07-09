@@ -57,8 +57,7 @@ public class GestisciProfiloCLI extends AbstractState {
 
     private void visualizzaProfilo() {
         Printer.println(" ");
-        Printer.print("Home Tutor -> Gestisci Profilo -> ");
-        Printer.println("Dettagli Profilo:");
+        Printer.printlnBlu("Home Tutor -> Gestisci Profilo -> Dettagli Profilo:");
         Printer.println("Nome: " + user.getNome());
         Printer.println("Cognome: " + user.getCognome());
         Printer.println("Email: " + user.getEmail());
@@ -135,8 +134,7 @@ public class GestisciProfiloCLI extends AbstractState {
     public void mostraMenu(){
 
         Printer.println(" ");
-        Printer.print("Home Tutor -> ");
-        Printer.println("Gestione Profilo:");
+        Printer.printlnBlu("Home Tutor -> Gestione Profilo:");
         Printer.println("1. Visualizza Profilo");
         Printer.println("2. Modifica Profilo");
         Printer.println("0. Torna Indietro");

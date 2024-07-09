@@ -82,8 +82,7 @@ public class PrenotazioneDAO {
         ResultSet rs;
 
 
-        Printer.println("---------------------------------------------------------");
-        Printer.println("Cerco le Richieste di prenotazione");
+        //Printer.println("Cerco le Richieste di prenotazione");
 
         //query per la ricerca di email del tutor nella lista di tutte le richieste
         if(flag == 0) {
@@ -116,7 +115,7 @@ public class PrenotazioneDAO {
                 do{
                     //popolo una nuova istanza di PrenotazioneModel per ritornare al CtlApplicativo
                     PrenotazioneModel risultatoCorrente = new PrenotazioneModel(rs.getInt("idrichieste"), rs.getString("nomeTutor"), rs.getString("cognomeTutor"), rs.getString("emailTutor"), rs.getString("emailStudente"), rs.getString("materia"), rs.getInt("modLezione"), rs.getInt("tariffa"), rs.getString("giorni"), rs.getString("note"), rs.getInt("stato"));
-                    Printer.println("   " + rs.getString("emailStudente"));
+                    //Printer.println("   " + rs.getString("emailStudente"));
 
                     //aggiunggo la tupla in lista dei risultati di ricerca
                     risultatiRicerca.add(risultatoCorrente);

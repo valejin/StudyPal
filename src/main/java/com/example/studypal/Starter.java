@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -21,25 +22,36 @@ public class Starter extends Application {
     public void start(Stage stage) throws IOException {
 
         Scanner scanner = new Scanner(System.in);
-        Printer.println("-------------- StudyPal --------------");
-        Printer.println("   1. Interfaccia grafica");
-        Printer.println("   2. Command Line Interface (CLI)");
-        Printer.print("Scegliere un'opzione: ");
-        int scelta = scanner.nextInt();
+        boolean validInput = false;
+
+        while(!validInput) {
+
+            try {
+                mostraMenu();
+
+                int scelta = scanner.nextInt();
+                scanner.nextLine(); // Consuma newline
 
 
-        switch(scelta){
-            case 1:
-                interfacciaGrafica(stage);
-                break;
-            case 2:
-                interfacciaCLI();
-                break;
-            default:
-                Printer.println("Scelta non valida.");
-                start(stage);
+                switch (scelta) {
+                    case 1:
+                        interfacciaGrafica(stage);
+                        validInput = true;
+                        break;
+                    case 2:
+                        interfacciaCLI();
+                        validInput = true;
+                        break;
+                    default:
+                        Printer.println("Scelta non valida.");
+                        break;
+                }
+            }catch(InputMismatchException e){
+                Printer.errorPrint("Input non valido. Per favore, riprova.");
+                scanner.nextLine(); // Consuma l'input non valido
+            }
+
         }
-
     }
 
     public void interfacciaGrafica(Stage stage) throws IOException{
@@ -66,12 +78,35 @@ public class Starter extends Application {
         while (context.getState() != null) {
             context.goNext();
         }
-
         Printer.println("Applicazione terminata. Arrivederci!");
-
-        //todo: se inseriamo qualcosa che non è un int va in errore. Gestire il caso (eccezione?)
-
-        }
     }
+
+
+    public void mostraMenu(){
+        Printer.println(" ");
+        Printer.printlnBlu("-------------- StudyPal --------------");
+        Printer.println("   1. Interfaccia grafica");
+        Printer.println("   2. Command Line Interface (CLI)");
+        Printer.print("Scegliere un'opzione: ");
+    }
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
 
 

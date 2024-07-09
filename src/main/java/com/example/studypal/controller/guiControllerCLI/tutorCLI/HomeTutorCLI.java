@@ -1,19 +1,16 @@
 package com.example.studypal.controller.guiControllerCLI.tutorCLI;
 
 import com.example.studypal.bean.LoggedInUserBean;
-import com.example.studypal.controller.guiControllerCLI.LoginCLI;
 import com.example.studypal.other.Printer;
 import com.example.studypal.pattern.state.AbstractState;
 import com.example.studypal.pattern.state.InitialState;
 import com.example.studypal.pattern.state.StateMachineImpl;
 
 import java.util.Scanner;
-import java.util.logging.Logger;
+
 
 public class HomeTutorCLI extends AbstractState {
 
-    // controller grafico per mostrare le opzioni aggiungibili
-    private static final Logger logger = Logger.getLogger(HomeTutorCLI.class.getName());
     private final LoggedInUserBean user;
 
     public HomeTutorCLI(LoggedInUserBean user) {
@@ -58,7 +55,7 @@ public class HomeTutorCLI extends AbstractState {
     @Override
     public void stampaBenvenuto() {
         Printer.println(" ");
-        Printer.println("-------------- HOME TUTOR --------------");
+        Printer.printlnBlu("-------------- HOME TUTOR --------------");
         Printer.println("Ciao " + this.user.getNome() + ", scegli un'opzione:");
     }
 
