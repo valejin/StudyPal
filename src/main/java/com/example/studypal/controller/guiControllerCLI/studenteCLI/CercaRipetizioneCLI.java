@@ -70,6 +70,9 @@ public class CercaRipetizioneCLI extends AbstractState {
                     break;
             }
         }
+
+        goNext(context, new RisultatiRicercaCLI(user, risultatiRicercaBean, ripetizioneInfoBean));
+
     }
 
     public void ricercaMethod() {

@@ -4,7 +4,6 @@ import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.RipetizioneInfoBean;
 import com.example.studypal.other.Printer;
 import com.example.studypal.pattern.state.AbstractState;
-import com.example.studypal.pattern.state.InitialState;
 import com.example.studypal.pattern.state.StateMachineImpl;
 
 import java.util.ArrayList;
@@ -35,8 +34,8 @@ public class RisultatiRicercaCLI extends AbstractState {
             Printer.println(index + ". Tutor: " + tutor.getNome() + " " + tutor.getCognome());
             Printer.println("   Tariffa: " + tutor.getTariffa() + "€/h");
             Printer.println("   Giorni: " + tutor.getGiorni());
-            Printer.println("   Email: " + tutor.getEmail());
-            Printer.println("   Insegnamenti offerti: " + tutor.getMaterie());
+            //Printer.println("   Email: " + tutor.getEmail());
+            //Printer.println("   Insegnamenti offerti: " + tutor.getMaterie());
             Printer.println("----------------------------------");
             index++;
         }
@@ -50,9 +49,16 @@ public class RisultatiRicercaCLI extends AbstractState {
             switch(choice){
                 case(1):
                     //visualizza profilo
+                    Printer.print("Indice del profilo da visualizzare: ");
+                    //devo prendere il tutor
+                    RipetizioneInfoBean tutorSelezionato = tutorList.get(scan.nextInt());
+                    goNext(context, new ProfiloTutorCLI(user, tutorSelezionato));
                     break;
                 case(2):
                     //richiedi tutor
+                    Printer.print("Indice del tutor da richiedere: ");
+                    RipetizioneInfoBean info = tutorList.get(scan.nextInt());
+                    goNext(context, new PrenotaRipetizioneCLI(user, info));
                     break;
                 default:
                     Printer.errorPrint("Input invalido. Scegliere un'opzione tra quelle disponibili: ");
@@ -68,6 +74,8 @@ public class RisultatiRicercaCLI extends AbstractState {
         Printer.println("   1. Visualizza un profilo.");
         Printer.println("   2. Richiedi tutor.");
         Printer.println("   0. Torna indietro.");
+        Printer.print("Opzione scelta: ");
+
     }
     @Override
     public void stampaBenvenuto(){
