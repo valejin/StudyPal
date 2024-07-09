@@ -1,7 +1,6 @@
 package com.example.studypal.controller.guiControllerCLI.studenteCLI;
 
 import com.example.studypal.bean.LoggedInUserBean;
-import com.example.studypal.controller.guiControllerCLI.LoginCLI;
 import com.example.studypal.other.Printer;
 import com.example.studypal.pattern.state.AbstractState;
 import com.example.studypal.pattern.state.InitialState;
@@ -30,7 +29,7 @@ public class HomeStudenteCLI extends AbstractState {
             switch(choice){
                 case(1):
                     //transizione a prenotaRipetizione
-                    goNext(context, new PrenotaRipetizioneCLI(user));
+                    goNext(context, new CercaRipetizioneCLI(user));
                     break;
                 case(2):
                     //transizione a gestisciPrenotazioni
@@ -57,7 +56,7 @@ public class HomeStudenteCLI extends AbstractState {
     @Override
     public void stampaBenvenuto(){
         Printer.println(" ");
-        Printer.println("-------------- HOME STUDENTE --------------");
+        Printer.printlnBlu("-------------- HOME STUDENTE --------------");
         Printer.println("Ciao " + this.user.getNome() + ", scegli un'opzione:");
     }
 

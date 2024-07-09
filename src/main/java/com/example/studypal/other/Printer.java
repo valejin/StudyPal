@@ -33,7 +33,7 @@ public class Printer {
     public static void printBlu(String message) {
         final String ANSI_BLUE = "\u001B[34m";
         final String ANSI_RESET = "\u001B[0m";
-        System.out.println(ANSI_BLUE + message + ANSI_RESET);
+        System.out.print(ANSI_BLUE + message + ANSI_RESET);
     }
 
 

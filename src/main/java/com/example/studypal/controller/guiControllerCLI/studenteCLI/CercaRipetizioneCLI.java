@@ -4,17 +4,13 @@ import com.example.studypal.bean.BaseInfoBean;
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.RipetizioneInfoBean;
 import com.example.studypal.controller.applicationController.studente.CercaRipetizioneController;
-import com.example.studypal.controller.applicationController.studente.PrenotaRipetizioneController;
 import com.example.studypal.other.Printer;
 import com.example.studypal.pattern.state.AbstractState;
 import com.example.studypal.pattern.state.StateMachineImpl;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
-public class PrenotaRipetizioneCLI extends AbstractState {
+public class CercaRipetizioneCLI extends AbstractState {
 
     private String materia;
     private Integer tariffa;
@@ -27,32 +23,53 @@ public class PrenotaRipetizioneCLI extends AbstractState {
     private RipetizioneInfoBean ripetizioneInfoBean;
     private List<RipetizioneInfoBean> risultatiRicercaBean = new ArrayList<>();
 
-    public PrenotaRipetizioneCLI(LoggedInUserBean user){ this.user = user;}
-
+    public CercaRipetizioneCLI(LoggedInUserBean user){ this.user = user;}
+    Scanner scanner = new Scanner(System.in);
     @Override
     public void action(StateMachineImpl context){
-        Scanner scanner = new Scanner(System.in);
-        Printer.println("Inserisci la materia:");
-        materia = scanner.nextLine();
 
-        Printer.println("Vuoi lezioni in presenza? (sì/no):");
-        inPresenze = "sì".equalsIgnoreCase(scanner.nextLine());
 
-        Printer.println("Vuoi lezioni online? (sì/no):");
-        onlinee = "sì".equalsIgnoreCase(scanner.nextLine());
 
-        if (Boolean.TRUE.equals(inPresenze)) {
-            Printer.println("Inserisci il luogo (Roma, Milano, Palermo, Torino, Napoli):");
-            luoghi = scanner.nextLine();
+        while (true) {
+            Printer.print("Inserisci la materia: ");
+            materia = scanner.nextLine();
+            if (!materia.trim().isEmpty()) {
+                break;
+            } else {
+                Printer.errorPrint("Campo obbligatorio.");
+            }
         }
 
-        Printer.println("Inserisci la tariffa massima (5-50):");
-        tariffa = Integer.parseInt(scanner.nextLine());
+        String metodo;
 
-        Printer.println("Seleziona i giorni disponibili (Lunedì, Martedì, Mercoledì, Giovedì, Venerdì, Sabato, Domenica):");
-        giorni = scanner.nextLine(); // Il formato dei giorni può essere elaborato successivamente.
+        boolean tryAgain = true;
+        while(tryAgain){
 
-        ricercaMethod();
+            while (true) {
+                Printer.print("Desideri inserire filtri aggiuntivi? [si/no]: ");
+
+                metodo = scanner.nextLine();
+                if (!metodo.trim().isEmpty()) {
+                    break;
+                } else {
+                    Printer.errorPrint("Campo obbligatorio.");
+                }
+            }
+
+            switch (metodo){
+                case("no"):
+                    ricercaMateria();
+                    tryAgain = false;
+                    break;
+                case("si"):
+                    ricercaConFiltri();
+                    tryAgain = false;
+                    break;
+                default:
+                    Printer.errorPrint("Input invalido.");
+                    break;
+            }
+        }
     }
 
     public void ricercaMethod() {
@@ -85,6 +102,26 @@ public class PrenotaRipetizioneCLI extends AbstractState {
     }
 
     public List<RipetizioneInfoBean> ricercaConFiltri() {
+
+        Printer.println("Vuoi lezioni in presenza? (si/no):");
+        inPresenze = "sì".equalsIgnoreCase(scanner.nextLine());
+
+        Printer.println("Vuoi lezioni online? (si/no):");
+        onlinee = "sì".equalsIgnoreCase(scanner.nextLine());
+
+        if (Boolean.TRUE.equals(inPresenze)) {
+            Printer.println("Inserisci il luogo (Roma, Milano, Palermo, Torino, Napoli):");
+            luoghi = scanner.nextLine();
+        }
+
+        Printer.println("Inserisci la tariffa massima (5-50):");
+        tariffa = Integer.parseInt(scanner.nextLine());
+
+        Printer.println("Seleziona i giorni disponibili (Lunedì, Martedì, Mercoledì, Giovedì, Venerdì, Sabato, Domenica):");
+        giorni = scanner.nextLine(); // Il formato dei giorni può essere elaborato successivamente.
+
+
+
         String email = this.user.getEmail();
         List<Boolean> giorniList = parseGiorni(giorni);
 
@@ -112,16 +149,16 @@ public class PrenotaRipetizioneCLI extends AbstractState {
     }
 
     @Override
-    public void mostraMenu(){
+    public void stampaBenvenuto(){
         Printer.println(" ");
-        Printer.print("Home Studente -> ");
-        Printer.print("PrenotaRipetizione -> ");
-        Printer.println("Ricerca");
-        Printer.println("---------------------- RICERCA ---------------------");
+        Printer.printBlu("Home Studente -> ");
+        Printer.printBlu("PrenotaRipetizione -> ");
+        Printer.printlnBlu("Ricerca");
+        Printer.printlnBlu("---------------------- RICERCA ---------------------");
     }
 
     @Override
     public void entry(StateMachineImpl context){
-        mostraMenu();
+        stampaBenvenuto();
     }
 }
