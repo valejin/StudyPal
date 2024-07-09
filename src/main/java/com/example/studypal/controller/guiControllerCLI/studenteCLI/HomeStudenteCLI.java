@@ -6,6 +6,7 @@ import com.example.studypal.pattern.state.AbstractState;
 import com.example.studypal.pattern.state.InitialState;
 import com.example.studypal.pattern.state.StateMachineImpl;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -26,18 +27,21 @@ public class HomeStudenteCLI extends AbstractState {
 
         while((choice = scan.nextInt()) != 0) {
 
-            switch(choice){
-                case(1):
-                    //transizione a prenotaRipetizione
-                    goNext(context, new CercaRipetizioneCLI(user));
-                    break;
-                case(2):
-                    //transizione a gestisciPrenotazioni
-                    System.out.println("goToGestisciPrenotazioni");
-                    break;
-                default:
-                    Printer.errorPrint("Input invalido. Scegliere un'opzione tra quelle disponibili: ");
-                    break;
+            try{
+                switch(choice){
+                    case(1):
+                        goNext(context, new CercaRipetizioneCLI(user));
+                        break;
+                    case(2):
+                        goNext(context, new GestisciPrenotazioniStudenteCLI(user));
+                        break;
+                    default:
+                        Printer.errorPrint("Input invalido. Scegliere un'opzione tra quelle disponibili: ");
+                        break;
+                }
+            } catch (InputMismatchException e){
+                Printer.errorPrint("Input non valido. Per favore, inserisci un numero intero: ");
+                scan.nextLine(); // Consuma l'input non valido)
             }
         }
 

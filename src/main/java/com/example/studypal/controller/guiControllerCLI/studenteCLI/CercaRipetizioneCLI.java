@@ -94,8 +94,8 @@ public class CercaRipetizioneCLI extends AbstractState {
     }
 
     public List<RipetizioneInfoBean> ricercaMateria() {
+
         ripetizioneInfoBean = new RipetizioneInfoBean(materia);
-        Printer.println("La materia inserita è: " + materia);
 
         BaseInfoBean baseInfoBean = new BaseInfoBean(materia);
         CercaRipetizioneController cercaRipetizioneController = new CercaRipetizioneController();

@@ -20,7 +20,7 @@ public class QueryLogin {
             String sql = String.format(Query.RICERCA_EMAIL, email);
             ResultSet rs = stmt.executeQuery(sql);
 
-            if (rs == null){
+            if (!rs.next()){
                 throw new UtenteInesistenteException();
             }
             return rs;
