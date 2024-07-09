@@ -58,18 +58,16 @@ public class RipetizioneInfoDAO {
 
             if(rs.next()) {
 
-                //stampo email di Tutor che soddisfano la query
-                Printer.println("------------------------------------------------");
-                Printer.println("Email tutor che soddisfano la ricerca: ");
                 do {
                     RipetizioneInfoModel risultatoCorrente = new RipetizioneInfoModel(rs.getString("nome"), rs.getString("cognome"),
                             rs.getString("materie"), rs.getBoolean("inPresenza"),
                             rs.getBoolean("webcam"), rs.getString("luogo"),
                             rs.getString("giorni"), rs.getInt("tariffa"), rs.getString("email"));
 
-                    //DEBUG
+                    /*DEBUG
                     Printer.println("    nome: " + risultatoCorrente.getNome());
                     Printer.println("    cognome: " + risultatoCorrente.getCognome());
+                    Printer.println("    materie: " + risultatoCorrente.getMaterie());
                     Printer.println("    lezioni in presenza: " + risultatoCorrente.getInPresenza());
                     Printer.println("    lezioni online: " + risultatoCorrente.getOnline());
                     Printer.println("    luogo: " + risultatoCorrente.getLuogo());
@@ -77,7 +75,11 @@ public class RipetizioneInfoDAO {
                     Printer.println("    tariffa: " + risultatoCorrente.getTariffa() + "€/h");
                     Printer.println("    email: " + risultatoCorrente.getEmail());
                     Printer.println("------------------------------------------------");
+
+                     */
                     risultatiRicerca.add(risultatoCorrente);
+
+
 
                 }while (rs.next());
 
@@ -174,25 +176,11 @@ public class RipetizioneInfoDAO {
                 Printer.println("La materia che stai cercando è: " + ripetizioneInfoModel.getMateria());
 
                 //stampo email di Tutor che soddisfanno la query
-                Printer.println("Email tutor che soddisfano la ricerca: ");
                 do {
-
                     RipetizioneInfoModel risultatoCorrente = new RipetizioneInfoModel(rs.getString("nome"), rs.getString("cognome"),
                             rs.getString("materie"), rs.getBoolean("inPresenza"),
                             rs.getBoolean("webcam"), rs.getString("luogo"),
                             rs.getString("giorni"), rs.getInt("tariffa"), rs.getString("email"));
-
-                    /*DEBUG*/
-                    Printer.println("    nome: " + risultatoCorrente.getNome());
-                    Printer.println("    cognome: " + risultatoCorrente.getCognome());
-                    Printer.println("    materie: " + risultatoCorrente.getMaterie());
-                    Printer.println("    lezioni in presenza: " + risultatoCorrente.getInPresenza());
-                    Printer.println("    lezioni online: " + risultatoCorrente.getOnline());
-                    Printer.println("    luogo: " + risultatoCorrente.getLuogo());
-                    Printer.println("    giorni disponibili: " + risultatoCorrente.getGiorni());
-                    Printer.println("    tariffa: " + risultatoCorrente.getTariffa() + "€/h");
-                    Printer.println("    email: " + risultatoCorrente.getEmail());
-                    Printer.println("------------------------------------------------");
 
                     risultatiRicerca.add(risultatoCorrente);
 

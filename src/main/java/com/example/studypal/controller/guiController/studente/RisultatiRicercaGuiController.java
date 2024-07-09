@@ -107,7 +107,6 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
 
         for (RipetizioneInfoBean tutor: this.tutorList){
             tutor.abbreviaGiorni();
-            Printer.println(tutor.getGiorni());
         }
 
 
