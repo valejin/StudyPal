@@ -41,17 +41,14 @@ public class GestisciPrenotazioniStudenteCLI extends AbstractState {
                     case 1:
                         flag = 0;
                         goNext(context, new RichiesteStudenteCLI(user, flag));
-                        //goToRichiesteArrivate(context);
                         break;
                     case 2:
                         flag = 1;
                         goNext(context, new RichiesteStudenteCLI(user, flag));
-                        //goToPrenotazioniAttive(context);
                         break;
                     case 3:
                         flag = 2;
                         goNext(context, new RichiesteStudenteCLI(user, flag));
-                        //goToRichiesteRifiutate(context);
                         break;
                     default:
                         Printer.errorPrint("Scelta non valida. Riprova.");
