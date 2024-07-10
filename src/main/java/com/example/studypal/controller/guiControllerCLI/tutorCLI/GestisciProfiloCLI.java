@@ -11,10 +11,8 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
-import java.util.logging.Logger;
 
 public class GestisciProfiloCLI extends AbstractState {
-    private static final Logger logger = Logger.getLogger(GestisciProfiloCLI.class.getName());
     private final LoggedInUserBean user;
     private RipetizioneInfoBean infoCorrentiProfilo;
     private final List<Boolean> giorni;
@@ -94,19 +92,46 @@ public class GestisciProfiloCLI extends AbstractState {
         Printer.println("Inserisci luogo (Roma, Milano, Napoli, Palermo, Torino): ");
         String luogo = scanner.nextLine();
 
-        Printer.println("In Presenza (true/false): ");
-        boolean inPresenza = scanner.nextBoolean();
+        boolean inPresenza = false;
+        boolean online = false;
 
-        Printer.println("Online (true/false): ");
-        boolean online = scanner.nextBoolean();
+        Printer.println("Selezioni modalità di lezione: ");
+        while (true) {
+            try {
+                Printer.println("In Presenza (T/F): ");
+                inPresenza = getBooleanInput(scanner);
+                break;
+            } catch (IllegalArgumentException e) {
+                Printer.errorPrint("Input non valido. Inserisci 'T' per true o 'F' per false.");
+            }
+        }
 
-        scanner.nextLine(); // Consuma newline
+        while (true) {
+            try {
+                Printer.println("Online (T/F): ");
+                online = getBooleanInput(scanner);
+                break;
+            } catch (IllegalArgumentException e) {
+                Printer.errorPrint("Input non valido. Inserisci 'T' per true o 'F' per false.");
+            }
+        }
 
+
+        Printer.println("Selezioni giorni disponibili: ");
         List<Boolean> giorni = new ArrayList<>();
         for (String giorno : new String[]{"Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato", "Domenica"}) {
-            Printer.println(giorno + " (true/false): ");
-            giorni.add(scanner.nextBoolean());
+            while (true) {
+                try {
+                    Printer.println(giorno + " (T/F): ");
+                    giorni.add(getBooleanInput(scanner));
+                    break;
+                } catch (IllegalArgumentException e) {
+                    Printer.errorPrint("Input non valido. Inserisci 'T' per true o 'F' per false.");
+                }
+            }
         }
+
+
 
         // Crea il bean e invia al controller applicativo
         RipetizioneInfoBean ripetizioneInfoBean = new RipetizioneInfoBean(materie, inPresenza, online, luogo, giorni, tariffa, user.getEmail());
@@ -157,5 +182,22 @@ public class GestisciProfiloCLI extends AbstractState {
     public void entry(StateMachineImpl context){
         //mostraMenu();
     }
+
+
+    private boolean getBooleanInput(Scanner scanner) {
+        String input = scanner.nextLine().trim().toUpperCase();
+        switch (input) {
+            case "T":
+                return true;
+            case "F":
+                return false;
+            default:
+                throw new IllegalArgumentException("Input non valido. Inserisci 'T' per true o 'F' per false.");
+        }
+    }
+
+
+
+
 
 }
