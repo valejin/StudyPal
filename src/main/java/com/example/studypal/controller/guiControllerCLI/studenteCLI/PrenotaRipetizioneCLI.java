@@ -17,6 +17,7 @@ public class PrenotaRipetizioneCLI extends AbstractState {
     LoggedInUserBean user;
     RipetizioneInfoBean informazioni;
     RipetizioneInfoBean filtri;
+    Scanner scan = new Scanner(System.in);
 
     public PrenotaRipetizioneCLI(LoggedInUserBean user, RipetizioneInfoBean tutor, RipetizioneInfoBean filtri) {
         this.user = user;
@@ -25,8 +26,6 @@ public class PrenotaRipetizioneCLI extends AbstractState {
     }
     @Override
     public void action(StateMachineImpl context){
-
-        Scanner scan = new Scanner(System.in);
 
         //stampo il riepilogo della prenotazione
         Printer.println("   Nome: " + informazioni.getNome());
@@ -66,6 +65,7 @@ public class PrenotaRipetizioneCLI extends AbstractState {
             try {
                 if (choice == 1) {
                         prenota(note);
+                        followUp(context);
                         goNext(context, new HomeStudenteCLI(user));
                         break;
                 } else{
@@ -108,6 +108,38 @@ public class PrenotaRipetizioneCLI extends AbstractState {
         Printer.printlnBlu("Home studente -> Prenota ripetizione -> Ricerca -> Risultati ricerca -> Prenota");
         Printer.println("Riepilogo della prenotazione:");
         Printer.println("----------------------------------");
+    }
+
+    public void followUp(StateMachineImpl context){
+        Printer.println(" ");
+        Printer.printlnBlu("Home studente -> Prenota ripetizione -> Ricerca -> Risultati ricerca -> Prenota");
+        Printer.println("Cosa desideri fare?");
+        int choice;
+        mostraSecondoMenu();
+
+        while((choice = scan.nextInt()) != 0) {
+
+            try {
+                if (choice == 1) {
+                    goNext(context, new HomeStudenteCLI(user));
+                    break;
+                } else{
+                    Printer.errorPrint("Input invalido. Scegliere un'opzione tra quelle disponibili: ");
+                }
+
+            } catch (InputMismatchException e) {
+                Printer.errorPrint("Input non valido. Inserisci un numero intero: ");
+                scan.nextLine(); // Consuma l'input non valido)
+            }
+        }
+
+        goBack(context);
+    }
+
+    public void mostraSecondoMenu(){
+        Printer.println("   1. Vai alla Home.");
+        Printer.println("   0. Torna alla gestione delle prenotazioni.");
+        Printer.print("Opzione scelta: ");
     }
 
     @Override

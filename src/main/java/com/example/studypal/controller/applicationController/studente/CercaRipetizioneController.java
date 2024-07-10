@@ -89,7 +89,7 @@ public class CercaRipetizioneController extends HomeStudenteController {
             }
 
         }catch(MateriaNonTrovataException e){
-            Printer.println("Non produce risultato");
+            //Printer.println("Non produce risultato");
         }
 
 
