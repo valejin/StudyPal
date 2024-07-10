@@ -15,14 +15,12 @@ public class VisualizzaRichiesteCLI extends AbstractState {
 
     private final LoggedInUserBean user;
     private final PrenotazioneBean dettagliRichiesta;
-    private final List<PrenotazioneBean> listRisultati;
     private final Integer flag;
 
 
     public VisualizzaRichiesteCLI(LoggedInUserBean user, PrenotazioneBean prenotazioneBean, List<PrenotazioneBean> list, Integer flag) {
         this.user = user;
         this.dettagliRichiesta = prenotazioneBean;
-        this.listRisultati = list;
         this.flag = flag;
     }
 
@@ -82,14 +80,11 @@ public class VisualizzaRichiesteCLI extends AbstractState {
 
 
     private String getModalitaLezione(int modalita) {
-        switch (modalita) {
-            case 1:
-                return "In presenza";
-            case 2:
-                return "Online";
-            default:
-                return "Non specificato";
-        }
+        return switch (modalita) {
+            case 1 -> "In presenza";
+            case 2 -> "Online";
+            default -> "Non specificato";
+        };
     }
 
 

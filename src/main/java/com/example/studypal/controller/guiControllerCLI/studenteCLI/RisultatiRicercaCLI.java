@@ -5,15 +5,13 @@ import com.example.studypal.bean.RipetizioneInfoBean;
 import com.example.studypal.other.Printer;
 import com.example.studypal.pattern.state.AbstractState;
 import com.example.studypal.pattern.state.StateMachineImpl;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class RisultatiRicercaCLI extends AbstractState {
 
     LoggedInUserBean user;
-    List<RipetizioneInfoBean> tutorList = new ArrayList<>();
+    List<RipetizioneInfoBean> tutorList;
     RipetizioneInfoBean filtri;
 
     protected RisultatiRicercaCLI(LoggedInUserBean user, List<RipetizioneInfoBean> risultatiRicercaBean, RipetizioneInfoBean ripetizioneInfoBean){
@@ -21,8 +19,6 @@ public class RisultatiRicercaCLI extends AbstractState {
         this.tutorList = risultatiRicercaBean;
         this.filtri = ripetizioneInfoBean;
     }
-
-    public RisultatiRicercaCLI() {}
 
     @Override
     public void action(StateMachineImpl context){
@@ -43,8 +39,6 @@ public class RisultatiRicercaCLI extends AbstractState {
             Printer.println(index + ". Tutor: " + tutor.getNome() + " " + tutor.getCognome());
             Printer.println("   Tariffa: " + tutor.getTariffa() + "€/h");
             Printer.println("   Giorni: " + tutor.getGiorni());
-            //Printer.println("   Email: " + tutor.getEmail());
-            //Printer.println("   Insegnamenti offerti: " + tutor.getMaterie());
             Printer.println("----------------------------------");
             index++;
         }

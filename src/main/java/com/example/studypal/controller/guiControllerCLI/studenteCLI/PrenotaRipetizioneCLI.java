@@ -58,31 +58,6 @@ public class PrenotaRipetizioneCLI extends AbstractState {
             note = note.substring(0, 250);
         }
 
-        /*
-        int choice;
-
-        while(true) {
-            mostraMenu();
-
-            try {
-                choice = scan.nextInt();
-                //scan.nextLine(); // Consuma newline
-
-                if (choice == 1) {
-                    prenota(note);
-                    goNext(context, new HomeStudenteCLI(user));
-                }
-
-                break;
-
-            } catch (InputMismatchException e) {
-                Printer.errorPrint("Input non valido. Inserisci un numero intero: ");
-                scan.nextLine(); // Consuma l'input non valido
-            }
-        }
-
-         */
-
         int choice;
         mostraMenu();
 

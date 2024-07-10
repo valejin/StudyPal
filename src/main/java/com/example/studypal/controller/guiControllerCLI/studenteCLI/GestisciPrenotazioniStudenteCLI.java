@@ -51,7 +51,7 @@ public class GestisciPrenotazioniStudenteCLI extends AbstractState {
                         goNext(context, new RichiesteStudenteCLI(user, flag));
                         break;
                     default:
-                        Printer.errorPrint("Scelta non valida. Riprova.");
+                        Printer.errorPrint("Scelta non valida. Scegli un'opzione tra quelle proposte.");
                         break;
                 }
             } catch (InputMismatchException e) {
@@ -64,21 +64,8 @@ public class GestisciPrenotazioniStudenteCLI extends AbstractState {
     }
 
 
-
-    public void goToRichiesteArrivate(StateMachineImpl context) {goNext(context, new RichiesteStudenteCLI(user, 0));}
-
-    public void goToPrenotazioniAttive(StateMachineImpl context) {
-        goNext(context, new RichiesteStudenteCLI(user, 1));
-    }
-
-    public void goToRichiesteRifiutate(StateMachineImpl context) {
-        goNext(context, new RichiesteStudenteCLI(user, 2));
-    }
-
     @Override
     public void mostraMenu(){
-        Printer.println(" ");
-        Printer.printlnBlu("Home Studente -> Gestione Prenotazioni:");
         Printer.println("   1. Richieste Inviate");
         Printer.println("   2. Prenotazioni Attive");
         Printer.println("   3. Richieste Rifiutate");
@@ -87,8 +74,14 @@ public class GestisciPrenotazioniStudenteCLI extends AbstractState {
     }
 
     @Override
+    public void stampaBenvenuto (){
+        Printer.println(" ");
+        Printer.printlnBlu("Home Studente -> Gestione Prenotazioni:");
+    }
+
+    @Override
     public void entry(StateMachineImpl context){
-        //mostraMenu();
+        stampaBenvenuto();
     }
 
 }

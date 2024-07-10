@@ -3,7 +3,6 @@ package com.example.studypal.controller.guiControllerCLI.studenteCLI;
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.PrenotazioneBean;
 import com.example.studypal.controller.applicationController.studente.GestisciPrenotazioniStudenteController;
-import com.example.studypal.controller.guiController.studente.VisualizzaRichiesteStudenteGui;
 import com.example.studypal.other.Printer;
 import com.example.studypal.pattern.state.AbstractState;
 import com.example.studypal.pattern.state.StateMachineImpl;

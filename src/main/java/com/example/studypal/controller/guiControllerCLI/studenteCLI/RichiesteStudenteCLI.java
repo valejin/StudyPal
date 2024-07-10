@@ -3,8 +3,6 @@ package com.example.studypal.controller.guiControllerCLI.studenteCLI;
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.PrenotazioneBean;
 import com.example.studypal.controller.applicationController.studente.GestisciPrenotazioniStudenteController;
-import com.example.studypal.controller.applicationController.tutor.GestisciPrenotazioniController;
-import com.example.studypal.controller.guiControllerCLI.tutorCLI.VisualizzaRichiesteCLI;
 import com.example.studypal.other.Printer;
 import com.example.studypal.pattern.state.AbstractState;
 import com.example.studypal.pattern.state.StateMachineImpl;
@@ -17,7 +15,6 @@ public class RichiesteStudenteCLI extends AbstractState {
 
     private final LoggedInUserBean user;
     private final Integer flag;
-    private List<PrenotazioneBean> richiesteList;
 
     Scanner scanner = new Scanner(System.in);
 
@@ -34,24 +31,24 @@ public class RichiesteStudenteCLI extends AbstractState {
         Printer.println(" ");
         Printer.printlnBlu(getMenuTitle());
 
-        // Creo un'istanza del controller applicativo corrispondente
         GestisciPrenotazioniStudenteController gestisciPrenotazioniController = new GestisciPrenotazioniStudenteController();
 
-        // Chiamo la funzione nel controller applicativo per ottenere una lista di BEAN che contiene tutte le info per la tabella
-        richiesteList = gestisciPrenotazioniController.richiesteInviate(user.getEmail(), flag);
+        List<PrenotazioneBean> richiesteList = gestisciPrenotazioniController.richiesteInviate(user.getEmail(), flag);
 
         if (richiesteList.isEmpty()) {
             Printer.println("Nessuna richiesta trovata.");
         } else {
             for (int i = 0; i < richiesteList.size(); i++) {
                 PrenotazioneBean prenotazione = richiesteList.get(i);
-                Printer.println((i + 1) + ". " + prenotazione.getEmailStudente() + " - " + prenotazione.getMateria());
+                Printer.println("-----------------------------------------");
+                Printer.println((i + 1) + ". "
+                        + prenotazione.getEmailTutor() + " - " + prenotazione.getMateria()
+                        + " - " + prenotazione.getTariffa() + " €/h ");
             }
-
+            Printer.println("-----------------------------------------");
 
             boolean inputValido = false;
-            int scelta = 0;
-
+            int scelta = -1;
 
             while(!inputValido) {
                 try {
@@ -75,7 +72,10 @@ public class RichiesteStudenteCLI extends AbstractState {
             if (scelta > 0 && scelta <= richiesteList.size()) {
                 PrenotazioneBean prenotazioneSelezionata = richiesteList.get(scelta - 1);
                 goNext(context, new VisualizzaRichiesteStudenteCLI(user, prenotazioneSelezionata, richiesteList, flag)); // Transizione a VisualizzaRichiesteCLI
+            } else if (scelta == 0){
+                goBack(context);
             }
+
         }
     }
 
