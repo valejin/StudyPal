@@ -252,9 +252,11 @@ public class PrenotazioneDAO {
 
     public void recensioneMethod(int idRichiesta, int recensione){
 
+        //System.out.println("id: " + idRichiesta + " recensione: " + recensione);
         Connection connection;
         PreparedStatement statement;
         String query ="UPDATE richieste SET recensione = ? WHERE idrichieste = ?";
+
         try {
             connection = Connect.getInstance().getDBConnection();
             statement = connection.prepareStatement(query);
