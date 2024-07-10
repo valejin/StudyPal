@@ -1,8 +1,10 @@
 package com.example.studypal.controller.guiControllerCLI.tutorCLI;
 
 import com.example.studypal.bean.LoggedInUserBean;
+import com.example.studypal.controller.guiControllerCLI.LoginCLI;
 import com.example.studypal.other.Printer;
 import com.example.studypal.pattern.state.AbstractState;
+import com.example.studypal.pattern.state.InitialState;
 import com.example.studypal.pattern.state.StateMachineImpl;
 
 import java.util.InputMismatchException;
@@ -42,7 +44,7 @@ public class HomeTutorCLI extends AbstractState {
                         goNext(context, new GestisciPrenotazioniCLI(user));
                         break;
                     default:
-                        Printer.errorPrint("Scelta non valida. Riprova: ");
+                        Printer.errorPrint("Scelta non valida. Riprova.");
                         break;
                 }
             } catch(InputMismatchException e) {
@@ -50,8 +52,7 @@ public class HomeTutorCLI extends AbstractState {
                 scanner.nextLine(); // Consuma l'input non valido
             }
         }
-
-        goBack(context);
+        goNext(context, new InitialState());
     }
 
     @Override

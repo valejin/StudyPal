@@ -43,6 +43,8 @@ public class RichiesteTutorCLI extends AbstractState {
                     visualizzaRichieste(context);
                     mostraMenu();
                     break;
+                } else if (choice == 0) {
+                    break;
                 } else {
                     Printer.errorPrint("Scelta non valida. Riprova.");
                     break;
