@@ -80,7 +80,9 @@ public class RisultatiRicercaCLI extends AbstractState {
                         Printer.errorPrint("Input invalido. Scegliere un'opzione tra quelle disponibili: ");
                     }
                     break;
-
+                case(3):
+                    goNext(context, new HomeStudenteCLI(user));
+                    break;
                 default:
                     Printer.errorPrint("Input invalido. Scegliere un'opzione tra quelle disponibili: ");
                     break;
@@ -96,6 +98,7 @@ public class RisultatiRicercaCLI extends AbstractState {
         Printer.printlnBlu("Home studente -> Prenota ripetizione -> Ricerca -> Risultati ricerca");
         Printer.println("   1. Visualizza i dettagli di un profilo.");
         Printer.println("   2. Richiedi uno dei tutor.");
+        Printer.println("   3. Home.");
         Printer.println("   0. Torna indietro.");
         Printer.print("Opzione scelta: ");
 

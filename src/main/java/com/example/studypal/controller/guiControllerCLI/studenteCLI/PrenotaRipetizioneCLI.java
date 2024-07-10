@@ -58,9 +58,10 @@ public class PrenotaRipetizioneCLI extends AbstractState {
             note = note.substring(0, 250);
         }
 
-        int choice = -1;
+        /*
+        int choice;
 
-        while(choice != 0) {
+        while(true) {
             mostraMenu();
 
             try {
@@ -70,14 +71,35 @@ public class PrenotaRipetizioneCLI extends AbstractState {
                 if (choice == 1) {
                     prenota(note);
                     goNext(context, new HomeStudenteCLI(user));
-                } else {
-                    Printer.errorPrint("Scelta non valida. Riprova.");
-                    break;
                 }
+
+                break;
 
             } catch (InputMismatchException e) {
                 Printer.errorPrint("Input non valido. Inserisci un numero intero: ");
                 scan.nextLine(); // Consuma l'input non valido
+            }
+        }
+
+         */
+
+        int choice;
+        mostraMenu();
+
+        while((choice = scan.nextInt()) != 0) {
+
+            try {
+                if (choice == 1) {
+                        prenota(note);
+                        goNext(context, new HomeStudenteCLI(user));
+                        break;
+                } else{
+                        Printer.errorPrint("Input invalido. Scegliere un'opzione tra quelle disponibili: ");
+                }
+
+            } catch (InputMismatchException e) {
+                Printer.errorPrint("Input non valido. Inserisci un numero intero: ");
+                scan.nextLine(); // Consuma l'input non valido)
             }
         }
 
@@ -102,7 +124,6 @@ public class PrenotaRipetizioneCLI extends AbstractState {
         PrenotaRipetizioneController prenotaRipetizioneController = new PrenotaRipetizioneController();
         prenotaRipetizioneController.prenota(prenotazioneBean);
         Printer.println("Richiesta inviata con successo!");
-        //caricaConferma();
     }
 
 
@@ -116,9 +137,8 @@ public class PrenotaRipetizioneCLI extends AbstractState {
 
     @Override
     public void mostraMenu(){
-        Printer.println(" ");
         Printer.println("----------------------------------");
-        Printer.println("   1. Invia la richiesta.");
+        Printer.println("   1. Conferma invio della richiesta.");
         Printer.println("   0. Torna indietro.");
         Printer.print("Opzione scelta: ");
     }
