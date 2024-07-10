@@ -14,7 +14,7 @@ import java.sql.Statement;
 public class QueryLogin {
 
     //controllo email inserito nel LOGIN
-    public static ResultSet checkEmail(Statement stmt, String email) throws UtenteInesistenteException {
+    public static void checkEmail(Statement stmt, String email) throws UtenteInesistenteException {
 
         try{
             String sql = String.format(Query.RICERCA_EMAIL, email);
@@ -23,7 +23,6 @@ public class QueryLogin {
             if (!rs.next()){
                 throw new UtenteInesistenteException();
             }
-            return rs;
 
         } catch (SQLException e){
             throw new UtenteInesistenteException();

@@ -67,8 +67,6 @@ public class LoginGuiController {
             this.loggedInUserBean = loginController.loginMethod(credenzialiBean);
 
             //in base al ruolo dell'utente loggato carichiamo la pagina corretta della home
-            //System.out.println("siamo:" + loggedInUserBean.getRuolo());
-
             caricaHome(loggedInUserBean.getRuolo());
 
         } catch (CredenzialiSbagliateException e) {

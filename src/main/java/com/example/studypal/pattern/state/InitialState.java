@@ -18,7 +18,6 @@ public class InitialState extends AbstractState {
         AbstractState nextState;
 
         Scanner scan = new Scanner(System.in);
-        boolean validInput = false;
         int scelta;
 
         while((context.getState() != null )){
@@ -33,7 +32,7 @@ public class InitialState extends AbstractState {
                         return;
                     case (1):
                         nextState = new LoginCLI();
-                        goNext(context, nextState);  //questo fa solo camiare lo stato corrente, poi deve essere il client (Starter) a far avanzare la macchina a stati
+                        goNext(context, nextState);  //questo fa solo cambiare lo stato corrente, poi deve essere il client (Starter) a far avanzare la macchina a stati
                         break;
                     case (2):
                         //registrazione, effettuo il metodo goNext per cambiare la pagina (transizione)
