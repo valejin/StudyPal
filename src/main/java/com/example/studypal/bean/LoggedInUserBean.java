@@ -11,8 +11,14 @@ public class LoggedInUserBean {
         this.cognome = cognome;
         this.email = email;
         this.isTutor = ruolo;
-
     }
+
+    public LoggedInUserBean(String email, String nome, String cognome){
+        this.nome = nome;
+        this.cognome = cognome;
+        this.email = email;
+    }
+
 
     public String getNome() {
         return nome;
