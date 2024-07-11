@@ -25,7 +25,12 @@ public class RipetizioneInfoBean extends BaseInfoBean{
     }
 
 
+
+
+
     /* costruttore lato controller grafico (lista di booleani)--------------------------------------------------------*/
+
+
     public RipetizioneInfoBean(String materia, Boolean inPresenza, Boolean online, String luogo, List<Boolean> giorni, Integer tariffa, String email){
         super(materia);
         this.inPresenza = inPresenza;
@@ -37,20 +42,19 @@ public class RipetizioneInfoBean extends BaseInfoBean{
 
     }
 
-    public RipetizioneInfoBean(String nome, String cognome, String materia, Boolean inPresenza, Boolean online,
-                               String luogo, List<Boolean> giorni, Integer tariffa, String email){
+    public RipetizioneInfoBean(LoggedInUserBean userInfo, String materia, Boolean inPresenza, Boolean online,
+                               String luogo, List<Boolean> giorni, Integer tariffa){
 
         this.inPresenza = inPresenza;
         this.online = online;
         this.luogo = luogo;
         this.giorni = convertiGiorni(giorni);
         this.tariffa = tariffa;
-        this.email = email;
-        this.nome = nome;
-        this.cognome = cognome;
+        this.email = userInfo.getEmail();
+        this.nome = userInfo.getNome();
+        this.cognome = userInfo.getCognome();
         this.materia = materia;
     }
-
 
     /* costruttori per lato controller applicativo (stringa)----------------------------------------------------------*/
 
@@ -66,16 +70,16 @@ public class RipetizioneInfoBean extends BaseInfoBean{
 
     }
 
-    public RipetizioneInfoBean(String nome, String cognome, String materia, Boolean inPresenza, Boolean online, String luogo, String giorni, Integer tariffa, String email){
+    public RipetizioneInfoBean(LoggedInUserBean userInfo, String materia, Boolean inPresenza, Boolean online, String luogo, String giorni, Integer tariffa){
 
         this.inPresenza = inPresenza;
         this.online = online;
         this.luogo = luogo;
         this.giorni = giorni;
         this.tariffa = tariffa;
-        this.email = email;
-        this.nome = nome;
-        this.cognome = cognome;
+        this.email = userInfo.getEmail();
+        this.nome = userInfo.getNome();
+        this.cognome = userInfo.getCognome();
         this.materia = materia;
     }
 
@@ -154,10 +158,6 @@ public class RipetizioneInfoBean extends BaseInfoBean{
         return inPresenza;
     }
 
-    public void setInPresenza(Boolean inPresenza) {
-        this.inPresenza = inPresenza;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -185,7 +185,4 @@ public class RipetizioneInfoBean extends BaseInfoBean{
         return this.materia;
     }
 
-    public void setMaterie(String materie) {
-        this.materia = materie;
-    }
 }
