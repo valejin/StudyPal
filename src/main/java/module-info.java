@@ -6,20 +6,20 @@ module com.example.studypal {
 
     opens com.example.studypal to javafx.fxml;
     exports com.example.studypal;
-    exports com.example.studypal.controller.applicationController;
-    opens com.example.studypal.controller.applicationController to javafx.fxml;
-    exports com.example.studypal.controller.guiController;
-    opens com.example.studypal.controller.guiController to javafx.fxml;
+    exports com.example.studypal.controller.application;
+    opens com.example.studypal.controller.application to javafx.fxml;
+    exports com.example.studypal.view.first.gui;
+    opens com.example.studypal.view.first.gui to javafx.fxml;
     exports com.example.studypal.exceptions;
 
     exports com.example.studypal.bean;
     opens com.example.studypal.bean to javafx.fxml;
-    exports com.example.studypal.controller.guiController.studente;
-    opens com.example.studypal.controller.guiController.studente to javafx.fxml;
-    exports com.example.studypal.controller.guiController.tutor;
-    opens com.example.studypal.controller.guiController.tutor to javafx.fxml;
-    exports com.example.studypal.controller.applicationController.studente;
-    opens com.example.studypal.controller.applicationController.studente to javafx.fxml;
-    exports com.example.studypal.controller.applicationController.tutor;
-    opens com.example.studypal.controller.applicationController.tutor to javafx.fxml;
+    exports com.example.studypal.view.first.gui.studente;
+    opens com.example.studypal.view.first.gui.studente to javafx.fxml;
+    exports com.example.studypal.view.first.gui.tutor;
+    opens com.example.studypal.view.first.gui.tutor to javafx.fxml;
+    exports com.example.studypal.controller.application.studente;
+    opens com.example.studypal.controller.application.studente to javafx.fxml;
+    exports com.example.studypal.controller.application.tutor;
+    opens com.example.studypal.controller.application.tutor to javafx.fxml;
 }

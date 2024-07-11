@@ -1,7 +1,6 @@
 package com.example.studypal.pattern.state;
 
 import com.example.studypal.bean.LoggedInUserBean;
-import com.example.studypal.controller.guiControllerCLI.LoginCLI;
 
 import java.util.Stack;
 
