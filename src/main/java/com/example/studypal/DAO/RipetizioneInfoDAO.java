@@ -1,5 +1,6 @@
 package com.example.studypal.DAO;
 
+import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.model.BaseInfoModel;
 import com.example.studypal.model.RipetizioneInfoModel;
 import com.example.studypal.other.Connect;
@@ -58,10 +59,11 @@ public class RipetizioneInfoDAO {
             if(rs.next()) {
 
                 do {
-                    RipetizioneInfoModel risultatoCorrente = new RipetizioneInfoModel(rs.getString("nome"), rs.getString("cognome"),
+                    LoggedInUserBean user = new LoggedInUserBean(rs.getString("nome"),rs.getString("cognome" ), rs.getString("email"));
+                    RipetizioneInfoModel risultatoCorrente = new RipetizioneInfoModel(user,
                             rs.getString("materie"), rs.getBoolean("inPresenza"),
                             rs.getBoolean("webcam"), rs.getString("luogo"),
-                            rs.getString("giorni"), rs.getInt("tariffa"), rs.getString("email"));
+                            rs.getString("giorni"), rs.getInt("tariffa"));
 
                     risultatiRicerca.add(risultatoCorrente);
 
@@ -159,10 +161,11 @@ public class RipetizioneInfoDAO {
 
                 //stampo email di Tutor che soddisfanno la query
                 do {
-                    RipetizioneInfoModel risultatoCorrente = new RipetizioneInfoModel(rs.getString("nome"), rs.getString("cognome"),
+                    LoggedInUserBean user = new LoggedInUserBean(rs.getString("nome"),rs.getString("cognome" ), rs.getString("email"));
+                    RipetizioneInfoModel risultatoCorrente = new RipetizioneInfoModel(user,
                             rs.getString("materie"), rs.getBoolean("inPresenza"),
                             rs.getBoolean("webcam"), rs.getString("luogo"),
-                            rs.getString("giorni"), rs.getInt("tariffa"), rs.getString("email"));
+                            rs.getString("giorni"), rs.getInt("tariffa"));
 
                     risultatiRicerca.add(risultatoCorrente);
 
