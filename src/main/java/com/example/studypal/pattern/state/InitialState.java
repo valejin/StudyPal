@@ -1,7 +1,7 @@
 package com.example.studypal.pattern.state;
 
-import com.example.studypal.controller.guiControllerCLI.LoginCLI;
-import com.example.studypal.controller.guiControllerCLI.RegistrazioneCLI;
+import com.example.studypal.view.second.gui.LoginCLI;
+import com.example.studypal.view.second.gui.RegistrazioneCLI;
 import com.example.studypal.other.Printer;
 
 import java.util.InputMismatchException;

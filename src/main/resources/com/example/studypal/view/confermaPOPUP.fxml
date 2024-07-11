@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="200.0" prefWidth="300.0" stylesheets="@../menu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.guiController.tutor.PopupGui">
+<AnchorPane prefHeight="200.0" prefWidth="300.0" stylesheets="@../menu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.controller.gui.tutor.PopupGui">
    <children>
       <Text fill="#0e9609" layoutX="50.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La richiesta di prenotazione è stata confermata!" textAlignment="CENTER" wrappingWidth="200.9351806640625">
          <font>
