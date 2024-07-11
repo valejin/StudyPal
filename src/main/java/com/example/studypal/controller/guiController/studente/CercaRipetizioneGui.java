@@ -189,7 +189,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         CercaRipetizioneController cercaRipetizioneController = new CercaRipetizioneController();
 
         //chiama il controller applicativo e gli passa il BEAN che contiene la materia
-        risultatiRicercaBean = cercaRipetizioneController.prenotaRipetizioneMethod(baseInfoBean);
+        risultatiRicercaBean = cercaRipetizioneController.ricercaMethod(baseInfoBean);
 
 
         Printer.println("GUI: Email tutor che soddisfano la ricerca: ");
@@ -284,7 +284,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
 
         //istanzio un controller applicativo e gli passo la lista di Bean contenente i risultati della ricerca
         CercaRipetizioneController cercaRipetizioneController = new CercaRipetizioneController();
-        risultatiRicercaBean = cercaRipetizioneController.prenotaRipetizioneMethod(ripetizioneInfoBean);
+        risultatiRicercaBean = cercaRipetizioneController.ricercaMethod(ripetizioneInfoBean);
 
 
         return risultatiRicercaBean;

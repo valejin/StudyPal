@@ -12,7 +12,6 @@ public class PrenotaRipetizioneController {
 
 
     /* costruttore che riceve come parametri la sessione utente e le informazioni relative alla ripetizione da prenotare*/
-    public PrenotaRipetizioneController(){}
 
     public void prenota(PrenotazioneBean prenotazioneBean) {
         /*
@@ -37,8 +36,8 @@ public class PrenotaRipetizioneController {
         } catch (SQLException e){
             System.out.println("prenota controller errore");
         }
-
-
     }
+
+
 
 }

@@ -99,7 +99,7 @@ public class CercaRipetizioneCLI extends AbstractState {
 
         BaseInfoBean baseInfoBean = new BaseInfoBean(materia);
         CercaRipetizioneController cercaRipetizioneController = new CercaRipetizioneController();
-        risultatiRicercaBean = cercaRipetizioneController.prenotaRipetizioneMethod(baseInfoBean);
+        risultatiRicercaBean = cercaRipetizioneController.ricercaMethod(baseInfoBean);
 
         return risultatiRicercaBean;
     }
@@ -130,7 +130,7 @@ public class CercaRipetizioneCLI extends AbstractState {
 
         ripetizioneInfoBean = new RipetizioneInfoBean(materia, inPresenze, onlinee, luoghi, giorniList, tariffa, email);
         CercaRipetizioneController cercaRipetizioneController = new CercaRipetizioneController();
-        risultatiRicercaBean = cercaRipetizioneController.prenotaRipetizioneMethod(ripetizioneInfoBean);
+        risultatiRicercaBean = cercaRipetizioneController.ricercaMethod(ripetizioneInfoBean);
 
         return risultatiRicercaBean;
     }
