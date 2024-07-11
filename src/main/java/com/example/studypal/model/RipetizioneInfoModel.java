@@ -14,7 +14,6 @@ public class RipetizioneInfoModel extends BaseInfoModel {
     private String giorni;
     private int tariffa;
     private String email;
-    private String materie;
     private String nome;
     private String cognome;
 
@@ -77,10 +76,6 @@ public class RipetizioneInfoModel extends BaseInfoModel {
         this.cognome = cognome;
     }
 
-    public void setMaterie(String materie) {
-        this.materie = materie;
-    }
-
     //cotruttore di default
     public RipetizioneInfoModel(){ }
 
@@ -89,7 +84,7 @@ public class RipetizioneInfoModel extends BaseInfoModel {
         super(materie);
         this.nome = user.getNome();
         this.cognome = user.getCognome();
-        this.materie = materie;
+        this.materia = materie;
         this.inPresenza = inPresenza;
         this.online = online;
         this.luogo = luogo;
