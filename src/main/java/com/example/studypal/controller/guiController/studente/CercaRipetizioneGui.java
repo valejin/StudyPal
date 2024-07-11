@@ -3,7 +3,7 @@ package com.example.studypal.controller.guiController.studente;
 import com.example.studypal.bean.BaseInfoBean;
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.RipetizioneInfoBean;
-import com.example.studypal.controller.applicationController.studente.CercaRipetizioneController;
+import com.example.studypal.controller.applicationController.studente.PrenotaRipetizioneController;
 import com.example.studypal.other.Printer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -186,10 +186,10 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         //prendo un BEAN base e inserisco info
         BaseInfoBean baseInfoBean = new BaseInfoBean(materia);
 
-        CercaRipetizioneController cercaRipetizioneController = new CercaRipetizioneController();
+        PrenotaRipetizioneController prenotaRipetizioneController = new PrenotaRipetizioneController();
 
         //chiama il controller applicativo e gli passa il BEAN che contiene la materia
-        risultatiRicercaBean = cercaRipetizioneController.ricercaMethod(baseInfoBean);
+        risultatiRicercaBean = prenotaRipetizioneController.ricercaMethod(baseInfoBean);
 
 
         Printer.println("GUI: Email tutor che soddisfano la ricerca: ");
@@ -283,7 +283,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         ripetizioneInfoBean = new RipetizioneInfoBean(materia, inPresenza, online, luogo, giorni, tariffa, email);
 
         //istanzio un controller applicativo e gli passo la lista di Bean contenente i risultati della ricerca
-        CercaRipetizioneController cercaRipetizioneController = new CercaRipetizioneController();
+        PrenotaRipetizioneController cercaRipetizioneController = new PrenotaRipetizioneController();
         risultatiRicercaBean = cercaRipetizioneController.ricercaMethod(ripetizioneInfoBean);
 
 

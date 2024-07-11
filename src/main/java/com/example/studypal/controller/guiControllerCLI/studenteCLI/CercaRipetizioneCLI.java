@@ -3,7 +3,7 @@ package com.example.studypal.controller.guiControllerCLI.studenteCLI;
 import com.example.studypal.bean.BaseInfoBean;
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.RipetizioneInfoBean;
-import com.example.studypal.controller.applicationController.studente.CercaRipetizioneController;
+import com.example.studypal.controller.applicationController.studente.PrenotaRipetizioneController;
 import com.example.studypal.other.Printer;
 import com.example.studypal.pattern.state.AbstractState;
 import com.example.studypal.pattern.state.StateMachineImpl;
@@ -75,6 +75,7 @@ public class CercaRipetizioneCLI extends AbstractState {
 
     }
 
+
     public void ricercaMethod() {
         if (materia == null || materia.isEmpty()) {
             Printer.println("Non hai inserito la materia");
@@ -98,7 +99,7 @@ public class CercaRipetizioneCLI extends AbstractState {
         ripetizioneInfoBean = new RipetizioneInfoBean(materia);
 
         BaseInfoBean baseInfoBean = new BaseInfoBean(materia);
-        CercaRipetizioneController cercaRipetizioneController = new CercaRipetizioneController();
+        PrenotaRipetizioneController cercaRipetizioneController = new PrenotaRipetizioneController();
         risultatiRicercaBean = cercaRipetizioneController.ricercaMethod(baseInfoBean);
 
         return risultatiRicercaBean;
@@ -129,8 +130,8 @@ public class CercaRipetizioneCLI extends AbstractState {
         List<Boolean> giorniList = parseGiorni(giorni);
 
         ripetizioneInfoBean = new RipetizioneInfoBean(materia, inPresenze, onlinee, luoghi, giorniList, tariffa, email);
-        CercaRipetizioneController cercaRipetizioneController = new CercaRipetizioneController();
-        risultatiRicercaBean = cercaRipetizioneController.ricercaMethod(ripetizioneInfoBean);
+        PrenotaRipetizioneController prenotaRipetizioneController = new PrenotaRipetizioneController();
+        risultatiRicercaBean = prenotaRipetizioneController.ricercaMethod(ripetizioneInfoBean);
 
         return risultatiRicercaBean;
     }
