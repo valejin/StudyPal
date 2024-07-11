@@ -35,7 +35,14 @@ public class GestisciPrenotazioniController extends GestisciPrenotazioniGui {
 
             //passo la lista di model alla lista di BEAN
             for (PrenotazioneModel risultato : risultatiRicerca) {
-                PrenotazioneBean risultatoBean = new PrenotazioneBean(risultato.getIdRichiesta(), risultato.getNome(), risultato.getCognome(), risultato.getEmailTutor(), risultato.getEmailStudente(), risultato.getMateria(), risultato.getModLezione(), risultato.getTariffa(), risultato.getGiorno(), risultato.getNote(), risultato.getStato());
+                LoggedInUserBean userBean = new LoggedInUserBean(risultato.getEmailTutor(), risultato.getNome(), risultato.getCognome());
+                List<Integer> valori = new ArrayList<>();
+                valori.add(risultato.getModLezione());
+                valori.add(risultato.getTariffa());
+                valori.add(risultato.getStato());
+                PrenotazioneBean risultatoBean = new PrenotazioneBean(risultato.getIdRichiesta(), userBean,
+                        risultato.getEmailStudente(), risultato.getMateria(), risultato.getGiorno(),
+                        risultato.getNote(), valori);
 
                 prenotazioneBean.add(risultatoBean);
             }
@@ -62,7 +69,15 @@ public class GestisciPrenotazioniController extends GestisciPrenotazioniGui {
         List<PrenotazioneBean> prenotazioneBean = new ArrayList<>();
 
         for (PrenotazioneModel risultato : richiesteList) {
-            PrenotazioneBean risultatoBean = new PrenotazioneBean(risultato.getIdRichiesta(), risultato.getNome(), risultato.getCognome(), risultato.getEmailTutor(), risultato.getEmailStudente(), risultato.getMateria(), risultato.getModLezione(), risultato.getTariffa(), risultato.getGiorno(), risultato.getNote(), risultato.getStato());
+            LoggedInUserBean userBean = new LoggedInUserBean(risultato.getEmailTutor(), risultato.getNome(), risultato.getCognome());
+
+            //risultato.getModLezione(), risultato.getTariffa(), risultato.getStato()
+
+            List<Integer> valori = new ArrayList<>();
+            valori.add(risultato.getModLezione());
+            valori.add(risultato.getTariffa());
+            valori.add(risultato.getStato());
+            PrenotazioneBean risultatoBean = new PrenotazioneBean(risultato.getIdRichiesta(), userBean, risultato.getEmailStudente(), risultato.getMateria(), risultato.getGiorno(), risultato.getNote(), valori);
 
             prenotazioneBean.add(risultatoBean);
         }

@@ -15,9 +15,6 @@ public class GestisciPrenotazioniStudenteController {
 
     private LoggedInUserBean user;
 
-    /* todo: questo quasi sicuramente possiamo unirlo al controller applicativo del tutor e farne uno solo,
-    *   modificando la query in modo da cercare una volta nella colonna emailTutor e un'altra nella colonna emailStudente*/
-
     public GestisciPrenotazioniStudenteController(LoggedInUserBean user){
         this.user = user;
     }
@@ -35,9 +32,16 @@ public class GestisciPrenotazioniStudenteController {
 
             /* converto i model a bean per restituirli al controller grafico*/
             for (PrenotazioneModel richiesta: listaRichieste){
-                PrenotazioneBean richiestaBean = new PrenotazioneBean(richiesta.getIdRichiesta(), richiesta.getNome(), richiesta.getCognome(),  richiesta.getEmailTutor(),
-                        richiesta.getEmailStudente(), richiesta.getMateria(), richiesta.getModLezione(),
-                        richiesta.getTariffa(), richiesta.getGiorno(), richiesta.getNote(), richiesta.getStato());
+                LoggedInUserBean tutorInfo = new LoggedInUserBean(richiesta.getEmailTutor(), richiesta.getNome(), richiesta.getCognome());
+
+                List<Integer> valori = new ArrayList<>();
+                valori.add(richiesta.getModLezione());
+                valori.add(richiesta.getTariffa());
+                valori.add(richiesta.getStato());
+
+                PrenotazioneBean richiestaBean = new PrenotazioneBean(richiesta.getIdRichiesta(), tutorInfo,
+                        richiesta.getEmailStudente(), richiesta.getMateria(), richiesta.getGiorno(), richiesta.getNote(), valori);
+
                 listaRichiesteBean.add(richiestaBean);
             }
 

@@ -1,5 +1,8 @@
 package com.example.studypal.bean;
 
+
+import java.util.List;
+
 public class PrenotazioneBean {
 
     private int idRichiesta;
@@ -16,22 +19,22 @@ public class PrenotazioneBean {
 
     public PrenotazioneBean(){    }
 
+    public PrenotazioneBean(Integer idRichiesta, LoggedInUserBean tutorInfo, String emailStudente, String materia, String giorno, String note, List<Integer> valori) {
 
+        /*l'array di interi contiene ordinatamente: modalità di lezione, tariffa, stato*/
 
-    public PrenotazioneBean(Integer idRichiesta, String nome, String cognome, String emailTutor, String emailStudente, String materia, int modLezione, int tariffa, String giorno, String note, int stato) {
         this.idRichiesta = idRichiesta;
-        this.nome = nome;
-        this.cognome = cognome;
-        this.emailTutor = emailTutor;
+        this.nome = tutorInfo.getNome();
+        this.cognome = tutorInfo.getCognome();
+        this.emailTutor = tutorInfo.getEmail();
         this.emailStudente = emailStudente;
         this.materia = materia;
-        this.modLezione = modLezione;
-        this.tariffa = tariffa;
         this.giorno = giorno;
         this.note = note;
-        this.stato = stato;
+        this.modLezione = valori.get(0);
+        this.tariffa = valori.get(1);
+        this.stato = valori.get(2);
     }
-
 
     public String getNome() {
         return nome;

@@ -1,5 +1,7 @@
 package com.example.studypal.model;
 
+import com.example.studypal.bean.LoggedInUserBean;
+
 public class RipetizioneInfoModel extends BaseInfoModel {
 
     /*
@@ -75,10 +77,6 @@ public class RipetizioneInfoModel extends BaseInfoModel {
         this.cognome = cognome;
     }
 
-    public String getMaterie() {
-        return materie;
-    }
-
     public void setMaterie(String materie) {
         this.materie = materie;
     }
@@ -87,17 +85,17 @@ public class RipetizioneInfoModel extends BaseInfoModel {
     public RipetizioneInfoModel(){ }
 
     //costruttore non di default, con 2 attributi aggiuntivi (nome, cognome) - necessario per risultati della ricerca
-    public RipetizioneInfoModel(String nome, String cognome, String materie, Boolean inPresenza, Boolean online, String luogo, String giorni, Integer tariffa, String email){
+    public RipetizioneInfoModel(LoggedInUserBean user, String materie, Boolean inPresenza, Boolean online, String luogo, String giorni, Integer tariffa){
         super(materie);
-        this.nome = nome;
-        this.cognome = cognome;
+        this.nome = user.getNome();
+        this.cognome = user.getCognome();
         this.materie = materie;
         this.inPresenza = inPresenza;
         this.online = online;
         this.luogo = luogo;
         this.giorni = giorni;
         this.tariffa = tariffa;
-        this.email = email;
+        this.email = user.getEmail();
 
     }
 
