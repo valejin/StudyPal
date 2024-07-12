@@ -31,9 +31,7 @@ public class PrenotazioneModel {
         this.note = note;
         this.stato = stato;
     }
-/*
-    public PrenotazioneModel(int idrichieste, String emailTutor, String emailStudente, String materia, int modLezione, int tariffa, String giorni, String note, int stato) {
-    }*/
+
 
     public String getNome() {
         return nome;
