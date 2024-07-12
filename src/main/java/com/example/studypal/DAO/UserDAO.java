@@ -1,13 +1,12 @@
 package com.example.studypal.DAO;
 
-import com.example.studypal.Query.QueryLogin;
+import com.example.studypal.query.QueryLogin;
 import com.example.studypal.exceptions.CredenzialiSbagliateException;
 import com.example.studypal.exceptions.EmailAlreadyInUseException;
 import com.example.studypal.exceptions.UtenteInesistenteException;
 import com.example.studypal.model.CredenzialiModel;
 import com.example.studypal.model.UserModel;
 import com.example.studypal.other.Connect;
-import com.example.studypal.other.Printer;
 
 import java.sql.*;
 import java.util.logging.Logger;

@@ -5,10 +5,7 @@ import com.example.studypal.model.PrenotazioneModel;
 import com.example.studypal.other.Connect;
 import com.example.studypal.other.Printer;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -66,7 +63,7 @@ public class PrenotazioneDAO {
     /* todo: richieste arrivate e richieste inviate fanno la stessa cosa! Se facessimo setString impostandola a emailTutor/emailStudente facendo un controllo su user.getRuolo?*/
     List<PrenotazioneModel> risultatiRicerca = new ArrayList<>();
 
-    private String query;
+    private String sql;
 
     /*--------------Gestione Prenotazioni (TUTOR): prendere le richieste arrivate da DB ---------------------------*/
     /*--------------Gestione Prenotazioni (TUTOR): prendere le prenotazioni arrivate da DB ------------------------*/
@@ -78,27 +75,24 @@ public class PrenotazioneDAO {
         //viene passato il userModel per prendere email del tutor
 
         Connection connection;
-        PreparedStatement statement;
-        ResultSet rs;
-
-
-        //Printer.println("Cerco le Richieste di prenotazione");
+        PreparedStatement statement = null;
+        ResultSet rs = null;
 
         //query per la ricerca di email del tutor nella lista di tutte le richieste
         if(flag == 0) {
             //qui ho le richieste in attesa
-            query = "SELECT * FROM richieste WHERE emailTutor = ? AND stato = 0";
+            sql = "SELECT * FROM richieste WHERE emailTutor = ? AND stato = 0";
         }else if(flag == 1){
             //qui ho le richieste confermate =>prenotazioni attive
-            query = "SELECT * FROM richieste WHERE emailTutor = ? AND stato = 1";
+            sql = "SELECT * FROM richieste WHERE emailTutor = ? AND stato = 1";
         }else if(flag == 2){
-            query = "SELECT * FROM richieste WHERE emailTutor = ? AND stato = 2";
+            sql = "SELECT * FROM richieste WHERE emailTutor = ? AND stato = 2";
         }
 
 
         try{
             connection = Connect.getInstance().getDBConnection();
-            statement = connection.prepareStatement(query);
+            statement = connection.prepareStatement(sql);
 
 
             //in base al valore del flag: flag == 0 richieste arrivate; flag == 1 prenotazioni attive
@@ -115,7 +109,6 @@ public class PrenotazioneDAO {
                 do{
                     //popolo una nuova istanza di PrenotazioneModel per ritornare al CtlApplicativo
                     PrenotazioneModel risultatoCorrente = new PrenotazioneModel(rs.getInt("idrichieste"), rs.getString("nomeTutor"), rs.getString("cognomeTutor"), rs.getString("emailTutor"), rs.getString("emailStudente"), rs.getString("materia"), rs.getInt("modLezione"), rs.getInt("tariffa"), rs.getString("giorni"), rs.getString("note"), rs.getInt("stato"));
-                    //Printer.println("   " + rs.getString("emailStudente"));
 
                     //aggiunggo la tupla in lista dei risultati di ricerca
                     risultatiRicerca.add(risultatoCorrente);
@@ -130,6 +123,9 @@ public class PrenotazioneDAO {
         }catch(SQLException e){
             Printer.println("Non ci sono le richieste arrivate.");
             logger.severe("errore in PrenotazioneDAO " + e.getMessage());
+        }finally {
+            // Chiusura delle risorse
+            closeResources(statement,rs);
         }
 
         return risultatiRicerca;
@@ -149,25 +145,25 @@ public class PrenotazioneDAO {
         List<PrenotazioneModel> listaRichieste = new ArrayList<>();
 
         Connection connection;
-        PreparedStatement statement;
-        ResultSet rs;
+        PreparedStatement statement = null;
+        ResultSet rs = null;
 
         if (flag == 0){
             //richieste inviate in attesa di conferma
-            query = "SELECT * FROM richieste WHERE emailStudente = ? AND stato = 0";
+            sql = "SELECT * FROM richieste WHERE emailStudente = ? AND stato = 0";
 
         } else if (flag == 1){
             //richieste confermate (prenotazioni attive)
-            query = "SELECT * FROM richieste WHERE emailStudente = ? AND stato = 1";
+            sql = "SELECT * FROM richieste WHERE emailStudente = ? AND stato = 1";
 
         } else if (flag == 2){
-            query = "SELECT * FROM richieste WHERE emailStudente = ? AND stato = 2";
+            sql = "SELECT * FROM richieste WHERE emailStudente = ? AND stato = 2";
 
         }
 
         try{
             connection = Connect.getInstance().getDBConnection();
-            statement = connection.prepareStatement(query);
+            statement = connection.prepareStatement(sql);
             statement.setString(1, email);
 
             rs = statement.executeQuery();
@@ -176,7 +172,6 @@ public class PrenotazioneDAO {
 
                 int i = 0;
                 do {
-                    //Printer.println("richiesta n." + i);
                     PrenotazioneModel richiesta = new PrenotazioneModel(rs.getInt("idrichieste"), rs.getString("nomeTutor"), rs.getString("cognomeTutor"), rs.getString("emailTutor"),
                             rs.getString("emailStudente"), rs.getString("materia"),
                             rs.getInt("modLezione"), rs.getInt("tariffa"),
@@ -186,12 +181,13 @@ public class PrenotazioneDAO {
                 } while (rs.next());
 
             } else {
-                //Printer.println("Nessuna richiesta in attesa di conferma per l'account " + email + ".");
                 throw new NonProduceRisultatoException();
             }
 
         } catch (SQLException e) {
             Printer.println("Errore in PrenotazioneDAO (metodo: richiesteInviate)");
+        } finally {
+            closeResources(statement,rs);
         }
         return listaRichieste;
     }
@@ -252,7 +248,6 @@ public class PrenotazioneDAO {
 
     public void recensioneMethod(int idRichiesta, int recensione){
 
-        //System.out.println("id: " + idRichiesta + " recensione: " + recensione);
         Connection connection;
         PreparedStatement statement;
         String query ="UPDATE richieste SET recensione = ? WHERE idrichieste = ?";
@@ -269,5 +264,27 @@ public class PrenotazioneDAO {
         }
         Printer.println("Recensione salvata con successo.");
     }
+
+
+
+    /** Metodo utilizzato per chiudere le risorse utilizzate */
+    private void closeResources(Statement stmt, ResultSet rs) {
+        try {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stmt != null) {
+                stmt.close();
+            }
+        } catch (SQLException e) {
+            handleDAOException(e);
+        }
+    }
+
+
+    private void handleDAOException(Exception e) {
+        Printer.errorPrint(String.format("PrenotazioneDAO: %s", e.getMessage()));
+    }
+
 
 }
