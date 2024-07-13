@@ -1,6 +1,5 @@
 package com.example.studypal.pattern.state;
 
-import java.util.List;
 
 public abstract class AbstractState {
 
@@ -27,8 +26,8 @@ public abstract class AbstractState {
 
     public void entry(StateMachineImpl contextSM){
         //metodo per far entrare la CLI (concrete state machine) nello stato corrente
+    }
 
-    };
     public void exit(StateMachineImpl contextSM){}
 
 

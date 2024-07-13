@@ -13,8 +13,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import javafx.util.Callback;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -120,62 +118,83 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
         // Aggiungi gli elementi alla TableView
         risultatiTable.getItems().addAll(tutorList);
 
-
         // Aggiungi una cell factory personalizzata alla colonna "nome"
-        nome.setCellFactory(new Callback<>() {
-            @Override
-            public TableCell<RipetizioneInfoBean, String> call(TableColumn<RipetizioneInfoBean, String> param) {
-                return new TableCell<RipetizioneInfoBean, String>() {
-                    @Override
-                    protected void updateItem(String item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (item != null) {
-                            setText(item);
-                            setStyle("-fx-text-fill: blue; -fx-underline: true; -fx-cursor: hand;");
-                            setOnMouseClicked(event -> {
-                                RipetizioneInfoBean tutorSelezionato = getTableView().getItems().get(getIndex());
-                                apriProfiloTutor(tutorSelezionato);
-                            });
-                        } else {
-                            setText(null);
-                            setStyle(null);
-                            setOnMouseClicked(null);
-                        }
-                    }
-                };
-            }
-        });
-
-
-
+        nome.setCellFactory(param -> new NomeCell());
 
         // Imposta la factory per la colonna "Richiedi"
-        prenota.setCellFactory(new Callback<>() {
-            @Override
-            public TableCell<RipetizioneInfoBean, Button> call(TableColumn<RipetizioneInfoBean, Button> param) {
-                return new TableCell<>() {
-                    final Button btn = new Button("Richiedi");
+        prenota.setCellFactory(param -> new RichiediButtonCell());
 
-                    {
-                        btn.setOnAction(event -> {
-                            RipetizioneInfoBean tutor = getTableView().getItems().get(getIndex());
-                            scegliTutor(tutor);
-                        });
-                    }
-
-                    @Override
-                    protected void updateItem(Button item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty) {
-                            setGraphic(null);
-                        } else {
-                            setGraphic(btn);
-                        }
-                    }
-                };
-            }
-        });
     }
+
+
+
+
+
+
+    public class NomeCell extends TableCell<RipetizioneInfoBean, String> {
+        @Override
+        protected void updateItem(String item, boolean empty) {
+            super.updateItem(item, empty);
+            if (item != null) {
+                setText(item);
+                setStyle("-fx-text-fill: blue; -fx-underline: true; -fx-cursor: hand;");
+                setOnMouseClicked(event -> {
+                    RipetizioneInfoBean tutorSelezionato = getTableView().getItems().get(getIndex());
+                    apriProfiloTutor(tutorSelezionato);
+                });
+            } else {
+                setText(null);
+                setStyle(null);
+                setOnMouseClicked(null);
+            }
+        }
+
+    }
+
+
+
+    public class RichiediButtonCell extends TableCell<RipetizioneInfoBean, Button> {
+        private final Button btn = new Button("Richiedi");
+
+        public RichiediButtonCell() {
+            btn.setOnAction(event -> {
+                RipetizioneInfoBean tutor = getTableView().getItems().get(getIndex());
+                scegliTutor(tutor);
+            });
+        }
+
+        @Override
+        protected void updateItem(Button item, boolean empty) {
+            super.updateItem(item, empty);
+            if (empty) {
+                setGraphic(null);
+            } else {
+                setGraphic(btn);
+            }
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

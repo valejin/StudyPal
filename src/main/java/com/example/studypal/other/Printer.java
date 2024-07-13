@@ -1,6 +1,5 @@
 package com.example.studypal.other;
 
-import java.sql.SQLOutput;
 
 
 //classe che si occupa la stampa di messaggi

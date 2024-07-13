@@ -67,7 +67,7 @@ public class InitialState extends AbstractState {
 
     @Override
     public void exit(StateMachineImpl stateMachine){
-
+        //è il metodo eseguito all'uscita dallo stato corrente
     }
 
 }

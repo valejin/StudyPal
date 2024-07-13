@@ -14,8 +14,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import javafx.util.Callback;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -68,32 +66,35 @@ public class RichiesteStudenteGui extends HomeStudenteGui{
 
         richiesteTable.getItems().addAll(richiesteList);
 
-        /* gestione del pulsante per visualizzare più informazioni riguardo la prenotazione*/
-        visualizza.setCellFactory(new Callback<>() {
-            @Override
-            public TableCell<PrenotazioneBean, Button> call(TableColumn<PrenotazioneBean, Button> param) {
-                return new TableCell<>() {
-                    final Button btn = new Button("visualizza");
-                    {
-                        btn.setOnAction(event -> {
-                            PrenotazioneBean prenotazione = getTableView().getItems().get(getIndex());
-                            visualizza(prenotazione);
-                        });
-                    }
+        // gestione del pulsante per visualizzare più informazioni riguardo la prenotazione
+        visualizza.setCellFactory(param -> new VisualizzaButtonCell());
 
-                    @Override
-                    protected void updateItem(Button item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty) {
-                            setGraphic(null);
-                        } else {
-                            setGraphic(btn);
-                        }
-                    }
-                };
-            }
-        });
     }
+
+
+    public class VisualizzaButtonCell extends TableCell<PrenotazioneBean, Button> {
+        private final Button btn = new Button("visualizza");
+
+        public VisualizzaButtonCell() {
+            btn.setOnAction(event -> {
+                PrenotazioneBean prenotazione = getTableView().getItems().get(getIndex());
+                visualizza(prenotazione);
+            });
+        }
+
+        @Override
+        protected void updateItem(Button item, boolean empty) {
+            super.updateItem(item, empty);
+            if (empty) {
+                setGraphic(null);
+            } else {
+                setGraphic(btn);
+            }
+        }
+
+    }
+
+
 
     public void visualizza(PrenotazioneBean prenotazioneBean) {
 

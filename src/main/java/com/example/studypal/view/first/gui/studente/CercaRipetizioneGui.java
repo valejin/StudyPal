@@ -179,16 +179,16 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
     /*-------------------------------------RICERCA PER SOLA MATERIA---------------------------------------------------*/
     public   List<RipetizioneInfoBean>  ricercaMateria(){
 
-        String materia = this.cercaMateria.getText();
-        ripetizioneInfoBean = new RipetizioneInfoBean(materia);
-        Printer.println("La materia inserita è: " + materia);
+        String subject = this.cercaMateria.getText();
+        ripetizioneInfoBean = new RipetizioneInfoBean(subject);
+        Printer.println("La subject inserita è: " + subject);
 
         //prendo un BEAN base e inserisco info
-        BaseInfoBean baseInfoBean = new BaseInfoBean(materia);
+        BaseInfoBean baseInfoBean = new BaseInfoBean(subject);
 
         PrenotaRipetizioneController prenotaRipetizioneController = new PrenotaRipetizioneController();
 
-        //chiama il controller applicativo e gli passa il BEAN che contiene la materia
+        //chiama il controller applicativo e gli passa il BEAN che contiene la subject
         risultatiRicercaBean = prenotaRipetizioneController.ricercaMethod(baseInfoBean);
 
 
@@ -215,22 +215,22 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
     public List<RipetizioneInfoBean> ricercaConFiltri() {
 
         /*
-        prendo luogo, inPresenza, online, giorno, tariffa da BEAN
+        prendo place, inPresence, web, giorno, rate da BEAN
         */
-        String materia;
-        String luogo;
-        boolean inPresenza = false;
-        boolean online = false;
-        int tariffa;
+        String mat;
+        String place;
+        boolean inPresence = false;
+        boolean web = false;
+        int rate;
         String email = this.user.getEmail();
 
         //i campi sono già stati controllati se sono vuoti in ricercaMethod
         //prendo i dati inseriti dall'utente
 
-        materia = this.cercaMateria.getText();
+        mat = this.cercaMateria.getText();
 
         if (this.cercaMateria.getText().isEmpty()) {
-            Printer.println("Non hai inserito la materia");
+            Printer.println("Non hai inserito la mat");
             campiError.setText("Campo obbligatorio");
             return Collections.emptyList();
         } else {
@@ -238,12 +238,12 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         }
 
         Printer.println("FILTRI PER LA RICERCA:");
-        Printer.println("   -Materia: " + materia);
+        Printer.println("   -Materia: " + mat);
 
-        luogo = this.luogo.getValue();
+        place = this.luogo.getValue();
         Printer.print("   -Luogo: ");
         if (this.luogo.getValue() != null) {
-            Printer.println(luogo);
+            Printer.println(place);
         } else {
             Printer.println("");
         }
@@ -251,11 +251,11 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         //checkBox: modalità di lezione ------------------------------------------------
         Printer.print("   -Modalità di lezione: ");
         if (this.inPresenza.isSelected()) {
-            inPresenza = true;
+            inPresence = true;
             Printer.println("in presenza");
             if (this.luogo.getSelectionModel().isEmpty() && this.luogo.getValue()==null) {
-                Printer.errorPrint("Seleziona un luogo");
-                luogoError.setText("Seleziona un luogo");
+                Printer.errorPrint("Seleziona un place");
+                luogoError.setText("Seleziona un place");
                 return Collections.emptyList();
             } else {
                 luogoError.setVisible(false);
@@ -263,8 +263,8 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         }
 
         if (this.online.isSelected()) {
-            online = true;
-            Printer.println("online");
+            web = true;
+            Printer.println("web");
         }
 
         if (!this.inPresenza.isSelected() && !this.online.isSelected()) {
@@ -272,15 +272,15 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         }
 
         //menuButton di giono-------------------------------------------------------
-        List <Boolean> giorni = getGiorni(listaCheckbox);
-        Printer.println("   -Giorni selezionati: " + giorni);
+        List <Boolean> days = getGiorni(listaCheckbox);
+        Printer.println("   -Giorni selezionati: " + days);
 
         //tariffaSlider---------------------------------------------------
-        tariffa = (int) Math.round(this.tariffaSlider.getValue());
-        Printer.println("   -Tariffa massima: " + tariffa);
+        rate = (int) Math.round(this.tariffaSlider.getValue());
+        Printer.println("   -Tariffa massima: " + rate);
 
         //istanzio un RipetizioneInfoBean
-        ripetizioneInfoBean = new RipetizioneInfoBean(materia, inPresenza, online, luogo, giorni, tariffa, email);
+        ripetizioneInfoBean = new RipetizioneInfoBean(mat, inPresence, web, place, days, rate, email);
 
         //istanzio un controller applicativo e gli passo la lista di Bean contenente i risultati della ricerca
         PrenotaRipetizioneController cercaRipetizioneController = new PrenotaRipetizioneController();
@@ -294,11 +294,11 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
 
     /*---------------------funzione per leggere le checkbox selezionate dall'utente-----------------------------------*/
     public List<Boolean> getGiorni(List<CheckBox> listaCheckbox) {
-        List<Boolean> giorni = new ArrayList<>();
+        List<Boolean> day = new ArrayList<>();
         for (CheckBox checkBox : listaCheckbox) {
-            giorni.add(checkBox.isSelected());
+            day.add(checkBox.isSelected());
         }
-        return giorni;
+        return day;
     }
 
     /*-----------------------------funzione che controlla se sono stati selezionati giorni----------------------------*/

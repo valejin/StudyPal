@@ -16,7 +16,6 @@ public class Starter extends Application {
         launch();
     }
 
-    //todo: qui voglio implementare polimorfismo! si può fare con due classi che specializzano la classe starter
 
     @Override
     public void start(Stage stage) throws IOException {

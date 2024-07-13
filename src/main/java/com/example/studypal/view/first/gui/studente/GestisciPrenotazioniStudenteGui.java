@@ -39,7 +39,6 @@ public class GestisciPrenotazioniStudenteGui extends HomeStudenteGui{
             stage.setScene(scene);
         } catch (IOException e) {
             logger.severe("errore in GestisciPrenotazioniStudenteGui (caricamento richieste inviate) " + e.getMessage());
-            //e.printStackTrace();
         }
 
     }

@@ -36,7 +36,6 @@ public class GestisciPrenotazioniGui extends HomeTutorGui {
             stage.setScene(scene);
         } catch (IOException e) {
             logger.severe("errore in GestisciPrenotazioniGuiController " + e.getMessage());
-           // e.printStackTrace();
         }
     }
 
@@ -53,8 +52,7 @@ public class GestisciPrenotazioniGui extends HomeTutorGui {
             Stage stage = (Stage) sfondoChiaro.getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {
-            logger.severe("errore in GestisciPrenotazioniGuiController " + e.getMessage());
-            e.printStackTrace();
+            logger.severe("Errore in GestisciPrenotazioniGuiController " + e.getMessage());
         }
     }
 
@@ -69,7 +67,6 @@ public class GestisciPrenotazioniGui extends HomeTutorGui {
             stage.setScene(scene);
         } catch (IOException e) {
             logger.severe("errore in GestisciPrenotazioniGuiController " + e.getMessage());
-            e.printStackTrace();
         }
 
     }

@@ -156,7 +156,6 @@ public class RegistrazioneGuiController {
     public void goToLogin () {
         try {
             FXMLLoader loader = new FXMLLoader(RegistrazioneGuiController.class.getResource("/com/example/studypal/view/login.fxml"));
-         //   loader.setControllerFactory(c -> new LoginGuiController());
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
 
@@ -165,7 +164,7 @@ public class RegistrazioneGuiController {
                 stage.setScene(scene);
                 stage.show();
             } else {
-                System.err.println("Impossibile ottenere la finestra di Login.");
+                Printer.errorPrint("Impossibile ottenere la finestra di Login.");
             }
 
             assert stage != null;

@@ -102,12 +102,9 @@ public class LoginGuiController {
             FXMLLoader loader;
 
             if (isTutor) {
-               // System.out.println("siamo:" + isTutor);
                 loader = new FXMLLoader(LoginGuiController.class.getResource("/com/example/studypal/view/tutor/homeTutor.fxml"));
                 loader.setControllerFactory(c -> new HomeTutorGui(loggedInUserBean));
             } else {
-              //  System.out.println("siamo:" + isTutor);
-
                 loader = new FXMLLoader(LoginGuiController.class.getResource("/com/example/studypal/view/studente/homeStudente.fxml"));
                 loader.setControllerFactory(c -> new HomeStudenteGui(loggedInUserBean));
             }
