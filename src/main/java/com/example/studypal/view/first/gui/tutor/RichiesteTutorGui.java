@@ -17,7 +17,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -81,34 +80,34 @@ public class RichiesteTutorGui extends GestisciPrenotazioniGui implements Observ
         risultatiTable.getItems().addAll(richiesteList);
 
         //Imposta la factory per la colonna "Visualizza"
-        visualizza.setCellFactory(new Callback<>() {
-            @Override
-            public TableCell<PrenotazioneBean, Button> call(TableColumn<PrenotazioneBean, Button> param) {
-                return new TableCell<>() {
-                    final Button btn = new Button("Visualizza");
+        visualizza.setCellFactory(param -> new VisualizzaButtonCell());
 
-                    {
-                        btn.setOnAction(event -> {
-                            PrenotazioneBean bean = getTableView().getItems().get(getIndex());
-
-                            visualizzaRichiesta(bean);
-
-                        });
-                    }
-
-                    @Override
-                    protected void updateItem(Button item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty) {
-                            setGraphic(null);
-                        } else {
-                            setGraphic(btn);
-                        }
-                    }
-                };
-            }
-        });
     }
+
+
+
+    public class VisualizzaButtonCell extends TableCell<PrenotazioneBean, Button> {
+        private final Button btn = new Button("Visualizza");
+
+        public VisualizzaButtonCell() {
+            btn.setOnAction(event -> {
+                PrenotazioneBean bean = getTableView().getItems().get(getIndex());
+                visualizzaRichiesta(bean);
+            });
+        }
+
+        @Override
+        protected void updateItem(Button item, boolean empty) {
+            super.updateItem(item, empty);
+            if (empty) {
+                setGraphic(null);
+            } else {
+                setGraphic(btn);
+            }
+        }
+
+    }
+
 
 
     /*-------------------------------------------PATTERN OBSERVER-----------------------------------------------------*/
