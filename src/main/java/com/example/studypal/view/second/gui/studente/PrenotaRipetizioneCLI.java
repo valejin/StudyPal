@@ -138,7 +138,7 @@ public class PrenotaRipetizioneCLI extends AbstractState {
 
     public void mostraSecondoMenu(){
         Printer.println("   1. Vai alla Home.");
-        Printer.println("   0. Torna alla gestione delle prenotazioni.");
+        Printer.println("   0. Torna indietro.");
         Printer.print("Opzione scelta: ");
     }
 

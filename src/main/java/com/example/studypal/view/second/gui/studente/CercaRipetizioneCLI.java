@@ -29,7 +29,6 @@ public class CercaRipetizioneCLI extends AbstractState {
     public void action(StateMachineImpl context){
 
 
-
         while (true) {
             Printer.print("Inserisci la materia: ");
             materia = scanner.nextLine();

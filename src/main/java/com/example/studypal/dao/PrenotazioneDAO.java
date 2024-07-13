@@ -256,7 +256,6 @@ public class PrenotazioneDAO {
         } catch(SQLException e){
             Printer.println("Errore in PrenotazioneDAO (metodo: cancellaRichiesta)");
         }
-        Printer.println("Richiesta eliminata con successo.");
     }
 
 

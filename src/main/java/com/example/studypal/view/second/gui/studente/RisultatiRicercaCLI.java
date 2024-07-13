@@ -55,9 +55,11 @@ public class RisultatiRicercaCLI extends AbstractState {
                     Printer.print("Indice del profilo da visualizzare: ");
 
                     secondChoice = scan.nextInt();
-                    if (secondChoice < tutorList.size()){
+                    if (secondChoice < (tutorList.size() + 1)){
                         RipetizioneInfoBean tutorSelezionato = tutorList.get(secondChoice - 1);
                         stampaInfoTutor(tutorSelezionato);
+                        Printer.println(" ");
+                        Printer.print("0. Torna indietro.");
                     } else {
                         Printer.errorPrint("Input invalido. Scegliere un'opzione tra quelle disponibili:  ");
                     }
@@ -115,11 +117,18 @@ public class RisultatiRicercaCLI extends AbstractState {
         Printer.println("   Materie: " + tutorSelezionato.getMateria());
         Printer.println("   Giorni Disponibili: " + tutorSelezionato.getGiorni());
         Printer.println("   Tariffa: " + tutorSelezionato.getTariffa() + "€/h");
-
+        Printer.println("   Lezioni in presenza: " + traduciBool(tutorSelezionato.getInPresenza()));
+        Printer.println("   Lezioni online: " + traduciBool(tutorSelezionato.getOnline()));
     }
 
-    public void traduciBool(){
-
+    public String traduciBool(Boolean b){
+        String valore;
+        if (b.equals(Boolean.TRUE)){
+            valore = "sì";
+        } else {
+            valore = "no";
+        }
+        return valore;
     }
 
 }

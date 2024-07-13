@@ -18,8 +18,6 @@ public class VisualizzaRichiesteStudenteCLI extends AbstractState {
     List<PrenotazioneBean> listRisultati;
     int flag;
 
-    //todo: IMPORTANTE gestire il caso in cui cancelliamo tutte le richieste e poi torniamo indietro, eccezione!!!!!
-
     public VisualizzaRichiesteStudenteCLI(LoggedInUserBean user, PrenotazioneBean prenotazioneBean, List<PrenotazioneBean> list, Integer flag) {
         this.user = user;
         this.dettagliRichiesta = prenotazioneBean;
@@ -68,7 +66,6 @@ public class VisualizzaRichiesteStudenteCLI extends AbstractState {
                         break;
                     case 1:
                         cancellaRichiesta();
-                        System.out.println("SONO QUI");
                         choice = 0;
                         break;
                     default:
