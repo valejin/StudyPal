@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 public class CercaRipetizioneGui extends HomeStudenteGui {
@@ -79,69 +80,66 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
 
     @FXML
     public void initialize() {
+        inizializzaListaCheckbox();
+        selezionaGiorni();
+        impostaValoriPrecedenti();
+        configuraSlider();
+        popolaLuoghi();
+    }
 
+    private void inizializzaListaCheckbox() {
         listaCheckbox = List.of(lunediBox, martediBox, mercolediBox, giovediBox, venerdiBox, sabatoBox, domenicaBox);
-        /* lista usata per iterare attraverso le checkbox e leggerne i valori senza fare troppi if*/
-        if(giorni != null){
-            // Verifica e seleziona i CheckBox in base ai giorni presenti nella stringa
-            if (giorni.contains("L")) {
-                lunediBox.setSelected(true);
-            }
-            if (giorni.contains("Ma")) {
-                martediBox.setSelected(true);
-            }
-            if (giorni.contains("Me")) {
-                mercolediBox.setSelected(true);
-            }
-            if (giorni.contains("G")) {
-                giovediBox.setSelected(true);
-            }
-            if (giorni.contains("V")) {
-                venerdiBox.setSelected(true);
-            }
-            if (giorni.contains("S")) {
-                sabatoBox.setSelected(true);
-            }
-            if (giorni.contains("D")) {
-                domenicaBox.setSelected(true);
+    }
+
+    private void selezionaGiorni() {
+        if (giorni != null) {
+            Map<String, CheckBox> giorniMap = Map.of(
+                    "L", lunediBox,
+                    "Ma", martediBox,
+                    "Me", mercolediBox,
+                    "G", giovediBox,
+                    "V", venerdiBox,
+                    "S", sabatoBox,
+                    "D", domenicaBox
+            );
+            for (Map.Entry<String, CheckBox> entry : giorniMap.entrySet()) {
+                if (giorni.contains(entry.getKey())) {
+                    entry.getValue().setSelected(true);
+                }
             }
         }
+    }
 
-
-        //se siamo tornati indietro dalla pagina dei risultati
-        if (materia != null){ cercaMateria.setText(materia);}
-
-        // Imposta il valore minimo e massimo del Slider
-        tariffaSlider.setMin(5);
-        tariffaSlider.setMax(50);
-        tariffaSlider.setValue(50); // Imposta un valore predefinito(minimo)
-        tariffaSlider.setShowTickLabels(true);
-        tariffaSlider.setShowTickMarks(true);
-        tariffaSlider.setBlockIncrement(1);
-
-        // Per visualizzare dinamicamente il valore di Slider
-        tariffaSlider.valueProperty().addListener((observable, oldValue, newValue) -> tariffaValue.setText(newValue.intValue() + "€"));
-
-        // Verifica se la stringa tariffa non è vuota
+    private void impostaValoriPrecedenti() {
+        if (materia != null) {
+            cercaMateria.setText(materia);
+        }
         if (tariffa != null) {
             tariffaSlider.setValue(tariffa);
         }
-
-
-        //luogo----------------------------------------------
-        luogo.getItems().addAll("Roma", "Milano", "Palermo", "Torino", "Napoli");
-        if(luoghi != null) {
+        if (luoghi != null) {
             luogo.setValue(luoghi);
         }
-
-        //modalità
-        if(inPresenze != null){
-            inPresenza.setSelected(true);
+        if (inPresenze != null) {
+            inPresenza.setSelected(inPresenze);
         }
-        if(onlinee != null){
-            online.setSelected(true);
+        if (onlinee != null) {
+            online.setSelected(onlinee);
         }
+    }
 
+    private void configuraSlider() {
+        tariffaSlider.setMin(5);
+        tariffaSlider.setMax(50);
+        tariffaSlider.setValue(50); // Imposta un valore predefinito (minimo)
+        tariffaSlider.setShowTickLabels(true);
+        tariffaSlider.setShowTickMarks(true);
+        tariffaSlider.setBlockIncrement(1);
+        tariffaSlider.valueProperty().addListener((observable, oldValue, newValue) -> tariffaValue.setText(newValue.intValue() + "€"));
+    }
+
+    private void popolaLuoghi() {
+        luogo.getItems().addAll("Roma", "Milano", "Palermo", "Torino", "Napoli");
     }
 
 

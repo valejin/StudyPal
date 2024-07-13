@@ -122,16 +122,12 @@ public class VisualizzaRichiesteCLI extends AbstractState {
 
 
     private String getMenuTitle() {
-        switch (flag) {
-            case 0:
-                return "Home Tutor -> Gestisci Prenotazioni -> Richieste Arrivate";
-            case 1:
-                return "Home Tutor -> Gestisci Prenotazioni -> Prenotazioni Attive";
-            case 2:
-                return "Home Tutor -> Gestisci Prenotazioni -> Richieste Rifiutate";
-            default:
-                return "Home Tutor -> Gestisci Prenotazioni";
-        }
+        return switch (flag) {
+            case 0 -> "Home Tutor -> Gestisci Prenotazioni -> Richieste Arrivate";
+            case 1 -> "Home Tutor -> Gestisci Prenotazioni -> Prenotazioni Attive";
+            case 2 -> "Home Tutor -> Gestisci Prenotazioni -> Richieste Rifiutate";
+            default -> "Home Tutor -> Gestisci Prenotazioni";
+        };
     }
 
 
