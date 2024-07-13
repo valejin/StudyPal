@@ -15,11 +15,9 @@ import java.util.Scanner;
 public class GestisciProfiloCLI extends AbstractState {
     private final LoggedInUserBean user;
     private RipetizioneInfoBean infoCorrentiProfilo;
-    private final List<Boolean> giorni;
 
     public GestisciProfiloCLI(LoggedInUserBean user) {
         this.user = user;
-        this.giorni = new ArrayList<>();
     }
 
 
@@ -80,43 +78,58 @@ public class GestisciProfiloCLI extends AbstractState {
 
 
 
+
     private void modificaProfilo(Scanner scanner) {
+        String materie = chiediNuoveMaterie(scanner);
+        int tariffa = chiediNuovaTariffa(scanner);
+        String luogo = chiediNuovoLuogo(scanner);
+        boolean inPresenza = chiediModalitaLezione(scanner, "In Presenza");
+        boolean online = chiediModalitaLezione(scanner, "Online");
+        List<Boolean> days = chiediDisponibilitaGiorni(scanner);
+
+        // Crea il bean e invia al controller applicativo
+        RipetizioneInfoBean ripetizioneInfoBean = new RipetizioneInfoBean(materie, inPresenza, online, luogo, days, tariffa, user.getEmail());
+
+        // Stampa i valori a terminale
+        stampaRiepilogoModifiche(materie, inPresenza, online, luogo, ripetizioneInfoBean.convertiGiorni(days), tariffa);
+
+        // Invia le modifiche al controller
+        GestioneProfiloTutorController gestioneProfiloTutorController = new GestioneProfiloTutorController();
+        gestioneProfiloTutorController.gestioneProfiloMethod(ripetizioneInfoBean);
+
+        Printer.println("Modifiche avvenute con successo.");
+    }
+
+    private String chiediNuoveMaterie(Scanner scanner) {
         Printer.println("Inserisci nuove materie: ");
-        String materie = scanner.nextLine();
+        return scanner.nextLine();
+    }
 
-        Printer.println("Inserisci nuova tariffa (in €): ");
-        int tariffa = scanner.nextInt();
+    private int chiediNuovaTariffa(Scanner scanner) {
+        Printer.println("Inserisci nuova tariffa (in €/h   nota: tariffa max 50): ");
+        return scanner.nextInt();
+    }
+
+    private String chiediNuovoLuogo(Scanner scanner) {
         scanner.nextLine(); // Consuma newline
-
         Printer.println("Inserisci luogo (Roma, Milano, Napoli, Palermo, Torino): ");
-        String luogo = scanner.nextLine();
+        return scanner.nextLine();
+    }
 
-        boolean inPresenza;
-        boolean online;
-
+    private boolean chiediModalitaLezione(Scanner scanner, String modalita) {
         Printer.println("Selezioni modalità di lezione: ");
         while (true) {
             try {
-                Printer.println("In Presenza (T/F): ");
-                inPresenza = getBooleanInput(scanner);
-                break;
+                Printer.println(String.format("%s (T/F): ", modalita));
+                return getBooleanInput(scanner);
             } catch (IllegalArgumentException e) {
                 Printer.errorPrint("Input non valido. Inserisci 'T' per true o 'F' per false. ");
             }
         }
+    }
 
-        while (true) {
-            try {
-                Printer.println("Online (T/F): ");
-                online = getBooleanInput(scanner);
-                break;
-            } catch (IllegalArgumentException e) {
-                Printer.errorPrint("Input non valido. Inserisci 'T' per true o 'F' per false.  ");
-            }
-        }
-
-
-        Printer.println("Selezioni days disponibili: ");
+    private List<Boolean> chiediDisponibilitaGiorni(Scanner scanner) {
+        Printer.println("Selezioni giorni disponibili: ");
         List<Boolean> days = new ArrayList<>();
         for (String giorno : new String[]{"Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato", "Domenica"}) {
             while (true) {
@@ -129,34 +142,28 @@ public class GestisciProfiloCLI extends AbstractState {
                 }
             }
         }
+        return days;
+    }
 
-
-
-        // Crea il bean e invia al controller applicativo
-        RipetizioneInfoBean ripetizioneInfoBean = new RipetizioneInfoBean(materie, inPresenza, online, luogo, days, tariffa, user.getEmail());
-
-        // Stampa i valori a terminale
+    private void stampaRiepilogoModifiche(String materie, boolean inPresenza, boolean online, String luogo, String days, int tariffa) {
         Printer.println(" ");
         Printer.println("Riepilogo modifiche dell'utente: " + user.getEmail());
         Printer.println("    Materie: " + materie);
 
-        if(inPresenza == true && online == true){
+        if (inPresenza && online) {
             Printer.println("    Modalità: in presenza & online");
-        } else if (inPresenza == true) {
+        } else if (inPresenza) {
             Printer.println("    Modalità: in Presenza");
-        } else if (online == true) {
+        } else if (online) {
             Printer.println("    Modalità: online");
         }
 
         Printer.println("    Luogo: " + luogo);
-        Printer.println("    Giorni: " + ripetizioneInfoBean.getGiorni());
+        Printer.println("    Giorni: " + days);
         Printer.println("    Tariffa: " + tariffa + "€/h");
-
-        GestioneProfiloTutorController gestioneProfiloTutorController = new GestioneProfiloTutorController();
-        gestioneProfiloTutorController.gestioneProfiloMethod(ripetizioneInfoBean);
-
-        Printer.println("Modifiche avvenute con successo.");
     }
+
+
 
 
     private RipetizioneInfoBean caricaInformazioniProfilo(String email) {
@@ -180,14 +187,11 @@ public class GestisciProfiloCLI extends AbstractState {
 
     private boolean getBooleanInput(Scanner scanner) {
         String input = scanner.nextLine().trim().toUpperCase();
-        switch (input) {
-            case "T":
-                return true;
-            case "F":
-                return false;
-            default:
-                throw new IllegalArgumentException("Input non valido. Inserisci 'T' per true o 'F' per false.");
-        }
+        return switch (input) {
+            case "T" -> true;
+            case "F" -> false;
+            default -> throw new IllegalArgumentException("Input non valido. Inserisci 'T' per true o 'F' per false.");
+        };
     }
 
 
