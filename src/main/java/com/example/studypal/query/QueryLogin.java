@@ -100,20 +100,6 @@ public class QueryLogin {
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     private static void handleException(Exception e) {
         Printer.errorPrint(String.format("QueryLogin: %s", e.getMessage()));
     }
@@ -122,11 +108,8 @@ public class QueryLogin {
 
 
 
-
-
-
-
-
 }
+
+
 
 
