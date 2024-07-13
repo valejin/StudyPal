@@ -103,7 +103,7 @@ public class PrenotaRipetizioneController extends HomeStudenteController {
 
         /*istanzio model e ci inserisco i dati della prenotazione------------------*/
 
-        LoggedInUserBean userTutor = new LoggedInUserBean( prenotazioneBean.getNome(), prenotazioneBean.getCognome(), prenotazioneBean.getEmailTutor());
+        LoggedInUserBean userTutor = new LoggedInUserBean(prenotazioneBean.getEmailTutor(), prenotazioneBean.getNome(), prenotazioneBean.getCognome());
 
         List<Integer> valori = new ArrayList<>();
         valori.add(prenotazioneBean.getModLezione());

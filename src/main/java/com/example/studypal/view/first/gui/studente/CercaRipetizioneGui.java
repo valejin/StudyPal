@@ -154,7 +154,8 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         } else {
             if (this.tariffaSlider.getValue() == 50 &&
                     (!this.inPresenza.isSelected() && !this.online.isSelected()) &&
-                    this.luogo.getSelectionModel().isEmpty() && this.luogo.getValue()==null && Boolean.TRUE.equals(giorniVuoti(listaCheckbox))
+                    this.luogo.getSelectionModel().isEmpty() && this.luogo.getValue()==null &&
+                    Boolean.TRUE.equals(giorniVuoti(listaCheckbox))
 
             ) {
                 //se tutti i campi aggiuntivi sono vuoti, allora la ricerca va fatta solo per materia
