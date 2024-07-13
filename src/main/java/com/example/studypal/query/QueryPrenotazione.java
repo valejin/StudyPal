@@ -8,6 +8,8 @@ import java.sql.Statement;
 
 public class QueryPrenotazione {
 
+    private QueryPrenotazione(){}
+
 
     public static void richiediRipetiz(Statement stmt, PrenotazioneModel prenotazioneModel){
 
