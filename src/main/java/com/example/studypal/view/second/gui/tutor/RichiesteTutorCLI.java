@@ -27,7 +27,6 @@ public class RichiesteTutorCLI extends AbstractState {
     @Override
     public void action(StateMachineImpl context) {
         Scanner scanner = new Scanner(System.in);
-
         int choice = -1;
 
         while (choice != 0) {
@@ -37,23 +36,27 @@ public class RichiesteTutorCLI extends AbstractState {
                 choice = scanner.nextInt();
                 scanner.nextLine(); // Consuma newline
 
-                if (choice == 1) {
-                    visualizzaRichieste(context);
-                    mostraMenu();
-                    break;
-                } else if (choice == 0) {
-                    break;
-                } else {
-                    Printer.errorPrint("Scelta non valida. Riprova.");
-                    break;
-                }
-            }catch (InputMismatchException e){
+                handleChoice(context, choice);
+            } catch (InputMismatchException e) {
                 Printer.errorPrint("Input non valido. Inserisci un numero intero.");
                 scanner.nextLine(); // Consuma l'input non valido
             }
         }
-        goBack(context);   //torno allo stato precedente
+    }
 
+    private void handleChoice(StateMachineImpl context, int choice) {
+        switch (choice) {
+            case 1:
+                visualizzaRichieste(context);
+                mostraMenu();
+                break;
+            case 0:
+                goBack(context);
+                break;
+            default:
+                Printer.errorPrint("Scelta non valida. Riprova.");
+                break;
+        }
     }
 
 
@@ -79,35 +82,36 @@ public class RichiesteTutorCLI extends AbstractState {
                 Printer.println((i + 1) + ". " + prenotazione.getEmailStudente() + " - " + prenotazione.getMateria());
             }
 
-
-            boolean inputValido = false;
-            int scelta = 0;
-
-
-            while(!inputValido) {
-                try {
-
-                    Printer.print("Seleziona una richiesta da visualizzare (0 per tornare indietro): ");
-                    scelta =scanner.nextInt();
-                    scanner.nextLine(); // Consuma newline
-                    inputValido = true; // Imposta inputValido a true se la lettura è andata a buon fine
-
-                    if (scelta < 0 || scelta > richiesteList.size()) {
-                        Printer.errorPrint("Scelta non valida. Riprova.");
-                        inputValido = false; // Riprova se la scelta non è nel range corretto
-                    }
-
-                }catch(InputMismatchException e){
-                    Printer.errorPrint("Input non valido. Inserisci un numero intero.");
-                    scanner.nextLine(); // Consuma l'input non valido
-                }
-            }
-
+            int scelta = chiediScelta(scanner, richiesteList.size());
             if (scelta > 0 && scelta <= richiesteList.size()) {
                 PrenotazioneBean prenotazioneSelezionata = richiesteList.get(scelta - 1);
                 goNext(context, new VisualizzaRichiesteCLI(user, prenotazioneSelezionata, richiesteList, flag)); // Transizione a VisualizzaRichiesteCLI
             }
         }
+    }
+
+    private int chiediScelta(Scanner scanner, int maxSize) {
+        int scelta = 0;
+        boolean inputValido = false;
+
+        while (!inputValido) {
+            try {
+                Printer.print("Seleziona una richiesta da visualizzare (0 per tornare indietro): ");
+                scelta = scanner.nextInt();
+                scanner.nextLine(); // Consuma newline
+
+                if (scelta >= 0 && scelta <= maxSize) {
+                    inputValido = true;
+                } else {
+                    Printer.errorPrint("Scelta non valida. Riprova.");
+                }
+            } catch (InputMismatchException e) {
+                Printer.errorPrint("Input non valido. Inserisci un numero intero.");
+                scanner.nextLine(); // Consuma l'input non valido
+            }
+        }
+
+        return scelta;
     }
 
 

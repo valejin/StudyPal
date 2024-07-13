@@ -32,7 +32,7 @@ public class PrenotazioneDAO {
          */
         Connection connection;
         PreparedStatement statement;
-        //non ci interessa resultSet
+
 
         String query = "INSERT INTO richieste (emailTutor, emailStudente, materia, modLezione, tariffa, giorni, note, nomeTutor, cognomeTutor) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) ";
         try{

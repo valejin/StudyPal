@@ -29,6 +29,7 @@ public class InitialState extends AbstractState {
                 switch (scelta) {
                     case (0):
                         context.setState();
+                        System.exit(0);
                         return;
                     case (1):
                         nextState = new LoginCLI();

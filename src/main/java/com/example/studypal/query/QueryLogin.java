@@ -13,6 +13,9 @@ import java.sql.Statement;
 
 public class QueryLogin {
 
+    private QueryLogin() {
+    }
+
     //controllo email inserito nel LOGIN
     public static void checkEmail(Statement stmt, String email) throws UtenteInesistenteException {
 

@@ -14,7 +14,6 @@ public class Query {
     public static final String VERIFICA_USER = "SELECT * FROM utente WHERE email ='%s' AND password='%s' ";
 
 
-
 /*--------------------Queries Registrazione-------------------*/
     public static final String REGISTRAZIONE = "INSERT INTO utente (email, nome, cognome, password, isTutor) VALUES ('%s', '%s', '%s', '%s', %b)";
 
