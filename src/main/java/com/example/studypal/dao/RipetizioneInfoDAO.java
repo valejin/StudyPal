@@ -59,7 +59,7 @@ public class RipetizioneInfoDAO {
             if(rs.next()) {
 
                 do {
-                    LoggedInUserBean user = new LoggedInUserBean(rs.getString("nome"),rs.getString("cognome" ), rs.getString("email"));
+                    LoggedInUserBean user = new LoggedInUserBean(rs.getString("email"), rs.getString("nome"),rs.getString("cognome" ));
                     RipetizioneInfoModel risultatoCorrente = new RipetizioneInfoModel(user,
                             rs.getString("materie"), rs.getBoolean("inPresenza"),
                             rs.getBoolean("webcam"), rs.getString("luogo"),
@@ -161,7 +161,7 @@ public class RipetizioneInfoDAO {
 
                 //stampo email di Tutor che soddisfanno la query
                 do {
-                    LoggedInUserBean user = new LoggedInUserBean(rs.getString("nome"),rs.getString("cognome" ), rs.getString("email"));
+                    LoggedInUserBean user = new LoggedInUserBean(rs.getString("email"), rs.getString("nome"),rs.getString("cognome" ));
                     RipetizioneInfoModel risultatoCorrente = new RipetizioneInfoModel(user,
                             rs.getString("materie"), rs.getBoolean("inPresenza"),
                             rs.getBoolean("webcam"), rs.getString("luogo"),

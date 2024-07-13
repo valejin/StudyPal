@@ -108,7 +108,7 @@ public class PrenotazioneDAO {
 
                 //prendo email dello studente, materia richiesta, e aggiungo il pulsante VISUALIZZA per ciascun tupla estratta
                 do{
-                    LoggedInUserBean userTutor = new LoggedInUserBean(rs.getString("nomeTutor"), rs.getString("cognomeTutor"), rs.getString("emailTutor"));
+                    LoggedInUserBean userTutor = new LoggedInUserBean(rs.getString("emailTutor"), rs.getString("nomeTutor"), rs.getString("cognomeTutor"));
 
                     List<Integer> valori = new ArrayList<>();
                     valori.add(rs.getInt("modLezione"));
@@ -181,7 +181,7 @@ public class PrenotazioneDAO {
 
                 do {
 
-                    LoggedInUserBean userTutor = new LoggedInUserBean(rs.getString("nomeTutor"), rs.getString("cognomeTutor"), rs.getString("emailTutor"));
+                    LoggedInUserBean userTutor = new LoggedInUserBean(rs.getString("emailTutor"), rs.getString("nomeTutor"), rs.getString("cognomeTutor"));
 
                     List<Integer> valori = new ArrayList<>();
                     valori.add(rs.getInt("modLezione"));
