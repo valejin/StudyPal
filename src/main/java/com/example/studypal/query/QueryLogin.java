@@ -83,9 +83,43 @@ public class QueryLogin {
 
     }
 
+
+
+    public static void registraTutor(Statement stmt, String email, String nome, String cognome){
+        try{
+            String inserisciTutorStmt = String.format(Query.REGISTRAZ_TUTOR, email, nome, cognome);
+            stmt.executeUpdate(inserisciTutorStmt);
+
+        } catch (SQLException e) {
+            handleException(e);
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     private static void handleException(Exception e) {
         Printer.errorPrint(String.format("QueryLogin: %s", e.getMessage()));
     }
+
+
+
+
+
+
 
 
 
