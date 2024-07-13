@@ -5,6 +5,7 @@ import com.example.studypal.exceptions.NonProduceRisultatoException;
 import com.example.studypal.model.PrenotazioneModel;
 import com.example.studypal.other.Connect;
 import com.example.studypal.other.Printer;
+import com.example.studypal.query.QueryPrenotazione;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -31,32 +32,21 @@ public class PrenotazioneDAO {
         fa la query per inserire la richiesta di ripetizione nel database
          */
         Connection connection;
-        PreparedStatement statement;
+        Statement stmt = null;
 
-
-        String query = "INSERT INTO richieste (emailTutor, emailStudente, materia, modLezione, tariffa, giorni, note, nomeTutor, cognomeTutor) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) ";
         try{
             connection = Connect.getInstance().getDBConnection();
-            statement = connection.prepareStatement(query);
+            stmt = connection.createStatement();
 
-            statement.setString(1, prenotazioneModel.getEmailTutor());
-            statement.setString(2, prenotazioneModel.getEmailStudente());
-            statement.setString(3, prenotazioneModel.getMateria());
-            statement.setInt(4, prenotazioneModel.getModLezione());
-            statement.setInt(5, prenotazioneModel.getTariffa());
-            statement.setString(6, prenotazioneModel.getGiorno());
-            statement.setString(7, prenotazioneModel.getNote());
-            statement.setString(8, prenotazioneModel.getNome());
-            statement.setString(9, prenotazioneModel.getCognome());
-
-            //eseguo
-            statement.execute();
-
+            QueryPrenotazione.richiediRipetiz(stmt, prenotazioneModel);
 
         } catch (SQLException e) {
             logger.severe("errore in prenotazioneDAO " + e.getMessage());
             throw e;
             //todo: ??? è necessario rimandarla al controller applicativo?? In teoria questa si verifica solo in caso di errore vero e proprio (dato che è un inserimento)
+        } finally {
+            // Chiusura delle risorse
+            closeResources(stmt,null);
         }
     }
 
