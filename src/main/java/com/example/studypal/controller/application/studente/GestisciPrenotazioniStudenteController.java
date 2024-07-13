@@ -32,15 +32,7 @@ public class GestisciPrenotazioniStudenteController {
 
             /* converto i model a bean per restituirli al controller grafico*/
             for (PrenotazioneModel richiesta: listaRichieste){
-                LoggedInUserBean tutorInfo = new LoggedInUserBean(richiesta.getEmailTutor(), richiesta.getNome(), richiesta.getCognome());
-
-                List<Integer> valori = new ArrayList<>();
-                valori.add(richiesta.getModLezione());
-                valori.add(richiesta.getTariffa());
-                valori.add(richiesta.getStato());
-
-                PrenotazioneBean richiestaBean = new PrenotazioneBean(richiesta.getIdRichiesta(), tutorInfo,
-                        richiesta.getEmailStudente(), richiesta.getMateria(), richiesta.getGiorno(), richiesta.getNote(), valori);
+                PrenotazioneBean richiestaBean = getPrenotazioneBean(richiesta);
 
                 listaRichiesteBean.add(richiestaBean);
             }
@@ -49,6 +41,19 @@ public class GestisciPrenotazioniStudenteController {
             Printer.println("Non sono presenti richieste in attesa di conferma per l'utente " + user.getEmail());
         }
         return listaRichiesteBean;
+    }
+
+    private static PrenotazioneBean getPrenotazioneBean(PrenotazioneModel richiesta) {
+        LoggedInUserBean tutorInfo = new LoggedInUserBean(richiesta.getEmailTutor(), richiesta.getNome(), richiesta.getCognome());
+
+        List<Integer> valori = new ArrayList<>();
+        valori.add(richiesta.getModLezione());
+        valori.add(richiesta.getTariffa());
+        valori.add(richiesta.getStato());
+
+        return new PrenotazioneBean(richiesta.getIdRichiesta(), tutorInfo,
+                richiesta.getEmailStudente(), richiesta.getMateria(), richiesta.getGiorno(), richiesta.getNote(), valori);
+
     }
 
 

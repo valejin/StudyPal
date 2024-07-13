@@ -68,6 +68,7 @@ public class VisualizzaRichiesteStudenteCLI extends AbstractState {
                         break;
                     case 1:
                         cancellaRichiesta();
+                        System.out.println("SONO QUI");
                         choice = 0;
                         break;
                     default:

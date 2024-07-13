@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class HomeStudenteCLI extends AbstractState {
 
     /* Stato HOME*/
-    LoggedInUserBean user;
+    public LoggedInUserBean user;
 
     public HomeStudenteCLI(LoggedInUserBean user){ this.user = user;}
 

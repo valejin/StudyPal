@@ -57,7 +57,7 @@ public class RisultatiRicercaCLI extends AbstractState {
                     secondChoice = scan.nextInt();
                     if (secondChoice < tutorList.size()){
                         RipetizioneInfoBean tutorSelezionato = tutorList.get(secondChoice - 1);
-                        goNext(context, new ProfiloTutorCLI(user, tutorSelezionato));
+                        stampaInfoTutor(tutorSelezionato);
                     } else {
                         Printer.errorPrint("Input invalido. Scegliere un'opzione tra quelle disponibili:  ");
                     }
@@ -106,6 +106,20 @@ public class RisultatiRicercaCLI extends AbstractState {
     @Override
     public void entry(StateMachineImpl context){
         stampaBenvenuto();
+    }
+
+    public void stampaInfoTutor(RipetizioneInfoBean tutorSelezionato){
+        Printer.println("   Nome: " + tutorSelezionato.getNome());
+        Printer.println("   Cognome: " + tutorSelezionato.getCognome());
+        Printer.println("   Email: " + tutorSelezionato.getEmail());
+        Printer.println("   Materie: " + tutorSelezionato.getMateria());
+        Printer.println("   Giorni Disponibili: " + tutorSelezionato.getGiorni());
+        Printer.println("   Tariffa: " + tutorSelezionato.getTariffa() + "€/h");
+
+    }
+
+    public void traduciBool(){
+
     }
 
 }
