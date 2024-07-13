@@ -63,68 +63,56 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
     public RisultatiRicercaGuiController() {
     }
 
-    public void initialize(){
+    @FXML
+    public void initialize() {
+        inizializzaFiltri();
+        abbreviaGiorniTutor();
+        configuraTabella();
+        impostaColonneTabella();
+    }
 
-        /* ------------ FILTRI ----------------*/
-
+    private void inizializzaFiltri() {
         materiaRisultato.setText(filtri.getMateria());
-        if (filtri.getLuogo() != null){
-            luogoRisultato.setText(filtri.getLuogo());
-        } else {
-            luogoRisultato.setText("Non specificato");
-        }
-        if ((filtri.getInPresenza()!= null) || (filtri.getOnline() != null)) {
-            if(Boolean.TRUE.equals(filtri.getInPresenza()) && Boolean.TRUE.equals(filtri.getOnline())){
+        luogoRisultato.setText(filtri.getLuogo() != null ? filtri.getLuogo() : "Non specificato");
+
+        if (filtri.getInPresenza() != null || filtri.getOnline() != null) {
+            if (Boolean.TRUE.equals(filtri.getInPresenza()) && Boolean.TRUE.equals(filtri.getOnline())) {
                 modalitaRisultato.setText("In presenza & Online");
             } else if (Boolean.TRUE.equals(filtri.getOnline())) {
                 modalitaRisultato.setText("Online");
             } else if (Boolean.TRUE.equals(filtri.getInPresenza())) {
                 modalitaRisultato.setText("In presenza");
-            } else if (Boolean.FALSE.equals(filtri.getInPresenza()) && Boolean.FALSE.equals(filtri.getOnline())){
+            } else {
                 modalitaRisultato.setText("In presenza o Online");
             }
         } else {
             modalitaRisultato.setText("In presenza & Online");
         }
-        if (filtri.getTariffa() != null){
-            int value = filtri.getTariffa();
-            tariffaRisultato.setText(value + "€/h");
-        } else {
-            tariffaRisultato.setText("50€/h");
-        }
 
-        if(filtri.getGiorni() != null) {
-            giorniRisultato.setText(filtri.getGiorni());
-        } else {
-            giorniRisultato.setText("Qualsiasi");
-        }
+        tariffaRisultato.setText(filtri.getTariffa() != null ? filtri.getTariffa() + "€/h" : "50€/h");
+        giorniRisultato.setText(filtri.getGiorni() != null ? filtri.getGiorni() : "Qualsiasi");
+    }
 
-
-        /*abbrevio i giorni prima di mostrarli--------------------------*/
-
-        for (RipetizioneInfoBean tutor: this.tutorList){
+    private void abbreviaGiorniTutor() {
+        for (RipetizioneInfoBean tutor : tutorList) {
             tutor.abbreviaGiorni();
         }
+    }
 
+    private void configuraTabella() {
+        risultatiTable.getItems().addAll(tutorList);
+    }
 
-        /* --------------------------TABELLA----------------------------*/
-
+    private void impostaColonneTabella() {
         nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         cognome.setCellValueFactory(new PropertyValueFactory<>("cognome"));
         tariffa.setCellValueFactory(new PropertyValueFactory<>("tariffa"));
         giorni.setCellValueFactory(new PropertyValueFactory<>("giorni"));
 
-
-        // Aggiungi gli elementi alla TableView
-        risultatiTable.getItems().addAll(tutorList);
-
-        // Aggiungi una cell factory personalizzata alla colonna "nome"
         nome.setCellFactory(param -> new NomeCell());
-
-        // Imposta la factory per la colonna "Richiedi"
         prenota.setCellFactory(param -> new RichiediButtonCell());
-
     }
+
 
 
 
