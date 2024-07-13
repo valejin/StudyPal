@@ -1,7 +1,7 @@
 package com.example.studypal.controller.application.studente;
 
-import com.example.studypal.DAO.PrenotazioneDAO;
-import com.example.studypal.DAO.RipetizioneInfoDAO;
+import com.example.studypal.dao.PrenotazioneDAO;
+import com.example.studypal.dao.RipetizioneInfoDAO;
 import com.example.studypal.bean.*;
 import com.example.studypal.model.BaseInfoModel;
 import com.example.studypal.model.PrenotazioneModel;

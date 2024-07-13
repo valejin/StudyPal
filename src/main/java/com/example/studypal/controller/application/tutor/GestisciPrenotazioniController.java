@@ -1,6 +1,6 @@
 package com.example.studypal.controller.application.tutor;
 
-import com.example.studypal.DAO.PrenotazioneDAO;
+import com.example.studypal.dao.PrenotazioneDAO;
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.PrenotazioneBean;
 import com.example.studypal.view.first.gui.tutor.GestisciPrenotazioniGui;
