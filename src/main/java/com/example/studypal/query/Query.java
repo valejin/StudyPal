@@ -24,7 +24,7 @@ public class Query {
     /*Queries Ricerca materia*/
     public static final String RICERCA_MATERIA = "SELECT * FROM tutor WHERE materia= '%s'";
 
-    /*Query*/
-
+    /*Query per inserire la richiesta dello studente */
+    public static final String PRENOTA = "INSERT INTO richieste (emailTutor, emailStudente, materia, modLezione, tariffa, giorni, note, nomeTutor, cognomeTutor) VALUES ('%s', '%s', '%s', '%d', '%d', '%s', '%s', '%s', '%s')";
 
 }
