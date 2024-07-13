@@ -1,4 +1,4 @@
-package com.example.studypal.DAO;
+package com.example.studypal.dao;
 
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.model.BaseInfoModel;

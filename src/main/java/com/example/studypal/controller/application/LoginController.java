@@ -1,6 +1,6 @@
 package com.example.studypal.controller.application;
 
-import com.example.studypal.DAO.UserDAO;
+import com.example.studypal.dao.UserDAO;
 import com.example.studypal.bean.CredenzialiBean;
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.exceptions.UtenteInesistenteException;

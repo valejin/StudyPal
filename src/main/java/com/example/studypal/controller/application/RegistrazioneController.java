@@ -1,6 +1,6 @@
 package com.example.studypal.controller.application;
 
-import com.example.studypal.DAO.UserDAO;
+import com.example.studypal.dao.UserDAO;
 import com.example.studypal.bean.RegistrazioneUserBean;
 import com.example.studypal.exceptions.EmailAlreadyInUseException;
 import com.example.studypal.model.UserModel;

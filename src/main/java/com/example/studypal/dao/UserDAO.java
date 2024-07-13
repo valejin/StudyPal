@@ -1,5 +1,6 @@
-package com.example.studypal.DAO;
+package com.example.studypal.dao;
 
+import com.example.studypal.other.Printer;
 import com.example.studypal.query.QueryLogin;
 import com.example.studypal.exceptions.CredenzialiSbagliateException;
 import com.example.studypal.exceptions.EmailAlreadyInUseException;
@@ -50,7 +51,7 @@ public class UserDAO {
             }
 
         }catch (SQLException e) {
-            logger.severe("errore in userDAO " + e.getMessage());
+            logger.severe("Errore in userDAO " + e.getMessage());
         }catch (UtenteInesistenteException e){
             throw new UtenteInesistenteException();
         }
@@ -82,36 +83,42 @@ public class UserDAO {
     //metodo per controllare se l'email fornita al momento della registrazione è già utilizzata
     public void controllaEmailMethod(UserModel registrazioneModel) throws EmailAlreadyInUseException {
 
-        Connection connection;
-        boolean rs;
-        Statement stmt;
+        Connection connection = null;
+        Statement stmt = null;
 
 
         try {
-
-            //accediamo al db dall'unica istanza di connessione
             connection = Connect.getInstance().getDBConnection();
-
             stmt = connection.createStatement();
+
             String email = registrazioneModel.getEmail();
 
+            // Controlla se l'email è già in uso nel database
+            boolean emailInUse = QueryLogin.emailReg(stmt, email);
 
-            try{
-                rs = QueryLogin.emailReg(stmt, email);
-
-                //se il result set non è vuoto, l'email è già in uso e lanciamo un'eccezione
-                if (rs) {
-                    throw new EmailAlreadyInUseException();
-                }
-
-            } catch(EmailAlreadyInUseException e){
-                //Printer.println("L'email è già registrata");
-                throw e;
+            if (emailInUse) {
+                throw new EmailAlreadyInUseException();
             }
 
-
         } catch (SQLException e) {
-            logger.severe("errore in userDAO " + e.getMessage());
+            logger.severe("Errore in userDAO: " + e.getMessage());
+            // Gestione dell'eccezione SQL, se necessario
+        } finally {
+            // Chiudi le risorse in finally block per garantire la pulizia
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    logger.severe("Errore durante la chiusura dello statement: " + e.getMessage());
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    logger.severe("Errore durante la chiusura della connessione: " + e.getMessage());
+                }
+            }
         }
 
     }
@@ -121,26 +128,51 @@ public class UserDAO {
         //crea una tupla nella tabella tutor... DEVE ESSERE INVOCATO SOLO PER I TUTOR!!!
 
         Connection connection;
-        PreparedStatement statement;
+        Statement stmt = null;
 
-        String query = "INSERT INTO tutor (email, tariffa, luogo, materie, inPresenza, webCam, giorni, nome, cognome) VALUES (?, NULL, NULL, NULL, NULL, NULL, NULL, ?, ?)";
 
         try{
             connection = Connect.getInstance().getDBConnection();
-            statement = connection.prepareStatement(query);
-            statement.setString(1, email);
-            statement.setString(2, nome);
-            statement.setString(3, cognome);
+
+            stmt = connection.createStatement();
+            QueryLogin.registraTutor(stmt, email, nome, cognome);
 
 
-            statement.executeUpdate();
-            //Printer.println("---------------------------------------------------------");
-            //Printer.println("tutor registrato");
         } catch (SQLException e) {
-            logger.severe("errore in UserDAO registrazioneTutor " + e.getMessage());
-
+            handleDAOException(e);
+        } finally {
+            // Chiusura delle risorse
+            closeResources(stmt,null);
         }
     }
+
+
+
+
+
+
+
+    private void handleDAOException(Exception e) {
+        Printer.errorPrint(String.format("UserDAO: %s", e.getMessage()));
+    }
+
+
+    private void closeResources(Statement stmt, ResultSet rs) {
+        try {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stmt != null) {
+                stmt.close();
+            }
+        } catch (SQLException e) {
+            handleDAOException(e);
+        }
+    }
+
+
+
+
 
 }
 

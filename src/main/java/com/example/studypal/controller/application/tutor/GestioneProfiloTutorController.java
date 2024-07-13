@@ -1,6 +1,6 @@
 package com.example.studypal.controller.application.tutor;
 
-import com.example.studypal.DAO.RipetizioneInfoDAO;
+import com.example.studypal.dao.RipetizioneInfoDAO;
 import com.example.studypal.bean.RipetizioneInfoBean;
 import com.example.studypal.model.RipetizioneInfoModel;
 
