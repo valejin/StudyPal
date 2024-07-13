@@ -35,14 +35,7 @@ public class GestisciPrenotazioniController extends GestisciPrenotazioniGui {
 
             //passo la lista di model alla lista di BEAN
             for (PrenotazioneModel risultato : risultatiRicerca) {
-                LoggedInUserBean userBean = new LoggedInUserBean(risultato.getEmailTutor(), risultato.getNome(), risultato.getCognome());
-                List<Integer> valori = new ArrayList<>();
-                valori.add(risultato.getModLezione());
-                valori.add(risultato.getTariffa());
-                valori.add(risultato.getStato());
-                PrenotazioneBean risultatoBean = new PrenotazioneBean(risultato.getIdRichiesta(), userBean,
-                        risultato.getEmailStudente(), risultato.getMateria(), risultato.getGiorno(),
-                        risultato.getNote(), valori);
+                PrenotazioneBean risultatoBean = getPrenotazioneBean(risultato);
 
                 prenotazioneBean.add(risultatoBean);
             }
@@ -53,6 +46,18 @@ public class GestisciPrenotazioniController extends GestisciPrenotazioniGui {
         }
 
         return prenotazioneBean;
+    }
+
+    private static PrenotazioneBean getPrenotazioneBean(PrenotazioneModel risultato) {
+        
+        LoggedInUserBean userBean = new LoggedInUserBean(risultato.getEmailTutor(), risultato.getNome(), risultato.getCognome());
+        List<Integer> valori = new ArrayList<>();
+        valori.add(risultato.getModLezione());
+        valori.add(risultato.getTariffa());
+        valori.add(risultato.getStato());
+
+        return new PrenotazioneBean(risultato.getIdRichiesta(), userBean, risultato.getEmailStudente(),
+                risultato.getMateria(), risultato.getGiorno(), risultato.getNote(), valori);
     }
 
 
