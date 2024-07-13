@@ -3,6 +3,7 @@ package com.example.studypal.query;
 import com.example.studypal.model.PrenotazioneModel;
 import com.example.studypal.other.Printer;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -30,12 +31,34 @@ public class QueryPrenotazione {
             String richiesta = String.format(Query.PRENOTA, emailTutor, emailStud, materia, modLez, tariffa, giorni, note, nome, cognome);
             stmt.executeUpdate(richiesta);
 
-
         } catch(SQLException e){
             handleException(e);
         }
 
+    }
 
+
+
+    public static ResultSet gestisciPrenotazioni(Statement stmt, String email, int flag){
+
+        String sql = null;
+        ResultSet rs = null;
+        try{
+            if(flag == 0) {
+                sql = String.format(Query.RICHIESTE_IN_ATTESA, email, flag);
+            } else if(flag == 1){
+            //qui ho le richieste confermate =>prenotazioni attive
+                sql = String.format(Query.PRENOTAZIONI_ATTIVE, email, flag);
+            }else if(flag == 2){
+                sql = String.format(Query.RICHIESTE_RIFIUTATE, email, flag);
+            }
+
+            rs = stmt.executeQuery(sql);
+
+        } catch (SQLException e){
+            handleException(e);
+        }
+        return rs;
     }
 
 
@@ -43,8 +66,9 @@ public class QueryPrenotazione {
 
 
 
+
     private static void handleException(Exception e) {
-        Printer.errorPrint(String.format("QueryLogin: %s", e.getMessage()));
+        Printer.errorPrint(String.format("QueryPrenotazione: %s", e.getMessage()));
     }
 
 

@@ -24,7 +24,16 @@ public class Query {
     /*Queries Ricerca materia*/
     public static final String RICERCA_MATERIA = "SELECT * FROM tutor WHERE materia= '%s'";
 
-    /*Query per inserire la richiesta dello studente */
+
+    /*Query per inserire la richiesta dello studente in DB */
     public static final String PRENOTA = "INSERT INTO richieste (emailTutor, emailStudente, materia, modLezione, tariffa, giorni, note, nomeTutor, cognomeTutor) VALUES ('%s', '%s', '%s', '%d', '%d', '%s', '%s', '%s', '%s')";
+
+
+    /*Query per Gestisci Prenotazioni (lato TUTOR) per prendere le richieste da DB*/
+    public static final String RICHIESTE_IN_ATTESA = "SELECT * FROM richieste WHERE emailTutor = '%s' AND stato = 0";
+    public static final String PRENOTAZIONI_ATTIVE = "SELECT * FROM richieste WHERE emailTutor = '%s' AND stato = 1";
+    public static final String RICHIESTE_RIFIUTATE = "SELECT * FROM richieste WHERE emailTutor = '%s' AND stato = 2";
+
+
 
 }

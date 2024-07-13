@@ -63,35 +63,20 @@ public class PrenotazioneDAO {
     una volta la richiesta in attesa viene confermata dal tutor, sparisce dalla lista di richieste arrivate
     */
     public List<PrenotazioneModel> richiesteArrivate(String email, int flag) throws NonProduceRisultatoException{
+
         //viene passato il userModel per prendere email del tutor
-
-        Connection connection;
-        PreparedStatement statement = null;
-        ResultSet rs = null;
-
-        //query per la ricerca di email del tutor nella lista di tutte le richieste
-        if(flag == 0) {
-            //qui ho le richieste in attesa
-            sql = "SELECT * FROM richieste WHERE emailTutor = ? AND stato = 0";
-        }else if(flag == 1){
-            //qui ho le richieste confermate =>prenotazioni attive
-            sql = "SELECT * FROM richieste WHERE emailTutor = ? AND stato = 1";
-        }else if(flag == 2){
-            sql = "SELECT * FROM richieste WHERE emailTutor = ? AND stato = 2";
+        Statement stmt = null;
+        Connection connection = Connect.getInstance().getDBConnection();
+        try {
+            stmt = connection.createStatement();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
 
 
-        try{
-            connection = Connect.getInstance().getDBConnection();
-            statement = connection.prepareStatement(sql);
-
+        try (ResultSet rs = QueryPrenotazione.gestisciPrenotazioni(stmt, email, flag)){
 
             //in base al valore del flag: flag == 0 richieste arrivate; flag == 1 prenotazioni attive
-
-            statement.setString(1, email);
-
-
-            rs = statement.executeQuery();
 
             if(rs.next()){
                 Printer.println("Lista di email richiedenti per il tutor: " + email);
@@ -124,7 +109,7 @@ public class PrenotazioneDAO {
             logger.severe("errore in PrenotazioneDAO " + e.getMessage());
         }finally {
             // Chiusura delle risorse
-            closeResources(statement,rs);
+            closeResources(stmt,null);
         }
 
         return risultatiRicerca;
