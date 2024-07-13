@@ -19,7 +19,7 @@ public class RichiesteArrivateCollection extends Subject {
 
     private static RichiesteArrivateCollection richiesteCollection = null;
 
-    private List<PrenotazioneModel> richiesteList = new ArrayList<>();
+    private final List<PrenotazioneModel> richiesteList = new ArrayList<>();
 
 
     public static RichiesteArrivateCollection getInstance() { //Pattern Singleton
@@ -46,11 +46,7 @@ public class RichiesteArrivateCollection extends Subject {
 
     public void rimuoviRichiesta( Integer idRichiesta){
 
-        for (PrenotazioneModel richiesta: richiesteList){
-            if (richiesta.getIdRichiesta() == idRichiesta){
-                richiesteList.remove(richiesta);
-            }
-        }
+        richiesteList.removeIf(richiesta -> richiesta.getIdRichiesta() == idRichiesta);
 
         notifyObservers();
     }
