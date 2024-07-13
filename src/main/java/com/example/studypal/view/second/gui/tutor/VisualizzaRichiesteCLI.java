@@ -1,6 +1,5 @@
 package com.example.studypal.view.second.gui.tutor;
 
-import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.PrenotazioneBean;
 import com.example.studypal.controller.application.tutor.GestisciPrenotazioniController;
 import com.example.studypal.other.Printer;
@@ -8,18 +7,15 @@ import com.example.studypal.pattern.state.AbstractState;
 import com.example.studypal.pattern.state.StateMachineImpl;
 
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 
 public class VisualizzaRichiesteCLI extends AbstractState {
 
-    private final LoggedInUserBean user;
     private final PrenotazioneBean dettagliRichiesta;
     private final Integer flag;
 
 
-    public VisualizzaRichiesteCLI(LoggedInUserBean user, PrenotazioneBean prenotazioneBean, List<PrenotazioneBean> list, Integer flag) {
-        this.user = user;
+    public VisualizzaRichiesteCLI(PrenotazioneBean prenotazioneBean, Integer flag) {
         this.dettagliRichiesta = prenotazioneBean;
         this.flag = flag;
     }
