@@ -86,9 +86,5 @@ public class GestisciPrenotazioniCLI extends AbstractState {
         Printer.print("Scegli un'opzione: ");
     }
 
-    @Override
-    public void entry(StateMachineImpl context){
-        //mostraMenu();
-    }
 
 }

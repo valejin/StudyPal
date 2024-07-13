@@ -101,7 +101,7 @@ public class GestisciProfiloCLI extends AbstractState {
                 inPresenza = getBooleanInput(scanner);
                 break;
             } catch (IllegalArgumentException e) {
-                Printer.errorPrint("Input non valido. Inserisci 'T' per true o 'F' per false.");
+                Printer.errorPrint("Input non valido. Inserisci 'T' per true o 'F' per false. ");
             }
         }
 
@@ -111,18 +111,18 @@ public class GestisciProfiloCLI extends AbstractState {
                 online = getBooleanInput(scanner);
                 break;
             } catch (IllegalArgumentException e) {
-                Printer.errorPrint("Input non valido. Inserisci 'T' per true o 'F' per false.");
+                Printer.errorPrint("Input non valido. Inserisci 'T' per true o 'F' per false.  ");
             }
         }
 
 
-        Printer.println("Selezioni giorni disponibili: ");
-        List<Boolean> giorni = new ArrayList<>();
+        Printer.println("Selezioni days disponibili: ");
+        List<Boolean> days = new ArrayList<>();
         for (String giorno : new String[]{"Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato", "Domenica"}) {
             while (true) {
                 try {
                     Printer.println(giorno + " (T/F): ");
-                    giorni.add(getBooleanInput(scanner));
+                    days.add(getBooleanInput(scanner));
                     break;
                 } catch (IllegalArgumentException e) {
                     Printer.errorPrint("Input non valido. Inserisci 'T' per true o 'F' per false.");
@@ -133,7 +133,7 @@ public class GestisciProfiloCLI extends AbstractState {
 
 
         // Crea il bean e invia al controller applicativo
-        RipetizioneInfoBean ripetizioneInfoBean = new RipetizioneInfoBean(materie, inPresenza, online, luogo, giorni, tariffa, user.getEmail());
+        RipetizioneInfoBean ripetizioneInfoBean = new RipetizioneInfoBean(materie, inPresenza, online, luogo, days, tariffa, user.getEmail());
 
         // Stampa i valori a terminale
         Printer.println(" ");

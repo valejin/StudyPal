@@ -18,8 +18,6 @@ public class LoginCLI extends AbstractState {
     /* controller grafico che gestisce il login per l'interfaccia a riga di comando */
     LoggedInUserBean user;
 
-    public LoginCLI() {
-    }
 
     private final Scanner scanner = new Scanner(System.in);
 

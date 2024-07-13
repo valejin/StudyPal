@@ -59,7 +59,7 @@ public class RisultatiRicercaCLI extends AbstractState {
                         RipetizioneInfoBean tutorSelezionato = tutorList.get(secondChoice - 1);
                         goNext(context, new ProfiloTutorCLI(user, tutorSelezionato));
                     } else {
-                        Printer.errorPrint("Input invalido. Scegliere un'opzione tra quelle disponibili: ");
+                        Printer.errorPrint("Input invalido. Scegliere un'opzione tra quelle disponibili:  ");
                     }
                     break;
 

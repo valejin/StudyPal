@@ -68,7 +68,7 @@ public class HomeStudenteGui {
         try {
 
             /*
-            prima mantenevamo i dati relativi alla sessione passando un bean di controller in controller.
+            Prima mantenevamo i dati relativi alla sessione passando un bean di controller in controller.
             eliminare la sessione significa tornare alla pagina di login senza passare alcun parametro contente i dati della sessione
             quindi di base il controller grafico deve al massimo portare ad una pagina di conferma del logout (qui non è fatto), poi semplicemente carica il login
             */
