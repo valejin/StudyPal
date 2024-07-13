@@ -1,5 +1,6 @@
 package com.example.studypal.DAO;
 
+import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.exceptions.NonProduceRisultatoException;
 import com.example.studypal.model.PrenotazioneModel;
 import com.example.studypal.other.Connect;
@@ -107,8 +108,16 @@ public class PrenotazioneDAO {
 
                 //prendo email dello studente, materia richiesta, e aggiungo il pulsante VISUALIZZA per ciascun tupla estratta
                 do{
+                    LoggedInUserBean userTutor = new LoggedInUserBean(rs.getString("nomeTutor"), rs.getString("cognomeTutor"), rs.getString("emailTutor"));
+
+                    List<Integer> valori = new ArrayList<>();
+                    valori.add(rs.getInt("modLezione"));
+                    valori.add(rs.getInt("tariffa"));
+                    valori.add(rs.getInt("stato"));
+
+
                     //popolo una nuova istanza di PrenotazioneModel per ritornare al CtlApplicativo
-                    PrenotazioneModel risultatoCorrente = new PrenotazioneModel(rs.getInt("idrichieste"), rs.getString("nomeTutor"), rs.getString("cognomeTutor"), rs.getString("emailTutor"), rs.getString("emailStudente"), rs.getString("materia"), rs.getInt("modLezione"), rs.getInt("tariffa"), rs.getString("giorni"), rs.getString("note"), rs.getInt("stato"));
+                    PrenotazioneModel risultatoCorrente = new PrenotazioneModel(rs.getInt("idrichieste"), userTutor, rs.getString("emailStudente"), rs.getString("materia"), rs.getString("giorni"), rs.getString("note"), valori);
 
                     //aggiunggo la tupla in lista dei risultati di ricerca
                     risultatiRicerca.add(risultatoCorrente);
@@ -170,14 +179,21 @@ public class PrenotazioneDAO {
 
             if (rs.next()){
 
-                int i = 0;
                 do {
-                    PrenotazioneModel richiesta = new PrenotazioneModel(rs.getInt("idrichieste"), rs.getString("nomeTutor"), rs.getString("cognomeTutor"), rs.getString("emailTutor"),
+
+                    LoggedInUserBean userTutor = new LoggedInUserBean(rs.getString("nomeTutor"), rs.getString("cognomeTutor"), rs.getString("emailTutor"));
+
+                    List<Integer> valori = new ArrayList<>();
+                    valori.add(rs.getInt("modLezione"));
+                    valori.add(rs.getInt("tariffa"));
+                    valori.add(rs.getInt("stato"));
+
+                    PrenotazioneModel richiesta = new PrenotazioneModel(rs.getInt("idrichieste"), userTutor,
                             rs.getString("emailStudente"), rs.getString("materia"),
-                            rs.getInt("modLezione"), rs.getInt("tariffa"),
-                            rs.getString("giorni"), rs.getString("note"), rs.getInt("stato"));
+                            rs.getString("giorni"), rs.getString("note"), valori);
+
                     listaRichieste.add(richiesta);
-                    i+=1;
+
                 } while (rs.next());
 
             } else {

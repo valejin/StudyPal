@@ -149,7 +149,6 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
     public void ricercaMethod(){
 
         if(this.cercaMateria.getText().isEmpty()) {
-            Printer.println("Non hai inserito la materia");
             campiError.setText("Campo obbligatorio");
 
         } else {
@@ -230,7 +229,6 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         mat = this.cercaMateria.getText();
 
         if (this.cercaMateria.getText().isEmpty()) {
-            Printer.println("Non hai inserito la mat");
             campiError.setText("Campo obbligatorio");
             return Collections.emptyList();
         } else {

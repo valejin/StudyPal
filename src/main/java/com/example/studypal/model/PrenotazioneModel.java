@@ -1,12 +1,16 @@
 package com.example.studypal.model;
 
+import com.example.studypal.bean.LoggedInUserBean;
+
+import java.util.List;
+
 public class PrenotazioneModel {
 
-    private int idRichiesta;
+    private final int idRichiesta;
     private String nome;
     private String cognome;
-    private String emailTutor;
-    private String emailStudente;
+    private final String emailTutor;
+    private final String emailStudente;
     private String materia;
     private int modLezione;
     private int tariffa;
@@ -14,22 +18,22 @@ public class PrenotazioneModel {
     private String note;
     private int stato;
 
-    public PrenotazioneModel(Integer idRichiesta, String nome, String cognome, String emailTutor, String emailStudente, String materia, int modLezione, int tariffa, String giorno, String note, int stato) {
+    public PrenotazioneModel(Integer idRichiesta, LoggedInUserBean user, String emailStudente, String materia, String giorno, String note, List<Integer> valori) {
 
-        /*
-        modalita lezione: 0 = non specificato, 1 = presenza, 2 = online
-         */
+        /* modalita lezione: 0 = non specificato, 1 = presenza, 2 = online */
+        /*l'array di interi contiene ordinatamente: modalità di lezione, tariffa, stato*/
+
         this.idRichiesta = idRichiesta;
-        this.nome = nome;
-        this.cognome = cognome;
-        this.emailTutor = emailTutor;
+        this.nome = user.getNome();
+        this.cognome = user.getCognome();
+        this.emailTutor = user.getEmail();
         this.emailStudente = emailStudente;
         this.materia = materia;
-        this.modLezione = modLezione;
-        this.tariffa = tariffa;
+        this.modLezione = valori.get(0);
+        this.tariffa = valori.get(1);
         this.giorno = giorno;
         this.note = note;
-        this.stato = stato;
+        this.stato = valori.get(2);
     }
 
 
@@ -53,24 +57,12 @@ public class PrenotazioneModel {
         return idRichiesta;
     }
 
-    public void setIdRichiesta(int idRichiesta) {
-        this.idRichiesta = idRichiesta;
-    }
-
     public String getEmailTutor() {
         return emailTutor;
     }
 
-    public void setEmailTutor(String emailTutor) {
-        this.emailTutor = emailTutor;
-    }
-
     public String getEmailStudente() {
         return emailStudente;
-    }
-
-    public void setEmailStudente(String emailStudente) {
-        this.emailStudente = emailStudente;
     }
 
     public String getMateria() {

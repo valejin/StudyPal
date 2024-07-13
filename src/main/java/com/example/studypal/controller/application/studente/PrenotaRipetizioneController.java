@@ -102,8 +102,18 @@ public class PrenotaRipetizioneController extends HomeStudenteController {
          */
 
         /*istanzio model e ci inserisco i dati della prenotazione------------------*/
-        PrenotazioneModel prenotazioneModel = new PrenotazioneModel(prenotazioneBean.getIdRichiesta(), prenotazioneBean.getNome(), prenotazioneBean.getCognome(), prenotazioneBean.getEmailTutor(), prenotazioneBean.getEmailStudente(), prenotazioneBean.getMateria(),
-                prenotazioneBean.getModLezione(), prenotazioneBean.getTariffa(), prenotazioneBean.getGiorno(), prenotazioneBean.getNote(), prenotazioneBean.getStato());
+
+        LoggedInUserBean userTutor = new LoggedInUserBean( prenotazioneBean.getNome(), prenotazioneBean.getCognome(), prenotazioneBean.getEmailTutor());
+
+        List<Integer> valori = new ArrayList<>();
+        valori.add(prenotazioneBean.getModLezione());
+        valori.add(prenotazioneBean.getTariffa());
+        valori.add(prenotazioneBean.getStato());
+
+
+        PrenotazioneModel prenotazioneModel = new PrenotazioneModel(prenotazioneBean.getIdRichiesta(), userTutor,
+                prenotazioneBean.getEmailStudente(), prenotazioneBean.getMateria(), prenotazioneBean.getGiorno(),
+                prenotazioneBean.getNote(), valori);
 
 
         /*istanzio DAO e gli passo il model----------------------------------------*/
