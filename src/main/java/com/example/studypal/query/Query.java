@@ -41,4 +41,7 @@ public class Query {
     public static final String PRENOTAZIONI_ATTIVE_S = "SELECT * FROM richieste WHERE emailStudente = '%s' AND stato = 1";
     public static final String RICHIESTE_RIFIUTATE_S = "SELECT * FROM richieste WHERE emailStudente = '%s' AND stato = 2";
 
+    public static final String CONFERMA_RICHIESTA = "UPDATE richieste SET stato = 0 WHERE idrichieste = ?";
+    public static final String RIFIUTA_RICHIESTA = "UPDATE richieste SET stato = 1 WHERE idrichieste = ?";
+
 }

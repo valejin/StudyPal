@@ -67,12 +67,12 @@ public class QueryPrenotazione {
         ResultSet rs = null;
         try{
             if(flag == 0) {
-                sql = String.format(Query.RICHIESTE_INVIATE, email, flag);
+                sql = String.format(Query.RICHIESTE_INVIATE, email);
             } else if(flag == 1){
                 //qui ho le richieste confermate =>prenotazioni attive
-                sql = String.format(Query.PRENOTAZIONI_ATTIVE_S, email, flag);
+                sql = String.format(Query.PRENOTAZIONI_ATTIVE_S, email);
             }else if(flag == 2){
-                sql = String.format(Query.RICHIESTE_RIFIUTATE_S, email, flag);
+                sql = String.format(Query.RICHIESTE_RIFIUTATE_S, email);
             }
 
             rs = stmt.executeQuery(sql);
@@ -83,7 +83,22 @@ public class QueryPrenotazione {
         return rs;
     }
 
+    public static ResultSet modificaStatoRichiesta(Statement stmt,Integer idRichiesta, Integer stato){
 
+        String sql = null;
+        ResultSet rs = null;
+        try{
+            if (stato == 0){
+                sql = String.format(Query.CONFERMA_RICHIESTA, idRichiesta);
+            } else {
+                sql = String.format(Query.RIFIUTA_RICHIESTA, idRichiesta);
+            }
+            rs = stmt.executeQuery(sql);
+        } catch (SQLException e){
+            handleException(e);
+        }
+        return rs;
+    }
 
 
 

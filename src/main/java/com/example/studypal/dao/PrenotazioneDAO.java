@@ -7,11 +7,10 @@ import com.example.studypal.model.PrenotazioneModel;
 import com.example.studypal.other.Connect;
 import com.example.studypal.other.Printer;
 import com.example.studypal.query.QueryPrenotazione;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
+
 
 public class PrenotazioneDAO {
 
@@ -25,7 +24,6 @@ public class PrenotazioneDAO {
                 - Richieste arrivate: prendere le richieste di prenotazione inviate dagli studenti dal DB (FATTO)
      */
 
-    private static final Logger logger = Logger.getLogger(PrenotazioneDAO.class.getName());
 
     /*-------------------------------------------PRENOTAZIONE----------------------------------------------------------*/
     public void prenota(PrenotazioneModel prenotazioneModel) throws SQLException {
@@ -42,9 +40,7 @@ public class PrenotazioneDAO {
             QueryPrenotazione.richiediRipetiz(stmt, prenotazioneModel);
 
         } catch (SQLException e) {
-            logger.severe("errore in prenotazioneDAO " + e.getMessage());
-            throw e;
-            //todo: ??? è necessario rimandarla al controller applicativo?? In teoria questa si verifica solo in caso di errore vero e proprio (dato che è un inserimento)
+            handleDAOException(e);
         } finally {
             // Chiusura delle risorse
             closeResources(stmt,null);
@@ -55,7 +51,7 @@ public class PrenotazioneDAO {
     /* todo: richieste arrivate e richieste inviate fanno la stessa cosa! Se facessimo setString impostandola a emailTutor/emailStudente facendo un controllo su user.getRuolo?*/
     List<PrenotazioneModel> risultatiRicerca = new ArrayList<>();
 
-    private String sql;
+
 
     /*--------------Gestione Prenotazioni (TUTOR): prendere le richieste arrivate da DB ---------------------------*/
     /*--------------Gestione Prenotazioni (TUTOR): prendere le prenotazioni arrivate da DB ------------------------*/
@@ -68,10 +64,11 @@ public class PrenotazioneDAO {
         //viene passato il userModel per prendere email del tutor
         Statement stmt = null;
         Connection connection = Connect.getInstance().getDBConnection();
+
         try {
             stmt = connection.createStatement();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            handleDAOException(e);
         }
 
 
@@ -106,8 +103,7 @@ public class PrenotazioneDAO {
 
 
         }catch(SQLException e){
-            Printer.println("Non ci sono le richieste arrivate.");
-            logger.severe("errore in PrenotazioneDAO " + e.getMessage());
+            handleDAOException(e);
         }finally {
             // Chiusura delle risorse
             closeResources(stmt,null);
@@ -130,14 +126,14 @@ public class PrenotazioneDAO {
         List<PrenotazioneModel> listaRichieste = new ArrayList<>();
 
         Connection connection = Connect.getInstance().getDBConnection();
-        Statement stmt;
+        Statement stmt = null;
         try {
             stmt = connection.createStatement();
         } catch (SQLException e) {
-            throw new DBException();
+            handleDAOException(e);
         }
 
-        try(ResultSet rs = QueryPrenotazione.gestisciPrenotazioni(stmt, email, flag)){
+        try(ResultSet rs = QueryPrenotazione.gestisciPrenotazioniStudente(stmt, email, flag)){
 
             if (rs.next()){
 
@@ -163,7 +159,7 @@ public class PrenotazioneDAO {
             }
 
         } catch (SQLException e) {
-            Printer.println("Errore in PrenotazioneDAO (metodo: richiesteInviate)");
+            handleDAOException(e);
         } finally {
             closeResources(stmt,null);
         }
@@ -180,24 +176,21 @@ public class PrenotazioneDAO {
                     1 -> rifiuta
          */
 
-        Connection connection;
-        PreparedStatement statement;
-        String query = "UPDATE richieste SET stato = ? WHERE idrichieste = ?";
-
+        Connection connection = Connect.getInstance().getDBConnection();
+        Statement stmt = null;
         try {
-            connection = Connect.getInstance().getDBConnection();
-            statement = connection.prepareStatement(query);
+            stmt = connection.createStatement();
+        } catch (SQLException e) {
+            handleDAOException(e);
+        }
 
-            statement.setInt(1, stato);
-            statement.setInt(2, idRichiesta);
+        try (ResultSet rs = QueryPrenotazione.modificaStatoRichiesta(stmt, idRichiesta, stato)){
 
-            statement.execute();
             Printer.println("id richiesta: " + idRichiesta);
             Printer.println("Stato della richiesta modificato con successo. Stato: " + stato);
 
         } catch (SQLException e){
-            Printer.println("Errore in PrenotazioneDAO (metodo: modificaStatoRichieste)");
-
+            handleDAOException(e);
         }
 
     }
@@ -216,7 +209,7 @@ public class PrenotazioneDAO {
             Printer.println("id richiesta da eliminare: " + idRichiesta);
 
         } catch(SQLException e){
-            Printer.println("Errore in PrenotazioneDAO (metodo: cancellaRichiesta)");
+            handleDAOException(e);
         }
     }
 
