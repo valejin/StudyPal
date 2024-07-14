@@ -1,7 +1,6 @@
 package com.example.studypal.dao;
 
 import com.example.studypal.bean.LoggedInUserBean;
-import com.example.studypal.exceptions.DBException;
 import com.example.studypal.exceptions.NonProduceRisultatoException;
 import com.example.studypal.model.PrenotazioneModel;
 import com.example.studypal.other.Connect;
@@ -118,7 +117,7 @@ public class PrenotazioneDAO {
 
 
     /* -------------------------------------------------STUDENTE------------------------------------------------------*/
-    public List<PrenotazioneModel> richiesteInviate(String email, Integer flag) throws NonProduceRisultatoException, DBException {
+    public List<PrenotazioneModel> richiesteInviate(String email, Integer flag) throws NonProduceRisultatoException {
 
         /* metodo che riceve la stringa contenente l'email con cui fare la query
            restituisce una lista contenente tutte le richieste di prenotazione inviate ma ancora in attesa di conferma*/
