@@ -40,8 +40,6 @@ public class GestisciPrenotazioniStudenteController {
 
         } catch (NonProduceRisultatoException e){
             Printer.println("Non sono presenti richieste in attesa di conferma per l'utente " + user.getEmail());
-        } catch (DBException e){
-            Printer.println("Errore nel database.");
         }
         return listaRichiesteBean;
     }
