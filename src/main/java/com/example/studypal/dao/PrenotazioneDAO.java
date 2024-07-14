@@ -48,7 +48,6 @@ public class PrenotazioneDAO {
     }
 
 
-    /* todo: richieste arrivate e richieste inviate fanno la stessa cosa! Se facessimo setString impostandola a emailTutor/emailStudente facendo un controllo su user.getRuolo?*/
     List<PrenotazioneModel> risultatiRicerca = new ArrayList<>();
 
 
@@ -70,6 +69,7 @@ public class PrenotazioneDAO {
         } catch (SQLException e) {
             handleDAOException(e);
         }
+
 
 
         try (ResultSet rs = QueryPrenotazione.gestisciPrenotazioni(stmt, email, flag)){
@@ -127,14 +127,16 @@ public class PrenotazioneDAO {
 
         Connection connection = Connect.getInstance().getDBConnection();
         Statement stmt = null;
+        ResultSet rs = null;
+
         try {
             stmt = connection.createStatement();
         } catch (SQLException e) {
             handleDAOException(e);
         }
 
-        try(ResultSet rs = QueryPrenotazione.gestisciPrenotazioniStudente(stmt, email, flag)){
-
+        try{
+            rs = QueryPrenotazione.gestisciPrenotazioniStudente(stmt, email, flag);
             if (rs.next()){
 
                 do {
@@ -161,7 +163,7 @@ public class PrenotazioneDAO {
         } catch (SQLException e) {
             handleDAOException(e);
         } finally {
-            closeResources(stmt,null);
+            closeResources(stmt, rs);
         }
         return listaRichieste;
     }
@@ -176,37 +178,34 @@ public class PrenotazioneDAO {
                     1 -> rifiuta
          */
 
-        Connection connection = Connect.getInstance().getDBConnection();
+        Connection connection;
         Statement stmt = null;
+
         try {
+            connection = Connect.getInstance().getDBConnection();
             stmt = connection.createStatement();
-        } catch (SQLException e) {
-            handleDAOException(e);
-        }
 
-        try (ResultSet rs = QueryPrenotazione.modificaStatoRichiesta(stmt, idRichiesta, stato)){
-
-            Printer.println("id richiesta: " + idRichiesta);
-            Printer.println("Stato della richiesta modificato con successo. Stato: " + stato);
+            QueryPrenotazione.modificaStatoRichiesta(stmt, idRichiesta, stato);
 
         } catch (SQLException e){
             handleDAOException(e);
+        } finally {
+            closeResources(stmt, null);
         }
-
     }
+
 
     /*------------------------------------------CANCELLA (STUDENTE)-------------------------------------------*/
     public void cancellaRichiesta(Integer idRichiesta){
 
         Connection connection;
-        PreparedStatement statement;
-        String query = "DELETE FROM richieste WHERE idrichieste = ?";
+        Statement stmt;
+
         try {
             connection = Connect.getInstance().getDBConnection();
-            statement = connection.prepareStatement(query);
-            statement.setInt(1, idRichiesta);
-            statement.execute();
-            Printer.println("id richiesta da eliminare: " + idRichiesta);
+            stmt = connection.createStatement();
+
+            QueryPrenotazione.cancellaRichiesta(stmt, idRichiesta);
 
         } catch(SQLException e){
             handleDAOException(e);
@@ -219,20 +218,17 @@ public class PrenotazioneDAO {
     public void recensioneMethod(int idRichiesta, int recensione){
 
         Connection connection;
-        PreparedStatement statement;
-        String query ="UPDATE richieste SET recensione = ? WHERE idrichieste = ?";
+        Statement stmt;
 
         try {
             connection = Connect.getInstance().getDBConnection();
-            statement = connection.prepareStatement(query);
-            statement.setInt(1, recensione);
-            statement.setInt(2, idRichiesta);
-            statement.execute();
+            stmt = connection.createStatement();
+
+            QueryPrenotazione.recensione(stmt, idRichiesta, recensione);
 
         } catch(SQLException e){
-            Printer.println("Errore in PrenotazioneDAO (metodo: recensioneMethod)");
+            handleDAOException(e);
         }
-        Printer.println("Recensione salvata con successo.");
     }
 
 

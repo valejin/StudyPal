@@ -45,12 +45,12 @@ public class QueryPrenotazione {
         ResultSet rs = null;
         try{
             if(flag == 0) {
-                sql = String.format(Query.RICHIESTE_IN_ATTESA, email, flag);
+                sql = String.format(Query.RICHIESTE_IN_ATTESA, email);
             } else if(flag == 1){
             //qui ho le richieste confermate =>prenotazioni attive
-                sql = String.format(Query.PRENOTAZIONI_ATTIVE, email, flag);
+                sql = String.format(Query.PRENOTAZIONI_ATTIVE, email);
             }else if(flag == 2){
-                sql = String.format(Query.RICHIESTE_RIFIUTATE, email, flag);
+                sql = String.format(Query.RICHIESTE_RIFIUTATE, email);
             }
 
             rs = stmt.executeQuery(sql);
@@ -83,23 +83,45 @@ public class QueryPrenotazione {
         return rs;
     }
 
-    public static ResultSet modificaStatoRichiesta(Statement stmt,Integer idRichiesta, Integer stato){
+    public static void modificaStatoRichiesta(Statement stmt,Integer idRichiesta, Integer stato){
 
-        String sql = null;
-        ResultSet rs = null;
+        String sql;
+
         try{
             if (stato == 0){
                 sql = String.format(Query.CONFERMA_RICHIESTA, idRichiesta);
             } else {
                 sql = String.format(Query.RIFIUTA_RICHIESTA, idRichiesta);
             }
-            rs = stmt.executeQuery(sql);
+            stmt.executeQuery(sql);
+
         } catch (SQLException e){
             handleException(e);
         }
-        return rs;
     }
 
+
+    public static void cancellaRichiesta(Statement stmt, Integer idRichiesta){
+        String sql;
+
+        try{
+            sql = String.format(Query.CANCELLA_RICHIESTA, idRichiesta);
+            stmt.executeQuery(sql);
+        } catch (SQLException e){
+            handleException(e);
+        }
+    }
+
+    public static void recensione(Statement stmt, int idRichiesta, int recensione){
+        String sql;
+
+        try{
+            sql = String.format(Query.RECENSIONE,recensione, idRichiesta);
+            stmt.executeQuery(sql);
+        } catch (SQLException e){
+            handleException(e);
+        }
+    }
 
 
     private static void handleException(Exception e) {
