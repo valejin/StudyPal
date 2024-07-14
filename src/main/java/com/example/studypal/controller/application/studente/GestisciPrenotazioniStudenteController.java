@@ -3,6 +3,7 @@ package com.example.studypal.controller.application.studente;
 import com.example.studypal.dao.PrenotazioneDAO;
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.PrenotazioneBean;
+import com.example.studypal.exceptions.DBException;
 import com.example.studypal.exceptions.NonProduceRisultatoException;
 import com.example.studypal.model.PrenotazioneModel;
 import com.example.studypal.other.Printer;
@@ -39,6 +40,8 @@ public class GestisciPrenotazioniStudenteController {
 
         } catch (NonProduceRisultatoException e){
             Printer.println("Non sono presenti richieste in attesa di conferma per l'utente " + user.getEmail());
+        } catch (DBException e){
+            Printer.println("Errore nel database.");
         }
         return listaRichiesteBean;
     }

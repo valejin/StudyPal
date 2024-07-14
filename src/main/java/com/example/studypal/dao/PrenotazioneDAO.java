@@ -1,6 +1,7 @@
 package com.example.studypal.dao;
 
 import com.example.studypal.bean.LoggedInUserBean;
+import com.example.studypal.exceptions.DBException;
 import com.example.studypal.exceptions.NonProduceRisultatoException;
 import com.example.studypal.model.PrenotazioneModel;
 import com.example.studypal.other.Connect;
@@ -121,36 +122,22 @@ public class PrenotazioneDAO {
 
 
     /* -------------------------------------------------STUDENTE------------------------------------------------------*/
-    public List<PrenotazioneModel> richiesteInviate(String email, Integer flag) throws NonProduceRisultatoException {
+    public List<PrenotazioneModel> richiesteInviate(String email, Integer flag) throws NonProduceRisultatoException, DBException {
 
         /* metodo che riceve la stringa contenente l'email con cui fare la query
            restituisce una lista contenente tutte le richieste di prenotazione inviate ma ancora in attesa di conferma*/
 
         List<PrenotazioneModel> listaRichieste = new ArrayList<>();
 
-        Connection connection;
-        PreparedStatement statement = null;
-        ResultSet rs = null;
-
-        if (flag == 0){
-            //richieste inviate in attesa di conferma
-            sql = "SELECT * FROM richieste WHERE emailStudente = ? AND stato = 0";
-
-        } else if (flag == 1){
-            //richieste confermate (prenotazioni attive)
-            sql = "SELECT * FROM richieste WHERE emailStudente = ? AND stato = 1";
-
-        } else if (flag == 2){
-            sql = "SELECT * FROM richieste WHERE emailStudente = ? AND stato = 2";
-
+        Connection connection = Connect.getInstance().getDBConnection();
+        Statement stmt;
+        try {
+            stmt = connection.createStatement();
+        } catch (SQLException e) {
+            throw new DBException();
         }
 
-        try{
-            connection = Connect.getInstance().getDBConnection();
-            statement = connection.prepareStatement(sql);
-            statement.setString(1, email);
-
-            rs = statement.executeQuery();
+        try(ResultSet rs = QueryPrenotazione.gestisciPrenotazioni(stmt, email, flag)){
 
             if (rs.next()){
 
@@ -178,7 +165,7 @@ public class PrenotazioneDAO {
         } catch (SQLException e) {
             Printer.println("Errore in PrenotazioneDAO (metodo: richiesteInviate)");
         } finally {
-            closeResources(statement,rs);
+            closeResources(stmt,null);
         }
         return listaRichieste;
     }

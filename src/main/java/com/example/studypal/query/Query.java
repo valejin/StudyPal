@@ -2,7 +2,9 @@ package com.example.studypal.query;
 
 public class Query {
 
-    public Query(){}
+    public Query(){
+        /* vuoto*/
+    }
 
 
     /*--------------------Queries Login-----------------------------*/
@@ -34,6 +36,9 @@ public class Query {
     public static final String PRENOTAZIONI_ATTIVE = "SELECT * FROM richieste WHERE emailTutor = '%s' AND stato = 1";
     public static final String RICHIESTE_RIFIUTATE = "SELECT * FROM richieste WHERE emailTutor = '%s' AND stato = 2";
 
-
+    /* Query per Gestisci Prenotazioni (lato STUDENTE) per prendere le richieste dal DB*/
+    public static final String RICHIESTE_INVIATE = "SELECT * FROM richieste WHERE emailStudente = '%s' AND stato = 0";
+    public static final String PRENOTAZIONI_ATTIVE_S = "SELECT * FROM richieste WHERE emailStudente = '%s' AND stato = 1";
+    public static final String RICHIESTE_RIFIUTATE_S = "SELECT * FROM richieste WHERE emailStudente = '%s' AND stato = 2";
 
 }

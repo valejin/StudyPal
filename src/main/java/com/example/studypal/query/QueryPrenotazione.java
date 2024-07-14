@@ -61,7 +61,27 @@ public class QueryPrenotazione {
         return rs;
     }
 
+    public static ResultSet gestisciPrenotazioniStudente(Statement stmt, String email, int flag){
 
+        String sql = null;
+        ResultSet rs = null;
+        try{
+            if(flag == 0) {
+                sql = String.format(Query.RICHIESTE_INVIATE, email, flag);
+            } else if(flag == 1){
+                //qui ho le richieste confermate =>prenotazioni attive
+                sql = String.format(Query.PRENOTAZIONI_ATTIVE_S, email, flag);
+            }else if(flag == 2){
+                sql = String.format(Query.RICHIESTE_RIFIUTATE_S, email, flag);
+            }
+
+            rs = stmt.executeQuery(sql);
+
+        } catch (SQLException e){
+            handleException(e);
+        }
+        return rs;
+    }
 
 
 
