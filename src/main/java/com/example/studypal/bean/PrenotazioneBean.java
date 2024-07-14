@@ -58,10 +58,6 @@ public class PrenotazioneBean {
         return idRichiesta;
     }
 
-    public void setIdRichiesta(int idRichiesta) {
-        this.idRichiesta = idRichiesta;
-    }
-
     public String getEmailTutor() {
         return emailTutor;
     }

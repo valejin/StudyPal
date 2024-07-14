@@ -179,7 +179,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
 
         String subject = this.cercaMateria.getText();
         ripetizioneInfoBean = new RipetizioneInfoBean(subject);
-        Printer.println("La subject inserita è: " + subject);
+        Printer.println("La materia inserita è: " + subject);
 
         //prendo un BEAN base e inserisco info
         BaseInfoBean baseInfoBean = new BaseInfoBean(subject);
@@ -198,7 +198,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
             Printer.println("    lezioni in presenza: " + risultatoBean.getInPresenza());
             Printer.println("    lezioni online: " + risultatoBean.getOnline());
             Printer.println("    luogo: " + risultatoBean.getLuogo());
-            Printer.println("    giorni di interesse: " + risultatoBean.getGiorni());
+            Printer.println("    giorni disponibili: " + risultatoBean.getGiorni());
             Printer.println("    tariffa massima: " + risultatoBean.getTariffa() + "€/h");
             Printer.println("    email: " + risultatoBean.getEmail());
             Printer.println("------------------------------------------------");

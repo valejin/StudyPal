@@ -117,7 +117,7 @@
       <VBox layoutX="229.0" layoutY="93.0" prefHeight="150.0" prefWidth="165.0">
          <Label fx:id="nomeLabel" prefHeight="22.0" prefWidth="145.0" text="label">
             <font>
-               <Font size="15.0" />
+               <Font size="14.0" />
             </font>
          </Label>
          <Label fx:id="emailLabel" prefHeight="22.0" prefWidth="173.0" text="label">
@@ -125,23 +125,23 @@
                <Insets top="13.0" />
             </VBox.margin>
             <font>
-               <Font size="15.0" />
+               <Font size="14.0" />
             </font>
          </Label>
          <Label fx:id="materiaLabel" prefHeight="22.0" prefWidth="143.0" text="label">
             <VBox.margin>
-               <Insets top="13.0" />
+               <Insets top="12.0" />
             </VBox.margin>
             <font>
-               <Font size="15.0" />
+               <Font size="14.0" />
             </font>
          </Label>
          <Label fx:id="modLabel" prefHeight="22.0" prefWidth="145.0" text="label">
             <VBox.margin>
-               <Insets top="13.0" />
+               <Insets top="12.0" />
             </VBox.margin>
             <font>
-               <Font size="15.0" />
+               <Font size="14.0" />
             </font>
          </Label>
       </VBox>
@@ -179,31 +179,31 @@
       <VBox layoutX="493.0" layoutY="93.0" prefHeight="150.0" prefWidth="148.0">
          <Label fx:id="cognomeLabel" prefHeight="22.0" prefWidth="157.0" text="label">
             <font>
-               <Font size="15.0" />
+               <Font size="14.0" />
             </font>
          </Label>
          <Label fx:id="tariffaLabel" prefHeight="22.0" prefWidth="153.0" text="label">
             <VBox.margin>
-               <Insets top="13.0" />
+               <Insets top="12.0" />
             </VBox.margin>
             <font>
-               <Font size="15.0" />
+               <Font size="14.0" />
             </font>
          </Label>
          <Label fx:id="luogoLabel" prefHeight="22.0" prefWidth="148.0" text="label">
             <VBox.margin>
-               <Insets top="14.0" />
+               <Insets top="12.0" />
             </VBox.margin>
             <font>
-               <Font size="15.0" />
+               <Font size="14.0" />
             </font>
          </Label>
          <Label fx:id="giorniLabel" layoutX="10.0" layoutY="76.0" prefHeight="22.0" prefWidth="154.0" text="label">
             <VBox.margin>
-               <Insets top="13.0" />
+               <Insets top="12.0" />
             </VBox.margin>
             <font>
-               <Font size="15.0" />
+               <Font size="14.0" />
             </font>
          </Label>
       </VBox>

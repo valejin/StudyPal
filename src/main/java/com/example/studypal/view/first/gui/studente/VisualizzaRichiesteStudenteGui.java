@@ -70,10 +70,10 @@ public class VisualizzaRichiesteStudenteGui extends HomeStudenteGui {
         modalita = dettagliRichiesta.getModLezione();
 
         giorno = dettagliRichiesta.getGiorno();
-        if (giorno != null && !giorno.isEmpty()) {
+        if (giorno == null || giorno.isEmpty()){
+            giorni.setText("Non specificato");
+        } else {
             giorni.setText(giorno);
-        }else{
-            giorni.setText("Qualsiasi");
         }
 
         noteAggiuntive = dettagliRichiesta.getNote();
