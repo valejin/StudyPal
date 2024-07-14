@@ -38,7 +38,7 @@ public class GestisciPrenotazioniStudenteController {
             }
 
         } catch (NonProduceRisultatoException e){
-            Printer.println("Non sono presenti richieste in attesa di conferma per l'utente " + user.getEmail());
+            Printer.println("Non sono presenti richieste in attesa di conferma per l'utente " + user.getEmail() + '.');
         }
         return listaRichiesteBean;
     }

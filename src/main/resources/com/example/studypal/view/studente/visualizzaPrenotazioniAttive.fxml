@@ -91,7 +91,7 @@
                <Font size="15.0" />
             </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Giorni preferibili:">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="testo" text="Giorni di interesse:">
                 <VBox.margin>
                     <Insets top="15.0" />
                 </VBox.margin>

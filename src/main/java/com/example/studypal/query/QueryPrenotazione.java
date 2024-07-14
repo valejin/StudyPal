@@ -93,7 +93,7 @@ public class QueryPrenotazione {
             } else {
                 sql = String.format(Query.RIFIUTA_RICHIESTA, idRichiesta);
             }
-            stmt.executeQuery(sql);
+            stmt.executeUpdate(sql);
 
         } catch (SQLException e){
             handleException(e);
@@ -106,7 +106,7 @@ public class QueryPrenotazione {
 
         try{
             sql = String.format(Query.CANCELLA_RICHIESTA, idRichiesta);
-            stmt.executeQuery(sql);
+            stmt.executeUpdate(sql);
         } catch (SQLException e){
             handleException(e);
         }
@@ -117,7 +117,7 @@ public class QueryPrenotazione {
 
         try{
             sql = String.format(Query.RECENSIONE,recensione, idRichiesta);
-            stmt.executeQuery(sql);
+            stmt.executeUpdate(sql);
         } catch (SQLException e){
             handleException(e);
         }
@@ -127,10 +127,6 @@ public class QueryPrenotazione {
     private static void handleException(Exception e) {
         Printer.errorPrint(String.format("QueryPrenotazione: %s", e.getMessage()));
     }
-
-
-
-
 
 
 }
