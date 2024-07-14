@@ -105,13 +105,14 @@ public class UserDAO {
             // Gestione dell'eccezione SQL, se necessario
         } finally {
             // Chiudi le risorse in finally block per garantire la pulizia
-            if (stmt != null) {
+            /*if (stmt != null) {
                 try {
                     stmt.close();
                 } catch (SQLException e) {
                     logger.severe("Errore durante la chiusura dello statement: " + e.getMessage());
                 }
-            }
+            }*/
+            closeResources(stmt, null);
             if (connection != null) {
                 try {
                     connection.close();
