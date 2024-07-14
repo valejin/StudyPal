@@ -5,10 +5,9 @@ import com.example.studypal.model.BaseInfoModel;
 import com.example.studypal.model.RipetizioneInfoModel;
 import com.example.studypal.other.Connect;
 import com.example.studypal.other.Printer;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import com.example.studypal.query.QueryRicerca;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -40,21 +39,15 @@ public class RipetizioneInfoDAO {
         La query cerca nella tabella Tutor
          */
 
-        PreparedStatement statement;
+        Statement stmt;
         ResultSet rs;
-
-        //query per la ricerca di Materia, esplicito campi di interesse per evitare code smell
-        String query = "SELECT email, tariffa, luogo, materie, inPresenza, webCam, giorni, nome, cognome FROM tutor where LOWER(materie) LIKE ?";
 
         try {
 
             Connection connection = Connect.getInstance().getDBConnection();
-            statement = connection.prepareStatement(query);
+            stmt = connection.createStatement();
 
-            //devo prendere materia da model
-            statement.setString(1, '%' + baseInfoModel.getMateria() + '%');
-
-            rs = statement.executeQuery();
+            rs = QueryRicerca.ricercaMateria(stmt, baseInfoModel.getMateria());
 
             if(rs.next()) {
 
@@ -253,5 +246,22 @@ public class RipetizioneInfoDAO {
             logger.severe("errore in RipetizioneInfoDAO" + e.getMessage());
         }
         return infoTutor;
+    }
+
+    private void handleDAOException(Exception e) {
+        Printer.errorPrint(String.format("UserDAO: %s", e.getMessage()));
+    }
+
+    private void closeResources(Statement stmt, ResultSet rs) {
+        try {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stmt != null) {
+                stmt.close();
+            }
+        } catch (SQLException e) {
+            handleDAOException(e);
+        }
     }
 }

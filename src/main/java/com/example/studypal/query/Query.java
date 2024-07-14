@@ -23,10 +23,6 @@ public class Query {
     public static final String REGISTRAZ_TUTOR = "INSERT INTO tutor (email, tariffa, luogo, materie, inPresenza, webCam, giorni, nome, cognome) VALUES ('%s', NULL, NULL, NULL, NULL, NULL, NULL, '%s', '%s')";
 
 
-    /*Queries Ricerca materia*/
-    public static final String RICERCA_MATERIA = "SELECT * FROM tutor WHERE materia= '%s'";
-
-
     /*Query per inserire la richiesta dello studente in DB */
     public static final String PRENOTA = "INSERT INTO richieste (emailTutor, emailStudente, materia, modLezione, tariffa, giorni, note, nomeTutor, cognomeTutor) VALUES ('%s', '%s', '%s', '%d', '%d', '%s', '%s', '%s', '%s')";
 
@@ -43,8 +39,9 @@ public class Query {
 
     public static final String CONFERMA_RICHIESTA = "UPDATE richieste SET stato = 0 WHERE idrichieste = '%s'";
     public static final String RIFIUTA_RICHIESTA = "UPDATE richieste SET stato = 1 WHERE idrichieste = '%s'";
-
     public static final String CANCELLA_RICHIESTA = "DELETE FROM richieste WHERE idrichieste = '%s'";
-
     public static final String RECENSIONE = "UPDATE richieste SET recensione = '%d' WHERE idrichieste = '%d'";
+
+    /* ripetizioneInfoDAO*/
+    public static final String RICERCA_MATERIA = "SELECT email, tariffa, luogo, materie, inPresenza, webCam, giorni, nome, cognome FROM tutor where LOWER(materie) LIKE '%s' ";
 }
