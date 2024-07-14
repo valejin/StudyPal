@@ -74,9 +74,9 @@ public class RipetizioneInfoDAO {
 
     public List<RipetizioneInfoModel> ricercaFiltri(RipetizioneInfoModel ripetizioneInfoModel){
 
-        PreparedStatement statement;
+        Statement stmt;
         ResultSet rs;
-
+/*
         String query = "SELECT email, tariffa, luogo, materie, inPresenza, webCam, giorni, nome, cognome FROM tutor where tariffa <= ?";
 
         if (ripetizioneInfoModel.getLuogo() != null && !ripetizioneInfoModel.getLuogo().isEmpty()) {
@@ -98,11 +98,16 @@ public class RipetizioneInfoDAO {
             query += " AND giorni LIKE ?";
         }
 
+ */
+
 
         try {
             Connection connection = Connect.getInstance().getDBConnection();
-            statement = connection.prepareStatement(query);
+            //statement = connection.prepareStatement();
+            stmt = connection.createStatement();
+            rs = QueryRicerca.ricercaFiltri(stmt, ripetizioneInfoModel);
 
+            /*
             statement.setInt(1, ripetizioneInfoModel.getTariffa());
 
             if (ripetizioneInfoModel.getLuogo() != null && !ripetizioneInfoModel.getLuogo().isEmpty()) {
@@ -146,7 +151,7 @@ public class RipetizioneInfoDAO {
             }
 
             rs = statement.executeQuery();
-
+*/
 
             if (rs.next()) {
 

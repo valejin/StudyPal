@@ -43,5 +43,9 @@ public class Query {
     public static final String RECENSIONE = "UPDATE richieste SET recensione = '%d' WHERE idrichieste = '%d'";
 
     /* ripetizioneInfoDAO*/
-    public static final String RICERCA_MATERIA = "SELECT email, tariffa, luogo, materie, inPresenza, webCam, giorni, nome, cognome FROM tutor where LOWER(materie) LIKE '%s' ";
+    public static final String RICERCA_MATERIA = "SELECT email, tariffa, luogo, materie, inPresenza, webCam, giorni," +
+            " nome, cognome FROM tutor where LOWER(materie) LIKE '%s' ";
+
+    public static final String RICERCA_FIlTRI = "SELECT email, tariffa, luogo, materie, inPresenza, webCam, giorni, nome, cognome FROM tutor where tariffa <= '%d' ";
+
 }
