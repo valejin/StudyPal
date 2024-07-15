@@ -7,6 +7,7 @@ import com.example.studypal.exceptions.EmailAlreadyInUseException;
 import com.example.studypal.exceptions.PersistenzaNonValida;
 import com.example.studypal.model.UserModel;
 import com.example.studypal.other.FactoryDAO;
+import com.example.studypal.other.Printer;
 
 
 public class RegistrazioneController {
@@ -40,7 +41,9 @@ public class RegistrazioneController {
                 throw new EmailAlreadyInUseException();
                 //il controller applicativo si limita a propagarla al controller grafico
             } catch (PersistenzaNonValida e){
-                System.exit(1);
+                Printer.errorPrint("Persistenza non valida.");
+
+                //System.exit(1);
             }
 
         }

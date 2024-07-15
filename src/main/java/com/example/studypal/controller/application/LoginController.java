@@ -9,6 +9,7 @@ import com.example.studypal.model.CredenzialiModel;
 import com.example.studypal.model.UserModel;
 import com.example.studypal.exceptions.CredenzialiSbagliateException;
 import com.example.studypal.other.FactoryDAO;
+import com.example.studypal.other.Printer;
 
 public class LoginController {
 
@@ -47,7 +48,8 @@ public class LoginController {
         } catch (UtenteInesistenteException u) {
             throw new UtenteInesistenteException();
         } catch (PersistenzaNonValida e){
-            System.exit(1);
+            Printer.errorPrint("Persistenza non valida.");
+            //System.exit(1);
         }
         return null;
    }

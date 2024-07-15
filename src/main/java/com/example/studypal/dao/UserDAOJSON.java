@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class UserDAOJSON implements UserDAO {
 
-    private static final String FILE_PATH = "users.json";
+    private static final String FILE_PATH = "src/main/resources/com/example/studypal/persistenza/users.json";
     private final Map<String, UserModel> users = new HashMap<>();
 
     public UserDAOJSON() {
@@ -62,7 +62,7 @@ public class UserDAOJSON implements UserDAO {
                 writer.write(entry.getKey() + ":" + entry.getValue().toString() + "\n");
             }
         } catch (IOException e) {
-            Printer.errorPrint("Failed to save users to JSON file");
+            Printer.errorPrint("Impossibile salvare l'utente sul file JSON.");
         }
     }
 
@@ -77,7 +77,7 @@ public class UserDAOJSON implements UserDAO {
                 }
             }
         } catch (IOException e) {
-            Printer.errorPrint("Failed to load users from JSON file");
+            Printer.errorPrint("Impossibile caricare gli utenti dal file utenti.");
         }
     }
 }
