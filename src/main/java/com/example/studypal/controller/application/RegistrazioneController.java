@@ -1,9 +1,12 @@
 package com.example.studypal.controller.application;
 
+import com.example.studypal.dao.UserDAO;
 import com.example.studypal.dao.UserDAOMySQL;
 import com.example.studypal.bean.RegistrazioneUserBean;
 import com.example.studypal.exceptions.EmailAlreadyInUseException;
+import com.example.studypal.exceptions.PersistenzaNonValida;
 import com.example.studypal.model.UserModel;
+import com.example.studypal.other.FactoryDAO;
 
 
 public class RegistrazioneController {
@@ -23,21 +26,23 @@ public class RegistrazioneController {
             userModel.setPassword(registrazioneUserBean.getPassword());
             userModel.setRuolo(registrazioneUserBean.getRuolo());
 
-            UserDAOMySQL registrazioneDao = new UserDAOMySQL();
 
             try{
+                UserDAO registrazioneDao = FactoryDAO.getUserDAO();
                 registrazioneDao.controllaEmailMethod(userModel);
+                registrazioneDao.registrazioneMethod(userModel);
+
+                if (registrazioneUserBean.getRuolo()){
+                    registrazioneDao.registraTutorMethod(userModel.getEmail(), userModel.getNome(), userModel.getCognome());
+                }
 
             } catch (EmailAlreadyInUseException e) {
                 throw new EmailAlreadyInUseException();
                 //il controller applicativo si limita a propagarla al controller grafico
+            } catch (PersistenzaNonValida e){
+                System.exit(1);
             }
 
-            registrazioneDao.registrazioneMethod(userModel);
-
-            if (registrazioneUserBean.getRuolo()){
-                registrazioneDao.registraTutorMethod(userModel.getEmail(), userModel.getNome(), userModel.getCognome());
-            }
         }
 }
 
