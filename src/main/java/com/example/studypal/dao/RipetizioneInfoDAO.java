@@ -5,6 +5,7 @@ import com.example.studypal.model.BaseInfoModel;
 import com.example.studypal.model.RipetizioneInfoModel;
 import com.example.studypal.other.Connect;
 import com.example.studypal.other.Printer;
+import com.example.studypal.query.QueryProfilo;
 import com.example.studypal.query.QueryRicerca;
 
 import java.sql.*;
@@ -197,24 +198,13 @@ public class RipetizioneInfoDAO {
          */
 
         Connection connection;
-        PreparedStatement statement;
-        String query = "UPDATE tutor SET tariffa=?, luogo=?, materie=?, inPresenza=?, webCam=?, giorni=? WHERE email=?";
+        Statement stmt;
 
         try{
             connection = Connect.getInstance().getDBConnection();
-            statement = connection.prepareStatement(query);
+            stmt = connection.createStatement();
+            QueryProfilo.modificaProfiloTutor(stmt, ripetizioneInfoModel);
 
-            statement.setInt(1, ripetizioneInfoModel.getTariffa());
-            statement.setString(2, ripetizioneInfoModel.getLuogo());
-            statement.setString(3, ripetizioneInfoModel.getMateria());
-            statement.setBoolean(4, ripetizioneInfoModel.getInPresenza());
-            statement.setBoolean(5, ripetizioneInfoModel.getOnline());
-            statement.setString(6, ripetizioneInfoModel.getGiorni());
-            statement.setString(7, ripetizioneInfoModel.getEmail());
-
-            statement.executeUpdate();
-            Printer.println("Profilo dell'utente " + ripetizioneInfoModel.getEmail() + " aggiornato con successo!");
-            statement.close();
         } catch (SQLException e) {
             logger.severe("errore in RipetizioneInfoDAO " + e.getMessage());
         }
@@ -225,17 +215,15 @@ public class RipetizioneInfoDAO {
 
         RipetizioneInfoModel infoTutor = new RipetizioneInfoModel();
         Connection connection;
-        PreparedStatement statement;
-        ResultSet rs;
+        Statement stmt = null;
+        ResultSet rs = null;
 
-        String query = "SELECT email, tariffa, luogo, materie, inPresenza, webCam, giorni, nome, cognome FROM tutor WHERE email=?";
 
         try{
             connection = Connect.getInstance().getDBConnection();
-            statement = connection.prepareStatement(query);
-            statement.setString(1, email);
+            stmt = connection.createStatement();
 
-            rs = statement.executeQuery();
+            rs = QueryProfilo.caricaInformazioniProfilo(stmt, email);
 
             if(!rs.next()){
                 Printer.println("TUTOR NON PRESENTE");
@@ -255,11 +243,14 @@ public class RipetizioneInfoDAO {
 
         } catch (SQLException e){
             logger.severe("errore in RipetizioneInfoDAO" + e.getMessage());
+        } finally {
+            closeResources(stmt, rs);
         }
         return infoTutor;
     }
 
     private void handleDAOException(Exception e) {
+        logger.severe(e.getMessage());
         Printer.errorPrint(String.format("UserDAO: %s", e.getMessage()));
     }
 

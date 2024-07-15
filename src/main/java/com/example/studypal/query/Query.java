@@ -2,10 +2,7 @@ package com.example.studypal.query;
 
 public class Query {
 
-    public Query(){
-        /* vuoto*/
-    }
-
+     Query(){}
 
     /*--------------------Queries Login-----------------------------*/
 
@@ -46,6 +43,10 @@ public class Query {
     public static final String RICERCA_MATERIA = "SELECT email, tariffa, luogo, materie, inPresenza, webCam, giorni," +
             " nome, cognome FROM tutor where LOWER(materie) LIKE '%s' ";
 
-    public static final String RICERCA_FIlTRI = "SELECT email, tariffa, luogo, materie, inPresenza, webCam, giorni, nome, cognome FROM tutor where tariffa <= '%d' ";
+    public static final String RICERCA_FILTRI = "SELECT email, tariffa, luogo, materie, inPresenza, webCam, giorni, nome, cognome FROM tutor where tariffa <= '%d' ";
+
+    public static final String MODIFICA_PROFILO = "UPDATE tutor SET tariffa='%d', luogo='%s', materie='%s', inPresenza='%d', webCam='%d', giorni='%s' WHERE email='%s'";
+
+    public static final String CARICA_INFO_PROFILO = "SELECT email, tariffa, luogo, materie, inPresenza, webCam, giorni, nome, cognome FROM tutor WHERE email='%s' ";
 
 }

@@ -32,7 +32,7 @@ public class QueryRicerca {
         ResultSet rs = null;
         try{
 
-            sql = String.format(Query.RICERCA_FIlTRI, filtri.getTariffa());
+            sql = String.format(Query.RICERCA_FILTRI, filtri.getTariffa());
 
             if (filtri.getLuogo() != null && !filtri.getLuogo().isEmpty()) {
                 //luogo selezionato
@@ -63,6 +63,7 @@ public class QueryRicerca {
         }
         return rs;
     }
+
 
 
     private static void handleException(Exception e) {
