@@ -5,7 +5,7 @@ import com.example.studypal.bean.LoggedInUserBean;
 public class RipetizioneInfoModel extends BaseInfoModel {
 
     /*
-    model conterrà i dati relativi alla gestione profilo
+    model utilizzato nella gestione del profilo
      */
 
     private boolean inPresenza;
@@ -16,6 +16,23 @@ public class RipetizioneInfoModel extends BaseInfoModel {
     private String email;
     private String nome;
     private String cognome;
+
+    //cotruttore di default
+    public RipetizioneInfoModel(){ }
+
+    //costruttore non di default, con 2 attributi aggiuntivi (nome, cognome) - necessario per risultati della ricerca
+    public RipetizioneInfoModel(LoggedInUserBean user, String materie, Boolean inPresenza, Boolean online, String luogo, String giorni, Integer tariffa){
+        super(materie);
+        this.nome = user.getNome();
+        this.cognome = user.getCognome();
+        this.materia = materie;
+        this.inPresenza = inPresenza;
+        this.online = online;
+        this.luogo = luogo;
+        this.giorni = giorni;
+        this.tariffa = tariffa;
+        this.email = user.getEmail();
+    }
 
     public Integer getTariffa() {
         return tariffa;
@@ -76,23 +93,7 @@ public class RipetizioneInfoModel extends BaseInfoModel {
         this.cognome = cognome;
     }
 
-    //cotruttore di default
-    public RipetizioneInfoModel(){ }
 
-    //costruttore non di default, con 2 attributi aggiuntivi (nome, cognome) - necessario per risultati della ricerca
-    public RipetizioneInfoModel(LoggedInUserBean user, String materie, Boolean inPresenza, Boolean online, String luogo, String giorni, Integer tariffa){
-        super(materie);
-        this.nome = user.getNome();
-        this.cognome = user.getCognome();
-        this.materia = materie;
-        this.inPresenza = inPresenza;
-        this.online = online;
-        this.luogo = luogo;
-        this.giorni = giorni;
-        this.tariffa = tariffa;
-        this.email = user.getEmail();
-
-    }
 
 
 

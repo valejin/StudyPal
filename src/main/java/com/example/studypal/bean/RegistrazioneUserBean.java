@@ -14,7 +14,6 @@ public class RegistrazioneUserBean extends LoggedInUserBean {
         this.confermaPassword = confermaPassword;
     }
 
-
     public String getPassword() {
         return password;
     }
