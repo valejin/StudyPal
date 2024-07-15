@@ -1,8 +1,9 @@
 package com.example.studypal.pattern.state;
 
 import com.example.studypal.bean.LoggedInUserBean;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
-import java.util.Stack;
 
 public class StateMachineImpl implements StateMachine {
 
@@ -15,7 +16,7 @@ public class StateMachineImpl implements StateMachine {
     * */
 
 
-    private Stack<AbstractState> stateHistory;
+    private Deque<AbstractState> stateHistory;
 
     private AbstractState currentState;
 
@@ -23,7 +24,7 @@ public class StateMachineImpl implements StateMachine {
 
 
     public StateMachineImpl(){
-        this.stateHistory = new Stack<>();
+        this.stateHistory = new ArrayDeque<>();
         this.currentState = new InitialState(); //oppure start()
     }
 
@@ -55,7 +56,6 @@ public class StateMachineImpl implements StateMachine {
 
     @Override
     public void transition(AbstractState nextState){
-
         this.currentState.exit(this);
 
         if(currentState != null) {
