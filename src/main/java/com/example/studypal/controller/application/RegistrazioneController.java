@@ -1,6 +1,6 @@
 package com.example.studypal.controller.application;
 
-import com.example.studypal.dao.UserDAO;
+import com.example.studypal.dao.UserDAOMySQL;
 import com.example.studypal.bean.RegistrazioneUserBean;
 import com.example.studypal.exceptions.EmailAlreadyInUseException;
 import com.example.studypal.model.UserModel;
@@ -23,7 +23,7 @@ public class RegistrazioneController {
             userModel.setPassword(registrazioneUserBean.getPassword());
             userModel.setRuolo(registrazioneUserBean.getRuolo());
 
-            UserDAO registrazioneDao = new UserDAO();
+            UserDAOMySQL registrazioneDao = new UserDAOMySQL();
 
             try{
                 registrazioneDao.controllaEmailMethod(userModel);

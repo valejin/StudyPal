@@ -1,6 +1,6 @@
 package com.example.studypal.controller.application;
 
-import com.example.studypal.dao.UserDAO;
+import com.example.studypal.dao.UserDAOMySQL;
 import com.example.studypal.bean.CredenzialiBean;
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.exceptions.UtenteInesistenteException;
@@ -25,10 +25,10 @@ public class LoginController {
             credenzialiModel.setEmail(credenzialiBean.getEmail());
             credenzialiModel.setPassword(credenzialiBean.getPassword());
 
-            UserDAO userDAO = new UserDAO();
+            UserDAOMySQL userDAOMySql = new UserDAOMySQL();
 
             //utente effettua login (controllare l'esistenza di utente da DB)
-            UserModel userModel = userDAO.loginMethod(credenzialiModel);
+            UserModel userModel = userDAOMySql.loginMethod(credenzialiModel);
 
             //memorizzo oggetti da DB in loggedInUserBean per la persistenza
             loggedInUserBean.setNome(userModel.getNome());

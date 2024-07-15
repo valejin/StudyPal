@@ -177,7 +177,7 @@ public class RipetizioneInfoDAO {
 
     private void handleDAOException(Exception e) {
         logger.severe(e.getMessage());
-        Printer.errorPrint(String.format("UserDAO: %s", e.getMessage()));
+        Printer.errorPrint(String.format("UserDAOMySQL: %s", e.getMessage()));
     }
 
     private void closeResources(Statement stmt, ResultSet rs) {

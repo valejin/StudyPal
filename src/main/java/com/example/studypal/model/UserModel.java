@@ -37,4 +37,19 @@ public class UserModel {
 
     public void setRuolo(boolean ruoloUtente) { this.ruolo = ruoloUtente; }
     public boolean getRuolo() { return this.ruolo; }
+
+    public String toString() {
+        return nome + "," + cognome + "," + email + "," + password + "," + ruolo;
+    }
+
+    public static UserModel fromString(String userString) {
+        String[] parts = userString.split(",");
+        UserModel user = new UserModel();
+        user.setNome(parts[0]);
+        user.setCognome(parts[1]);
+        user.setEmail(parts[2]);
+        user.setPassword(parts[3]);
+        user.setRuolo(Boolean.parseBoolean(parts[4]));
+        return user;
+    }
 }
