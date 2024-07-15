@@ -7,6 +7,8 @@ public class Printer {
 
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_RESET1 = "\u001B[0m";
 
 
     private Printer(){}
@@ -23,16 +25,12 @@ public class Printer {
 
     //stampa la guida per ogni pagina in CLI
     public static void printlnBlu(String message) {
-        final String ANSI_BLUE = "\u001B[34m";
-        final String ANSI_RESET = "\u001B[0m";
-        System.out.println(ANSI_BLUE + message + ANSI_RESET);
+        System.out.println(ANSI_BLUE + message + ANSI_RESET1);
     }
 
 
     public static void printBlu(String message) {
-        final String ANSI_BLUE = "\u001B[34m";
-        final String ANSI_RESET = "\u001B[0m";
-        System.out.print(ANSI_BLUE + message + ANSI_RESET);
+        System.out.print(ANSI_BLUE + message + ANSI_RESET1);
     }
 
 
