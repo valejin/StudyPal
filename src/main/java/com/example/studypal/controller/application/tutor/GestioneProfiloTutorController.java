@@ -28,7 +28,6 @@ public class GestioneProfiloTutorController {
         //passiamo model a DAO
         RipetizioneInfoDAO ripetizioneInfoDAO = new RipetizioneInfoDAO();
 
-        //mettere try catch e gestire eccezioni
         ripetizioneInfoDAO.modificaProfiloTutor(ripetizioneInfoModel);
     }
 
