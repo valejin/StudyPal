@@ -10,7 +10,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class FactoryDAO {
-    private static final String CONFIG_FILE = "com/example/studypal/config.properties";
+    private static final String CONFIG_FILE = "config.properties";
     private static final Properties properties = new Properties();
 
     private FactoryDAO() {}
