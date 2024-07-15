@@ -8,19 +8,14 @@
     -fx-background-color: rgba(218, 49, 49, 0.8);
     -fx-text-fill: #eceeeb;
     -fx-border-radius: 15 15 15 15;
-
-
 }
 
 .custom-button2:hover {
     -fx-background-color: #da3131;
-    /* -fx-border-radius: 15 15 15 15; */
-
 }
 
 .custom-button:hover {
     -fx-background-color: #4a7947;
-   /* -fx-border-radius: 15 15 15 15; */
 
 }
 
@@ -28,7 +23,6 @@
     -fx-background-color: #DEDFDDFF;
     -fx-text-fill: #4f82a6;
     -fx-border-radius: 20px; /* Bordo arrotondato */
-
 }
 
 .rounded-button:hover {
