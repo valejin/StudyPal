@@ -1,5 +1,4 @@
 #myPane{
-  /*-fx-background-color: #242222;*/
 }
 
 .lw { font-size: 60px; }
@@ -51,7 +50,6 @@ Button:hover {
     -fx-text-fill: #333333; /* Imposta il colore del testo */
     -fx-font-style: italic;
     -fx-font-family: Rockwell;
-    /* Aggiungi altre proprietà CSS secondo le tue preferenze */
 }
 
 /*colore di sfondo*/
@@ -189,7 +187,6 @@ Button:hover {
 
 
 .check-box .box{
-    /*-fx-border-color: rgba(60, 161, 57, 0.34); /* Cambia il colore del contorno */
     -fx-effect: dropshadow(gaussian, rgba(60, 161, 57, 0.34), 10, 0.7, 0, 0);
     -fx-border-width: 2; /* Cambia la larghezza del contorno */
     -fx-border-radius: 0; /* Cambia l'angolatura degli spigoli */
