@@ -1,13 +1,13 @@
 .lw { font-size: 60px; }
 /* Definizione del colore di sfondo */
-body {
-    background-color: #c8c8c8; /* Colore grigio chiaro */
-}
+
 
 /* Definizione del font per tutto il testo */
 body {
+    background-color: #c8c8c8; /* Colore grigio chiaro */
     font-family: Abel, Verdana, serif; /* Utilizza il font Arial o un font sans-serif di backup */
 }
+
 
 /* Stile per l'intestazione */
 h1 {
@@ -26,7 +26,6 @@ Button {
     -fx-background-color: #dedfdd; /* Colore di sfondo bianchino */
 
     -fx-color: #658863; /* Colore del testo blu */
-    /*-fx-border: none;*/
     -fx-padding: 10px 20px; /* Spazio intorno al testo */
     -fx-font-family: Verdana, sans-serif; /* Utilizza il font Arial o un font sans-serif di backup */
 
