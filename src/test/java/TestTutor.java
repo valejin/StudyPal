@@ -55,8 +55,6 @@ public class TestTutor {
         // Stampo il messaggio di successo
         Printer.println("Modifiche avvenute con successo");
 
-
-
     }
 
 
@@ -81,4 +79,28 @@ public class TestTutor {
         int max = 50;
         return random.nextInt(max - min + 1) + min;
     }
+
+
+
+    //test su conferma richiesta
+    //registrazione del tutor nella tabella Tutor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
