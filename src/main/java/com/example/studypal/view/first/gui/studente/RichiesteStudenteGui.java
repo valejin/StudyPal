@@ -102,7 +102,7 @@ public class RichiesteStudenteGui extends HomeStudenteGui{
             //richieste inviate in attesa di conferma
             try {
                 FXMLLoader loader = new FXMLLoader(RichiesteTutorGui.class.getResource("/com/example/studypal/view/studente/visualizzaRichiesteInviate.fxml"));
-                loader.setControllerFactory(c -> new VisualizzaRichiesteStudenteGui(user, prenotazioneBean, richiesteList));
+                loader.setControllerFactory(c -> new VisualizzaRichiestaStudenteGui(user, prenotazioneBean, richiesteList));
                 Parent parent = loader.load();
                 Scene scene = new Scene(parent);
                 Stage stage = (Stage) richiesteTable.getScene().getWindow();
@@ -115,7 +115,7 @@ public class RichiesteStudenteGui extends HomeStudenteGui{
             //richieste confermate (prenotazioni attive)
             try {
                 FXMLLoader loader = new FXMLLoader(RichiesteTutorGui.class.getResource("/com/example/studypal/view/studente/visualizzaPrenotazioniAttive.fxml"));
-                loader.setControllerFactory(c -> new VisualizzaRichiesteStudenteGui(user, prenotazioneBean, richiesteList));
+                loader.setControllerFactory(c -> new VisualizzaRichiestaStudenteGui(user, prenotazioneBean, richiesteList));
                 Parent parent = loader.load();
                 Scene scene = new Scene(parent);
                 Stage stage = (Stage) richiesteTable.getScene().getWindow();
@@ -128,7 +128,7 @@ public class RichiesteStudenteGui extends HomeStudenteGui{
         } else if (this.flag == 2){
             try {
                 FXMLLoader loader = new FXMLLoader(RichiesteTutorGui.class.getResource("/com/example/studypal/view/studente/visualizzaRichiesteRifiutate.fxml"));
-                loader.setControllerFactory(c -> new VisualizzaRichiesteStudenteGui(user, prenotazioneBean, richiesteList));
+                loader.setControllerFactory(c -> new VisualizzaRichiestaStudenteGui(user, prenotazioneBean, richiesteList));
                 Parent parent = loader.load();
                 Scene scene = new Scene(parent);
                 Stage stage = (Stage) richiesteTable.getScene().getWindow();

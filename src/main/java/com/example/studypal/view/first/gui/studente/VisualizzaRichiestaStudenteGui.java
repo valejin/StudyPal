@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class VisualizzaRichiesteStudenteGui extends HomeStudenteGui {
+public class VisualizzaRichiestaStudenteGui extends HomeStudenteGui {
     /* controller grafico delle varie pagine "visualizza dettagli richiesta/prenotazione"*/
 
     @FXML
@@ -48,11 +48,11 @@ public class VisualizzaRichiesteStudenteGui extends HomeStudenteGui {
     String noteAggiuntive;
     int modalita;
 
-    private static final Logger logger = Logger.getLogger(VisualizzaRichiesteStudenteGui.class.getName());
+    private static final Logger logger = Logger.getLogger(VisualizzaRichiestaStudenteGui.class.getName());
 
 
 
-    public VisualizzaRichiesteStudenteGui(LoggedInUserBean user, PrenotazioneBean prenotazioneSelezionata, List<PrenotazioneBean> listaRichieste){
+    public VisualizzaRichiestaStudenteGui(LoggedInUserBean user, PrenotazioneBean prenotazioneSelezionata, List<PrenotazioneBean> listaRichieste){
         this.user = user;
         this.dettagliRichiesta = prenotazioneSelezionata;
         this.listaRichieste = listaRichieste;
@@ -111,7 +111,7 @@ public class VisualizzaRichiesteStudenteGui extends HomeStudenteGui {
             Stage stage = (Stage) emailTutor.getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {
-            logger.severe("errore in VisualizzaRichiesteStudenteGui (caricamento pagina R.I.+) " + e.getMessage());
+            logger.severe("errore in VisualizzaRichiestaStudenteGui (caricamento pagina R.I.+) " + e.getMessage());
         }
     }
 
@@ -125,7 +125,7 @@ public class VisualizzaRichiesteStudenteGui extends HomeStudenteGui {
             Stage stage = (Stage) emailTutor.getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {
-            logger.severe("errore in VisualizzaRichiesteStudenteGui (caricamento pagina - P.A.) " + e.getMessage());
+            logger.severe("errore in VisualizzaRichiestaStudenteGui (caricamento pagina - P.A.) " + e.getMessage());
         }
     }
 
@@ -140,7 +140,7 @@ public class VisualizzaRichiesteStudenteGui extends HomeStudenteGui {
             Stage stage = (Stage) emailTutor.getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {
-            logger.severe("errore in VisualizzaRichiesteStudenteGui (caricamento pagina R.R.) " + e.getMessage());
+            logger.severe("errore in VisualizzaRichiestaStudenteGui (caricamento pagina R.R.) " + e.getMessage());
         }
     }
 
