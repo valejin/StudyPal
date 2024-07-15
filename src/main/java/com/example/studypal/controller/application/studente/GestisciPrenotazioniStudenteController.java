@@ -21,7 +21,7 @@ public class GestisciPrenotazioniStudenteController {
 
     public GestisciPrenotazioniStudenteController(){}
 
-    public List<PrenotazioneBean> richiesteInviate (String email, Integer flag) {
+    public List<PrenotazioneBean> getRichieste(String email, Integer flag) {
         /* metodo che viene invocato dal controller grafico per ricevere la lista di richieste inviate/rifiutate/accettate dello studente*/
 
         List<PrenotazioneBean> listaRichiesteBean = new ArrayList<>();

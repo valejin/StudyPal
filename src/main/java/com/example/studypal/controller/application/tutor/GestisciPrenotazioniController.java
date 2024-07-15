@@ -15,7 +15,7 @@ public class GestisciPrenotazioniController extends GestisciPrenotazioniGui {
 
 
     //funzione chiamata da Controller grafico corrispondente per ottenere le info per stampare a schermo
-    public List<PrenotazioneBean> richiesteArrivate(LoggedInUserBean user, int flag) {
+    public List<PrenotazioneBean> getRichieste(LoggedInUserBean user, int flag) {
 
         //creo una lista di BEAN che prende i dati
         List<PrenotazioneBean> prenotazioneBean = new ArrayList<>();

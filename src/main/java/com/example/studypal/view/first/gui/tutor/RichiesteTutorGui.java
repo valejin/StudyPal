@@ -70,7 +70,7 @@ public class RichiesteTutorGui extends GestisciPrenotazioniGui implements Observ
         GestisciPrenotazioniController gestisciPrenotazioniController = new GestisciPrenotazioniController();
 
         //chiamo la funzione nel controller applicativo per ottenere una lista di BEAN che contiene tutte le info per la tabella
-        richiesteList = gestisciPrenotazioniController.richiesteArrivate(user, flag);
+        richiesteList = gestisciPrenotazioniController.getRichieste(user, flag);
 
 
         email.setCellValueFactory(new PropertyValueFactory<>("emailStudente"));

@@ -72,7 +72,7 @@ public class RichiesteTutorCLI extends AbstractState {
         GestisciPrenotazioniController gestisciPrenotazioniController = new GestisciPrenotazioniController();
 
         // Chiamo la funzione nel controller applicativo per ottenere una lista di BEAN che contiene tutte le info per la tabella
-        richiesteList = gestisciPrenotazioniController.richiesteArrivate(user, flag);
+        richiesteList = gestisciPrenotazioniController.getRichieste(user, flag);
 
         if (richiesteList.isEmpty()) {
             Printer.println("Nessuna richiesta trovata.");

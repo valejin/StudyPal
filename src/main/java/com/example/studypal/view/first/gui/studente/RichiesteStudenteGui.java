@@ -56,7 +56,7 @@ public class RichiesteStudenteGui extends HomeStudenteGui{
 
 
         GestisciPrenotazioniStudenteController gestisciPrenotazioniStudenteController = new GestisciPrenotazioniStudenteController(user);
-        richiesteList = gestisciPrenotazioniStudenteController.richiesteInviate(user.getEmail(), this.flag);
+        richiesteList = gestisciPrenotazioniStudenteController.getRichieste(user.getEmail(), this.flag);
 
         //inizializza la tabella popolandola con le informazioni che gli passa il controller grafico precedente*/
 

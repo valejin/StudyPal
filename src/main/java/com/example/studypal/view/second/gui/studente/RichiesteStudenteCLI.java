@@ -42,7 +42,7 @@ public class RichiesteStudenteCLI extends AbstractState {
 
     private List<PrenotazioneBean> fetchRichiesteInviate() {
         GestisciPrenotazioniStudenteController gestisciPrenotazioniController = new GestisciPrenotazioniStudenteController(user);
-        return gestisciPrenotazioniController.richiesteInviate(user.getEmail(), flag);
+        return gestisciPrenotazioniController.getRichieste(user.getEmail(), flag);
     }
 
     private void displayRichieste(List<PrenotazioneBean> richiesteList) {
