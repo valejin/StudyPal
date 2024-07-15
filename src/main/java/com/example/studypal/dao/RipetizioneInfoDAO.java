@@ -83,88 +83,14 @@ public class RipetizioneInfoDAO {
 
         Statement stmt;
         ResultSet rs;
-/*
-        String query = "SELECT email, tariffa, luogo, materie, inPresenza, webCam, giorni, nome, cognome FROM tutor where tariffa <= ?";
-
-        if (ripetizioneInfoModel.getLuogo() != null && !ripetizioneInfoModel.getLuogo().isEmpty()) {
-            //luogo selezionato
-            query += "  AND luogo = ? AND LOWER(materie) LIKE ?";
-
-        }else{
-            query += " AND LOWER(materie) LIKE ?"; //se non ci è stato dato un luogo saltiamo il primo filtro
-        }
-        if (ripetizioneInfoModel.getInPresenza()  && ripetizioneInfoModel.getOnline()){
-            query += " AND giorni LIKE ?";
-        }else if (Boolean.TRUE.equals(ripetizioneInfoModel.getInPresenza())) {
-            query += " AND inPresenza = ?";
-            query += " AND giorni LIKE ?";
-        }else if (Boolean.TRUE.equals(ripetizioneInfoModel.getOnline())) {
-            query += " AND webCam = ?";
-            query += " AND giorni LIKE ?";
-        } else {
-            query += " AND giorni LIKE ?";
-        }
-
- */
-
 
         try {
             Connection connection = Connect.getInstance().getDBConnection();
-            //statement = connection.prepareStatement();
             stmt = connection.createStatement();
             rs = QueryRicerca.ricercaFiltri(stmt, ripetizioneInfoModel);
 
-            /*
-            statement.setInt(1, ripetizioneInfoModel.getTariffa());
-
-            if (ripetizioneInfoModel.getLuogo() != null && !ripetizioneInfoModel.getLuogo().isEmpty()) {
-                //devo prendere i filtri da model
-
-                statement.setString(2, ripetizioneInfoModel.getLuogo());
-                statement.setString(3, '%' + ripetizioneInfoModel.getMateria() + '%');
-
-                if (ripetizioneInfoModel.getInPresenza() && ripetizioneInfoModel.getOnline()) {
-                    statement.setString(4, '%' + ripetizioneInfoModel.getGiorni() + '%');
-                }else if (Boolean.TRUE.equals(ripetizioneInfoModel.getInPresenza())) {
-                    statement.setBoolean(4, ripetizioneInfoModel.getInPresenza());
-                    statement.setString(5, '%' + ripetizioneInfoModel.getGiorni() + '%');
-                }else if (Boolean.TRUE.equals(ripetizioneInfoModel.getOnline())) {
-                    statement.setBoolean(4, ripetizioneInfoModel.getOnline());
-                    statement.setString(5, '%' + ripetizioneInfoModel.getGiorni() + '%');
-                } else {
-                    statement.setString(4, '%' + ripetizioneInfoModel.getGiorni() + '%');
-                }
-
-            }else {
-                //luogo non selezionato
-                statement.setString(2, '%' + ripetizioneInfoModel.getMateria() + '%');
-
-                if (ripetizioneInfoModel.getInPresenza() && ripetizioneInfoModel.getOnline()) {
-                    statement.setBoolean(3, ripetizioneInfoModel.getInPresenza());
-                    statement.setBoolean(4, ripetizioneInfoModel.getOnline());
-                    statement.setString(5, '%' + ripetizioneInfoModel.getGiorni() + '%');
-                }else if (Boolean.TRUE.equals(ripetizioneInfoModel.getInPresenza())) {
-                    statement.setBoolean(3, ripetizioneInfoModel.getInPresenza());
-                    statement.setString(4, '%' + ripetizioneInfoModel.getGiorni() + '%');
-                    String statementSQL = statement.unwrap(PreparedStatement.class).toString();
-                    Printer.println(statementSQL);
-
-                }else if (Boolean.TRUE.equals(ripetizioneInfoModel.getOnline())) {
-                    statement.setBoolean(3, ripetizioneInfoModel.getOnline());
-                    statement.setString(4, '%' + ripetizioneInfoModel.getGiorni() + '%');
-                } else {
-                    statement.setString(3, '%' + ripetizioneInfoModel.getGiorni() + '%');
-                }
-            }
-
-            rs = statement.executeQuery();
-*/
-
             if (rs.next()) {
 
-                Printer.println("La materia che stai cercando è: " + ripetizioneInfoModel.getMateria());
-
-                //stampo email di Tutor che soddisfanno la query
                 do {
                     LoggedInUserBean user = new LoggedInUserBean(rs.getString("email"), rs.getString("nome"),rs.getString("cognome" ));
                     RipetizioneInfoModel risultatoCorrente = new RipetizioneInfoModel(user,

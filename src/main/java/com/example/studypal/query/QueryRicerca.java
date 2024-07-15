@@ -31,30 +31,23 @@ public class QueryRicerca {
         String sql;
         ResultSet rs = null;
         try{
-
             sql = String.format(Query.RICERCA_FILTRI, filtri.getTariffa());
 
             if (filtri.getLuogo() != null && !filtri.getLuogo().isEmpty()) {
-                //luogo selezionato
-                sql += "  AND luogo = '%s' AND LOWER(materie) LIKE '%s'";
-                sql = String.format(sql, filtri.getLuogo(), '%' + filtri.getMateria() + '%');
-
-            }else{
-                sql += " AND LOWER(materie) LIKE '%s'"; //se non ci è stato dato un luogo saltiamo il primo filtro
-                sql = String.format(sql, '%' + filtri.getMateria() + '%');
+                // luogo selezionato
+                sql += String.format(" AND luogo = '%s' AND LOWER(materie) LIKE '%%%s%%'",
+                        filtri.getLuogo(), filtri.getMateria());
+            } else {
+                // se non ci è stato dato un luogo saltiamo il primo filtro
+                sql += String.format(" AND LOWER(materie) LIKE '%%%s%%'", filtri.getMateria());
             }
 
             if (Boolean.TRUE.equals(filtri.getInPresenza())) {
-                sql += " AND inPresenza = '%b'";
-                sql += GIORNI;
-                sql = String.format(sql,filtri.getInPresenza(), '%' + filtri.getGiorni() + '%');
-            }else if (Boolean.TRUE.equals(filtri.getOnline())) {
-                sql += " AND webCam = '%b'";
-                sql += GIORNI;
-                sql = String.format(sql,filtri.getOnline(), '%' + filtri.getGiorni() + '%');
+                sql += String.format(" AND inPresenza = true" + GIORNI, '%' + filtri.getGiorni() + '%');
+            } else if (Boolean.TRUE.equals(filtri.getOnline())) {
+                sql += String.format(" AND webCam = true" + GIORNI, '%' + filtri.getGiorni() + '%');
             } else {
-                sql += GIORNI;
-                sql = String.format(sql, '%' + filtri.getGiorni() + '%');
+                sql += String.format(GIORNI, '%' + filtri.getGiorni() + '%');
             }
 
             rs = stmt.executeQuery(sql);
