@@ -6,6 +6,8 @@ module com.example.studypal {
 
     opens com.example.studypal to javafx.fxml;
     exports com.example.studypal;
+    exports com.example.studypal.dao;
+    exports com.example.studypal.model;
     exports com.example.studypal.controller.application;
     opens com.example.studypal.controller.application to javafx.fxml;
     exports com.example.studypal.view.first.gui;

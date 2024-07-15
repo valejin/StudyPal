@@ -5,6 +5,7 @@ import com.example.studypal.exceptions.CredenzialiSbagliateException;
 import com.example.studypal.exceptions.UtenteInesistenteException;
 import com.example.studypal.model.CredenzialiModel;
 import com.example.studypal.model.RipetizioneInfoModel;
+import com.example.studypal.other.Printer;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -24,28 +25,40 @@ public class TestTutor {
     }
 
     @Test
-    public void testModifiedInfoProfilo() {
-        this.loginUser();
+    void testModifiedInfoProfilo() {
+        loginUser();
+
         RipetizioneInfoDAO ripetizioneInfoDAO = new RipetizioneInfoDAO();
-        this.TARIFFA = getRandomValue();
+        TARIFFA = getRandomValue();
         RipetizioneInfoModel ripetizioneInfoModel = new RipetizioneInfoModel();
-        ripetizioneInfoModel.setGiorni("Lunedì, Martedì");
-        ripetizioneInfoModel.setTariffa(this.TARIFFA);
-        ripetizioneInfoModel.setOnline(false);
-        ripetizioneInfoModel.setInPresenza(true);
-        ripetizioneInfoModel.setMateria("Analisi 1, Fisica 1");
-        ripetizioneInfoModel.setLuogo("Milano");
+
+        ripetizioneInfoModel.setGiorni(GIORNI);
+        ripetizioneInfoModel.setTariffa(TARIFFA);
+        ripetizioneInfoModel.setOnline(ONLINE);
+        ripetizioneInfoModel.setInPresenza(IN_PRESENZA);
+        ripetizioneInfoModel.setMateria(MATERIE);
+        ripetizioneInfoModel.setLuogo(LUOGO);
+        ripetizioneInfoModel.setEmail(EMAIL);
+
+        // Carico nuove informazioni nel database
         ripetizioneInfoDAO.modificaProfiloTutor(ripetizioneInfoModel);
-        RipetizioneInfoModel ripetizioneInfoModel1 = ripetizioneInfoDAO.caricaInformazioniProfilo("testUser@gmail.com");
+
+        RipetizioneInfoModel ripetizioneInfoModel1 = ripetizioneInfoDAO.caricaInformazioniProfilo(EMAIL);
+
+        // Verifico se il valore di TARIFFA è stato modificato con successo
         int rate = ripetizioneInfoModel1.getTariffa();
-        if (this.TARIFFA != rate) {
-            System.out.println("Modifiche fallite");
-            Assertions.fail("La tariffa non è stata modificata correttamente nel database");
-        } else {
-            System.out.println("Modifiche avvenute con successo");
-        }
+
+
+        // Aggiungo l'asserzione per verificare che la tariffa sia stata modificata correttamente
+        Assertions.assertEquals(TARIFFA, rate, "Modifiche fallite: La tariffa non è stata modificata correttamente nel database");
+
+        // Stampo il messaggio di successo
+        Printer.println("Modifiche avvenute con successo");
+
+
 
     }
+
 
     private void loginUser() {
         UserDAO userDAO = new UserDAOMySQL();
@@ -55,8 +68,9 @@ public class TestTutor {
 
         try {
             userDAO.loginMethod(credenzialiModel);
-        } catch (CredenzialiSbagliateException | UtenteInesistenteException var4) {
-            var4.fillInStackTrace();
+        } catch (CredenzialiSbagliateException | UtenteInesistenteException e) {
+            //e.fillInStackTrace();
+            Assertions.fail("Login fallito: " + e.getMessage());
         }
 
     }

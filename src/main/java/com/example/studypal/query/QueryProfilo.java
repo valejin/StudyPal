@@ -15,7 +15,8 @@ public class QueryProfilo {
         String sql;
         try{
             sql = String.format(Query.MODIFICA_PROFILO, nuoveInfo.getTariffa(), nuoveInfo.getLuogo(),
-                    nuoveInfo.getMateria(), convertiBool(nuoveInfo.getInPresenza()), convertiBool(nuoveInfo.getOnline()), nuoveInfo.getGiorni(),
+                    nuoveInfo.getMateria(), convertiBool(nuoveInfo.getInPresenza()), convertiBool(nuoveInfo.getOnline()),
+                    nuoveInfo.getGiorni(),
                     nuoveInfo.getEmail());
             stmt.executeUpdate(sql);
         } catch (SQLException e){
