@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PrenotaRipetizioneController extends HomeStudenteController {
+public class PrenotaRipetizioneController {
 
     /*
     controller applicativo che gestisce il caso d'uso prenota ripetizione da parte dello studente
