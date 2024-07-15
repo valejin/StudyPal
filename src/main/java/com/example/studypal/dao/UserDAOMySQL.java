@@ -105,15 +105,8 @@ public class UserDAOMySQL implements UserDAO{
             // Gestione dell'eccezione SQL, se necessario
         } finally {
             // Chiudi le risorse in finally block per garantire la pulizia
-
             closeResources(stmt, null);
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    logger.severe("Errore durante la chiusura della connessione: " + e.getMessage());
-                }
-            }
+
         }
 
     }
