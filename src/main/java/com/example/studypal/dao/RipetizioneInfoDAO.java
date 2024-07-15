@@ -29,6 +29,12 @@ public class RipetizioneInfoDAO {
 
     private static final Logger logger = Logger.getLogger(RipetizioneInfoDAO.class.getName());
 
+    private static final String MATERIE = "materie";
+    private static final String  IN_PRESENZA = "inPresenza";
+    private static final String  WEBCAM = "webcam";
+    private static final String  LUOGO = "luogo";
+    private static final String  GIORNI = "giorni";
+    private static final String  TARIFFA = "tariffa";
 
     /*---------------------------------------------------RICERCA------------------------------------------------------*/
 
@@ -54,9 +60,9 @@ public class RipetizioneInfoDAO {
                 do {
                     LoggedInUserBean user = new LoggedInUserBean(rs.getString("email"), rs.getString("nome"),rs.getString("cognome" ));
                     RipetizioneInfoModel risultatoCorrente = new RipetizioneInfoModel(user,
-                            rs.getString("materie"), rs.getBoolean("inPresenza"),
-                            rs.getBoolean("webcam"), rs.getString("luogo"),
-                            rs.getString("giorni"), rs.getInt("tariffa"));
+                            rs.getString(MATERIE), rs.getBoolean(IN_PRESENZA),
+                            rs.getBoolean(WEBCAM), rs.getString(LUOGO),
+                            rs.getString(GIORNI), rs.getInt(TARIFFA));
 
                     risultatiRicerca.add(risultatoCorrente);
 
@@ -161,9 +167,9 @@ public class RipetizioneInfoDAO {
                 do {
                     LoggedInUserBean user = new LoggedInUserBean(rs.getString("email"), rs.getString("nome"),rs.getString("cognome" ));
                     RipetizioneInfoModel risultatoCorrente = new RipetizioneInfoModel(user,
-                            rs.getString("materie"), rs.getBoolean("inPresenza"),
-                            rs.getBoolean("webcam"), rs.getString("luogo"),
-                            rs.getString("giorni"), rs.getInt("tariffa"));
+                            rs.getString(MATERIE), rs.getBoolean(IN_PRESENZA),
+                            rs.getBoolean(WEBCAM), rs.getString(LUOGO),
+                            rs.getString(GIORNI), rs.getInt(TARIFFA));
 
                     risultatiRicerca.add(risultatoCorrente);
 
@@ -237,12 +243,12 @@ public class RipetizioneInfoDAO {
             } else {
 
                 infoTutor.setEmail(email);
-                infoTutor.setTariffa(rs.getInt("tariffa"));
-                infoTutor.setMateria(rs.getString("materie"));
-                infoTutor.setOnline(rs.getBoolean("webCam"));
-                infoTutor.setInPresenza(rs.getBoolean("inPresenza"));
-                infoTutor.setGiorni(rs.getString("giorni"));
-                infoTutor.setLuogo(rs.getString("luogo"));
+                infoTutor.setTariffa(rs.getInt(TARIFFA));
+                infoTutor.setMateria(rs.getString(MATERIE));
+                infoTutor.setOnline(rs.getBoolean(WEBCAM));
+                infoTutor.setInPresenza(rs.getBoolean(IN_PRESENZA));
+                infoTutor.setGiorni(rs.getString(GIORNI));
+                infoTutor.setLuogo(rs.getString(LUOGO));
 
                 return infoTutor;
             }
