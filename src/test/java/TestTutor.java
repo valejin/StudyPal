@@ -15,20 +15,17 @@ import java.util.Random;
 public class TestTutor {
 
     /* Informazioni per test */
-    private final String EMAIL = "testUser@gmail.com";
-    private final String PASSWORD = "testUser";
-    private final String MATERIE = "Analisi 1, Fisica 1";
-    private int TARIFFA = 0;
-    private final String LUOGO = "Milano";
-    private final boolean IN_PRESENZA = true;
-    private final boolean ONLINE = false;
-    private final String GIORNI = "Lunedì, Martedì";
-    private final boolean IS_TUTOR = true;
-    private final String SUFFISSO_EMAIL = "@gmail.com";
+    private final String email = "testUser@gmail.com";
+    private final String password = "testUser";
+    private final String materie = "Analisi 1, Fisica 1";
+    private int tariffa = 0;
+    private final String luogo = "Milano";
+    private final boolean inPresenza = true;
+    private final boolean online = false;
+    private final String giorni = "Lunedì, Martedì";
+    private final boolean isTutor = true;
+    private final String suffissoEmail = "@gmail.com";
 
-
-    public TestTutor() {
-    }
 
 
     /** Verifico se un utente registrato come Tutor possa modificare le informazioni relative
@@ -39,28 +36,28 @@ public class TestTutor {
         loginUser();
 
         RipetizioneInfoDAO ripetizioneInfoDAO = new RipetizioneInfoDAO();
-        TARIFFA = getRandomValue();
+        tariffa = getRandomValue();
         RipetizioneInfoModel ripetizioneInfoModel = new RipetizioneInfoModel();
 
-        ripetizioneInfoModel.setGiorni(GIORNI);
-        ripetizioneInfoModel.setTariffa(TARIFFA);
-        ripetizioneInfoModel.setOnline(ONLINE);
-        ripetizioneInfoModel.setInPresenza(IN_PRESENZA);
-        ripetizioneInfoModel.setMateria(MATERIE);
-        ripetizioneInfoModel.setLuogo(LUOGO);
-        ripetizioneInfoModel.setEmail(EMAIL);
+        ripetizioneInfoModel.setGiorni(giorni);
+        ripetizioneInfoModel.setTariffa(tariffa);
+        ripetizioneInfoModel.setOnline(online);
+        ripetizioneInfoModel.setInPresenza(inPresenza);
+        ripetizioneInfoModel.setMateria(materie);
+        ripetizioneInfoModel.setLuogo(luogo);
+        ripetizioneInfoModel.setEmail(email);
 
         // Carico nuove informazioni nel database
         ripetizioneInfoDAO.modificaProfiloTutor(ripetizioneInfoModel);
 
-        RipetizioneInfoModel ripetizioneInfoModel1 = ripetizioneInfoDAO.caricaInformazioniProfilo(EMAIL);
+        RipetizioneInfoModel ripetizioneInfoModel1 = ripetizioneInfoDAO.caricaInformazioniProfilo(email);
 
         // Verifico se il valore di TARIFFA è stato modificato con successo
         int rate = ripetizioneInfoModel1.getTariffa();
 
 
         // Aggiungo l'asserzione per verificare che la tariffa sia stata modificata correttamente
-        Assertions.assertEquals(TARIFFA, rate, "Modifiche fallite: La tariffa non è stata modificata correttamente nel database");
+        Assertions.assertEquals(tariffa, rate, "Modifiche fallite: La tariffa non è stata modificata correttamente nel database");
 
         // Stampo il messaggio di successo
         Printer.println("Modifiche avvenute con successo");
@@ -71,8 +68,8 @@ public class TestTutor {
     private void loginUser() {
         UserDAO userDAO = new UserDAOMySQL();
         CredenzialiModel credenzialiModel = new CredenzialiModel();
-        credenzialiModel.setEmail(EMAIL);
-        credenzialiModel.setPassword(PASSWORD);
+        credenzialiModel.setEmail(email);
+        credenzialiModel.setPassword(password);
 
         try {
             userDAO.loginMethod(credenzialiModel);
@@ -93,11 +90,11 @@ public class TestTutor {
 
         UserModel userModel = new UserModel();
 
-        userModel.setEmail(EMAIL);
-        userModel.setNome(PASSWORD+"Nome");
-        userModel.setCognome(PASSWORD+"Cognome");
-        userModel.setPassword(PASSWORD);
-        userModel.setRuolo(IS_TUTOR);
+        userModel.setEmail(email);
+        userModel.setNome(password +"Nome");
+        userModel.setCognome(password +"Cognome");
+        userModel.setPassword(password);
+        userModel.setRuolo(isTutor);
 
         try {
             UserDAO registrazioneDao = FactoryDAO.getUserDAO();
@@ -114,7 +111,7 @@ public class TestTutor {
 
 
 
-    /** Verifico la creazione di una tupla corrispondente nella tabella tutor nel DB
+    /** Verifico la creazione di una tupla corrispondente nella tabella 'tutor' nel DB
      * quando un utente si registra come Tutor */
     @Test
     void testRegistrazioneTutor(){
@@ -122,16 +119,16 @@ public class TestTutor {
         /* registrazione del tutor con email creato random */
 
         int res = -1;
-        String baseUsername = PASSWORD;
+        String baseUsername = password;
         String uniqueUsername = generateRandomUsername(baseUsername);
-        String userEmail = uniqueUsername + SUFFISSO_EMAIL;
+        String userEmail = uniqueUsername + suffissoEmail;
 
         UserModel userModel = new UserModel();
         userModel.setNome(uniqueUsername);
         userModel.setCognome(uniqueUsername);
         userModel.setEmail(userEmail);
         userModel.setPassword(uniqueUsername);
-        userModel.setRuolo(IS_TUTOR);
+        userModel.setRuolo(isTutor);
 
         // Utente test viene registrato con lo stesso valore per nome, cognome, password, confermaPassword
         try {
@@ -176,7 +173,7 @@ public class TestTutor {
         int res = -1;
 
         try {
-            prenotazioneDAO.richiesteArrivate(EMAIL, 0);
+            prenotazioneDAO.richiesteArrivate(email, 0);
         } catch (NonProduceRisultatoException e) {
             res = 1;
             Printer.println("Non produce risultato da DB.");
