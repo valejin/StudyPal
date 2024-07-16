@@ -87,6 +87,7 @@ public class PrenotazioneDAO {
                     valori.add(rs.getInt("tariffa"));
                     valori.add(rs.getInt("stato"));
 
+                    Printer.println(String.valueOf(valori.getFirst()));
 
                     //popolo una nuova istanza di PrenotazioneModel per ritornare al CtlApplicativo
                     PrenotazioneModel risultatoCorrente = new PrenotazioneModel(rs.getInt("idrichieste"), userTutor, rs.getString("emailStudente"), rs.getString("materia"), rs.getString("giorni"), rs.getString("note"), valori);

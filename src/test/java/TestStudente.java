@@ -11,7 +11,6 @@ import com.example.studypal.other.FactoryDAO;
 import com.example.studypal.other.Printer;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;

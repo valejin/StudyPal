@@ -6,17 +6,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="200.0" prefWidth="300.0" stylesheets="@../menu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.view.first.gui.tutor.PopupGui">
-   <children>
-      <Text fill="#0e9609" layoutX="50.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La richiesta di prenotazione è stata confermata!" textAlignment="CENTER" wrappingWidth="200.9351806640625">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Text>
-      <ImageView layoutX="118.0" layoutY="91.0" opacity="0.38">
-         <image>
-            <Image url="@../immagini/congratsIcon.png" />
-         </image>
-      </ImageView>
-   </children>
+<AnchorPane prefHeight="200.0" prefWidth="300.0" stylesheets="@../menu.css" xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studypal.view.first.gui.LoginGuiController">
+   <Text fill="#0e9609" layoutX="50.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0"
+         text="La richiesta di prenotazione è stata confermata!" textAlignment="CENTER"
+         wrappingWidth="200.9351806640625">
+      <font>
+         <Font size="16.0"/>
+      </font>
+   </Text>
+   <ImageView layoutX="118.0" layoutY="91.0" opacity="0.38">
+      <image>
+         <Image url="@../immagini/congratsIcon.png"/>
+      </image>
+   </ImageView>
 </AnchorPane>
