@@ -73,7 +73,7 @@ public class PrenotazioneDAO {
 
         try (ResultSet rs = QueryPrenotazione.gestisciPrenotazioni(stmt, email, flag)){
 
-            //in base al valore del flag: flag == 0 richieste arrivate; flag == 1 prenotazioni attive
+            //in base al valore del flag: flag == 0 richieste arrivate; flag == 1 prenotazioni attive;  flag == 2 richieste rifiutate
 
             if(rs.next()){
                 Printer.println("Lista di email richiedenti per il tutor: " + email);
@@ -86,8 +86,6 @@ public class PrenotazioneDAO {
                     valori.add(rs.getInt("modLezione"));
                     valori.add(rs.getInt("tariffa"));
                     valori.add(rs.getInt("stato"));
-
-                    Printer.println("mod lezione: " + valori.getFirst());
 
                     //popolo una nuova istanza di PrenotazioneModel per ritornare al CtlApplicativo
                     PrenotazioneModel risultatoCorrente = new PrenotazioneModel(rs.getInt("idrichieste"), userTutor, rs.getString("emailStudente"), rs.getString("materia"), rs.getString("giorni"), rs.getString("note"), valori);

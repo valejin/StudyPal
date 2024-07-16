@@ -64,6 +64,7 @@ public class PrenotaRipetizioneGui extends HomeStudenteGui {
         materiaLabel.setText(filtri.getMateria());
         luogoLabel.setText(informazioni.getLuogo());
 
+
         if (filtri.getGiorni() != null){
             giorniLabel.setText(filtri.getGiorni());
         } else {
@@ -117,6 +118,17 @@ public class PrenotaRipetizioneGui extends HomeStudenteGui {
         if (filtri.getGiorni() != null){
             prenotazioneBean.setGiorno(filtri.getGiorni());
         }
+
+        if ((filtri.getInPresenza() != null) && (filtri.getOnline() != null)){
+            if (Boolean.TRUE.equals(filtri.getInPresenza()) && Boolean.TRUE.equals(!filtri.getOnline())){
+                prenotazioneBean.setModLezione(1);
+            } else if (Boolean.TRUE.equals(!filtri.getInPresenza()) && Boolean.TRUE.equals(filtri.getOnline())) {
+                prenotazioneBean.setModLezione(2);
+            } else {
+                prenotazioneBean.setModLezione(0);
+            }
+        }
+
         prenotazioneBean.setNote(note.getText());
 
         PrenotaRipetizioneController prenotaRipetizioneController = new PrenotaRipetizioneController();

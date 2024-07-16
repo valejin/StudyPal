@@ -115,10 +115,6 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
 
 
 
-
-
-
-
     public class NomeCell extends TableCell<RipetizioneInfoBean, String> {
         @Override
         protected void updateItem(String item, boolean empty) {
@@ -162,31 +158,6 @@ public class RisultatiRicercaGuiController extends HomeStudenteGui {
         }
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

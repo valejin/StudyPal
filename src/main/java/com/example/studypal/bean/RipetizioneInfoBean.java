@@ -24,9 +24,7 @@ public class RipetizioneInfoBean extends BaseInfoBean{
         super(materia);
     }
 
-
-
-
+    public RipetizioneInfoBean(){}
 
     /* costruttore lato controller grafico (lista di booleani)--------------------------------------------------------*/
 
@@ -154,9 +152,8 @@ public class RipetizioneInfoBean extends BaseInfoBean{
         this.online = online;
     }
 
-    public Boolean getInPresenza() {
-        return inPresenza;
-    }
+    public Boolean getInPresenza() {return inPresenza;}
+    public void setInPresenza(Boolean b){ this.inPresenza = b;}
 
     public String getEmail() {
         return email;
