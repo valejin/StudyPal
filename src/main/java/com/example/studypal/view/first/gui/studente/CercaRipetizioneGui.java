@@ -62,7 +62,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
 
 
     private static final Logger logger = Logger.getLogger(CercaRipetizioneGui.class.getName());
-    RipetizioneInfoBean ripetizioneInfoBean; /*filtri*/
+    RipetizioneInfoBean filtri = new RipetizioneInfoBean();
     List<RipetizioneInfoBean> risultatiRicercaBean = new ArrayList<>();
 
     //eredita dal padre un attributo LoggedInUserBean
@@ -178,11 +178,12 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
     public   List<RipetizioneInfoBean>  ricercaMateria(){
 
         String subject = this.cercaMateria.getText();
-        ripetizioneInfoBean = new RipetizioneInfoBean(subject);
+
         Printer.println("La materia inserita è: " + subject);
 
         //prendo un BEAN base e inserisco info
         BaseInfoBean baseInfoBean = new BaseInfoBean(subject);
+        filtri.setMateria(subject);
 
         PrenotaRipetizioneController prenotaRipetizioneController = new PrenotaRipetizioneController();
 
@@ -248,6 +249,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         //checkBox: modalità di lezione ------------------------------------------------
         Printer.print("   -Modalità di lezione: ");
         if (this.inPresenza.isSelected()) {
+            filtri.setInPresenza(true);
             inPresence = true;
             Printer.println("in presenza");
             if (this.luogo.getSelectionModel().isEmpty() && this.luogo.getValue()==null) {
@@ -260,12 +262,17 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         }
 
         if (this.online.isSelected()) {
-            web = true;
+            filtri.setOnline(true);
+            onlinee = false;
             Printer.println("web");
         }
 
         if (!this.inPresenza.isSelected() && !this.online.isSelected()) {
             Printer.println(" ");
+            filtri.setOnline(false);
+            onlinee = false;
+            filtri.setInPresenza(false);
+            inPresence = false;
         }
 
         //menuButton di giono-------------------------------------------------------
@@ -277,11 +284,11 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
         Printer.println("   -Tariffa massima: " + rate);
 
         //istanzio un RipetizioneInfoBean
-        ripetizioneInfoBean = new RipetizioneInfoBean(mat, inPresence, web, place, days, rate, email);
+        filtri = new RipetizioneInfoBean(mat, inPresence, web, place, days, rate, email);
 
         //istanzio un controller applicativo e gli passo la lista di Bean contenente i risultati della ricerca
         PrenotaRipetizioneController cercaRipetizioneController = new PrenotaRipetizioneController();
-        risultatiRicercaBean = cercaRipetizioneController.ricercaMethod(ripetizioneInfoBean);
+        risultatiRicercaBean = cercaRipetizioneController.ricercaMethod(filtri);
 
 
         return risultatiRicercaBean;
@@ -315,7 +322,7 @@ public class CercaRipetizioneGui extends HomeStudenteGui {
 
             try {
                 FXMLLoader loader = new FXMLLoader(CercaRipetizioneGui.class.getResource("/com/example/studypal/view/studente/risultatoRicerca.fxml"));
-                loader.setControllerFactory(c -> new RisultatiRicercaGuiController(user, risultatiRicercaBean, ripetizioneInfoBean));
+                loader.setControllerFactory(c -> new RisultatiRicercaGuiController(user, risultatiRicercaBean, filtri));
                 Parent parent = loader.load();
                 Scene scene = new Scene(parent);
                 Stage stage = (Stage) cercaMateria.getScene().getWindow();
