@@ -20,10 +20,16 @@ public class PrenotazioneModel {
 
     public PrenotazioneModel(Integer idRichiesta, LoggedInUserBean user, String emailStudente, String materia, String giorno, String note, List<Integer> valori) {
 
-        /* modalita lezione: 0 = non specificato, 1 = presenza, 2 = online */
-        /*l'array di interi contiene ordinatamente: modalità di lezione, tariffa, stato*/
-
-        //todo controllare cosa succede per mod = true/false 01 10?
+        /**     L'array di interi contiene ordinatamente: modalità di lezione, tariffa, stato
+            *       -modalità di lezione:
+            *           -0 valide entrambe
+            *           -1 in presenza
+            *           -2 online
+                *       -stato:
+            *           -0 richiesta in attesa
+                *           -1 prenotazione attiva
+            *           -2 richiesta rifiutata
+        **/
 
         this.idRichiesta = idRichiesta;
         this.nome = user.getNome();

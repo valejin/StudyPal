@@ -21,7 +21,16 @@ public class PrenotazioneBean {
 
     public PrenotazioneBean(Integer idRichiesta, LoggedInUserBean tutorInfo, String emailStudente, String materia, String giorno, String note, List<Integer> valori) {
 
-        /*l'array di interi contiene ordinatamente: modalità di lezione, tariffa, stato*/
+        /**     L'array di interi contiene ordinatamente: modalità di lezione, tariffa, stato
+            *       -modalità di lezione:
+            *           -0 valide entrambe
+            *           -1 in presenza
+            *           -2 online
+            *       -stato:
+            *           -0 richiesta in attesa
+            *           -1 prenotazione attiva
+            *           -2 richiesta rifiutata
+        **/
 
         this.idRichiesta = idRichiesta;
         this.nome = tutorInfo.getNome();
