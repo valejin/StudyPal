@@ -1,26 +1,17 @@
 import com.example.studypal.bean.LoggedInUserBean;
-import com.example.studypal.dao.PrenotazioneDAO;
-import com.example.studypal.dao.RipetizioneInfoDAO;
 import com.example.studypal.dao.UserDAO;
 import com.example.studypal.exceptions.CredenzialiSbagliateException;
-import com.example.studypal.exceptions.NonProduceRisultatoException;
 import com.example.studypal.exceptions.PersistenzaNonValida;
 import com.example.studypal.exceptions.UtenteInesistenteException;
 import com.example.studypal.model.CredenzialiModel;
-import com.example.studypal.model.PrenotazioneModel;
 import com.example.studypal.other.FactoryDAO;
 import com.example.studypal.other.Printer;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 class TestStudente {
 
-     /* Elisa Marzioli 0310065*/
+     /** Elisa Marzioli 0310065 **/
 
     private static final String USER_EMAIL = "test@email.com";
 
@@ -54,7 +45,7 @@ class TestStudente {
 
     private String generaPassword(){
         return "test" + System.currentTimeMillis();
-        //la password corretta nel DB è "test", il test tenta il login con una password sbagliata diversa ad ogni tentativo
+        //la password corretta nel DB è "test", il test tenta il login con una password sbagliata diversa a ogni tentativo
     }
 
 
