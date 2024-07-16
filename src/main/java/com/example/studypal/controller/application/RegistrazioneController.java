@@ -1,7 +1,6 @@
 package com.example.studypal.controller.application;
 
 import com.example.studypal.dao.UserDAO;
-import com.example.studypal.dao.UserDAOMySQL;
 import com.example.studypal.bean.RegistrazioneUserBean;
 import com.example.studypal.exceptions.EmailAlreadyInUseException;
 import com.example.studypal.exceptions.PersistenzaNonValida;
@@ -42,8 +41,6 @@ public class RegistrazioneController {
                 //il controller applicativo si limita a propagarla al controller grafico
             } catch (PersistenzaNonValida e){
                 Printer.errorPrint("Persistenza non valida.");
-
-                //System.exit(1);
             }
 
         }
