@@ -28,11 +28,11 @@ class TestStudente {
         /* controlla che venga sollevata l'eccezione CredenzialiSbagliateException durante il Login*/
         int res = -1;
 
-        String PASSWORD = generaPassword();
+        String password = generaPassword();
         /* usiamo sempre la stessa email, generiamo ogni volta una password diversa*/
         try{
             UserDAO userDAO = FactoryDAO.getUserDAO();
-            CredenzialiModel credenziali = new CredenzialiModel(USER_EMAIL, PASSWORD);
+            CredenzialiModel credenziali = new CredenzialiModel(USER_EMAIL, password);
             userDAO.loginMethod(credenziali);
 
 
