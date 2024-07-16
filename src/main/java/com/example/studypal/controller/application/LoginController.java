@@ -49,7 +49,7 @@ public class LoginController {
             throw new UtenteInesistenteException();
         } catch (PersistenzaNonValida e){
             Printer.errorPrint("Persistenza non valida.");
-            //System.exit(1);
+            System.exit(1);
         }
         return null;
    }
