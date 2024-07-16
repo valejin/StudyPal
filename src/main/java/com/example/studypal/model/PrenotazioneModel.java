@@ -23,6 +23,8 @@ public class PrenotazioneModel {
         /* modalita lezione: 0 = non specificato, 1 = presenza, 2 = online */
         /*l'array di interi contiene ordinatamente: modalità di lezione, tariffa, stato*/
 
+        //todo controllare cosa succede per mod = true/false 01 10?
+
         this.idRichiesta = idRichiesta;
         this.nome = user.getNome();
         this.cognome = user.getCognome();
