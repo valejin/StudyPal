@@ -23,7 +23,6 @@ class TestStudente {
     private static final String USER_EMAIL = "test@email.com";
     private static final String TEST = "test";
     private static final LoggedInUserBean tutorTEST = new LoggedInUserBean("test@tutor.com", "test", "test");
-    private static final LoggedInUserBean studenteTEST = new LoggedInUserBean("test@studente.com", "test", "test");
 
     @Test
     void testControlloCredenziali(){
@@ -80,7 +79,7 @@ class TestStudente {
     }
 
     @Test
-    void controlloRichiesteInviate(){
+    void controlloPrenotazione(){
         /* faccio una prenotazione di test e controllo che venga registrata*/
         List<Integer> valori = Arrays.asList(0,0,0);
         PrenotazioneModel richiesta = new PrenotazioneModel(0, tutorTEST, USER_EMAIL,TEST, TEST,null,valori);
