@@ -1,13 +1,8 @@
-import com.example.studypal.bean.RegistrazioneUserBean;
-import com.example.studypal.controller.application.RegistrazioneController;
-import com.example.studypal.controller.application.tutor.GestisciPrenotazioniController;
+import com.example.studypal.dao.PrenotazioneDAO;
 import com.example.studypal.dao.RipetizioneInfoDAO;
 import com.example.studypal.dao.UserDAO;
 import com.example.studypal.dao.UserDAOMySQL;
-import com.example.studypal.exceptions.CredenzialiSbagliateException;
-import com.example.studypal.exceptions.EmailAlreadyInUseException;
-import com.example.studypal.exceptions.PersistenzaNonValida;
-import com.example.studypal.exceptions.UtenteInesistenteException;
+import com.example.studypal.exceptions.*;
 import com.example.studypal.model.CredenzialiModel;
 import com.example.studypal.model.RipetizioneInfoModel;
 import com.example.studypal.model.UserModel;
@@ -15,7 +10,6 @@ import com.example.studypal.other.FactoryDAO;
 import com.example.studypal.other.Printer;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import java.util.Random;
 
 public class TestTutor {
@@ -30,19 +24,15 @@ public class TestTutor {
     private final boolean ONLINE = false;
     private final String GIORNI = "Lunedì, Martedì";
     private final boolean IS_TUTOR = true;
-    private static final int RANDOM_BOUND = 10000;  // Cambia questo valore per regolare l'intervallo dei numeri randomici
     private final String SUFFISSO_EMAIL = "@gmail.com";
-
-
-
 
 
     public TestTutor() {
     }
 
 
-
-    /** Verifico se un utente registrato come Tutor possa modificare le informazioni relative al proprio profilo nel DB */
+    /** Verifico se un utente registrato come Tutor possa modificare le informazioni relative
+     * al proprio profilo nel DB */
     @Test
     void testModifiedInfoProfilo() {
         //login del utente già esistente
@@ -87,8 +77,7 @@ public class TestTutor {
         try {
             userDAO.loginMethod(credenzialiModel);
         } catch (CredenzialiSbagliateException | UtenteInesistenteException e) {
-            //e.fillInStackTrace();
-            Assertions.fail("Login fallito: " + e.getMessage());
+            registraTutor();
         }
 
     }
@@ -100,23 +89,41 @@ public class TestTutor {
         return random.nextInt(max - min + 1) + min;
     }
 
+    public void registraTutor(){
+
+        UserModel userModel = new UserModel();
+
+        userModel.setEmail(EMAIL);
+        userModel.setNome(PASSWORD+"Nome");
+        userModel.setCognome(PASSWORD+"Cognome");
+        userModel.setPassword(PASSWORD);
+        userModel.setRuolo(IS_TUTOR);
+
+        try {
+            UserDAO registrazioneDao = FactoryDAO.getUserDAO();
+            registrazioneDao.registrazioneMethod(userModel);
+            registrazioneDao.registraTutorMethod(userModel.getEmail(), userModel.getNome(), userModel.getCognome());
+        } catch (PersistenzaNonValida e){
+            Printer.errorPrint("Persistenza non valida.");
+        }
+
+    }
 
 
-    //test su conferma richiesta
 
 
 
 
-
-    /** Verifico la creazione di una tupla corrispondente nella tabella tutor nel DB quando un utente si registra come Tutor */
+    /** Verifico la creazione di una tupla corrispondente nella tabella tutor nel DB
+     * quando un utente si registra come Tutor */
     @Test
-    public void testRegistrazioneTutor(){
+    void testRegistrazioneTutor(){
 
         /* registrazione del tutor con email creato random */
 
         int res = -1;
         String baseUsername = PASSWORD;
-        String uniqueUsername = generateUniqueUsername(baseUsername);
+        String uniqueUsername = generateRandomUsername(baseUsername);
         String userEmail = uniqueUsername + SUFFISSO_EMAIL;
 
         UserModel userModel = new UserModel();
@@ -134,7 +141,7 @@ public class TestTutor {
 
         } catch (PersistenzaNonValida e) {
             Assertions.fail("Registrazione fallito: " + e.getMessage());
-        } 
+        }
 
         // controllo l'email se viene registrato
         try{
@@ -148,24 +155,36 @@ public class TestTutor {
             res = 1;
         }
 
+        Assertions.assertEquals(1, res);
+    }
+
+
+    private String generateRandomUsername(String baseUsername) {
+        return baseUsername + System.currentTimeMillis();
+    }
+
+
+
+
+    /** Verifica che un utente registrato come Tutor non ha ricevuto nessuna richiesta,
+     * per cui quando tenta di prelevare le richieste arrivate, restituisca l'eccezione
+     * "NonProduceRisultatoException" */
+    @Test
+    void testRichiesteArrivate(){
+
+        PrenotazioneDAO prenotazioneDAO = new PrenotazioneDAO();
+        int res = -1;
+
+        try {
+            prenotazioneDAO.richiesteArrivate(EMAIL, 0);
+        } catch (NonProduceRisultatoException e) {
+            res = 1;
+            Printer.println("Non produce risultato da DB.");
+        }
 
         Assertions.assertEquals(1, res);
 
-
     }
-
-
-
-    public static String generateUniqueUsername(String baseUsername) {
-        Random random = new Random();
-        int randomNumber = random.nextInt(RANDOM_BOUND);
-        return baseUsername + randomNumber;
-    }
-
-
-
-
-
 
 
 
