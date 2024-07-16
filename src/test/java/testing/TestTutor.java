@@ -60,6 +60,7 @@ public class TestTutor {
 
         // Aggiungo l'asserzione per verificare che la tariffa sia stata modificata correttamente
         Assertions.assertEquals(tariffa, rate, "Modifiche fallite: La tariffa non è stata modificata correttamente nel database");
+        //il test fallisce se i due valori non sono gli stessi
 
         // Stampo il messaggio di successo
         Printer.println("Modifiche avvenute con successo");
@@ -142,7 +143,7 @@ public class TestTutor {
             Assertions.fail("Registrazione fallito: " + e.getMessage());
         }
 
-        // controllo l'email se viene registrato
+        // controllo l'email se viene registrato, il test fallisce se non viene catturato l'eccezione "EmailAlreadyInUse"
         try{
             UserDAO registrazioneDao = FactoryDAO.getUserDAO();
             registrazioneDao.controllaEmailMethod(userModel);
@@ -177,6 +178,7 @@ public class TestTutor {
         try {
             prenotazioneDAO.richiesteArrivate(email, 0);
         } catch (NonProduceRisultatoException e) {
+            //il test fallisce se non viene catturato l'eccezione "NonProduceRisultatoException"
             res = 1;
             Printer.println("Non produce risultato da DB.");
         }
