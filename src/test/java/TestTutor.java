@@ -18,13 +18,13 @@ public class TestTutor {
     private final String email = "testUser@gmail.com";
     private final String password = "testUser";
     private final String materie = "Analisi 1, Fisica 1";
-    private int TARIFFA = 0;
-    private final String LUOGO = "Milano";
-    private final boolean IN_PRESENZA = true;
-    private final boolean ONLINE = false;
-    private final String GIORNI = "Lunedì, Martedì";
-    private final boolean IS_TUTOR = true;
-    private final String SUFFISSO_EMAIL = "@gmail.com";
+    private int tariffa = 0;
+    private final String luogo = "Milano";
+    private final boolean inPresenza = true;
+    private final boolean online = false;
+    private final String giorni = "Lunedì, Martedì";
+    private final boolean isTutor = true;
+    private final String suffissoEmail = "@gmail.com";
 
 
     public TestTutor() {
@@ -39,15 +39,15 @@ public class TestTutor {
         loginUser();
 
         RipetizioneInfoDAO ripetizioneInfoDAO = new RipetizioneInfoDAO();
-        TARIFFA = getRandomValue();
+        tariffa = getRandomValue();
         RipetizioneInfoModel ripetizioneInfoModel = new RipetizioneInfoModel();
 
-        ripetizioneInfoModel.setGiorni(GIORNI);
-        ripetizioneInfoModel.setTariffa(TARIFFA);
-        ripetizioneInfoModel.setOnline(ONLINE);
-        ripetizioneInfoModel.setInPresenza(IN_PRESENZA);
+        ripetizioneInfoModel.setGiorni(giorni);
+        ripetizioneInfoModel.setTariffa(tariffa);
+        ripetizioneInfoModel.setOnline(online);
+        ripetizioneInfoModel.setInPresenza(inPresenza);
         ripetizioneInfoModel.setMateria(materie);
-        ripetizioneInfoModel.setLuogo(LUOGO);
+        ripetizioneInfoModel.setLuogo(luogo);
         ripetizioneInfoModel.setEmail(email);
 
         // Carico nuove informazioni nel database
@@ -60,7 +60,7 @@ public class TestTutor {
 
 
         // Aggiungo l'asserzione per verificare che la tariffa sia stata modificata correttamente
-        Assertions.assertEquals(TARIFFA, rate, "Modifiche fallite: La tariffa non è stata modificata correttamente nel database");
+        Assertions.assertEquals(tariffa, rate, "Modifiche fallite: La tariffa non è stata modificata correttamente nel database");
 
         // Stampo il messaggio di successo
         Printer.println("Modifiche avvenute con successo");
@@ -97,7 +97,7 @@ public class TestTutor {
         userModel.setNome(password +"Nome");
         userModel.setCognome(password +"Cognome");
         userModel.setPassword(password);
-        userModel.setRuolo(IS_TUTOR);
+        userModel.setRuolo(isTutor);
 
         try {
             UserDAO registrazioneDao = FactoryDAO.getUserDAO();
@@ -124,14 +124,14 @@ public class TestTutor {
         int res = -1;
         String baseUsername = password;
         String uniqueUsername = generateRandomUsername(baseUsername);
-        String userEmail = uniqueUsername + SUFFISSO_EMAIL;
+        String userEmail = uniqueUsername + suffissoEmail;
 
         UserModel userModel = new UserModel();
         userModel.setNome(uniqueUsername);
         userModel.setCognome(uniqueUsername);
         userModel.setEmail(userEmail);
         userModel.setPassword(uniqueUsername);
-        userModel.setRuolo(IS_TUTOR);
+        userModel.setRuolo(isTutor);
 
         // Utente test viene registrato con lo stesso valore per nome, cognome, password, confermaPassword
         try {
