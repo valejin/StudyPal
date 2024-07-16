@@ -1,11 +1,9 @@
-import com.example.studypal.bean.PrenotazioneBean;
 import com.example.studypal.dao.PrenotazioneDAO;
 import com.example.studypal.dao.RipetizioneInfoDAO;
 import com.example.studypal.dao.UserDAO;
 import com.example.studypal.dao.UserDAOMySQL;
 import com.example.studypal.exceptions.*;
 import com.example.studypal.model.CredenzialiModel;
-import com.example.studypal.model.PrenotazioneModel;
 import com.example.studypal.model.RipetizioneInfoModel;
 import com.example.studypal.model.UserModel;
 import com.example.studypal.other.FactoryDAO;
