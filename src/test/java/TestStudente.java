@@ -60,30 +60,24 @@ class TestStudente {
 
 
     @Test
-     void cancellaRichiestaInviata(){
-        /* controlla che quando uno studente cancella una richiesta questa effettivamente venga eliminata*/
-        List<PrenotazioneModel> richiesteInviate_TEST;
+    void testUtenteInesistente(){
+        /* controlla che l'utente con cui si effettua il login sia effettivamente registrato*/
+        int res = -1;
+        try {
+            UserDAO userDAO = FactoryDAO.getUserDAO();
+            CredenzialiModel credenziali = new CredenzialiModel(generaEmail(),"test" );
 
-        int res= -1;
+            userDAO.loginMethod(credenziali);
 
-        List<Integer> valori = Arrays.asList(0, 0, 1); //1 è lo stato, deve essere una prenotazoione attiva
-        PrenotazioneModel richiesta_test = new PrenotazioneModel(0, tutorTEST, studenteTEST.getEmail(), "test", "test", null, valori);
-
-        PrenotazioneDAO dao = new PrenotazioneDAO();
-        try{
-            dao.prenota(richiesta_test);
-
-            richiesteInviate_TEST = dao.richiesteInviate(studenteTEST.getEmail(), 0);
-
-            dao.cancellaRichiesta(richiesteInviate_TEST.getFirst().getIdRichiesta());
-
-        } catch (SQLException e) {
+        } catch (PersistenzaNonValida | CredenzialiSbagliateException e){
             res = 0;
-        } catch (NonProduceRisultatoException e){
+        } catch (UtenteInesistenteException e){
             res = 1;
         }
-
         Assertions.assertEquals(1, res);
+    }
 
+    public String generaEmail(){
+        return "test" + System.currentTimeMillis() + "@email.com";
     }
 }
