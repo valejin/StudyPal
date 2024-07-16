@@ -4,7 +4,7 @@ public class CredenzialiModel {
     private String email;
     private String password;
 
-    public CredenzialiModel(){};
+    public CredenzialiModel(){}
     public CredenzialiModel(String email, String password){
         this.email = email;
         this.password = password;
