@@ -16,6 +16,8 @@ import java.util.Random;
 
 public class TestTutor {
 
+    /** */
+
     /* Informazioni per test */
     private final String email = "testUser@gmail.com";
     private final String password = "testUser";
@@ -60,7 +62,7 @@ public class TestTutor {
 
         // Aggiungo l'asserzione per verificare che la tariffa sia stata modificata correttamente
         Assertions.assertEquals(tariffa, rate, "Modifiche fallite: La tariffa non è stata modificata correttamente nel database");
-        //il test fallisce se i due valori non sono gli stessi
+        //il test fallisce se i due valori non sono uguali
 
         // Stampo il messaggio di successo
         Printer.println("Modifiche avvenute con successo");
@@ -133,7 +135,7 @@ public class TestTutor {
         userModel.setPassword(uniqueUsername);
         userModel.setRuolo(isTutor);
 
-        // Utente test viene registrato con lo stesso valore per nome, cognome, password, confermaPassword
+        // UtenteTest viene registrato con lo stesso valore per nome, cognome, password, confermaPassword
         try {
             UserDAO registrazioneDao = FactoryDAO.getUserDAO();
             registrazioneDao.registrazioneMethod(userModel);
