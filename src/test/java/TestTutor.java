@@ -27,9 +27,6 @@ public class TestTutor {
     private final String suffissoEmail = "@gmail.com";
 
 
-    public TestTutor() {
-    }
-
 
     /** Verifico se un utente registrato come Tutor possa modificare le informazioni relative
      * al proprio profilo nel DB */
