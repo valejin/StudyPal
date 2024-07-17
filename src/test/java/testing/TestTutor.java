@@ -16,17 +16,19 @@ import java.util.Random;
 
 public class TestTutor {
 
+    /** Test di Valentina Jin 0306834*/
+
     /* Informazioni per test */
-    private final String email = "testUser@gmail.com";
-    private final String password = "testUser";
-    private final String materie = "Analisi 1, Fisica 1";
+    private static final String EMAIL = "testUser@gmail.com";
+    private static final String PASSWORD = "testUser";
+    private static final String MATERIE = "Analisi 1, Fisica 1";
     private int tariffa = 0;
-    private final String luogo = "Milano";
-    private final boolean inPresenza = true;
-    private final boolean online = false;
-    private final String giorni = "Lunedì, Martedì";
-    private final boolean isTutor = true;
-    private final String suffissoEmail = "@gmail.com";
+    private static final String LUOGO = "Milano";
+    private static final boolean IN_PRESENZA = true;
+    private static final boolean ONLINE = false;
+    private static final String GIORNI = "Lunedì, Martedì";
+    private static final boolean IS_TUTOR = true;
+    private static final String SUFFISSO_EMAIL = "@gmail.com";
 
 
 
@@ -41,18 +43,18 @@ public class TestTutor {
         tariffa = getRandomValue();
         RipetizioneInfoModel ripetizioneInfoModel = new RipetizioneInfoModel();
 
-        ripetizioneInfoModel.setGiorni(giorni);
+        ripetizioneInfoModel.setGiorni(GIORNI);
         ripetizioneInfoModel.setTariffa(tariffa);
-        ripetizioneInfoModel.setOnline(online);
-        ripetizioneInfoModel.setInPresenza(inPresenza);
-        ripetizioneInfoModel.setMateria(materie);
-        ripetizioneInfoModel.setLuogo(luogo);
-        ripetizioneInfoModel.setEmail(email);
+        ripetizioneInfoModel.setOnline(ONLINE);
+        ripetizioneInfoModel.setInPresenza(IN_PRESENZA);
+        ripetizioneInfoModel.setMateria(MATERIE);
+        ripetizioneInfoModel.setLuogo(LUOGO);
+        ripetizioneInfoModel.setEmail(EMAIL);
 
         // Carico nuove informazioni nel database
         ripetizioneInfoDAO.modificaProfiloTutor(ripetizioneInfoModel);
 
-        RipetizioneInfoModel ripetizioneInfoModel1 = ripetizioneInfoDAO.caricaInformazioniProfilo(email);
+        RipetizioneInfoModel ripetizioneInfoModel1 = ripetizioneInfoDAO.caricaInformazioniProfilo(EMAIL);
 
         // Verifico se il valore di TARIFFA è stato modificato con successo
         int rate = ripetizioneInfoModel1.getTariffa();
@@ -60,6 +62,7 @@ public class TestTutor {
 
         // Aggiungo l'asserzione per verificare che la tariffa sia stata modificata correttamente
         Assertions.assertEquals(tariffa, rate, "Modifiche fallite: La tariffa non è stata modificata correttamente nel database");
+        //il test fallisce se i due valori non sono uguali
 
         // Stampo il messaggio di successo
         Printer.println("Modifiche avvenute con successo");
@@ -70,8 +73,8 @@ public class TestTutor {
     private void loginUser() {
         UserDAO userDAO = new UserDAOMySQL();
         CredenzialiModel credenzialiModel = new CredenzialiModel();
-        credenzialiModel.setEmail(email);
-        credenzialiModel.setPassword(password);
+        credenzialiModel.setEmail(EMAIL);
+        credenzialiModel.setPassword(PASSWORD);
 
         try {
             userDAO.loginMethod(credenzialiModel);
@@ -92,11 +95,11 @@ public class TestTutor {
 
         UserModel userModel = new UserModel();
 
-        userModel.setEmail(email);
-        userModel.setNome(password +"Nome");
-        userModel.setCognome(password +"Cognome");
-        userModel.setPassword(password);
-        userModel.setRuolo(isTutor);
+        userModel.setEmail(EMAIL);
+        userModel.setNome(PASSWORD +"Nome");
+        userModel.setCognome(PASSWORD +"Cognome");
+        userModel.setPassword(PASSWORD);
+        userModel.setRuolo(IS_TUTOR);
 
         try {
             UserDAO registrazioneDao = FactoryDAO.getUserDAO();
@@ -121,18 +124,17 @@ public class TestTutor {
         /* registrazione del tutor con email creato random */
 
         int res = -1;
-        String baseUsername = password;
-        String uniqueUsername = generateRandomUsername(baseUsername);
-        String userEmail = uniqueUsername + suffissoEmail;
+        String uniqueUsername = generateRandomUsername(PASSWORD);
+        String userEmail = uniqueUsername + SUFFISSO_EMAIL;
 
         UserModel userModel = new UserModel();
         userModel.setNome(uniqueUsername);
         userModel.setCognome(uniqueUsername);
         userModel.setEmail(userEmail);
         userModel.setPassword(uniqueUsername);
-        userModel.setRuolo(isTutor);
+        userModel.setRuolo(IS_TUTOR);
 
-        // Utente test viene registrato con lo stesso valore per nome, cognome, password, confermaPassword
+        // UtenteTest viene registrato con lo stesso valore per nome, cognome, password, confermaPassword
         try {
             UserDAO registrazioneDao = FactoryDAO.getUserDAO();
             registrazioneDao.registrazioneMethod(userModel);
@@ -142,7 +144,7 @@ public class TestTutor {
             Assertions.fail("Registrazione fallito: " + e.getMessage());
         }
 
-        // controllo l'email se viene registrato
+        // controllo l'email se viene registrato, il test fallisce se non viene catturato l'eccezione "EmailAlreadyInUse"
         try{
             UserDAO registrazioneDao = FactoryDAO.getUserDAO();
             registrazioneDao.controllaEmailMethod(userModel);
@@ -175,8 +177,9 @@ public class TestTutor {
         int res = -1;
 
         try {
-            prenotazioneDAO.richiesteArrivate(email, 0);
+            prenotazioneDAO.richiesteArrivate(EMAIL, 0);
         } catch (NonProduceRisultatoException e) {
+            //il test fallisce se non viene catturato l'eccezione "NonProduceRisultatoException"
             res = 1;
             Printer.println("Non produce risultato da DB.");
         }
