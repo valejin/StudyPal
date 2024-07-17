@@ -32,21 +32,26 @@ class TestStudente {
 
     @Test
     void testControlloCredenziali(){
-        /* controlla che venga sollevata l'eccezione CredenzialiSbagliateException durante il Login*/
+
         int res = -1;
         password = generaPassword();
         /* usiamo sempre la stessa email, generiamo ogni volta una password diversa*/
 
         try{
             //prima controllo se l'utente esiste, e in caso contrario lo registro
-
             registraTester();
 
+            //se non viene lanciata nessuna eccezione durante l'esecuzione del metodo registraTutor allora posso tentare il login
+            UserDAO dao = FactoryDAO.getUserDAO();
+            CredenzialiModel credenziali = new CredenzialiModel(USER_EMAIL, password);
+            dao.loginMethod(credenziali);
         } catch (PersistenzaNonValida e){
             Printer.errorPrint("Errore persistenza.");
             res = 0;
         } catch (CredenzialiSbagliateException e){
             res = 1;
+        } catch (UtenteInesistenteException e){
+            res = 2;
         }
         Assertions.assertEquals(1, res);
     }
@@ -57,6 +62,9 @@ class TestStudente {
     }
 
     public void registraTester() throws PersistenzaNonValida, CredenzialiSbagliateException{
+
+        /*registra l'utente se non esiste già*/
+
         UserDAO dao = FactoryDAO.getUserDAO();
         try {
             CredenzialiModel credenziali = new CredenzialiModel(USER_EMAIL, password);
@@ -64,7 +72,9 @@ class TestStudente {
 
         } catch (CredenzialiSbagliateException e){
             throw e;
+
         } catch (UtenteInesistenteException e){
+
             UserModel userModel = new UserModel();
 
             userModel.setEmail(USER_EMAIL);
