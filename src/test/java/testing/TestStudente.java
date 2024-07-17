@@ -9,6 +9,7 @@ import com.example.studypal.exceptions.PersistenzaNonValida;
 import com.example.studypal.exceptions.UtenteInesistenteException;
 import com.example.studypal.model.CredenzialiModel;
 import com.example.studypal.model.PrenotazioneModel;
+import com.example.studypal.model.UserModel;
 import com.example.studypal.other.FactoryDAO;
 import com.example.studypal.other.Printer;
 import org.junit.jupiter.api.Assertions;
@@ -22,27 +23,27 @@ class TestStudente {
      /** Elisa Marzioli 0310065 **/
 
     private static final String USER_EMAIL = "test@email.com";
+    private String password;
     private static final String TEST = "test";
     private static final LoggedInUserBean tutorTEST = new LoggedInUserBean("test@tutor.com", "test", "test");
+
+
+    /** Verifica la corretta gestione dell’inserimento di credenziali sbagliate durante il login. **/
 
     @Test
     void testControlloCredenziali(){
         /* controlla che venga sollevata l'eccezione CredenzialiSbagliateException durante il Login*/
         int res = -1;
-
-        String password = generaPassword();
+        password = generaPassword();
         /* usiamo sempre la stessa email, generiamo ogni volta una password diversa*/
-        try{
-            UserDAO userDAO = FactoryDAO.getUserDAO();
-            CredenzialiModel credenziali = new CredenzialiModel(USER_EMAIL, password);
-            userDAO.loginMethod(credenziali);
 
+        try{
+            //prima controllo se l'utente esiste, e in caso contrario lo registro
+
+            registraTester();
 
         } catch (PersistenzaNonValida e){
             Printer.errorPrint("Errore persistenza.");
-            res = 0;
-        } catch (UtenteInesistenteException e){
-            Printer.errorPrint("Errore controllo email.");
             res = 0;
         } catch (CredenzialiSbagliateException e){
             res = 1;
@@ -55,11 +56,33 @@ class TestStudente {
         //la password corretta nel DB è "test", il test tenta il login con una password sbagliata diversa a ogni tentativo
     }
 
+    public void registraTester() throws PersistenzaNonValida, CredenzialiSbagliateException{
+        UserDAO dao = FactoryDAO.getUserDAO();
+        try {
+            CredenzialiModel credenziali = new CredenzialiModel(USER_EMAIL, password);
+            dao.loginMethod(credenziali);
+
+        } catch (CredenzialiSbagliateException e){
+            throw e;
+        } catch (UtenteInesistenteException e){
+            UserModel userModel = new UserModel();
+
+            userModel.setEmail(USER_EMAIL);
+            userModel.setNome("test");
+            userModel.setCognome("test");
+            userModel.setPassword("test");
+            userModel.setRuolo(false);
+
+            dao.registrazioneMethod(userModel);
+        }
+
+    }
 
 
+    /** Verifica la corretta gestione del tentativo di login di un utente non registrato **/
     @Test
     void testUtenteInesistente(){
-        /* controlla che l'utente con cui si effettua il login sia effettivamente registrato*/
+
         int res = -1;
         try {
             UserDAO userDAO = FactoryDAO.getUserDAO();
@@ -79,6 +102,9 @@ class TestStudente {
         return "test" + System.currentTimeMillis() + "@email.com";
     }
 
+
+
+    /** testa che la prenotazione effettuata venga correttamente registrata **/
     @Test
     void controlloPrenotazione(){
         /* faccio una prenotazione di test e controllo che venga registrata*/
