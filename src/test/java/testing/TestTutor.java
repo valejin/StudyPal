@@ -20,15 +20,15 @@ public class TestTutor {
 
     /* Informazioni per test */
     private static final String EMAIL = "testUser@gmail.com";
-    private final String password = "testUser";
-    private final String materie = "Analisi 1, Fisica 1";
+    private static final String PASSWORD = "testUser";
+    private static final String MATERIE = "Analisi 1, Fisica 1";
     private int tariffa = 0;
-    private final String luogo = "Milano";
-    private final boolean inPresenza = true;
-    private final boolean online = false;
-    private final String giorni = "Lunedì, Martedì";
-    private final boolean isTutor = true;
-    private final String suffissoEmail = "@gmail.com";
+    private static final String LUOGO = "Milano";
+    private static final boolean IN_PRESENZA = true;
+    private static final boolean ONLINE = false;
+    private static final String GIORNI = "Lunedì, Martedì";
+    private static final boolean IS_TUTOR = true;
+    private static final String SUFFISSO_EMAIL = "@gmail.com";
 
 
 
@@ -43,12 +43,12 @@ public class TestTutor {
         tariffa = getRandomValue();
         RipetizioneInfoModel ripetizioneInfoModel = new RipetizioneInfoModel();
 
-        ripetizioneInfoModel.setGiorni(giorni);
+        ripetizioneInfoModel.setGiorni(GIORNI);
         ripetizioneInfoModel.setTariffa(tariffa);
-        ripetizioneInfoModel.setOnline(online);
-        ripetizioneInfoModel.setInPresenza(inPresenza);
-        ripetizioneInfoModel.setMateria(materie);
-        ripetizioneInfoModel.setLuogo(luogo);
+        ripetizioneInfoModel.setOnline(ONLINE);
+        ripetizioneInfoModel.setInPresenza(IN_PRESENZA);
+        ripetizioneInfoModel.setMateria(MATERIE);
+        ripetizioneInfoModel.setLuogo(LUOGO);
         ripetizioneInfoModel.setEmail(EMAIL);
 
         // Carico nuove informazioni nel database
@@ -74,7 +74,7 @@ public class TestTutor {
         UserDAO userDAO = new UserDAOMySQL();
         CredenzialiModel credenzialiModel = new CredenzialiModel();
         credenzialiModel.setEmail(EMAIL);
-        credenzialiModel.setPassword(password);
+        credenzialiModel.setPassword(PASSWORD);
 
         try {
             userDAO.loginMethod(credenzialiModel);
@@ -96,10 +96,10 @@ public class TestTutor {
         UserModel userModel = new UserModel();
 
         userModel.setEmail(EMAIL);
-        userModel.setNome(password +"Nome");
-        userModel.setCognome(password +"Cognome");
-        userModel.setPassword(password);
-        userModel.setRuolo(isTutor);
+        userModel.setNome(PASSWORD +"Nome");
+        userModel.setCognome(PASSWORD +"Cognome");
+        userModel.setPassword(PASSWORD);
+        userModel.setRuolo(IS_TUTOR);
 
         try {
             UserDAO registrazioneDao = FactoryDAO.getUserDAO();
@@ -124,16 +124,15 @@ public class TestTutor {
         /* registrazione del tutor con email creato random */
 
         int res = -1;
-        String baseUsername = password;
-        String uniqueUsername = generateRandomUsername(baseUsername);
-        String userEmail = uniqueUsername + suffissoEmail;
+        String uniqueUsername = generateRandomUsername(PASSWORD);
+        String userEmail = uniqueUsername + SUFFISSO_EMAIL;
 
         UserModel userModel = new UserModel();
         userModel.setNome(uniqueUsername);
         userModel.setCognome(uniqueUsername);
         userModel.setEmail(userEmail);
         userModel.setPassword(uniqueUsername);
-        userModel.setRuolo(isTutor);
+        userModel.setRuolo(IS_TUTOR);
 
         // UtenteTest viene registrato con lo stesso valore per nome, cognome, password, confermaPassword
         try {
