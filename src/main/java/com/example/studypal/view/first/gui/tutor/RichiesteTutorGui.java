@@ -64,6 +64,7 @@ public class RichiesteTutorGui extends GestisciPrenotazioniGui implements Observ
 
         //pattern Observer
         richiesteArrivateCollection = RichiesteArrivateCollection.getInstance();
+
         richiesteArrivateCollection.attach(this);
 
         //creo un'istanza di controller applicativo corrispondente
@@ -76,10 +77,11 @@ public class RichiesteTutorGui extends GestisciPrenotazioniGui implements Observ
         email.setCellValueFactory(new PropertyValueFactory<>("emailStudente"));
         materia.setCellValueFactory(new PropertyValueFactory<>("materia"));
 
-        // Aggiungi gli elementi alla TableView
+        // Aggiungo tutti i nuovi elemento alla TableView
+        risultatiTable.getItems().clear();
         risultatiTable.getItems().addAll(richiesteList);
 
-        //Imposta la factory per la colonna "Visualizza"
+        //Imposto la factory per la colonna "Visualizza"
         visualizza.setCellFactory(param -> new VisualizzaButtonCell());
 
     }
@@ -121,6 +123,8 @@ public class RichiesteTutorGui extends GestisciPrenotazioniGui implements Observ
         //ora converto la lista di model in una lista di bean e per fare questo sfrutto un metodo del controller grafico
         GestisciPrenotazioniController gestisciPrenotazioniController = new GestisciPrenotazioniController();
         richiesteList = gestisciPrenotazioniController.convertiRichieste(richiesteListModel);
+
+        risultatiTable.getItems().clear();
         risultatiTable.getItems().addAll(richiesteList);
 
     }

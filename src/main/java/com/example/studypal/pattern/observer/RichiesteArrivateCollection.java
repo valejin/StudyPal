@@ -19,7 +19,7 @@ public class RichiesteArrivateCollection extends Subject {
 
     private static RichiesteArrivateCollection richiesteCollection = null;
 
-    private final List<PrenotazioneModel> richiesteList = new ArrayList<>();
+    private List<PrenotazioneModel> richiesteList = new ArrayList<>();
 
 
     public static RichiesteArrivateCollection getInstance() { //Pattern Singleton
@@ -53,5 +53,13 @@ public class RichiesteArrivateCollection extends Subject {
 
     public List<PrenotazioneModel> ottieniStato(){
         return richiesteList;
+    }
+
+    public void nuovaLista(List<PrenotazioneModel> nuoveRichieste){
+        /*questo metodo viene invocato dal controller applicativo della gestione delle prenotazioni ogni volta
+         che viene caricata la lista delle richieste arrivate a un tutor dal DB, in modo tale da permettere il corretto
+         aggiornamento della lista tramite observer*/
+
+        richiesteList = nuoveRichieste;
     }
 }
