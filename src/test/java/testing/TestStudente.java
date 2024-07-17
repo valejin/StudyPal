@@ -3,10 +3,7 @@ package testing;
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.dao.PrenotazioneDAO;
 import com.example.studypal.dao.UserDAO;
-import com.example.studypal.exceptions.CredenzialiSbagliateException;
-import com.example.studypal.exceptions.NonProduceRisultatoException;
-import com.example.studypal.exceptions.PersistenzaNonValida;
-import com.example.studypal.exceptions.UtenteInesistenteException;
+import com.example.studypal.exceptions.*;
 import com.example.studypal.model.CredenzialiModel;
 import com.example.studypal.model.PrenotazioneModel;
 import com.example.studypal.model.UserModel;
@@ -131,6 +128,9 @@ class TestStudente {
 
             Assertions.assertEquals(1, richieste.size());
         } catch (SQLException | NonProduceRisultatoException e) {
+            Assertions.fail();
+        } catch (PrenotazioneConfermataException e){
+            //non è un vero e proprio fallimento ma non deve verificarsi
             Assertions.fail();
         }
     }

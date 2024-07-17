@@ -4,6 +4,7 @@ import com.example.studypal.dao.PrenotazioneDAO;
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.PrenotazioneBean;
 import com.example.studypal.exceptions.NonProduceRisultatoException;
+import com.example.studypal.exceptions.PrenotazioneConfermataException;
 import com.example.studypal.model.PrenotazioneModel;
 import com.example.studypal.other.Printer;
 import com.example.studypal.pattern.observer.RichiesteArrivateCollection;
@@ -64,10 +65,15 @@ public class GestisciPrenotazioniStudenteController {
         /* Istanzio il DAO e gli passo l'id della richiesta da eliminare.
         Nota: non c'è bisogno di try catch, la richiesta è sicuramente presente nel DB dato che l'abbiamo caricata noi in precedenza*/
 
-        PrenotazioneDAO prenotazioneDAO = new PrenotazioneDAO();
-        prenotazioneDAO.cancellaRichiesta(idRichiesta);
+        try{
+            PrenotazioneDAO prenotazioneDAO = new PrenotazioneDAO();
+            prenotazioneDAO.cancellaRichiesta(idRichiesta);
 
-        RichiesteArrivateCollection.getInstance().rimuoviRichiesta(idRichiesta);
+            RichiesteArrivateCollection.getInstance().rimuoviRichiesta(idRichiesta);
+        } catch (PrenotazioneConfermataException e){
+            Printer.errorPrint(e.getMessage()); //la prenotazione potrebbe essere stata confermata nel frattempo
+        }
+
 
         //debug
         Printer.print("DEBUG RICHIESTE COLLECTION:");

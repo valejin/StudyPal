@@ -100,6 +100,24 @@ public class QueryPrenotazione {
         }
     }
 
+    public static int getStatoRichiesta(Statement stmt, int idRichiesta){
+        String sql;
+        ResultSet rs = null;
+        int stato = -1;
+
+        try{
+
+            sql = String.format(Query.STATO_RICHIESTA, idRichiesta);
+
+            rs = stmt.executeQuery(sql);
+            rs.next();
+            stato = rs.getInt("stato");
+
+        } catch (SQLException e){
+            handleException(e);
+        }
+        return stato;
+    }
 
     public static void cancellaRichiesta(Statement stmt, Integer idRichiesta){
         String sql;

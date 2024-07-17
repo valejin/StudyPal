@@ -2,6 +2,7 @@ package com.example.studypal.dao;
 
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.exceptions.NonProduceRisultatoException;
+import com.example.studypal.exceptions.PrenotazioneConfermataException;
 import com.example.studypal.model.PrenotazioneModel;
 import com.example.studypal.other.Connect;
 import com.example.studypal.other.Printer;
@@ -193,21 +194,45 @@ public class PrenotazioneDAO {
     }
 
 
-    /*------------------------------------------CANCELLA (STUDENTE)-------------------------------------------*/
-    public void cancellaRichiesta(Integer idRichiesta){
+    /*---------------------------------------------CANCELLA (STUDENTE)-----------------------------------------------*/
+    public void cancellaRichiesta(Integer idRichiesta) throws PrenotazioneConfermataException{
 
         Connection connection;
         Statement stmt;
 
         try {
-            connection = Connect.getInstance().getDBConnection();
-            stmt = connection.createStatement();
+            if (controllaStato(idRichiesta) == 0){ //controllo che sia effettivamente una richiesta in attesa prima di cancellarla
 
-            QueryPrenotazione.cancellaRichiesta(stmt, idRichiesta);
+                connection = Connect.getInstance().getDBConnection();
+                stmt = connection.createStatement();
+
+                QueryPrenotazione.cancellaRichiesta(stmt, idRichiesta);
+            } else if (controllaStato(idRichiesta) == 1){
+                //la prenotazione è stata confermata dal tutor nel frattempo
+                throw new PrenotazioneConfermataException("Non è stato possibile cancellare la richiesta.");
+            }
 
         } catch(SQLException e){
             handleDAOException(e);
         }
+    }
+
+
+    public int controllaStato(int idRichiesta){
+        Connection connection;
+        Statement stmt;
+        int stato = -1;
+
+        try {
+            connection = Connect.getInstance().getDBConnection();
+            stmt = connection.createStatement();
+
+            stato = QueryPrenotazione.getStatoRichiesta(stmt, idRichiesta);
+
+        } catch(SQLException e){
+            handleDAOException(e);
+        }
+        return stato;
     }
 
 

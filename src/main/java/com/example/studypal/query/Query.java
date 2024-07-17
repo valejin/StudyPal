@@ -24,22 +24,23 @@ public class Query {
     public static final String PRENOTA = "INSERT INTO richieste (emailTutor, emailStudente, materia, modLezione, tariffa, giorni, note, nomeTutor, cognomeTutor) VALUES ('%s', '%s', '%s', '%d', '%d', '%s', '%s', '%s', '%s')";
 
 
-    /*Query per Gestisci Prenotazioni (lato TUTOR) per prendere le richieste da DB*/
+    /*Query per Gestisci Prenotazioni (lato TUTOR) per prendere le richieste da DB------------------------------------*/
     public static final String RICHIESTE_IN_ATTESA = "SELECT * FROM richieste WHERE emailTutor = '%s' AND stato = 0";
     public static final String PRENOTAZIONI_ATTIVE = "SELECT * FROM richieste WHERE emailTutor = '%s' AND stato = 1";
     public static final String RICHIESTE_RIFIUTATE = "SELECT * FROM richieste WHERE emailTutor = '%s' AND stato = 2";
 
-    /* Query per Gestisci Prenotazioni (lato STUDENTE) per prendere le richieste dal DB*/
+
+    /* Query per Gestisci Prenotazioni (lato STUDENTE) ---------------------------------------------------------------*/
     public static final String RICHIESTE_INVIATE = "SELECT * FROM richieste WHERE emailStudente = '%s' AND stato = 0";
     public static final String PRENOTAZIONI_ATTIVE_S = "SELECT * FROM richieste WHERE emailStudente = '%s' AND stato = 1";
     public static final String RICHIESTE_RIFIUTATE_S = "SELECT * FROM richieste WHERE emailStudente = '%s' AND stato = 2";
-
+    public static final String STATO_RICHIESTA = "SELECT stato FROM richieste WHERE idrichieste = '%d' ";
     public static final String CONFERMA_RICHIESTA = "UPDATE richieste SET stato = 0 WHERE idrichieste = '%s'";
     public static final String RIFIUTA_RICHIESTA = "UPDATE richieste SET stato = 1 WHERE idrichieste = '%s'";
     public static final String CANCELLA_RICHIESTA = "DELETE FROM richieste WHERE idrichieste = '%s'";
     public static final String RECENSIONE = "UPDATE richieste SET recensione = '%d' WHERE idrichieste = '%d'";
 
-    /* ripetizioneInfoDAO*/
+    /* ripetizioneInfoDAO--------------------------------------------------------------------------------------------*/
     public static final String RICERCA_MATERIA = "SELECT email, tariffa, luogo, materie, inPresenza, webCam, giorni," +
             " nome, cognome FROM tutor where LOWER(materie) LIKE '%s' ";
 
