@@ -16,10 +16,10 @@ import java.util.Random;
 
 public class TestTutor {
 
-    /** */
+    /** Test di Valentina Jin 0306834*/
 
     /* Informazioni per test */
-    private final String email = "testUser@gmail.com";
+    private static final String EMAIL = "testUser@gmail.com";
     private final String password = "testUser";
     private final String materie = "Analisi 1, Fisica 1";
     private int tariffa = 0;
@@ -49,12 +49,12 @@ public class TestTutor {
         ripetizioneInfoModel.setInPresenza(inPresenza);
         ripetizioneInfoModel.setMateria(materie);
         ripetizioneInfoModel.setLuogo(luogo);
-        ripetizioneInfoModel.setEmail(email);
+        ripetizioneInfoModel.setEmail(EMAIL);
 
         // Carico nuove informazioni nel database
         ripetizioneInfoDAO.modificaProfiloTutor(ripetizioneInfoModel);
 
-        RipetizioneInfoModel ripetizioneInfoModel1 = ripetizioneInfoDAO.caricaInformazioniProfilo(email);
+        RipetizioneInfoModel ripetizioneInfoModel1 = ripetizioneInfoDAO.caricaInformazioniProfilo(EMAIL);
 
         // Verifico se il valore di TARIFFA è stato modificato con successo
         int rate = ripetizioneInfoModel1.getTariffa();
@@ -73,7 +73,7 @@ public class TestTutor {
     private void loginUser() {
         UserDAO userDAO = new UserDAOMySQL();
         CredenzialiModel credenzialiModel = new CredenzialiModel();
-        credenzialiModel.setEmail(email);
+        credenzialiModel.setEmail(EMAIL);
         credenzialiModel.setPassword(password);
 
         try {
@@ -95,7 +95,7 @@ public class TestTutor {
 
         UserModel userModel = new UserModel();
 
-        userModel.setEmail(email);
+        userModel.setEmail(EMAIL);
         userModel.setNome(password +"Nome");
         userModel.setCognome(password +"Cognome");
         userModel.setPassword(password);
@@ -178,7 +178,7 @@ public class TestTutor {
         int res = -1;
 
         try {
-            prenotazioneDAO.richiesteArrivate(email, 0);
+            prenotazioneDAO.richiesteArrivate(EMAIL, 0);
         } catch (NonProduceRisultatoException e) {
             //il test fallisce se non viene catturato l'eccezione "NonProduceRisultatoException"
             res = 1;
