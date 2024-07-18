@@ -4,7 +4,6 @@ import com.example.studypal.dao.PrenotazioneDAO;
 import com.example.studypal.bean.LoggedInUserBean;
 import com.example.studypal.bean.PrenotazioneBean;
 import com.example.studypal.pattern.observer.RichiesteArrivateCollection;
-import com.example.studypal.view.first.gui.tutor.GestisciPrenotazioniGui;
 import com.example.studypal.exceptions.NonProduceRisultatoException;
 import com.example.studypal.model.PrenotazioneModel;
 import com.example.studypal.other.Printer;
@@ -12,7 +11,7 @@ import com.example.studypal.other.Printer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GestisciPrenotazioniController extends GestisciPrenotazioniGui {
+public class GestisciPrenotazioniController {
 
 
     //funzione chiamata da Controller grafico corrispondente per ottenere le info per stampare a schermo

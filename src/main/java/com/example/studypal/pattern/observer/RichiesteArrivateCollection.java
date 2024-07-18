@@ -21,6 +21,8 @@ public class RichiesteArrivateCollection extends Subject {
 
     private List<PrenotazioneModel> richiesteList = new ArrayList<>();
 
+    private RichiesteArrivateCollection(){}
+
 
     public static RichiesteArrivateCollection getInstance() { //Pattern Singleton
         if (richiesteCollection == null) {
@@ -29,7 +31,6 @@ public class RichiesteArrivateCollection extends Subject {
         return richiesteCollection;
     }
 
-    private RichiesteArrivateCollection(){}
 
     /* metodi per la modifica della collezione di richieste*/
 
