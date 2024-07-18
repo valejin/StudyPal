@@ -184,7 +184,6 @@ public void goToPrenotazioniRifiutate(){
             popupStage.showAndWait();
         } catch(IOException e){
             logger.severe("Errore caricamento popup di conferma" + e.getMessage());
-            e.printStackTrace();
         }
 
     }
@@ -207,7 +206,6 @@ public void goToPrenotazioniRifiutate(){
             popupStage.showAndWait();
         } catch(IOException e){
             logger.severe("Errore caricamento popup di rifiuto" + e.getMessage());
-            e.printStackTrace();
         }
     }
 }

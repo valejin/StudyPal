@@ -121,7 +121,6 @@ public class PrenotaRipetizioneController {
             PrenotazioneDAO prenotazioneDAO = new PrenotazioneDAO();
             prenotazioneDAO.prenota(prenotazioneModel);
 
-            /*todo  IL PROBLEMA è CHE AGGIUNGO ALLA COLLECTION PRIMA CHE SIA ARRIVATA AL DB QUINDI IDRICHIESTA NON ESISTE ANCORA! QUINDI BISOGNA PRIMA SALVARLE NEL DATABASE E POI CARICARLE NELLA COLLECTION*/
             RichiesteArrivateCollection.getInstance().aggiungiRichiesta(prenotazioneModel); //pattern Observer
 
         } catch (SQLException e){

@@ -77,7 +77,7 @@ public class RichiesteTutorGui extends GestisciPrenotazioniGui implements Observ
         email.setCellValueFactory(new PropertyValueFactory<>("emailStudente"));
         materia.setCellValueFactory(new PropertyValueFactory<>("materia"));
 
-        // Aggiungo tutti i nuovi elemento alla TableView
+        // Aggiungo tutti i nuovi elementi alla TableView
         risultatiTable.getItems().clear();
         risultatiTable.getItems().addAll(richiesteList);
 
