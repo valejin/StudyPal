@@ -58,7 +58,7 @@ public class PrenotazioneDAO {
         /*
     una volta la richiesta in attesa viene confermata dal tutor, sparisce dalla lista di richieste arrivate
     */
-    public List<PrenotazioneModel> richiesteArrivate(String email, int flag) throws NonProduceRisultatoException{
+    public List<PrenotazioneModel> getRichieste(String email, int flag) throws NonProduceRisultatoException{
 
         //viene passato il userModel per prendere email del tutor
         Statement stmt = null;
@@ -173,8 +173,8 @@ public class PrenotazioneDAO {
     public void modificaStatoRichiesta(Integer idRichiesta, Integer stato){
         /*
             stato:
-                    0 -> conferma
-                    1 -> rifiuta
+                    1 -> conferma
+                    2 -> rifiuta
          */
 
         Connection connection;

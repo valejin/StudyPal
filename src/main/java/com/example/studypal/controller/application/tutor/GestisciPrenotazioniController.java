@@ -13,11 +13,15 @@ import java.util.List;
 
 public class GestisciPrenotazioniController {
 
+    private LoggedInUserBean user;
+    public GestisciPrenotazioniController(){}
+    public GestisciPrenotazioniController(LoggedInUserBean user){this.user = user;}
 
     //funzione chiamata da Controller grafico corrispondente per ottenere le info per stampare a schermo
     public List<PrenotazioneBean> getRichieste(LoggedInUserBean user, int flag) {
 
-        //creo una lista di BEAN che prende i dati
+        this.user = user;
+
         List<PrenotazioneBean> prenotazioneBean = new ArrayList<>();
 
         //ogni volta che chiedo le richieste arrivate del tutor per mostrarle nella tabella svuoto richiesteList e la popolo con le richieste prese dal DB
@@ -31,7 +35,7 @@ public class GestisciPrenotazioniController {
 
             //chiamo la funzione di DAO che si occupa estrazione di dati dal DB
             //dove passare email del tutor loggato come argomento
-            risultatiRicerca = prenotazioneDAO.richiesteArrivate(email, flag);
+            risultatiRicerca = prenotazioneDAO.getRichieste(email, flag);
 
             if (flag == 0 && user.isTutor()){
                 RichiesteArrivateCollection richiesteArrivateCollection = RichiesteArrivateCollection.getInstance();
@@ -71,6 +75,18 @@ public class GestisciPrenotazioniController {
 
         PrenotazioneDAO prenotazioneDAO = new PrenotazioneDAO();
         prenotazioneDAO.modificaStatoRichiesta(richiesta, stato);
+        try {
+
+            List<PrenotazioneModel>risultatiRicerca = prenotazioneDAO.getRichieste(user.getEmail(), 0);
+
+            //aggiorniamo la richieste collection così che venga tolta la richiesta appena gestita
+            RichiesteArrivateCollection richiesteArrivateCollection = RichiesteArrivateCollection.getInstance();
+            richiesteArrivateCollection.nuovaLista(risultatiRicerca);
+
+        } catch (NonProduceRisultatoException e) {
+            Printer.println("Non produce risultato da DB.");
+        }
+
     }
 
     public List<PrenotazioneBean> convertiRichieste(List<PrenotazioneModel> richiesteList){

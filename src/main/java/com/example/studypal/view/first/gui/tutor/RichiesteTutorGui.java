@@ -68,7 +68,7 @@ public class RichiesteTutorGui extends GestisciPrenotazioniGui implements Observ
         richiesteArrivateCollection.attach(this);
 
         //creo un'istanza di controller applicativo corrispondente
-        GestisciPrenotazioniController gestisciPrenotazioniController = new GestisciPrenotazioniController();
+        GestisciPrenotazioniController gestisciPrenotazioniController = new GestisciPrenotazioniController(user);
 
         //chiamo la funzione nel controller applicativo per ottenere una lista di BEAN che contiene tutte le info per la tabella
         richiesteList = gestisciPrenotazioniController.getRichieste(user, flag);
@@ -121,7 +121,7 @@ public class RichiesteTutorGui extends GestisciPrenotazioniGui implements Observ
         richiesteListModel = richiesteArrivateCollection.ottieniStato();
 
         //ora converto la lista di model in una lista di bean e per fare questo sfrutto un metodo del controller grafico
-        GestisciPrenotazioniController gestisciPrenotazioniController = new GestisciPrenotazioniController();
+        GestisciPrenotazioniController gestisciPrenotazioniController = new GestisciPrenotazioniController(user);
         richiesteList = gestisciPrenotazioniController.convertiRichieste(richiesteListModel);
 
         risultatiTable.getItems().clear();

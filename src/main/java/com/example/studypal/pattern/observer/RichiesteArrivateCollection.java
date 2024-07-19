@@ -1,9 +1,9 @@
 package com.example.studypal.pattern.observer;
 
 import com.example.studypal.model.PrenotazioneModel;
-import com.example.studypal.other.Printer;
 import java.util.ArrayList;
 import java.util.List;
+
 public class RichiesteArrivateCollection extends Subject {
 
     /*
@@ -35,14 +35,10 @@ public class RichiesteArrivateCollection extends Subject {
     /* metodi per la modifica della collezione di richieste*/
 
     public void aggiungiRichiesta(PrenotazioneModel richiesta){
+
         richiesteList.add(richiesta);
         notifyObservers();
 
-        //debug
-        Printer.println("RICHIESTE COLLECTION:");
-        for (PrenotazioneModel richiestaModel: richiesteList){
-            Printer.println("id: " + richiestaModel.getIdRichiesta());
-        }
     }
 
     public void rimuoviRichiesta( Integer idRichiesta){

@@ -147,7 +147,7 @@ public void goToPrenotazioniRifiutate(){
 
         //istanzio controller applicativo
         Printer.println("IDRICHIESTA: " + this.dettagliRichiesta.getIdRichiesta());
-        GestisciPrenotazioniController gestisciPrenotazioniController = new GestisciPrenotazioniController();
+        GestisciPrenotazioniController gestisciPrenotazioniController = new GestisciPrenotazioniController(user);
         gestisciPrenotazioniController.modificaStatoRichiesta(this.dettagliRichiesta.getIdRichiesta(),1);
         caricaConferma();
         goToRichiesteArrivate();
@@ -159,7 +159,7 @@ public void goToPrenotazioniRifiutate(){
         tabella delle richieste)*/
 
         Printer.println("IDRICHIESTA: " + this.dettagliRichiesta.getIdRichiesta());
-        GestisciPrenotazioniController gestisciPrenotazioniController = new GestisciPrenotazioniController();
+        GestisciPrenotazioniController gestisciPrenotazioniController = new GestisciPrenotazioniController(user);
         gestisciPrenotazioniController.modificaStatoRichiesta(this.dettagliRichiesta.getIdRichiesta(),2);
         caricaRifiuta();
         goToRichiesteArrivate();

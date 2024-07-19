@@ -121,6 +121,7 @@ public class PrenotaRipetizioneController {
             PrenotazioneDAO prenotazioneDAO = new PrenotazioneDAO();
             prenotazioneDAO.prenota(prenotazioneModel);
 
+
             RichiesteArrivateCollection.getInstance().aggiungiRichiesta(prenotazioneModel); //pattern Observer
 
         } catch (SQLException e){

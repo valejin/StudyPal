@@ -121,7 +121,7 @@ class TestStudente {
         try{
             PrenotazioneDAO dao = new PrenotazioneDAO();
             dao.prenota(richiesta);
-            List<PrenotazioneModel> richieste = dao.richiesteArrivate(tutorTEST.getEmail(), 0);
+            List<PrenotazioneModel> richieste = dao.getRichieste(tutorTEST.getEmail(), 0);
 
             //cancello per testing futuri
             dao.cancellaRichiesta(richieste.getFirst().getIdRichiesta());

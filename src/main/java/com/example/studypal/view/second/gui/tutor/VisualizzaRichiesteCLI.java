@@ -130,7 +130,4 @@ public class VisualizzaRichiesteCLI extends AbstractState {
         };
     }
 
-
-
-
 }

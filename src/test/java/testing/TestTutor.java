@@ -177,7 +177,7 @@ public class TestTutor {
         int res = -1;
 
         try {
-            prenotazioneDAO.richiesteArrivate(EMAIL, 0);
+            prenotazioneDAO.getRichieste(EMAIL, 0);
         } catch (NonProduceRisultatoException e) {
             //il test fallisce se non viene catturato l'eccezione "NonProduceRisultatoException"
             res = 1;

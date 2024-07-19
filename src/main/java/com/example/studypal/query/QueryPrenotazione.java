@@ -88,7 +88,7 @@ public class QueryPrenotazione {
         String sql;
 
         try{
-            if (stato == 0){
+            if (stato == 1){
                 sql = String.format(Query.CONFERMA_RICHIESTA, idRichiesta);
             } else {
                 sql = String.format(Query.RIFIUTA_RICHIESTA, idRichiesta);
