@@ -1,0 +1,2 @@
+Link SonarCloud: https://sonarcloud.io/project/issues?issueStatuses=OPEN%2CCONFIRMED&id=valejin_StudyPal
+Link GitHub: https://github.com/valejin/StudyPal.git
