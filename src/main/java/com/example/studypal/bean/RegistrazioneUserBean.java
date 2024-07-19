@@ -2,8 +2,7 @@ package com.example.studypal.bean;
 
 public class RegistrazioneUserBean extends LoggedInUserBean {
     //classe bean per i dati provenienti dalla registrazione
-    //la registrazione estende login
-    //con i campi password e confermaPassword aggiuntivi
+    //la registrazione estende i dati del login, con i campi password e confermaPassword aggiuntivi
 
     private String password;
     private String confermaPassword;

@@ -7,7 +7,7 @@ import java.util.Deque;
 
 public class StateMachineImpl implements StateMachine {
 
-    /* Dall'esempio del professore deve contenere:
+    /* Deve contenere:
             -costruttore per settare gli attributi
             -implementazione del metodo goNext che fa partire la transizione/azione dello stato corrente
                     NOTA: possiamo fare che il metodo azione() dell'abstract state prenda in input la scelta dell'utente

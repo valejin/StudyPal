@@ -93,8 +93,4 @@ public class RipetizioneInfoModel extends BaseInfoModel {
         this.cognome = cognome;
     }
 
-
-
-
-
 }

@@ -15,13 +15,8 @@ import java.util.List;
 public class PrenotazioneDAO {
 
     /*
-        DAO che si occupa della gestione delle prenotazioni di ripetizioni. Contiene i seguenti metodi:
-            - prenota: inserisce le richieste di prenotazioni nella tabella "richieste"
+        DAO che si occupa dell'interazione con il database relativa alla tabella 'richieste'
 
-           Tutor:
-            - Gestione Prenotazione:
-                - Prenotazioni attive: prendere le prenotazioni attive dal DB, ovvero quelle già confermate dal tutor
-                - Richieste arrivate: prendere le richieste di prenotazione inviate dagli studenti dal DB (FATTO)
      */
 
 
@@ -52,9 +47,7 @@ public class PrenotazioneDAO {
 
 
 
-    /*--------------Gestione Prenotazioni (TUTOR): prendere le richieste arrivate da DB ---------------------------*/
-    /*--------------Gestione Prenotazioni (TUTOR): prendere le prenotazioni arrivate da DB ------------------------*/
-    /*--------------Gestione Prenotazioni (TUTOR): prendere le prenotazioni rifiutate da DB ------------------------*/
+    /*--------------Gestione Prenotazioni (TUTOR): prendere le diverse da DB ------------------------*/
         /*
     una volta la richiesta in attesa viene confermata dal tutor, sparisce dalla lista di richieste arrivate
     */
@@ -236,7 +229,7 @@ public class PrenotazioneDAO {
     }
 
 
-    /*-------------------------------------------RECENSIONE-----------------------------------------------------------*/
+    /*-------------------------------------------RECENSIONE (STUDENTE)------------------------------------------------*/
 
     public void recensioneMethod(int idRichiesta, int recensione){
 

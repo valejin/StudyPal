@@ -21,7 +21,7 @@ public abstract class Subject {
     }
 
     /** Implementato con un loop su tutti i ConcreteObserver, dove ciascuno di essi chiama la funzione update()
-     * Viene eseguita dal ConcreteSubject (il publisher) per notificare il suo cambio di stato
+     * Viene eseguita dal ConcreteSubject (il publisher) per notificare il suo cambiamento di stato
 
      * È BUONA NORMA RENDERLO PRIVATO PERCHÈ SOLO CONCRETEOBSERVER DOVREBBE CHIAMARLO */
     protected void notifyObservers() {

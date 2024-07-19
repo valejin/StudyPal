@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 public class RipetizioneInfoDAO {
 
     /*
-    DAO che gestisce le interazioni con il db relative alle informazioni utili alle informazioni ddelle ripetizioni.
+    DAO che gestisce le interazioni con il db relative alle informazioni utili alle ripetizioni.
     Contiene:
         - metodo che effettua la ricerca di una ripetizione (PrenotaRipetizione)
         - metodo che effettua l'aggiornamento delle informazioni di un profilo tutor (GestioneProfiloTutor)
@@ -41,7 +41,7 @@ public class RipetizioneInfoDAO {
 
     public List<RipetizioneInfoModel> ricercaMateria(BaseInfoModel baseInfoModel) {
         /*
-        metodo per la ricerca di ripetizioni, restituisce tutti i tutor e rispettive informazioni di ripetizioni disponibiili
+        metodo per la ricerca di ripetizioni, restituisce tutti i tutor e rispettive informazioni di ripetizioni
         applica i parametri di ricerca ricevuti tramite istanza di RipetizioneInfoModel
         La query cerca nella tabella Tutor
          */

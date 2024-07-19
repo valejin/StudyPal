@@ -93,7 +93,6 @@ public class UserDAOMySQL implements UserDAO{
 
             String email = registrazioneModel.getEmail();
 
-            // Controlla se l'email è già in uso nel database
             boolean emailInUse = QueryLogin.emailReg(stmt, email);
 
             if (emailInUse) {
@@ -102,9 +101,7 @@ public class UserDAOMySQL implements UserDAO{
 
         } catch (SQLException e) {
             logger.severe("Errore in userDAO: " + e.getMessage());
-            // Gestione dell'eccezione SQL, se necessario
         } finally {
-            // Chiudi le risorse in finally block per garantire la pulizia
             closeResources(stmt, null);
 
         }
@@ -113,7 +110,7 @@ public class UserDAOMySQL implements UserDAO{
 
     public void registraTutorMethod(String email, String nome, String cognome) {
 
-        //crea una tupla nella tabella tutor... DEVE ESSERE INVOCATO SOLO PER I TUTOR!!!
+        //crea una tupla nella tabella tutor
 
         Connection connection;
         Statement stmt = null;

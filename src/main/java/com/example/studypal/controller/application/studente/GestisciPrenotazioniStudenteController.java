@@ -74,13 +74,6 @@ public class GestisciPrenotazioniStudenteController {
             Printer.errorPrint(e.getMessage()); //la prenotazione potrebbe essere stata confermata nel frattempo
         }
 
-
-        //debug
-        Printer.print("DEBUG RICHIESTE COLLECTION:");
-        for (PrenotazioneModel richiestaModel: RichiesteArrivateCollection.getInstance().ottieniStato()){
-            Printer.println("id: " + richiestaModel.getIdRichiesta());
-        }
-
     }
 
 

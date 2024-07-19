@@ -15,7 +15,7 @@ import java.util.List;
 public class PrenotaRipetizioneController {
 
     /*
-    controller applicativo che gestisce il caso d'uso prenota ripetizione da parte dello studente
+    controller applicativo che gestisce la logica del caso d'uso prenota ripetizione da parte dello studente
     */
 
     private List<RipetizioneInfoModel> risultatiRicerca;

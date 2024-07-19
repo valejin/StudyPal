@@ -7,7 +7,7 @@ import com.example.studypal.model.RipetizioneInfoModel;
 public class GestioneProfiloTutorController {
 
     /*
-    controller applicativo che gestisce il caso d'uso gestione profilo tutor
+    controller applicativo che gestisce la logica del caso d'uso gestione profilo tutor
      */
 
     public void gestioneProfiloMethod(RipetizioneInfoBean ripetizioneInfoBean) {

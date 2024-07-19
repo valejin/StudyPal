@@ -18,7 +18,6 @@ public class RipetizioneInfoBean extends BaseInfoBean{
     private String cognome;
 
 
-    //qui contiene tutte le informazioni per la ricerca con filtro, in caso di Prenota Ripetizione
 
     public RipetizioneInfoBean(String materia){
         super(materia);
@@ -27,8 +26,6 @@ public class RipetizioneInfoBean extends BaseInfoBean{
     public RipetizioneInfoBean(){}
 
     /* costruttore lato controller grafico (lista di booleani)--------------------------------------------------------*/
-
-
     public RipetizioneInfoBean(String materia, Boolean inPresenza, Boolean online, String luogo, List<Boolean> giorni, Integer tariffa, String email){
         super(materia);
         this.inPresenza = inPresenza;

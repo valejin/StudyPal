@@ -24,7 +24,6 @@ public class HomeTutorCLI extends AbstractState {
         Scanner scanner = new Scanner(System.in);
 
         int choice = -1;
-        //nel while: (choice = scanner.nextInt()) != 0
 
         while(choice != 0) {
 

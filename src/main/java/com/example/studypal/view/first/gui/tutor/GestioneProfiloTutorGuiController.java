@@ -128,7 +128,7 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
         //creo il bean, istanzio il controller applicativo e chiamo il suo metodo---------------------------------------
         RipetizioneInfoBean ripetizioneInfoBean = new RipetizioneInfoBean(materie, inPresenza, online, luogo, giorni, tariffa, email);
 
-        //stampo i valori a terminale-----------------------------------------------------------------------------------
+        //stampo riepilogo a terminale-----------------------------------------------------------------------------------
         Printer.println("Modifiche desiderate dall'utente " + email);
         Printer.println("    Materie: " + materie);
         Printer.println("    Modalità: " + inPresenza + " " + online);
@@ -138,10 +138,6 @@ public class GestioneProfiloTutorGuiController extends HomeTutorGui {
 
         GestioneProfiloTutorController gestioneProfiloTutorController = new GestioneProfiloTutorController();
         gestioneProfiloTutorController.gestioneProfiloMethod(ripetizioneInfoBean);
-
-        /* il problema sta nel fatto che salvo le info del profilo nel ripetizioneInfoBean e poi lo passo subito al
-        * controller, senza prima convertirlo! Quindi al controller arriva come gionri una lista di booleani invece
-        * che una stringa e per questo non riesce a salvarla nel db*/
 
         //se sono arrivato qui è andato tutto a buon fine e posso comunicarlo all'utente
         successoModifiche.setText("Modifiche avvenute con successo");
